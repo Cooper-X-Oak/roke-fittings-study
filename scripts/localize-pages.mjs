@@ -35,6 +35,7 @@ const tokenPattern =
   /<!--[\s\S]*?-->|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<[^>]+>|[^<]+/gi;
 const translatedAttributes = new Set([
   "alt",
+  "aria-label",
   "content",
   "placeholder",
   "title",

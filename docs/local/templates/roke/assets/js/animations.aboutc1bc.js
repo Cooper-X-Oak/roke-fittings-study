@@ -15,29 +15,32 @@ document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(TextPlugin);
 
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const companyText = "<span>ROKE Fluid Equipment</span> 成立于 2008 年，专注于为关键生产过程供应不锈钢、钛等材料的管路配件、阀门和管接头。BHS RUS 是 ROKE Fluid Equipment 工厂及其全系列产品在俄罗斯的官方独家经销商。";
+  const productText = "<span>产品</span> 我们生产并供应碳钢、316/316L 不锈钢、双相钢、超级双相钢、哈氏合金、蒙乃尔合金、因科镍合金、因科洛伊合金和钛材产品。";
 
-  var tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.about-hero-scroll',
-      start: "center bottom",
-      end: "bottom bottom",
-      scrub: 1,
-      // markers: true,
-    }
-  });
+  if (!reducedMotion) {
+    $('.about-hero-text-1, .about-hero-text-2').empty();
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.about-hero-scroll',
+        start: "center bottom",
+        end: "bottom bottom",
+        scrub: 1,
+        // markers: true,
+      }
+    });
 
-  tl.to('.about-hero-text-1', {
-    text: {
-      // value: "Компания ROKE Fluid Equipment, основанная в 2008 году, профессионально поставляет трубную арматуру, клапаны и фитинги из разных материалов. Мы находимся в Наньтуне, в 2 часах езды от Шанхая.",
-      // value: "<span>Компания ROKE Fluid Equipment</span> Основана в 2008 году. Специализируемся на поставках трубной арматуры, клапанов и фитингов из нержавеющей стали, титана и других материалов для критически важных производственных процессов.",
-      value: "<span>Компания ROKE Fluid Equipment</span> основана в 2008 году. Специализируемся на поставках трубной арматуры, клапанов и фитингов из нержавеющей стали, титана и других материалов для критически важных производственных процессов. Компания БХС РУС является официальным эксклюзивным дистрибьютором завода ROKE Fluid Equipment и всей продукции ROKE в России.",
-    }
-  }).to('.about-hero-text-2', {
-    text: {
-      // value: "Наша продукция используется в химической, нефтяной, энергетической и других отраслях. Мы обеспечиваем полное удовлетворение клиентов, предлагая оборудование для высокоточного производства и контроля качества.",
-      value: "<span>Продукция</span> Мы производим и поставляем продукцию из углеродистой стали, нержавеющей стали 316/316L, дуплекса, супердуплекса, хастеллоя, монеля, инконеля, инколоя и титана.",
-    }
-  });
+    tl.to('.about-hero-text-1', {
+      text: {
+        value: companyText,
+      }
+    }).to('.about-hero-text-2', {
+      text: {
+        value: productText,
+      }
+    });
+  }
 
 
   // gsap.to('.about-description-overlay', {
@@ -101,33 +104,65 @@ document.addEventListener("DOMContentLoaded", (event) => {
         canvas = gsap.utils.toArray(config.canvas)[0] || console.warn("canvas not defined"),
         ctx = canvas.getContext("2d"),
         curFrame = -1,
+        targetFrame = 0,
+        drawRequest = 0,
         onUpdate = config.onUpdate,
         images,
+        loadedFrames,
+        nearestLoadedFrame = function(frame) {
+          if (loadedFrames[frame]) {
+            return frame;
+          }
+          for (let offset = 1; offset < loadedFrames.length; offset++) {
+            let previous = frame - offset;
+            let next = frame + offset;
+            if (previous >= 0 && loadedFrames[previous]) {
+              return previous;
+            }
+            if (next < loadedFrames.length && loadedFrames[next]) {
+              return next;
+            }
+          }
+          return -1;
+        },
         updateImage = function() {
-          let frame = Math.round(playhead.frame);
-          if (frame !== curFrame) { // only draw if necessary
+          drawRequest = 0;
+          targetFrame = Math.max(0, Math.min(images.length - 1, Math.round(playhead.frame)));
+          let frame = nearestLoadedFrame(targetFrame);
+          if (frame >= 0 && frame !== curFrame) { // only draw a fully loaded frame
             config.clear && ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(images[Math.round(playhead.frame)], 0, 0);
+            ctx.drawImage(images[frame], 0, 0, canvas.width, canvas.height);
             curFrame = frame;
             onUpdate && onUpdate.call(this, frame, images[frame]);
           }
+        },
+        requestDraw = function() {
+          if (!drawRequest) {
+            drawRequest = requestAnimationFrame(updateImage);
+          }
         };
+    loadedFrames = new Array(config.urls.length).fill(false);
     images = config.urls.map((url, i) => {
       let img = new Image();
-      // img.src = url;
+      img.decoding = "async";
+      img.onload = function() {
+        loadedFrames[i] = true;
+        if (i === 0 || i === targetFrame || curFrame < 0) {
+          requestDraw();
+        }
+      };
       setTimeout(function () {
         img.src = url;
-      }, 700)
-      i || (img.onload = updateImage);
+      }, i === 0 ? 0 : 120);
       return img;
     });
     return gsap.to(playhead, {
       frame: images.length - 1,
       ease: "none",
-      onUpdate: updateImage,
+      onUpdate: requestDraw,
       duration: images.length / (config.fps || 30),
-      paused: !!config.paused,
-      scrollTrigger: config.scrollTrigger
+      paused: reducedMotion || !!config.paused,
+      scrollTrigger: reducedMotion ? undefined : config.scrollTrigger
     });
   }
 

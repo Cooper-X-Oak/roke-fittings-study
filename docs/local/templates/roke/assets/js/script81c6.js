@@ -76,11 +76,21 @@ Fancybox.bind('[data-fancybox]', {
   paddingLeft = parseFloat(paddingLeft);
 
   var fontSize = parseFloat($('html').css('font-size'));
+  const swiperA11y = {
+    enabled: true,
+    prevSlideMessage: '上一项',
+    nextSlideMessage: '下一项',
+    firstSlideMessage: '第一项',
+    lastSlideMessage: '最后一项',
+    paginationBulletMessage: '转到第 {{index}} 项',
+    slideLabelMessage: '第 {{index}} 项，共 {{slidesLength}} 项',
+  };
   // console.log(paddingLeft);
   // console.log(fontSize);
 
 
   const swiperBestsellers = new Swiper('.swiper-bestsellers', {
+    a11y: swiperA11y,
     // slidesPerView: "auto",
     slidesPerView: 4.5,
     slidesOffsetBefore: paddingLeft,
@@ -113,6 +123,7 @@ Fancybox.bind('[data-fancybox]', {
   });
 
   const swiperPartners = new Swiper('.swiper-partners', {
+    a11y: swiperA11y,
 
     spaceBetween: 16,
 
@@ -147,6 +158,7 @@ Fancybox.bind('[data-fancybox]', {
   // });
 
   const swiperBanners = new Swiper('.swiper-banners', {
+    a11y: swiperA11y,
     grabCursor: true,
 
     // autoplay: {
@@ -171,6 +183,7 @@ Fancybox.bind('[data-fancybox]', {
   });
 
   const swiperCatalogSections = new Swiper('.swiper-catalog-sections', {
+    a11y: swiperA11y,
 
 
     // grabCursor: true,
@@ -215,6 +228,59 @@ Fancybox.bind('[data-fancybox]', {
   }
 
   $ (function () {
+    const staticMirrorMessage = '这是前端学习镜像，不会提交或收集数据。';
+    const staticCatalogMessage = '静态学习镜像展示完整产品目录，未包含原站的动态分类和产品详情接口。';
+
+    $('[data-bs-toggle="offcanvas"]').attr('aria-label', '打开菜单');
+    $('.btn-close').attr('aria-label', '关闭');
+    $('#Model360Modal').attr('aria-label', '360° 产品模型');
+    $('.homepage-banner-item-360-toggle')
+      .attr({ role: 'button', tabindex: '0', 'aria-label': '查看 360° 产品模型' });
+    $('.video-item-controls-play')
+      .attr({ role: 'button', tabindex: '0', 'aria-label': '播放视频' });
+    $('.grid-toggle-item').each(function () {
+      $(this).attr({
+        role: 'button',
+        tabindex: '0',
+        'aria-label': `切换为每行 ${$(this).data('cols')} 列`,
+      });
+    });
+    $('.catalog-section-item').each(function () {
+      let title = $(this).find('.catalog-section-item-title').text().trim();
+      $(this).attr({
+        role: 'button',
+        tabindex: '0',
+        'aria-label': `查看${title}分类`,
+      });
+    });
+    $('.catalog-box-item-toggle').each(function () {
+      let title = $(this)
+        .find('.catalog-box-item-title, .bestseller-item-title, .homepage-card-item-title')
+        .first()
+        .text()
+        .trim();
+      $(this).attr({
+        role: 'button',
+        tabindex: '0',
+        'aria-label': title ? `查看${title}` : '查看产品',
+      });
+    });
+    $('input[placeholder], textarea[placeholder]').each(function () {
+      if (!$(this).attr('aria-label')) {
+        $(this).attr('aria-label', $(this).attr('placeholder'));
+      }
+    });
+
+    $(document).on(
+      'keydown',
+      '.homepage-banner-item-360-toggle, .video-item-controls-play, .grid-toggle-item, .catalog-section-item, .catalog-box-item-toggle',
+      function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          $(this).trigger('click');
+        }
+      }
+    );
 
     // $(".form-control-phone").mask("+7 (999) 999-99-99");
 
@@ -365,6 +431,15 @@ Fancybox.bind('[data-fancybox]', {
       let index = parseInt($(this).data('index'));
       let $this = $(this);
 
+      $('.catalog-section-item').removeClass('active');
+      $this.addClass('active');
+      document.querySelector('.catalog-tabs')?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start',
+      });
+      alert(staticCatalogMessage);
+      return false;
+
       let data = {
         i: index
       };
@@ -395,7 +470,7 @@ Fancybox.bind('[data-fancybox]', {
         },
         error: function (r) {
           // console.log(res);
-          alert('Internal Server Error');
+          alert('请求失败');
         },
       })
 
@@ -422,6 +497,9 @@ Fancybox.bind('[data-fancybox]', {
       let index = $(this).data('index');
       // console.log(i);
 
+      alert(staticCatalogMessage);
+      return false;
+
       let data = {
         i: index
       };
@@ -442,7 +520,7 @@ Fancybox.bind('[data-fancybox]', {
         },
         error: function (r) {
           console.log(res);
-          // alert('Internal Server Error');
+          // alert('请求失败');
         },
       })
 
@@ -455,6 +533,9 @@ Fancybox.bind('[data-fancybox]', {
       modal_files = this.files;
 
       if (modal_files.length == 0) return false;
+      this.value = '';
+      alert(staticMirrorMessage);
+      return false;
 
       $.each(modal_files, function (key, value) {
 
@@ -493,7 +574,7 @@ Fancybox.bind('[data-fancybox]', {
           },
           error: function (res) {
             // console.log(res);
-            alert('Internal Server Error');
+            alert('请求失败');
           }
         });
 
@@ -519,6 +600,8 @@ Fancybox.bind('[data-fancybox]', {
       });
 
       if (!isValidated) return false;
+      alert(staticMirrorMessage);
+      return false;
 
       let userfiles = [];
 
@@ -556,7 +639,7 @@ Fancybox.bind('[data-fancybox]', {
         error: function (res) {
           // console.log(res);
           btn.attr('disabled', false);
-          alert('Internal Server Error');
+          alert('请求失败');
         },
       });
 
@@ -593,6 +676,8 @@ Fancybox.bind('[data-fancybox]', {
       // console.log(userfiles);
 
       if (!isValidated) return false;
+      alert(staticMirrorMessage);
+      return false;
 
       let data = {
         author: form.find('#FeedbackFormAuthor').val(),
@@ -622,7 +707,7 @@ Fancybox.bind('[data-fancybox]', {
         error: function (res) {
           // console.log(res);
           btn.attr('disabled', false);
-          alert('Internal Server Error');
+          alert('请求失败');
         },
       });
 
@@ -635,6 +720,9 @@ Fancybox.bind('[data-fancybox]', {
       files = this.files;
 
       if (files.length == 0) return false;
+      this.value = '';
+      alert(staticMirrorMessage);
+      return false;
 
       $.each(files, function (key, value) {
 
@@ -673,7 +761,7 @@ Fancybox.bind('[data-fancybox]', {
           },
           error: function (res) {
             // console.log(res);
-            alert('Internal Server Error');
+            alert('请求失败');
           }
         });
 

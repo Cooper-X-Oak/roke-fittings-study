@@ -13,6 +13,7 @@ $('.hero-frames').height(heroFramesHeight);
 
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger);
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 
   // gsap.fromTo('.section-promo', {
@@ -212,9 +213,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
       ease: "none",
       onUpdate: requestDraw,
       duration: images.length / (config.fps || 30),
-      paused: !!config.paused,
-      scrollTrigger: config.scrollTrigger
+      paused: reducedMotion || !!config.paused,
+      scrollTrigger: reducedMotion ? undefined : config.scrollTrigger
     });
+  }
+
+  if (reducedMotion) {
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }
 
 });
