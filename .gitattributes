@@ -1,0 +1,6 @@
+# Preserve the mirrored Pages artifact byte-for-byte as vendored output.
+docs/** -text -diff
+
+# Keep repository-authored documentation and scripts consistent.
+*.md text eol=lf
+scripts/*.mjs text eol=lf
