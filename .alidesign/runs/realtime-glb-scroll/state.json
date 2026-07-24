@@ -1,0 +1,191 @@
+{
+  "schema_version": 2,
+  "run_id": "realtime-glb-scroll",
+  "project": "issue-3",
+  "task": "Realtime GLB scroll rotation and exploded-view desktop experiment",
+  "mode": "full",
+  "milestone": "M001",
+  "issue": "AD-001",
+  "state": "accepted",
+  "iteration": 1,
+  "active_spec": null,
+  "best_candidate": null,
+  "blockers": [],
+  "evidence": [],
+  "records": [],
+  "routing_manifest": "routing.yaml",
+  "sealed_routes": [
+    {
+      "revision_id": "revision-001",
+      "revision_ref": "routing/revision-001.yaml",
+      "sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+      "gate": "authority_resolved",
+      "sealed_at": "2026-07-24T09:08:12.495838Z"
+    },
+    {
+      "revision_id": "revision-001",
+      "revision_ref": "routing/revision-001.yaml",
+      "sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+      "gate": "planning_ready",
+      "sealed_at": "2026-07-24T09:08:12.908382Z"
+    },
+    {
+      "revision_id": "revision-001",
+      "revision_ref": "routing/revision-001.yaml",
+      "sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+      "gate": "structure_ready",
+      "sealed_at": "2026-07-24T09:08:13.292136Z"
+    },
+    {
+      "revision_id": "revision-001",
+      "revision_ref": "routing/revision-001.yaml",
+      "sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+      "gate": "semantics_ready",
+      "sealed_at": "2026-07-24T09:08:13.775902Z"
+    },
+    {
+      "revision_id": "revision-001",
+      "revision_ref": "routing/revision-001.yaml",
+      "sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+      "gate": "behavior_ready",
+      "sealed_at": "2026-07-24T09:08:14.196284Z"
+    },
+    {
+      "revision_id": "revision-001",
+      "revision_ref": "routing/revision-001.yaml",
+      "sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+      "gate": "implementation_authorized",
+      "sealed_at": "2026-07-24T09:08:14.837886Z"
+    },
+    {
+      "revision_id": "revision-001",
+      "revision_ref": "routing/revision-001.yaml",
+      "sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+      "gate": "artifact_runnable",
+      "sealed_at": "2026-07-24T09:43:11.541705Z"
+    },
+    {
+      "revision_id": "revision-002",
+      "revision_ref": "routing/revision-002.yaml",
+      "sha256": "889f84a56344bdbcfcc108d4bd1b7e5364e9601d404f7d6585b6c078e8582b73",
+      "gate": "evaluation_passed",
+      "sealed_at": "2026-07-24T09:54:27.700186Z"
+    }
+  ],
+  "sealed_evaluations": [
+    {
+      "round": "round-001",
+      "verdict": "passed",
+      "routing_revision": "revision-002",
+      "sealed_at": "2026-07-24T09:54:27.700186Z",
+      "files": [
+        {
+          "ref": ".alidesign/runs/realtime-glb-scroll/evaluation/round-001/evidence.json",
+          "sha256": "c287889888f9eb4ab5646f8ef89446b5471ff47fc53624f0a124d6aa78b0df52"
+        },
+        {
+          "ref": ".alidesign/runs/realtime-glb-scroll/evaluation/round-001/report.md",
+          "sha256": "dd936ca2af51f332f1bbc1e574e40ec3fa092ef731bbd4efa2609d04f11f5c14"
+        }
+      ],
+      "round_trees": [
+        {
+          "round": "round-001",
+          "ref": ".alidesign/runs/realtime-glb-scroll/evaluation/round-001",
+          "sha256": "5574248c28796f0367a8de2a25fb0f1c5aee9ea7d1a678cfb806a87fb16a8fac"
+        }
+      ]
+    }
+  ],
+  "resume_state": null,
+  "created_at": "2026-07-24T09:02:33.536851Z",
+  "updated_at": "2026-07-24T09:54:27.700722Z",
+  "history": [
+    {
+      "at": "2026-07-24T09:02:33.536851Z",
+      "action": "initialized",
+      "state": "discovery",
+      "mode": "full"
+    },
+    {
+      "at": "2026-07-24T09:08:12.495838Z",
+      "action": "transition",
+      "from_state": "discovery",
+      "to_state": "planning",
+      "gate": "authority_resolved",
+      "reason": null,
+      "routing_revision": "revision-001",
+      "routing_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5"
+    },
+    {
+      "at": "2026-07-24T09:08:12.908382Z",
+      "action": "transition",
+      "from_state": "planning",
+      "to_state": "information_architecture",
+      "gate": "planning_ready",
+      "reason": null,
+      "routing_revision": "revision-001",
+      "routing_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5"
+    },
+    {
+      "at": "2026-07-24T09:08:13.292136Z",
+      "action": "transition",
+      "from_state": "information_architecture",
+      "to_state": "component_domain",
+      "gate": "structure_ready",
+      "reason": null,
+      "routing_revision": "revision-001",
+      "routing_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5"
+    },
+    {
+      "at": "2026-07-24T09:08:13.775902Z",
+      "action": "transition",
+      "from_state": "component_domain",
+      "to_state": "interaction_states",
+      "gate": "semantics_ready",
+      "reason": null,
+      "routing_revision": "revision-001",
+      "routing_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5"
+    },
+    {
+      "at": "2026-07-24T09:08:14.196284Z",
+      "action": "transition",
+      "from_state": "interaction_states",
+      "to_state": "design_ready",
+      "gate": "behavior_ready",
+      "reason": null,
+      "routing_revision": "revision-001",
+      "routing_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5"
+    },
+    {
+      "at": "2026-07-24T09:08:14.837886Z",
+      "action": "transition",
+      "from_state": "design_ready",
+      "to_state": "implementing",
+      "gate": "implementation_authorized",
+      "reason": null,
+      "routing_revision": "revision-001",
+      "routing_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5"
+    },
+    {
+      "at": "2026-07-24T09:43:11.541705Z",
+      "action": "transition",
+      "from_state": "implementing",
+      "to_state": "evaluating",
+      "gate": "artifact_runnable",
+      "reason": null,
+      "routing_revision": "revision-001",
+      "routing_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5"
+    },
+    {
+      "at": "2026-07-24T09:54:27.700186Z",
+      "action": "transition",
+      "from_state": "evaluating",
+      "to_state": "accepted",
+      "gate": "evaluation_passed",
+      "reason": null,
+      "routing_revision": "revision-002",
+      "routing_sha256": "889f84a56344bdbcfcc108d4bd1b7e5364e9601d404f7d6585b6c078e8582b73"
+    }
+  ]
+}

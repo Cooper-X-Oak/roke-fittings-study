@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta
+      name="description"
+      content="一个使用 Draco 几何与 KTX2 纹理的实时 WebGL 产品拆解实验。"
+    >
+    <title>实时 3D 拆解实验</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./assets/vendor/three/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body data-webgl-state="loading">
+    <a class="skip-link" href="#story">跳到实验说明</a>
+
+    <header class="masthead" aria-label="实验状态">
+      <a class="masthead__label" href="#story" aria-label="实时 3D 实验首页">
+        <span>03</span>
+        <span>REALTIME STUDY</span>
+      </a>
+      <div class="masthead__progress">
+        <label for="story-progress">实验进度</label>
+        <progress id="story-progress" max="100" value="0">0%</progress>
+        <output id="progress-output" for="story-progress">00</output>
+      </div>
+    </header>
+
+    <div class="viewer-stage" aria-label="实时三维产品展示">
+      <div class="viewer-stage__word" aria-hidden="true">REALTIME</div>
+      <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+
+      <div class="viewer-stage__loading" aria-hidden="true">
+        <span>正在装配数字样机</span>
+        <span id="loading-percent">00%</span>
+      </div>
+
+      <div class="viewer-stage__fallback" id="viewer-fallback">
+        <p class="eyebrow">WEBGL FALLBACK</p>
+        <h2>三维舞台暂不可用。</h2>
+        <p id="fallback-copy">
+          这个页面仍然保留完整的实验说明、压缩数据和模型来源。请在支持 WebGL 2
+          的桌面浏览器中重新打开，以查看实时旋转与拆解。
+        </p>
+      </div>
+    </div>
+
+    <aside class="technical-rail" aria-label="模型技术信息">
+      <p class="technical-rail__title">LIVE ASSET</p>
+      <dl>
+        <div>
+          <dt>MODEL</dt>
+          <dd>CarConcept</dd>
+        </div>
+        <div>
+          <dt>TRANSFER</dt>
+          <dd>2.48 MiB</dd>
+        </div>
+        <div>
+          <dt>GEOMETRY</dt>
+          <dd>Draco / 10 bit</dd>
+        </div>
+        <div>
+          <dt>TEXTURE</dt>
+          <dd>KTX2 / BasisU</dd>
+        </div>
+        <div>
+          <dt>PARTS</dt>
+          <dd id="part-count">—</dd>
+        </div>
+        <div>
+          <dt>RENDERER</dt>
+          <dd id="renderer-status">INITIALIZING</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <div class="runtime-status" role="status" aria-live="polite">
+      <span class="runtime-status__dot" aria-hidden="true"></span>
+      <span id="runtime-status-copy">正在初始化本地 WebGL 运行时</span>
+    </div>
+
+    <button
+      class="motion-toggle"
+      id="motion-toggle"
+      type="button"
+      aria-pressed="false"
+      hidden
+    >
+      暂停动态
+    </button>
+
+    <main class="story" id="story">
+      <section class="chapter chapter--hero" data-chapter="0">
+        <div class="chapter__copy">
+          <p class="eyebrow">GLB + WEBGL / DESKTOP EXPERIMENT</p>
+          <h1>把 650 帧<br>换成一个<br>模型。</h1>
+          <p class="chapter__lede">
+            向下滚动。浏览器不是在播放图片序列，而是在每一帧重新计算几何、材质、灯光和零件位置。
+          </p>
+          <p class="scroll-cue">
+            <span aria-hidden="true">↓</span>
+            滚动以开始检查
+          </p>
+        </div>
+      </section>
+
+      <section class="chapter chapter--right" data-chapter="1">
+        <div class="chapter__copy">
+          <p class="chapter__number">01 / ROTATE</p>
+          <h2>旋转，不是播放。</h2>
+          <p>
+            同一份几何在 GPU 上实时成像。视角、反射和清漆高光连续变化，不需要为每个角度预先输出一张图。
+          </p>
+        </div>
+      </section>
+
+      <section class="chapter chapter--left chapter--lower" data-chapter="2">
+        <div class="chapter__copy">
+          <p class="chapter__number">02 / SEPARATE</p>
+          <h2>每个零件，<br>都是真的。</h2>
+          <p>
+            车门、车轮、机舱和内饰沿各自空间方向分离。向上滚动时，保存的原始变换会让它们精确回到装配位置。
+          </p>
+        </div>
+      </section>
+
+      <section class="chapter chapter--right" data-chapter="3">
+        <div class="chapter__copy">
+          <p class="chapter__number">03 / COMPRESS</p>
+          <h2>2.48 MiB，<br>保留材质细节。</h2>
+          <p>
+            Draco 压缩几何；KTX2/BasisU 纹理在下载和显存中都保持压缩。当前 GLB
+            是单文件交付，不依赖运行时第三方模型请求。
+          </p>
+        </div>
+      </section>
+
+      <section class="chapter chapter--final" data-chapter="4">
+        <div class="chapter__copy chapter__copy--final">
+          <p class="chapter__number">04 / UNDERSTAND</p>
+          <h2>低流量，<br>换取实时自由度。</h2>
+          <p>
+            这就是取舍：网络只传一个压缩样机，浏览器承担实时解码和渲染。适合产品检查、配置器和交互式技术说明。
+          </p>
+
+          <dl class="summary">
+            <div>
+              <dt>交付</dt>
+              <dd>1 个压缩 GLB</dd>
+            </div>
+            <div>
+              <dt>纹理</dt>
+              <dd>14 张 KTX2</dd>
+            </div>
+            <div>
+              <dt>输入</dt>
+              <dd>原生页面滚动</dd>
+            </div>
+          </dl>
+
+          <footer class="credits">
+            <p>
+              3D 资产：
+              <a
+                href="https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept"
+                rel="external noreferrer"
+              >Khronos CarConcept</a>，
+              Darmstadt Graphics Group GmbH，
+              <a
+                href="https://creativecommons.org/licenses/by/4.0/"
+                rel="license external noreferrer"
+              >CC BY 4.0</a>。
+            </p>
+            <p>
+              非官方、非商业前端学习实验；模型拆解用于交互演示，不构成工程装配说明。
+            </p>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <noscript>
+      <div class="noscript-message">
+        JavaScript 已关闭，因此实时三维舞台不会启动；上方实验说明和资产来源仍可阅读。
+      </div>
+    </noscript>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

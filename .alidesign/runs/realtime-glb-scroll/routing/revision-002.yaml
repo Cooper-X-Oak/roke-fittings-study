@@ -1,0 +1,1192 @@
+{
+  "schema_version": 1,
+  "run_id": "realtime-glb-scroll",
+  "mode": "full",
+  "revision": "revision-002",
+  "supersedes": "revision-001",
+  "supersedes_sha256": "d5d64f6511094ac8563f61d28a3e533bff669b351c89e130d55706b0500b0fa5",
+  "created_at": "2026-07-24T09:53:48.026500Z",
+  "change_reason": "Deduplicate the final evidence document across evaluation responsibility outputs after mechanical seal validation exposed ambiguous duplicate declarations.",
+  "context": {
+    "artifact_type": "static_web_experiment",
+    "platform": "web",
+    "renderer": "threejs-webgl",
+    "interaction_model": "scroll_linked_3d",
+    "has_visual_surface": true,
+    "task_traits": [
+      "high_impact_design"
+    ]
+  },
+  "actors": {
+    "author": "codex-design-author",
+    "gate_resolver": "alidesign-gate-resolver"
+  },
+  "precedence": [
+    "user_explicit",
+    "project_or_brand",
+    "platform_or_domain",
+    "framework",
+    "stage_specific",
+    "generic_fallback"
+  ],
+  "bindings": [
+    {
+      "capability": "design_authority",
+      "phase": "discovery",
+      "required_when": "always",
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "authority_resolved",
+      "complete_by": "authority_resolved",
+      "barriers": [],
+      "provider": {
+        "kind": "user_instruction",
+        "ref": "Current authorized task",
+        "role": "authority",
+        "specificity": "user_explicit",
+        "actor": "codex-design-author",
+        "match": {
+          "platform": [
+            "web"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "user_instruction",
+          "ref": "Current authorized task",
+          "role": "authority",
+          "specificity": "user_explicit",
+          "actor": "codex-design-author",
+          "match": {
+            "platform": [
+              "web"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "user_instruction",
+          "ref": "Current authorized task"
+        },
+        {
+          "kind": "file",
+          "ref": "AGENTS.md"
+        },
+        {
+          "kind": "file",
+          "ref": "docs/engineering/github-development.md"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/brief.md"
+        }
+      ],
+      "decision": {
+        "rationale": "The current request defines the product, platform, interaction, and asset-compression target; project files constrain delivery and prohibited behavior.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/brief.md"
+        ],
+        "rule_refs": [
+          "$alidesign-engineering#resolve-design-authority"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "planning_specification",
+      "phase": "planning",
+      "required_when": "always",
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "authority_resolved",
+      "complete_by": "planning_ready",
+      "barriers": [],
+      "provider": {
+        "kind": "skill",
+        "ref": "$alidesign-engineering",
+        "role": "workflow",
+        "specificity": "stage_specific",
+        "actor": "codex-design-author",
+        "match": {
+          "artifact_type": [
+            "static_web_experiment"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$alidesign-engineering",
+          "role": "workflow",
+          "specificity": "stage_specific",
+          "actor": "codex-design-author",
+          "match": {
+            "artifact_type": [
+              "static_web_experiment"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/brief.md"
+        },
+        {
+          "kind": "rule",
+          "ref": "$alidesign-engineering/references/workflow.md"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/spec.md"
+        }
+      ],
+      "decision": {
+        "rationale": "The selected full workflow turns the authorized experiment into observable scope, boundaries, states, and acceptance checks.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/spec.md"
+        ],
+        "rule_refs": [
+          "references/workflow.md#stage-1-understanding-and-planning"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "positioning",
+      "phase": "planning",
+      "required_when": {
+        "field": {
+          "name": "task_traits",
+          "op": "contains",
+          "value": "professional_positioning"
+        }
+      },
+      "optional": false,
+      "status": "not_applicable",
+      "resolve_by": "authority_resolved",
+      "complete_by": "planning_ready",
+      "barriers": [],
+      "provider": null,
+      "candidates": [],
+      "selection_override": null,
+      "inputs": [],
+      "outputs": [],
+      "decision": {
+        "rationale": "This is a technical educational prototype, not a professional-positioning or marketing strategy task.",
+        "evidence_refs": [
+          "routing context"
+        ],
+        "rule_refs": [
+          "references/capability-routing.md#conditional-capabilities"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "design_research",
+      "phase": "planning",
+      "required_when": {
+        "field": {
+          "name": "task_traits",
+          "op": "contains",
+          "value": "high_impact_design"
+        }
+      },
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "authority_resolved",
+      "complete_by": "planning_ready",
+      "barriers": [],
+      "provider": {
+        "kind": "skill",
+        "ref": "$agent-reach",
+        "role": "guidance",
+        "specificity": "stage_specific",
+        "actor": "asset-research-provider",
+        "match": {
+          "platform": [
+            "web"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$agent-reach",
+          "role": "guidance",
+          "specificity": "stage_specific",
+          "actor": "asset-research-provider",
+          "match": {
+            "platform": [
+              "web"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "skill",
+          "ref": "$agent-reach"
+        },
+        {
+          "kind": "record",
+          "ref": "KhronosGroup/glTF-Sample-Assets CarConcept source inspection"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/model-provenance.md"
+        }
+      ],
+      "decision": {
+        "rationale": "The model choice affects licensing, load cost, GPU memory, part structure, and the viability of the core exploded-view interaction.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/model-provenance.md"
+        ],
+        "rule_refs": [
+          "references/workflow.md#stage-1-understanding-and-planning"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "visual_art_direction",
+      "phase": "component_domain",
+      "required_when": {
+        "any": [
+          {
+            "field": {
+              "name": "has_visual_surface",
+              "op": "eq",
+              "value": true
+            }
+          },
+          {
+            "field": {
+              "name": "task_traits",
+              "op": "contains",
+              "value": "brand_identity"
+            }
+          }
+        ]
+      },
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "implementation_authorized",
+      "complete_by": "implementation_authorized",
+      "barriers": [
+        "ui_mutation"
+      ],
+      "provider": {
+        "kind": "user_instruction",
+        "ref": "Current task visual direction",
+        "role": "authority",
+        "specificity": "user_explicit",
+        "actor": "codex-design-author",
+        "match": {
+          "has_visual_surface": [
+            true
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "user_instruction",
+          "ref": "Current task visual direction",
+          "role": "authority",
+          "specificity": "user_explicit",
+          "actor": "codex-design-author",
+          "match": {
+            "has_visual_surface": [
+              true
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "user_instruction",
+          "ref": "Material and lighting should retain the source-study feel"
+        },
+        {
+          "kind": "record",
+          "ref": "Inspected local mirror screenshot artifacts/home-local.png"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/visual-direction.md"
+        }
+      ],
+      "decision": {
+        "rationale": "The user explicitly requests source-like material and lighting; the inspected mirror supplies a limited, traceable industrial visual baseline.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/visual-direction.md"
+        ],
+        "rule_refs": [
+          "references/capability-routing.md#ui-mutation-barrier"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "information_architecture",
+      "phase": "information_architecture",
+      "required_when": "always",
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "planning_ready",
+      "complete_by": "structure_ready",
+      "barriers": [],
+      "provider": {
+        "kind": "skill",
+        "ref": "$alidesign-engineering",
+        "role": "workflow",
+        "specificity": "stage_specific",
+        "actor": "codex-design-author",
+        "match": {
+          "interaction_model": [
+            "scroll_linked_3d"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$alidesign-engineering",
+          "role": "workflow",
+          "specificity": "stage_specific",
+          "actor": "codex-design-author",
+          "match": {
+            "interaction_model": [
+              "scroll_linked_3d"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/spec.md"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/information-architecture.md"
+        }
+      ],
+      "decision": {
+        "rationale": "A single continuous scrollytelling structure best maps narrative chapters to reversible model states without conventional landing-page filler.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/information-architecture.md"
+        ],
+        "rule_refs": [
+          "references/workflow.md#stage-2-information-architecture"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "ia_variants",
+      "phase": "information_architecture",
+      "required_when": {
+        "field": {
+          "name": "task_traits",
+          "op": "contains",
+          "value": "structure_high_impact"
+        }
+      },
+      "optional": false,
+      "status": "not_applicable",
+      "resolve_by": "planning_ready",
+      "complete_by": "structure_ready",
+      "barriers": [],
+      "provider": null,
+      "candidates": [],
+      "selection_override": null,
+      "inputs": [],
+      "outputs": [],
+      "decision": {
+        "rationale": "The user specified one direct scroll narrative and the additive experiment route keeps structural risk isolated.",
+        "evidence_refs": [
+          "routing context"
+        ],
+        "rule_refs": [
+          "references/workflow.md#stage-2-information-architecture"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "domain_semantics",
+      "phase": "component_domain",
+      "required_when": {
+        "field": {
+          "name": "task_traits",
+          "op": "contains",
+          "value": "domain_sensitive"
+        }
+      },
+      "optional": false,
+      "status": "not_applicable",
+      "resolve_by": "structure_ready",
+      "complete_by": "semantics_ready",
+      "barriers": [],
+      "provider": null,
+      "candidates": [],
+      "selection_override": null,
+      "inputs": [],
+      "outputs": [],
+      "decision": {
+        "rationale": "The prototype contains no safety-critical engineering instructions, permissions, transactions, or domain-sensitive decisions.",
+        "evidence_refs": [
+          "routing context"
+        ],
+        "rule_refs": [
+          "references/workflow.md#stage-3-component-and-domain-semantics"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "component_semantics",
+      "phase": "component_domain",
+      "required_when": {
+        "field": {
+          "name": "task_traits",
+          "op": "contains",
+          "value": "custom_components"
+        }
+      },
+      "optional": false,
+      "status": "not_applicable",
+      "resolve_by": "structure_ready",
+      "complete_by": "semantics_ready",
+      "barriers": [],
+      "provider": null,
+      "candidates": [],
+      "selection_override": null,
+      "inputs": [],
+      "outputs": [],
+      "decision": {
+        "rationale": "Native HTML semantics and the canvas runtime cover the required interface without a custom component system.",
+        "evidence_refs": [
+          "routing context"
+        ],
+        "rule_refs": [
+          "references/workflow.md#stage-3-component-and-domain-semantics"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "visual_design",
+      "phase": "component_domain",
+      "required_when": {
+        "field": {
+          "name": "has_visual_surface",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "semantics_ready",
+      "complete_by": "implementation_authorized",
+      "barriers": [
+        "ui_mutation"
+      ],
+      "provider": {
+        "kind": "skill",
+        "ref": "$review-design-quality",
+        "role": "guidance",
+        "specificity": "generic_fallback",
+        "actor": "visual-guidance-provider",
+        "match": {
+          "has_visual_surface": [
+            true
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$review-design-quality",
+          "role": "guidance",
+          "specificity": "generic_fallback",
+          "actor": "visual-guidance-provider",
+          "match": {
+            "has_visual_surface": [
+              true
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "skill",
+          "ref": "$review-design-quality"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/visual-direction.md"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/declarations/design-system.md"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/visual-direction.md"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/declarations/design-system.md"
+        }
+      ],
+      "decision": {
+        "rationale": "No formal project design system fully governs this new route, so the general quality skill supplies measurable coherence and accessibility checks under the user's visual authority.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/visual-direction.md",
+          ".alidesign/declarations/design-system.md"
+        ],
+        "rule_refs": [
+          "$review-design-quality/references/design-quality.md"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "craft",
+      "phase": "interaction_states",
+      "required_when": {
+        "field": {
+          "name": "has_visual_surface",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "behavior_ready",
+      "complete_by": "behavior_ready",
+      "barriers": [
+        "ui_mutation"
+      ],
+      "provider": {
+        "kind": "skill",
+        "ref": "$review-design-quality",
+        "role": "guidance",
+        "specificity": "generic_fallback",
+        "actor": "craft-guidance-provider",
+        "match": {
+          "artifact_type": [
+            "static_web_experiment"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$review-design-quality",
+          "role": "guidance",
+          "specificity": "generic_fallback",
+          "actor": "craft-guidance-provider",
+          "match": {
+            "artifact_type": [
+              "static_web_experiment"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "skill",
+          "ref": "$review-design-quality"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/declarations/craft.md"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/declarations/craft.md"
+        }
+      ],
+      "decision": {
+        "rationale": "The visual prototype requires explicit quality rules for hierarchy, real content, motion preferences, failure visibility, and anti-template risk.",
+        "evidence_refs": [
+          ".alidesign/declarations/craft.md"
+        ],
+        "rule_refs": [
+          "$review-design-quality/references/design-quality.md"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "interaction_behavior",
+      "phase": "interaction_states",
+      "required_when": {
+        "not": {
+          "field": {
+            "name": "interaction_model",
+            "op": "eq",
+            "value": "static"
+          }
+        }
+      },
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "interaction_authority_resolved",
+      "complete_by": "behavior_ready",
+      "barriers": [],
+      "provider": {
+        "kind": "skill",
+        "ref": "$alidesign-engineering",
+        "role": "guidance",
+        "specificity": "stage_specific",
+        "actor": "interaction-guidance-provider",
+        "match": {
+          "interaction_model": [
+            "scroll_linked_3d"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$alidesign-engineering",
+          "role": "guidance",
+          "specificity": "stage_specific",
+          "actor": "interaction-guidance-provider",
+          "match": {
+            "interaction_model": [
+              "scroll_linked_3d"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/spec.md"
+        },
+        {
+          "kind": "rule",
+          "ref": "$alidesign-engineering/references/workflow.md#stage-4-interaction-states"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/interaction-state-matrix.md"
+        }
+      ],
+      "decision": {
+        "rationale": "Scroll, reverse scroll, loading, pause, fallback, context loss, keyboard, and narrow states must be declared before implementation.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/interaction-state-matrix.md"
+        ],
+        "rule_refs": [
+          "references/workflow.md#stage-4-interaction-states"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "motion",
+      "phase": "interaction_states",
+      "required_when": {
+        "not": {
+          "field": {
+            "name": "interaction_model",
+            "op": "eq",
+            "value": "static"
+          }
+        }
+      },
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "interaction_authority_resolved",
+      "complete_by": "behavior_ready",
+      "barriers": [],
+      "provider": {
+        "kind": "user_instruction",
+        "ref": "Current scroll-motion requirement",
+        "role": "authority",
+        "specificity": "user_explicit",
+        "actor": "codex-design-author",
+        "match": {
+          "interaction_model": [
+            "scroll_linked_3d"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "user_instruction",
+          "ref": "Current scroll-motion requirement",
+          "role": "authority",
+          "specificity": "user_explicit",
+          "actor": "codex-design-author",
+          "match": {
+            "interaction_model": [
+              "scroll_linked_3d"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "user_instruction",
+          "ref": "Scroll controls rotation and exploded view"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/spec.md"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/interaction-state-matrix.md"
+        }
+      ],
+      "decision": {
+        "rationale": "The user explicitly defines scroll-linked motion as the essential experiment, while project quality rules require reversible and reduced-motion behavior.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/interaction-state-matrix.md"
+        ],
+        "rule_refs": [
+          "references/capability-routing.md#static-does-not-skip-craft"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "implementation_authority",
+      "phase": "design_ready",
+      "required_when": "always",
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "implementation_authorized",
+      "complete_by": "implementation_authorized",
+      "barriers": [
+        "ui_mutation"
+      ],
+      "provider": {
+        "kind": "skill",
+        "ref": "$apply-repo-workflow",
+        "role": "workflow",
+        "specificity": "project_or_brand",
+        "actor": "repository-policy-provider",
+        "match": {
+          "platform": [
+            "web"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$apply-repo-workflow",
+          "role": "workflow",
+          "specificity": "project_or_brand",
+          "actor": "repository-policy-provider",
+          "match": {
+            "platform": [
+              "web"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "skill",
+          "ref": "$apply-repo-workflow"
+        },
+        {
+          "kind": "file",
+          "ref": "AGENTS.md"
+        },
+        {
+          "kind": "file",
+          "ref": "docs/engineering/github-development.md"
+        },
+        {
+          "kind": "record",
+          "ref": "GitHub Issue #3 and isolated feat/3-realtime-glb-scroll-experiment worktree"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/decisions.md"
+        }
+      ],
+      "decision": {
+        "rationale": "The repository declares github-standard-development and all preconditions were satisfied with Issue #3 and an isolated task worktree.",
+        "evidence_refs": [
+          ".alidesign/runs/realtime-glb-scroll/decisions.md"
+        ],
+        "rule_refs": [
+          "$apply-repo-workflow/references/github-standard-development.md"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "implementation_projection",
+      "phase": "implementing",
+      "required_when": "always",
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "implementation_authorized",
+      "complete_by": "artifact_runnable",
+      "barriers": [
+        "ui_mutation"
+      ],
+      "provider": {
+        "kind": "toolchain",
+        "ref": "Three.js static WebGL toolchain",
+        "role": "execution",
+        "specificity": "framework",
+        "actor": "implementation-author",
+        "match": {
+          "renderer": [
+            "threejs-webgl"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "toolchain",
+          "ref": "Three.js static WebGL toolchain",
+          "role": "execution",
+          "specificity": "framework",
+          "actor": "implementation-author",
+          "match": {
+            "renderer": [
+              "threejs-webgl"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/spec.md"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/visual-direction.md"
+        },
+        {
+          "kind": "record",
+          "ref": "Three.js GLTFLoader with DRACOLoader and KTX2Loader"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": "docs/experiment/index.html"
+        }
+      ],
+      "decision": {
+        "rationale": "Three.js directly supports the required glTF material extensions and local Draco/KTX2 decode path in a static GitHub Pages site.",
+        "evidence_refs": [
+          "docs/experiment/index.html"
+        ],
+        "rule_refs": [
+          "references/workflow.md#implementation-bridge"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "evidence_collection",
+      "phase": "evaluation",
+      "required_when": "always",
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "evaluation_ready",
+      "complete_by": "evaluation_passed",
+      "barriers": [],
+      "provider": {
+        "kind": "toolchain",
+        "ref": "Local HTTP and browser evidence suite",
+        "role": "execution",
+        "specificity": "stage_specific",
+        "actor": "evidence-collector",
+        "match": {
+          "artifact_type": [
+            "static_web_experiment"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "toolchain",
+          "ref": "Local HTTP and browser evidence suite",
+          "role": "execution",
+          "specificity": "stage_specific",
+          "actor": "evidence-collector",
+          "match": {
+            "artifact_type": [
+              "static_web_experiment"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/evaluation-profile.yaml"
+        },
+        {
+          "kind": "file",
+          "ref": "docs/experiment/index.html"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/evaluation/round-001/report.md"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/evaluation/round-001/evidence.json"
+        }
+      ],
+      "decision": {
+        "rationale": "The prototype requires deterministic runtime, request, scroll-state, fallback, accessibility, asset, and screenshot evidence.",
+        "evidence_refs": [
+          ".alidesign/evaluation-profile.yaml"
+        ],
+        "rule_refs": [
+          "references/evaluation.md#collect-applicable-evidence"
+        ]
+      },
+      "isolation": null
+    },
+    {
+      "capability": "design_review",
+      "phase": "evaluation",
+      "required_when": {
+        "any": [
+          {
+            "field": {
+              "name": "has_visual_surface",
+              "op": "eq",
+              "value": true
+            }
+          },
+          {
+            "field": {
+              "name": "task_traits",
+              "op": "contains",
+              "value": "brand_identity"
+            }
+          }
+        ]
+      },
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "evaluation_ready",
+      "complete_by": "evaluation_passed",
+      "barriers": [],
+      "provider": {
+        "kind": "skill",
+        "ref": "$review-design-quality",
+        "role": "review",
+        "specificity": "generic_fallback",
+        "actor": "independent-design-review",
+        "match": {
+          "has_visual_surface": [
+            true
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$review-design-quality",
+          "role": "review",
+          "specificity": "generic_fallback",
+          "actor": "independent-design-review",
+          "match": {
+            "has_visual_surface": [
+              true
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "skill",
+          "ref": "$review-design-quality"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/evaluation-profile.yaml"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/visual-direction.md"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/evaluation/round-001/report.md"
+        }
+      ],
+      "decision": {
+        "rationale": "A visual surface cannot pass on author self-review; the final artifact will be reviewed in an isolated design-review actor against the selected evidence.",
+        "evidence_refs": [
+          ".alidesign/evaluation-profile.yaml"
+        ],
+        "rule_refs": [
+          "references/evaluation.md#separate-three-responsibilities"
+        ]
+      },
+      "isolation": {
+        "independent": true,
+        "method": "Isolated collaboration review context after evidence collection"
+      }
+    },
+    {
+      "capability": "gate_resolution",
+      "phase": "evaluation",
+      "required_when": "always",
+      "optional": false,
+      "status": "resolved",
+      "resolve_by": "evaluation_ready",
+      "complete_by": "evaluation_passed",
+      "barriers": [],
+      "provider": {
+        "kind": "skill",
+        "ref": "$alidesign-engineering",
+        "role": "gate",
+        "specificity": "stage_specific",
+        "actor": "alidesign-gate-resolver",
+        "match": {
+          "artifact_type": [
+            "static_web_experiment"
+          ]
+        },
+        "exclude": {}
+      },
+      "candidates": [
+        {
+          "kind": "skill",
+          "ref": "$alidesign-engineering",
+          "role": "gate",
+          "specificity": "stage_specific",
+          "actor": "alidesign-gate-resolver",
+          "match": {
+            "artifact_type": [
+              "static_web_experiment"
+            ]
+          },
+          "exclude": {},
+          "available": true
+        }
+      ],
+      "selection_override": null,
+      "inputs": [
+        {
+          "kind": "skill",
+          "ref": "$alidesign-engineering"
+        },
+        {
+          "kind": "file",
+          "ref": ".alidesign/evaluation-profile.yaml"
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "file",
+          "ref": ".alidesign/runs/realtime-glb-scroll/evaluation/round-001/report.md"
+        }
+      ],
+      "decision": {
+        "rationale": "AliDesign applies the prototype profile, blockers, evidence completeness, independence rule, and stop conditions without inventing new standards.",
+        "evidence_refs": [
+          ".alidesign/evaluation-profile.yaml"
+        ],
+        "rule_refs": [
+          "references/evaluation.md#produce-a-gate-result"
+        ]
+      },
+      "isolation": null
+    }
+  ]
+}
