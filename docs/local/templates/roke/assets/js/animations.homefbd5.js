@@ -155,30 +155,62 @@ document.addEventListener("DOMContentLoaded", (event) => {
         canvas = gsap.utils.toArray(config.canvas)[0] || console.warn("canvas not defined"),
         ctx = canvas.getContext("2d"),
         curFrame = -1,
+        targetFrame = 0,
+        drawRequest = 0,
         onUpdate = config.onUpdate,
         images,
+        loadedFrames,
+        nearestLoadedFrame = function(frame) {
+          if (loadedFrames[frame]) {
+            return frame;
+          }
+          for (let offset = 1; offset < loadedFrames.length; offset++) {
+            let previous = frame - offset;
+            let next = frame + offset;
+            if (previous >= 0 && loadedFrames[previous]) {
+              return previous;
+            }
+            if (next < loadedFrames.length && loadedFrames[next]) {
+              return next;
+            }
+          }
+          return -1;
+        },
         updateImage = function() {
-          let frame = Math.round(playhead.frame);
-          if (frame !== curFrame) { // only draw if necessary
+          drawRequest = 0;
+          targetFrame = Math.max(0, Math.min(images.length - 1, Math.round(playhead.frame)));
+          let frame = nearestLoadedFrame(targetFrame);
+          if (frame >= 0 && frame !== curFrame) { // only draw a fully loaded frame
             config.clear && ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(images[Math.round(playhead.frame)], 0, 0);
+            ctx.drawImage(images[frame], 0, 0, canvas.width, canvas.height);
             curFrame = frame;
             onUpdate && onUpdate.call(this, frame, images[frame]);
           }
+        },
+        requestDraw = function() {
+          if (!drawRequest) {
+            drawRequest = requestAnimationFrame(updateImage);
+          }
         };
+    loadedFrames = new Array(config.urls.length).fill(false);
     images = config.urls.map((url, i) => {
       let img = new Image();
-      // img.src = url;
+      img.decoding = "async";
+      img.onload = function() {
+        loadedFrames[i] = true;
+        if (i === 0 || i === targetFrame || curFrame < 0) {
+          requestDraw();
+        }
+      };
       setTimeout(function () {
         img.src = url;
-      }, 700)
-      i || (img.onload = updateImage);
+      }, i === 0 ? 0 : 120);
       return img;
     });
     return gsap.to(playhead, {
       frame: images.length - 1,
       ease: "none",
-      onUpdate: updateImage,
+      onUpdate: requestDraw,
       duration: images.length / (config.fps || 30),
       paused: !!config.paused,
       scrollTrigger: config.scrollTrigger

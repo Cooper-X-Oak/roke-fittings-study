@@ -3231,3 +3231,8 @@ transition: all .25s ease-in-out; */
 /* /roke-fittings-study/local/templates/roke/assets/css/fancybox.css?172980617625343 */
 /* /roke-fittings-study/local/templates/roke/assets/css/aos.css?172989474226053 */
 /* /roke-fittings-study/local/templates/roke/assets/css/style.css?174976480046668 */
+
+/* HTTrack rewrote Bootstrap's "/" breadcrumb divider as a file path. */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: var(--bs-breadcrumb-divider, "/");
+}
