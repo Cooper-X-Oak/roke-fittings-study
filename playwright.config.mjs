@@ -24,7 +24,7 @@ export default defineConfig({
     serviceWorkers: "block",
     reducedMotion: "no-preference",
     trace: "retain-on-failure",
-    screenshot: "only-on-failure",
+    screenshot: "off",
     video: "retain-on-failure",
     launchOptions: {
       args: [
