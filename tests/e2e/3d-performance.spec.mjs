@@ -1,12 +1,12 @@
 import { expect, test } from "@playwright/test";
 import {
   applyNetworkProfile,
-  captureCanvasSignature,
   getPerformanceSnapshot,
+  getRuntimeSnapshot,
   getRafFiredCount,
   installPerformanceProbe,
   loadPerformanceBudget,
-  meanAbsoluteDifference,
+  maxAbsoluteDifference,
   resourceBytes,
   scrollToProgress,
   waitForWebglState,
@@ -182,23 +182,63 @@ test("scroll animation changes and reverses while the renderer sleeps after sett
     budget.rendering.maxEffectivePixelRatio,
   );
 
-  const assembled = await captureCanvasSignature(page);
+  const assembled = await getRuntimeSnapshot(page);
+  expect.soft(assembled, "Missing window.__ROKE_3D_RUNTIME__.snapshot() contract").not.toBeNull();
+
   const scrollResponse = await scrollToProgress(page, 0.72);
   expect.soft(scrollResponse).toBeLessThanOrEqual(budget.timings.scrollResponseMs);
   await page.waitForTimeout(budget.stability.settleMs);
-  const exploded = await captureCanvasSignature(page);
+  const exploded = await getRuntimeSnapshot(page);
+  expect.soft(exploded, "Missing exploded runtime snapshot").not.toBeNull();
 
-  expect.soft(meanAbsoluteDifference(assembled, exploded)).toBeGreaterThanOrEqual(
-    budget.rendering.minStateSignatureDifference,
-  );
+  if (assembled && exploded) {
+    const signaturesAreValid =
+      Array.isArray(assembled.spatialSignature) &&
+      Array.isArray(exploded.spatialSignature) &&
+      assembled.spatialSignature.every(Number.isFinite) &&
+      exploded.spatialSignature.every(Number.isFinite);
+
+    expect.soft(Number.isFinite(assembled.renderedProgress)).toBe(true);
+    expect.soft(Number.isFinite(exploded.renderedProgress)).toBe(true);
+    expect.soft(signaturesAreValid, "Runtime spatial signatures must be finite arrays").toBe(true);
+
+    if (signaturesAreValid) {
+      expect.soft(assembled.spatialSignature.length).toBeGreaterThanOrEqual(
+        budget.rendering.minSpatialSignatureLength,
+      );
+      expect.soft(exploded.renderedProgress).toBeGreaterThanOrEqual(
+        budget.rendering.minExplodedRenderedProgress,
+      );
+      expect.soft(
+        maxAbsoluteDifference(assembled.spatialSignature, exploded.spatialSignature),
+      ).toBeGreaterThanOrEqual(budget.rendering.minSpatialSignatureDelta);
+    }
+  }
 
   await scrollToProgress(page, 0);
   await page.waitForTimeout(budget.stability.settleMs);
-  const reassembled = await captureCanvasSignature(page);
+  const reassembled = await getRuntimeSnapshot(page);
+  expect.soft(reassembled, "Missing reassembled runtime snapshot").not.toBeNull();
 
-  expect.soft(meanAbsoluteDifference(assembled, reassembled)).toBeLessThanOrEqual(
-    budget.rendering.maxReverseSignatureDifference,
-  );
+  if (assembled && reassembled) {
+    const reverseSignaturesAreValid =
+      Array.isArray(assembled.spatialSignature) &&
+      Array.isArray(reassembled.spatialSignature) &&
+      assembled.spatialSignature.every(Number.isFinite) &&
+      reassembled.spatialSignature.every(Number.isFinite);
+
+    expect.soft(Number.isFinite(reassembled.renderedProgress)).toBe(true);
+    expect.soft(reverseSignaturesAreValid).toBe(true);
+
+    if (reverseSignaturesAreValid) {
+      expect.soft(reassembled.renderedProgress).toBeLessThanOrEqual(
+        budget.rendering.maxReassembledRenderedProgress,
+      );
+      expect.soft(
+        maxAbsoluteDifference(assembled.spatialSignature, reassembled.spatialSignature),
+      ).toBeLessThanOrEqual(budget.rendering.maxReverseSpatialSignatureDelta);
+    }
+  }
 
   await page.waitForTimeout(budget.stability.settleMs);
   const rafBefore = await getRafFiredCount(page);
@@ -254,24 +294,27 @@ test("reduced motion remains visually stable and does not keep a hot render loop
 
   await expect(page.locator("#motion-toggle")).toBeHidden();
 
-  const canvas = page.locator("#webgl-canvas");
-  const hasRenderableCanvas = await canvas.evaluate(
-    (element) => element.width > 0 && element.height > 0 && getComputedStyle(element).visibility !== "hidden",
-  );
-
-  let before;
-  if (hasRenderableCanvas) before = await captureCanvasSignature(page);
+  const before = await getRuntimeSnapshot(page);
+  expect.soft(before, "Missing reduced-motion runtime snapshot").not.toBeNull();
 
   await scrollToProgress(page, 0.72);
   await page.waitForTimeout(budget.stability.settleMs);
+  const after = await getRuntimeSnapshot(page);
+  expect.soft(after, "Missing reduced-motion post-scroll snapshot").not.toBeNull();
 
-  if (hasRenderableCanvas) {
-    const after = await captureCanvasSignature(page);
-    expect.soft(meanAbsoluteDifference(before, after)).toBeLessThanOrEqual(
-      budget.rendering.maxReverseSignatureDifference,
-    );
-  } else {
-    await expect(page.locator("[data-3d-poster]")).toBeVisible();
+  if (before && after) {
+    const signaturesAreValid =
+      Array.isArray(before.spatialSignature) &&
+      Array.isArray(after.spatialSignature) &&
+      before.spatialSignature.every(Number.isFinite) &&
+      after.spatialSignature.every(Number.isFinite);
+
+    expect.soft(signaturesAreValid).toBe(true);
+    if (signaturesAreValid) {
+      expect.soft(
+        maxAbsoluteDifference(before.spatialSignature, after.spatialSignature),
+      ).toBeLessThanOrEqual(budget.rendering.maxReverseSpatialSignatureDelta);
+    }
   }
 
   await page.waitForTimeout(budget.stability.settleMs);
