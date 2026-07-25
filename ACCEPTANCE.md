@@ -20,6 +20,22 @@
 - 懒加载图片滚动进入视口后必须成功加载；视频必须可播放并使用 fast-start MP4。
 - 360° 模型必须打开、渲染 WebGL 画布并可关闭。
 
+## 实时 3D 性能门禁
+
+`/experiment/` 的性能不是人工观感项，而是永久 E2E 契约。数值来源为 `tests/performance-budget.json`，完整规则见 `docs/engineering/3d-performance-contract.md`。
+
+- Poster 必须先于实时 3D 可交互状态可见，加载过程中不得以空白 Canvas 作为首屏产品视觉。
+- 页面必须暴露下载、解码、Shader 编译、首个 3D 帧和可交互就绪的有序 `roke:*` Performance Marks。
+- 固定实验室网络下的 LCP、首个 3D 帧和可交互就绪时间必须在预算内；CLS 不得超过 0.1。
+- 初始请求数、总传输量、模型、Poster、关键 JavaScript 和解码器 WASM 均不得突破预算。
+- 1440×1000、DPR 2 环境下，Canvas drawing buffer 像素数和有效 pixel ratio 必须受限。
+- 滚动必须改变实时 3D 状态，反向滚动必须恢复接近原始装配画面。
+- 滚动阻尼收敛后必须停止持续 RAF；静止页面不得永久占用 GPU 渲染循环。
+- GLB、WASM 或 WebGL 失败时，Poster、中文回退说明和核心正文必须继续可用。
+- `prefers-reduced-motion: reduce` 下，主视觉保持稳定并停止持续渲染。
+- GitHub 托管 Headless/SwiftShader 的绝对 FPS 和显存仅作为证据，不作为 PR 硬门禁；代表性真机基线建立后才能升级为 Release Gate。
+- 不得通过增加重试、放宽超时、删除断言或排除资源来消除失败；放宽预算必须提交前后证据、适用用户、替代方案和回滚条件。
+
 ## 静态交互与隐私
 
 - 移动菜单可通过点击和 Escape 键打开、关闭。
@@ -41,6 +57,9 @@
 node scripts/localize-pages.mjs docs --check
 node scripts/sanitize-static-pages.mjs docs --check
 node scripts/verify-pages.mjs docs /roke-fittings-study
+npm ci
+npx playwright install chromium
+npm run test:e2e:3d
 ```
 
-浏览器验收必须针对公开 GitHub Pages 地址执行，而不是只验证本地服务器。
+常规镜像浏览器验收和部署烟测必须针对公开 GitHub Pages 地址执行。实时 3D PR 性能门禁使用固定本地静态服务器以获得可重复结果；合并后的公开部署仍需继续通过 HTTP、资源与运行时烟测。
