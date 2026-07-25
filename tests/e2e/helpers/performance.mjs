@@ -15,6 +15,7 @@ export async function installPerformanceProbe(page) {
     const probe = {
       rafScheduled: 0,
       rafFired: 0,
+      rafPending: 0,
       lcp: 0,
       cls: 0,
       longTasks: [],
@@ -28,12 +29,29 @@ export async function installPerformanceProbe(page) {
     });
 
     const nativeRequestAnimationFrame = window.requestAnimationFrame.bind(window);
+    const nativeCancelAnimationFrame = window.cancelAnimationFrame.bind(window);
+    const pendingAnimationFrames = new Set();
+
     window.requestAnimationFrame = (callback) => {
       probe.rafScheduled += 1;
-      return nativeRequestAnimationFrame((timestamp) => {
+      let requestId = 0;
+      requestId = nativeRequestAnimationFrame((timestamp) => {
+        if (pendingAnimationFrames.delete(requestId)) {
+          probe.rafPending = pendingAnimationFrames.size;
+        }
         probe.rafFired += 1;
         callback(timestamp);
       });
+      pendingAnimationFrames.add(requestId);
+      probe.rafPending = pendingAnimationFrames.size;
+      return requestId;
+    };
+
+    window.cancelAnimationFrame = (requestId) => {
+      if (pendingAnimationFrames.delete(requestId)) {
+        probe.rafPending = pendingAnimationFrames.size;
+      }
+      nativeCancelAnimationFrame(requestId);
     };
 
     try {
@@ -121,8 +139,15 @@ export async function getPerformanceSnapshot(page) {
   });
 }
 
-export async function getRafFiredCount(page) {
-  return page.evaluate(() => window.__ROKE_E2E_PERFORMANCE__.rafFired);
+export async function getRafSnapshot(page) {
+  return page.evaluate(() => {
+    const probe = window.__ROKE_E2E_PERFORMANCE__;
+    return {
+      fired: probe.rafFired,
+      pending: probe.rafPending,
+      scheduled: probe.rafScheduled,
+    };
+  });
 }
 
 export async function scrollToProgress(page, progress) {
@@ -132,28 +157,38 @@ export async function scrollToProgress(page, progress) {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const start = performance.now();
 
-    return new Promise((resolve, reject) => {
-      const timeout = window.setTimeout(() => {
+    return new Promise((resolve) => {
+      let settled = false;
+
+      const finish = (reached) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
         observer.disconnect();
-        reject(new Error(`Progress output did not reach ${target}`));
-      }, 3000);
+        resolve({
+          reached,
+          latencyMs: performance.now() - start,
+          actual: Number.parseInt(output?.value || output?.textContent || "-1", 10),
+          target,
+        });
+      };
 
       const finishIfReady = () => {
         const current = Number.parseInt(output?.value || output?.textContent || "-1", 10);
-        if (Math.abs(current - target) > 1) return;
-        window.clearTimeout(timeout);
-        observer.disconnect();
-        resolve(performance.now() - start);
+        if (Math.abs(current - target) <= 1) finish(true);
       };
 
       const observer = new MutationObserver(finishIfReady);
-      observer.observe(output, {
-        attributes: true,
-        characterData: true,
-        childList: true,
-        subtree: true,
-      });
+      if (output) {
+        observer.observe(output, {
+          attributes: true,
+          characterData: true,
+          childList: true,
+          subtree: true,
+        });
+      }
 
+      const timeout = window.setTimeout(() => finish(false), 3000);
       window.scrollTo(0, scrollable * targetProgress);
       finishIfReady();
     });
