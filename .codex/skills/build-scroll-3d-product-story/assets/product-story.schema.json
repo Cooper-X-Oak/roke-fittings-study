@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/product-story.schema.json",
+  "title": "Scroll 3D Product Story",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "model",
+    "story",
+    "groups",
+    "fallback",
+    "review"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "format", "bytes", "capability"],
+      "properties": {
+        "uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "enum": ["glb", "gltf"]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "capability": {
+          "enum": [
+            "structured-named-parts",
+            "separated-unnamed-parts",
+            "partially-merged",
+            "fused-single-mesh"
+          ]
+        }
+      }
+    },
+    "story": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "stages",
+        "cameraKeyframes",
+        "modelRotationKeyframes"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "semantic-assembly",
+            "review-required-assembly",
+            "hybrid-reveal",
+            "whole-product"
+          ]
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/$defs/stage"
+          }
+        },
+        "cameraKeyframes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/cameraKeyframe"
+          }
+        },
+        "modelRotationKeyframes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/rotationKeyframe"
+          }
+        }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/group"
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["poster", "reducedMotion", "fusedMeshStrategy"],
+      "properties": {
+        "poster": {
+          "type": ["string", "null"]
+        },
+        "reducedMotion": {
+          "const": "hero"
+        },
+        "fusedMeshStrategy": {
+          "enum": ["whole-product", "hybrid-reveal", "not-required"]
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "reasons"],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "vec3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      }
+    },
+    "range": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "body", "cta"],
+      "properties": {
+        "eyebrow": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "cta": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["label", "href"],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "href": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "range", "content"],
+      "properties": {
+        "id": {
+          "enum": ["intro", "exploded", "assembly", "reveal", "hero"]
+        },
+        "range": {
+          "$ref": "#/$defs/range"
+        },
+        "content": {
+          "$ref": "#/$defs/content"
+        }
+      }
+    },
+    "cameraKeyframe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["at", "position", "target"],
+      "properties": {
+        "at": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "position": {
+          "$ref": "#/$defs/vec3"
+        },
+        "target": {
+          "$ref": "#/$defs/vec3"
+        }
+      }
+    },
+    "rotationKeyframe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["at", "rotation"],
+      "properties": {
+        "at": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rotation": {
+          "$ref": "#/$defs/vec3"
+        }
+      }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "selector",
+        "confidence",
+        "reviewRequired",
+        "explodedOffset",
+        "assembleWindow"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selector": {
+          "type": "object",
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": ["nodeNames"]
+            },
+            {
+              "required": ["nodeIndices"]
+            }
+          ],
+          "properties": {
+            "nodeNames": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "nodeIndices": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reviewRequired": {
+          "type": "boolean"
+        },
+        "explodedOffset": {
+          "$ref": "#/$defs/vec3"
+        },
+        "assembleWindow": {
+          "$ref": "#/$defs/range"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "kind": "project_rules",
+  "status": "active",
+  "ruleset_id": "ruleset-2026-07-26-3d-scroll-story-1",
+  "ruleset_version": "2026-07-26.1",
+  "business_gate": {
+    "development_entry_required": true
+  },
+  "rules": [
+    {
+      "id": "general-enterprise-product-story",
+      "statement": "Build a reusable enterprise-homepage 3D product-story capability; ROKE is an interaction and narrative reference only, not a product, brand, copy, or asset reproduction target.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "configuration-driven-products",
+      "statement": "Use one generic engine for cars, industrial fittings, consumer electronics, machinery, and other products; keep model-specific groups and choreography in a product-story manifest.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "inspect-before-choreography",
+      "statement": "Accept GLB or GLTF input, inspect model structure first, then select true assembly, hybrid reveal, or an explicit degraded capability.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "semantic-not-radial-explosion",
+      "statement": "Prefer product-semantic groups, assembly order, and authored directions; do not present a center-radial random explosion as a semantically correct assembly.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "fused-mesh-boundary",
+      "statement": "For a fused single mesh, support whole-product rotation, reveal, cutaway, or fallback, but do not claim true semantic part assembly without segmentation.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "roke-style-story-stages",
+      "statement": "Support a reusable story progression from product introduction through meaningful exploded structure and semantic assembly to complete-product reveal and final hero state with synchronized content and CTA.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "normal-desktop-performance",
+      "statement": "Optimize for high-performance modern desktop web rendering; a 4 Mbps weak-network cold-start scenario is not a release criterion.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "same-environment-comparison",
+      "statement": "Compare the GLB runtime and 240-frame image baseline on the same device, browser, and cache conditions using transfer bytes, request count, interactivity, frame time, long frames, main-thread pressure, and memory.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "on-demand-rendering",
+      "statement": "Render on load, scroll, interpolation, resize, or explicit animation demand; do not keep an idle permanent requestAnimationFrame loop.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    },
+    {
+      "id": "human-authoring-interface",
+      "statement": "Preserve an explicit human-review and choreography interface because product grouping, assembly order, camera, lighting, and information emphasis cannot always be inferred from geometry.",
+      "development_entry_ids": [
+        "build-scroll-3d-product-story"
+      ]
+    }
+  ]
+}
