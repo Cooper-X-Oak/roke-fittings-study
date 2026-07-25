@@ -25,7 +25,8 @@
     "observationMs": 1000,
     "maxRafCallbacksAfterSettle": 2,
     "maxSingleLongTaskMs": 200,
-    "maxTotalLongTaskMs": 500
+    "maxTotalLongTaskMs": 500,
+    "maxPendingRafAfterSettle": 0
   },
   "rendering": {
     "maxDrawingBufferPixels": 3686400,
