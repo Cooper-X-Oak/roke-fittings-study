@@ -161,7 +161,21 @@ export async function scrollToProgress(page, progress) {
 }
 
 export async function captureCanvasSignature(page) {
-  const screenshot = await page.locator("#webgl-canvas").screenshot({ type: "png" });
+  const canvas = page.locator("#webgl-canvas");
+  const bounds = await canvas.boundingBox();
+  if (!bounds || bounds.width <= 0 || bounds.height <= 0) {
+    throw new Error("WebGL canvas has no visible screenshot bounds");
+  }
+
+  // Element screenshots wait for the target to become visually stable. That is
+  // the wrong measurement primitive for detecting a hot RAF loop, because the
+  // defect under test keeps the canvas changing forever. Clip the page directly
+  // so a continuously rendered canvas remains measurable instead of timing out.
+  const screenshot = await page.screenshot({
+    type: "png",
+    clip: bounds,
+    animations: "allow",
+  });
   const base64 = screenshot.toString("base64");
 
   return page.evaluate(async (encoded) => {
