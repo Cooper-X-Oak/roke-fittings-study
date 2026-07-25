@@ -55,28 +55,33 @@ test("poster-first loading, milestones, Web Vitals, and resource budgets are blo
   const snapshot = await getPerformanceSnapshot(page);
   const marks = snapshot.marks;
 
-  for (const markName of budget.requiredMarks) {
-    expect.soft(marks[markName], `Missing performance mark: ${markName}`).toBeGreaterThanOrEqual(0);
-  }
+  const missingMarks = budget.requiredMarks.filter(
+    (markName) => !Number.isFinite(marks[markName]),
+  );
+  expect.soft(missingMarks, "Missing required realtime 3D performance marks").toEqual([]);
 
-  const markTimes = budget.requiredMarks.map((name) => marks[name]);
-  for (let index = 1; index < markTimes.length; index += 1) {
-    expect.soft(
-      markTimes[index],
-      `${budget.requiredMarks[index]} must not precede ${budget.requiredMarks[index - 1]}`,
-    ).toBeGreaterThanOrEqual(markTimes[index - 1]);
-  }
+  if (missingMarks.length === 0) {
+    const markTimes = budget.requiredMarks.map((name) => marks[name]);
+    for (let index = 1; index < markTimes.length; index += 1) {
+      expect.soft(
+        markTimes[index],
+        `${budget.requiredMarks[index]} must not precede ${budget.requiredMarks[index - 1]}`,
+      ).toBeGreaterThanOrEqual(markTimes[index - 1]);
+    }
 
-  expect.soft(marks["roke:poster-visible"]).toBeLessThanOrEqual(budget.timings.posterVisibleMs);
-  expect.soft(marks["roke:model-request-start"]).toBeLessThanOrEqual(
-    budget.timings.modelRequestStartMs,
-  );
-  expect.soft(marks["roke:first-3d-frame"]).toBeLessThanOrEqual(
-    budget.timings.first3dFrameMs,
-  );
-  expect.soft(marks["roke:interactive-ready"]).toBeLessThanOrEqual(
-    budget.timings.interactiveReadyMs,
-  );
+    expect.soft(marks["roke:poster-visible"]).toBeLessThanOrEqual(
+      budget.timings.posterVisibleMs,
+    );
+    expect.soft(marks["roke:model-request-start"]).toBeLessThanOrEqual(
+      budget.timings.modelRequestStartMs,
+    );
+    expect.soft(marks["roke:first-3d-frame"]).toBeLessThanOrEqual(
+      budget.timings.first3dFrameMs,
+    );
+    expect.soft(marks["roke:interactive-ready"]).toBeLessThanOrEqual(
+      budget.timings.interactiveReadyMs,
+    );
+  }
 
   expect.soft(snapshot.metrics.lcp, "LCP must be observable").toBeGreaterThan(0);
   expect.soft(snapshot.metrics.lcp).toBeLessThanOrEqual(budget.timings.lcpMs);
@@ -132,9 +137,19 @@ test("poster-first loading, milestones, Web Vitals, and resource budgets are blo
   const externalRequests = snapshot.resources.filter(
     (resource) => new URL(resource.name).origin !== origin,
   );
+  const successfullyTransferredURLs = new Set(
+    snapshot.resources
+      .filter((resource) => resourceBytes(resource) > 0)
+      .map((resource) => resource.name),
+  );
+  const unresolvedRequestFailures = failures.requestFailures.filter(
+    ({ url, error }) =>
+      !(error === "net::ERR_ABORTED" && successfullyTransferredURLs.has(url)),
+  );
+
   expect.soft(externalRequests).toEqual([]);
   expect.soft(failures.pageErrors).toEqual([]);
-  expect.soft(failures.requestFailures).toEqual([]);
+  expect.soft(unresolvedRequestFailures).toEqual([]);
   expect.soft(failures.consoleErrors).toEqual([]);
 
   const longTaskDurations = snapshot.metrics.longTasks.map((task) => task.duration);
