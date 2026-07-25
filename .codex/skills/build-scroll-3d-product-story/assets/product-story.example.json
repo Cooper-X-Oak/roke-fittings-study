@@ -1,0 +1,114 @@
+{
+  "$schema": "./product-story.schema.json",
+  "schemaVersion": 1,
+  "model": {
+    "uri": "./assets/product.glb",
+    "format": "glb",
+    "bytes": 0,
+    "capability": "structured-named-parts"
+  },
+  "story": {
+    "mode": "semantic-assembly",
+    "stages": [
+      {
+        "id": "intro",
+        "range": [0, 0.12],
+        "content": {
+          "eyebrow": "Product system",
+          "title": "Engineered as one",
+          "body": "Introduce the product and its business value.",
+          "cta": null
+        }
+      },
+      {
+        "id": "exploded",
+        "range": [0.12, 0.3],
+        "content": {
+          "eyebrow": "Architecture",
+          "title": "Every subsystem has a purpose",
+          "body": "Explain the component structure.",
+          "cta": null
+        }
+      },
+      {
+        "id": "assembly",
+        "range": [0.3, 0.72],
+        "content": {
+          "eyebrow": "Assembly",
+          "title": "Designed to work together",
+          "body": "Connect assembly order to product value.",
+          "cta": null
+        }
+      },
+      {
+        "id": "reveal",
+        "range": [0.72, 0.9],
+        "content": {
+          "eyebrow": "Complete product",
+          "title": "The system becomes the product",
+          "body": "Reveal the complete silhouette.",
+          "cta": null
+        }
+      },
+      {
+        "id": "hero",
+        "range": [0.9, 1],
+        "content": {
+          "eyebrow": "Product family",
+          "title": "Ready for the final promise",
+          "body": "Settle the product, message, and action.",
+          "cta": {
+            "label": "Explore the product",
+            "href": "#product"
+          }
+        }
+      }
+    ],
+    "cameraKeyframes": [
+      {
+        "at": 0,
+        "position": [0, 0.2, 4.8],
+        "target": [0, 0, 0]
+      },
+      {
+        "at": 1,
+        "position": [2.8, 1.2, 4],
+        "target": [0, 0, 0]
+      }
+    ],
+    "modelRotationKeyframes": [
+      {
+        "at": 0,
+        "rotation": [0, -0.35, 0]
+      },
+      {
+        "at": 1,
+        "rotation": [0, 0.35, 0]
+      }
+    ]
+  },
+  "groups": [
+    {
+      "id": "primary-structure",
+      "label": "Primary structure",
+      "selector": {
+        "nodeNames": ["ReplaceWithModelNode"]
+      },
+      "confidence": 0,
+      "reviewRequired": true,
+      "explodedOffset": [0, -1, 0],
+      "assembleWindow": [0.32, 0.5]
+    }
+  ],
+  "fallback": {
+    "poster": "./assets/product-poster.avif",
+    "reducedMotion": "hero",
+    "fusedMeshStrategy": "whole-product"
+  },
+  "review": {
+    "required": true,
+    "reasons": [
+      "Replace the example node selector and author product-specific choreography."
+    ]
+  }
+}

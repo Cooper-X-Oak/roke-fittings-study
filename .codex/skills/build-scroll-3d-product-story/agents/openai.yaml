@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Scroll 3D Product Story"
+  short_description: "Turn GLB/GLTF models into ROKE-style scroll stories"
+  default_prompt: "Use $build-scroll-3d-product-story to inspect this GLB and build a reusable scroll-driven exploded assembly story."

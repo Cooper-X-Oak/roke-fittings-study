@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scroll 3D product story</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three.module.js",
+          "three/addons/": "./vendor/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <section
+        class="product-story"
+        data-product-story
+        data-manifest="./product-story.json"
+        data-draco-path="./vendor/draco/"
+        data-ktx2-path="./vendor/basis/"
+      >
+        <div class="product-story__sticky">
+          <canvas
+            class="product-story__canvas"
+            data-story-canvas
+            aria-label="Interactive product assembly"
+          ></canvas>
+          <div class="product-story__shade" aria-hidden="true"></div>
+          <article class="product-story__content" aria-live="polite">
+            <p class="product-story__eyebrow" data-stage-eyebrow>Product system</p>
+            <h1 data-stage-title>Loading the product story</h1>
+            <p data-stage-body>
+              The interactive product view will appear when the model is ready.
+            </p>
+            <a class="product-story__cta" data-stage-cta href="#product" hidden>
+              Explore the product
+            </a>
+            <p class="product-story__status" data-story-status>
+              Loading real-time 3D…
+            </p>
+          </article>
+          <div class="product-story__progress" aria-hidden="true"></div>
+        </div>
+      </section>
+      <section id="product" class="after-story">
+        <h2>Continue the product page</h2>
+      </section>
+    </main>
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>
