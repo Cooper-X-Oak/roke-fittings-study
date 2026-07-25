@@ -3,6 +3,11 @@ import { GLTFLoader } from "./assets/vendor/three/loaders/GLTFLoader.js";
 import { DRACOLoader } from "./assets/vendor/three/loaders/DRACOLoader.js";
 import { KTX2Loader } from "./assets/vendor/three/loaders/KTX2Loader.js";
 import { RoomEnvironment } from "./assets/vendor/three/environments/RoomEnvironment.js";
+import { createStoryController } from "./story-engine.mjs";
+import {
+  progressFromDocument,
+  stageAtProgress,
+} from "./story-math.mjs";
 
 const canvas = document.querySelector("#webgl-canvas");
 const body = document.body;
@@ -14,7 +19,7 @@ const rendererStatus = document.querySelector("#renderer-status");
 const partCount = document.querySelector("#part-count");
 const fallbackCopy = document.querySelector("#fallback-copy");
 const motionToggle = document.querySelector("#motion-toggle");
-const chapters = [...document.querySelectorAll("[data-chapter]")];
+const chapters = [...document.querySelectorAll("[data-stage]")];
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const desktopLayout = window.matchMedia("(min-width: 900px)");
@@ -23,15 +28,410 @@ const query = new URLSearchParams(window.location.search);
 let renderer;
 let scene;
 let camera;
-let modelPivot;
-let movableParts = [];
-let animationFrame = 0;
-let targetProgress = 0;
-let renderedProgress = 0;
-let motionPaused = false;
-let lastFrameTime = performance.now();
-let fpsWindowStart = lastFrameTime;
-let fpsFrames = 0;
+let controller;
+let manifest;
+let modelResourceURL;
+let motionLocked = false;
+let firstUsableFrameMs = null;
+let lastRendererSnapshot = null;
+let manifestReadyMs = null;
+let modelDecodedMs = null;
+let shaderCompiledMs = null;
+
+function percentile(values, percentage) {
+  if (!values.length) {
+    return null;
+  }
+  const sorted = [...values].sort((left, right) => left - right);
+  const index = Math.min(
+    sorted.length - 1,
+    Math.max(0, Math.ceil((percentage / 100) * sorted.length) - 1),
+  );
+  return Number(sorted[index].toFixed(3));
+}
+
+function plainRendererInfo(info) {
+  return {
+    memory: {
+      geometries: info.memory.geometries,
+      textures: info.memory.textures,
+    },
+    render: {
+      calls: info.render.calls,
+      triangles: info.render.triangles,
+      points: info.render.points,
+      lines: info.render.lines,
+    },
+    programs: info.programs?.length ?? null,
+  };
+}
+
+function getWebGLDetails() {
+  if (!renderer) {
+    return null;
+  }
+  const context = renderer.getContext();
+  const debug = context.getExtension("WEBGL_debug_renderer_info");
+  return {
+    vendor: debug
+      ? context.getParameter(debug.UNMASKED_VENDOR_WEBGL)
+      : "unavailable",
+    renderer: debug
+      ? context.getParameter(debug.UNMASKED_RENDERER_WEBGL)
+      : "unavailable",
+    version: context.getParameter(context.VERSION),
+  };
+}
+
+function getModelResourceTiming() {
+  if (!modelResourceURL) {
+    return null;
+  }
+  const entry = performance
+    .getEntriesByName(modelResourceURL, "resource")
+    .at(-1);
+  if (!entry) {
+    return null;
+  }
+  return {
+    name: entry.name,
+    durationMs: Number(entry.duration.toFixed(3)),
+    transferSize: entry.transferSize,
+    encodedBodySize: entry.encodedBodySize,
+    decodedBodySize: entry.decodedBodySize,
+    responseEndMs: Number(entry.responseEnd.toFixed(3)),
+  };
+}
+
+function getMemorySnapshot() {
+  if (!performance.memory) {
+    return {
+      available: false,
+      reason: "performance.memory is not exposed by this browser",
+    };
+  }
+  return {
+    available: true,
+    usedJSHeapSize: performance.memory.usedJSHeapSize,
+    totalJSHeapSize: performance.memory.totalJSHeapSize,
+    jsHeapSizeLimit: performance.memory.jsHeapSizeLimit,
+  };
+}
+
+const supportedPerformanceEntries =
+  PerformanceObserver.supportedEntryTypes ?? [];
+const measurement = {
+  active: false,
+  label: null,
+  context: {},
+  startedAt: null,
+  initialRenderCount: 0,
+  frameIntervals: [],
+  renderDurations: [],
+  longAnimationFrames: [],
+  longTasks: [],
+};
+
+let readyResolver;
+const readyPromise = new Promise((resolve) => {
+  readyResolver = resolve;
+});
+
+function startRun(label = "scroll-story", context = {}) {
+  measurement.active = true;
+  measurement.label = label;
+  measurement.context = { ...context };
+  measurement.startedAt = performance.now();
+  measurement.initialRenderCount = controller?.getState().renderCount ?? 0;
+  measurement.frameIntervals.length = 0;
+  measurement.renderDurations.length = 0;
+  measurement.longAnimationFrames.length = 0;
+  measurement.longTasks.length = 0;
+  return {
+    label,
+    startedAt: measurement.startedAt,
+    renderCount: measurement.initialRenderCount,
+  };
+}
+
+function finishRun(extra = {}) {
+  const finishedAt = performance.now();
+  const intervals = [...measurement.frameIntervals];
+  const durations = [...measurement.renderDurations];
+  const over16 = intervals.filter((value) => value > 16.7).length;
+  const over33 = intervals.filter((value) => value > 33.3).length;
+  const renderCount = controller?.getState().renderCount ?? 0;
+  const navigation = performance.getEntriesByType("navigation")[0];
+
+  const result = {
+    schemaVersion: "1.0.0",
+    label: measurement.label,
+    environment: {
+      viewport: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
+      devicePixelRatio: window.devicePixelRatio,
+      userAgent: navigator.userAgent,
+      hardwareConcurrency: navigator.hardwareConcurrency ?? null,
+      deviceMemoryGiB: navigator.deviceMemory ?? null,
+      cacheState: measurement.context.cacheState ?? "not-recorded",
+      webgl: getWebGLDetails(),
+    },
+    loading: {
+      firstUsableProductFrameMs: firstUsableFrameMs,
+      phaseMilestonesMs: {
+        manifestReady: manifestReadyMs,
+        modelDecoded: modelDecodedMs,
+        shaderCompiled: shaderCompiledMs,
+        firstUsableProductFrame: firstUsableFrameMs,
+      },
+      navigation: navigation
+        ? {
+            domContentLoadedMs: Number(
+              navigation.domContentLoadedEventEnd.toFixed(3),
+            ),
+            loadEventEndMs: Number(navigation.loadEventEnd.toFixed(3)),
+          }
+        : null,
+      modelResource: getModelResourceTiming(),
+    },
+    runtime: {
+      measurementDurationMs: Number(
+        (finishedAt - measurement.startedAt).toFixed(3),
+      ),
+      measuredRendererFrames: intervals.length,
+      rendererFramesDuringRun:
+        renderCount - measurement.initialRenderCount,
+      frameIntervalMs: {
+        p50: percentile(intervals, 50),
+        p95: percentile(intervals, 95),
+        max: intervals.length
+          ? Number(Math.max(...intervals).toFixed(3))
+          : null,
+      },
+      frameIntervalOver16_7Ms: {
+        count: over16,
+        ratio: intervals.length
+          ? Number((over16 / intervals.length).toFixed(5))
+          : null,
+      },
+      frameIntervalOver33_3Ms: {
+        count: over33,
+        ratio: intervals.length
+          ? Number((over33 / intervals.length).toFixed(5))
+          : null,
+      },
+      renderCpuDurationMs: {
+        p50: percentile(durations, 50),
+        p95: percentile(durations, 95),
+        max: durations.length
+          ? Number(Math.max(...durations).toFixed(3))
+          : null,
+      },
+      idleRendererFramesAfterSettle:
+        extra.idleRendererFramesAfterSettle ?? null,
+      renderer: lastRendererSnapshot,
+    },
+    browserSignals: {
+      longAnimationFrame: supportedPerformanceEntries.includes(
+        "long-animation-frame",
+      )
+        ? {
+            available: true,
+            count: measurement.longAnimationFrames.length,
+            totalDurationMs: Number(
+              measurement.longAnimationFrames
+                .reduce((total, entry) => total + entry.duration, 0)
+                .toFixed(3),
+            ),
+            maxDurationMs: measurement.longAnimationFrames.length
+              ? Number(
+                  Math.max(
+                    ...measurement.longAnimationFrames.map(
+                      (entry) => entry.duration,
+                    ),
+                  ).toFixed(3),
+                )
+              : 0,
+          }
+        : {
+            available: false,
+            reason: "long-animation-frame is not supported",
+          },
+      mainThreadLongTask: supportedPerformanceEntries.includes("longtask")
+        ? {
+            available: true,
+            count: measurement.longTasks.length,
+            totalDurationMs: Number(
+              measurement.longTasks
+                .reduce((total, entry) => total + entry.duration, 0)
+                .toFixed(3),
+            ),
+            maxDurationMs: measurement.longTasks.length
+              ? Number(
+                  Math.max(
+                    ...measurement.longTasks.map((entry) => entry.duration),
+                  ).toFixed(3),
+                )
+              : 0,
+          }
+        : {
+            available: false,
+            reason: "longtask is not supported",
+          },
+      memory: getMemorySnapshot(),
+    },
+    story: {
+      stage: body.dataset.storyStage,
+      progress: controller?.getState().currentProgress ?? null,
+      groups: controller?.getState().resolvedGroups ?? [],
+    },
+    ...extra,
+  };
+
+  measurement.active = false;
+  return result;
+}
+
+if (supportedPerformanceEntries.includes("long-animation-frame")) {
+  const observer = new PerformanceObserver((list) => {
+    if (!measurement.active) {
+      return;
+    }
+    for (const entry of list.getEntries()) {
+      measurement.longAnimationFrames.push({
+        startTime: entry.startTime,
+        duration: entry.duration,
+        blockingDuration: entry.blockingDuration ?? null,
+      });
+    }
+  });
+  observer.observe({ type: "long-animation-frame", buffered: false });
+}
+
+if (supportedPerformanceEntries.includes("longtask")) {
+  const observer = new PerformanceObserver((list) => {
+    if (!measurement.active) {
+      return;
+    }
+    for (const entry of list.getEntries()) {
+      measurement.longTasks.push({
+        startTime: entry.startTime,
+        duration: entry.duration,
+      });
+    }
+  });
+  observer.observe({ type: "longtask", buffered: false });
+}
+
+function wait(milliseconds) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+}
+
+async function waitForSettled(timeoutMs = 5000) {
+  const startedAt = performance.now();
+  while (performance.now() - startedAt < timeoutMs) {
+    const state = controller?.getState();
+    if (
+      state &&
+      !state.scheduled &&
+      Math.abs(state.currentProgress - state.targetProgress) < 0.0004
+    ) {
+      return state;
+    }
+    await wait(25);
+  }
+  throw new Error("Timed out while waiting for the product story to settle.");
+}
+
+async function runScrollBenchmark({
+  durationMs = 4200,
+  idleMs = 1200,
+  label = "desktop-scroll-story",
+  cacheState = "not-recorded",
+} = {}) {
+  await readyPromise;
+  if (!controller || body.dataset.webglState !== "ready") {
+    throw new Error("The realtime product story is not ready.");
+  }
+
+  const scrollTravel = Math.max(
+    1,
+    document.documentElement.scrollHeight - window.innerHeight,
+  );
+  const originalScrollBehavior =
+    document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = "auto";
+  window.scrollTo({ top: 0, behavior: "instant" });
+  controller.setProgress(0, { immediate: true });
+  updateStoryUI(0);
+  await wait(120);
+  startRun(label, { cacheState });
+
+  const startedAt = performance.now();
+  await new Promise((resolve) => {
+    function advance(now) {
+      const linear = Math.min(1, (now - startedAt) / durationMs);
+      const eased =
+        linear < 0.5
+          ? 2 * linear * linear
+          : 1 - Math.pow(-2 * linear + 2, 2) / 2;
+      window.scrollTo({
+        top: scrollTravel * eased,
+        behavior: "instant",
+      });
+      if (linear < 1) {
+        requestAnimationFrame(advance);
+      } else {
+        resolve();
+      }
+    }
+    requestAnimationFrame(advance);
+  });
+
+  await waitForSettled();
+  const settledRenderCount = controller.getState().renderCount;
+  await wait(idleMs);
+  const idleRendererFramesAfterSettle =
+    controller.getState().renderCount - settledRenderCount;
+  document.documentElement.style.scrollBehavior = originalScrollBehavior;
+
+  return finishRun({
+    benchmark: {
+      requestedScrollDurationMs: durationMs,
+      idleObservationMs: idleMs,
+    },
+    idleRendererFramesAfterSettle,
+  });
+}
+
+window.__CAR_STORY_METRICS__ = {
+  schemaVersion: "1.0.0",
+  waitForReady: () => readyPromise,
+  startRun,
+  finishRun,
+  waitForSettled,
+  runScrollBenchmark,
+  setProgressForTest: (progress) => {
+    if (!controller) {
+      throw new Error("The realtime product story is not ready.");
+    }
+    controller.setProgress(progress, { immediate: true });
+    updateStoryUI(progress);
+    return controller.getTransformSnapshot();
+  },
+  transformSnapshot: () => controller?.getTransformSnapshot() ?? null,
+  snapshot: () => ({
+    pageState: body.dataset.webglState,
+    stage: body.dataset.storyStage,
+    firstUsableProductFrameMs: firstUsableFrameMs,
+    controller: controller?.getState() ?? null,
+    renderer: lastRendererSnapshot,
+  }),
+};
 
 function setState(state, message) {
   body.dataset.webglState = state;
@@ -44,7 +444,9 @@ function supportsWebGL2() {
     const context = probe.getContext("webgl2", {
       failIfMajorPerformanceCaveat: true,
     });
-    if (!context) return false;
+    if (!context) {
+      return false;
+    }
     context.getExtension("WEBGL_lose_context")?.loseContext();
     return true;
   } catch {
@@ -52,40 +454,29 @@ function supportsWebGL2() {
   }
 }
 
-function clamp01(value) {
-  return Math.min(1, Math.max(0, value));
-}
-
-function smoothstep(min, max, value) {
-  const normalized = clamp01((value - min) / (max - min));
-  return normalized * normalized * (3 - 2 * normalized);
-}
-
-function damp(current, target, smoothing, deltaSeconds) {
-  return THREE.MathUtils.lerp(
-    current,
-    target,
-    1 - Math.exp(-smoothing * deltaSeconds),
+function pageProgress() {
+  return progressFromDocument(
+    window.scrollY,
+    document.documentElement.scrollHeight,
+    window.innerHeight,
   );
 }
 
-function pageProgress() {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  return scrollable > 0 ? clamp01(window.scrollY / scrollable) : 0;
-}
-
 function motionIsEnabled() {
-  return !motionPaused && !reducedMotion.matches && desktopLayout.matches;
+  return !motionLocked && !reducedMotion.matches && desktopLayout.matches;
 }
 
 function updateMotionLabel() {
-  const systemPaused = reducedMotion.matches || !desktopLayout.matches;
-  motionToggle.hidden = systemPaused || body.dataset.webglState !== "ready";
-  motionToggle.setAttribute("aria-pressed", String(motionPaused));
-  motionToggle.textContent = motionPaused ? "继续动态" : "暂停动态";
+  const systemLocked = reducedMotion.matches || !desktopLayout.matches;
+  motionToggle.hidden =
+    systemLocked || body.dataset.webglState !== "ready";
+  motionToggle.setAttribute("aria-pressed", String(motionLocked));
+  motionToggle.textContent = motionLocked
+    ? "恢复滚动视图"
+    : "固定最终视图";
 
   if (reducedMotion.matches && body.dataset.webglState === "ready") {
-    runtimeStatus.textContent = "系统已启用减少动态：保持装配检查视角";
+    runtimeStatus.textContent = "已响应减少动态偏好：显示最终装配视图";
   }
 }
 
@@ -96,227 +487,147 @@ function updateStoryUI(progress) {
   progressOutput.value = String(percent).padStart(2, "0");
   progressOutput.textContent = String(percent).padStart(2, "0");
 
-  const activeIndex = Math.min(
-    chapters.length - 1,
-    Math.floor(progress * chapters.length),
-  );
-  chapters.forEach((chapter, index) => {
-    chapter.toggleAttribute("data-active", index === activeIndex);
+  if (!manifest) {
+    return;
+  }
+  const stage = stageAtProgress(manifest.story.stages, progress);
+  chapters.forEach((chapter) => {
+    chapter.toggleAttribute(
+      "data-active",
+      chapter.dataset.stage === stage.id,
+    );
   });
 }
 
-function semanticDirection(name, direction) {
-  const normalizedName = name.toLowerCase();
-
-  if (normalizedName.includes("roof")) direction.y += 0.9;
-  if (normalizedName.includes("hood")) {
-    direction.y += 0.45;
-    direction.z += 0.65;
-  }
-  if (normalizedName.includes("engine")) direction.y += 0.8;
-  if (normalizedName.includes("interior")) direction.y += 0.34;
-  if (normalizedName.includes("wheel")) direction.x *= 1.75;
-  if (normalizedName.includes("door")) direction.x *= 1.45;
-  if (normalizedName.includes("rear")) direction.z -= 0.35;
-  if (normalizedName.includes("front")) direction.z += 0.35;
-
-  if (direction.lengthSq() < 0.06) {
-    const hash = [...name].reduce(
-      (total, character) => total + character.charCodeAt(0),
-      0,
-    );
-    direction.set(
-      hash % 2 === 0 ? 1 : -1,
-      0.42 + ((hash >> 1) % 3) * 0.18,
-      hash % 3 === 0 ? 0.7 : -0.7,
-    );
-  }
-
-  return direction.normalize();
-}
-
-function prepareExplodedView(asset, center, modelSize) {
-  const assemblyRoot = asset.getObjectByName("BodyUnderside");
-  if (!assemblyRoot || assemblyRoot.children.length === 0) return [];
-
-  asset.updateMatrixWorld(true);
-  const modelCenterWorld = center.clone();
-  asset.localToWorld(modelCenterWorld);
-  const largestDimension = Math.max(modelSize.x, modelSize.y, modelSize.z);
-
-  return assemblyRoot.children.map((part, index) => {
-    const bounds = new THREE.Box3().setFromObject(part);
-    const partCenterWorld = bounds.getCenter(new THREE.Vector3());
-    const partSize = bounds.getSize(new THREE.Vector3());
-    const direction = semanticDirection(
-      part.name || `part-${index}`,
-      partCenterWorld.clone().sub(modelCenterWorld),
-    );
-
-    const relativeSize = clamp01(partSize.length() / largestDimension);
-    const distance =
-      largestDimension * (0.09 + relativeSize * 0.18) *
-      (part.name.toLowerCase().includes("wheel") ? 1.2 : 1);
-    const worldOffset = direction.multiplyScalar(distance);
-
-    const parent = part.parent;
-    const localOrigin = parent.worldToLocal(partCenterWorld.clone());
-    const localDestination = parent.worldToLocal(
-      partCenterWorld.clone().add(worldOffset),
-    );
-
-    return {
-      object: part,
-      basePosition: part.position.clone(),
-      offset: localDestination.sub(localOrigin),
-    };
-  });
-}
-
-function addLighting() {
+function addEnvironment() {
   const pmrem = new THREE.PMREMGenerator(renderer);
   const room = new RoomEnvironment();
-  scene.environment = pmrem.fromScene(room, 0.04).texture;
+  const environment = pmrem.fromScene(room, 0.04);
+  scene.environment = environment.texture;
   room.dispose();
   pmrem.dispose();
 
-  const key = new THREE.DirectionalLight(0xffffff, 3.2);
+  const key = new THREE.DirectionalLight(0xffffff, 3.05);
   key.position.set(6, 9, 5);
   key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048);
-  key.shadow.camera.left = -7;
-  key.shadow.camera.right = 7;
-  key.shadow.camera.top = 7;
-  key.shadow.camera.bottom = -7;
+  key.shadow.mapSize.set(1024, 1024);
+  key.shadow.camera.left = -6;
+  key.shadow.camera.right = 6;
+  key.shadow.camera.top = 6;
+  key.shadow.camera.bottom = -6;
   key.shadow.camera.near = 0.1;
   key.shadow.camera.far = 30;
   key.shadow.bias = -0.00035;
   scene.add(key);
 
-  const rim = new THREE.DirectionalLight(0xc7d6e6, 1.35);
+  const rim = new THREE.DirectionalLight(0xc7d6e6, 1.25);
   rim.position.set(-6, 4, -4);
   scene.add(rim);
+}
+
+function frameAsset(asset) {
+  const bounds = new THREE.Box3().setFromObject(asset);
+  const center = bounds.getCenter(new THREE.Vector3());
+  const size = bounds.getSize(new THREE.Vector3());
+  const largestDimension = Math.max(size.x, size.y, size.z);
+  const scale = largestDimension > 0 ? 4.7 / largestDimension : 1;
+
+  asset.position.sub(center);
+  asset.updateMatrixWorld(true);
+
+  const presentationRoot = new THREE.Group();
+  presentationRoot.scale.setScalar(scale);
+  presentationRoot.position.x = 0.62;
+  presentationRoot.add(asset);
+  scene.add(presentationRoot);
+
+  let meshCount = 0;
+  asset.traverse((object) => {
+    if (!object.isMesh) {
+      return;
+    }
+    meshCount += 1;
+    object.castShadow = true;
+    object.receiveShadow = true;
+  });
 
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(30, 30),
     new THREE.ShadowMaterial({
       color: 0x1f2326,
-      opacity: 0.16,
+      opacity: 0.14,
     }),
   );
   ground.rotation.x = -Math.PI / 2;
-  ground.position.y = -0.81;
+  ground.position.y = -(size.y * scale) / 2 - 0.035;
   ground.receiveShadow = true;
   scene.add(ground);
-}
 
-function frameModel(asset) {
-  const bounds = new THREE.Box3().setFromObject(asset);
-  const center = bounds.getCenter(new THREE.Vector3());
-  const size = bounds.getSize(new THREE.Vector3());
-
-  asset.position.sub(center);
-  asset.updateMatrixWorld(true);
-
-  modelPivot = new THREE.Group();
-  modelPivot.scale.setScalar(1.08);
-  modelPivot.position.set(1.25, -0.12, 0);
-  modelPivot.rotation.y = -0.62;
-  modelPivot.add(asset);
-  scene.add(modelPivot);
-
-  asset.traverse((object) => {
-    if (!object.isMesh) return;
-    object.castShadow = true;
-    object.receiveShadow = true;
-  });
-
-  movableParts = prepareExplodedView(asset, new THREE.Vector3(), size);
-  partCount.textContent = `${movableParts.length} 组`;
-}
-
-function updateModel(progress) {
-  if (!modelPivot) return;
-
-  const rotation = smoothstep(0.02, 0.48, progress);
-  const explode = smoothstep(0.34, 0.8, progress);
-  const settle = smoothstep(0.78, 1, progress);
-  const enter = smoothstep(0.015, 0.22, progress);
-  const inspectionScale = THREE.MathUtils.lerp(1.08, 1.18, enter);
-  const finalScale = THREE.MathUtils.lerp(inspectionScale, 0.92, explode);
-
-  modelPivot.rotation.y =
-    -0.62 + rotation * Math.PI * 1.18 + settle * Math.PI * 0.12;
-  modelPivot.rotation.x = 0.025 + Math.sin(progress * Math.PI) * 0.035;
-  modelPivot.scale.setScalar(finalScale);
-  modelPivot.position.x = THREE.MathUtils.lerp(1.25, 0, enter);
-  modelPivot.position.y =
-    THREE.MathUtils.lerp(-0.12, 0.06, enter) +
-    Math.sin(progress * Math.PI) * 0.06;
-
-  movableParts.forEach(({ object, basePosition, offset }) => {
-    object.position.copy(basePosition).addScaledVector(offset, explode);
-  });
-
-  const cameraShift = smoothstep(0.18, 0.9, progress);
-  camera.position.set(
-    THREE.MathUtils.lerp(6.4, 6.2, cameraShift),
-    THREE.MathUtils.lerp(3.15, 3.9, cameraShift),
-    THREE.MathUtils.lerp(7.8, 10.5, cameraShift),
-  );
-  camera.lookAt(0, 0.08, 0);
+  partCount.textContent = `${manifest.groups.length} GROUPS`;
+  return { presentationRoot, meshCount };
 }
 
 function onResize() {
-  if (!renderer || !camera) return;
+  if (!renderer || !camera) {
+    return;
+  }
   const width = window.innerWidth;
   const height = window.innerHeight;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(width, height, false);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
+  controller?.invalidate("resize");
   updateMotionLabel();
 }
 
-function animate(now) {
-  const delta = Math.min((now - lastFrameTime) / 1000, 0.1);
-  lastFrameTime = now;
-
-  targetProgress = pageProgress();
-  const modelTarget = motionIsEnabled() ? targetProgress : 0.115;
-  renderedProgress = damp(renderedProgress, modelTarget, 8.5, delta);
-
-  updateStoryUI(targetProgress);
-  updateModel(renderedProgress);
-  renderer.render(scene, camera);
-
-  animationFrame = requestAnimationFrame(animate);
+function applyScrollState({ immediate = false } = {}) {
+  const progress = pageProgress();
+  updateStoryUI(progress);
+  if (!controller) {
+    return;
+  }
+  const storyProgressValue = motionIsEnabled() ? progress : 1;
+  controller.setProgress(storyProgressValue, { immediate });
 }
 
 function fail(message, detail) {
-  cancelAnimationFrame(animationFrame);
+  controller?.dispose();
   fallbackCopy.textContent = detail;
   rendererStatus.textContent = "FALLBACK";
   setState("error", message);
   updateMotionLabel();
+  readyResolver({ state: "error", message });
 }
 
 async function initialize() {
-  if (query.has("fallback")) {
-    setState("fallback", "已启用可验证的 WebGL 回退状态");
+  if (query.has("fallback") || query.has("disable-webgl")) {
+    setState("fallback", "已启用可验证的静态回退状态");
     rendererStatus.textContent = "FORCED FALLBACK";
     fallbackCopy.textContent =
-      "这是通过 ?fallback=1 启用的可验证回退状态。实验说明、压缩数据和许可证信息仍保持可读。";
+      "这是通过查询参数启用的可验证回退状态。产品结构、压缩数据和许可证信息仍保持可读。";
+    readyResolver({ state: "fallback" });
     return;
   }
 
   if (!supportsWebGL2()) {
     setState("fallback", "当前浏览器或 GPU 不支持 WebGL 2");
     rendererStatus.textContent = "UNSUPPORTED";
+    readyResolver({ state: "fallback" });
     return;
   }
 
   try {
+    const manifestResponse = await fetch("./product-story.json");
+    if (!manifestResponse.ok) {
+      throw new Error(
+        `Product story manifest returned ${manifestResponse.status}.`,
+      );
+    }
+    manifest = await manifestResponse.json();
+    manifestReadyMs = Number(performance.now().toFixed(3));
+    updateStoryUI(pageProgress());
+
     renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
@@ -327,32 +638,27 @@ async function initialize() {
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.08;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf1f1ef);
     camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
-    camera.position.set(6.4, 3.15, 7.8);
-    camera.lookAt(0, 0.08, 0);
+    const initialCamera = manifest.story.cameraKeyframes[0];
+    camera.position.set(...initialCamera.position);
+    camera.lookAt(...initialCamera.target);
 
-    addLighting();
+    addEnvironment();
     onResize();
 
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath(
-      new URL(
-        "./assets/vendor/three/libs/draco/",
-        import.meta.url,
-      ).href,
+      new URL("./assets/vendor/three/libs/draco/", import.meta.url).href,
     );
     dracoLoader.setDecoderConfig({ type: "wasm" });
 
     const ktx2Loader = new KTX2Loader();
     ktx2Loader.setTranscoderPath(
-      new URL(
-        "./assets/vendor/three/libs/basis/",
-        import.meta.url,
-      ).href,
+      new URL("./assets/vendor/three/libs/basis/", import.meta.url).href,
     );
     ktx2Loader.detectSupport(renderer);
 
@@ -360,36 +666,83 @@ async function initialize() {
     loader.setDRACOLoader(dracoLoader);
     loader.setKTX2Loader(ktx2Loader);
 
-    const modelURL = new URL(
-      "./assets/models/car-concept-web.glb",
+    modelResourceURL = new URL(
+      query.has("fail-model") ? "./missing-model.glb" : manifest.model.uri,
       import.meta.url,
     ).href;
 
-    const gltf = await loader.loadAsync(modelURL, (event) => {
-      if (!event.total) return;
-      const percent = Math.min(99, Math.round((event.loaded / event.total) * 100));
+    const gltf = await loader.loadAsync(modelResourceURL, (event) => {
+      if (!event.total) {
+        return;
+      }
+      const percent = Math.min(
+        99,
+        Math.round((event.loaded / event.total) * 100),
+      );
       loadingPercent.textContent = `${String(percent).padStart(2, "0")}%`;
       runtimeStatus.textContent = `正在加载压缩样机 ${percent}%`;
     });
+    modelDecodedMs = Number(performance.now().toFixed(3));
 
-    frameModel(gltf.scene);
+    const { presentationRoot, meshCount } = frameAsset(gltf.scene);
     await renderer.compileAsync(scene, camera);
+    shaderCompiledMs = Number(performance.now().toFixed(3));
 
+    controller = createStoryController({
+      root: presentationRoot,
+      associations: gltf.parser.associations,
+      camera,
+      renderer,
+      scene,
+      manifest,
+      onStageChange(stage) {
+        body.dataset.storyStage = stage.id;
+      },
+      onRender(event) {
+        lastRendererSnapshot = plainRendererInfo(event.rendererInfo);
+        if (firstUsableFrameMs === null) {
+          firstUsableFrameMs = Number(performance.now().toFixed(3));
+          performance.mark("car-story-first-usable-frame");
+        }
+        if (measurement.active) {
+          if (event.interval !== null) {
+            measurement.frameIntervals.push(event.interval);
+          }
+          measurement.renderDurations.push(event.renderDuration);
+        }
+      },
+    });
+
+    applyScrollState({ immediate: true });
     loadingPercent.textContent = "100%";
-    setState("ready", "实时样机已就绪；滚动控制旋转与拆解");
-    rendererStatus.textContent = "WEBGL2 · ACTIVE";
-    motionToggle.hidden = false;
+    setState(
+      "ready",
+      `数字样机已就绪；${meshCount} 个网格由滚动按需驱动`,
+    );
+    rendererStatus.textContent = "WEBGL2 · DEMAND";
     updateMotionLabel();
 
+    window.addEventListener(
+      "scroll",
+      () => applyScrollState(),
+      { passive: true },
+    );
     window.addEventListener("resize", onResize, { passive: true });
-    reducedMotion.addEventListener("change", updateMotionLabel);
-    desktopLayout.addEventListener("change", updateMotionLabel);
-    motionToggle.addEventListener("click", () => {
-      motionPaused = !motionPaused;
+    reducedMotion.addEventListener("change", () => {
       updateMotionLabel();
-      runtimeStatus.textContent = motionPaused
-        ? "滚动动态已暂停；样机保持装配检查视角"
-        : "实时样机已就绪；滚动控制旋转与拆解";
+      applyScrollState({ immediate: true });
+    });
+    desktopLayout.addEventListener("change", () => {
+      updateMotionLabel();
+      applyScrollState({ immediate: true });
+    });
+    motionToggle.addEventListener("click", () => {
+      motionLocked = !motionLocked;
+      updateMotionLabel();
+      applyScrollState({ immediate: true });
+      runtimeStatus.textContent = motionLocked
+        ? "已固定最终装配视图"
+        : "数字样机已恢复滚动驱动";
     });
 
     canvas.addEventListener(
@@ -398,20 +751,20 @@ async function initialize() {
         event.preventDefault();
         fail(
           "WebGL 上下文已丢失",
-          "GPU 渲染上下文已中断。请重新载入页面以恢复三维实验；说明与模型来源仍可阅读。",
+          "GPU 渲染上下文已中断。请重新载入页面；产品结构与资产来源仍可阅读。",
         );
       },
       false,
     );
 
-    lastFrameTime = performance.now();
-    fpsWindowStart = lastFrameTime;
-    animationFrame = requestAnimationFrame(animate);
+    dracoLoader.dispose();
+    ktx2Loader.dispose();
+    readyResolver({ state: "ready" });
   } catch (error) {
     console.error(error);
     fail(
       "压缩样机加载失败",
-      "本地 GLB 或解码器未能完成加载。请重新载入页面；实验说明、压缩数据和模型来源仍保持可读。",
+      "产品语义清单、GLB 或本地解码器未能完成加载。请重新载入页面；产品说明、压缩数据和模型来源仍保持可读。",
     );
   }
 }

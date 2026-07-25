@@ -390,7 +390,7 @@ body[data-webgl-state="error"] .runtime-status__dot {
 }
 
 .chapter--hero .chapter__copy {
-  width: min(51rem, 58vw);
+  width: min(46rem, 52vw);
 }
 
 .chapter--right .chapter__copy {
@@ -413,8 +413,8 @@ body[data-webgl-state="error"] .runtime-status__dot {
 }
 
 .chapter__copy--final {
-  width: min(43rem, 52vw);
-  padding: 40px;
+  width: min(39rem, 46vw);
+  padding: 34px;
   background: rgba(250, 250, 248, 0.94) !important;
   border-top: 3px solid var(--accent);
 }
@@ -436,7 +436,7 @@ body[data-webgl-state="error"] .runtime-status__dot {
 
 .chapter h1 {
   max-width: 8ch;
-  font-size: clamp(64px, 8.5vw, 132px);
+  font-size: clamp(64px, 7.8vw, 118px);
   line-height: 0.86;
 }
 
@@ -462,10 +462,12 @@ body[data-webgl-state="error"] .runtime-status__dot {
   display: flex;
   gap: 12px;
   align-items: center;
+  width: max-content;
   margin: 32px 0 0;
   color: var(--ink);
   font: 700 11px/1 var(--mono);
   letter-spacing: 0.08em;
+  text-decoration: none;
 }
 
 .scroll-cue span {
@@ -510,6 +512,35 @@ body[data-webgl-state="error"] .runtime-status__dot {
   margin-top: 36px;
   padding-top: 20px;
   border-top: 1px solid var(--line-strong);
+}
+
+.assembly-map {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  margin: 30px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+  list-style: none;
+}
+
+.assembly-map li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.assembly-map li:last-child {
+  grid-column: 1 / -1;
+}
+
+.assembly-map span {
+  color: var(--accent);
+  font: 700 9px/1.5 var(--mono);
 }
 
 .credits p {
@@ -619,6 +650,14 @@ body[data-webgl-state="error"] .runtime-status__dot {
 @media (max-width: 520px) {
   .summary {
     grid-template-columns: 1fr;
+  }
+
+  .assembly-map {
+    grid-template-columns: 1fr;
+  }
+
+  .assembly-map li:last-child {
+    grid-column: auto;
   }
 
   .viewer-stage__fallback {

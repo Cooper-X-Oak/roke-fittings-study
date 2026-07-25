@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "collectedAt": "2026-07-25T17:25:39.719Z",
+  "sourceUrl": "http://127.0.0.1:4179/roke-fittings-study/experiment/",
+  "browserMode": "headless Chromium with GPU/WebGL enabled",
+  "functional": {
+    "pageTitle": "汽车数字装配叙事｜实时 3D",
+    "stages": [
+      "intro",
+      "exploded",
+      "assembly",
+      "reveal",
+      "hero"
+    ],
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "fallbackState": "fallback",
+    "loadErrorState": "error",
+    "deterministicTransformMaxDifference": 0
+  },
+  "runs": [
+    {
+      "schemaVersion": "1.0.0",
+      "label": "desktop-cold-scroll",
+      "environment": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "devicePixelRatio": 1,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 8,
+        "deviceMemoryGiB": 4,
+        "cacheState": "cold",
+        "webgl": {
+          "vendor": "Google Inc. (NVIDIA)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1050 (0x00001C91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        }
+      },
+      "loading": {
+        "firstUsableProductFrameMs": 4287.1,
+        "phaseMilestonesMs": {
+          "manifestReady": 441.1,
+          "modelDecoded": 1085,
+          "shaderCompiled": 1904.1,
+          "firstUsableProductFrame": 4287.1
+        },
+        "navigation": {
+          "domContentLoadedMs": 434.7,
+          "loadEventEndMs": 435
+        },
+        "modelResource": {
+          "name": "http://127.0.0.1:4179/roke-fittings-study/experiment/assets/models/car-concept-web.glb",
+          "durationMs": 20.5,
+          "transferSize": 2605880,
+          "encodedBodySize": 2605580,
+          "decodedBodySize": 2605580,
+          "responseEndMs": 760.3
+        }
+      },
+      "runtime": {
+        "measurementDurationMs": 5534.1,
+        "measuredRendererFrames": 253,
+        "rendererFramesDuringRun": 257,
+        "frameIntervalMs": {
+          "p50": 16.6,
+          "p95": 16.9,
+          "max": 17.4
+        },
+        "frameIntervalOver16_7Ms": {
+          "count": 53,
+          "ratio": 0.20949
+        },
+        "frameIntervalOver33_3Ms": {
+          "count": 0,
+          "ratio": 0
+        },
+        "renderCpuDurationMs": {
+          "p50": 3.3,
+          "p95": 6.2,
+          "max": 7.5
+        },
+        "idleRendererFramesAfterSettle": 0,
+        "renderer": {
+          "memory": {
+            "geometries": 110,
+            "textures": 16
+          },
+          "render": {
+            "calls": 219,
+            "triangles": 422614,
+            "points": 0,
+            "lines": 0
+          },
+          "programs": 24
+        }
+      },
+      "browserSignals": {
+        "longAnimationFrame": {
+          "available": true,
+          "count": 0,
+          "totalDurationMs": 0,
+          "maxDurationMs": 0
+        },
+        "mainThreadLongTask": {
+          "available": true,
+          "count": 0,
+          "totalDurationMs": 0,
+          "maxDurationMs": 0
+        },
+        "memory": {
+          "available": true,
+          "usedJSHeapSize": 39869644,
+          "totalJSHeapSize": 52822176,
+          "jsHeapSizeLimit": 4395630592
+        }
+      },
+      "story": {
+        "stage": "hero",
+        "progress": 1,
+        "groupCount": 10
+      },
+      "benchmark": {
+        "requestedScrollDurationMs": 4200,
+        "idleObservationMs": 1200
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "label": "desktop-warm-scroll",
+      "environment": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "devicePixelRatio": 1,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 8,
+        "deviceMemoryGiB": 4,
+        "cacheState": "warm",
+        "webgl": {
+          "vendor": "Google Inc. (NVIDIA)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1050 (0x00001C91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        }
+      },
+      "loading": {
+        "firstUsableProductFrameMs": 1539.9,
+        "phaseMilestonesMs": {
+          "manifestReady": 117.8,
+          "modelDecoded": 622.3,
+          "shaderCompiled": 1312.6,
+          "firstUsableProductFrame": 1539.9
+        },
+        "navigation": {
+          "domContentLoadedMs": 113.9,
+          "loadEventEndMs": 114.1
+        },
+        "modelResource": {
+          "name": "http://127.0.0.1:4179/roke-fittings-study/experiment/assets/models/car-concept-web.glb",
+          "durationMs": 15.5,
+          "transferSize": 2605880,
+          "encodedBodySize": 2605580,
+          "decodedBodySize": 2605580,
+          "responseEndMs": 201.1
+        }
+      },
+      "runtime": {
+        "measurementDurationMs": 5548.6,
+        "measuredRendererFrames": 253,
+        "rendererFramesDuringRun": 257,
+        "frameIntervalMs": {
+          "p50": 16.6,
+          "p95": 17,
+          "max": 17.4
+        },
+        "frameIntervalOver16_7Ms": {
+          "count": 55,
+          "ratio": 0.21739
+        },
+        "frameIntervalOver33_3Ms": {
+          "count": 0,
+          "ratio": 0
+        },
+        "renderCpuDurationMs": {
+          "p50": 2.7,
+          "p95": 4.6,
+          "max": 6.9
+        },
+        "idleRendererFramesAfterSettle": 0,
+        "renderer": {
+          "memory": {
+            "geometries": 110,
+            "textures": 16
+          },
+          "render": {
+            "calls": 219,
+            "triangles": 422614,
+            "points": 0,
+            "lines": 0
+          },
+          "programs": 24
+        }
+      },
+      "browserSignals": {
+        "longAnimationFrame": {
+          "available": true,
+          "count": 0,
+          "totalDurationMs": 0,
+          "maxDurationMs": 0
+        },
+        "mainThreadLongTask": {
+          "available": true,
+          "count": 0,
+          "totalDurationMs": 0,
+          "maxDurationMs": 0
+        },
+        "memory": {
+          "available": true,
+          "usedJSHeapSize": 40976762,
+          "totalJSHeapSize": 55968718,
+          "jsHeapSizeLimit": 4395630592
+        }
+      },
+      "story": {
+        "stage": "hero",
+        "progress": 1,
+        "groupCount": 10
+      },
+      "benchmark": {
+        "requestedScrollDurationMs": 4200,
+        "idleObservationMs": 1200
+      }
+    }
+  ]
+}
