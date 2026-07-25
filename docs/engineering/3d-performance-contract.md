@@ -32,7 +32,7 @@ The source of truth for numeric thresholds is `tests/performance-budget.json`.
 | Local-only runtime | No third-party runtime resources, page errors, or failed critical requests | The self-contained delivery contract regressed |
 | Drawing-buffer budget | Canvas pixel count and effective pixel ratio remain bounded | HiDPI screens can create an unbounded fill-rate cost |
 | Reversible state | A runtime snapshot generated from actual camera, model, and part transforms changes at exploded progress and returns near the assembled signature | Scroll no longer has reliable spatial meaning |
-| Finite rendering | RAF callbacks stop after damping settles | The page burns GPU and battery while visually idle |
+| Finite rendering | No RAF request remains pending after damping settles, and callback growth stays bounded | The page burns GPU and battery while visually idle |
 | Failure resilience | GLB/WASM failure leaves poster, fallback, and core copy visible | 3D failure turns into a blank or unusable page |
 | Reduced motion | The visual remains stable and RAF sleeps | Accessibility preference still causes motion or continuous rendering |
 
@@ -66,7 +66,7 @@ Production code must expose a read-only diagnostic surface at `window.__ROKE_3D_
 
 `spatialSignature` must be calculated from the actual Three.js scene state after rendering. It must not be copied directly from scroll position or a test-only constant. A practical signature should include camera transform values, model transform values, and an aggregate of the movable part transforms so that rotation, explosion, and reverse assembly all change the observable state.
 
-GitHub-hosted SwiftShader can block for tens of seconds while capturing a continuously rendered full-screen WebGL surface. Therefore pixel screenshots and retained video remain review evidence, not a deterministic hard assertion. The blocking spatial behavior gate uses the runtime snapshot, while the browser independently measures drawing-buffer size, scroll response, and RAF activity.
+GitHub-hosted SwiftShader can block for tens of seconds while capturing a continuously rendered full-screen WebGL surface. Therefore pixel screenshots and retained video remain review evidence, not a deterministic hard assertion. The blocking spatial behavior gate uses the runtime snapshot, while the browser independently measures drawing-buffer size, scroll response, completed RAF callbacks, and whether an uncancelled RAF request remains pending. The pending-request assertion detects a perpetual loop even when SwiftShader renders too slowly for callback counts alone to be meaningful.
 
 ## Budget-change rule
 
