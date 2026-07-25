@@ -30,8 +30,11 @@
   "rendering": {
     "maxDrawingBufferPixels": 3686400,
     "maxEffectivePixelRatio": 1.5,
-    "minStateSignatureDifference": 2,
-    "maxReverseSignatureDifference": 1.5
+    "minExplodedRenderedProgress": 0.65,
+    "maxReassembledRenderedProgress": 0.02,
+    "minSpatialSignatureLength": 8,
+    "minSpatialSignatureDelta": 0.05,
+    "maxReverseSpatialSignatureDelta": 0.02
   },
   "assets": {
     "maxModelBytes": 3145728,
