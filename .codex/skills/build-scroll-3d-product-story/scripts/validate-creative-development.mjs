@@ -1,0 +1,297 @@
+#!/usr/bin/env node
+
+import { readFile } from "node:fs/promises";
+import { pathToFileURL } from "node:url";
+
+import { fail, parseArgs } from "./lib/cli.mjs";
+
+const PHASES = [
+  "case-research",
+  "creative-routes",
+  "five-shot-script",
+  "animatic",
+  "confirmation",
+];
+const CAPABILITIES = new Set([
+  "structured-named-parts",
+  "separated-unnamed-parts",
+  "partially-merged",
+  "fused-single-mesh",
+]);
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
+
+function nonEmptyString(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function nonEmptyStrings(value) {
+  return Array.isArray(value) && value.length > 0 && value.every(nonEmptyString);
+}
+
+function validDate(value) {
+  return nonEmptyString(value) && Number.isFinite(Date.parse(value));
+}
+
+function validRange(value) {
+  return (
+    Array.isArray(value) &&
+    value.length === 2 &&
+    value.every(Number.isFinite) &&
+    value[0] >= 0 &&
+    value[1] <= 1 &&
+    value[0] < value[1]
+  );
+}
+
+function requireStringFields(value, fields, prefix, errors) {
+  for (const field of fields) {
+    if (!nonEmptyString(value?.[field])) {
+      errors.push(`${prefix}.${field} must be a non-empty string`);
+    }
+  }
+}
+
+export function validateCreativeDevelopment(plan) {
+  const errors = [];
+  if (!plan || typeof plan !== "object" || Array.isArray(plan)) {
+    return ["creative development must be a JSON object"];
+  }
+  if (plan.schemaVersion !== 1) {
+    errors.push("schemaVersion must equal 1");
+  }
+  if (!SLUG.test(plan.planId ?? "")) {
+    errors.push("planId must be a lowercase kebab-case identifier");
+  }
+
+  const audit = plan.modelAudit;
+  requireStringFields(audit, ["modelPath"], "modelAudit", errors);
+  if (!CAPABILITIES.has(audit?.capability)) {
+    errors.push("modelAudit.capability is invalid");
+  }
+  for (const field of ["truths", "limitations", "prohibitedClaims"]) {
+    if (!nonEmptyStrings(audit?.[field])) {
+      errors.push(`modelAudit.${field} must contain evidence-backed statements`);
+    }
+  }
+
+  const cases = plan.research?.caseStudies;
+  if (!Array.isArray(cases) || cases.length < 3) {
+    errors.push("research.caseStudies must contain at least three cases");
+  } else {
+    cases.forEach((caseStudy, index) => {
+      const prefix = `research.caseStudies[${index}]`;
+      requireStringFields(
+        caseStudy,
+        ["title", "sourceUrl", "narrativeThesis"],
+        prefix,
+        errors,
+      );
+      if (!/^https?:\/\//u.test(caseStudy?.sourceUrl ?? "")) {
+        errors.push(`${prefix}.sourceUrl must be an HTTP(S) source URL`);
+      }
+      for (const field of ["transferableMethods", "limitations"]) {
+        if (!nonEmptyStrings(caseStudy?.[field])) {
+          errors.push(`${prefix}.${field} must contain at least one item`);
+        }
+      }
+    });
+  }
+
+  const routes = plan.creativeRoutes;
+  const routeIds = new Set();
+  if (!Array.isArray(routes) || routes.length < 2) {
+    errors.push("creativeRoutes must contain at least two routes");
+  } else {
+    routes.forEach((route, index) => {
+      const prefix = `creativeRoutes[${index}]`;
+      if (!SLUG.test(route?.id ?? "")) {
+        errors.push(`${prefix}.id must be kebab-case`);
+      } else if (routeIds.has(route.id)) {
+        errors.push(`duplicate creative route id: ${route.id}`);
+      }
+      routeIds.add(route?.id);
+      requireStringFields(
+        route,
+        ["title", "thesis", "audienceTakeaway", "modelFit"],
+        prefix,
+        errors,
+      );
+      if (
+        !Array.isArray(route?.shotArc) ||
+        route.shotArc.length !== 5 ||
+        !route.shotArc.every((id) => SLUG.test(id))
+      ) {
+        errors.push(`${prefix}.shotArc must contain five kebab-case shot IDs`);
+      }
+      if (!nonEmptyStrings(route?.risks)) {
+        errors.push(`${prefix}.risks must contain at least one risk`);
+      }
+    });
+  }
+  if (!routeIds.has(plan.selectedRouteId)) {
+    errors.push("selectedRouteId must identify one creative route");
+  }
+
+  const shots = plan.shots;
+  const shotIds = new Set();
+  if (!Array.isArray(shots) || shots.length !== 5) {
+    errors.push("shots must contain exactly five authored shots");
+  } else {
+    let previousEnd = 0;
+    shots.forEach((shot, index) => {
+      const prefix = `shots[${index}]`;
+      if (!SLUG.test(shot?.id ?? "")) {
+        errors.push(`${prefix}.id must be kebab-case`);
+      } else if (shotIds.has(shot.id)) {
+        errors.push(`duplicate shot id: ${shot.id}`);
+      }
+      shotIds.add(shot?.id);
+      if (shot?.order !== index + 1) {
+        errors.push(`${prefix}.order must equal ${index + 1}`);
+      }
+      if (!validRange(shot?.range)) {
+        errors.push(`${prefix}.range is invalid`);
+      } else {
+        if (Math.abs(shot.range[0] - previousEnd) > 1e-9) {
+          errors.push(`${prefix}.range must continue from the previous shot`);
+        }
+        previousEnd = shot.range[1];
+      }
+      requireStringFields(
+        shot,
+        [
+          "narrativePurpose",
+          "viewerTakeaway",
+          "startState",
+          "endState",
+          "action",
+          "lighting",
+          "layout",
+          "transitionIn",
+          "transitionOut",
+          "rhythm",
+          "hold",
+        ],
+        prefix,
+        errors,
+      );
+      requireStringFields(
+        shot?.camera,
+        ["framing", "movement"],
+        `${prefix}.camera`,
+        errors,
+      );
+      if (!nonEmptyStrings(shot?.activeComponents)) {
+        errors.push(`${prefix}.activeComponents must not be empty`);
+      }
+      if (!nonEmptyStrings(shot?.truthConstraints)) {
+        errors.push(`${prefix}.truthConstraints must not be empty`);
+      }
+      for (const field of ["eyebrow", "title", "body"]) {
+        if (typeof shot?.content?.[field] !== "string") {
+          errors.push(`${prefix}.content.${field} must be a string`);
+        }
+      }
+    });
+    if (Math.abs(previousEnd - 1) > 1e-9) {
+      errors.push("shot ranges must cover the complete normalized timeline");
+    }
+  }
+
+  const selectedRoute = routes?.find(
+    (route) => route.id === plan.selectedRouteId,
+  );
+  if (
+    selectedRoute &&
+    JSON.stringify(selectedRoute.shotArc) !==
+      JSON.stringify(shots?.map((shot) => shot.id))
+  ) {
+    errors.push("selected route shotArc must match the authored five shots");
+  }
+
+  const animatic = plan.animatic;
+  requireStringFields(animatic, ["uri"], "animatic", errors);
+  if (animatic?.kind !== "animatic-video") {
+    errors.push("animatic.kind must be animatic-video");
+  }
+  if (!Number.isFinite(animatic?.durationSeconds) || animatic.durationSeconds <= 0) {
+    errors.push("animatic.durationSeconds must be greater than zero");
+  }
+  if (animatic?.reviewed !== true) {
+    errors.push("animatic.reviewed must be true");
+  }
+  if (!nonEmptyStrings(animatic?.reviewNotes)) {
+    errors.push("animatic.reviewNotes must contain review evidence");
+  }
+
+  const confirmation = plan.confirmation;
+  requireStringFields(
+    confirmation,
+    ["approvalId", "confirmedBy", "evidenceRef"],
+    "confirmation",
+    errors,
+  );
+  if (confirmation?.status !== "approved") {
+    errors.push("confirmation.status must be approved");
+  }
+  if (!validDate(confirmation?.confirmedAt)) {
+    errors.push("confirmation.confirmedAt must be a valid timestamp");
+  }
+  if (/\b(codex|agent|self|assistant)\b/iu.test(confirmation?.confirmedBy ?? "")) {
+    errors.push("the implementing agent cannot self-confirm the narrative");
+  }
+
+  const history = plan.phaseHistory;
+  if (!Array.isArray(history) || history.length !== PHASES.length) {
+    errors.push("phaseHistory must contain the five required preproduction phases");
+  } else {
+    let previousTime = -Infinity;
+    history.forEach((entry, index) => {
+      if (entry?.phase !== PHASES[index]) {
+        errors.push(`phaseHistory[${index}].phase must be ${PHASES[index]}`);
+      }
+      if (!validDate(entry?.completedAt)) {
+        errors.push(`phaseHistory[${index}].completedAt is invalid`);
+      } else {
+        const time = Date.parse(entry.completedAt);
+        if (time < previousTime) {
+          errors.push("phaseHistory timestamps must be ordered");
+        }
+        previousTime = time;
+      }
+    });
+    if (
+      validDate(confirmation?.confirmedAt) &&
+      history.at(-1)?.completedAt !== confirmation.confirmedAt
+    ) {
+      errors.push("confirmation timestamp must match the confirmation phase");
+    }
+  }
+  return errors;
+}
+
+export async function loadApprovedCreativeDevelopment(path) {
+  const plan = JSON.parse(await readFile(path, "utf8"));
+  const errors = validateCreativeDevelopment(plan);
+  if (errors.length) {
+    const details = errors.map((error) => `- ${error}`).join("\n");
+    throw new Error(
+      `Creative development validation failed with ${errors.length} error(s)\n${details}`,
+    );
+  }
+  return plan;
+}
+
+async function main() {
+  const args = parseArgs(process.argv.slice(2), {
+    plan: "required",
+  });
+  await loadApprovedCreativeDevelopment(args.plan);
+  process.stdout.write(
+    "PASS: creative development is ordered, complete, and confirmed\n",
+  );
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  main().catch(fail);
+}

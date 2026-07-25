@@ -6,6 +6,7 @@
   "additionalProperties": false,
   "required": [
     "schemaVersion",
+    "creativeDevelopment",
     "model",
     "story",
     "groups",
@@ -17,7 +18,40 @@
       "type": "string"
     },
     "schemaVersion": {
-      "const": 1
+      "const": 2
+    },
+    "creativeDevelopment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planId",
+        "selectedRouteId",
+        "animaticUri",
+        "approvalId",
+        "evidenceRef"
+      ],
+      "properties": {
+        "planId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "selectedRouteId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "animaticUri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approvalId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     },
     "model": {
       "type": "object",
@@ -191,7 +225,8 @@
       "required": ["id", "range", "content"],
       "properties": {
         "id": {
-          "enum": ["intro", "exploded", "assembly", "reveal", "hero"]
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
         },
         "range": {
           "$ref": "#/$defs/range"

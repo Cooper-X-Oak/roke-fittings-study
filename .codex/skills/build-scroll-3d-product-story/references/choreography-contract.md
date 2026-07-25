@@ -1,17 +1,18 @@
 # Choreography Contract
 
-## Story Stages
+## Approved Shots
 
-Keep the five-stage information arc:
+Implement the five-shot arc from the confirmed `creative-development.json`.
+Do not substitute this fixed preset:
 
-1. `intro`: establish product category and visual identity.
-2. `exploded`: hold a legible component structure long enough to understand it.
-3. `assembly`: assemble subsystems in a meaningful order.
-4. `reveal`: complete the silhouette and rotate toward the selling angle.
-5. `hero`: settle the camera, product, copy, and CTA.
+```text
+intro -> exploded -> assembly -> reveal -> hero
+```
 
-Stage ranges must be ordered, contiguous enough for smooth reading, and inside
-`[0, 1]`. Avoid making every part move over the full range; stagger subsystem
+Those beats are valid only when the selected creative route independently
+justifies them. Shot ranges must stay ordered, continuous, and inside `[0, 1]`.
+Preserve the approved purpose, takeaway, transition, rhythm, and hold for each
+shot. Avoid making every part move over the full range; stagger subsystem
 windows so the viewer can understand causality.
 
 ## Group Decisions
@@ -31,15 +32,15 @@ only a first-pass candidate.
 
 ## Camera And Rotation
 
-Use camera motion to clarify structure, not to compensate for arbitrary part
-motion. Keep the product readable at stage boundaries. Make the final hero pose
-stable enough for copy and CTA interaction.
+Use camera motion to deliver each approved shot purpose, not to compensate for
+arbitrary part motion. Keep the focal subject readable at shot boundaries.
+Implement the confirmed lighting and layout progression beside camera motion.
 
 Prefer a small number of camera and rotation keyframes. Sample keyframes from
 normalized progress so reverse scrolling remains exact.
 
 ## Content
 
-Bind content to stages rather than arbitrary scroll pixels. Keep business copy
-outside the generic runtime. Include an explicit final CTA in the product
-manifest or target page.
+Bind content to approved shots rather than arbitrary scroll pixels. Keep
+business copy outside the generic runtime. Include the confirmed final CTA in
+the product manifest or target page.

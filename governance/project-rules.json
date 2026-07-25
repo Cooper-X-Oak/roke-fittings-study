@@ -2,101 +2,80 @@
   "schema_version": 1,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-car-product-story-2",
-  "ruleset_version": "2026-07-26.2",
+  "ruleset_id": "ruleset-2026-07-26-narrative-first-skill",
+  "ruleset_version": "2026-07-26.3",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
-      "id": "deliver-actual-car-story",
-      "statement": "Apply the project-level build-scroll-3d-product-story skill to the existing docs/experiment car GLB route and deliver an actual enterprise product story rather than a technical loader demo.",
+      "id": "narrative-first-scroll-story-skill",
+      "statement": "The project-level build-scroll-3d-product-story skill must treat model inspection as a prerequisite and then enforce case research, multiple creative routes, an authored five-shot script, an animatic, explicit narrative confirmation, and only then runtime implementation.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "configuration-driven-car-semantics",
-      "statement": "Keep car-specific node selectors, group labels, offsets, assembly windows, camera, rotation, stage content, and CTA in docs/experiment/product-story.json; keep the runtime generic.",
+      "id": "evidence-backed-advertising-research",
+      "statement": "Creative development must record applicable advertising references with source URLs, narrative theses, transferable methods, and model-specific limitations before a route is selected.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "top-level-assembly-roots",
-      "statement": "Control non-overlapping top-level assembly roots so parent and descendant transforms are not double-applied; keep BodyUnderside as the stationary product foundation.",
+      "id": "multiple-creative-routes-before-selection",
+      "statement": "Creative development must compare at least two materially different routes and record the selected route; a generated explode-and-assemble preset is not a creative route.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "bounded-car-claims",
-      "statement": "Use model node names as evidence for business-readable groups, but do not claim a production powertrain, manufacturing sequence, or engineering fact that the concept GLB does not establish.",
+      "id": "authored-five-shot-narrative",
+      "statement": "The selected route must be expressed as exactly five continuous shots, each with a narrative purpose, viewer takeaway, action, camera, lighting, layout, transition, rhythm, hold, copy, and truth constraints.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "roke-style-five-stage-story",
-      "statement": "Deliver intro, exploded structure, semantic assembly, complete-product reveal, and final hero states synchronized from one normalized scroll progress; ROKE remains a narrative reference only.",
+      "id": "animatic-before-runtime",
+      "statement": "A reviewable animatic with a fixed duration and evidence of review must exist after the five-shot script and before narrative confirmation or runtime manifest generation.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "deterministic-base-relative-motion",
-      "statement": "Derive every controlled transform from captured base transforms, the approved manifest, and normalized progress so forward and reverse scrolling produce the same pose without drift.",
+      "id": "external-narrative-confirmation",
+      "statement": "Narrative confirmation must identify the confirming person or role and durable evidence; the implementing agent must not self-approve its own route, script, or animatic.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "demand-rendered-desktop-webgl",
-      "statement": "Render on loading, scroll target changes, finite interpolation, resize, or explicit finite motion and stop after settling; do not retain an idle permanent requestAnimationFrame loop or setAnimationLoop.",
+      "id": "fail-closed-runtime-generation",
+      "statement": "Runtime-story generation and implementation instructions must fail closed when the ordered creative-development record is missing, incomplete, unapproved, or inconsistent with the selected route.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "preserve-compressed-licensed-asset",
-      "statement": "Preserve the existing Draco geometry, KTX2/BasisU textures, single-GLB delivery, model attribution, and CC BY 4.0 license notice.",
+      "id": "bounded-model-truth",
+      "statement": "Research, scripts, and animation must stay within model and product evidence, record prohibited claims, and avoid inventing engineering function, assembly order, or product facts.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "fallback-and-reduced-motion",
-      "statement": "Keep loading, WebGL failure, poster-capable fallback, and reduced-motion behavior; reduced motion resolves directly to the final assembled hero state.",
+      "id": "generic-runtime-after-approval",
+      "statement": "After narrative confirmation, keep product-specific choreography and content in approved artifacts while preserving a generic deterministic, reversible, demand-rendered runtime with poster and reduced-motion fallbacks.",
       "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     },
     {
-      "id": "desktop-browser-performance-evidence",
-      "statement": "Record browser identity, 1440x900 viewport, device pixel ratio, cache state, first usable product frame, p50 and p95 animation frame time, frames over 16.7 and 33.3 ms, Long Animation Frames when supported, main-thread timing when supported, memory when supported, and idle renders after settling.",
+      "id": "performance-evidence-after-narrative",
+      "statement": "Measure asset transfer and browser frame behavior only after the approved narrative is implemented; performance optimization must not substitute for or silently alter the confirmed shot intent.",
       "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
-    },
-    {
-      "id": "desktop-frame-budget",
-      "statement": "On the declared local desktop browser run, require frame-time p50 no greater than 18.5 ms, p95 no greater than 25 ms, frames over 33.3 ms no more than 2 percent, and zero renderer frames during the post-settle idle observation window.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
-    },
-    {
-      "id": "separate-transfer-and-runtime-evidence",
-      "statement": "Keep raw asset bytes and request counts separate from runtime frame evidence; do not use a fixed 4 Mbps weak-network gate or infer GPU performance from file size.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
-    },
-    {
-      "id": "publish-and-recheck-pages",
-      "statement": "Deliver through the configured main:/docs GitHub Pages source, confirm the public experiment route returns HTTP 200, and recheck the consumer-visible page after deployment.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
+        "build-narrative-first-scroll-story-skill"
       ]
     }
   ]
