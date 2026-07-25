@@ -3,7 +3,7 @@ import {
   applyNetworkProfile,
   getPerformanceSnapshot,
   getRuntimeSnapshot,
-  getRafFiredCount,
+  getRafSnapshot,
   installPerformanceProbe,
   loadPerformanceBudget,
   maxAbsoluteDifference,
@@ -48,7 +48,7 @@ test("poster-first loading, milestones, Web Vitals, and resource budgets are blo
   await page.goto(budget.route, { waitUntil: "domcontentloaded" });
 
   const poster = page.locator("[data-3d-poster]");
-  await expect(poster).toBeVisible({ timeout: budget.timings.posterVisibleMs });
+  await expect.soft(poster).toBeVisible({ timeout: budget.timings.posterVisibleMs });
   await waitForWebglState(page, ["ready"]);
   await page.waitForTimeout(100);
 
@@ -82,7 +82,7 @@ test("poster-first loading, milestones, Web Vitals, and resource budgets are blo
   expect.soft(snapshot.metrics.lcp).toBeLessThanOrEqual(budget.timings.lcpMs);
   expect.soft(snapshot.metrics.cls).toBeLessThanOrEqual(budget.stability.cls);
 
-  const readyTime = marks["roke:interactive-ready"];
+  const readyTime = marks["roke:interactive-ready"] ?? snapshot.now;
   const origin = new URL(page.url()).origin;
   const initialResources = snapshot.resources.filter((resource) => {
     const url = new URL(resource.name);
@@ -103,7 +103,9 @@ test("poster-first loading, milestones, Web Vitals, and resource budgets are blo
     new URL(resource.name).pathname.endsWith(".wasm"),
   );
 
-  const posterURL = await poster.evaluate((element) => element.currentSrc || element.src || "");
+  const posterURL = (await poster.count())
+    ? await poster.evaluate((element) => element.currentSrc || element.src || "")
+    : "";
   const posterResource = initialResources.find((resource) => resource.name === posterURL);
 
   expect.soft(initialResources.length).toBeLessThanOrEqual(
@@ -186,7 +188,8 @@ test("scroll animation changes and reverses while the renderer sleeps after sett
   expect.soft(assembled, "Missing window.__ROKE_3D_RUNTIME__.snapshot() contract").not.toBeNull();
 
   const scrollResponse = await scrollToProgress(page, 0.72);
-  expect.soft(scrollResponse).toBeLessThanOrEqual(budget.timings.scrollResponseMs);
+  expect.soft(scrollResponse.reached, "Scroll progress output did not reach 72%").toBe(true);
+  expect.soft(scrollResponse.latencyMs).toBeLessThanOrEqual(budget.timings.scrollResponseMs);
   await page.waitForTimeout(budget.stability.settleMs);
   const exploded = await getRuntimeSnapshot(page);
   expect.soft(exploded, "Missing exploded runtime snapshot").not.toBeNull();
@@ -215,7 +218,8 @@ test("scroll animation changes and reverses while the renderer sleeps after sett
     }
   }
 
-  await scrollToProgress(page, 0);
+  const reverseScroll = await scrollToProgress(page, 0);
+  expect.soft(reverseScroll.reached, "Reverse scroll progress output did not return to 0%").toBe(true);
   await page.waitForTimeout(budget.stability.settleMs);
   const reassembled = await getRuntimeSnapshot(page);
   expect.soft(reassembled, "Missing reassembled runtime snapshot").not.toBeNull();
@@ -241,11 +245,14 @@ test("scroll animation changes and reverses while the renderer sleeps after sett
   }
 
   await page.waitForTimeout(budget.stability.settleMs);
-  const rafBefore = await getRafFiredCount(page);
+  const rafBefore = await getRafSnapshot(page);
   await page.waitForTimeout(budget.stability.observationMs);
-  const rafAfter = await getRafFiredCount(page);
+  const rafAfter = await getRafSnapshot(page);
 
-  expect.soft(rafAfter - rafBefore).toBeLessThanOrEqual(
+  expect.soft(rafAfter.pending).toBeLessThanOrEqual(
+    budget.stability.maxPendingRafAfterSettle,
+  );
+  expect.soft(rafAfter.fired - rafBefore.fired).toBeLessThanOrEqual(
     budget.stability.maxRafCallbacksAfterSettle,
   );
   expect.soft(failures.pageErrors).toEqual([]);
@@ -297,7 +304,8 @@ test("reduced motion remains visually stable and does not keep a hot render loop
   const before = await getRuntimeSnapshot(page);
   expect.soft(before, "Missing reduced-motion runtime snapshot").not.toBeNull();
 
-  await scrollToProgress(page, 0.72);
+  const reducedScroll = await scrollToProgress(page, 0.72);
+  expect.soft(reducedScroll.reached, "Reduced-motion progress output did not reach 72%").toBe(true);
   await page.waitForTimeout(budget.stability.settleMs);
   const after = await getRuntimeSnapshot(page);
   expect.soft(after, "Missing reduced-motion post-scroll snapshot").not.toBeNull();
@@ -318,11 +326,14 @@ test("reduced motion remains visually stable and does not keep a hot render loop
   }
 
   await page.waitForTimeout(budget.stability.settleMs);
-  const rafBefore = await getRafFiredCount(page);
+  const rafBefore = await getRafSnapshot(page);
   await page.waitForTimeout(budget.stability.observationMs);
-  const rafAfter = await getRafFiredCount(page);
+  const rafAfter = await getRafSnapshot(page);
 
-  expect.soft(rafAfter - rafBefore).toBeLessThanOrEqual(
+  expect.soft(rafAfter.pending).toBeLessThanOrEqual(
+    budget.stability.maxPendingRafAfterSettle,
+  );
+  expect.soft(rafAfter.fired - rafBefore.fired).toBeLessThanOrEqual(
     budget.stability.maxRafCallbacksAfterSettle,
   );
 });
