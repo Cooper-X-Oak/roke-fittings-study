@@ -160,43 +160,24 @@ export async function scrollToProgress(page, progress) {
   }, progress);
 }
 
-export async function captureCanvasSignature(page) {
-  const canvas = page.locator("#webgl-canvas");
-  const bounds = await canvas.boundingBox();
-  if (!bounds || bounds.width <= 0 || bounds.height <= 0) {
-    throw new Error("WebGL canvas has no visible screenshot bounds");
-  }
-
-  // Element screenshots wait for the target to become visually stable. That is
-  // the wrong measurement primitive for detecting a hot RAF loop, because the
-  // defect under test keeps the canvas changing forever. Clip the page directly
-  // so a continuously rendered canvas remains measurable instead of timing out.
-  const screenshot = await page.screenshot({
-    type: "png",
-    clip: bounds,
-    animations: "allow",
+export async function getRuntimeSnapshot(page) {
+  return page.evaluate(() => {
+    const runtime = window.__ROKE_3D_RUNTIME__;
+    if (!runtime || typeof runtime.snapshot !== "function") return null;
+    return structuredClone(runtime.snapshot());
   });
-  const base64 = screenshot.toString("base64");
-
-  return page.evaluate(async (encoded) => {
-    const binary = atob(encoded);
-    const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
-    const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
-    const sample = new OffscreenCanvas(32, 32);
-    const context = sample.getContext("2d", { willReadFrequently: true });
-    context.drawImage(bitmap, 0, 0, sample.width, sample.height);
-    bitmap.close();
-    return Array.from(context.getImageData(0, 0, sample.width, sample.height).data);
-  }, base64);
 }
 
-export function meanAbsoluteDifference(left, right) {
-  if (left.length !== right.length) return Number.POSITIVE_INFINITY;
-  let total = 0;
-  for (let index = 0; index < left.length; index += 1) {
-    total += Math.abs(left[index] - right[index]);
+export function maxAbsoluteDifference(left, right) {
+  if (!Array.isArray(left) || !Array.isArray(right) || left.length !== right.length) {
+    return Number.POSITIVE_INFINITY;
   }
-  return total / left.length;
+
+  let maximum = 0;
+  for (let index = 0; index < left.length; index += 1) {
+    maximum = Math.max(maximum, Math.abs(left[index] - right[index]));
+  }
+  return maximum;
 }
 
 export function resourceBytes(resource) {
