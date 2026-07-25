@@ -6,9 +6,9 @@
     <meta name="color-scheme" content="light">
     <meta
       name="description"
-      content="一个使用 Draco 几何与 KTX2 纹理的实时 WebGL 产品拆解实验。"
+      content="一个由产品语义清单驱动、使用压缩 GLB 与按需 WebGL 渲染的汽车结构叙事页面。"
     >
-    <title>实时 3D 拆解实验</title>
+    <title>汽车数字装配叙事｜实时 3D</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="./styles.css">
     <script type="importmap">
@@ -19,42 +19,42 @@
       }
     </script>
   </head>
-  <body data-webgl-state="loading">
-    <a class="skip-link" href="#story">跳到实验说明</a>
+  <body data-webgl-state="loading" data-story-stage="intro">
+    <a class="skip-link" href="#story">跳到产品叙事</a>
 
-    <header class="masthead" aria-label="实验状态">
-      <a class="masthead__label" href="#story" aria-label="实时 3D 实验首页">
-        <span>03</span>
-        <span>REALTIME STUDY</span>
+    <header class="masthead" aria-label="产品叙事状态">
+      <a class="masthead__label" href="#story" aria-label="汽车数字装配叙事首页">
+        <span>01</span>
+        <span>DIGITAL ASSEMBLY</span>
       </a>
       <div class="masthead__progress">
-        <label for="story-progress">实验进度</label>
+        <label for="story-progress">产品叙事进度</label>
         <progress id="story-progress" max="100" value="0">0%</progress>
         <output id="progress-output" for="story-progress">00</output>
       </div>
     </header>
 
-    <div class="viewer-stage" aria-label="实时三维产品展示">
-      <div class="viewer-stage__word" aria-hidden="true">REALTIME</div>
+    <div class="viewer-stage" aria-label="实时三维汽车结构展示">
+      <div class="viewer-stage__word" aria-hidden="true">ASSEMBLY</div>
       <canvas id="webgl-canvas" aria-hidden="true"></canvas>
 
       <div class="viewer-stage__loading" aria-hidden="true">
-        <span>正在装配数字样机</span>
+        <span>正在装载压缩数字样机</span>
         <span id="loading-percent">00%</span>
       </div>
 
       <div class="viewer-stage__fallback" id="viewer-fallback">
-        <p class="eyebrow">WEBGL FALLBACK</p>
-        <h2>三维舞台暂不可用。</h2>
+        <p class="eyebrow">PRODUCT STORY / STATIC MODE</p>
+        <h2>结构叙事仍然可读。</h2>
         <p id="fallback-copy">
-          这个页面仍然保留完整的实验说明、压缩数据和模型来源。请在支持 WebGL 2
-          的桌面浏览器中重新打开，以查看实时旋转与拆解。
+          当前设备未启动实时 WebGL 舞台；产品结构、装配顺序、压缩数据和模型来源仍保留在页面中。
+          使用支持 WebGL 2 的桌面浏览器可查看滚动驱动的旋转与拆解。
         </p>
       </div>
     </div>
 
-    <aside class="technical-rail" aria-label="模型技术信息">
-      <p class="technical-rail__title">LIVE ASSET</p>
+    <aside class="technical-rail" aria-label="数字样机技术信息">
+      <p class="technical-rail__title">LIVE PRODUCT ASSET</p>
       <dl>
         <div>
           <dt>MODEL</dt>
@@ -66,15 +66,19 @@
         </div>
         <div>
           <dt>GEOMETRY</dt>
-          <dd>Draco / 10 bit</dd>
+          <dd>Draco / 109</dd>
         </div>
         <div>
           <dt>TEXTURE</dt>
-          <dd>KTX2 / BasisU</dd>
+          <dd>KTX2 / 14</dd>
         </div>
         <div>
-          <dt>PARTS</dt>
-          <dd id="part-count">—</dd>
+          <dt>SEMANTICS</dt>
+          <dd id="part-count">10 GROUPS</dd>
+        </div>
+        <div>
+          <dt>FRAME MODE</dt>
+          <dd>ON DEMAND</dd>
         </div>
         <div>
           <dt>RENDERER</dt>
@@ -95,77 +99,109 @@
       aria-pressed="false"
       hidden
     >
-      暂停动态
+      固定最终视图
     </button>
 
     <main class="story" id="story">
-      <section class="chapter chapter--hero" data-chapter="0">
+      <section
+        class="chapter chapter--hero"
+        id="intro"
+        data-chapter="0"
+        data-stage="intro"
+      >
         <div class="chapter__copy">
-          <p class="eyebrow">GLB + WEBGL / DESKTOP EXPERIMENT</p>
-          <h1>把 650 帧<br>换成一个<br>模型。</h1>
+          <p class="eyebrow">CONCEPT VEHICLE / DIGITAL ASSEMBLY</p>
+          <h1>一台车，<br>先成为<br>一个系统。</h1>
           <p class="chapter__lede">
-            向下滚动。浏览器不是在播放图片序列，而是在每一帧重新计算几何、材质、灯光和零件位置。
+            从结构基准、行走机构、功能核心、座舱到外部车身，这个概念样机用真实模型节点讲清产品构成。
           </p>
-          <p class="scroll-cue">
+          <a class="scroll-cue" href="#exploded">
             <span aria-hidden="true">↓</span>
-            滚动以开始检查
-          </p>
+            向下滚动探索
+          </a>
         </div>
       </section>
 
-      <section class="chapter chapter--right" data-chapter="1">
+      <section
+        class="chapter chapter--right"
+        id="exploded"
+        data-chapter="1"
+        data-stage="exploded"
+      >
         <div class="chapter__copy">
-          <p class="chapter__number">01 / ROTATE</p>
-          <h2>旋转，不是播放。</h2>
+          <p class="chapter__number">01 / STRUCTURE</p>
+          <h2>结构，<br>不只是轮廓。</h2>
           <p>
-            同一份几何在 GPU 上实时成像。视角、反射和清漆高光连续变化，不需要为每个角度预先输出一张图。
+            拆解状态把十组装配语义同时展开：底部基准保持稳定，其余系统沿各自结构方向分离。
           </p>
         </div>
       </section>
 
-      <section class="chapter chapter--left chapter--lower" data-chapter="2">
+      <section
+        class="chapter chapter--left chapter--lower"
+        id="assembly"
+        data-chapter="2"
+        data-stage="assembly"
+      >
         <div class="chapter__copy">
-          <p class="chapter__number">02 / SEPARATE</p>
-          <h2>每个零件，<br>都是真的。</h2>
+          <p class="chapter__number">02 / ASSEMBLY</p>
+          <h2>从承载，<br>到完整。</h2>
           <p>
-            车门、车轮、机舱和内饰沿各自空间方向分离。向上滚动时，保存的原始变换会让它们精确回到装配位置。
+            滚动依次收拢车轴、左右行走机构、功能核心、座舱、车身与开闭件。这是可解释的展示顺序，不是制造工艺说明。
           </p>
         </div>
       </section>
 
-      <section class="chapter chapter--right" data-chapter="3">
+      <section
+        class="chapter chapter--right"
+        id="reveal"
+        data-chapter="3"
+        data-stage="reveal"
+      >
         <div class="chapter__copy">
-          <p class="chapter__number">03 / COMPRESS</p>
-          <h2>2.48 MiB，<br>保留材质细节。</h2>
+          <p class="chapter__number">03 / REVEAL</p>
+          <h2>所有系统，<br>收束成产品。</h2>
           <p>
-            Draco 压缩几何；KTX2/BasisU 纹理在下载和显存中都保持压缩。当前 GLB
-            是单文件交付，不依赖运行时第三方模型请求。
+            部件回到经确认的基准变换后，镜头继续揭示完整外形；反向滚动时，拆解过程可确定性复现。
           </p>
         </div>
       </section>
 
-      <section class="chapter chapter--final" data-chapter="4">
+      <section
+        class="chapter chapter--final"
+        id="hero"
+        data-chapter="4"
+        data-stage="hero"
+      >
         <div class="chapter__copy chapter__copy--final">
-          <p class="chapter__number">04 / UNDERSTAND</p>
-          <h2>低流量，<br>换取实时自由度。</h2>
+          <p class="chapter__number">04 / PRODUCT</p>
+          <h2>让产品自己<br>证明它的结构。</h2>
           <p>
-            这就是取舍：网络只传一个压缩样机，浏览器承担实时解码和渲染。适合产品检查、配置器和交互式技术说明。
+            一个压缩 GLB、一个语义清单和一个按需渲染循环，完成可复用的网页端产品叙事。
           </p>
 
-          <dl class="summary">
+          <dl class="summary" id="architecture">
             <div>
-              <dt>交付</dt>
+              <dt>结构语义</dt>
+              <dd>10 个装配组</dd>
+            </div>
+            <div>
+              <dt>运行资产</dt>
               <dd>1 个压缩 GLB</dd>
             </div>
             <div>
-              <dt>纹理</dt>
-              <dd>14 张 KTX2</dd>
-            </div>
-            <div>
-              <dt>输入</dt>
-              <dd>原生页面滚动</dd>
+              <dt>渲染策略</dt>
+              <dd>仅变化时绘制</dd>
             </div>
           </dl>
+
+          <ol class="assembly-map" aria-label="经确认的产品结构语义">
+            <li><span>01</span>结构基准</li>
+            <li><span>02</span>车轴与左右行走机构</li>
+            <li><span>03</span>概念功能核心</li>
+            <li><span>04</span>座舱系统</li>
+            <li><span>05</span>风挡、车身与左右开闭件</li>
+          </ol>
 
           <footer class="credits">
             <p>
@@ -181,7 +217,7 @@
               >CC BY 4.0</a>。
             </p>
             <p>
-              非官方、非商业前端学习实验；模型拆解用于交互演示，不构成工程装配说明。
+              节点名称仅用于这个概念样机的产品叙事；装配动画是展示顺序，不构成量产汽车工程或制造说明。
             </p>
           </footer>
         </div>
@@ -190,7 +226,7 @@
 
     <noscript>
       <div class="noscript-message">
-        JavaScript 已关闭，因此实时三维舞台不会启动；上方实验说明和资产来源仍可阅读。
+        JavaScript 已关闭，因此实时三维舞台不会启动；产品结构说明、压缩数据和资产来源仍可阅读。
       </div>
     </noscript>
 

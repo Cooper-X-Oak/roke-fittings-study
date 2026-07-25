@@ -10,7 +10,7 @@
 
 - Rules: `governance/project-rules.json`
 - Validation: `governance/project-validation.json`
-- Development entry: `python governance/validate_control_plane.py entry --rules governance/project-rules.json --validation governance/project-validation.json --entry-id build-scroll-3d-product-story`
+- Development entry: `python governance/validate_control_plane.py entry --rules governance/project-rules.json --validation governance/project-validation.json --entry-id deliver-car-product-story`
 - Development acceptance: `python governance/validate_control_plane.py accept --rules governance/project-rules.json --validation governance/project-validation.json --run-checks --workdir .`
 - The rules and validation files above are the only current project authority.
 - Missing, unreadable, duplicate, or version-mismatched control-plane artifacts fail closed.
