@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "control-valve-shot-ready.glb",
+    "format": "glb",
+    "bytes": 908680,
+    "assetVersion": "2.0",
+    "generator": "glTF-Transform v4.4.2"
+  },
+  "counts": {
+    "scenes": 1,
+    "nodes": 6,
+    "meshNodes": 6,
+    "meshes": 6,
+    "primitives": 6,
+    "triangles": 284478,
+    "materials": 6,
+    "textures": 0,
+    "images": 0,
+    "animations": 0,
+    "skins": 0,
+    "cameras": 0
+  },
+  "compression": {
+    "extensionsUsed": [
+      "KHR_draco_mesh_compression"
+    ],
+    "extensionsRequired": [
+      "KHR_draco_mesh_compression"
+    ],
+    "dracoPrimitiveCount": 6,
+    "meshoptBufferViewCount": 0,
+    "basisuTextureCount": 0,
+    "ktx2ImageCount": 0
+  },
+  "naming": {
+    "meaningfulMeshNodeNames": 6,
+    "meaningfulMeshNodeRatio": 1,
+    "duplicateNodeNames": []
+  },
+  "bounds": {
+    "min": [
+      -46.224728,
+      33.232731,
+      -1098.689087
+    ],
+    "max": [
+      454.778076,
+      402.235535,
+      19.011093
+    ],
+    "center": [
+      204.276674,
+      217.734133,
+      -539.838997
+    ],
+    "extent": [
+      501.002804,
+      369.002804,
+      1117.70018
+    ],
+    "diagonal": 1279.226552
+  },
+  "capability": {
+    "capability": "structured-named-parts",
+    "truePartAnimation": true,
+    "semanticGrouping": true,
+    "reason": "The model exposes multiple independent parts and most have meaningful node names."
+  },
+  "warnings": [],
+  "partCandidates": [
+    {
+      "nodeIndex": 0,
+      "name": "VALVE_BODY_BONNET",
+      "nameIsUnique": true,
+      "path": "VALVE_BODY_BONNET",
+      "parentNodeIndex": null,
+      "meshIndex": 0,
+      "semanticName": true,
+      "primitiveCount": 1,
+      "triangleCount": 27846,
+      "materialNames": [
+        "mat_0"
+      ],
+      "bounds": {
+        "min": [
+          -46.224728,
+          65.232727,
+          -577.689941
+        ],
+        "max": [
+          454.778076,
+          370.232727,
+          19.011093
+        ],
+        "center": [
+          204.276674,
+          217.732727,
+          -279.339424
+        ],
+        "extent": [
+          501.002804,
+          305,
+          596.701035
+        ],
+        "diagonal": 836.708392
+      }
+    },
+    {
+      "nodeIndex": 1,
+      "name": "PNEUMATIC_ACTUATOR",
+      "nameIsUnique": true,
+      "path": "PNEUMATIC_ACTUATOR",
+      "parentNodeIndex": null,
+      "meshIndex": 1,
+      "semanticName": true,
+      "primitiveCount": 1,
+      "triangleCount": 79140,
+      "materialNames": [
+        "mat_1"
+      ],
+      "bounds": {
+        "min": [
+          19.775272,
+          33.232731,
+          -1098.689087
+        ],
+        "max": [
+          388.779785,
+          402.235535,
+          -557.688904
+        ],
+        "center": [
+          204.277529,
+          217.734133,
+          -828.188995
+        ],
+        "extent": [
+          369.004513,
+          369.002804,
+          541.000183
+        ],
+        "diagonal": 751.670538
+      }
+    },
+    {
+      "nodeIndex": 2,
+      "name": "STEM_CASCADE_PLUG",
+      "nameIsUnique": true,
+      "path": "STEM_CASCADE_PLUG",
+      "parentNodeIndex": null,
+      "meshIndex": 2,
+      "semanticName": true,
+      "primitiveCount": 1,
+      "triangleCount": 82934,
+      "materialNames": [
+        "mat_2"
+      ],
+      "bounds": {
+        "min": [
+          129.775223,
+          185.282059,
+          -946.689514
+        ],
+        "max": [
+          289.275726,
+          250.183395,
+          -133.553116
+        ],
+        "center": [
+          209.525475,
+          217.732727,
+          -540.121315
+        ],
+        "extent": [
+          159.500504,
+          64.901337,
+          813.136398
+        ],
+        "diagonal": 831.169896
+      }
+    },
+    {
+      "nodeIndex": 3,
+      "name": "CASCADE_TRIM",
+      "nameIsUnique": true,
+      "path": "CASCADE_TRIM",
+      "parentNodeIndex": null,
+      "meshIndex": 3,
+      "semanticName": true,
+      "primitiveCount": 1,
+      "triangleCount": 39324,
+      "materialNames": [
+        "mat_3"
+      ],
+      "bounds": {
+        "min": [
+          161.361938,
+          174.819397,
+          -405.888916
+        ],
+        "max": [
+          247.189209,
+          260.646057,
+          -114.188911
+        ],
+        "center": [
+          204.275574,
+          217.732727,
+          -260.038914
+        ],
+        "extent": [
+          85.827271,
+          85.82666,
+          291.700005
+        ],
+        "diagonal": 315.945294
+      }
+    },
+    {
+      "nodeIndex": 4,
+      "name": "SEALS_SUPPORT",
+      "nameIsUnique": true,
+      "path": "SEALS_SUPPORT",
+      "parentNodeIndex": null,
+      "meshIndex": 4,
+      "semanticName": true,
+      "primitiveCount": 1,
+      "triangleCount": 32290,
+      "materialNames": [
+        "mat_4"
+      ],
+      "bounds": {
+        "min": [
+          150.275269,
+          163.732727,
+          -847.481079
+        ],
+        "max": [
+          258.278564,
+          362.321594,
+          -124.988907
+        ],
+        "center": [
+          204.276917,
+          263.027161,
+          -486.234993
+        ],
+        "extent": [
+          108.003296,
+          198.588867,
+          722.492172
+        ],
+        "diagonal": 757.031828
+      }
+    },
+    {
+      "nodeIndex": 5,
+      "name": "PRODUCTION_DETAILS",
+      "nameIsUnique": true,
+      "path": "PRODUCTION_DETAILS",
+      "parentNodeIndex": null,
+      "meshIndex": 5,
+      "semanticName": true,
+      "primitiveCount": 1,
+      "triangleCount": 22944,
+      "materialNames": [
+        "mat_5"
+      ],
+      "bounds": {
+        "min": [
+          102.074112,
+          115.701599,
+          -670.183289
+        ],
+        "max": [
+          306.052673,
+          319.099121,
+          -375.988922
+        ],
+        "center": [
+          204.063393,
+          217.40036,
+          -523.086105
+        ],
+        "extent": [
+          203.978561,
+          203.397522,
+          294.194366
+        ],
+        "diagonal": 411.737939
+      }
+    }
+  ]
+}

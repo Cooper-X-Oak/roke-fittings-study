@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "assetId": "dn80-cl2500-pneumatic-cascade-control-valve",
+  "principle": "Retain product truth and camera-readable silhouette; merge repeated CAD instances into exactly six independently controlled commercial-shot groups.",
+  "decisions": [
+    {
+      "group": "VALVE_BODY_BONNET",
+      "sourceLabels": ["壳体", "上盖"],
+      "decision": "retain-and-merge",
+      "shots": ["monument", "command-descends", "inside-the-cascade", "six-systems", "authority-restored"],
+      "cameraPurpose": "Primary silhouette, opacity transition, spatial anchor and final hero surface.",
+      "motion": "Remains the assembly anchor; material opacity changes are visual explanation, not a physical action."
+    },
+    {
+      "group": "PNEUMATIC_ACTUATOR",
+      "sourceLabels": ["308气缸装配体孔80", "308缸体", "308气缸活塞", "308反作用上缸盖", "308反作用下缸盖", "308气缸支架孔80", "行程牌40mm"],
+      "decision": "retain-and-merge",
+      "shots": ["monument", "command-descends", "six-systems", "authority-restored"],
+      "cameraPurpose": "Establish the external source of mechanical authority and the top of the vertical causal axis.",
+      "motion": "Moves upward only in the authored six-system explanation; no fail direction is claimed."
+    },
+    {
+      "group": "STEM_CASCADE_PLUG",
+      "sourceLabels": ["308气缸推杆", "串级式阀芯", "导向套", "哈夫板24×1.5-16×1.5"],
+      "decision": "retain-and-merge",
+      "shots": ["command-descends", "inside-the-cascade", "six-systems", "authority-restored"],
+      "cameraPurpose": "Provide the visible linear cause linking actuator and cascade trim.",
+      "motion": "Small reversible axial stroke and grouped extraction; not labelled open, closed or fail-safe."
+    },
+    {
+      "group": "CASCADE_TRIM",
+      "sourceLabels": ["阀笼1", "阀笼2", "阀笼3", "阀座"],
+      "decision": "retain-and-merge",
+      "shots": ["inside-the-cascade", "six-systems", "authority-restored"],
+      "cameraPurpose": "Support the controlled macro traversal and three-stage lighting rhythm.",
+      "motion": "Receives sequential visual emphasis and a grouped axial offset; no pressure-drop result is asserted."
+    },
+    {
+      "group": "SEALS_SUPPORT",
+      "sourceLabels": ["外密封垫108×92", "内密封垫78×62", "星形密封圈37.46×5.33", "支撑环", "螺旋挡圈 阀塞48×38.2", "DL08-02卡套角接头", "TL/TLY/TLXCD rings"],
+      "decision": "retain-and-merge",
+      "shots": ["six-systems", "authority-restored"],
+      "cameraPurpose": "Represent the small supporting interfaces without multiplying the runtime control count.",
+      "motion": "One modest lateral grouped offset; no sealing class, material or service interval is claimed."
+    },
+    {
+      "group": "PRODUCTION_DETAILS",
+      "sourceLabels": ["bolts", "studs", "nuts", "washers", "screws", "unclassified retained source solids"],
+      "decision": "retain-merge-and-deemphasize",
+      "shots": ["monument", "six-systems", "authority-restored"],
+      "cameraPurpose": "Preserve credible manufacturing scale and silhouette while preventing fastener noise from becoming the story.",
+      "motion": "Repeated instances remain geometry but share one bounded runtime control node."
+    }
+  ],
+  "omissions": [
+    {
+      "category": "source STEP file",
+      "decision": "do-not-publish",
+      "reason": "The supplied source remains outside the public repository; only the derived shot asset and hash/provenance record are delivered."
+    },
+    {
+      "category": "independent fastener interaction",
+      "decision": "merge",
+      "reason": "The commercial story does not need 124 separately scripted CAD occurrences."
+    },
+    {
+      "category": "CFD volume, pressure field and maintenance constraints",
+      "decision": "do-not-create",
+      "reason": "No verified simulation or service-order evidence was supplied."
+    }
+  ]
+}

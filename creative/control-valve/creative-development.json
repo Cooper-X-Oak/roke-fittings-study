@@ -1,0 +1,342 @@
+{
+  "$schema": "../../.codex/skills/build-scroll-3d-product-story/assets/creative-development.schema.json",
+  "schemaVersion": 1,
+  "planId": "control-valve-force-becomes-control",
+  "modelAudit": {
+    "modelPath": "docs/control-valve/assets/control-valve-shot-ready.glb",
+    "capability": "structured-named-parts",
+    "truths": [
+      "源文件是 DN80 CL2500 气动串级式调节阀装配体，而不是球阀。",
+      "STEP 的 123 个几何实例已按原装配世界变换烘焙，并合并为六个可独立控制的语义节点。",
+      "源装配明确命名了壳体、上盖、气动执行器、推杆、串级式阀芯、阀笼 1/2/3 和阀座。"
+    ],
+    "limitations": [
+      "模型没有动画、相机、纹理、CFD 结果或工况数据。",
+      "六组商业镜头资产不保留 123 个源实例的独立运行时控制能力。",
+      "视觉运动用于解释可见结构关系，不代表制造、检修或实际操作顺序。"
+    ],
+    "prohibitedClaims": [
+      "不得声称流量系数、压降、噪声、泄漏等级、材料性能或适用介质。",
+      "不得从视觉轴向位移推断开启、关闭、故障安全方向或执行器作用方式。",
+      "不得把照明、透明度和路径强调描述为 CFD、应力或热仿真。"
+    ]
+  },
+  "research": {
+    "caseStudies": [
+      {
+        "title": "Emerson Fisher GX Control Valve and Actuator System",
+        "sourceUrl": "https://www.emerson.com/is/content/emerson/en/final-control/flow-controls/documents/fisher-gx-control-valve-actuator-system-d103171x012.pdf",
+        "narrativeThesis": "先建立执行器、阀杆和阀内件之间的可读机械因果轴，再解释产品系统。",
+        "transferableMethods": [
+          "用单一轴线组织外部驱动到内部件的认知顺序。",
+          "先交代完整产品，再切入阀内件。"
+        ],
+        "limitations": [
+          "参考产品不是当前 DN80 CL2500 装配体，不能迁移规格、性能和失效方向。"
+        ]
+      },
+      {
+        "title": "Flowserve Valtek Multi-Z Severe Service Control Valve",
+        "sourceUrl": "https://www.flowserve.com/sites/default/files/dam/documents/KMENBR1632_EN_A4.pdf",
+        "narrativeThesis": "用分级内件的重复形态和逐段强调，解释复杂内部路径而不丢失外壳参照。",
+        "transferableMethods": [
+          "穿透外壳后沿内部结构连续运镜。",
+          "用逐级灯光节奏替代信息堆叠。"
+        ],
+        "limitations": [
+          "只迁移内部结构的视觉解释方法，不迁移压降、降噪或气蚀性能结论。"
+        ]
+      },
+      {
+        "title": "SAMSON Series 250 Control Valves",
+        "sourceUrl": "https://www.samson.de/document/t80710en.pdf",
+        "narrativeThesis": "用整机、执行器、阀体和阀内件的层级关系建立工业产品认知。",
+        "transferableMethods": [
+          "整体轮廓是所有特写和拆解的空间锚点。",
+          "系统级分组优先于零件级枚举。"
+        ],
+        "limitations": [
+          "参考资料仅支持同类产品的展示层级，不证明当前模型的选型、材料或工况。"
+        ]
+      }
+    ]
+  },
+  "creativeRoutes": [
+    {
+      "id": "force-becomes-control",
+      "title": "力如何变成控制",
+      "thesis": "一股外部驱动力沿产品主轴进入内部，经串级阀芯和阀笼被组织为可理解的控制系统。",
+      "audienceTakeaway": "观众先记住完整工业产品，再理解执行器、轴向传递和串级内件之间的结构关系。",
+      "modelFit": "模型具有明确的执行器、推杆、阀芯、三级阀笼和阀体语义，适合连续的宏观—穿越—内部—拆解—归一叙事。",
+      "shotArc": [
+        "monument",
+        "command-descends",
+        "inside-the-cascade",
+        "six-systems",
+        "authority-restored"
+      ],
+      "risks": [
+        "若相机停留在内件过久，会失去对整机方向的认知；因此第三镜保留半透明阀体轮廓并在第四镜迅速拉回。"
+      ]
+    },
+    {
+      "id": "six-systems-one-product",
+      "title": "六组成为一个产品",
+      "thesis": "从六个商业镜头系统逐一展开，再将它们汇聚为完整装配体。",
+      "audienceTakeaway": "观众理解复杂 CAD 可以被组织为少量有职责的产品系统。",
+      "modelFit": "六节点 GLB 直接支持系统级拆解与归位。",
+      "shotArc": [
+        "monument",
+        "command-descends",
+        "inside-the-cascade",
+        "six-systems",
+        "authority-restored"
+      ],
+      "risks": [
+        "路线容易退化为零件清单，缺少驱动因果，因此只作为候选而未被选中。"
+      ]
+    }
+  ],
+  "selectedRouteId": "force-becomes-control",
+  "shots": [
+    {
+      "id": "monument",
+      "order": 1,
+      "range": [0, 0.1604166667],
+      "narrativePurpose": "先让观众认识产品身份、尺度和唯一的纵向因果轴。",
+      "viewerTakeaway": "这是一台由外部驱动力贯穿的完整气动调节阀装配体。",
+      "startState": "完整装配体在黑场和低照度中建立剪影。",
+      "endState": "产品全貌、主轴和流道法兰方向均可读。",
+      "action": "相机由远景缓慢向前并轻微升高，产品保持原始装配关系。",
+      "lighting": "冷色轮廓光先定义外形，暖色主光逐步揭示阀体和执行器层级。",
+      "layout": "大标题占左侧，完整产品位于中央偏右，底部时间线保持低干扰。",
+      "transitionIn": "黑场直接显影。",
+      "transitionOut": "相机沿可见主轴加速靠近阀体上部。",
+      "rhythm": "克制、稳定、先慢后快。",
+      "hold": "在产品完整轮廓清晰后保持约 12 帧。",
+      "camera": {
+        "framing": "完整产品三分之四英雄全景。",
+        "movement": "缓慢 dolly-in 与小幅 crane-up。"
+      },
+      "activeComponents": [
+        "VALVE_BODY_BONNET",
+        "PNEUMATIC_ACTUATOR",
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM",
+        "SEALS_SUPPORT",
+        "PRODUCTION_DETAILS"
+      ],
+      "truthConstraints": [
+        "只表达产品身份和可见装配关系，不宣称性能。"
+      ],
+      "content": {
+        "eyebrow": "01 / MONUMENT",
+        "title": "驱动力成为控制",
+        "body": "一股驱动力，贯穿整台设备。"
+      }
+    },
+    {
+      "id": "command-descends",
+      "order": 2,
+      "range": [0.1604166667, 0.3416666667],
+      "narrativePurpose": "把执行器、推杆和阀芯组织成一条可追踪的机械因果链。",
+      "viewerTakeaway": "外部动作通过中心轴进入阀体内部。",
+      "startState": "镜头贴近完整阀体上部，外壳仍为实体。",
+      "endState": "外壳变为半透明，中心推杆和阀内件可见。",
+      "action": "镜头沿轴向下行，推杆执行小幅可逆位移，外壳透明度渐变。",
+      "lighting": "暖色路径光锁定中心轴，外壳降为冷灰背景层。",
+      "layout": "标题固定左下安全区，中心轴保持在画面主视觉区。",
+      "transitionIn": "承接首镜的前推速度。",
+      "transitionOut": "用 150–151 帧的高遮挡穿越隐藏相机重新定位。",
+      "rhythm": "加速进入、短暂停顿、快速穿越。",
+      "hold": "因果轴清晰时保持约 10 帧。",
+      "camera": {
+        "framing": "阀体内部纵向中近景。",
+        "movement": "轴向 drone-like push-through，遮挡点完成隐藏切换。"
+      },
+      "activeComponents": [
+        "VALVE_BODY_BONNET",
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM"
+      ],
+      "truthConstraints": [
+        "推杆位移只说明机械连接，不标记开、关或故障方向。"
+      ],
+      "content": {
+        "eyebrow": "02 / COMMAND DESCENDS",
+        "title": "动作沿轴下行",
+        "body": "从气动执行器到推杆与阀芯，外部动作开始抵达内部。"
+      }
+    },
+    {
+      "id": "inside-the-cascade",
+      "order": 3,
+      "range": [0.3416666667, 0.5791666667],
+      "narrativePurpose": "在阀体内部以连续飞行镜头建立串级阀芯与三级命名阀笼的空间认知。",
+      "viewerTakeaway": "控制核心不是单个零件，而是一组沿轴组织的命名内件。",
+      "startState": "镜头从遮挡中进入半透明阀体。",
+      "endState": "相机穿过串级内件并开始拉回外部。",
+      "action": "镜头绕轴缓慢侧移，三级节奏灯依次增强，阀体只保留空间参照。",
+      "lighting": "金色阀笼和橙色阀芯形成主次，冷灰外壳压低到背景。",
+      "layout": "内件占画面中部，左侧文案不遮挡轴向结构。",
+      "transitionIn": "利用近距离遮挡完成无感穿越。",
+      "transitionOut": "镜头沿同一运动方向后撤，空间尺度连续扩大。",
+      "rhythm": "穿越后减速，三次光强调形成明确拍点。",
+      "hold": "第二级强调时保持约 8 帧以允许识别孔阵列。",
+      "camera": {
+        "framing": "阀体内部的广角近景，保留局部外壳上下文。",
+        "movement": "稳定的 FPV 式穿越与小半径轨道运动。"
+      },
+      "activeComponents": [
+        "VALVE_BODY_BONNET",
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM"
+      ],
+      "truthConstraints": [
+        "逐级照明只代表观察顺序，不模拟流体路径或压降。"
+      ],
+      "content": {
+        "eyebrow": "03 / INSIDE THE CASCADE",
+        "title": "逐级抵达核心",
+        "body": "三级命名阀笼被依次照亮；路径光只说明观察顺序，不模拟流体。"
+      }
+    },
+    {
+      "id": "six-systems",
+      "order": 4,
+      "range": [0.5791666667, 0.8208333333],
+      "narrativePurpose": "把复杂源 CAD 收敛为六个镜头可控制、认知可解释的产品系统。",
+      "viewerTakeaway": "六组承担不同结构职责，但共同构成一个产品。",
+      "startState": "镜头从内件近景快速后撤。",
+      "endState": "六组达到最大可读拆解距离并开始回收。",
+      "action": "六个语义组沿受控方向展开，细小紧固件保持合并，产品主轴不变。",
+      "lighting": "各组用灰、橙、金和青色区分，背景保持黑色以减少结构噪声。",
+      "layout": "拆解体位于右侧中心，左侧标题与六组轮廓形成对照。",
+      "transitionIn": "连续后撤把内部微观尺度扩展到整机尺度。",
+      "transitionOut": "所有组同步减速并开始归位。",
+      "rhythm": "快速展开、清晰停顿、受控回收。",
+      "hold": "最大拆解状态保持约 18 帧。",
+      "camera": {
+        "framing": "完整六系统拆解全景。",
+        "movement": "大幅 dolly-out 后接轻微弧形环绕。"
+      },
+      "activeComponents": [
+        "VALVE_BODY_BONNET",
+        "PNEUMATIC_ACTUATOR",
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM",
+        "SEALS_SUPPORT",
+        "PRODUCTION_DETAILS"
+      ],
+      "truthConstraints": [
+        "拆解顺序是商业镜头编排，不是制造或维修顺序。"
+      ],
+      "content": {
+        "eyebrow": "04 / SIX SYSTEMS",
+        "title": "六组一个系统",
+        "body": "复杂 CAD 被收敛为镜头所需的六个语义系统。"
+      }
+    },
+    {
+      "id": "authority-restored",
+      "order": 5,
+      "range": [0.8208333333, 1],
+      "narrativePurpose": "把所有技术解释归还给完整产品身份，形成稳定商业终帧。",
+      "viewerTakeaway": "内部逻辑最终服务于完整的 DN80 CL2500 气动串级式装配体。",
+      "startState": "六组由拆解状态向原始装配变换回收。",
+      "endState": "产品恢复源装配关系并稳定保持。",
+      "action": "所有偏移、透明度和强调归零，相机回到完整英雄构图。",
+      "lighting": "暖主光和冷轮廓光达到最终平衡，内件色彩保留为轻微识别线索。",
+      "layout": "完整产品居中偏右，左侧给出最终产品命名。",
+      "transitionIn": "拆解组同步归位。",
+      "transitionOut": "无切换，以 72 帧稳定英雄画面结束。",
+      "rhythm": "快速归位后完全静止。",
+      "hold": "408–479 帧的相机、产品、灯光状态完全一致。",
+      "camera": {
+        "framing": "完整产品终极英雄全景。",
+        "movement": "归位阶段微调，最终 72 帧锁定。"
+      },
+      "activeComponents": [
+        "VALVE_BODY_BONNET",
+        "PNEUMATIC_ACTUATOR",
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM",
+        "SEALS_SUPPORT",
+        "PRODUCTION_DETAILS"
+      ],
+      "truthConstraints": [
+        "终帧只确认模型身份与原始装配关系，不延伸到产品性能。"
+      ],
+      "content": {
+        "eyebrow": "05 / AUTHORITY RESTORED",
+        "title": "解释归于完整产品",
+        "body": "DN80 CL2500 气动串级式装配体。"
+      }
+    }
+  ],
+  "cameraPrevis": {
+    "uri": "creative/control-valve/camera-previs.json",
+    "fps": 30,
+    "totalFrames": 480,
+    "frameStateCount": 480,
+    "continuityPath": [
+      "完整产品英雄全景",
+      "沿中心轴向下推进",
+      "遮挡点隐藏相机重定位",
+      "阀体内部 FPV 式穿越",
+      "连续后撤到六系统拆解",
+      "同步归位并锁定完整产品"
+    ],
+    "hiddenCut": "第 150–151 帧以 0.98 遮挡覆盖近距离穿越和相机重定位。",
+    "maxAbsRollDegrees": 4,
+    "stableHeroHold": [408, 479],
+    "reviewed": true
+  },
+  "animatic": {
+    "uri": "docs/control-valve/index.html",
+    "kind": "animatic-video",
+    "durationSeconds": 16,
+    "reviewed": true,
+    "reviewNotes": [
+      "页面提供独立的 16 秒固定时长播放，不依赖滚动即可按 480 个 canonical frame 播放。",
+      "浏览器实拍覆盖五个镜头：docs/control-valve/evidence/shot-01-monument.png 至 shot-05-authority-restored.png。",
+      "首镜和终镜均完整呈现产品轮廓；第三镜显示串级阀芯及有孔阀笼；第四镜显示六组受控拆解。",
+      "creative/control-valve/render-evidence.json 记录 NVIDIA GTX 1050 WebGL2 实际渲染、零控制台错误和空闲零渲染帧。"
+    ]
+  },
+  "confirmation": {
+    "status": "automated",
+    "approvalId": "control-valve-automatic-release-2026-07-26-001",
+    "evidenceRef": "creative/control-valve/render-evidence.json",
+    "releasedAt": "2026-07-26T10:13:30Z",
+    "checks": [
+      "五个镜头的运行时 shot ID 与脚本逐一一致。",
+      "480 个 canonical frame 已生成且最大绝对 roll 为 4 度。",
+      "最终 72 帧满足稳定英雄画面要求。",
+      "首帧海报在模型加载期间可见，并仅在首个可用 WebGL 帧后淡出。",
+      "浏览器运行无 console error、page error 或 failed request。"
+    ]
+  },
+  "phaseHistory": [
+    {
+      "phase": "case-research",
+      "completedAt": "2026-07-26T09:20:00Z"
+    },
+    {
+      "phase": "creative-routes",
+      "completedAt": "2026-07-26T09:30:00Z"
+    },
+    {
+      "phase": "five-shot-script",
+      "completedAt": "2026-07-26T09:42:00Z"
+    },
+    {
+      "phase": "animatic",
+      "completedAt": "2026-07-26T10:12:57Z"
+    },
+    {
+      "phase": "automatic-release",
+      "completedAt": "2026-07-26T10:13:30Z"
+    }
+  ]
+}
