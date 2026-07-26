@@ -2,38 +2,63 @@
   "schema_version": 2,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-continuous-story",
-  "ruleset_version": "2026-07-26.13",
-  "validation_contract_version": "2026-07-26.13",
+  "ruleset_id": "ruleset-2026-07-26-control-valve-grey-animatic",
+  "ruleset_version": "2026-07-26.14",
+  "validation_contract_version": "2026-07-26.14",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
   "checks": [
     {
-      "id": "control-valve-continuous-five-beat-contract",
-      "behavior_id": "five-cognitive-beats-form-one-reversible-product-transformation",
+      "id": "control-valve-approved-script-contract",
+      "behavior_id": "approved-five-beat-story-remains-current",
       "rule_paths": [
-        ["author-control-valve-five-beat-commercial-script"],
-        ["author-control-valve-five-beat-commercial-script", "single-product-thesis-proof"],
-        ["author-control-valve-five-beat-commercial-script", "causal-state-handoff-proof"],
-        ["author-control-valve-five-beat-commercial-script", "camera-serves-product-proof"],
-        ["author-control-valve-five-beat-commercial-script", "distinct-cognitive-beats-proof"],
-        ["author-control-valve-five-beat-commercial-script", "complete-shot-language-proof"],
-        ["bind-script-to-observed-product-truth"],
-        ["bind-script-to-observed-product-truth", "script-claim-boundary-proof"],
-        ["research-commercial-film-methods"],
-        ["research-commercial-film-methods", "reference-to-decision-proof"],
-        ["stop-at-approved-shot-script"],
-        ["stop-at-approved-shot-script", "script-only-change-scope-proof"]
+        ["preserve-approved-continuous-five-beat-story"],
+        ["bind-animatic-to-observed-product-truth"],
+        ["bind-animatic-to-observed-product-truth", "animatic-claim-boundary-proof"]
       ],
       "required_for_current_contract": true,
       "command": "python scripts/validate_control_valve_shot_script.py"
     },
     {
-      "id": "github-pages-repository-policy",
-      "behavior_id": "existing-pages-artifacts-remain-valid-and-unchanged",
+      "id": "control-valve-grey-animatic-contract",
+      "behavior_id": "deterministic-grey-animatic-proves-separation-closure-and-bidirectional-axis",
       "rule_paths": [
-        ["stop-at-approved-shot-script"]
+        ["preserve-approved-continuous-five-beat-story"],
+        ["preserve-approved-continuous-five-beat-story", "five-beat-conformance-proof"],
+        ["preserve-approved-continuous-five-beat-story", "fixed-duration-first-proof"],
+        ["author-deterministic-per-frame-previs"],
+        ["author-deterministic-per-frame-previs", "frame-completeness-proof"],
+        ["validate-cascade-trim-separability"],
+        ["validate-cascade-trim-separability", "four-geometry-islands-proof"],
+        ["validate-cascade-trim-separability", "separation-truth-boundary-proof"],
+        ["validate-body-closure-occlusion"],
+        ["validate-body-closure-occlusion", "core-readable-during-closure-proof"],
+        ["validate-bidirectional-axis-continuity"],
+        ["validate-bidirectional-axis-continuity", "reverse-order-proof"],
+        ["validate-bidirectional-axis-continuity", "round-trip-pose-proof"],
+        ["stop-after-grey-animatic-validation"],
+        ["stop-after-grey-animatic-validation", "animatic-only-change-scope-proof"]
+      ],
+      "required_for_current_contract": true,
+      "command": "python scripts/validate_control_valve_animatic.py"
+    },
+    {
+      "id": "creative-development-through-animatic",
+      "behavior_id": "creative-record-reaches-animatic-without-runtime-release",
+      "rule_paths": [
+        ["preserve-approved-continuous-five-beat-story"],
+        ["author-deterministic-per-frame-previs"],
+        ["stop-after-grey-animatic-validation"]
+      ],
+      "required_for_current_contract": true,
+      "command": "node .codex/skills/build-scroll-3d-product-story/scripts/validate-creative-development.mjs --plan creative/control-valve/creative-development.json --through animatic"
+    },
+    {
+      "id": "github-pages-repository-policy",
+      "behavior_id": "animatic-review-surface-and-existing-pages-artifacts-remain-valid",
+      "rule_paths": [
+        ["stop-after-grey-animatic-validation"]
       ],
       "required_for_current_contract": true,
       "command": "node scripts/verify-pages.mjs"

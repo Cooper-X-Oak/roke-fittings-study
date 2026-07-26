@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="DN80 CL2500 气动串级式调节阀克制工业叙事 WebGL Animatic"
+      content="DN80 CL2500 气动串级式调节阀连续轴向灰模 Animatic"
     />
-    <title>Order Becomes Control — Control Valve Animatic</title>
+    <title>Precision Becomes Whole — Grey Animatic</title>
     <link rel="stylesheet" href="./styles.css" />
     <script type="importmap">
       {
@@ -19,39 +19,55 @@
   </head>
   <body>
     <main id="story" class="story">
-      <section class="stage" aria-label="气动串级式调节阀三维叙事">
+      <section class="stage" aria-label="气动串级式调节阀连续轴向灰模预演">
         <div class="stage__media">
           <img
             id="poster"
             class="poster"
             src="./assets/first-frame-poster.jpg"
-            alt="DN80 CL2500 气动串级式调节阀首帧"
+            alt="气动串级式调节阀精密核心灰模首帧"
           />
-          <canvas id="canvas" aria-label="实时三维产品动画"></canvas>
+          <canvas id="canvas" aria-label="实时三维灰模 Animatic"></canvas>
           <div class="vignette" aria-hidden="true"></div>
         </div>
 
         <header class="masthead">
           <a class="identity" href="../" aria-label="返回实验首页">
             <span class="identity__mark">CV</span>
-            <span>CONTROL VALVE / DN80</span>
+            <span>CONTROL VALVE / GREY ANIMATIC</span>
           </a>
-          <button id="play" class="play" type="button">
-            <span class="play__dot" aria-hidden="true"></span>
-            播放 16 秒 Animatic
-          </button>
+          <div class="playback" aria-label="固定时长播放控制">
+            <button id="play-forward" class="play" type="button">
+              <span class="play__dot" aria-hidden="true"></span>
+              正放 18 秒
+            </button>
+            <button id="play-reverse" class="play play--secondary" type="button">
+              反放 18 秒
+            </button>
+          </div>
         </header>
 
         <article class="copy" aria-live="polite">
-          <p id="eyebrow" class="copy__eyebrow">01 / PRODUCT AUTHORITY</p>
-          <h1 id="title" class="copy__title">秩序<br />先于动作</h1>
-          <p id="body" class="copy__body">先看清整机，再理解内部。</p>
+          <p id="eyebrow" class="copy__eyebrow">01 / THE CORE</p>
+          <h1 id="title" class="copy__title">精密，先从<br />核心被看见。</h1>
+          <p id="body" class="copy__body">
+            四个真实几何岛沿中央轴展开；编号只代表镜头中的空间顺序。
+          </p>
         </article>
 
-        <div class="timeline" aria-label="五镜头进度">
+        <aside class="validation" aria-label="灰模验证目标">
+          <p>ANIMATIC VALIDATION</p>
+          <ul>
+            <li><span id="geometry-status">检测实际内件几何岛</span></li>
+            <li>阀体闭合遮挡</li>
+            <li>正反向连续轴</li>
+          </ul>
+        </aside>
+
+        <div class="timeline" aria-label="五节拍进度">
           <p class="timeline__label">
-            <span id="shot-number">01</span>
-            <span id="shot-name">PRODUCT AUTHORITY</span>
+            <span><b id="shot-number">01</b> <span id="shot-name">THE CORE</span></span>
+            <span id="direction">SCROLL SCRUB</span>
           </p>
           <div class="timeline__rail">
             <span id="timeline-fill" class="timeline__fill"></span>
@@ -61,9 +77,10 @@
           </ol>
         </div>
 
-        <p id="loading" class="loading">正在准备六组镜头资产…</p>
-        <p class="truth-note">结构高亮仅说明观察顺序，不模拟流体、压降或性能。</p>
-        <p class="scroll-cue"><span>SCROLL</span><i></i></p>
+        <p id="loading" class="loading">正在解码并检查 CASCADE_TRIM 连通几何…</p>
+        <p class="truth-note">
+          灰模拆分与归位是镜头验证，不代表制造、维修、介质路径或性能。
+        </p>
         <output id="debug" class="debug" hidden></output>
       </section>
     </main>

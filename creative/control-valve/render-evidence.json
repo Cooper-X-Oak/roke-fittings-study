@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 1,
-  "collectedAt": "2026-07-26T12:55:51.682Z",
-  "sourceUrl": "http://127.0.0.1:4178/roke-fittings-study/control-valve/",
-  "browserMode": "headless Chromium; renderer recorded in benchmark.rendererInfo",
-  "performanceInterpretation": "Short headless diagnostic only. It does not certify discrete-GPU frame rate; the portable performance proof is the six-primitive Draco GLB and demand-rendering behavior.",
+  "schemaVersion": 2,
+  "collectedAt": "2026-07-26T15:14:31.456Z",
+  "sourceUrl": "http://127.0.0.1:4182/control-valve/",
   "viewport": {
     "width": 1600,
     "height": 1000,
@@ -11,765 +9,4204 @@
   },
   "ready": {
     "state": "ready",
-    "groups": 6
-  },
-  "posterLoadingState": {
-    "complete": true,
-    "naturalWidth": 1600,
-    "naturalHeight": 1000,
-    "opacity": 1,
-    "visible": true,
-    "capturedAtMs": 681.7
-  },
-  "posterAfterReady": {
-    "opacity": 0,
-    "hiddenClass": true
-  },
-  "bodyHasContent": true,
-  "interactiveLabels": [
-    "CV\n            CONTROL VALVE / DN80",
-    "重新播放 16 秒 Animatic"
-  ],
-  "consoleErrors": [],
-  "pageErrors": [],
-  "failedRequests": [],
-  "captures": [
-    {
-      "shotId": "product-authority",
-      "progress": 0.1,
-      "path": "docs/control-valve/evidence/shot-01-product-authority.png",
-      "runtimeShotId": "product-authority"
-    },
-    {
-      "shotId": "axial-command",
-      "progress": 0.3,
-      "path": "docs/control-valve/evidence/shot-02-axial-command.png",
-      "runtimeShotId": "axial-command"
-    },
-    {
-      "shotId": "cascade-revealed",
-      "progress": 0.5,
-      "path": "docs/control-valve/evidence/shot-03-cascade-revealed.png",
-      "runtimeShotId": "cascade-revealed"
-    },
-    {
-      "shotId": "systems-in-order",
-      "progress": 0.7,
-      "path": "docs/control-valve/evidence/shot-04-systems-in-order.png",
-      "runtimeShotId": "systems-in-order"
-    },
-    {
-      "shotId": "product-resolved",
-      "progress": 1,
-      "path": "docs/control-valve/evidence/shot-05-product-resolved.png",
-      "runtimeShotId": "product-resolved"
-    }
-  ],
-  "fullPlayback": {
-    "completed": true,
-    "elapsedMs": 16171,
-    "sampleCount": 61,
-    "observedShotIds": [
-      "product-authority",
-      "axial-command",
-      "cascade-revealed",
-      "systems-in-order",
-      "product-resolved"
-    ],
-    "blackoutElementPresent": false,
-    "samples": [
+    "groups": 6,
+    "trimConnectedComponentCount": 4,
+    "trimDiagnostics": [
       {
-        "elapsedMs": 313,
-        "progress": 0.016718750000186276,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          6.162891047351394,
-          0.4462891047351394,
-          7.555469256821672
-        ],
-        "cameraFov": 31.925782094702786
+        "name": "CASCADE_GEOMETRY_ISLAND_1",
+        "axisOrder": 1,
+        "triangleCount": 2304,
+        "localCenter": [
+          204.28099060058594,
+          130.69418716430664,
+          217.73844146728516
+        ]
       },
       {
-        "elapsedMs": 578,
-        "progress": 0.03333750000018625,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          6.070805400030334,
-          0.4370805400030334,
-          7.444966480036401
-        ],
-        "cameraFov": 31.74161080006067
+        "name": "CASCADE_GEOMETRY_ISLAND_2",
+        "axisOrder": 2,
+        "triangleCount": 8568,
+        "localCenter": [
+          204.2720947265625,
+          214.54702758789062,
+          217.72955322265625
+        ]
       },
       {
-        "elapsedMs": 845,
-        "progress": 0.049968750000186274,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.951015134237709,
-          0.42510151342377095,
-          7.3012181610852505
-        ],
-        "cameraFov": 31.50203026847542
+        "name": "CASCADE_GEOMETRY_ISLAND_3",
+        "axisOrder": 3,
+        "triangleCount": 72,
+        "localCenter": [
+          204.28099060058594,
+          288.98101806640625,
+          217.7384490966797
+        ]
       },
       {
-        "elapsedMs": 1111,
-        "progress": 0.06658750000018625,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.8310845972666305,
-          0.41310845972666305,
-          7.157301516719956
-        ],
-        "cameraFov": 31.26216919453326
-      },
-      {
-        "elapsedMs": 1372,
-        "progress": 0.08320000000018626,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.738324190418178,
-          0.4038324190418177,
-          7.045989028501813
-        ],
-        "cameraFov": 31.076648380836353
-      },
-      {
-        "elapsedMs": 1638,
-        "progress": 0.09981875000018624,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.700022663207609,
-          0.4000022663207609,
-          7.000027195849131
-        ],
-        "cameraFov": 31.00004532641522
-      },
-      {
-        "elapsedMs": 1905,
-        "progress": 0.11540625000018627,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.655961640562222,
-          0.4,
-          6.955961640562222
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 2170,
-        "progress": 0.13306875000018625,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.55476448029733,
-          0.4,
-          6.85476448029733
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 2437,
-        "progress": 0.14968750000018627,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.500092775978034,
-          0.4,
-          6.800092775978034
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 2695,
-        "progress": 0.1652687500001863,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.5,
-          0.4,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 2961,
-        "progress": 0.1818937500001863,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.5,
-          0.4,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 3224,
-        "progress": 0.19851250000018628,
-        "shotId": "product-authority",
-        "cameraPosition": [
-          5.5,
-          0.4,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 3488,
-        "progress": 0.21513750000018628,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          5.45912458238607,
-          0.42627705418038353,
-          6.753285237012651
-        ],
-        "cameraFov": 30.941606546265813
-      },
-      {
-        "elapsedMs": 3754,
-        "progress": 0.23175625000018624,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          5.337435071856971,
-          0.5045060252348043,
-          6.614211510693681
-        ],
-        "cameraFov": 30.7677643883671
-      },
-      {
-        "elapsedMs": 4019,
-        "progress": 0.24838125000018624,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          5.172416567111278,
-          0.6105893497141782,
-          6.425618933841461
-        ],
-        "cameraFov": 30.532023667301825
-      },
-      {
-        "elapsedMs": 4282,
-        "progress": 0.26500625000018624,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          5.002459104963996,
-          0.719847718237431,
-          6.2313818342445675
-        ],
-        "cameraFov": 30.28922729280571
-      },
-      {
-        "elapsedMs": 4546,
-        "progress": 0.2816187500001863,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.8660004059810085,
-          0.8075711675836376,
-          6.0754290354068665
-        ],
-        "cameraFov": 30.094286294258584
-      },
-      {
-        "elapsedMs": 4806,
-        "progress": 0.2972062500001863,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.802390442948125,
-          0.8484632866762047,
-          6.0027319347978585
-        ],
-        "cameraFov": 30.003414918497324
-      },
-      {
-        "elapsedMs": 5072,
-        "progress": 0.31382500000018626,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.765676516190119,
-          0.8757426128574105,
-          5.965676516190119
-        ],
-        "cameraFov": 30
-      },
-      {
-        "elapsedMs": 5333,
-        "progress": 0.3304437500001862,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.671812151675491,
-          0.9461408862433819,
-          5.871812151675491
-        ],
-        "cameraFov": 30
-      },
-      {
-        "elapsedMs": 5599,
-        "progress": 0.3470687500001862,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.603048796725677,
-          0.9977134024557418,
-          5.803048796725678
-        ],
-        "cameraFov": 30
-      },
-      {
-        "elapsedMs": 5860,
-        "progress": 0.36368750000018624,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.6,
-          1,
-          5.8
-        ],
-        "cameraFov": 30
-      },
-      {
-        "elapsedMs": 6123,
-        "progress": 0.3803062500001863,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.6,
-          1,
-          5.8
-        ],
-        "cameraFov": 30
-      },
-      {
-        "elapsedMs": 6385,
-        "progress": 0.39588750000018624,
-        "shotId": "axial-command",
-        "cameraPosition": [
-          4.6,
-          1,
-          5.8
-        ],
-        "cameraFov": 30
-      },
-      {
-        "elapsedMs": 6649,
-        "progress": 0.4125312500001862,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.586808774472527,
-          0.9962310784207222,
-          5.78303985289325
-        ],
-        "cameraFov": 30.018844607896387
-      },
-      {
-        "elapsedMs": 6913,
-        "progress": 0.42913750000018624,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.532012944369313,
-          0.9805751269626609,
-          5.712588071331974
-        ],
-        "cameraFov": 30.097124365186694
-      },
-      {
-        "elapsedMs": 7177,
-        "progress": 0.44575625000018626,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.452058279320655,
-          0.9577309369487585,
-          5.609789216269413
-        ],
-        "cameraFov": 30.211345315256207
-      },
-      {
-        "elapsedMs": 7441,
-        "progress": 0.46238125000018626,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.366097721349236,
-          0.9331707775283533,
-          5.499268498877589
-        ],
-        "cameraFov": 30.334146112358233
-      },
-      {
-        "elapsedMs": 7705,
-        "progress": 0.4790000000001862,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.293358892754545,
-          0.9123882550727271,
-          5.405747147827272
-        ],
-        "cameraFov": 30.438058724636363
-      },
-      {
-        "elapsedMs": 7971,
-        "progress": 0.4956187500001863,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.252966385416157,
-          0.9008475386903305,
-          5.353813924106487
-        ],
-        "cameraFov": 30.495762306548347
-      },
-      {
-        "elapsedMs": 8237,
-        "progress": 0.5122375000001863,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.218142242399418,
-          0.8872568969597672,
-          5.318142242399418
-        ],
-        "cameraFov": 30.563715515201164
-      },
-      {
-        "elapsedMs": 8503,
-        "progress": 0.5288625000001863,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.104378889154998,
-          0.8417515556619991,
-          5.204378889154998
-        ],
-        "cameraFov": 30.791242221690005
-      },
-      {
-        "elapsedMs": 8770,
-        "progress": 0.5454812500001862,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4.008870851339135,
-          0.8035483405356542,
-          5.108870851339135
-        ],
-        "cameraFov": 30.982258297321728
-      },
-      {
-        "elapsedMs": 9033,
-        "progress": 0.5621062500001862,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4,
-          0.8,
-          5.1
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 9300,
-        "progress": 0.5787187500001862,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4,
-          0.8,
-          5.1
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 9563,
-        "progress": 0.5953437500001862,
-        "shotId": "cascade-revealed",
-        "cameraPosition": [
-          4,
-          0.8,
-          5.1
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 9826,
-        "progress": 0.6109375000001862,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.0183515560143785,
-          0.7960675237112047,
-          5.120973206873575
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 10093,
-        "progress": 0.6275500000001862,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.119319948524644,
-          0.7744314396018621,
-          5.236365655456735
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 10360,
-        "progress": 0.6441687500001863,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.275197432123046,
-          0.7410291216879187,
-          5.414511350997767
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 10623,
-        "progress": 0.6607937500001863,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.4477103379120235,
-          0.7040620704474235,
-          5.611668957613742
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 10887,
-        "progress": 0.6774125000001863,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.598402976337831,
-          0.6717707907847504,
-          5.783889115814665
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 11152,
-        "progress": 0.6940375000001863,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.689043492697933,
-          0.6523478229933001,
-          5.887478277369066
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 11416,
-        "progress": 0.7106750000001862,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.744504303380025,
-          0.6410991393239951,
-          5.95340516405603
-        ],
-        "cameraFov": 31.08900860676005
-      },
-      {
-        "elapsedMs": 11681,
-        "progress": 0.7272812500001862,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          4.961487614162557,
-          0.5977024771674887,
-          6.213785136995068
-        ],
-        "cameraFov": 31.522975228325112
-      },
-      {
-        "elapsedMs": 11946,
-        "progress": 0.7438937500001862,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          5.168421186374789,
-          0.5563157627250424,
-          6.462105423649747
-        ],
-        "cameraFov": 31.936842372749577
-      },
-      {
-        "elapsedMs": 12212,
-        "progress": 0.7605187500001862,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          5.2,
-          0.55,
-          6.5
-        ],
-        "cameraFov": 32
-      },
-      {
-        "elapsedMs": 12478,
-        "progress": 0.7771437500001862,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          5.2,
-          0.55,
-          6.5
-        ],
-        "cameraFov": 32
-      },
-      {
-        "elapsedMs": 12744,
-        "progress": 0.7937562500001863,
-        "shotId": "systems-in-order",
-        "cameraPosition": [
-          5.2,
-          0.55,
-          6.5
-        ],
-        "cameraFov": 32
-      },
-      {
-        "elapsedMs": 13010,
-        "progress": 0.8103812500001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.216034099827821,
-          0.5459914750430447,
-          6.524051149741732
-        ],
-        "cameraFov": 31.919829500860892
-      },
-      {
-        "elapsedMs": 13272,
-        "progress": 0.8270250000001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.301812099334206,
-          0.5245469751664487,
-          6.652718149001308
-        ],
-        "cameraFov": 31.49093950332897
-      },
-      {
-        "elapsedMs": 13537,
-        "progress": 0.8436250000001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.385847980020297,
-          0.5035380049949258,
-          6.778771970030444
-        ],
-        "cameraFov": 31.070760099898518
-      },
-      {
-        "elapsedMs": 13802,
-        "progress": 0.8602500000001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 14067,
-        "progress": 0.8768687500001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 14334,
-        "progress": 0.8934875000001862,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 14594,
-        "progress": 0.9090750000001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 14859,
-        "progress": 0.9256937500001864,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 15112,
-        "progress": 0.9412750000001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 15378,
-        "progress": 0.9579125000001864,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 15644,
-        "progress": 0.9745187500001862,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 15907,
-        "progress": 0.9911375000001863,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
-      },
-      {
-        "elapsedMs": 16171,
-        "progress": 1,
-        "shotId": "product-resolved",
-        "cameraPosition": [
-          5.4,
-          0.5,
-          6.8
-        ],
-        "cameraFov": 31
+        "name": "CASCADE_GEOMETRY_ISLAND_4",
+        "axisOrder": 4,
+        "triangleCount": 28380,
+        "localCenter": [
+          204.2720947265625,
+          343.8917541503906,
+          217.72955322265625
+        ]
       }
     ]
   },
-  "benchmark": {
-    "sampleCount": 23,
-    "p50FrameMs": 16.6,
-    "p95FrameMs": 16.8,
-    "framesOver16_7Ms": 8,
-    "framesOver33_3Ms": 0,
-    "idleRendererFrames": 0,
-    "usableFrameMs": 988.2000000029802,
-    "modelResource": {
-      "durationMs": 680.4,
-      "transferSize": 908980,
-      "encodedBodySize": 908680,
-      "decodedBodySize": 908680
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "geometry": {
+    "trimConnectedComponentCount": 4,
+    "trimDiagnostics": [
+      {
+        "name": "CASCADE_GEOMETRY_ISLAND_1",
+        "axisOrder": 1,
+        "triangleCount": 2304,
+        "localCenter": [
+          204.28099060058594,
+          130.69418716430664,
+          217.73844146728516
+        ]
+      },
+      {
+        "name": "CASCADE_GEOMETRY_ISLAND_2",
+        "axisOrder": 2,
+        "triangleCount": 8568,
+        "localCenter": [
+          204.2720947265625,
+          214.54702758789062,
+          217.72955322265625
+        ]
+      },
+      {
+        "name": "CASCADE_GEOMETRY_ISLAND_3",
+        "axisOrder": 3,
+        "triangleCount": 72,
+        "localCenter": [
+          204.28099060058594,
+          288.98101806640625,
+          217.7384490966797
+        ]
+      },
+      {
+        "name": "CASCADE_GEOMETRY_ISLAND_4",
+        "axisOrder": 4,
+        "triangleCount": 28380,
+        "localCenter": [
+          204.2720947265625,
+          343.8917541503906,
+          217.72955322265625
+        ]
+      }
+    ],
+    "independentlyTransformable": true,
+    "labelBoundary": "Geometry islands are numbered only by camera-readable axis order; individual STEP cage/seat identity is not asserted."
+  },
+  "separation": {
+    "maximumRadialAxisError": 0.000019701116375892026,
+    "axisYValues": [
+      -1.784602423693814,
+      -1.1695253802003749,
+      -0.5831001078927408,
+      -0.0560638078032345
+    ],
+    "distinctAxisPositions": 4,
+    "allProjectedOnScreen": true
+  },
+  "closureSamples": [
+    {
+      "id": "closure-start",
+      "progress": 0.4,
+      "frame": 215.60000000000002,
+      "bodyOpacity": 0.14177532594952721,
+      "bodyClosure": 0.050809093882230184,
+      "occlusion": 0,
+      "trimProjectedOnScreen": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "trimNdc": [
+        [
+          7.943693939760164e-7,
+          -0.31142128993974905,
+          0.9956509034519929
+        ],
+        [
+          -8.375748964009136e-7,
+          -0.15928268665191858,
+          0.9956482109588639
+        ],
+        [
+          7.898429231228028e-7,
+          -0.024088715276396434,
+          0.9956457648496603
+        ],
+        [
+          -8.383196412964303e-7,
+          0.0757347937249795,
+          0.9956440079862106
+        ]
+      ]
     },
-    "rendererInfo": {
-      "vendor": "Google Inc. (NVIDIA)",
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1050 (0x00001C91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    {
+      "id": "closure-mid",
+      "progress": 0.49,
+      "frame": 264.11,
+      "bodyOpacity": 0.37050382594255726,
+      "bodyClosure": 0.4648804200852895,
+      "occlusion": 0,
+      "trimProjectedOnScreen": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "trimNdc": [
+        [
+          6.785162568380162e-7,
+          -0.3936945603666564,
+          0.9960134269504283
+        ],
+        [
+          -7.148053153046496e-7,
+          -0.25545589572678806,
+          0.9960125305835832
+        ],
+        [
+          6.73851092237818e-7,
+          -0.1326990147709827,
+          0.9960116890298415
+        ],
+        [
+          -7.150380849034977e-7,
+          -0.04210900529584167,
+          0.9960111099637258
+        ]
+      ]
     },
-    "jsHeapBytes": 20344564
+    {
+      "id": "closure-complete",
+      "progress": 0.59,
+      "frame": 318.01,
+      "bodyOpacity": 1,
+      "bodyClosure": 1,
+      "occlusion": 0,
+      "trimProjectedOnScreen": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "trimNdc": [
+        [
+          5.772755458574967e-7,
+          -0.46413881518505584,
+          0.9963555080210055
+        ],
+        [
+          -6.077479757597712e-7,
+          -0.3388336969937653,
+          0.9963551603730846
+        ],
+        [
+          5.728665178322267e-7,
+          -0.2275877198993512,
+          0.9963548130180413
+        ],
+        [
+          -6.078338480687993e-7,
+          -0.14550669426158158,
+          0.9963545923762116
+        ]
+      ]
+    }
+  ],
+  "roundTrip": {
+    "sequence": [
+      0.22,
+      0.67,
+      0.22,
+      0.67,
+      0.22
+    ],
+    "progress022CameraMaxDelta": 0,
+    "progress022ProductMaxDelta": 0,
+    "progress022TrimTransformMaxDelta": 0,
+    "progress067CameraMaxDelta": 0,
+    "progress067ProductMaxDelta": 0
+  },
+  "forwardPlayback": {
+    "direction": "forward",
+    "completed": true,
+    "elapsedMs": 18042,
+    "sampleCount": 96,
+    "observedShotIds": [
+      "core-suspended",
+      "precision-nested",
+      "body-encloses",
+      "assembly-complete",
+      "product-presence"
+    ],
+    "samples": [
+      {
+        "elapsedMs": 195,
+        "progress": 0.010605555555555535,
+        "frame": 5.7163944444444335,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.2601061756613485,
+          -0.85,
+          4.062632719576685
+        ],
+        "focusDistance": 5.208961211339055,
+        "bodyOpacity": 0.10101061756613484,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 383,
+        "progress": 0.020783333333333355,
+        "frame": 11.20221666666668,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.2850938674465464,
+          -0.85,
+          4.093867334308182
+        ],
+        "focusDistance": 5.248960992466721,
+        "bodyOpacity": 0.10350938674465462,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 570,
+        "progress": 0.03092222222222224,
+        "frame": 16.667077777777788,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.319489747939252,
+          -0.85,
+          4.136862184924064
+        ],
+        "focusDistance": 5.304021207841098,
+        "bodyOpacity": 0.10694897479392518,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 761,
+        "progress": 0.042005555555555574,
+        "frame": 22.640994444444456,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.361697530920852,
+          -0.85,
+          4.189621913651065
+        ],
+        "focusDistance": 5.371586555439474,
+        "bodyOpacity": 0.11116975309208521,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 949,
+        "progress": 0.05216111111111109,
+        "frame": 28.114838888888876,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.398875780539159,
+          -0.85,
+          4.236094725673949
+        ],
+        "focusDistance": 5.431100729866857,
+        "bodyOpacity": 0.11488757805391589,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1136,
+        "progress": 0.06232222222222223,
+        "frame": 33.59167777777778,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.4291619414240997,
+          -0.85,
+          4.2739524267801245
+        ],
+        "focusDistance": 5.479582190940125,
+        "bodyOpacity": 0.11791619414240995,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1323,
+        "progress": 0.07247777777777781,
+        "frame": 39.065522222222235,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.4472074624121363,
+          -0.85,
+          4.29650932801517
+        ],
+        "focusDistance": 5.508469088379917,
+        "bodyOpacity": 0.11972074624121361,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1511,
+        "progress": 0.08357222222222223,
+        "frame": 45.04542777777778,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1701,
+        "progress": 0.09372222222222222,
+        "frame": 50.51627777777777,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1892,
+        "progress": 0.10479999999999998,
+        "frame": 56.48719999999999,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2080,
+        "progress": 0.11496666666666663,
+        "frame": 61.96703333333332,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2267,
+        "progress": 0.12512222222222222,
+        "frame": 67.44087777777777,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2454,
+        "progress": 0.13528333333333334,
+        "frame": 72.91771666666666,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2640,
+        "progress": 0.14636666666666667,
+        "frame": 78.89163333333333,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.4538730702752325,
+          -0.8485103575864492,
+          4.305362712688782
+        ],
+        "focusDistance": 5.519547287405229,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.029792848271016355,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2828,
+        "progress": 0.1565222222222222,
+        "frame": 84.36547777777777,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.4778782826279584,
+          -0.8392775836046313,
+          4.338600699023327
+        ],
+        "focusDistance": 5.5605033072931525,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.21444832790737234,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3016,
+        "progress": 0.1666777777777778,
+        "frame": 89.83932222222224,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.513881043179875,
+          -0.8254303680077404,
+          4.388450675172135
+        ],
+        "focusDistance": 5.621928707556983,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.49139263984519155,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3204,
+        "progress": 0.17775555555555556,
+        "frame": 95.81024444444445,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.5531410244885575,
+          -0.8103303751967088,
+          4.442810649291848
+        ],
+        "focusDistance": 5.688911350811764,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.7933924960658247,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3393,
+        "progress": 0.18791111111111108,
+        "frame": 101.28408888888887,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.576568001868832,
+          -0.8013199992812186,
+          4.475248002587614
+        ],
+        "focusDistance": 5.728880826499052,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.9736000143756308,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3580,
+        "progress": 0.19807777777777774,
+        "frame": 106.7639222222222,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.583276984368684,
+          -0.7986345898463817,
+          4.484369312491579
+        ],
+        "focusDistance": 5.740200216411757,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.027308203072367865,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3767,
+        "progress": 0.2091555555555555,
+        "frame": 112.73484444444442,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.6077483431608477,
+          -0.7884381903496469,
+          4.51699779088113
+        ],
+        "focusDistance": 5.781003089565176,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.2312361930070631,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3957,
+        "progress": 0.21931111111111112,
+        "frame": 118.2086888888889,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.6413414720631847,
+          -0.7744410533070064,
+          4.561788629417579
+        ],
+        "focusDistance": 5.83701535227073,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.5111789338598716,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4144,
+        "progress": 0.2294722222222222,
+        "frame": 123.68552777777776,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.674540499588389,
+          -0.7606081251715048,
+          4.606053999451184
+        ],
+        "focusDistance": 5.89237050113813,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.7878374965699043,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4333,
+        "progress": 0.24054444444444442,
+        "frame": 129.65345555555555,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.6976128717315113,
+          -0.7509946367785371,
+          4.636817162308681
+        ],
+        "focusDistance": 5.930840742284109,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.9801072644292578,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4521,
+        "progress": 0.2507,
+        "frame": 135.1273,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.7034636954412954,
+          -0.7482681522793523,
+          4.644849173617813
+        ],
+        "focusDistance": 5.940782891140331,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.034636954412953794,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4708,
+        "progress": 0.2608555555555555,
+        "frame": 140.60114444444443,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.7225112685727937,
+          -0.7387443657136031,
+          4.671515776001911
+        ],
+        "focusDistance": 5.973568695815272,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.2251126857279361,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4897,
+        "progress": 0.27194444444444443,
+        "frame": 146.57805555555555,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.7530949663851008,
+          -0.7234525168074497,
+          4.714332952939141
+        ],
+        "focusDistance": 6.026211157707365,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.5309496638510063,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5087,
+        "progress": 0.28210555555555555,
+        "frame": 152.05489444444444,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.7804144945946963,
+          -0.7097927527026519,
+          4.752580292432575
+        ],
+        "focusDistance": 6.073235138636998,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.8041449459469622,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5273,
+        "progress": 0.29225,
+        "frame": 157.52275,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.797790252093834,
+          -0.7011048739530831,
+          4.776906352931368
+        ],
+        "focusDistance": 6.1031433157844495,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.9779025209383386,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5460,
+        "progress": 0.3024222222222222,
+        "frame": 163.00557777777777,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.804312138886571,
+          -0.6978439305567143,
+          4.7860369944412
+        ],
+        "focusDistance": 6.114367953680311,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.04312138886571165
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5648,
+        "progress": 0.3134888888888889,
+        "frame": 168.9705111111111,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.8314679521411237,
+          -0.684266023929438,
+          4.824055132997573
+        ],
+        "focusDistance": 6.161102469933395,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.3146795214112395
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5835,
+        "progress": 0.32365555555555553,
+        "frame": 174.45034444444443,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.8651018008035964,
+          -0.6674490995982016,
+          4.871142521125035
+        ],
+        "focusDistance": 6.218985532842828,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.6510180080359663
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6020,
+        "progress": 0.3338055555555555,
+        "frame": 179.92119444444444,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.8923168129123256,
+          -0.6538415935438371,
+          4.909243538077256
+        ],
+        "focusDistance": 6.265821928932348,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.9231681291232583
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6208,
+        "progress": 0.3439722222222222,
+        "frame": 185.40102777777776,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6396,
+        "progress": 0.35505,
+        "frame": 191.37195,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6584,
+        "progress": 0.3652,
+        "frame": 196.8428,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6772,
+        "progress": 0.3753666666666667,
+        "frame": 202.32263333333333,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6961,
+        "progress": 0.3864444444444445,
+        "frame": 208.29355555555557,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          3.9050477280354325,
+          -0.647980908785827,
+          4.92524963715685
+        ],
+        "focusDistance": 6.286283567996524,
+        "bodyOpacity": 0.12242290945700762,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7150,
+        "progress": 0.39660555555555554,
+        "frame": 213.77039444444443,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          3.932242555032198,
+          -0.6371029779871208,
+          4.953532257233486
+        ],
+        "focusDistance": 6.32528425082181,
+        "bodyOpacity": 0.1354764264154551,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7336,
+        "progress": 0.40676111111111113,
+        "frame": 219.2442388888889,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          3.975687558221776,
+          -0.6197249767112897,
+          4.998715060550647
+        ],
+        "focusDistance": 6.387589658756262,
+        "bodyOpacity": 0.1563300279464524,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7525,
+        "progress": 0.41784444444444446,
+        "frame": 225.21815555555557,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.031902219888552,
+          -0.5972391120445792,
+          5.057178308684094
+        ],
+        "focusDistance": 6.468208306929958,
+        "bodyOpacity": 0.1833130655465049,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7713,
+        "progress": 0.428,
+        "frame": 230.692,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.082537360458808,
+          -0.5769850558164771,
+          5.109838854877159
+        ],
+        "focusDistance": 6.540825244608188,
+        "bodyOpacity": 0.2076179330202276,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7901,
+        "progress": 0.4381611111111111,
+        "frame": 236.1688388888889,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.123807952288785,
+          -0.5604768190844862,
+          5.152760270380336
+        ],
+        "focusDistance": 6.6000122827226155,
+        "bodyOpacity": 0.2274278170986166,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8089,
+        "progress": 0.44923333333333343,
+        "frame": 242.13676666666672,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.148342669489579,
+          -0.5506629322041686,
+          5.178276376269161
+        ],
+        "focusDistance": 6.635198045215978,
+        "bodyOpacity": 0.23920448135499767,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8274,
+        "progress": 0.45939444444444444,
+        "frame": 247.61360555555555,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.157622765187523,
+          -0.5466968017520737,
+          5.188130949533357
+        ],
+        "focusDistance": 6.6486854933216755,
+        "bodyOpacity": 0.24609821215001793,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8462,
+        "progress": 0.46955555555555556,
+        "frame": 253.09044444444444,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.193290523393416,
+          -0.5312407731961866,
+          5.226176558286309
+        ],
+        "focusDistance": 6.700673378619488,
+        "bodyOpacity": 0.2746324187147325,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8649,
+        "progress": 0.4797166666666667,
+        "frame": 258.56728333333336,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.248459682876939,
+          -0.5073341374199932,
+          5.285023661735401
+        ],
+        "focusDistance": 6.781085719609627,
+        "bodyOpacity": 0.31876774630155097,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8835,
+        "progress": 0.48987222222222226,
+        "frame": 264.0411277777778,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.312316804810654,
+          -0.47966271791538356,
+          5.353137925131364
+        ],
+        "focusDistance": 6.874161284139776,
+        "bodyOpacity": 0.3698534438485227,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9021,
+        "progress": 0.50095,
+        "frame": 270.01205,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.379267485227414,
+          -0.4506507564014538,
+          5.424551984242576
+        ],
+        "focusDistance": 6.971745894701086,
+        "bodyOpacity": 0.42341398818193143,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9207,
+        "progress": 0.5111055555555555,
+        "frame": 275.4858944444444,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.426574973072482,
+          -0.43015084500192463,
+          5.475013304610647
+        ],
+        "focusDistance": 7.0406993803006,
+        "bodyOpacity": 0.4612599784579853,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9394,
+        "progress": 0.5212666666666667,
+        "frame": 280.96273333333335,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.449341614553683,
+          -0.4202853003600709,
+          5.499297722190595
+        ],
+        "focusDistance": 7.073883118373197,
+        "bodyOpacity": 0.47947329164294605,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9582,
+        "progress": 0.5314222222222222,
+        "frame": 286.4365777777778,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.464130645894337,
+          -0.41267299842515887,
+          5.5146540031496825
+        ],
+        "focusDistance": 7.095125094491495,
+        "bodyOpacity": 0.5072145772779814,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9769,
+        "progress": 0.5425055555555556,
+        "frame": 292.41049444444445,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.517135642796196,
+          -0.3851889259575279,
+          5.569622148084944
+        ],
+        "focusDistance": 7.171205507221832,
+        "bodyOpacity": 0.6092982750148964,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9958,
+        "progress": 0.5526500000000001,
+        "frame": 297.87835000000007,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.583460396854947,
+          -0.3507983127418793,
+          5.638403374516241
+        ],
+        "focusDistance": 7.266404355594008,
+        "bodyOpacity": 0.7370348383873055,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10146,
+        "progress": 0.5628222222222221,
+        "frame": 303.3611777777777,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.650313045215982,
+          -0.31613397655467607,
+          5.707732046890648
+        ],
+        "focusDistance": 7.362360913969831,
+        "bodyOpacity": 0.8657880870826318,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10338,
+        "progress": 0.5729666666666666,
+        "frame": 308.8290333333333,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.701127667756452,
+          -0.28978565375591364,
+          5.760428692488173
+        ],
+        "focusDistance": 7.435297385653307,
+        "bodyOpacity": 0.9636532860494637,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10533,
+        "progress": 0.5849777777777778,
+        "frame": 315.30302222222224,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10721,
+        "progress": 0.5951333333333333,
+        "frame": 320.77686666666665,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10906,
+        "progress": 0.6052944444444444,
+        "frame": 326.2537055555555,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11092,
+        "progress": 0.6154555555555556,
+        "frame": 331.7305444444445,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11280,
+        "progress": 0.6265277777777778,
+        "frame": 337.6984722222222,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.725465246020194,
+          -0.27392750442200636,
+          5.786376120356894
+        ],
+        "focusDistance": 7.470844896282159,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11469,
+        "progress": 0.6366944444444445,
+        "frame": 343.17830555555554,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.764989822137854,
+          -0.23001130873571835,
+          5.832488125827496
+        ],
+        "focusDistance": 7.532021837772585,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11655,
+        "progress": 0.64685,
+        "frame": 348.65215,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.830867071820586,
+          -0.156814364643793,
+          5.9093449171240175
+        ],
+        "focusDistance": 7.633987982517401,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11843,
+        "progress": 0.6570055555555555,
+        "frame": 354.1259944444444,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.909132648241007,
+          -0.06985261306554777,
+          6.000654756281175
+        ],
+        "focusDistance": 7.755129030940873,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12031,
+        "progress": 0.6680888888888888,
+        "frame": 360.0999111111111,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.992236620366165,
+          0.02248513374018346,
+          6.097609390427193
+        ],
+        "focusDistance": 7.883759046483312,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12219,
+        "progress": 0.6782444444444445,
+        "frame": 365.5737555555556,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.05119345968412,
+          0.08799273298235527,
+          6.166392369631473
+        ],
+        "focusDistance": 7.975013639541515,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12405,
+        "progress": 0.6884000000000001,
+        "frame": 371.04760000000005,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.079296698174242,
+          0.1192185535269355,
+          6.1991794812032825
+        ],
+        "focusDistance": 8.0185124027334,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12591,
+        "progress": 0.698561111111111,
+        "frame": 376.5244388888888,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.1088460545695185,
+          0.1298199334704742,
+          6.2398934797238015
+        ],
+        "focusDistance": 8.068763414934237,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12778,
+        "progress": 0.7096388888888889,
+        "frame": 382.49536111111115,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.212323307478654,
+          0.16504623233315874,
+          6.383000318853457
+        ],
+        "focusDistance": 8.245120043417458,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12965,
+        "progress": 0.7198000000000001,
+        "frame": 387.97220000000004,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.3378147087698915,
+          0.20776670936847388,
+          6.556552256809425
+        ],
+        "focusDistance": 8.458995458672165,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13154,
+        "progress": 0.7299444444444444,
+        "frame": 393.44005555555555,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.4570423765723435,
+          0.2483548515990957,
+          6.721441584621326
+        ],
+        "focusDistance": 8.662195571976502,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13343,
+        "progress": 0.7410333333333332,
+        "frame": 399.4169666666666,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.540147108084756,
+          0.27664582402885335,
+          6.836373660117216
+        ],
+        "focusDistance": 8.803831244054134,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13530,
+        "progress": 0.7511944444444444,
+        "frame": 404.8938055555555,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.55,
+          0.28,
+          6.85
+        ],
+        "focusDistance": 8.820623560724037,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13718,
+        "progress": 0.7613388888888888,
+        "frame": 410.36166111111106,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.55,
+          0.28,
+          6.85
+        ],
+        "focusDistance": 8.820623560724037,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13907,
+        "progress": 0.7724277777777778,
+        "frame": 416.33857222222224,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.55,
+          0.28,
+          6.85
+        ],
+        "focusDistance": 8.820623560724037,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14097,
+        "progress": 0.7825888888888888,
+        "frame": 421.8154111111111,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          5.552382800661314,
+          0.28,
+          6.847004479168633
+        ],
+        "focusDistance": 8.820404486129867,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14284,
+        "progress": 0.7927500000000001,
+        "frame": 427.29225,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          5.678057062066511,
+          0.28,
+          6.689013979116385
+        ],
+        "focusDistance": 8.8088499997383,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14473,
+        "progress": 0.8038166666666666,
+        "frame": 433.25718333333333,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          5.978767578943903,
+          0.28,
+          6.310977900756235
+        ],
+        "focusDistance": 8.781202687263882,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14661,
+        "progress": 0.8139722222222222,
+        "frame": 438.7310277777778,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          6.337471073413943,
+          0.28,
+          5.860036364851043
+        ],
+        "focusDistance": 8.748223502830095,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14848,
+        "progress": 0.8241333333333335,
+        "frame": 444.20786666666675,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          6.710922707486375,
+          0.28,
+          5.3905543105885565
+        ],
+        "focusDistance": 8.713888375051733,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15035,
+        "progress": 0.8342833333333333,
+        "frame": 449.6787166666666,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.035763243283492,
+          0.28,
+          4.982183351300752
+        ],
+        "focusDistance": 8.684022549636648,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15223,
+        "progress": 0.8453777777777778,
+        "frame": 455.6586222222222,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.261787281799272,
+          0.28,
+          4.698038845738058
+        ],
+        "focusDistance": 8.663241908891305,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15407,
+        "progress": 0.8555333333333333,
+        "frame": 461.13246666666663,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15595,
+        "progress": 0.8656944444444444,
+        "frame": 466.6093055555555,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15784,
+        "progress": 0.8758388888888888,
+        "frame": 472.0771611111111,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15975,
+        "progress": 0.8869222222222222,
+        "frame": 478.0510777777777,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16163,
+        "progress": 0.8970833333333333,
+        "frame": 483.52791666666667,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16351,
+        "progress": 0.9081611111111112,
+        "frame": 489.49883888888894,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16539,
+        "progress": 0.9183222222222222,
+        "frame": 494.9756777777777,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16727,
+        "progress": 0.9284833333333334,
+        "frame": 500.4525166666667,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16916,
+        "progress": 0.9395666666666668,
+        "frame": 506.42643333333336,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17105,
+        "progress": 0.9497222222222221,
+        "frame": 511.9002777777777,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17292,
+        "progress": 0.9598777777777777,
+        "frame": 517.3741222222222,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17482,
+        "progress": 0.97095,
+        "frame": 523.34205,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17670,
+        "progress": 0.9811166666666666,
+        "frame": 528.8218833333333,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17855,
+        "progress": 0.9912722222222222,
+        "frame": 534.2957277777778,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 18042,
+        "progress": 1,
+        "frame": 539,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      }
+    ]
+  },
+  "reversePlayback": {
+    "direction": "reverse",
+    "completed": true,
+    "elapsedMs": 18168,
+    "sampleCount": 97,
+    "observedShotIds": [
+      "product-presence",
+      "assembly-complete",
+      "body-encloses",
+      "precision-nested",
+      "core-suspended"
+    ],
+    "samples": [
+      {
+        "elapsedMs": 187,
+        "progress": 0.989883333333499,
+        "frame": 533.547116666756,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 373,
+        "progress": 0.9797277777779434,
+        "frame": 528.0732722223115,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 562,
+        "progress": 0.9695666666668322,
+        "frame": 522.5964333334226,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 749,
+        "progress": 0.9594111111112767,
+        "frame": 517.1225888889782,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 936,
+        "progress": 0.9483277777779434,
+        "frame": 511.1486722223115,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1124,
+        "progress": 0.9381833333334988,
+        "frame": 505.68081666675585,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1313,
+        "progress": 0.9280277777779433,
+        "frame": 500.20697222231144,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1502,
+        "progress": 0.9169388888890545,
+        "frame": 494.23006111120037,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1688,
+        "progress": 0.9067833333334989,
+        "frame": 488.7562166667559,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 1876,
+        "progress": 0.8966277777779432,
+        "frame": 483.2823722223114,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2063,
+        "progress": 0.8855444444446099,
+        "frame": 477.30845555564474,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2249,
+        "progress": 0.8753944444446101,
+        "frame": 471.83760555564487,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2434,
+        "progress": 0.8652222222223878,
+        "frame": 466.354777777867,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2622,
+        "progress": 0.8550666666668323,
+        "frame": 460.8809333334226,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.3,
+          0.28,
+          4.65
+        ],
+        "focusDistance": 8.659728633161667,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2810,
+        "progress": 0.8449166666668322,
+        "frame": 455.41008333342256,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.256095478858153,
+          0.28,
+          4.705194255149751
+        ],
+        "focusDistance": 8.663765213018111,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 2998,
+        "progress": 0.8338277777779434,
+        "frame": 449.4331722223115,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          7.023092106126593,
+          0.28,
+          4.998112780869426
+        ],
+        "focusDistance": 8.685187533462358,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3184,
+        "progress": 0.8236722222223879,
+        "frame": 443.9593277778671,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          6.6945472305212546,
+          0.28,
+          5.411140624487565
+        ],
+        "focusDistance": 8.715393935726077,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3374,
+        "progress": 0.8135277777779433,
+        "frame": 438.4914722223114,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          6.321011455295542,
+          0.28,
+          5.880728456199889
+        ],
+        "focusDistance": 8.749736799438589,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3562,
+        "progress": 0.8024444444446099,
+        "frame": 432.5175555556448,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          5.934841309506444,
+          0.28,
+          6.36619949662047
+        ],
+        "focusDistance": 8.785241266657724,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3747,
+        "progress": 0.7922777777779433,
+        "frame": 427.0377222223114,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          5.668498360678951,
+          0.28,
+          6.701030632289318
+        ],
+        "focusDistance": 8.80972882634821,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 3934,
+        "progress": 0.7821277777779433,
+        "frame": 421.5668722223114,
+        "shotId": "product-presence",
+        "cameraPosition": [
+          5.551156702645074,
+          0.28,
+          6.848545859531906
+        ],
+        "focusDistance": 8.820517213530728,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4122,
+        "progress": 0.7719722222223877,
+        "frame": 416.09302777786695,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.55,
+          0.28,
+          6.85
+        ],
+        "focusDistance": 8.820623560724037,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4310,
+        "progress": 0.7608777777779433,
+        "frame": 410.11312222231146,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.55,
+          0.28,
+          6.85
+        ],
+        "focusDistance": 8.820623560724037,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4497,
+        "progress": 0.7507222222223877,
+        "frame": 404.639277777867,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.55,
+          0.28,
+          6.85
+        ],
+        "focusDistance": 8.820623560724037,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4683,
+        "progress": 0.7405666666668322,
+        "frame": 399.1654333334226,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.53820510691078,
+          0.27598471724622325,
+          6.833687913812781
+        ],
+        "focusDistance": 8.800521484953228,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 4870,
+        "progress": 0.7304222222223878,
+        "frame": 393.697577777867,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.461933422141898,
+          0.2500198883887311,
+          6.7282057965792195
+        ],
+        "focusDistance": 8.670531397311581,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5059,
+        "progress": 0.7193388888890546,
+        "frame": 387.72366111120044,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.331992842316336,
+          0.20578479738428468,
+          6.548500739373656
+        ],
+        "focusDistance": 8.449073232188917,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5245,
+        "progress": 0.7091833333334988,
+        "frame": 382.24981666675586,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.207102292696802,
+          0.16326886559891124,
+          6.375779766495577
+        ],
+        "focusDistance": 8.236221850449414,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5432,
+        "progress": 0.6990111111112767,
+        "frame": 376.7669888889781,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.111829873009568,
+          0.13083570145006565,
+          6.244020037140892
+        ],
+        "focusDistance": 8.073848746688794,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5618,
+        "progress": 0.6888555555557212,
+        "frame": 371.2931444445337,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.0796108519130785,
+          0.11956761323675341,
+          6.1995459938985915
+        ],
+        "focusDistance": 8.018998656269494,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5806,
+        "progress": 0.6777722222223879,
+        "frame": 365.31922777786707,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          5.0490278353333,
+          0.08558648370366684,
+          6.16386580788885
+        ],
+        "focusDistance": 7.971661642196725,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 5992,
+        "progress": 0.6676222222223878,
+        "frame": 359.84837777786703,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.9890152318718775,
+          0.018905813190974563,
+          6.093851103850524
+        ],
+        "focusDistance": 7.878772915959196,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6181,
+        "progress": 0.6574611111112766,
+        "frame": 354.3715388889781,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.912710346801123,
+          -0.06587739244319668,
+          6.004828737934644
+        ],
+        "focusDistance": 7.760666665420015,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6367,
+        "progress": 0.6463888888890544,
+        "frame": 348.40361111120035,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.827501816983734,
+          -0.16055353668474046,
+          5.905418786481023
+        ],
+        "focusDistance": 7.6287791727469525,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6555,
+        "progress": 0.6362222222223878,
+        "frame": 342.92377777786703,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.76246018213665,
+          -0.23282201984816672,
+          5.829536879159425
+        ],
+        "focusDistance": 7.528106409612526,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6743,
+        "progress": 0.6260611111112768,
+        "frame": 337.4469388889782,
+        "shotId": "assembly-complete",
+        "cameraPosition": [
+          4.724515273046414,
+          -0.2749830299484284,
+          5.785267818554151
+        ],
+        "focusDistance": 7.469374508823445,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 6930,
+        "progress": 0.615905555555721,
+        "frame": 331.9730944445336,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7117,
+        "progress": 0.6048277777779434,
+        "frame": 326.00217222231146,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7304,
+        "progress": 0.5946666666668322,
+        "frame": 320.52533333342257,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7490,
+        "progress": 0.5845111111112766,
+        "frame": 315.0514888889781,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.72,
+          -0.28,
+          5.78
+        ],
+        "focusDistance": 7.462385677516273,
+        "bodyOpacity": 1,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7676,
+        "progress": 0.5743500000001656,
+        "frame": 309.57465000008926,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.705937161748428,
+          -0.2872918420563707,
+          5.765416315887259
+        ],
+        "focusDistance": 7.442200664765107,
+        "bodyOpacity": 0.9729160152191945,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 7864,
+        "progress": 0.5632722222223878,
+        "frame": 303.60372777786705,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.653022333828645,
+          -0.3147291602369991,
+          5.710541679526002
+        ],
+        "focusDistance": 7.366249675556566,
+        "bodyOpacity": 0.8710059762625748,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8051,
+        "progress": 0.5531222222223877,
+        "frame": 298.13287777786695,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.586681695712652,
+          -0.34912800963047635,
+          5.641743980739047
+        ],
+        "focusDistance": 7.271028028095599,
+        "bodyOpacity": 0.7432388213725163,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8240,
+        "progress": 0.5429666666668322,
+        "frame": 292.6590333334226,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.519914140371908,
+          -0.38374822351086263,
+          5.572503552978275
+        ],
+        "focusDistance": 7.175193607489469,
+        "bodyOpacity": 0.6146494555310816,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8427,
+        "progress": 0.5328111111112768,
+        "frame": 287.1851888889782,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.46896998645065,
+          -0.4101637107292931,
+          5.519672578541414
+        ],
+        "focusDistance": 7.102071213695098,
+        "bodyOpacity": 0.5165347887197685,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8614,
+        "progress": 0.5217222222223877,
+        "frame": 281.208277777867,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.449614746663082,
+          -0.4201669431126645,
+          5.499589063107288
+        ],
+        "focusDistance": 7.07428122471598,
+        "bodyOpacity": 0.4796917973304655,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8801,
+        "progress": 0.5115722222223877,
+        "frame": 275.73742777786697,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.428241227002926,
+          -0.4294288016320658,
+          5.476790642136454
+        ],
+        "focusDistance": 7.043128044802385,
+        "bodyOpacity": 0.46259298160234,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 8987,
+        "progress": 0.5014055555557211,
+        "frame": 270.25759444453365,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.381765175549375,
+          -0.44956842392860424,
+          5.427216187252666
+        ],
+        "focusDistance": 6.975386427341741,
+        "bodyOpacity": 0.4254121404394999,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9174,
+        "progress": 0.4912500000001656,
+        "frame": 264.78375000008924,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.321061296600627,
+          -0.47587343813972843,
+          5.362465383040668
+        ],
+        "focusDistance": 6.886906902564701,
+        "bodyOpacity": 0.37684903728050134,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9362,
+        "progress": 0.4801666666668324,
+        "frame": 258.80983333342266,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.251184046553702,
+          -0.5061535798267293,
+          5.287929649657282
+        ],
+        "focusDistance": 6.785056642186804,
+        "bodyOpacity": 0.3209472372429614,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9548,
+        "progress": 0.4700055555557212,
+        "frame": 253.33299444453374,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.195400469655384,
+          -0.5303264631493336,
+          5.228427167632409
+        ],
+        "focusDistance": 6.7037487511623475,
+        "bodyOpacity": 0.2763203757243072,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9736,
+        "progress": 0.4598611111112768,
+        "frame": 247.8651388889782,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.158679810007207,
+          -0.5462387489968769,
+          5.189258464007688
+        ],
+        "focusDistance": 6.6502261992029705,
+        "bodyOpacity": 0.24694384800576585,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 9923,
+        "progress": 0.4497055555557211,
+        "frame": 242.39129444453368,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.148758990454971,
+          -0.5504964038180116,
+          5.17870935007317
+        ],
+        "focusDistance": 6.635795100013448,
+        "bodyOpacity": 0.2394043154183862,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10110,
+        "progress": 0.4386222222223878,
+        "frame": 236.41737777786702,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.125323642614854,
+          -0.5598705429540588,
+          5.154336588319447
+        ],
+        "focusDistance": 6.602185966624902,
+        "bodyOpacity": 0.2281553484551295,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10297,
+        "progress": 0.4284555555557211,
+        "frame": 230.9375444445337,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.084650737932175,
+          -0.5761397048271301,
+          5.112036767449462
+        ],
+        "focusDistance": 6.543856084427051,
+        "bodyOpacity": 0.20863235420744392,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10485,
+        "progress": 0.41830000000016543,
+        "frame": 225.46370000008918,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          4.034258802153304,
+          -0.5962964791386787,
+          5.059629154239436
+        ],
+        "focusDistance": 6.471587931939898,
+        "bodyOpacity": 0.1844442250335857,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10673,
+        "progress": 0.4072111111112766,
+        "frame": 219.48678888897808,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          3.9778580461465634,
+          -0.6188567815413747,
+          5.000972367992426
+        ],
+        "focusDistance": 6.390702401894536,
+        "bodyOpacity": 0.15737186215035043,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 10860,
+        "progress": 0.39706111111127684,
+        "frame": 214.0159388889782,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          3.9339049756278834,
+          -0.6364380097488467,
+          4.955261174652999
+        ],
+        "focusDistance": 6.327668363740869,
+        "bodyOpacity": 0.13627438830138405,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11046,
+        "progress": 0.3869111111112765,
+        "frame": 208.54508888897806,
+        "shotId": "body-encloses",
+        "cameraPosition": [
+          3.9058215274707946,
+          -0.6476713890116821,
+          4.926054388569627
+        ],
+        "focusDistance": 6.287393290310717,
+        "bodyOpacity": 0.12279433318598147,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11233,
+        "progress": 0.3767388888890544,
+        "frame": 203.0622611112003,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11421,
+        "progress": 0.36565555555572105,
+        "frame": 197.08834444453365,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11608,
+        "progress": 0.35550555555572116,
+        "frame": 191.61749444453372,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11795,
+        "progress": 0.34534444444461,
+        "frame": 186.14065555564477,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.9,
+          -0.65,
+          4.92
+        ],
+        "focusDistance": 6.279044513299774,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 11981,
+        "progress": 0.3351888888890543,
+        "frame": 180.66681111120027,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.8947492316025007,
+          -0.6526253841987497,
+          4.912648924243501
+        ],
+        "focusDistance": 6.270008064318708,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.9474923160250062
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12168,
+        "progress": 0.32411666666683236,
+        "frame": 174.69888333342266,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.8665836083830696,
+          -0.6667081958084652,
+          4.873217051736297
+        ],
+        "focusDistance": 6.221535688853907,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.6658360838306971
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12355,
+        "progress": 0.31396111111127656,
+        "frame": 169.22503888897808,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.8329656414354427,
+          -0.6835171792822785,
+          4.82615189800962
+        ],
+        "focusDistance": 6.163679958002388,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.3296564143544284
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12541,
+        "progress": 0.3038000000001655,
+        "frame": 163.7482000000892,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.806555347840222,
+          -0.6967223260798889,
+          4.789177486976311
+        ],
+        "focusDistance": 6.118228463557911,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          1,
+          0.06555347840222046
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12726,
+        "progress": 0.29363333333349884,
+        "frame": 158.26836666675587,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.798899900947755,
+          -0.7005500495261223,
+          4.778459861326858
+        ],
+        "focusDistance": 6.10505330874425,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.9889990094775537,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 12913,
+        "progress": 0.28348333333349884,
+        "frame": 152.79751666675588,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.7835536822362403,
+          -0.7082231588818798,
+          4.756975155130736
+        ],
+        "focusDistance": 6.078638493287122,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.8355368223624033,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13101,
+        "progress": 0.27241111111127647,
+        "frame": 146.829588888978,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.754439024498373,
+          -0.7227804877508134,
+          4.716214634297723
+        ],
+        "focusDistance": 6.028524629689822,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.5443902449837325,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13291,
+        "progress": 0.2622555555557212,
+        "frame": 141.35574444453374,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.7260327094640266,
+          -0.7369836452679867,
+          4.676445793249637
+        ],
+        "focusDistance": 5.979630007271449,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.2603270946402659,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13481,
+        "progress": 0.25209444444461004,
+        "frame": 135.87890555564482,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.7052256422346197,
+          -0.7473871788826902,
+          4.647315899128467
+        ],
+        "focusDistance": 5.943815657730319,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          1,
+          0.05225642234619507,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13669,
+        "progress": 0.24100555555572123,
+        "frame": 129.90199444453376,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.698079806393938,
+          -0.7508000806691926,
+          4.637439741858584
+        ],
+        "focusDistance": 5.931619296346585,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.9839983866161496,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 13856,
+        "progress": 0.23085000000016553,
+        "frame": 124.42815000008922,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.6784198311722602,
+          -0.7589917370115584,
+          4.611226441563013
+        ],
+        "focusDistance": 5.89883879233034,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.8201652597688326,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14043,
+        "progress": 0.22068888888905436,
+        "frame": 118.9513111112003,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.646106158932042,
+          -0.7724557671116492,
+          4.568141545242723
+        ],
+        "focusDistance": 5.844959860607063,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.5508846577670153,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14231,
+        "progress": 0.2096055555557209,
+        "frame": 112.97739444453357,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.6090970593305154,
+          -0.787876225278952,
+          4.5187960791073545
+        ],
+        "focusDistance": 5.783251901952682,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.2424754944209623,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14419,
+        "progress": 0.19945000000016566,
+        "frame": 107.50355000008929,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.585166238714909,
+          -0.7978474005354547,
+          4.486888318286546
+        ],
+        "focusDistance": 5.743350307344519,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          1,
+          0.04305198929090754,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14606,
+        "progress": 0.18928888888905449,
+        "frame": 102.02671111120037,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.5781540050797207,
+          -0.8007099980462614,
+          4.477444007033459
+        ],
+        "focusDistance": 5.731586754615537,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.9858000390747728,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14793,
+        "progress": 0.17913333333349868,
+        "frame": 96.55286666675579,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.557303358533614,
+          -0.8087294774870717,
+          4.448573881046542
+        ],
+        "focusDistance": 5.6960128349988075,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.8254104502585672,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 14980,
+        "progress": 0.16806666666683223,
+        "frame": 90.58793333342257,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.5190921286738135,
+          -0.8234261043562257,
+          4.395666024317587
+        ],
+        "focusDistance": 5.630819498356556,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.5314779128754863,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15167,
+        "progress": 0.1578944444446101,
+        "frame": 85.10510555564484,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.4822996429079036,
+          -0.8375770604200371,
+          4.344722582487866
+        ],
+        "focusDistance": 5.568046723985176,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.24845879159925752,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15352,
+        "progress": 0.14774444444460988,
+        "frame": 79.63425555564473,
+        "shotId": "precision-nested",
+        "cameraPosition": [
+          3.456001693456873,
+          -0.8476916563627412,
+          4.308310037094131
+        ],
+        "focusDistance": 5.52317899588921,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0.04616687274517498,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15539,
+        "progress": 0.13759444444461,
+        "frame": 74.16340555564479,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15726,
+        "progress": 0.12650555555572118,
+        "frame": 68.18649444453372,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 15914,
+        "progress": 0.11634444444461,
+        "frame": 62.709655555644794,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16103,
+        "progress": 0.10618888888905431,
+        "frame": 57.23581111120028,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16292,
+        "progress": 0.09510555555572098,
+        "frame": 51.26189444453361,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16479,
+        "progress": 0.0849555555557211,
+        "frame": 45.79104444453367,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.45,
+          -0.85,
+          4.3
+        ],
+        "focusDistance": 5.512939324897381,
+        "bodyOpacity": 0.12,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16665,
+        "progress": 0.07478888888905444,
+        "frame": 40.31121111120034,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.4490559331653277,
+          -0.85,
+          4.298819916456659
+        ],
+        "focusDistance": 5.51142808219912,
+        "bodyOpacity": 0.11990559331653275,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 16851,
+        "progress": 0.06463888888905467,
+        "frame": 34.840361111200465,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.434545940680916,
+          -0.85,
+          4.280682425851144
+        ],
+        "focusDistance": 5.488200785795362,
+        "bodyOpacity": 0.11845459406809158,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17039,
+        "progress": 0.0535500000001653,
+        "frame": 28.863450000089095,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.403542365805741,
+          -0.85,
+          4.241927957257176
+        ],
+        "focusDistance": 5.438570903217861,
+        "bodyOpacity": 0.11535423658057409,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17226,
+        "progress": 0.04340000000016553,
+        "frame": 23.39260000008922,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.3670160526846438,
+          -0.85,
+          4.1962700658558045
+        ],
+        "focusDistance": 5.3801003352756895,
+        "bodyOpacity": 0.11170160526846439,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17413,
+        "progress": 0.03323888888905435,
+        "frame": 17.915761111200297,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.3281281225764188,
+          -0.85,
+          4.147660153220523
+        ],
+        "focusDistance": 5.3178493396171636,
+        "bodyOpacity": 0.10781281225764186,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17600,
+        "progress": 0.02308333333349899,
+        "frame": 12.441916666755956,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.2922549213758225,
+          -0.85,
+          4.102818651719778
+        ],
+        "focusDistance": 5.260424259753543,
+        "bodyOpacity": 0.10422549213758223,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17788,
+        "progress": 0.012000000000165656,
+        "frame": 6.4680000000892885,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.2627686944003322,
+          -0.85,
+          4.065960868000415
+        ],
+        "focusDistance": 5.213223316367531,
+        "bodyOpacity": 0.10127686944003324,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 17978,
+        "progress": 0.0018444444446100716,
+        "frame": 0.9941555556448286,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.2503308669851836,
+          -0.85,
+          4.05041358373148
+        ],
+        "focusDistance": 5.193313099025874,
+        "bodyOpacity": 0.10003308669851838,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      },
+      {
+        "elapsedMs": 18168,
+        "progress": 0,
+        "frame": 0,
+        "shotId": "core-suspended",
+        "cameraPosition": [
+          3.25,
+          -0.85,
+          4.05
+        ],
+        "focusDistance": 5.1927834539868885,
+        "bodyOpacity": 0.1,
+        "trimAssembly": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "occlusion": 0
+      }
+    ]
+  },
+  "captures": [
+    {
+      "shotId": "core-suspended",
+      "progress": 0.08,
+      "path": "docs/control-valve/evidence/shot-01-core-suspended.png",
+      "runtimeShotId": "core-suspended",
+      "frame": 43.12
+    },
+    {
+      "shotId": "precision-nested",
+      "progress": 0.28,
+      "path": "docs/control-valve/evidence/shot-02-precision-nested.png",
+      "runtimeShotId": "precision-nested",
+      "frame": 150.92000000000002
+    },
+    {
+      "shotId": "body-encloses",
+      "progress": 0.48,
+      "path": "docs/control-valve/evidence/shot-03-body-encloses.png",
+      "runtimeShotId": "body-encloses",
+      "frame": 258.71999999999997
+    },
+    {
+      "shotId": "assembly-complete",
+      "progress": 0.7,
+      "path": "docs/control-valve/evidence/shot-04-assembly-complete.png",
+      "runtimeShotId": "assembly-complete",
+      "frame": 377.29999999999995
+    },
+    {
+      "shotId": "product-presence",
+      "progress": 1,
+      "path": "docs/control-valve/evidence/shot-05-product-presence.png",
+      "runtimeShotId": "product-presence",
+      "frame": 539
+    }
+  ],
+  "validationFrames": [
+    {
+      "id": "trim-separated",
+      "progress": 0,
+      "path": "docs/control-valve/evidence/validation-trim-separated.png",
+      "shotId": "core-suspended",
+      "frame": 0
+    },
+    {
+      "id": "trim-mid-assembly",
+      "progress": 0.25,
+      "path": "docs/control-valve/evidence/validation-trim-mid-assembly.png",
+      "shotId": "precision-nested",
+      "frame": 134.75
+    },
+    {
+      "id": "closure-start",
+      "progress": 0.4,
+      "path": "docs/control-valve/evidence/validation-closure-start.png",
+      "shotId": "body-encloses",
+      "frame": 215.60000000000002
+    },
+    {
+      "id": "closure-mid",
+      "progress": 0.49,
+      "path": "docs/control-valve/evidence/validation-closure-mid.png",
+      "shotId": "body-encloses",
+      "frame": 264.11
+    },
+    {
+      "id": "closure-complete",
+      "progress": 0.59,
+      "path": "docs/control-valve/evidence/validation-closure-complete.png",
+      "shotId": "body-encloses",
+      "frame": 318.01
+    }
+  ],
+  "video": {
+    "path": "docs/control-valve/evidence/control-valve-grey-animatic.webm",
+    "bytes": 2028135,
+    "direction": "forward",
+    "canonicalDurationSeconds": 18
   }
 }

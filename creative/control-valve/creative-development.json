@@ -158,7 +158,7 @@
     {
       "id": "core-suspended",
       "order": 1,
-      "range": [0, 0.155],
+      "range": [0, 0.14],
       "narrativePurpose": "从轴向拆分的串级内件开始，让精密核心先于大型外壳被认识。",
       "viewerTakeaway": "产品的精密性来自串级式阀芯、三级阀笼与阀座形成的中央层级。",
       "startState": "阀芯边缘与最接近的一层阀笼占据画面，其余内件沿同一轴线短距离拆分，阀体为低亮轮廓。",
@@ -192,7 +192,7 @@
     {
       "id": "precision-nested",
       "order": 2,
-      "range": [0.155, 0.41],
+      "range": [0.14, 0.38],
       "narrativePurpose": "让轴向拆分的内件依次归位，使重复结构成为一个可理解的精密核心。",
       "viewerTakeaway": "这些结构不是漂浮零件，而是围绕同一中央轴形成完整层级。",
       "startState": "完全继承上一节拍终态：核心轴向拆分，最外层轮廓已被高光选中。",
@@ -225,7 +225,7 @@
     {
       "id": "body-encloses",
       "order": 3,
-      "range": [0.41, 0.65],
+      "range": [0.38, 0.62],
       "narrativePurpose": "让阀体与上盖围绕已经成立的核心闭合，建立内部位置、工业尺度与主体轮廓。",
       "viewerTakeaway": "阀体与上盖共同承载精密核心，并把它组织成可识别的阀门主体。",
       "startState": "完全继承上一节拍终态：核心完整，阀体为半透明或低亮轮廓。",
@@ -260,7 +260,7 @@
     {
       "id": "assembly-complete",
       "order": 4,
-      "range": [0.65, 0.825],
+      "range": [0.62, 0.78],
       "narrativePurpose": "让支架与气动执行器沿中央轴完成整机纵向轮廓。",
       "viewerTakeaway": "中央核心、阀体、支架与气动执行器属于同一套纵向装配关系。",
       "startState": "完全继承上一节拍终态：阀体已闭合，推杆向上延伸，支架和执行器处于上方拆分位置。",
@@ -294,7 +294,7 @@
     {
       "id": "product-presence",
       "order": 5,
-      "range": [0.825, 1],
+      "range": [0.78, 1],
       "narrativePurpose": "在解释完成后停止部件动画，以唯一一次有限英雄弧形成完整产品记忆。",
       "viewerTakeaway": "记住这是一台具有中央轴、阀体重量与气动执行器轮廓的 DN80 CL2500 气动串级式调节阀。",
       "startState": "完全继承上一节拍终态：产品完整静止，侧前三分之四角度、背景与灯光世界不变。",
@@ -329,6 +329,36 @@
       ]
     }
   ],
+  "cameraPrevis": {
+    "uri": "creative/control-valve/camera-previs.json",
+    "fps": 30,
+    "totalFrames": 540,
+    "frameStateCount": 540,
+    "continuityPath": [
+      "四个实际 CASCADE_TRIM 连通几何岛沿中央轴保持拆分。",
+      "四个几何岛与阀芯组分阶段沿同一轴线归位。",
+      "阀体以连续透明度和轴向位移建立核心位置后闭合。",
+      "执行器组沿中央轴完成整机轮廓。",
+      "只进行一次有限英雄短弧。",
+      "最后十五个百分点完全静止。"
+    ],
+    "hiddenCut": "无隐藏剪辑、黑场或遮挡迁移；五节拍共享一个世界和同一条机械轴。",
+    "maxAbsRollDegrees": 0,
+    "stableHeroHold": [459, 539],
+    "reviewed": true
+  },
+  "animatic": {
+    "uri": "docs/control-valve/evidence/control-valve-grey-animatic.webm",
+    "kind": "animatic-video",
+    "durationSeconds": 18,
+    "reviewed": true,
+    "reviewNotes": [
+      "浏览器从实际 Draco GLB 解码 CASCADE_TRIM，并以连通性提取四个非空几何岛。",
+      "固定时长正放与反放均覆盖五个批准节拍，滚动仅作为后续确定性取样验证。",
+      "阀体闭合区间保留核心屏幕投影与连续透明度，最终十五个百分点完全静止。",
+      "几何岛只按相机可读轴向顺序编号，不断言各岛与单个 STEP 标签的一一对应。"
+    ]
+  },
   "confirmation": {
     "status": "pending"
   },
@@ -344,6 +374,10 @@
     {
       "phase": "five-shot-script",
       "completedAt": "2026-07-26T16:30:00Z"
+    },
+    {
+      "phase": "animatic",
+      "completedAt": "2026-07-26T17:10:00Z"
     }
   ]
 }

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import json
-import subprocess
 from pathlib import Path
 
 
@@ -162,52 +161,20 @@ for forbidden_claim in (
         fail(f"script asserts or repeats a prohibited product claim: {forbidden_claim}")
 
 phases = [entry.get("phase") for entry in plan.get("phaseHistory", [])]
-if phases != ["case-research", "creative-routes", "five-shot-script"]:
-    fail("creative development must stop exactly at five-shot-script")
+if phases != [
+    "case-research",
+    "creative-routes",
+    "five-shot-script",
+    "animatic",
+]:
+    fail("creative development must preserve the script and advance only to animatic")
 if plan.get("confirmation") != {"status": "pending"}:
-    fail("implementation release must remain pending")
-for stale_key in ("cameraPrevis", "animatic"):
-    if stale_key in plan:
-        fail(f"{stale_key} must not remain current during script-only development")
-
-allowed_paths = {
-    "ACCEPTANCE.md",
-    "AGENTS.md",
-    "creative/control-valve/advertising-reference-board.md",
-    "creative/control-valve/creative-development.json",
-    "creative/control-valve/creative-routes.md",
-    "creative/control-valve/five-shot-script.md",
-    "governance/project-rules.json",
-    "governance/project-validation.json",
-    "scripts/validate_control_valve_shot_script.py",
-}
-commands = [
-    ["git", "diff", "--name-only", "origin/main...HEAD"],
-    ["git", "diff", "--name-only"],
-    ["git", "diff", "--name-only", "--cached"],
-    ["git", "ls-files", "--others", "--exclude-standard"],
-]
-changed = set()
-for command in commands:
-    result = subprocess.run(
-        command,
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-    )
-    changed.update(
-        line.strip().replace("\\", "/")
-        for line in result.stdout.splitlines()
-        if line.strip()
-    )
-unexpected = sorted(changed - allowed_paths)
-if unexpected:
-    fail(f"script-only phase changed forbidden paths: {', '.join(unexpected)}")
+    fail("runtime implementation release must remain pending")
+if not plan.get("cameraPrevis") or not plan.get("animatic"):
+    fail("the approved script must now be accompanied by camera previs and animatic")
 
 print(
     "PASS: five cognitive beats form one reversible product transformation, "
     "keep the shared mechanical axis, remain inside observed product truth, "
-    "and stop before previs or runtime"
+    "and remains the authority for the pending grey animatic"
 )

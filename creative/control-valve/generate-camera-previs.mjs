@@ -15,10 +15,14 @@ const mix = (a, b, t) => a + (b - a) * t;
 const mixVector = (a, b, t) => a.map((value, index) => mix(value, b[index], t));
 const round = (value) => Number(value.toFixed(5));
 const roundVector = (values) => values.map(round);
+const distance = (a, b) =>
+  Math.sqrt(a.reduce((sum, value, index) => sum + (value - b[index]) ** 2, 0));
 
 function shotAt(frame) {
-  return source.shots.find(
-    (shot) => frame >= shot.startFrame && frame <= shot.endFrame,
+  return (
+    source.shots.find(
+      (shot) => frame >= shot.startFrame && frame <= shot.endFrame,
+    ) ?? source.shots.at(-1)
   );
 }
 
@@ -34,6 +38,8 @@ function sample(frame) {
   }
   const span = Math.max(1, right.frame - left.frame);
   const t = smooth((frame - left.frame) / span);
+  const position = mixVector(left.position, right.position, t);
+  const target = mixVector(left.target, right.target, t);
   const shot = shotAt(frame);
   return {
     frame,
@@ -41,25 +47,40 @@ function sample(frame) {
     progress: round(frame / (source.totalFrames - 1)),
     shotId: shot.id,
     camera: {
-      position: roundVector(mixVector(left.position, right.position, t)),
-      target: roundVector(mixVector(left.target, right.target, t)),
+      position: roundVector(position),
+      target: roundVector(target),
       rollDegrees: round(mix(left.roll, right.roll, t)),
       fovDegrees: round(mix(left.fov, right.fov, t)),
-      focusDistance: round(mix(left.focusDistance, right.focusDistance, t))
+      focusDistance: round(distance(position, target)),
     },
     product: {
-      explode: round(mix(left.explode, right.explode, t)),
+      trimAssembly: roundVector(
+        mixVector(left.trimAssembly, right.trimAssembly, t),
+      ),
+      stemAssembly: round(mix(left.stemAssembly, right.stemAssembly, t)),
+      bodyClosure: round(mix(left.bodyClosure, right.bodyClosure, t)),
       bodyOpacity: round(mix(left.bodyOpacity, right.bodyOpacity, t)),
-      stemStroke: round(mix(left.stemStroke, right.stemStroke, t)),
-      cascadeStage: round(mix(left.cascadeStage, right.cascadeStage, t))
+      actuatorAssembly: round(
+        mix(left.actuatorAssembly, right.actuatorAssembly, t),
+      ),
+      detailAssembly: round(
+        mix(left.detailAssembly, right.detailAssembly, t),
+      ),
+      productYawDegrees: round(
+        mix(left.productYawDegrees, right.productYawDegrees, t),
+      ),
+      coreEmphasis: round(
+        mix(left.coreEmphasis, right.coreEmphasis, t),
+      ),
     },
     light: {
       key: round(mix(left.keyLight, right.keyLight, t)),
-      rim: round(mix(left.rimLight, right.rimLight, t))
+      rim: round(mix(left.rimLight, right.rimLight, t)),
+      core: round(mix(left.coreLight, right.coreLight, t)),
     },
     transition: {
-      occlusion: round(mix(left.occlusion, right.occlusion, t))
-    }
+      occlusion: round(mix(left.occlusion, right.occlusion, t)),
+    },
   };
 }
 
@@ -68,29 +89,30 @@ const frames = Array.from(
   (_, frame) => sample(frame),
 );
 const artifact = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   title: source.title,
   fps: source.fps,
   totalFrames: source.totalFrames,
-  durationSeconds: source.totalFrames / source.fps,
+  durationSeconds: source.durationSeconds,
   maxAbsRollDegrees: source.maxAbsRollDegrees,
+  mechanicalAxisWorld: source.mechanicalAxisWorld,
   stableHeroHold: [source.stableHeroFromFrame, source.totalFrames - 1],
   hiddenCut: {
     fromFrame: null,
     toFrame: null,
     motivation:
-      "None. The camera remains outside the product and all five shots connect through visible continuous motion."
+      "None. All five beats share one world, one visible mechanical axis and continuous product-state handoffs.",
   },
   continuityPath: [
-    "complete product authority",
-    "slow external axial observation",
-    "shell transparency reveals the cascade in context",
-    "modest six-system separation with a fixed horizon",
-    "controlled return",
-    "stable three-quarter hero"
+    "four actual CASCADE_TRIM geometry islands suspended on the central axis",
+    "four islands and grouped stem nest in staged order",
+    "body closure and opacity establish the core location before enclosure",
+    "actuator group completes the vertical silhouette",
+    "one bounded camera arc",
+    "motionless final fifteen-percent hero hold",
   ],
   shots: source.shots,
-  frames
+  frames,
 };
 
 await writeFile(
@@ -104,5 +126,5 @@ await writeFile(
   "utf8",
 );
 process.stdout.write(
-  `Generated ${frames.length} deterministic camera states at ${outputPath} and synchronized ${runtimePath}\n`,
+  `Generated ${frames.length} deterministic grey-animatic states at ${outputPath} and synchronized ${runtimePath}\n`,
 );

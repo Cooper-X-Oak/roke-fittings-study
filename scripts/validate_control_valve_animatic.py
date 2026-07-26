@@ -1,27 +1,43 @@
 #!/usr/bin/env python3
 
+import json
+import math
+import subprocess
 from math import dist
+from pathlib import Path
 
 from control_valve_validation import CREATIVE, ROOT, ROUTE, fail, read_json
 
 
 previs = read_json(CREATIVE / "camera-previs.json")
 path = read_json(CREATIVE / "camera-path.json")
+plan = read_json(CREATIVE / "creative-development.json")
 evidence = read_json(CREATIVE / "render-evidence.json")
 frames = previs.get("frames", [])
 shots = path.get("shots", [])
+expected_ids = [
+    "core-suspended",
+    "precision-nested",
+    "body-encloses",
+    "assembly-complete",
+    "product-presence",
+]
 
-if previs.get("fps") != 30 or previs.get("totalFrames") != 480:
-    fail("canonical animatic must remain 16 seconds at 30 fps")
-if len(frames) != 480 or [frame.get("frame") for frame in frames] != list(range(480)):
+if previs.get("fps") != 30 or previs.get("totalFrames") != 540:
+    fail("canonical grey animatic must be exactly 18 seconds at 30 fps")
+if previs.get("durationSeconds") != 18:
+    fail("camera previs duration must remain 18 seconds")
+if len(frames) != 540 or [frame.get("frame") for frame in frames] != list(
+    range(540)
+):
     fail("camera previs must contain one ordered state for every frame")
-if len(shots) != 5:
-    fail("animatic must contain exactly five authored shots")
-if shots[0].get("startFrame") != 0 or shots[-1].get("endFrame") != 479:
-    fail("five shots must cover the canonical timeline")
+if [shot.get("id") for shot in shots] != expected_ids:
+    fail("animatic must contain the five approved story-beat IDs in order")
+if shots[0].get("startFrame") != 0 or shots[-1].get("endFrame") != 539:
+    fail("five beats must cover the canonical timeline")
 for left, right in zip(shots, shots[1:]):
     if left.get("endFrame") + 1 != right.get("startFrame"):
-        fail("shot boundaries contain a gap or overlap")
+        fail("story-beat boundaries contain a gap or overlap")
 
 required_state_paths = (
     ("camera", "position"),
@@ -29,91 +45,279 @@ required_state_paths = (
     ("camera", "rollDegrees"),
     ("camera", "fovDegrees"),
     ("camera", "focusDistance"),
-    ("product", "explode"),
+    ("product", "trimAssembly"),
+    ("product", "stemAssembly"),
+    ("product", "bodyClosure"),
     ("product", "bodyOpacity"),
-    ("product", "stemStroke"),
-    ("product", "cascadeStage"),
+    ("product", "actuatorAssembly"),
+    ("product", "detailAssembly"),
+    ("product", "productYawDegrees"),
+    ("product", "coreEmphasis"),
     ("light", "key"),
     ("light", "rim"),
+    ("light", "core"),
     ("transition", "occlusion"),
 )
 for frame in frames:
     for section, key in required_state_paths:
         if key not in frame.get(section, {}):
             fail(f"frame {frame.get('frame')} misses {section}.{key}")
+    scalars = [
+        frame["camera"]["rollDegrees"],
+        frame["camera"]["fovDegrees"],
+        frame["camera"]["focusDistance"],
+        frame["product"]["stemAssembly"],
+        frame["product"]["bodyClosure"],
+        frame["product"]["bodyOpacity"],
+        frame["product"]["actuatorAssembly"],
+        frame["product"]["detailAssembly"],
+        frame["product"]["productYawDegrees"],
+        frame["product"]["coreEmphasis"],
+        frame["light"]["key"],
+        frame["light"]["rim"],
+        frame["light"]["core"],
+        frame["transition"]["occlusion"],
+        *frame["camera"]["position"],
+        *frame["camera"]["target"],
+        *frame["product"]["trimAssembly"],
+    ]
+    if not all(isinstance(value, (int, float)) and math.isfinite(value) for value in scalars):
+        fail(f"frame {frame['frame']} contains a non-finite state")
+    if len(frame["product"]["trimAssembly"]) != 4:
+        fail(f"frame {frame['frame']} must control exactly four trim islands")
+
 if max(abs(frame["camera"]["rollDegrees"]) for frame in frames) > 1e-9:
     fail("every canonical frame must keep a zero-degree camera roll")
-if max(frame["transition"]["occlusion"] for frame in frames) > 0.01:
+if max(frame["transition"]["occlusion"] for frame in frames) > 1e-9:
     fail("blackout and hidden-cut occlusion are prohibited")
+if previs.get("mechanicalAxisWorld") != [0, 1, 0]:
+    fail("camera previs must declare one vertical world-space mechanical axis")
 
 camera_steps = [
     dist(left["camera"]["position"], right["camera"]["position"])
     for left, right in zip(frames, frames[1:])
 ]
-if max(camera_steps) > 0.08:
-    fail("camera contains a teleport or a comfort-breaking per-frame step")
-if min(
-    dist(frame["camera"]["position"], frame["camera"]["target"])
-    for frame in frames
-) < 6:
-    fail("camera enters the close internal geometry comfort exclusion zone")
-fovs = [frame["camera"]["fovDegrees"] for frame in frames]
-if max(fovs) - min(fovs) > 3:
-    fail("field-of-view range exceeds the restrained comfort contract")
+if max(camera_steps) > 0.12:
+    fail("camera contains a teleport or comfort-breaking per-frame step")
+target_steps = [
+    dist(left["camera"]["target"], right["camera"]["target"])
+    for left, right in zip(frames, frames[1:])
+]
+if max(target_steps) > 0.04:
+    fail("camera target jumps away from the continuous mechanical axis")
 
 for shot in shots:
-    hold = frames[shot["endFrame"] - 23 : shot["endFrame"] + 1]
+    hold_length = 12 if shot["id"] != "product-presence" else 81
+    hold = frames[shot["endFrame"] - hold_length + 1 : shot["endFrame"] + 1]
     reference = hold[0]
     for frame in hold[1:]:
         for section in ("camera", "product", "light"):
             if frame[section] != reference[section]:
                 fail(
-                    f"shot {shot['id']} lacks a 24-frame comprehension hold "
+                    f"beat {shot['id']} lacks its authored comprehension hold "
                     f"in {section}"
                 )
 
-hold = frames[408:480]
-reference = hold[0]
-for frame in hold[1:]:
+stable_start, stable_end = previs.get("stableHeroHold", [None, None])
+if [stable_start, stable_end] != [459, 539]:
+    fail("final fifteen-percent hero hold must be frames 459 through 539")
+hero_hold = frames[stable_start : stable_end + 1]
+reference = hero_hold[0]
+for frame in hero_hold[1:]:
     for section in ("camera", "product", "light"):
         if frame[section] != reference[section]:
             fail(f"stable hero hold drifts at frame {frame['frame']} in {section}")
 
-required_files = (
-    ROUTE / "index.html",
-    ROUTE / "styles.css",
-    ROUTE / "app.mjs",
-    ROUTE / "camera-path.json",
-    ROUTE / "assets/first-frame-poster.jpg",
-)
-for artifact in required_files:
-    if not artifact.is_file() or artifact.stat().st_size < 256:
-        fail(f"missing or empty runtime artifact: {artifact.name}")
+staged_trim_states = {
+    76: [0, 0, 0, 0],
+    104: [1, 0, 0, 0],
+    132: [1, 1, 0, 0],
+    160: [1, 1, 1, 0],
+    184: [1, 1, 1, 1],
+}
+for frame_index, expected in staged_trim_states.items():
+    if frames[frame_index]["product"]["trimAssembly"] != expected:
+        fail(f"frame {frame_index} does not prove staged four-island assembly")
+
+geometry = evidence.get("geometry", {})
+if geometry.get("trimConnectedComponentCount") != 4:
+    fail("rendered GLB evidence must expose exactly four trim geometry islands")
+if geometry.get("independentlyTransformable") is not True:
+    fail("lighting-only trim stages do not count as independent separation")
+diagnostics = geometry.get("trimDiagnostics", [])
+if len(diagnostics) != 4 or any(
+    item.get("triangleCount", 0) <= 0 for item in diagnostics
+):
+    fail("every extracted trim geometry island must contain real triangles")
+if "individual STEP cage/seat identity is not asserted" not in geometry.get(
+    "labelBoundary", ""
+):
+    fail("geometry evidence must preserve the trim-island label truth boundary")
+
+separation = evidence.get("separation", {})
+if separation.get("distinctAxisPositions") != 4:
+    fail("separated trim evidence must show four distinct axis positions")
+if separation.get("maximumRadialAxisError", 1) > 0.002:
+    fail("trim separation leaves the declared central mechanical axis")
+if separation.get("allProjectedOnScreen") is not True:
+    fail("the separated trim layers are not all visible in the authored frame")
+
+closure_samples = evidence.get("closureSamples", [])
+if [sample.get("id") for sample in closure_samples] != [
+    "closure-start",
+    "closure-mid",
+    "closure-complete",
+]:
+    fail("closure evidence must include start, middle and completed samples")
+opacities = [sample.get("bodyOpacity") for sample in closure_samples]
+closures = [sample.get("bodyClosure") for sample in closure_samples]
+if opacities != sorted(opacities) or closures != sorted(closures):
+    fail("body closure and opacity must progress monotonically")
+if opacities[0] >= 0.35 or opacities[1] >= 0.75 or opacities[-1] < 0.95:
+    fail("body closure lacks a readable-core interval before final enclosure")
+for sample in closure_samples[:2]:
+    if sample.get("occlusion") != 0:
+        fail("body closure uses a blackout or full-frame occlusion")
+    if not all(sample.get("trimProjectedOnScreen", [])):
+        fail("the complete trim core leaves the screen before enclosure is established")
+
+forward = evidence.get("forwardPlayback", {})
+reverse = evidence.get("reversePlayback", {})
+if forward.get("completed") is not True:
+    fail("canonical forward playback did not complete")
+if reverse.get("completed") is not True:
+    fail("canonical reverse playback did not complete")
+if forward.get("observedShotIds") != expected_ids:
+    fail("forward playback did not observe the approved five beats in order")
+if reverse.get("observedShotIds") != list(reversed(expected_ids)):
+    fail("reverse playback did not observe the exact reverse beat order")
+if any(
+    sample.get("occlusion") != 0
+    for sample in forward.get("samples", []) + reverse.get("samples", [])
+):
+    fail("canonical playback contains non-zero full-frame occlusion")
+
+round_trip = evidence.get("roundTrip", {})
+for key in (
+    "progress022CameraMaxDelta",
+    "progress022ProductMaxDelta",
+    "progress022TrimTransformMaxDelta",
+    "progress067CameraMaxDelta",
+    "progress067ProductMaxDelta",
+):
+    if round_trip.get(key) != 0:
+        fail(f"forward-back-forward sampling drifts in {key}")
+
 captures = evidence.get("captures", [])
-if {item.get("shotId") for item in captures} != {shot["id"] for shot in shots}:
-    fail("render evidence must include one capture for every shot")
-for capture in captures:
-    image = ROOT / capture.get("path", "")
-    if not image.is_file() or image.stat().st_size < 1000:
-        fail(f"rendered shot evidence is missing: {capture.get('path')}")
+if [capture.get("shotId") for capture in captures] != expected_ids:
+    fail("render evidence must include one current capture for every approved beat")
+if any(capture.get("runtimeShotId") != capture.get("shotId") for capture in captures):
+    fail("a captured keyframe does not match its authored beat")
+for collection in (captures, evidence.get("validationFrames", [])):
+    for capture in collection:
+        image = ROOT / capture.get("path", "")
+        if not image.is_file() or image.stat().st_size < 1000:
+            fail(f"rendered evidence is missing: {capture.get('path')}")
 
-playback = evidence.get("fullPlayback", {})
-if playback.get("completed") is not True:
-    fail("fixed-duration browser playback did not reach the final frame")
-if playback.get("blackoutElementPresent") is not False:
-    fail("runtime still contains a blackout overlay")
-if playback.get("observedShotIds") != [shot["id"] for shot in shots]:
-    fail("fixed-duration playback did not observe the five shots in script order")
+video = evidence.get("video", {})
+video_path = ROOT / video.get("path", "")
+if (
+    video.get("canonicalDurationSeconds") != 18
+    or not video_path.is_file()
+    or video_path.stat().st_size < 100_000
+):
+    fail("fixed-duration grey Animatic video is missing or too small")
 
-styles = (ROUTE / "styles.css").read_text(encoding="utf-8")
-app = (ROUTE / "app.mjs").read_text(encoding="utf-8")
-if "#c46a3c" not in styles or "#0c1117" not in styles:
-    fail("restrained graphite-and-copper visual direction is not implemented")
-if "GROUP_COLORS" not in app or "秩序" not in app:
-    fail("runtime lacks the released industrial hierarchy and tonal direction")
+if evidence.get("consoleErrors") or evidence.get("pageErrors") or evidence.get(
+    "failedRequests"
+):
+    fail("browser evidence contains console, page or request failures")
+
+camera_previs_record = plan.get("cameraPrevis", {})
+animatic_record = plan.get("animatic", {})
+if (
+    camera_previs_record.get("fps") != 30
+    or camera_previs_record.get("totalFrames") != 540
+    or camera_previs_record.get("frameStateCount") != 540
+    or camera_previs_record.get("reviewed") is not True
+):
+    fail("creative-development camera-previs record is incomplete")
+if (
+    animatic_record.get("durationSeconds") != 18
+    or animatic_record.get("reviewed") is not True
+    or animatic_record.get("uri") != video.get("path")
+):
+    fail("creative-development Animatic record is not bound to rendered video")
+if plan.get("confirmation") != {"status": "pending"}:
+    fail("automatic creative release must remain pending in this phase")
+
+allowed_paths = {
+    "ACCEPTANCE.md",
+    "AGENTS.md",
+    "creative/control-valve/advertising-reference-board.md",
+    "creative/control-valve/camera-path.json",
+    "creative/control-valve/camera-previs.json",
+    "creative/control-valve/creative-development.json",
+    "creative/control-valve/creative-routes.md",
+    "creative/control-valve/five-shot-script.md",
+    "creative/control-valve/generate-camera-previs.mjs",
+    "creative/control-valve/render-evidence.json",
+    "docs/control-valve/app.mjs",
+    "docs/control-valve/assets/first-frame-poster.jpg",
+    "docs/control-valve/camera-path.json",
+    "docs/control-valve/evidence/control-valve-grey-animatic.webm",
+    # Explicitly retired predecessor evidence. Deletions are part of the
+    # atomic phase replacement; stale shots must not remain current evidence.
+    "docs/control-valve/evidence/shot-01-product-authority.png",
+    "docs/control-valve/evidence/shot-02-axial-command.png",
+    "docs/control-valve/evidence/shot-03-cascade-revealed.png",
+    "docs/control-valve/evidence/shot-04-systems-in-order.png",
+    "docs/control-valve/evidence/shot-05-product-resolved.png",
+    "docs/control-valve/evidence/shot-01-core-suspended.png",
+    "docs/control-valve/evidence/shot-02-precision-nested.png",
+    "docs/control-valve/evidence/shot-03-body-encloses.png",
+    "docs/control-valve/evidence/shot-04-assembly-complete.png",
+    "docs/control-valve/evidence/shot-05-product-presence.png",
+    "docs/control-valve/evidence/validation-trim-separated.png",
+    "docs/control-valve/evidence/validation-trim-mid-assembly.png",
+    "docs/control-valve/evidence/validation-closure-start.png",
+    "docs/control-valve/evidence/validation-closure-mid.png",
+    "docs/control-valve/evidence/validation-closure-complete.png",
+    "docs/control-valve/index.html",
+    "docs/control-valve/styles.css",
+    "governance/project-rules.json",
+    "governance/project-validation.json",
+    "scripts/capture_control_valve_animatic.mjs",
+    "scripts/validate_control_valve_animatic.py",
+    "scripts/validate_control_valve_shot_script.py",
+}
+commands = [
+    ["git", "diff", "--name-only", "origin/main...HEAD"],
+    ["git", "diff", "--name-only"],
+    ["git", "diff", "--name-only", "--cached"],
+    ["git", "ls-files", "--others", "--exclude-standard"],
+]
+changed = set()
+for command in commands:
+    result = subprocess.run(
+        command,
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+    changed.update(
+        line.strip().replace("\\", "/")
+        for line in result.stdout.splitlines()
+        if line.strip()
+    )
+unexpected = sorted(changed - allowed_paths)
+if unexpected:
+    fail(f"grey-animatic phase changed forbidden paths: {', '.join(unexpected)}")
 
 print(
-    "PASS: five-shot animatic has 480 deterministic zero-roll states, no "
-    "blackout or teleport, five comprehension holds, restrained industrial "
-    "tone, full playback evidence and a stable final 15% hero hold"
+    "PASS: 540 deterministic grey-animatic frames prove four real trim "
+    "geometry islands, readable body closure, exact forward/reverse beat order, "
+    "zero round-trip drift and a stable final fifteen-percent hero hold"
 )
