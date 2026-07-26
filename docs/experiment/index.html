@@ -10,6 +10,12 @@
     >
     <title>汽车数字装配叙事｜实时 3D</title>
     <link rel="icon" href="data:,">
+    <link
+      rel="preload"
+      as="image"
+      href="./assets/first-shot-poster.jpg"
+      fetchpriority="high"
+    >
     <link rel="stylesheet" href="./styles.css">
     <script type="importmap">
       {
@@ -19,7 +25,11 @@
       }
     </script>
   </head>
-  <body data-webgl-state="loading" data-story-stage="intercept">
+  <body
+    data-webgl-state="loading"
+    data-product-frame="poster"
+    data-story-stage="intercept"
+  >
     <a class="skip-link" href="#story">跳到产品叙事</a>
 
     <header class="masthead" aria-label="产品叙事状态">
@@ -37,6 +47,18 @@
     <div class="viewer-stage" aria-label="实时三维汽车结构展示">
       <div class="viewer-stage__word" aria-hidden="true">PRECISION</div>
       <div class="camera-occlusion" id="camera-occlusion" aria-hidden="true"></div>
+      <img
+        class="viewer-stage__poster"
+        id="first-shot-poster"
+        src="./assets/first-shot-poster.jpg"
+        width="1224"
+        height="765"
+        alt=""
+        aria-hidden="true"
+        decoding="sync"
+        fetchpriority="high"
+        elementtiming="first-shot-poster"
+      >
       <canvas id="webgl-canvas" aria-hidden="true"></canvas>
 
       <div class="viewer-stage__loading" aria-hidden="true">

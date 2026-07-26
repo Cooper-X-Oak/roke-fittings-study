@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectedAt": "2026-07-26T05:57:45.246Z",
-  "sourceUrl": "http://127.0.0.1:4177/roke-fittings-study/experiment/",
+  "collectedAt": "2026-07-26T06:54:32.914Z",
+  "sourceUrl": "http://127.0.0.1:4178/roke-fittings-study/experiment/",
   "browserMode": "headless Chromium with GPU/WebGL enabled",
   "functional": {
     "pageTitle": "汽车数字装配叙事｜实时 3D",
@@ -15,6 +15,24 @@
     "consoleErrors": [],
     "pageErrors": [],
     "failedRequests": [],
+    "posterAtDomContentLoaded": {
+      "decodedAtMs": 825.2,
+      "complete": true,
+      "naturalWidth": 1224,
+      "naturalHeight": 765,
+      "visible": true,
+      "productFrameState": "poster",
+      "webglState": "loading",
+      "canvasOpacity": 0
+    },
+    "posterAfterWebGLReady": {
+      "productFrameState": "ready",
+      "webglState": "ready",
+      "canvasOpacity": 1,
+      "posterVisible": true
+    },
+    "fallbackPosterVisible": true,
+    "loadErrorPosterVisible": true,
     "fallbackState": "fallback",
     "loadErrorState": "error",
     "deterministicTransformMaxDifference": 0,
@@ -1967,47 +1985,48 @@
         }
       },
       "loading": {
-        "firstUsableProductFrameMs": 3570.8,
+        "posterDecodedMs": 272.4,
+        "firstUsableProductFrameMs": 3898.1,
         "phaseMilestonesMs": {
-          "manifestReady": 285.9,
-          "modelDecoded": 960.1,
-          "shaderCompiled": 1602.8,
-          "firstUsableProductFrame": 3570.8
+          "manifestReady": 279.8,
+          "modelDecoded": 1067.7,
+          "shaderCompiled": 1751.4,
+          "firstUsableProductFrame": 3898.1
         },
         "navigation": {
-          "domContentLoadedMs": 276.1,
-          "loadEventEndMs": 276.3
+          "domContentLoadedMs": 271.2,
+          "loadEventEndMs": 271.6
         },
         "modelResource": {
-          "name": "http://127.0.0.1:4177/roke-fittings-study/experiment/assets/models/car-concept-web.glb",
-          "durationMs": 11.1,
+          "name": "http://127.0.0.1:4178/roke-fittings-study/experiment/assets/models/car-concept-web.glb",
+          "durationMs": 27.7,
           "transferSize": 2605880,
           "encodedBodySize": 2605580,
           "decodedBodySize": 2605580,
-          "responseEndMs": 594.4
+          "responseEndMs": 651.7
         }
       },
       "runtime": {
-        "measurementDurationMs": 5773.3,
-        "measuredRendererFrames": 197,
-        "rendererFramesDuringRun": 200,
+        "measurementDurationMs": 5772,
+        "measuredRendererFrames": 195,
+        "rendererFramesDuringRun": 199,
         "frameIntervalMs": {
           "p50": 16.7,
-          "p95": 33.5,
-          "max": 50.2
+          "p95": 33.3,
+          "max": 50.1
         },
         "frameIntervalOver16_7Ms": {
-          "count": 101,
-          "ratio": 0.51269
+          "count": 102,
+          "ratio": 0.52308
         },
         "frameIntervalOver33_3Ms": {
-          "count": 23,
-          "ratio": 0.11675
+          "count": 14,
+          "ratio": 0.07179
         },
         "renderCpuDurationMs": {
-          "p50": 3.5,
-          "p95": 6.7,
-          "max": 9
+          "p50": 4.1,
+          "p95": 7.6,
+          "max": 10.5
         },
         "idleRendererFramesAfterSettle": 0,
         "renderer": {
@@ -2039,8 +2058,8 @@
         },
         "memory": {
           "available": true,
-          "usedJSHeapSize": 37409285,
-          "totalJSHeapSize": 51495993,
+          "usedJSHeapSize": 37811494,
+          "totalJSHeapSize": 51287598,
           "jsHeapSizeLimit": 4395630592
         }
       },
@@ -2116,47 +2135,48 @@
         }
       },
       "loading": {
-        "firstUsableProductFrameMs": 992.5,
+        "posterDecodedMs": 129.4,
+        "firstUsableProductFrameMs": 1503.3,
         "phaseMilestonesMs": {
-          "manifestReady": 113,
-          "modelDecoded": 469.7,
-          "shaderCompiled": 537.8,
-          "firstUsableProductFrame": 992.5
+          "manifestReady": 134.6,
+          "modelDecoded": 576.3,
+          "shaderCompiled": 989,
+          "firstUsableProductFrame": 1503.3
         },
         "navigation": {
-          "domContentLoadedMs": 106.9,
-          "loadEventEndMs": 107.3
+          "domContentLoadedMs": 128.7,
+          "loadEventEndMs": 128.8
         },
         "modelResource": {
-          "name": "http://127.0.0.1:4177/roke-fittings-study/experiment/assets/models/car-concept-web.glb",
-          "durationMs": 13.8,
+          "name": "http://127.0.0.1:4178/roke-fittings-study/experiment/assets/models/car-concept-web.glb",
+          "durationMs": 14.4,
           "transferSize": 2605880,
           "encodedBodySize": 2605580,
           "decodedBodySize": 2605580,
-          "responseEndMs": 201.4
+          "responseEndMs": 236.4
         }
       },
       "runtime": {
-        "measurementDurationMs": 5763.5,
-        "measuredRendererFrames": 196,
-        "rendererFramesDuringRun": 199,
+        "measurementDurationMs": 5753.3,
+        "measuredRendererFrames": 193,
+        "rendererFramesDuringRun": 197,
         "frameIntervalMs": {
           "p50": 16.7,
-          "p95": 49.6,
-          "max": 50.1
+          "p95": 49.8,
+          "max": 49.9
         },
         "frameIntervalOver16_7Ms": {
-          "count": 99,
-          "ratio": 0.5051
+          "count": 89,
+          "ratio": 0.46114
         },
         "frameIntervalOver33_3Ms": {
-          "count": 31,
-          "ratio": 0.15816
+          "count": 27,
+          "ratio": 0.1399
         },
         "renderCpuDurationMs": {
-          "p50": 3.3,
-          "p95": 5.2,
-          "max": 6.8
+          "p50": 4,
+          "p95": 6.3,
+          "max": 9.9
         },
         "idleRendererFramesAfterSettle": 0,
         "renderer": {
@@ -2188,8 +2208,8 @@
         },
         "memory": {
           "available": true,
-          "usedJSHeapSize": 33930596,
-          "totalJSHeapSize": 52482144,
+          "usedJSHeapSize": 39024840,
+          "totalJSHeapSize": 57316852,
           "jsHeapSizeLimit": 4395630592
         }
       },

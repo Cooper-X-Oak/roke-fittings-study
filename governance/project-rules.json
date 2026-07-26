@@ -2,8 +2,8 @@
   "schema_version": 1,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-car-fpv-runtime-inspected",
-  "ruleset_version": "2026-07-26.7",
+  "ruleset_id": "ruleset-2026-07-26-car-fpv-immediate-poster",
+  "ruleset_version": "2026-07-26.8",
   "business_gate": {
     "development_entry_required": true
   },
@@ -51,6 +51,11 @@
     {
       "id": "prove-runtime-quality",
       "statement": "The implemented page must use demand rendering, deterministic reverse scrolling, bounded roll, coordinated camera/parts/light/layout/copy, reduced-motion fallback, and measured desktop frame pacing; inspect the actual rendered delivery after implementation.",
+      "development_entry_ids": ["implement-car-story-runtime"]
+    },
+    {
+      "id": "show-immediate-first-shot-poster",
+      "statement": "Before JavaScript, GLB decoding, texture upload, or shader compilation completes, the page must show a lightweight static poster aligned with the INTERCEPT composition; the first verified 3D product frame must replace it without an empty flash, and failure or reduced-motion routes must retain a meaningful product image.",
       "development_entry_ids": ["implement-car-story-runtime"]
     },
     {

@@ -20,6 +20,7 @@ const partCount = document.querySelector("#part-count");
 const fallbackCopy = document.querySelector("#fallback-copy");
 const motionToggle = document.querySelector("#motion-toggle");
 const occlusionElement = document.querySelector("#camera-occlusion");
+const firstShotPoster = document.querySelector("#first-shot-poster");
 const chapters = [...document.querySelectorAll("[data-stage]")];
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -39,6 +40,14 @@ let lastRendererSnapshot = null;
 let manifestReadyMs = null;
 let modelDecodedMs = null;
 let shaderCompiledMs = null;
+let posterDecodedMs = null;
+
+firstShotPoster?.decode().then(() => {
+  posterDecodedMs = Number(performance.now().toFixed(3));
+  performance.mark("car-story-poster-decoded");
+}).catch(() => {
+  // A failed poster decode must not prevent the existing WebGL/fallback routes.
+});
 
 function percentile(values, percentage) {
   if (!values.length) {
@@ -181,6 +190,7 @@ function finishRun(extra = {}) {
       webgl: getWebGLDetails(),
     },
     loading: {
+      posterDecodedMs,
       firstUsableProductFrameMs: firstUsableFrameMs,
       phaseMilestonesMs: {
         manifestReady: manifestReadyMs,
@@ -706,6 +716,7 @@ async function initialize() {
         if (firstUsableFrameMs === null) {
           firstUsableFrameMs = Number(performance.now().toFixed(3));
           performance.mark("car-story-first-usable-frame");
+          body.dataset.productFrame = "ready";
         }
         if (measurement.active) {
           if (event.interval !== null) {

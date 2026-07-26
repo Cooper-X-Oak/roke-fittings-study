@@ -81,6 +81,10 @@ const functional = {
   consoleErrors: [],
   pageErrors: [],
   failedRequests: [],
+  posterAtDomContentLoaded: null,
+  posterAfterWebGLReady: null,
+  fallbackPosterVisible: null,
+  loadErrorPosterVisible: null,
   fallbackState: null,
   loadErrorState: null,
   deterministicTransformMaxDifference: null,
@@ -110,7 +114,30 @@ try {
     });
   });
 
-  await page.goto(url, { waitUntil: "networkidle" });
+  await page.goto(url, { waitUntil: "domcontentloaded" });
+  functional.posterAtDomContentLoaded = await page.locator(
+    "#first-shot-poster",
+  ).evaluate(async (poster) => {
+    await poster.decode();
+    const style = getComputedStyle(poster);
+    const canvasStyle = getComputedStyle(
+      document.querySelector("#webgl-canvas"),
+    );
+    return {
+      decodedAtMs: Number(performance.now().toFixed(3)),
+      complete: poster.complete,
+      naturalWidth: poster.naturalWidth,
+      naturalHeight: poster.naturalHeight,
+      visible: style.display !== "none" && style.visibility !== "hidden",
+      productFrameState: document.body.dataset.productFrame,
+      webglState: document.body.dataset.webglState,
+      canvasOpacity: Number(canvasStyle.opacity),
+    };
+  });
+  if (screenshotPrefix) {
+    await page.screenshot({ path: `${screenshotPrefix}-poster-loading.png` });
+  }
+  await page.waitForLoadState("networkidle");
   try {
     await page.waitForFunction(
       () => Boolean(window.__CAR_STORY_METRICS__),
@@ -131,6 +158,20 @@ try {
   if (ready.state !== "ready") {
     throw new Error(`Product story did not reach ready state: ${ready.state}`);
   }
+  await page.waitForFunction(
+    () => document.body.dataset.productFrame === "ready",
+  );
+  await page.waitForTimeout(220);
+  functional.posterAfterWebGLReady = await page.evaluate(() => ({
+    productFrameState: document.body.dataset.productFrame,
+    webglState: document.body.dataset.webglState,
+    canvasOpacity: Number(
+      getComputedStyle(document.querySelector("#webgl-canvas")).opacity,
+    ),
+    posterVisible:
+      getComputedStyle(document.querySelector("#first-shot-poster"))
+        .visibility !== "hidden",
+  }));
 
   functional.pageTitle = await page.title();
   functional.stages = await page
@@ -208,6 +249,9 @@ try {
   functional.fallbackState = await fallback.locator("body").getAttribute(
     "data-webgl-state",
   );
+  functional.fallbackPosterVisible = await fallback
+    .locator("#first-shot-poster")
+    .isVisible();
 
   const loadError = await context.newPage();
   loadError.on("console", () => {});
@@ -218,6 +262,9 @@ try {
   functional.loadErrorState = await loadError.locator("body").getAttribute(
     "data-webgl-state",
   );
+  functional.loadErrorPosterVisible = await loadError
+    .locator("#first-shot-poster")
+    .isVisible();
 
   await context.close();
 } finally {
