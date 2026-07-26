@@ -1,249 +1,332 @@
 {
   "$schema": "../../.codex/skills/build-scroll-3d-product-story/assets/creative-development.schema.json",
   "schemaVersion": 1,
-  "planId": "control-valve-command-becomes-precision",
+  "planId": "control-valve-precision-becomes-whole",
   "modelAudit": {
     "modelPath": "docs/control-valve/assets/control-valve-shot-ready.glb",
     "capability": "structured-named-parts",
     "truths": [
       "源文件标识为 DN80 CL2500 气动串级式调节阀装配体。",
       "STEP 产品树明确命名执行器、推杆、串级式阀芯、阀笼 1/2/3 和阀座。",
-      "镜头资产把可见装配关系组织为六个语义节点。"
+      "镜头资产把可见装配关系组织为六个可独立控制的商业镜头节点。"
     ],
     "limitations": [
       "模型没有动画、相机、纹理、流体数据或工况数据。",
-      "六组镜头资产不保留源 STEP 中全部实例的独立控制能力。",
-      "没有提供企业品牌手册；镜头气质是本项目创意选择。"
+      "六节点镜头资产不保留源 STEP 中全部实例的独立控制能力。",
+      "没有提供企业品牌手册；精密、克制的镜头气质是本项目创意选择。"
     ],
     "prohibitedClaims": [
       "不得声称压力、流量、噪声、泄漏、材料或适用介质性能。",
-      "不得从轴向示意推断开启、关闭或失效方向。",
-      "不得把灯光、透明度和几何路径描述为流体或工程仿真。"
+      "不得从轴向展示推断开启、关闭、作用或失效方向。",
+      "不得把灯光、透明度、拆分与归位路径描述为工程仿真、制造或维修顺序。"
     ]
   },
   "research": {
     "caseStudies": [
       {
-        "title": "Emerson Fisher GX Control Valve and Actuator System",
-        "sourceUrl": "https://www.emerson.com/is/content/emerson/en/final-control/flow-controls/documents/fisher-gx-control-valve-actuator-system-d103171x012.pdf",
-        "narrativeThesis": "用执行器、阀杆与阀内件的纵向关系建立机械因果轴。",
+        "title": "ROKE homepage 240-frame product sequence",
+        "sourceUrl": "https://www.roke-fittings.ru/",
+        "narrativeThesis": "用沿同一连接轴发生的汇聚动作，把部件、连接、完整产品与品牌记忆组织成一条连续滚动叙事。",
         "transferableMethods": [
-          "让执行器成为叙事起点。",
-          "沿单一机械轴组织第二镜的信息顺序。"
+          "以一个具有产品意义的状态变化统领整段影片。",
+          "保持稳定轴线、空间、材质世界，并只在结尾使用一次有限英雄旋转。"
         ],
         "limitations": [
-          "不能迁移参考产品的规格、作用方向、性能或品牌语言。"
+          "只迁移单轴汇聚、阶段节奏和收尾方法，不迁移 ROKE 产品的装配关系、材质、品牌或性能。"
         ]
       },
       {
-        "title": "Flowserve Valtek Multi-Z Severe Service Control Valve",
-        "sourceUrl": "https://www.flowserve.com/sites/default/files/dam/documents/KMENBR1632_EN_A4.pdf",
-        "narrativeThesis": "多级内件需要通过重复结构、焦点接力和停顿被逐层阅读。",
+        "title": "Honda Accord Cog by Wieden+Kennedy London",
+        "sourceUrl": "https://wklondon.com/work/cog/",
+        "narrativeThesis": "让汽车零件形成一条可观看的机械因果链，最终完整汽车成为全部动作的必然结论。",
         "transferableMethods": [
-          "使用剖面微距而不是高速内部穿越。",
-          "让重复阀笼轮廓成为镜头节拍和匹配剪辑装置。"
+          "每一节拍从上一节拍的物理结果开始。",
+          "让产品零件承担叙事角色，而不是构成零件目录。"
         ],
         "limitations": [
-          "不迁移压降、降噪、气蚀或工况结论。"
+          "不迁移复杂链式机关、实拍方法或 Honda 品牌表达。"
         ]
       },
       {
-        "title": "SAMSON Series 250 Control Valves",
-        "sourceUrl": "https://www.samson.de/document/t80710en.pdf",
-        "narrativeThesis": "整机、执行器、阀体和内件需要明确的信息层级并最终回到完整产品。",
+        "title": "Peloton Pro Series campaign by FutureDeluxe",
+        "sourceUrl": "https://futuredeluxe.com/work/peloton",
+        "narrativeThesis": "以代表 Peloton IQ 的扫描灯光贯穿影片，让微距、材质与 drone-inspired sweep 共同服务尺度和发现感。",
         "transferableMethods": [
-          "技术拆解之后回到低机位英雄构图。",
-          "系统级组织优先于零件级枚举。"
+          "灯光与相机必须解释同一个视觉母题。",
+          "尺度变化只有在带来新产品认知时才成立。"
         ],
         "limitations": [
-          "只迁移展示层级，不迁移材料、应用或性能说明。"
+          "当前阀门没有支持高速内部穿越的已确认空间路径，因此不迁移无人机式炫技。"
+        ]
+      },
+      {
+        "title": "Huawei Mate 70 by FutureDeluxe",
+        "sourceUrl": "https://futuredeluxe.com/work/huawei-mate-70",
+        "narrativeThesis": "让呼应产品背板的丝线编织形态贯穿场景、材质和转场。",
+        "transferableMethods": [
+          "从产品自身提取贯穿全片的视觉母题。",
+          "当前阀门以中央机械轴和三级重复轮廓作为母题。"
+        ],
+        "limitations": [
+          "不迁移丝线、山水场景、手机材质或品牌语气。"
+        ]
+      },
+      {
+        "title": "Pinion MGU CGI launch by Lightshape",
+        "sourceUrl": "https://www.lightshape.net/en/projects/pinion-mgu-cgi",
+        "narrativeThesis": "先用局部光边制造结构悬念，再以爆炸视图和动画逐步释放完整复杂产品。",
+        "transferableMethods": [
+          "从核心局部开始，再扩大到完整产品。",
+          "把隐藏、解释和英雄图组织为同一信息释放过程。"
+        ],
+        "limitations": [
+          "不迁移 MGU 功能、部件关系或发布节奏。"
+        ]
+      },
+      {
+        "title": "Elmac FAB Valve CGI by The Outset",
+        "sourceUrl": "https://www.fromtheoutset.co.uk/portfolio/elmac-fab-valve-cgi-3d-animation/",
+        "narrativeThesis": "只在工程功能已经确认时使用剖切和内部模拟解释摄影不可见的阀门过程。",
+        "transferableMethods": [
+          "外壳透明只用于定位已观察到的内部结构。",
+          "把结构事实与功能推断明确分开。"
+        ],
+        "limitations": [
+          "当前资产没有介质、压力、作用方向或性能数据，不画流体、能量或控制效果。"
         ]
       }
     ]
   },
   "creativeRoutes": [
     {
-      "id": "command-becomes-precision",
-      "title": "命令成为精密动作",
-      "thesis": "控制不是一个瞬间，而是一条被产品结构组织过的机械路径。",
-      "audienceTakeaway": "观众从执行器起点出发，沿机械轴理解内部层级和六个系统，最后记住完整产品。",
-      "modelFit": "六个语义组、中央轴、串级内件和外壳透明度足以支撑五种不同画面语法。",
+      "id": "precision-becomes-whole",
+      "title": "精密核心成为整体",
+      "thesis": "复杂结构沿一条中央机械轴归于秩序，最终成为完整产品。",
+      "audienceTakeaway": "观众先认识串级核心，再看到层级归位、阀体闭合和执行器完成整机，最后记住产品身份。",
+      "modelFit": "现有六个可控节点足以让核心、阀体和执行器分阶段归位，不需要几百个独立零件。",
       "shotArc": [
-        "actuator-origin",
-        "axis-in-motion",
-        "cascade-precision",
-        "six-systems-one-axis",
-        "complexity-resolved"
+        "core-suspended",
+        "precision-nested",
+        "body-encloses",
+        "assembly-complete",
+        "product-presence"
       ],
       "risks": [
-        "剖面微距和系统图必须在后续 Animatic 中验证遮挡、比例与阅读时间。",
-        "匹配剪辑必须保持中央机械轴和圆形轮廓的视觉连续。"
+        "现有六节点资产对三级内件层级的分离能力仍需未来 Animatic 验证。",
+        "阀体透明到实体的连续过渡必须避免内部结构失去位置参照。"
       ]
     },
     {
-      "id": "structure-as-evidence",
-      "title": "结构证词",
-      "thesis": "用五个接近静态的工程观察角度逐层证明产品结构。",
-      "audienceTakeaway": "以最低观看负担认识产品部件层级。",
-      "modelFit": "现有六节点资产完全足够。",
+      "id": "axial-flythrough",
+      "title": "轴内穿越",
+      "thesis": "沿机械轴进入阀门内部，再从核心穿出并发现整机。",
+      "audienceTakeaway": "用强尺度变化理解内部与整体。",
+      "modelFit": "模型包含中央结构，但没有经过验证的无碰撞内部相机通道。",
       "shotArc": [
-        "actuator-origin",
-        "axis-in-motion",
-        "cascade-precision",
-        "six-systems-one-axis",
-        "complexity-resolved"
+        "approach",
+        "enter",
+        "cross-core",
+        "exit",
+        "hero"
       ],
       "risks": [
-        "镜头语法过于相似，容易再次退化成五张技术说明图。"
+        "滚动反向播放会放大眩晕、穿模和无动机倒飞。",
+        "相机技巧可能压过产品认知，因此本轮不选择。"
+      ]
+    },
+    {
+      "id": "six-system-diagram",
+      "title": "六系统工程图",
+      "thesis": "把复杂 CAD 组织为六个可读的商业镜头节点。",
+      "audienceTakeaway": "理解资产如何被简化为六组。",
+      "modelFit": "与当前六节点资产完全匹配。",
+      "shotArc": [
+        "whole",
+        "actuator",
+        "core",
+        "six-groups",
+        "whole-again"
+      ],
+      "risks": [
+        "六节点是制作策略，不是客户认识或记住产品的理由。",
+        "正交系统图会把商业高潮降格为模型说明，因此本轮不选择。"
       ]
     }
   ],
-  "selectedRouteId": "command-becomes-precision",
+  "selectedRouteId": "precision-becomes-whole",
   "shots": [
     {
-      "id": "actuator-origin",
+      "id": "core-suspended",
       "order": 1,
-      "range": [0, 0.16],
-      "narrativePurpose": "从执行器极近特写撤出，建立动作起点、产品尺度和完整身份。",
-      "viewerTakeaway": "执行器位于整条纵向机械观察路径的起点。",
-      "startState": "执行器金属边缘和圆形轮廓占满画面。",
-      "endState": "完整产品第一次出现，执行器和中央轴构成纵向线索。",
-      "action": "轮廓光扫过执行器，相机快速平滑撤离，完整产品依次显露。",
-      "activeComponents": ["PNEUMATIC_ACTUATOR", "VALVE_BODY_BONNET"],
-      "lighting": "冷白轮廓光先出现，撤离时分层建立执行器、支架和阀体。",
-      "layout": "章节字先出现，完整产品显露后左侧标题落位。",
-      "transitionIn": "首帧海报与执行器极近特写一致。",
-      "transitionOut": "执行器圆形轮廓居中，与下一镜俯视同心圆做匹配剪辑。",
-      "rhythm": "0.6 秒辨认、1.5 秒撤离、0.7 秒减速、0.4 秒停顿。",
-      "hold": "完整产品和中央轴稳定 0.4 秒。",
+      "range": [0, 0.155],
+      "narrativePurpose": "从轴向拆分的串级内件开始，让精密核心先于大型外壳被认识。",
+      "viewerTakeaway": "产品的精密性来自串级式阀芯、三级阀笼与阀座形成的中央层级。",
+      "startState": "阀芯边缘与最接近的一层阀笼占据画面，其余内件沿同一轴线短距离拆分，阀体为低亮轮廓。",
+      "endState": "阀芯、三级阀笼和阀座全部可辨认，仍保持轴向拆分，中央机械轴明确建立。",
+      "action": "产品不装配；窄幅轮廓光从阀芯向重复轮廓逐层移动，完成结构显露。",
+      "activeComponents": [
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM",
+        "VALVE_BODY_BONNET"
+      ],
       "camera": {
-        "framing": "执行器极近特写到完整产品斜侧中远景。",
-        "movement": "反向 macro dolly-out，加一次不超过 18 度的轻微下降俯仰。"
+        "framing": "侧前方轴向微距，核心中央偏右，阀体只作空间参照。",
+        "movement": "极短平滑后退，只扩大到可同时辨认三级轮廓；不换轴、不横滚。"
+      },
+      "lighting": "冷钢环境光维持外壳轮廓，窄幅暖白高光按内件层级移动。",
+      "layout": "左上先出现小号章节字，全部层级出现后左侧标题稳定落下。",
+      "transitionIn": "首帧海报即为同一核心微距状态，不从黑场显影。",
+      "transitionOut": "最后一道高光停在最外层阀笼边缘，该边缘随后开始归位并触发下一节拍。",
+      "rhythm": "0.5 秒辨认、1.5 秒逐层显露、0.4 秒轻微后退、0.4 秒停顿。",
+      "hold": "全部同轴内件稳定可见至少 0.4 秒。",
+      "content": {
+        "eyebrow": "01 / THE CORE",
+        "title": "精密，先从核心被看见。",
+        "body": "串级式阀芯与三级阀笼，沿同一条轴线展开。",
+        "cta": null
       },
       "truthConstraints": [
-        "只使用执行器 STEP 标签，不表现气源、信号、作用方向或失效逻辑。"
-      ],
-      "content": {
-        "eyebrow": "01 / ORIGIN",
-        "title": "动作，从最高处开始。",
-        "body": "先找到执行器，再沿一条轴线理解整台设备。"
-      }
+        "拆分距离是商业可视化，不声称为制造、拆装或维修位置。"
+      ]
     },
     {
-      "id": "axis-in-motion",
+      "id": "precision-nested",
       "order": 2,
-      "range": [0.16, 0.35],
-      "narrativePurpose": "通过俯视轴向下降，把执行器、推杆和阀芯组织成一条可追踪机械路径。",
-      "viewerTakeaway": "外部执行器与内部阀芯沿同一纵向机械轴关联。",
-      "startState": "执行器顶面以同心圆居中。",
-      "endState": "相机停在支架上方，执行器、推杆和阀芯仍在同一构图内。",
-      "action": "相机沿产品外部下降，执行器外壳半透明，推杆做一次小幅轴向示意。",
-      "activeComponents": ["PNEUMATIC_ACTUATOR", "STEM_CASCADE_PLUG", "VALVE_BODY_BONNET"],
-      "lighting": "铜色只沿推杆和阀芯形成视觉接力，外围保持冷钢。",
-      "layout": "文字切到右上角，中央机械轴保持无障碍。",
-      "transitionIn": "执行器圆形轮廓与上一镜做匹配剪辑。",
-      "transitionOut": "法兰边缘形成短促几何擦镜，切换到侧向剖面。",
-      "rhythm": "0.5 秒建立方向、2.0 秒下降、0.7 秒轴向示意、0.6 秒停顿。",
-      "hold": "执行器、推杆和阀芯的轴向关系稳定 0.6 秒。",
+      "range": [0.155, 0.41],
+      "narrativePurpose": "让轴向拆分的内件依次归位，使重复结构成为一个可理解的精密核心。",
+      "viewerTakeaway": "这些结构不是漂浮零件，而是围绕同一中央轴形成完整层级。",
+      "startState": "完全继承上一节拍终态：核心轴向拆分，最外层轮廓已被高光选中。",
+      "endState": "串级式阀芯、三级阀笼与阀座形成紧凑完整核心，阀体仍为低亮空间参照。",
+      "action": "阀座建立基准，阀芯与阀笼随后沿中央轴依次短距离归位；每层稳定后下一层才开始。",
+      "activeComponents": [
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM"
+      ],
       "camera": {
-        "framing": "俯视全景到高位轴向中景。",
-        "movement": "位于几何外部的俯视轴向 crane-down。"
+        "framing": "延续同一侧前方轴向近景，中央机械轴保持在主要视觉区域。",
+        "movement": "极慢伴随式 dolly，只维持活动层在可读尺度内，不重新选择观察轴。"
+      },
+      "lighting": "当前归位层获得窄幅暖白高光，完成层回到统一冷钢材质。",
+      "layout": "只保留左侧短标题，不弹出零件清单或 BOM 标注。",
+      "transitionIn": "上一节拍最外层高光直接变成第一个运动提示，无剪切。",
+      "transitionOut": "完整核心保持原位，阀体低亮轮廓逐渐获得实体高光并开始闭合。",
+      "rhythm": "0.4 秒承接、3.0 秒分阶段归位、0.6 秒光线收束、0.6 秒停顿。",
+      "hold": "完整核心稳定至少 0.6 秒。",
+      "content": {
+        "eyebrow": "02 / IN ORDER",
+        "title": "一层接住一层。",
+        "body": "重复结构沿中央轴归位，核心由此成立。",
+        "cta": null
       },
       "truthConstraints": [
-        "轴向示意不定义打开、关闭或失效方向。"
-      ],
-      "content": {
-        "eyebrow": "02 / TRANSMISSION",
-        "title": "一条轴线，把意图变成动作。",
-        "body": "执行器、推杆与阀芯，共享同一条机械路径。"
-      }
+        "归位顺序是广告叙事顺序，不等于真实装配、维修或动作顺序。"
+      ]
     },
     {
-      "id": "cascade-precision",
+      "id": "body-encloses",
       "order": 3,
-      "range": [0.35, 0.575],
-      "narrativePurpose": "把观察轴旋转九十度，以剖面微距解释串级式阀芯、三级阀笼和阀座的结构层级。",
-      "viewerTakeaway": "内部核心不是漂浮零件，而是沿中央轴排列的重复结构。",
-      "startState": "法兰擦镜后进入带阀体轮廓参照的侧向剖面。",
-      "endState": "阀芯、阀笼 1/2/3 和阀座同时进入可辨认范围。",
-      "action": "相机侧向横移，焦点与局部光线依次接力内部结构。",
-      "activeComponents": ["STEM_CASCADE_PLUG", "CASCADE_TRIM", "VALVE_BODY_BONNET"],
-      "lighting": "铜色标记阀芯，暖金色依次接力三级阀笼，阀体保持冷灰轮廓。",
-      "layout": "标题缩到左下，极少量结构标签贴近对应轮廓。",
-      "transitionIn": "法兰边缘做几何擦镜并保持中央轴高度。",
-      "transitionOut": "重复阀笼圆形冻结成图形节拍，匹配到下一镜系统定位环。",
-      "rhythm": "0.5 秒建立剖面、2.4 秒横移接力、0.6 秒合并视野、1.0 秒停顿。",
-      "hold": "阀芯、三级阀笼和阀体参照同时稳定 1.0 秒。",
+      "range": [0.41, 0.65],
+      "narrativePurpose": "让阀体与上盖围绕已经成立的核心闭合，建立内部位置、工业尺度与主体轮廓。",
+      "viewerTakeaway": "阀体与上盖共同承载精密核心，并把它组织成可识别的阀门主体。",
+      "startState": "完全继承上一节拍终态：核心完整，阀体为半透明或低亮轮廓。",
+      "endState": "阀体与上盖形成完整主体，核心位置可理解，支架与执行器仍在上方短距离拆分。",
+      "action": "阀体与上盖沿中央轴依次向核心闭合，透明度随几何接近连续恢复为实体材质。",
+      "activeComponents": [
+        "VALVE_BODY_BONNET",
+        "SEALS_SUPPORT",
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM"
+      ],
       "camera": {
-        "framing": "带外壳空间参照的侧向剖面微距。",
-        "movement": "保持距离的 macro truck 与焦点迁移，不进行内部穿越。"
+        "framing": "从核心近景连续扩展为阀体中景，左右法兰逐渐建立工业尺度。",
+        "movement": "沿原观察方向受控后退，由产品闭合推动尺度变化，不绕到背面。"
+      },
+      "lighting": "内部暖白记忆点降低，连续冷白主光在阀体曲面和法兰边缘建立体积。",
+      "layout": "标题位于左侧中部，不显示六组或资产节点名称。",
+      "transitionIn": "上一节拍的外壳轮廓高光直接增强，不剪切、不黑场。",
+      "transitionOut": "推杆向上延伸到画面外，相机沿这条未完成纵向关系略微抬头。",
+      "rhythm": "0.5 秒确认核心、2.3 秒依次闭合、0.8 秒材质恢复、0.7 秒停顿。",
+      "hold": "核心位置、阀体轮廓和左右法兰同时可读至少 0.7 秒。",
+      "content": {
+        "eyebrow": "03 / CONTAINED",
+        "title": "核心，被结构承载。",
+        "body": "阀体与上盖闭合，精密层级获得清晰的位置。",
+        "cta": null
       },
       "truthConstraints": [
-        "只使用串级式阀芯、阀笼 1/2/3 和阀座标签，不解释流体、压降、噪声或性能。"
-      ],
-      "content": {
-        "eyebrow": "03 / PRECISION",
-        "title": "控制的层级，藏在内部。",
-        "body": "串级式阀芯与三级阀笼，在同一轴线上逐层组织。"
-      }
+        "透明度和闭合路径是结构展示手段，不声称实际制造装配、密封结果或内部介质状态。"
+      ]
     },
     {
-      "id": "six-systems-one-axis",
+      "id": "assembly-complete",
       "order": 4,
-      "range": [0.575, 0.775],
-      "narrativePurpose": "从内部重复结构匹配到正交轴测系统图，解释六个语义组如何围绕中央轴被组织。",
-      "viewerTakeaway": "复杂 CAD 被组织成六个观察系统，而不是散乱零件。",
-      "startState": "阀笼圆形匹配为系统定位环，完整产品处于正交轴测全景。",
-      "endState": "六组在中央轴周围形成可读层级。",
-      "action": "中央轴固定，执行器、内件、密封支撑和生产细节依次短距离分层。",
-      "activeComponents": ["VALVE_BODY_BONNET", "PNEUMATIC_ACTUATOR", "STEM_CASCADE_PLUG", "CASCADE_TRIM", "SEALS_SUPPORT", "PRODUCTION_DETAILS"],
-      "lighting": "统一石墨和冷钢体系，铜色维持中央轴，不使用彩虹式分组。",
-      "layout": "左侧标题，右侧只显示六条简短系统标注。",
-      "transitionIn": "阀笼圆形与系统定位环做匹配剪辑。",
-      "transitionOut": "中央铜色轴保持位置，外围六组沿原路径开始归位。",
-      "rhythm": "0.4 秒匹配、2.0 秒分层、0.8 秒短弧侧移、0.8 秒停顿。",
-      "hold": "六组位置和标签稳定 0.8 秒。",
+      "range": [0.65, 0.825],
+      "narrativePurpose": "让支架与气动执行器沿中央轴完成整机纵向轮廓。",
+      "viewerTakeaway": "中央核心、阀体、支架与气动执行器属于同一套纵向装配关系。",
+      "startState": "完全继承上一节拍终态：阀体已闭合，推杆向上延伸，支架和执行器处于上方拆分位置。",
+      "endState": "所有商业控制节点均处于完整产品位置，整机静止，尚未开始英雄旋转。",
+      "action": "支架先向阀体上方归位，气动执行器随后沿同一中央轴下降到完整视觉位置。",
+      "activeComponents": [
+        "SEALS_SUPPORT",
+        "PRODUCTION_DETAILS",
+        "PNEUMATIC_ACTUATOR"
+      ],
       "camera": {
-        "framing": "完整产品的正交轴测系统全景。",
-        "movement": "固定正交感机位加一次二十四度缓慢弧形侧移。"
+        "framing": "从阀体中景向上扩展为完整整机中远景，执行器顶部保留呼吸空间。",
+        "movement": "轻微 pedestal-up 与缓慢后退；相机在执行器停止前先停止。"
+      },
+      "lighting": "阀体主光保持，执行器进入时由同一世界中的上方轮廓光接住。",
+      "layout": "标题平滑回到左侧大留白，为最终英雄画面建立稳定版式。",
+      "transitionIn": "上一节拍留下的中央推杆直接成为观察线索，无新转场装置。",
+      "transitionOut": "全部部件停止，灯光从核心向外轮廓收束后，相机才开始唯一一次短英雄弧。",
+      "rhythm": "0.4 秒沿推杆抬头、1.7 秒依次归位、0.5 秒相机停止、0.6 秒停顿。",
+      "hold": "完整产品轮廓稳定至少 0.6 秒。",
+      "content": {
+        "eyebrow": "04 / AS ONE",
+        "title": "直到每一层，成为同一台设备。",
+        "body": "核心、阀体与气动执行器，沿共同轴线完成整体。",
+        "cta": null
       },
       "truthConstraints": [
-        "六组是商业镜头语义组织，不等于 BOM、制造工序或维修步骤。"
-      ],
-      "content": {
-        "eyebrow": "04 / SYSTEM",
-        "title": "六组，不是六件。",
-        "body": "它们围绕同一条机械轴，被组织成一台完整设备。"
-      }
+        "只表达可见纵向装配关系，不表现气源、信号、行程、开闭或故障安全方向。"
+      ]
     },
     {
-      "id": "complexity-resolved",
+      "id": "product-presence",
       "order": 5,
-      "range": [0.775, 1],
-      "narrativePurpose": "让六组归位并把技术系统图收束成完整、可记忆的工业产品身份。",
-      "viewerTakeaway": "内部层级和系统关系最终服务于一台完整产品。",
-      "startState": "中央轴锁定，六组处于系统图位置。",
-      "endState": "完整产品在低机位三分之四英雄视角稳定保持。",
-      "action": "六组沿原路径归位，相机下降并完成一次有限短弧，技术标注退出。",
-      "activeComponents": ["VALVE_BODY_BONNET", "PNEUMATIC_ACTUATOR", "STEM_CASCADE_PLUG", "CASCADE_TRIM", "SEALS_SUPPORT", "PRODUCTION_DETAILS"],
-      "lighting": "暖白主光收束产品正面，冷色轮廓光勾勒法兰和执行器，铜色只留内部记忆点。",
-      "layout": "系统标签退出，最终标题回到左侧大留白。",
-      "transitionIn": "中央机械轴跨镜保持，外围系统沿原路径归位。",
-      "transitionOut": "无黑场和二次运动，以稳定英雄画面自然结束。",
-      "rhythm": "1.2 秒归位、1.4 秒下降短弧、0.3 秒灯光收束、1.6 秒停顿。",
-      "hold": "完整产品稳定 1.6 秒。",
+      "range": [0.825, 1],
+      "narrativePurpose": "在解释完成后停止部件动画，以唯一一次有限英雄弧形成完整产品记忆。",
+      "viewerTakeaway": "记住这是一台具有中央轴、阀体重量与气动执行器轮廓的 DN80 CL2500 气动串级式调节阀。",
+      "startState": "完全继承上一节拍终态：产品完整静止，侧前三分之四角度、背景与灯光世界不变。",
+      "endState": "完整产品稳定占据画面中央偏右，全部动画停止并充分保持。",
+      "action": "产品零件不再运动；只有材质高光随相机短弧缓慢移动。",
+      "activeComponents": [
+        "VALVE_BODY_BONNET",
+        "PNEUMATIC_ACTUATOR",
+        "STEM_CASCADE_PLUG",
+        "CASCADE_TRIM",
+        "SEALS_SUPPORT",
+        "PRODUCTION_DETAILS"
+      ],
       "camera": {
-        "framing": "系统全景下降为低机位三分之四英雄中远景。",
-        "movement": "pedestal-down 加一次三十二度有限 hero arc，随后锁定。"
+        "framing": "克制的侧前三分之四英雄中远景，左侧为最终标题留白。",
+        "movement": "全片唯一一次约二十四度低速短弧，随后完全锁定，无回弹。"
+      },
+      "lighting": "暖白主光稳定阀体正面，冷白轮廓光勾勒执行器与法兰，不突然熄灯。",
+      "layout": "只保留品牌中性产品名称和一句结论，不出现技术表格、节点数或渲染状态。",
+      "transitionIn": "上一节拍整机停顿后直接开始相机短弧，产品状态不变化。",
+      "transitionOut": "无黑场、二次运动或突然 CTA，以稳定英雄画面自然结束。",
+      "rhythm": "1.2 秒短英雄弧、0.3 秒高光收束、1.6 秒稳定保持。",
+      "hold": "最终完整产品至少稳定 1.6 秒。",
+      "content": {
+        "eyebrow": "05 / COMPLETE",
+        "title": "精密，最终成为整体。",
+        "body": "DN80 CL2500 气动串级式调节阀。",
+        "cta": null
       },
       "truthConstraints": [
-        "终帧只确认源文件名称、产品类型和可见装配关系，不附带性能、工况、认证或品牌承诺。"
-      ],
-      "content": {
-        "eyebrow": "05 / RESOLUTION",
-        "title": "复杂，被收进整体。",
-        "body": "DN80 CL2500 气动串级式调节阀。"
-      }
+        "终帧只使用源文件名称、产品类型与可见外形，不附加品牌、材料、性能、工况或认证承诺。"
+      ]
     }
   ],
   "confirmation": {
@@ -260,7 +343,7 @@
     },
     {
       "phase": "five-shot-script",
-      "completedAt": "2026-07-26T14:40:00Z"
+      "completedAt": "2026-07-26T16:30:00Z"
     }
   ]
 }

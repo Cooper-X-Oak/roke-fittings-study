@@ -2,31 +2,41 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-shot-script",
-  "ruleset_version": "2026-07-26.12",
+  "ruleset_id": "ruleset-2026-07-26-control-valve-continuous-story",
+  "ruleset_version": "2026-07-26.13",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
-      "id": "author-control-valve-five-shot-script",
-      "statement": "Author exactly five materially different commercial shots for the supplied DN80 CL2500 pneumatic cascade control-valve model. The script must tell one causal product-recognition story rather than relabeling five similar camera states.",
+      "id": "author-control-valve-five-beat-commercial-script",
+      "statement": "Author exactly five continuous commercial story beats for the supplied DN80 CL2500 pneumatic cascade control-valve model. All five beats must form one reversible product-state transformation in a coherent world, not five unrelated camera demonstrations.",
       "development_entry_ids": ["author-control-valve-shot-script"],
       "children": [
         {
-          "id": "causal-narrative-arc-proof",
+          "id": "single-product-thesis-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must show that the five shots advance one explicit causal arc, with a distinct question and viewer takeaway in every shot."
+          "statement": "Acceptance must show one explicit product-recognition thesis that every beat advances through visible product-state change."
         },
         {
-          "id": "material-shot-contrast-proof",
+          "id": "causal-state-handoff-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must show materially different scale, camera axis, framing, visible action, transition device and rhythm across the five shots."
+          "statement": "Acceptance must show that each beat starts from the prior beat's end state, preserves the central mechanical axis and remains intelligible when scrubbed forward or backward."
+        },
+        {
+          "id": "camera-serves-product-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must show that camera, lighting, layout, copy and transitions support the product transformation; camera-axis novelty, blackout, unmotivated FPV and repeated hero orbit are prohibited."
+        },
+        {
+          "id": "distinct-cognitive-beats-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must show five distinct viewer takeaways without requiring five different observation axes, framings or camera movements."
         },
         {
           "id": "complete-shot-language-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Every shot must define narrative purpose, viewer takeaway, start and end state, visible action, active components, framing, camera movement, lighting, layout, copy, incoming and outgoing transition, rhythm, comprehension hold and truth constraints."
+          "statement": "Every beat must define narrative purpose, viewer takeaway, start and end state, visible product action, active components, framing, camera support, lighting, layout, copy, transition handoff, rhythm, comprehension hold and truth constraints."
         }
       ]
     },
@@ -43,14 +53,26 @@
       ]
     },
     {
+      "id": "research-commercial-film-methods",
+      "statement": "Base the selected route on traceable commercial-film references, led by the locally preserved ROKE image sequences and checked against professional product-film cases. References authorize transferable narrative and camera methods only, never product claims.",
+      "development_entry_ids": ["author-control-valve-shot-script"],
+      "children": [
+        {
+          "id": "reference-to-decision-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must connect each selected reference method to a script decision and state why inapplicable spectacle or unsupported functional visualization was rejected."
+        }
+      ]
+    },
+    {
       "id": "stop-at-approved-shot-script",
-      "statement": "This development phase stops after the creative route and five-shot script. Camera previs, Animatic, runtime manifests, WebGL, production assets, rendered evidence and public pages must not be changed or released in this phase.",
+      "statement": "This development phase stops after the advertising reference board, creative route and five-beat script. Camera previs, Animatic, runtime manifests, WebGL, production assets, rendered evidence and public pages must not be changed or released in this phase.",
       "development_entry_ids": ["author-control-valve-shot-script"],
       "children": [
         {
           "id": "script-only-change-scope-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove that only current governance, creative-route, five-shot-script and script-validation files changed relative to origin/main."
+          "statement": "Acceptance must prove that changes are limited to current governance, acceptance, advertising research, creative route, five-beat script, creative-development record and script-validation files."
         }
       ]
     }

@@ -2,23 +2,27 @@
   "schema_version": 2,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-shot-script",
-  "ruleset_version": "2026-07-26.12",
-  "validation_contract_version": "2026-07-26.12",
+  "ruleset_id": "ruleset-2026-07-26-control-valve-continuous-story",
+  "ruleset_version": "2026-07-26.13",
+  "validation_contract_version": "2026-07-26.13",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
   "checks": [
     {
-      "id": "control-valve-five-shot-script-contract",
-      "behavior_id": "five-materially-different-shots-form-one-causal-product-story",
+      "id": "control-valve-continuous-five-beat-contract",
+      "behavior_id": "five-cognitive-beats-form-one-reversible-product-transformation",
       "rule_paths": [
-        ["author-control-valve-five-shot-script"],
-        ["author-control-valve-five-shot-script", "causal-narrative-arc-proof"],
-        ["author-control-valve-five-shot-script", "material-shot-contrast-proof"],
-        ["author-control-valve-five-shot-script", "complete-shot-language-proof"],
+        ["author-control-valve-five-beat-commercial-script"],
+        ["author-control-valve-five-beat-commercial-script", "single-product-thesis-proof"],
+        ["author-control-valve-five-beat-commercial-script", "causal-state-handoff-proof"],
+        ["author-control-valve-five-beat-commercial-script", "camera-serves-product-proof"],
+        ["author-control-valve-five-beat-commercial-script", "distinct-cognitive-beats-proof"],
+        ["author-control-valve-five-beat-commercial-script", "complete-shot-language-proof"],
         ["bind-script-to-observed-product-truth"],
         ["bind-script-to-observed-product-truth", "script-claim-boundary-proof"],
+        ["research-commercial-film-methods"],
+        ["research-commercial-film-methods", "reference-to-decision-proof"],
         ["stop-at-approved-shot-script"],
         ["stop-at-approved-shot-script", "script-only-change-scope-proof"]
       ],
