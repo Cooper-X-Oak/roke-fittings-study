@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "run_id": "20260726T041500Z-car-story-preproduction",
+  "run_id": "20260726T052255Z-car-camera-previs",
   "target": {
     "environment": "candidate",
-    "identity": "feat/11-narrative-first-skill@c2503118b9c85e8d06d5538cf703517c58c94ee8"
+    "identity": "feat/11-narrative-first-skill@d6b503928cb1281c7eb4be58c2a43202e92f0511"
   },
   "scope": {
     "status": "applicable",
-    "basis": "The candidate delivers new remote preproduction artifacts, an editable ChatCut Animatic, and a downloaded review MP4 while intentionally leaving the public WebGL runtime unchanged.",
+    "basis": "The candidate replaces the static five-shot camera treatment with a deterministic per-frame virtual-FPV route and delivers an editable five-clip ChatCut path Animatic while intentionally leaving the public WebGL runtime unchanged.",
     "affected_claims": [
-      "remote-preproduction-package",
-      "reviewable-five-shot-animatic",
+      "deterministic-camera-previs",
+      "reviewable-editable-path-animatic",
       "confirmation-blocks-runtime"
     ],
     "unaffected_claims": [
@@ -22,9 +22,9 @@
   "plan": {
     "claims": [
       {
-        "claim_id": "remote-preproduction-package",
-        "statement": "The candidate branch and Draft PR expose the reference board, three routes, five-shot script, storyboards, phase record, and editable Animatic link.",
-        "consumer": "creative decision maker and the next implementation agent",
+        "claim_id": "deterministic-camera-previs",
+        "statement": "The candidate provides one deterministic and reversible camera/product/light state for every frame of the canonical 480-frame playback, including the authored hidden cut and final 15% stable hero hold.",
+        "consumer": "creative director and runtime implementation agent",
         "critical": true,
         "environment": "candidate",
         "side_effects": "none",
@@ -32,15 +32,15 @@
         "cleanup_plan": null,
         "evidence_strategies": [
           {
-            "type": "remote-github-state",
-            "target": "Draft PR 12 and branch feat/11-narrative-first-skill",
-            "probe": "gh pr view 12; git ls-remote; gh api repository contents"
+            "type": "candidate-artifact-validation",
+            "target": "creative/car-concept/camera-previs.json",
+            "probe": "python scripts/validate_car_story_preproduction.py"
           }
         ]
       },
       {
-        "claim_id": "reviewable-five-shot-animatic",
-        "statement": "The delivered 16-second Animatic visibly contains five ordered and legible narrative beats at 1920x1080 and 30fps.",
+        "claim_id": "reviewable-editable-path-animatic",
+        "statement": "The delivered 16-second Animatic visibly expresses INTERCEPT, THREAD, COCKPIT RUN, BREAKOUT, and ARREST and exposes those beats as five editable timeline clips.",
         "consumer": "creative decision maker",
         "critical": true,
         "environment": "candidate",
@@ -49,20 +49,20 @@
         "cleanup_plan": null,
         "evidence_strategies": [
           {
-            "type": "production-media-decode",
-            "target": "downloaded H.264 review export",
-            "probe": "ffprobe export and inspect decoded frames at 0.4s, 3s, 6s, 10s, and 14s"
+            "type": "chatcut-timeline-inspection",
+            "target": "ChatCut project c91db2e4-55a3-4408-b3fa-e96da1818102",
+            "probe": "read_project timeline and V1 track"
           },
           {
-            "type": "remote-render-job",
-            "target": "ChatCut render 4dd4efad-23f4-4413-8b4e-58e7616acdbc",
-            "probe": "track_export terminal job state"
+            "type": "production-media-decode",
+            "target": "ChatCut render 4de2d92f-f72d-4330-938b-97e1af6548b5",
+            "probe": "decode and visually inspect frames 52, 123, 124, 150, 220, 338, 408, and 430"
           }
         ]
       },
       {
         "claim_id": "confirmation-blocks-runtime",
-        "statement": "The current candidate is valid through Animatic, remains pending external confirmation, and cannot generate the WebGL runtime yet.",
+        "statement": "The candidate remains pending external narrative confirmation and cannot generate or modify the public WebGL runtime.",
         "consumer": "runtime implementation agent and release owner",
         "critical": true,
         "environment": "candidate",
@@ -72,8 +72,8 @@
         "evidence_strategies": [
           {
             "type": "candidate-gate-execution",
-            "target": "project governance acceptance and story skill validators",
-            "probe": "python governance/validate_control_plane.py accept --run-checks"
+            "target": "project governance acceptance and negative confirmation gate",
+            "probe": "python governance/validate_control_plane.py accept --rules governance/project-rules.json --validation governance/project-validation.json --run-checks --workdir ."
           }
         ]
       }
@@ -81,67 +81,83 @@
   },
   "coverage": [
     {
-      "claim_id": "remote-preproduction-package",
+      "claim_id": "deterministic-camera-previs",
       "status": "checked",
       "reason": "",
-      "evidence_refs": ["EV-001"],
+      "evidence_refs": ["EV-001", "EV-002"],
       "cleanup_evidence": []
     },
     {
-      "claim_id": "reviewable-five-shot-animatic",
+      "claim_id": "reviewable-editable-path-animatic",
       "status": "checked",
       "reason": "",
-      "evidence_refs": ["EV-002", "EV-003"],
+      "evidence_refs": ["EV-003", "EV-004", "EV-005"],
       "cleanup_evidence": []
     },
     {
       "claim_id": "confirmation-blocks-runtime",
       "status": "checked",
       "reason": "",
-      "evidence_refs": ["EV-004", "EV-005"],
+      "evidence_refs": ["EV-006"],
       "cleanup_evidence": []
     }
   ],
   "evidence": [
     {
       "id": "EV-001",
-      "type": "remote-github-inspection",
+      "type": "per-frame-artifact-inspection",
       "quality": "direct",
-      "target": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/12",
-      "artifact": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/12#issuecomment-5081925932",
-      "summary": "The open Draft PR resolves to head c2503118b9c85e8d06d5538cf703517c58c94ee8; the remote branch matches it, and the repository contents API returns creative/car-concept/creative-development.json (14736 bytes)."
+      "target": "creative/car-concept/camera-previs.json",
+      "artifact": "creative/car-concept/camera-previs.json",
+      "summary": "The artifact contains contiguous frame identities 0–479 at 30fps with camera position, target, roll, FOV, focus, product, light, transition, progress, and shot identity for every frame."
     },
     {
       "id": "EV-002",
-      "type": "downloaded-media-decode",
+      "type": "determinism-and-boundary-probe",
       "quality": "direct",
-      "target": "D:/Users/luoxu/Downloads/car-concept-precision-becomes-presence-animatic.mp4",
-      "artifact": "sha256:eda4a8a302fc25ae167b6f43c829897ed7612acdea4ce53483b3d172e70be62e",
-      "summary": "The downloaded file decodes as H.264, 1920x1080, 30fps, duration 16.042667 seconds, size 6422178 bytes."
+      "target": "candidate camera state",
+      "artifact": "scripts/validate_car_story_preproduction.py",
+      "summary": "Forward and reverse frame-index projections are byte-equivalent; maximum sampled roll is 10 degrees; only frames 123–124 carry the authored brake-disc hidden cut; frames 408–479 have identical camera, product, light, and transition states."
     },
     {
       "id": "EV-003",
-      "type": "export-frame-inspection",
+      "type": "chatcut-timeline-inspection",
       "quality": "direct",
-      "target": "decoded frames from the downloaded Animatic",
-      "artifact": "creative/car-concept/storyboards/",
-      "summary": "Actual export pixels at 0.4s, 3s, 6s, 10s, and 14s were viewed. CONTACT isolates the wheel/brake; HUMAN CORE isolates the cockpit; SYSTEM shows ordered separation; CONVERGENCE visibly closes the structure; PRESENCE ends on the complete car. Titles and Chinese thesis lines are legible and do not create a dashboard layout."
+      "target": "https://app.chatcut.io/editor/c91db2e4-55a3-4408-b3fa-e96da1818102",
+      "artifact": "timeline 004812ac-b3d5-4bba-81d9-e58da6fdfc32",
+      "summary": "V1 contains five contiguous editable clips with frame ranges 0–90, 90–168, 168–270, 270–390, and 390–480, all sourced from the delivered deterministic path render."
     },
     {
       "id": "EV-004",
-      "type": "candidate-governance-acceptance",
-      "quality": "supporting",
-      "target": "candidate worktree",
-      "artifact": "governance/project-validation.json",
-      "summary": "The full control-plane acceptance passed the reusable skill contract, car-story preproduction contract, GitHub Pages repository policy, and aligned business/acceptance gate."
+      "type": "chatcut-export-inspection",
+      "quality": "direct",
+      "target": "ChatCut render 4de2d92f-f72d-4330-938b-97e1af6548b5",
+      "artifact": "C:/Users/luoxu/Downloads/car-concept-virtual-fpv-camera-previs-animatic.mp4",
+      "summary": "The terminal render downloaded as H.264 1280x720 at 30fps, duration 16.042667 seconds, size 9065522 bytes, SHA256 F47DDE6BE374FC690BA2367FB3575A5E336FD88B12C2F9214251C68A65E93D19."
     },
     {
       "id": "EV-005",
-      "type": "phase-gate-negative-check",
+      "type": "export-frame-visual-inspection",
       "quality": "direct",
-      "target": "creative/car-concept/creative-development.json",
-      "artifact": "scripts/validate_car_story_preproduction.py",
-      "summary": "Validation through Animatic passes; confirmation validation and runtime-story generation both fail specifically because confirmation.status is pending rather than approved. docs/experiment has no diff from the declared baseline commit."
+      "target": "decoded pixels from the ChatCut export",
+      "artifact": "D:/Temp/chatcut-camera-previs-evidence/contact-sheet.jpg",
+      "summary": "Actual export pixels at frames 52, 123, 124, 150, 220, 338, 408, and 430 were viewed. They show the whole-product intercept, dark brake-disc occlusion, steering acquisition, readable driver-side cutaway, restrained system wake, and identical stable hero states at frames 408 and 430."
+    },
+    {
+      "id": "EV-006",
+      "type": "candidate-governance-acceptance",
+      "quality": "direct",
+      "target": "candidate commit d6b503928cb1281c7eb4be58c2a43202e92f0511",
+      "artifact": "governance/project-validation.json",
+      "summary": "Full control-plane acceptance passed the reusable skill, camera-previs preproduction, and Pages policy checks; confirmation validation and runtime generation remain fail-closed because confirmation.status is pending, and docs/experiment is unchanged from the declared baseline."
+    },
+    {
+      "id": "EV-007",
+      "type": "remote-github-inspection",
+      "quality": "supporting",
+      "target": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/12",
+      "artifact": "remote branch feat/11-narrative-first-skill",
+      "summary": "The open Draft PR and remote branch both resolve to candidate commit d6b503928cb1281c7eb4be58c2a43202e92f0511 before this inspection record is appended."
     }
   ],
   "findings": [],
