@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from math import dist
+
 from control_valve_validation import CREATIVE, ROOT, ROUTE, fail, read_json
 
 
@@ -39,10 +41,36 @@ for frame in frames:
     for section, key in required_state_paths:
         if key not in frame.get(section, {}):
             fail(f"frame {frame.get('frame')} misses {section}.{key}")
-if max(abs(frame["camera"]["rollDegrees"]) for frame in frames) > 4:
-    fail("camera roll exceeds the released 4 degree limit")
-if frames[150]["transition"]["occlusion"] < 0.95 or frames[151]["transition"]["occlusion"] < 0.95:
-    fail("the only hidden camera relocation lacks authored occlusion")
+if max(abs(frame["camera"]["rollDegrees"]) for frame in frames) > 1e-9:
+    fail("every canonical frame must keep a zero-degree camera roll")
+if max(frame["transition"]["occlusion"] for frame in frames) > 0.01:
+    fail("blackout and hidden-cut occlusion are prohibited")
+
+camera_steps = [
+    dist(left["camera"]["position"], right["camera"]["position"])
+    for left, right in zip(frames, frames[1:])
+]
+if max(camera_steps) > 0.08:
+    fail("camera contains a teleport or a comfort-breaking per-frame step")
+if min(
+    dist(frame["camera"]["position"], frame["camera"]["target"])
+    for frame in frames
+) < 6:
+    fail("camera enters the close internal geometry comfort exclusion zone")
+fovs = [frame["camera"]["fovDegrees"] for frame in frames]
+if max(fovs) - min(fovs) > 3:
+    fail("field-of-view range exceeds the restrained comfort contract")
+
+for shot in shots:
+    hold = frames[shot["endFrame"] - 23 : shot["endFrame"] + 1]
+    reference = hold[0]
+    for frame in hold[1:]:
+        for section in ("camera", "product", "light"):
+            if frame[section] != reference[section]:
+                fail(
+                    f"shot {shot['id']} lacks a 24-frame comprehension hold "
+                    f"in {section}"
+                )
 
 hold = frames[408:480]
 reference = hold[0]
@@ -69,7 +97,23 @@ for capture in captures:
     if not image.is_file() or image.stat().st_size < 1000:
         fail(f"rendered shot evidence is missing: {capture.get('path')}")
 
+playback = evidence.get("fullPlayback", {})
+if playback.get("completed") is not True:
+    fail("fixed-duration browser playback did not reach the final frame")
+if playback.get("blackoutElementPresent") is not False:
+    fail("runtime still contains a blackout overlay")
+if playback.get("observedShotIds") != [shot["id"] for shot in shots]:
+    fail("fixed-duration playback did not observe the five shots in script order")
+
+styles = (ROUTE / "styles.css").read_text(encoding="utf-8")
+app = (ROUTE / "app.mjs").read_text(encoding="utf-8")
+if "#c46a3c" not in styles or "#0c1117" not in styles:
+    fail("restrained graphite-and-copper visual direction is not implemented")
+if "GROUP_COLORS" not in app or "秩序" not in app:
+    fail("runtime lacks the released industrial hierarchy and tonal direction")
+
 print(
-    "PASS: five-shot animatic has 480 deterministic states, a motivated "
-    "occlusion cut, rendered evidence and a stable final 15% hero hold"
+    "PASS: five-shot animatic has 480 deterministic zero-roll states, no "
+    "blackout or teleport, five comprehension holds, restrained industrial "
+    "tone, full playback evidence and a stable final 15% hero hold"
 )

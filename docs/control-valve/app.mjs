@@ -8,7 +8,6 @@ const story = document.querySelector("#story");
 const poster = document.querySelector("#poster");
 const loading = document.querySelector("#loading");
 const playButton = document.querySelector("#play");
-const occlusion = document.querySelector("#occlusion");
 const timelineFill = document.querySelector("#timeline-fill");
 const shotNumber = document.querySelector("#shot-number");
 const shotName = document.querySelector("#shot-name");
@@ -30,15 +29,15 @@ const renderer = new THREE.WebGLRenderer({
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.06;
-renderer.setClearColor(0x090a0b, 1);
+renderer.setClearColor(0x0c1117, 1);
 renderer.shadowMap.enabled = false;
 
 const dprCap = Math.min(devicePixelRatio, 1.75);
 renderer.setPixelRatio(dprCap);
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x090a0b);
-scene.fog = new THREE.FogExp2(0x090a0b, 0.026);
+scene.background = new THREE.Color(0x0c1117);
+scene.fog = new THREE.FogExp2(0x0c1117, 0.018);
 
 const camera = new THREE.PerspectiveCamera(34, 1, 0.015, 80);
 scene.add(camera);
@@ -49,26 +48,26 @@ scene.environment = pmrem.fromScene(environment, 0.05).texture;
 environment.dispose();
 pmrem.dispose();
 
-const hemi = new THREE.HemisphereLight(0xbfd1dc, 0x24150d, 0.42);
+const hemi = new THREE.HemisphereLight(0xb9c5cc, 0x12171c, 0.5);
 scene.add(hemi);
 
-const keyLight = new THREE.DirectionalLight(0xffeee3, 2.2);
+const keyLight = new THREE.DirectionalLight(0xfff3e8, 2.0);
 keyLight.position.set(4, 7, 6);
 scene.add(keyLight);
 
-const rimLight = new THREE.DirectionalLight(0x9ecfff, 2.6);
+const rimLight = new THREE.DirectionalLight(0xa9bfd0, 2.25);
 rimLight.position.set(-5, 3, -6);
 scene.add(rimLight);
 
-const accentLight = new THREE.PointLight(0xef4d26, 13, 9, 2);
+const accentLight = new THREE.PointLight(0xc46a3c, 4, 9, 2);
 accentLight.position.set(1.5, -1, 2.4);
 scene.add(accentLight);
 
 const floor = new THREE.Mesh(
   new THREE.CircleGeometry(8, 80),
   new THREE.MeshStandardMaterial({
-    color: 0x111213,
-    roughness: 0.84,
+    color: 0x18212a,
+    roughness: 0.88,
     metalness: 0.08
   })
 );
@@ -77,24 +76,24 @@ floor.position.y = -1.9;
 scene.add(floor);
 
 const SHOT_COPY = {
-  monument: {
-    title: "驱动力<br>成为控制",
-    body: "一股驱动力，贯穿整台设备。"
+  "product-authority": {
+    title: "秩序<br>先于动作",
+    body: "先看清整机，再理解内部。"
   },
-  "command-descends": {
-    title: "动作<br>沿轴下行",
-    body: "从气动执行器到推杆与阀芯，外部动作开始抵达内部。"
+  "axial-command": {
+    title: "一条轴线<br>传递动作",
+    body: "执行器、推杆与阀芯，始终保持在同一观察方向。"
   },
-  "inside-the-cascade": {
-    title: "逐级<br>抵达核心",
-    body: "三级命名阀笼被依次照亮；路径光只说明观察顺序，不模拟流体。"
+  "cascade-revealed": {
+    title: "核心结构<br>逐级显现",
+    body: "外壳退为参照，串级阀芯与三级阀笼仍处在完整空间中。"
   },
-  "six-systems": {
-    title: "六组<br>一个系统",
-    body: "复杂 CAD 被收敛为镜头所需的六个语义系统。"
+  "systems-in-order": {
+    title: "六个系统<br>各在其位",
+    body: "有限分离说明职责，不打散产品秩序。"
   },
-  "authority-restored": {
-    title: "解释归于<br>完整产品",
+  "product-resolved": {
+    title: "理解之后<br>仍是整体",
     body: "DN80 CL2500 气动串级式装配体。"
   }
 };
@@ -110,11 +109,20 @@ const GROUP_NAMES = [
 
 const EXPLODE_OFFSETS = {
   VALVE_BODY_BONNET: [0, 0, 0],
-  PNEUMATIC_ACTUATOR: [0, 1.25, 0],
-  STEM_CASCADE_PLUG: [0, 0.58, 0],
-  CASCADE_TRIM: [0, -0.82, 0],
-  SEALS_SUPPORT: [0.9, -0.18, 0.45],
-  PRODUCTION_DETAILS: [-0.86, 0.14, -0.34]
+  PNEUMATIC_ACTUATOR: [0, 0.78, 0],
+  STEM_CASCADE_PLUG: [0, 0.34, 0],
+  CASCADE_TRIM: [0, -0.5, 0],
+  SEALS_SUPPORT: [0.52, -0.1, 0.24],
+  PRODUCTION_DETAILS: [-0.5, 0.08, -0.2]
+};
+
+const GROUP_COLORS = {
+  VALVE_BODY_BONNET: 0x626a74,
+  PNEUMATIC_ACTUATOR: 0x7a828b,
+  STEM_CASCADE_PLUG: 0xc46a3c,
+  CASCADE_TRIM: 0xb18a4a,
+  SEALS_SUPPORT: 0x66888c,
+  PRODUCTION_DETAILS: 0x8b9096
 };
 
 let cameraPath;
@@ -157,7 +165,7 @@ function samplePath(progress) {
   const span = Math.max(1, right.frame - left.frame);
   const t = smooth((frame - left.frame) / span);
   const shot = cameraPath.shots.find(
-    (candidate) => frame >= candidate.startFrame && frame <= candidate.endFrame
+    (candidate) => frame >= candidate.startFrame && frame < candidate.endFrame + 1
   ) ?? cameraPath.shots.at(-1);
   return {
     frame,
@@ -208,6 +216,15 @@ function findAndCaptureGroups(root) {
     groups.set(name, {
       node,
       basePosition: node.position.clone()
+    });
+    node.traverse((child) => {
+      if (!child.isMesh) return;
+      const materials = Array.isArray(child.material)
+        ? child.material
+        : [child.material];
+      for (const material of materials) {
+        material.color?.setHex(GROUP_COLORS[name]);
+      }
     });
   }
 }
@@ -283,15 +300,14 @@ function applyState(state) {
     if (!node.isMesh) return;
     const materials = Array.isArray(node.material) ? node.material : [node.material];
     for (const material of materials) {
-      material.emissive?.setRGB(0.34 * cascadeGlow, 0.095 * cascadeGlow, 0.018);
-      material.emissiveIntensity = 0.65 * cascadeGlow;
+      material.emissive?.setRGB(0.18 * cascadeGlow, 0.045 * cascadeGlow, 0.008);
+      material.emissiveIntensity = 0.45 * cascadeGlow;
     }
   });
 
   keyLight.intensity = state.light.key * 2.25;
   rimLight.intensity = state.light.rim * 2.1;
-  accentLight.intensity = 6 + state.product.cascadeStage * 2.8;
-  occlusion.style.opacity = String(state.occlusion);
+  accentLight.intensity = 2.8 + state.product.cascadeStage * 1.3;
   timelineFill.style.transform = `scaleX(${currentProgress})`;
   updateCopy(state.shot);
 }
