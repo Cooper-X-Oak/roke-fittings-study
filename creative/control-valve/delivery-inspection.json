@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "run_id": "20260726T101500Z-control-valve-candidate",
+  "target": {
+    "environment": "candidate",
+    "identity": "commit 29c885637b0a89700580eb58543f191d4fa51acf / Draft PR #16"
+  },
+  "scope": {
+    "status": "applicable",
+    "basis": "The candidate adds a derived WebGL product asset, first-frame poster and five-shot consumer-visible Animatic.",
+    "affected_claims": [
+      "six-node-shot-asset",
+      "five-shot-visual-story",
+      "immediate-product-poster",
+      "bounded-runtime-cost",
+      "product-truth-boundary"
+    ],
+    "unaffected_claims": [
+      "production GitHub Pages availability",
+      "product engineering performance",
+      "CFD, FEA, certification and maintenance behavior"
+    ]
+  },
+  "plan": {
+    "claims": [
+      {
+        "claim_id": "six-node-shot-asset",
+        "statement": "The candidate delivers the real STEP-derived control-valve geometry as exactly six bounded commercial-shot runtime groups.",
+        "consumer": "WebGL product-story runtime",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "build-artifact-inspection",
+            "target": "docs/control-valve/assets/control-valve-shot-ready.glb",
+            "probe": "python scripts/validate_control_valve_glb.py"
+          }
+        ]
+      },
+      {
+        "claim_id": "five-shot-visual-story",
+        "statement": "The actual rendered Animatic visibly delivers all five authored product-recognition beats in a continuous 16-second timeline.",
+        "consumer": "enterprise-site visitor",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "rendered-ui",
+            "target": "http://127.0.0.1:4177/roke-fittings-study/control-valve/",
+            "probe": "node scripts/capture_control_valve_animatic.mjs"
+          }
+        ]
+      },
+      {
+        "claim_id": "immediate-product-poster",
+        "statement": "A meaningful product image is visible before the GLB is usable and hands off only after the first rendered WebGL frame.",
+        "consumer": "visitor during model loading",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "rendered-ui-with-delayed-model",
+            "target": "candidate page with an intentional 650 ms GLB request delay",
+            "probe": "inspect posterLoadingState and posterAfterReady in creative/control-valve/render-evidence.json"
+          }
+        ]
+      },
+      {
+        "claim_id": "bounded-runtime-cost",
+        "statement": "The delivered runtime uses a sub-1 MiB six-primitive Draco asset, demand rendering and acceptable sampled pacing on the observed GPU.",
+        "consumer": "desktop WebGL visitor",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "browser-runtime-diagnostic",
+            "target": "Brave WebGL2 on NVIDIA GeForce GTX 1050 / D3D11",
+            "probe": "inspect benchmark and rendererInfo in creative/control-valve/render-evidence.json"
+          }
+        ]
+      },
+      {
+        "claim_id": "product-truth-boundary",
+        "statement": "Consumer-facing copy stays within observed STEP identity and does not imply unsupported product performance or simulation.",
+        "consumer": "enterprise-site visitor and product stakeholder",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "content-and-provenance-inspection",
+            "target": "source audit, five-shot copy and runtime page",
+            "probe": "python scripts/validate_control_valve_truth.py"
+          }
+        ]
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "claim_id": "six-node-shot-asset",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-001"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "five-shot-visual-story",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-002", "EV-003"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "immediate-product-poster",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-004"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "bounded-runtime-cost",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-001", "EV-005"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "product-truth-boundary",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-006"],
+      "cleanup_evidence": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "type": "decoded-glb-inspection",
+      "quality": "direct",
+      "target": "candidate control-valve-shot-ready.glb",
+      "artifact": "creative/control-valve/model-inspection.json",
+      "summary": "The 908,680-byte Draco GLB decodes to exactly six named nodes, six meshes, six primitives and 284,478 triangles."
+    },
+    {
+      "id": "EV-002",
+      "type": "rendered-five-shot-inspection",
+      "quality": "direct",
+      "target": "candidate Animatic at 1600x1000",
+      "artifact": "docs/control-valve/evidence/shot-01-monument.png through shot-05-authority-restored.png",
+      "summary": "Every required screenshot was viewed: complete monument, axial mechanism, cascade macro, six-system explosion and complete stable hero are all legible without product clipping."
+    },
+    {
+      "id": "EV-003",
+      "type": "deterministic-frame-inspection",
+      "quality": "direct",
+      "target": "canonical 16-second Animatic timeline",
+      "artifact": "creative/control-valve/camera-previs.json",
+      "summary": "All 480 canonical frames exist; the motivated occlusion relocation is recorded and frames 408–479 have identical final hero state."
+    },
+    {
+      "id": "EV-004",
+      "type": "delayed-model-browser-inspection",
+      "quality": "direct",
+      "target": "candidate first-frame handoff",
+      "artifact": "creative/control-valve/render-evidence.json",
+      "summary": "With a deliberate 650 ms GLB delay, the decoded 1600x1000 poster remained visible at opacity 1 and changed to opacity 0 only after the runtime reported ready."
+    },
+    {
+      "id": "EV-005",
+      "type": "hardware-webgl-diagnostic",
+      "quality": "direct",
+      "target": "Brave WebGL2 / NVIDIA GeForce GTX 1050 / D3D11",
+      "artifact": "creative/control-valve/render-evidence.json",
+      "summary": "The short sample recorded p50 16.6 ms, p95 16.7 ms, no frame over 33.3 ms, zero idle renderer frames and no console, page or network failures."
+    },
+    {
+      "id": "EV-006",
+      "type": "consumer-copy-and-source-audit",
+      "quality": "direct",
+      "target": "candidate rendered copy and source traceability",
+      "artifact": "creative/control-valve/source-audit.json and docs/control-valve/app.mjs",
+      "summary": "Copy is bound to the DN80 CL2500 pneumatic cascade assembly labels and explicitly avoids CFD, performance, certification, fail-direction and maintenance claims."
+    },
+    {
+      "id": "EV-007",
+      "type": "remote-candidate-identity",
+      "quality": "supporting",
+      "target": "GitHub Draft PR #16",
+      "artifact": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/16",
+      "summary": "The remote candidate points at commit 29c885637b0a89700580eb58543f191d4fa51acf and GitHub reports a clean merge state."
+    }
+  ],
+  "findings": [],
+  "promotion_candidates": [
+    {
+      "claim_id": "immediate-product-poster",
+      "proposed_invariant": "Every model-driven product story must keep a decoded product poster visible until the first usable WebGL frame.",
+      "rationale": "The invariant is consumer-visible, deterministic under a delayed model request and directly prevents an empty loading state.",
+      "affected_entries": [
+        "future-product-story-runtime"
+      ],
+      "suggested_probe": "Reuse the delayed-model poster handoff portion of scripts/capture_control_valve_animatic.mjs.",
+      "deterministic": true,
+      "expected_cost": "low",
+      "requires_authorization": true
+    }
+  ],
+  "verdict": "pass"
+}
