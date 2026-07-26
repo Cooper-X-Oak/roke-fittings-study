@@ -182,17 +182,21 @@
     "reviewNotes": ["All five shots, transitions, and comprehension holds are visible."]
   },
   "confirmation": {
-    "status": "approved",
-    "approvalId": "approval-example-001",
-    "confirmedBy": "Product owner",
-    "confirmedAt": "2026-07-26T08:30:00Z",
-    "evidenceRef": "project-decision://example/approval-example-001"
+    "status": "automated",
+    "approvalId": "automatic-release-example-001",
+    "releasedAt": "2026-07-26T08:30:00Z",
+    "evidenceRef": "./validation-results/creative-release.json",
+    "checks": [
+      "creative-development schema and ordered-phase validation passed",
+      "camera previs covers every canonical frame",
+      "animatic exposes all five authored beats"
+    ]
   },
   "phaseHistory": [
     {"phase": "case-research", "completedAt": "2026-07-26T06:00:00Z"},
     {"phase": "creative-routes", "completedAt": "2026-07-26T06:45:00Z"},
     {"phase": "five-shot-script", "completedAt": "2026-07-26T07:15:00Z"},
     {"phase": "animatic", "completedAt": "2026-07-26T08:00:00Z"},
-    {"phase": "confirmation", "completedAt": "2026-07-26T08:30:00Z"}
+    {"phase": "automatic-release", "completedAt": "2026-07-26T08:30:00Z"}
   ]
 }

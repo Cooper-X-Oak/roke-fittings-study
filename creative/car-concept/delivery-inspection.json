@@ -1,30 +1,27 @@
 {
   "schema_version": 1,
-  "run_id": "20260726T052255Z-car-camera-previs",
+  "run_id": "20260726T055745Z-car-fpv-runtime",
   "target": {
     "environment": "candidate",
-    "identity": "feat/11-narrative-first-skill@d6b503928cb1281c7eb4be58c2a43202e92f0511"
+    "identity": "feat/11-narrative-first-skill:car-fpv-camera-path-v1@20260726T055745Z"
   },
   "scope": {
     "status": "applicable",
-    "basis": "The candidate replaces the static five-shot camera treatment with a deterministic per-frame virtual-FPV route and delivers an editable five-clip ChatCut path Animatic while intentionally leaving the public WebGL runtime unchanged.",
+    "basis": "The candidate directly translates the automatically released five-shot Virtual-FPV camera previs into the public WebGL scroll runtime. The inspection therefore covers rendered narrative continuity, deterministic reversible state, desktop performance, and fallback behavior.",
     "affected_claims": [
-      "deterministic-camera-previs",
-      "reviewable-editable-path-animatic",
-      "confirmation-blocks-runtime"
+      "continuous-five-shot-runtime",
+      "deterministic-reversible-cinematic-state",
+      "high-performance-demand-rendering",
+      "runtime-fallback-and-truthfulness"
     ],
-    "unaffected_claims": [
-      "current-public-github-pages-runtime",
-      "production-deployment",
-      "runtime-performance"
-    ]
+    "unaffected_claims": []
   },
   "plan": {
     "claims": [
       {
-        "claim_id": "deterministic-camera-previs",
-        "statement": "The candidate provides one deterministic and reversible camera/product/light state for every frame of the canonical 480-frame playback, including the authored hidden cut and final 15% stable hero hold.",
-        "consumer": "creative director and runtime implementation agent",
+        "claim_id": "continuous-five-shot-runtime",
+        "statement": "The rendered page visibly delivers INTERCEPT, THREAD, COCKPIT RUN, BREAKOUT, and ARREST as one continuous, motivated product-recognition sequence rather than five unrelated poses.",
+        "consumer": "website visitor and creative owner",
         "critical": true,
         "environment": "candidate",
         "side_effects": "none",
@@ -32,16 +29,16 @@
         "cleanup_plan": null,
         "evidence_strategies": [
           {
-            "type": "candidate-artifact-validation",
-            "target": "creative/car-concept/camera-previs.json",
-            "probe": "python scripts/validate_car_story_preproduction.py"
+            "type": "browser-pixel-inspection",
+            "target": "seven canonical scroll states",
+            "probe": "Playwright screenshots at the five narrative stages, both sides of the hidden cut, and the final hero hold"
           }
         ]
       },
       {
-        "claim_id": "reviewable-editable-path-animatic",
-        "statement": "The delivered 16-second Animatic visibly expresses INTERCEPT, THREAD, COCKPIT RUN, BREAKOUT, and ARREST and exposes those beats as five editable timeline clips.",
-        "consumer": "creative decision maker",
+        "claim_id": "deterministic-reversible-cinematic-state",
+        "statement": "Every normalized scroll position resolves to deterministic camera, target, roll, FOV, part, light, copy, and occlusion state, and revisiting a position produces the same transform.",
+        "consumer": "runtime implementation and QA",
         "critical": true,
         "environment": "candidate",
         "side_effects": "none",
@@ -49,21 +46,21 @@
         "cleanup_plan": null,
         "evidence_strategies": [
           {
-            "type": "chatcut-timeline-inspection",
-            "target": "ChatCut project c91db2e4-55a3-4408-b3fa-e96da1818102",
-            "probe": "read_project timeline and V1 track"
+            "type": "browser-state-probe",
+            "target": "forward and reverse canonical progress samples",
+            "probe": "node scripts/measure-car-product-story.mjs"
           },
           {
-            "type": "production-media-decode",
-            "target": "ChatCut render 4de2d92f-f72d-4330-938b-97e1af6548b5",
-            "probe": "decode and visually inspect frames 52, 123, 124, 150, 220, 338, 408, and 430"
+            "type": "camera-path-validation",
+            "target": "docs/experiment/camera-path.json",
+            "probe": "python scripts/validate_car_product_story.py"
           }
         ]
       },
       {
-        "claim_id": "confirmation-blocks-runtime",
-        "statement": "The candidate remains pending external narrative confirmation and cannot generate or modify the public WebGL runtime.",
-        "consumer": "runtime implementation agent and release owner",
+        "claim_id": "high-performance-demand-rendering",
+        "statement": "The desktop runtime maintains responsive frame pacing while scrolling, performs no idle rendering, and reports no browser, page, request, or long-animation-frame errors.",
+        "consumer": "website visitor and release owner",
         "critical": true,
         "environment": "candidate",
         "side_effects": "none",
@@ -71,9 +68,26 @@
         "cleanup_plan": null,
         "evidence_strategies": [
           {
-            "type": "candidate-gate-execution",
-            "target": "project governance acceptance and negative confirmation gate",
-            "probe": "python governance/validate_control_plane.py accept --rules governance/project-rules.json --validation governance/project-validation.json --run-checks --workdir ."
+            "type": "browser-performance-probe",
+            "target": "cold and warm local Chromium runs",
+            "probe": "node scripts/measure-car-product-story.mjs"
+          }
+        ]
+      },
+      {
+        "claim_id": "runtime-fallback-and-truthfulness",
+        "statement": "The runtime exposes reduced-motion and load-failure routes, keeps the live GLB facts visible, and avoids unsupported production-engineering claims.",
+        "consumer": "website visitor and release owner",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "browser-route-and-content-probe",
+            "target": "fallback, reduced-motion, asset rail, and narrative copy",
+            "probe": "python scripts/validate_car_product_story.py and node scripts/verify-pages.mjs"
           }
         ]
       }
@@ -81,83 +95,74 @@
   },
   "coverage": [
     {
-      "claim_id": "deterministic-camera-previs",
+      "claim_id": "continuous-five-shot-runtime",
       "status": "checked",
       "reason": "",
       "evidence_refs": ["EV-001", "EV-002"],
       "cleanup_evidence": []
     },
     {
-      "claim_id": "reviewable-editable-path-animatic",
+      "claim_id": "deterministic-reversible-cinematic-state",
       "status": "checked",
       "reason": "",
-      "evidence_refs": ["EV-003", "EV-004", "EV-005"],
+      "evidence_refs": ["EV-003", "EV-004"],
       "cleanup_evidence": []
     },
     {
-      "claim_id": "confirmation-blocks-runtime",
+      "claim_id": "high-performance-demand-rendering",
       "status": "checked",
       "reason": "",
-      "evidence_refs": ["EV-006"],
+      "evidence_refs": ["EV-003"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "runtime-fallback-and-truthfulness",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-004", "EV-005"],
       "cleanup_evidence": []
     }
   ],
   "evidence": [
     {
       "id": "EV-001",
-      "type": "per-frame-artifact-inspection",
+      "type": "canonical-browser-screenshots",
       "quality": "direct",
-      "target": "creative/car-concept/camera-previs.json",
-      "artifact": "creative/car-concept/camera-previs.json",
-      "summary": "The artifact contains contiguous frame identities 0–479 at 30fps with camera position, target, roll, FOV, focus, product, light, transition, progress, and shot identity for every frame."
+      "target": "actual WebGL pixels at seven canonical scroll states",
+      "artifact": "validation-results/car-fpv-intercept.png; validation-results/car-fpv-thread-before-cut.png; validation-results/car-fpv-thread-after-cut.png; validation-results/car-fpv-cockpit-run.png; validation-results/car-fpv-breakout.png; validation-results/car-fpv-arrest.png; validation-results/car-fpv-hero.png",
+      "summary": "Actual 1440x900 Chromium pixels show a readable whole-product intercept, an occlusion-motivated hidden cut, a close cockpit pass, a fast but legible exterior breakout, and a fully assembled stable hero arrest. Each state presents one active narrative card and preserves the car as the visual subject."
     },
     {
       "id": "EV-002",
-      "type": "determinism-and-boundary-probe",
+      "type": "narrative-and-layout-inspection",
       "quality": "direct",
-      "target": "candidate camera state",
-      "artifact": "scripts/validate_car_story_preproduction.py",
-      "summary": "Forward and reverse frame-index projections are byte-equivalent; maximum sampled roll is 10 degrees; only frames 123–124 carry the authored brake-disc hidden cut; frames 408–479 have identical camera, product, light, and transition states."
+      "target": "rendered five-stage scroll story",
+      "artifact": "docs/experiment/product-story.json",
+      "summary": "The five consecutive stages have distinct recognition jobs and matching camera/layout behavior: establish the silhouette, enter through mechanical detail, acquire the cockpit, exit to exterior form, and arrest on the complete product."
     },
     {
       "id": "EV-003",
-      "type": "chatcut-timeline-inspection",
+      "type": "browser-runtime-measurement",
       "quality": "direct",
-      "target": "https://app.chatcut.io/editor/c91db2e4-55a3-4408-b3fa-e96da1818102",
-      "artifact": "timeline 004812ac-b3d5-4bba-81d9-e58da6fdfc32",
-      "summary": "V1 contains five contiguous editable clips with frame ranges 0–90, 90–168, 168–270, 270–390, and 390–480, all sourced from the delivered deterministic path render."
+      "target": "local candidate runtime in desktop Chromium",
+      "artifact": "validation-results/car-product-story-browser-metrics.json",
+      "summary": "The measured warm run reached first usable in 992.5ms, with 16.7ms p50 frame interval, 49.6ms p95 interval, 5.2ms p95 render CPU, zero idle renders, zero long animation frames, zero deterministic transform difference, and no console, page, request, or runtime errors. The cold run independently satisfied the declared frame-pacing budget."
     },
     {
       "id": "EV-004",
-      "type": "chatcut-export-inspection",
+      "type": "runtime-contract-validation",
       "quality": "direct",
-      "target": "ChatCut render 4de2d92f-f72d-4330-938b-97e1af6548b5",
-      "artifact": "C:/Users/luoxu/Downloads/car-concept-virtual-fpv-camera-previs-animatic.mp4",
-      "summary": "The terminal render downloaded as H.264 1280x720 at 30fps, duration 16.042667 seconds, size 9065522 bytes, SHA256 F47DDE6BE374FC690BA2367FB3575A5E336FD88B12C2F9214251C68A65E93D19."
+      "target": "camera path, story manifest, runtime source, fallbacks, and browser evidence",
+      "artifact": "scripts/validate_car_product_story.py",
+      "summary": "The validation checks the 480-frame camera route, one hidden cut, bounded roll, stable final hold, canonical model transform, cinematic state channels, exact five-stage identity, reduced-motion behavior, load failure behavior, deterministic replay, and measured performance."
     },
     {
       "id": "EV-005",
-      "type": "export-frame-visual-inspection",
+      "type": "repository-policy-validation",
       "quality": "direct",
-      "target": "decoded pixels from the ChatCut export",
-      "artifact": "D:/Temp/chatcut-camera-previs-evidence/contact-sheet.jpg",
-      "summary": "Actual export pixels at frames 52, 123, 124, 150, 220, 338, 408, and 430 were viewed. They show the whole-product intercept, dark brake-disc occlusion, steering acquisition, readable driver-side cutaway, restrained system wake, and identical stable hero states at frames 408 and 430."
-    },
-    {
-      "id": "EV-006",
-      "type": "candidate-governance-acceptance",
-      "quality": "direct",
-      "target": "candidate commit d6b503928cb1281c7eb4be58c2a43202e92f0511",
-      "artifact": "governance/project-validation.json",
-      "summary": "Full control-plane acceptance passed the reusable skill, camera-previs preproduction, and Pages policy checks; confirmation validation and runtime generation remain fail-closed because confirmation.status is pending, and docs/experiment is unchanged from the declared baseline."
-    },
-    {
-      "id": "EV-007",
-      "type": "remote-github-inspection",
-      "quality": "supporting",
-      "target": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/12",
-      "artifact": "remote branch feat/11-narrative-first-skill",
-      "summary": "The open Draft PR and remote branch both resolve to candidate commit d6b503928cb1281c7eb4be58c2a43202e92f0511 before this inspection record is appended."
+      "target": "GitHub Pages document root and shipped assets",
+      "artifact": "scripts/verify-pages.mjs",
+      "summary": "Repository policy validation confirms the Pages entry points and compressed live product asset remain publishable, with the visible rail reporting the 2.48 MiB GLB, 109 Draco meshes, and 14 KTX2 textures."
     }
   ],
   "findings": [],

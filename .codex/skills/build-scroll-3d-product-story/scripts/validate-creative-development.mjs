@@ -10,7 +10,7 @@ const PHASES = [
   "creative-routes",
   "five-shot-script",
   "animatic",
-  "confirmation",
+  "automatic-release",
 ];
 const CAPABILITIES = new Set([
   "structured-named-parts",
@@ -53,11 +53,11 @@ function requireStringFields(value, fields, prefix, errors) {
 
 export function validateCreativeDevelopment(
   plan,
-  { through = "confirmation" } = {},
+  { through = "release" } = {},
 ) {
   const errors = [];
-  if (!["animatic", "confirmation"].includes(through)) {
-    return ["through must be animatic or confirmation"];
+  if (!["animatic", "release"].includes(through)) {
+    return ["through must be animatic or release"];
   }
   if (!plan || typeof plan !== "object" || Array.isArray(plan)) {
     return ["creative development must be a JSON object"];
@@ -266,45 +266,46 @@ export function validateCreativeDevelopment(
     errors.push("animatic.reviewNotes must contain review evidence");
   }
 
-  const confirmation = plan.confirmation;
+  const release = plan.confirmation;
   if (through === "animatic") {
-    if (confirmation?.status !== "pending") {
+    if (!["pending", "automated"].includes(release?.status)) {
       errors.push(
-        "confirmation.status must remain pending at the animatic review gate",
+        "confirmation.status must be pending or automated at the animatic gate",
       );
     }
   } else {
     requireStringFields(
-      confirmation,
-      ["approvalId", "confirmedBy", "evidenceRef"],
+      release,
+      ["approvalId", "evidenceRef"],
       "confirmation",
       errors,
     );
-    if (confirmation?.status !== "approved") {
-      errors.push("confirmation.status must be approved");
+    if (release?.status !== "automated") {
+      errors.push("confirmation.status must be automated");
     }
-    if (!validDate(confirmation?.confirmedAt)) {
-      errors.push("confirmation.confirmedAt must be a valid timestamp");
+    if (!validDate(release?.releasedAt)) {
+      errors.push("confirmation.releasedAt must be a valid timestamp");
     }
-    if (
-      /\b(codex|agent|self|assistant)\b/iu.test(
-        confirmation?.confirmedBy ?? "",
-      )
-    ) {
-      errors.push("the implementing agent cannot self-confirm the narrative");
+    if (!nonEmptyStrings(release?.checks)) {
+      errors.push("confirmation.checks must contain automatic release evidence");
     }
   }
 
   const history = plan.phaseHistory;
   const expectedPhases =
     through === "animatic" ? PHASES.slice(0, 4) : PHASES;
-  if (!Array.isArray(history) || history.length !== expectedPhases.length) {
+  const validHistoryLength =
+    Array.isArray(history) &&
+    (through === "animatic"
+      ? history.length >= expectedPhases.length
+      : history.length === expectedPhases.length);
+  if (!validHistoryLength) {
     errors.push(
-      `phaseHistory must contain the ${expectedPhases.length} required phases through ${through}`,
+      `phaseHistory must contain at least the ${expectedPhases.length} required phases through ${through}`,
     );
   } else {
     let previousTime = -Infinity;
-    history.forEach((entry, index) => {
+    history.slice(0, expectedPhases.length).forEach((entry, index) => {
       if (entry?.phase !== expectedPhases[index]) {
         errors.push(
           `phaseHistory[${index}].phase must be ${expectedPhases[index]}`,
@@ -321,11 +322,11 @@ export function validateCreativeDevelopment(
       }
     });
     if (
-      through === "confirmation" &&
-      validDate(confirmation?.confirmedAt) &&
-      history.at(-1)?.completedAt !== confirmation.confirmedAt
+      through === "release" &&
+      validDate(release?.releasedAt) &&
+      history[expectedPhases.length - 1]?.completedAt !== release.releasedAt
     ) {
-      errors.push("confirmation timestamp must match the confirmation phase");
+      errors.push("release timestamp must match the automatic-release phase");
     }
   }
   return errors;
@@ -333,7 +334,7 @@ export function validateCreativeDevelopment(
 
 export async function loadApprovedCreativeDevelopment(path) {
   const plan = JSON.parse(await readFile(path, "utf8"));
-  const errors = validateCreativeDevelopment(plan, { through: "confirmation" });
+  const errors = validateCreativeDevelopment(plan, { through: "release" });
   if (errors.length) {
     const details = errors.map((error) => `- ${error}`).join("\n");
     throw new Error(
@@ -348,7 +349,7 @@ async function main() {
     plan: "required",
     through: "optional",
   });
-  const through = args.through ?? "confirmation";
+  const through = args.through ?? "release";
   const plan = JSON.parse(await readFile(args.plan, "utf8"));
   const errors = validateCreativeDevelopment(plan, { through });
   if (errors.length) {

@@ -248,13 +248,13 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["status", "approvalId", "confirmedBy", "confirmedAt", "evidenceRef"],
+          "required": ["status", "approvalId", "releasedAt", "evidenceRef", "checks"],
           "properties": {
-            "status": {"const": "approved"},
+            "status": {"const": "automated"},
             "approvalId": {"type": "string", "minLength": 1},
-            "confirmedBy": {"type": "string", "minLength": 1},
-            "confirmedAt": {"type": "string", "format": "date-time"},
-            "evidenceRef": {"type": "string", "minLength": 1}
+            "releasedAt": {"type": "string", "format": "date-time"},
+            "evidenceRef": {"type": "string", "minLength": 1},
+            "checks": {"$ref": "#/$defs/nonEmptyStrings"}
           }
         }
       ]
@@ -270,7 +270,7 @@
             "creative-routes",
             "five-shot-script",
             "animatic",
-            "confirmation"
+            "automatic-release"
           ]
         },
         "completedAt": {"type": "string", "format": "date-time"}

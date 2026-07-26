@@ -9,7 +9,7 @@ After model inspection, complete these phases in order:
 3. `five-shot-script`
 4. `camera-previs` inside the animatic phase
 5. `animatic`
-6. `confirmation`
+6. `automatic-release`
 7. runtime implementation
 
 Record phases 1–5 in one `creative-development.json`. Runtime-story generation
@@ -73,22 +73,23 @@ rhythm. Record its URI, duration, review status, and review notes.
 Do not use a scroll-controlled implementation as the first animatic. Establish
 the authored playback rhythm first; map the approved time axis to scroll later.
 
-## Confirmation
+## Automatic Release
 
-Require explicit confirmation from the user, product owner, creative director,
-or another named external role. Record the confirmer, time, approval ID, and a
-durable evidence reference. The implementing agent must not approve its own
-route, script, or animatic.
+Release implementation when the ordered creative record, exactly five shots,
+deterministic per-frame camera previs, fixed-duration animatic, truth
+constraints, continuity, hidden-cut, roll, and stable-hold checks all pass.
+Record the release identity, time, evidence reference, and checks. Human
+screening is optional unless current project policy explicitly requires it.
 
 Any material change to thesis, shot order, camera intent, lighting intent,
-transitions, or product claims invalidates confirmation and returns the work to
+transitions, or product claims invalidates the release and returns the work to
 the earliest affected phase.
 
 ## Implementation Translation
 
-After confirmation:
+After automatic release:
 
-1. generate the runtime story manifest from the confirmed record;
+1. generate the runtime story manifest from the released record;
 2. translate each shot into camera, product, part, light, material, layout, and
    copy curves;
 3. preserve shot purpose, transition, and hold behavior during optimization;

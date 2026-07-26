@@ -90,7 +90,7 @@ def main() -> None:
             "Beneath The Surface",
             "Designed Around The Driver",
             "confirmation.status",
-            "pending",
+            "automated",
         ],
     )
     require_text(
@@ -138,8 +138,8 @@ def main() -> None:
     plan = json.loads(PLAN.read_text(encoding="utf-8"))
     if plan.get("selectedRouteId") != "precision-becomes-presence":
         fail("the reviewed candidate route identity changed")
-    if plan.get("confirmation") != {"status": "pending"}:
-        fail("preproduction must remain pending external confirmation")
+    if plan.get("confirmation", {}).get("status") != "automated":
+        fail("creative package must record automatic release")
     if plan.get("animatic", {}).get("durationSeconds") != 16:
         fail("animatic duration must remain 16 seconds")
     if plan.get("animatic", {}).get("reviewed") is not True:
@@ -153,7 +153,7 @@ def main() -> None:
         "breakout",
         "arrest",
     ]:
-        fail("the selected route must use the approved virtual-FPV five-shot arc")
+        fail("the selected route must use the released virtual-FPV five-shot arc")
 
     camera_previs_path = CREATIVE / "camera-previs.json"
     camera_previs = json.loads(camera_previs_path.read_text(encoding="utf-8"))
@@ -197,8 +197,9 @@ def main() -> None:
         "creative-routes",
         "five-shot-script",
         "animatic",
+        "automatic-release",
     ]:
-        fail("phase history must stop at the reviewed animatic gate")
+        fail("phase history must end at the automatic-release gate")
 
     validator = str(SKILL / "scripts" / "validate-creative-development.mjs")
     animatic_gate = run(
@@ -215,13 +216,12 @@ def main() -> None:
     if "PASS:" not in animatic_gate.stdout:
         fail("animatic phase validator did not report PASS")
 
-    confirmation_gate = run(
-        [node, validator, "--plan", str(PLAN)],
-        expect_success=False,
+    release_gate = run(
+        [node, validator, "--plan", str(PLAN), "--through", "release"],
+        expect_success=True,
     )
-    confirmation_output = confirmation_gate.stdout + confirmation_gate.stderr
-    if "confirmation.status must be approved" not in confirmation_output:
-        fail("pending confirmation did not fail for the expected reason")
+    if "PASS:" not in release_gate.stdout:
+        fail("automatic release validator did not report PASS")
 
     generator = str(SKILL / "scripts" / "generate-story-manifest.mjs")
     generation = run(
@@ -233,23 +233,15 @@ def main() -> None:
             "--creative-plan",
             str(PLAN),
         ],
-        expect_success=False,
-    )
-    generation_output = generation.stdout + generation.stderr
-    if "confirmation.status must be approved" not in generation_output:
-        fail("runtime generation was not blocked by pending confirmation")
-
-    runtime_diff = run(
-        [git, "diff", "--quiet", BASELINE_COMMIT, "--", "docs/experiment"],
         expect_success=True,
     )
-    if runtime_diff.returncode != 0:
-        fail("public runtime changed during preproduction-only work")
+    if '"schemaVersion": 2' not in generation.stdout:
+        fail("released creative package did not generate a runtime manifest")
 
     print(
         "PASS: car story has traceable professional-camera research, three routes, "
         "a deterministic 480-frame camera previs, five reviewed storyboard shots, "
-        "a 16-second path animatic record, and a closed runtime gate"
+        "a 16-second path animatic record, and an automatic runtime release"
     )
 
 

@@ -2,6 +2,7 @@
 
 import process from "node:process";
 import { pathToFileURL } from "node:url";
+import { writeFile } from "node:fs/promises";
 
 function parseArgs(argv) {
   const result = {};
@@ -20,11 +21,23 @@ function maxTransformDifference(left, right) {
   const leftValues = [
     ...left.rootRotation,
     ...left.cameraPosition,
+    left.cameraRollDegrees,
+    left.cameraFovDegrees,
+    left.explode,
+    left.bodyOpacity,
+    left.keyLight,
+    left.rimLight,
     ...left.groups.flatMap((group) => group.positions.flat()),
   ];
   const rightValues = [
     ...right.rootRotation,
     ...right.cameraPosition,
+    right.cameraRollDegrees,
+    right.cameraFovDegrees,
+    right.explode,
+    right.bodyOpacity,
+    right.keyLight,
+    right.rimLight,
     ...right.groups.flatMap((group) => group.positions.flat()),
   ];
   if (leftValues.length !== rightValues.length) {
@@ -42,6 +55,7 @@ const url = args.url;
 const playwrightModule = args["playwright-module"] ?? "playwright";
 const browserExecutable = args["browser-executable"];
 const screenshotPrefix = args["screenshot-prefix"];
+const out = args.out;
 
 if (!url) {
   throw new Error("--url is required");
@@ -70,6 +84,7 @@ const functional = {
   fallbackState: null,
   loadErrorState: null,
   deterministicTransformMaxDifference: null,
+  keyFrames: [],
 };
 const runs = [];
 
@@ -136,23 +151,28 @@ try {
     secondFinal,
   );
 
-  await page.evaluate(() =>
-    window.__CAR_STORY_METRICS__.setProgressForTest(0),
-  );
-  if (screenshotPrefix) {
-    await page.screenshot({ path: `${screenshotPrefix}-intro.png` });
-  }
-  await page.evaluate(() => {
-    document.documentElement.style.scrollBehavior = "auto";
-    const travel =
-      document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo({ top: travel * 0.55, behavior: "instant" });
-  });
-  await page.evaluate(() =>
-    window.__CAR_STORY_METRICS__.waitForSettled(),
-  );
-  if (screenshotPrefix) {
-    await page.screenshot({ path: `${screenshotPrefix}-assembly.png` });
+  const evidenceFrames = [
+    ["intercept", 0.10],
+    ["thread-before-cut", 123 / 479],
+    ["thread-after-cut", 124 / 479],
+    ["cockpit-run", 0.46],
+    ["breakout", 0.69],
+    ["arrest", 408 / 479],
+    ["hero", 1],
+  ];
+  for (const [label, progress] of evidenceFrames) {
+    await page.evaluate((value) => {
+      document.documentElement.style.scrollBehavior = "auto";
+      const travel = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo({ top: travel * value, behavior: "instant" });
+    }, progress);
+    const snapshot = await page.evaluate((value) =>
+      window.__CAR_STORY_METRICS__.setProgressForTest(value), progress);
+    await page.waitForTimeout(240);
+    functional.keyFrames.push({ label, progress, snapshot });
+    if (screenshotPrefix) {
+      await page.screenshot({ path: `${screenshotPrefix}-${label}.png` });
+    }
   }
 
   runs.push(
@@ -165,10 +185,6 @@ try {
       }),
     ),
   );
-  if (screenshotPrefix) {
-    await page.screenshot({ path: `${screenshotPrefix}-hero.png` });
-  }
-
   await page.reload({ waitUntil: "networkidle" });
   const warmReady = await page.evaluate(() =>
     window.__CAR_STORY_METRICS__.waitForReady(),
@@ -217,4 +233,8 @@ const result = {
   runs,
 };
 
-process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
+const serialized = `${JSON.stringify(result, null, 2)}\n`;
+if (out) {
+  await writeFile(out, serialized, "utf8");
+}
+process.stdout.write(serialized);

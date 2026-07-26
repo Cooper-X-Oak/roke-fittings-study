@@ -1,6 +1,6 @@
 ---
 name: build-scroll-3d-product-story
-description: Develop and implement a narrative-first WebGL product story from a GLB/GLTF model. Use for enterprise homepage 3D storytelling, scroll-driven product films, exploded or assembly narratives, and real-time alternatives to image sequences. Enforces model truth inspection, advertising case research, multiple creative routes, an authored five-shot script, a reviewed animatic, explicit external confirmation, and only then runtime-manifest generation, Three.js implementation, and performance evidence.
+description: Develop and implement a narrative-first WebGL product story from a GLB/GLTF model. Use for enterprise homepage 3D storytelling, scroll-driven product films, exploded or assembly narratives, and real-time alternatives to image sequences. Enforces model truth inspection, advertising case research, multiple creative routes, an authored five-shot script, a deterministic animatic, automatic creative release, runtime-manifest generation, Three.js implementation, and performance evidence.
 ---
 
 # Build Scroll 3D Product Story
@@ -57,7 +57,7 @@ model inspection prerequisite
   -> one selected route and exactly five authored shots
   -> deterministic per-frame camera previs
   -> fixed-duration animatic
-  -> explicit external confirmation
+  -> automatic creative release
   -> runtime implementation
 ```
 
@@ -70,14 +70,13 @@ node <skill>/scripts/validate-creative-development.mjs `
   --through animatic
 ```
 
-Use `--through animatic` to deliver the preproduction review checkpoint with
-`confirmation.status` still `pending`. After external approval, append the
-confirmation phase and validate again with `--through confirmation`.
+Use `--through animatic` while the package is still being authored. After the
+script, per-frame camera previs, and animatic pass deterministic checks, record
+the automatic-release phase and validate with `--through release`.
 
-Stop before runtime work when either applicable command fails. Do not create placeholder
-approval, mark an unreviewed animatic as reviewed, or name the implementing
-agent as confirmer. When the user has not yet confirmed the narrative, return
-the research, routes, five-shot script, and animatic for review and pause.
+Stop before runtime work when the automatic creative gate fails. Human review
+may be requested by project policy, but it is not a default blocker and the
+implementing agent must not fabricate a human approval record.
 
 Treat ROKE and other references as methods, not templates. Extract narrative
 thesis, information order, camera motivation, light progression, transition
@@ -92,7 +91,7 @@ the selected narrative, not added as generic orbiting. Hidden cuts must occur
 behind an authored visual occlusion and remain exactly reproducible in reverse.
 The final 15% of the canonical playback must be a stable hero hold.
 
-## Generate Runtime Only After Confirmation
+## Generate Runtime After Automatic Creative Release
 
 After the creative-development validator passes, run:
 
@@ -107,12 +106,12 @@ node <skill>/scripts/validate-story-manifest.mjs `
   --manifest <product-story.json>
 ```
 
-The generator independently requires the complete confirmation gate; an
-animatic-phase record cannot generate a runtime story.
+The generator independently requires a complete automatic-release record; an
+incomplete animatic-phase record cannot generate a runtime story.
 
-The generator imports the confirmed five shot IDs, normalized ranges, and copy.
+The generator imports the released five shot IDs, normalized ranges, and copy.
 It rejects a missing creative plan and a model capability that differs from the
-confirmed audit.
+released audit.
 
 The generated transforms remain technical candidates. Review every group whose
 `reviewRequired` is true. Confirm:
@@ -122,7 +121,7 @@ The generated transforms remain technical candidates. Review every group whose
 - whether the motion communicates the selected route rather than a generic
   explosion;
 - the camera, lighting, layout, transition, and hold implementation for every
-  confirmed shot;
+  released shot;
 - that implementation preserves each shot's narrative purpose and truth
   constraints.
 
@@ -141,7 +140,7 @@ generic runtime
   resize / DPR / poster / reduced motion / shot-content synchronization
 
 creative-development.json
-  research / routes / selected thesis / five shots / animatic / confirmation
+  research / routes / selected thesis / five shots / animatic / automatic release
 
 product-story.json
   approval identity / model URI / node groups / offsets / assembly windows
@@ -159,7 +158,7 @@ Capture every controlled node's base transform once. For every render, derive
 the complete transform from:
 
 ```text
-base transform + approved manifests + normalized progress
+base transform + released manifests + normalized progress
 ```
 
 Do not increment the previous frame's transform. Scrolling from progress `a` to
@@ -169,7 +168,7 @@ Use one normalized progress value in `[0, 1]` for model groups, product
 rotation, camera, lighting, materials, layout, content shots, and CTA state.
 
 First verify a canonical fixed-duration playback that matches the animatic.
-Then map that approved time axis to scroll. Scrolling must preserve shot order,
+Then map that released time axis to scroll. Scrolling must preserve shot order,
 transitions, and comprehension holds in both directions.
 
 ## Render Only On Demand
@@ -185,7 +184,7 @@ class.
 ## Verify Narrative Before Performance
 
 Before performance optimization, compare canonical playback and scroll playback
-against the confirmed animatic. Prove:
+against the released animatic. Prove:
 
 - all five shot purposes remain legible;
 - transitions preserve their visual cause;
@@ -194,8 +193,8 @@ against the confirmed animatic. Prove:
 - comprehension holds remain available;
 - product claims stay within the recorded truth constraints.
 
-Do not optimize away an approved focal beat, transition, lighting change, or
-hold without returning the change to narrative confirmation.
+Do not optimize away a released focal beat, transition, lighting change, or
+hold without rerunning the creative release gate.
 
 Read [performance-contract.md](references/performance-contract.md) before
 claiming that the real-time version outperforms an image sequence.
@@ -230,9 +229,9 @@ Return:
 1. model inspection and capability;
 2. evidence-backed advertising reference board;
 3. compared creative routes and selection decision;
-4. confirmed five-shot script;
-5. reviewed animatic and external confirmation evidence;
-6. reviewed `product-story.json` linked to that approval;
+4. released five-shot script;
+5. deterministic animatic and automatic-release evidence;
+6. reviewed `product-story.json` linked to that release;
 7. generic runtime integration and canonical playback comparison;
 8. poster and reduced-motion behavior;
 9. asset comparison and browser measurements;

@@ -19,7 +19,7 @@
       }
     </script>
   </head>
-  <body data-webgl-state="loading" data-story-stage="intro">
+  <body data-webgl-state="loading" data-story-stage="intercept">
     <a class="skip-link" href="#story">跳到产品叙事</a>
 
     <header class="masthead" aria-label="产品叙事状态">
@@ -35,7 +35,8 @@
     </header>
 
     <div class="viewer-stage" aria-label="实时三维汽车结构展示">
-      <div class="viewer-stage__word" aria-hidden="true">ASSEMBLY</div>
+      <div class="viewer-stage__word" aria-hidden="true">PRECISION</div>
+      <div class="camera-occlusion" id="camera-occlusion" aria-hidden="true"></div>
       <canvas id="webgl-canvas" aria-hidden="true"></canvas>
 
       <div class="viewer-stage__loading" aria-hidden="true">
@@ -105,17 +106,17 @@
     <main class="story" id="story">
       <section
         class="chapter chapter--hero"
-        id="intro"
+        id="intercept"
         data-chapter="0"
-        data-stage="intro"
+        data-stage="intercept"
       >
         <div class="chapter__copy">
-          <p class="eyebrow">CONCEPT VEHICLE / DIGITAL ASSEMBLY</p>
-          <h1>一台车，<br>先成为<br>一个系统。</h1>
+          <p class="eyebrow">01 / VIRTUAL FPV INTERCEPT</p>
+          <h1>让轮廓被精密截住。</h1>
           <p class="chapter__lede">
-            从结构基准、行走机构、功能核心、座舱到外部车身，这个概念样机用真实模型节点讲清产品构成。
+            先让轮廓被看见，再让精密把视线截住。镜头沿车身轮廓俯冲到前轮，产品叙事从一个可信入口开始。
           </p>
-          <a class="scroll-cue" href="#exploded">
+          <a class="scroll-cue" href="#thread">
             <span aria-hidden="true">↓</span>
             向下滚动探索
           </a>
@@ -124,60 +125,60 @@
 
       <section
         class="chapter chapter--right"
-        id="exploded"
+        id="thread"
         data-chapter="1"
-        data-stage="exploded"
+        data-stage="thread"
       >
         <div class="chapter__copy">
-          <p class="chapter__number">01 / STRUCTURE</p>
-          <h2>结构，<br>不只是轮廓。</h2>
+          <p class="chapter__number">02 / THREAD</p>
+          <h2>穿过接地点，进入控制。</h2>
           <p>
-            拆解状态把十组装配语义同时展开：底部基准保持稳定，其余系统沿各自结构方向分离。
+            穿过接地点，进入控制发生的地方。镜头在制动盘遮挡中完成唯一一次隐藏切，方向盘随即成为下一段的视觉目标。
           </p>
         </div>
       </section>
 
       <section
         class="chapter chapter--left chapter--lower"
-        id="assembly"
+        id="cockpit-run"
         data-chapter="2"
-        data-stage="assembly"
+        data-stage="cockpit-run"
       >
         <div class="chapter__copy">
-          <p class="chapter__number">02 / ASSEMBLY</p>
-          <h2>从承载，<br>到完整。</h2>
+          <p class="chapter__number">03 / COCKPIT RUN</p>
+          <h2>速度放慢，空间被理解。</h2>
           <p>
-            滚动依次收拢车轴、左右行走机构、功能核心、座舱、车身与开闭件。这是可解释的展示顺序，不是制造工艺说明。
+            速度放慢，结构开始围绕驾驶空间组织。相机在方向盘、座椅和座舱框架之间主动减速，让高速穿越转成清晰的产品认知。
           </p>
         </div>
       </section>
 
       <section
         class="chapter chapter--right"
-        id="reveal"
+        id="breakout"
         data-chapter="3"
-        data-stage="reveal"
+        data-stage="breakout"
       >
         <div class="chapter__copy">
-          <p class="chapter__number">03 / REVEAL</p>
-          <h2>所有系统，<br>收束成产品。</h2>
+          <p class="chapter__number">04 / BREAKOUT</p>
+          <h2>突破座舱，系统形成尾流。</h2>
           <p>
-            部件回到经确认的基准变换后，镜头继续揭示完整外形；反向滚动时，拆解过程可确定性复现。
+            离开座舱，关系沿镜头尾流展开。镜头从车门出口加速突破，转入克制的外部反弧，整车轮廓始终提供空间参照。
           </p>
         </div>
       </section>
 
       <section
         class="chapter chapter--final"
-        id="hero"
+        id="arrest"
         data-chapter="4"
-        data-stage="hero"
+        data-stage="arrest"
       >
         <div class="chapter__copy chapter__copy--final">
-          <p class="chapter__number">04 / PRODUCT</p>
-          <h2>让产品自己<br>证明它的结构。</h2>
+          <p class="chapter__number">05 / ARREST</p>
+          <h2>运动停止，存在感出现。</h2>
           <p>
-            一个压缩 GLB、一个语义清单和一个按需渲染循环，完成可复用的网页端产品叙事。
+            运动停止，精密成为完整的存在感。相机、横滚、视场、灯光和部件同步制动；最后 15% 完全稳定。
           </p>
 
           <dl class="summary" id="architecture">

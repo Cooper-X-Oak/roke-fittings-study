@@ -2,7 +2,7 @@
 
 ## Approved Shots
 
-Implement the five-shot arc from the confirmed `creative-development.json`.
+Implement the five-shot arc from the released `creative-development.json`.
 Do not substitute this fixed preset:
 
 ```text
@@ -11,7 +11,7 @@ intro -> exploded -> assembly -> reveal -> hero
 
 Those beats are valid only when the selected creative route independently
 justifies them. Shot ranges must stay ordered, continuous, and inside `[0, 1]`.
-Preserve the approved purpose, takeaway, transition, rhythm, and hold for each
+Preserve the released purpose, takeaway, transition, rhythm, and hold for each
 shot. Avoid making every part move over the full range; stagger subsystem
 windows so the viewer can understand causality.
 
@@ -32,9 +32,9 @@ only a first-pass candidate.
 
 ## Camera And Rotation
 
-Use camera motion to deliver each approved shot purpose, not to compensate for
+Use camera motion to deliver each released shot purpose, not to compensate for
 arbitrary part motion. Keep the focal subject readable at shot boundaries.
-Implement the confirmed lighting and layout progression beside camera motion.
+Implement the released lighting and layout progression beside camera motion.
 
 Prefer a small number of camera and rotation keyframes. Sample keyframes from
 normalized progress so reverse scrolling remains exact.
@@ -47,6 +47,6 @@ light motion for the final 15% hero hold.
 
 ## Content
 
-Bind content to approved shots rather than arbitrary scroll pixels. Keep
-business copy outside the generic runtime. Include the confirmed final CTA in
+Bind content to released shots rather than arbitrary scroll pixels. Keep
+business copy outside the generic runtime. Include the released final CTA in
 the product manifest or target page.

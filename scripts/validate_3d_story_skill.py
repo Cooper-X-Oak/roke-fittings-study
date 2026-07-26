@@ -355,14 +355,12 @@ def check_models_and_benchmark() -> dict[str, Any]:
             "Fused models must not receive fabricated part offsets",
         )
 
-        unapproved = json.loads(json.dumps(creative_example))
-        unapproved["confirmation"]["status"] = "pending"
-        for key in ["approvalId", "confirmedBy", "confirmedAt", "evidenceRef"]:
-            unapproved["confirmation"].pop(key)
-        unapproved["phaseHistory"] = unapproved["phaseHistory"][:4]
-        unapproved_path = temp / "unapproved-creative-development.json"
-        unapproved_path.write_text(
-            f"{json.dumps(unapproved, indent=2)}\n",
+        unreleased = json.loads(json.dumps(creative_example))
+        unreleased["confirmation"] = {"status": "pending"}
+        unreleased["phaseHistory"] = unreleased["phaseHistory"][:4]
+        unreleased_path = temp / "unreleased-creative-development.json"
+        unreleased_path.write_text(
+            f"{json.dumps(unreleased, indent=2)}\n",
             encoding="utf-8",
         )
         expect_failure(
@@ -370,16 +368,16 @@ def check_models_and_benchmark() -> dict[str, Any]:
                 "node",
                 str(creative_validator),
                 "--plan",
-                str(unapproved_path),
+                str(unreleased_path),
             ],
-            "confirmation.status must be approved",
+            "confirmation.status must be automated",
         )
         run(
             [
                 "node",
                 str(creative_validator),
                 "--plan",
-                str(unapproved_path),
+                str(unreleased_path),
                 "--through",
                 "animatic",
             ]

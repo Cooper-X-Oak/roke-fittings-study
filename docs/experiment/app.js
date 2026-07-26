@@ -19,6 +19,7 @@ const rendererStatus = document.querySelector("#renderer-status");
 const partCount = document.querySelector("#part-count");
 const fallbackCopy = document.querySelector("#fallback-copy");
 const motionToggle = document.querySelector("#motion-toggle");
+const occlusionElement = document.querySelector("#camera-occlusion");
 const chapters = [...document.querySelectorAll("[data-stage]")];
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -30,6 +31,7 @@ let scene;
 let camera;
 let controller;
 let manifest;
+let cameraPath;
 let modelResourceURL;
 let motionLocked = false;
 let firstUsableFrameMs = null;
@@ -507,37 +509,30 @@ function addEnvironment() {
   room.dispose();
   pmrem.dispose();
 
-  const key = new THREE.DirectionalLight(0xffffff, 3.05);
+  const key = new THREE.DirectionalLight(0xffd8cf, 2.4);
   key.position.set(6, 9, 5);
-  key.castShadow = true;
-  key.shadow.mapSize.set(1024, 1024);
-  key.shadow.camera.left = -6;
-  key.shadow.camera.right = 6;
-  key.shadow.camera.top = 6;
-  key.shadow.camera.bottom = -6;
-  key.shadow.camera.near = 0.1;
-  key.shadow.camera.far = 30;
-  key.shadow.bias = -0.00035;
   scene.add(key);
 
-  const rim = new THREE.DirectionalLight(0xc7d6e6, 1.25);
+  const rim = new THREE.DirectionalLight(0x8ebfff, 1.8);
   rim.position.set(-6, 4, -4);
   scene.add(rim);
+
+  const accent = new THREE.PointLight(0xe51d32, 13, 12, 2);
+  accent.position.set(-2.8, 1.8, 3.7);
+  scene.add(accent);
+
+  return { key, rim, accent };
 }
 
 function frameAsset(asset) {
   const bounds = new THREE.Box3().setFromObject(asset);
-  const center = bounds.getCenter(new THREE.Vector3());
   const size = bounds.getSize(new THREE.Vector3());
-  const largestDimension = Math.max(size.x, size.y, size.z);
-  const scale = largestDimension > 0 ? 4.7 / largestDimension : 1;
-
-  asset.position.sub(center);
-  asset.updateMatrixWorld(true);
 
   const presentationRoot = new THREE.Group();
-  presentationRoot.scale.setScalar(scale);
-  presentationRoot.position.x = 0.62;
+  const transform = manifest.story.canonicalModelTransform;
+  presentationRoot.position.set(...transform.position);
+  presentationRoot.rotation.set(...transform.rotation);
+  presentationRoot.scale.set(...transform.scale);
   presentationRoot.add(asset);
   scene.add(presentationRoot);
 
@@ -547,8 +542,8 @@ function frameAsset(asset) {
       return;
     }
     meshCount += 1;
-    object.castShadow = true;
-    object.receiveShadow = true;
+    object.castShadow = false;
+    object.receiveShadow = false;
   });
 
   const ground = new THREE.Mesh(
@@ -559,7 +554,7 @@ function frameAsset(asset) {
     }),
   );
   ground.rotation.x = -Math.PI / 2;
-  ground.position.y = -(size.y * scale) / 2 - 0.035;
+  ground.position.y = -0.17;
   ground.receiveShadow = true;
   scene.add(ground);
 
@@ -573,7 +568,7 @@ function onResize() {
   }
   const width = window.innerWidth;
   const height = window.innerHeight;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25) * 0.85);
   renderer.setSize(width, height, false);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
@@ -625,12 +620,17 @@ async function initialize() {
       );
     }
     manifest = await manifestResponse.json();
+    const cameraPathResponse = await fetch(manifest.story.cameraPathUri);
+    if (!cameraPathResponse.ok) {
+      throw new Error(`Camera path returned ${cameraPathResponse.status}.`);
+    }
+    cameraPath = await cameraPathResponse.json();
     manifestReadyMs = Number(performance.now().toFixed(3));
     updateStoryUI(pageProgress());
 
     renderer = new THREE.WebGLRenderer({
       canvas,
-      antialias: true,
+      antialias: false,
       alpha: false,
       powerPreference: "high-performance",
     });
@@ -642,12 +642,12 @@ async function initialize() {
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf1f1ef);
-    camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
-    const initialCamera = manifest.story.cameraKeyframes[0];
+    camera = new THREE.PerspectiveCamera(38, 1, 0.025, 100);
+    const initialCamera = cameraPath.keyframes[0];
     camera.position.set(...initialCamera.position);
     camera.lookAt(...initialCamera.target);
 
-    addEnvironment();
+    const lights = addEnvironment();
     onResize();
 
     const dracoLoader = new DRACOLoader();
@@ -695,6 +695,9 @@ async function initialize() {
       renderer,
       scene,
       manifest,
+      cameraPath,
+      lights,
+      occlusionElement,
       onStageChange(stage) {
         body.dataset.storyStage = stage.id;
       },

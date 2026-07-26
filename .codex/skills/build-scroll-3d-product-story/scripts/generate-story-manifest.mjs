@@ -210,7 +210,7 @@ function buildGroups(inspection) {
 export async function generateManifest(modelPath, publicUri, creativePlan) {
   if (!creativePlan) {
     throw new Error(
-      "An approved creative-development record is required before runtime-story generation",
+      "An automatically released creative-development record is required before runtime-story generation",
     );
   }
   const inspection = await inspectModel(modelPath, {

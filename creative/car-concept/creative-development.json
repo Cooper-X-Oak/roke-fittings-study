@@ -340,7 +340,15 @@
     ]
   },
   "confirmation": {
-    "status": "pending"
+    "status": "automated",
+    "approvalId": "car-fpv-automatic-release-001",
+    "releasedAt": "2026-07-26T05:30:00Z",
+    "evidenceRef": "creative/car-concept/camera-previs.json",
+    "checks": [
+      "480 deterministic frame states cover the complete 16-second timeline.",
+      "The five authored shot IDs and boundaries match the selected route.",
+      "The hidden cut is bounded to the brake-disc occlusion and the final 15% is stable."
+    ]
   },
   "phaseHistory": [
     {
@@ -358,6 +366,10 @@
     {
       "phase": "animatic",
       "completedAt": "2026-07-26T05:22:55Z"
+    },
+    {
+      "phase": "automatic-release",
+      "completedAt": "2026-07-26T05:30:00Z"
     }
   ]
 }

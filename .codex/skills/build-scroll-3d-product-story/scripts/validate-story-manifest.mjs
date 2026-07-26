@@ -16,6 +16,7 @@ const MODES = new Set([
   "review-required-assembly",
   "hybrid-reveal",
   "whole-product",
+  "cinematic-scroll",
 ]);
 const SHOT_COUNT = 5;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
@@ -123,7 +124,23 @@ export function validateManifest(manifest) {
     }
   }
 
-  for (const key of ["cameraKeyframes", "modelRotationKeyframes"]) {
+  if (manifest.story?.mode === "cinematic-scroll") {
+    if (typeof manifest.story.cameraPathUri !== "string" || !manifest.story.cameraPathUri) {
+      errors.push("story.cameraPathUri is required for cinematic-scroll");
+    }
+    const transform = manifest.story.canonicalModelTransform;
+    for (const field of ["position", "rotation", "scale"]) {
+      if (!isFiniteVector(transform?.[field], 3)) {
+        errors.push(`story.canonicalModelTransform.${field} must be a vec3`);
+      }
+    }
+    if (
+      !Array.isArray(manifest.story.opacityGroupIds) ||
+      !manifest.story.opacityGroupIds.every((id) => SLUG.test(id))
+    ) {
+      errors.push("story.opacityGroupIds must contain kebab-case group IDs");
+    }
+  } else for (const key of ["cameraKeyframes", "modelRotationKeyframes"]) {
     const keyframes = manifest.story?.[key];
     if (!Array.isArray(keyframes) || keyframes.length < 2) {
       errors.push(`story.${key} must contain at least two keyframes`);

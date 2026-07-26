@@ -1,4 +1,4 @@
 interface:
   display_name: "Build Scroll 3D Product Story"
-  short_description: "Script, approve, then build scroll-driven 3D stories"
-  default_prompt: "Use $build-scroll-3d-product-story to research advertising references, develop and confirm a five-shot animatic, then implement this GLB as a scroll-driven 3D product story."
+  short_description: "Script, validate, and build scroll-driven 3D stories"
+  default_prompt: "Use $build-scroll-3d-product-story to research advertising references, author and automatically validate a five-shot animatic, then implement this GLB as a scroll-driven 3D product story."

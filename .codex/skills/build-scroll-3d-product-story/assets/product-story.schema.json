@@ -84,9 +84,7 @@
       "additionalProperties": false,
       "required": [
         "mode",
-        "stages",
-        "cameraKeyframes",
-        "modelRotationKeyframes"
+        "stages"
       ],
       "properties": {
         "mode": {
@@ -94,7 +92,8 @@
             "semantic-assembly",
             "review-required-assembly",
             "hybrid-reveal",
-            "whole-product"
+            "whole-product",
+            "cinematic-scroll"
           ]
         },
         "stages": {
@@ -118,6 +117,21 @@
           "items": {
             "$ref": "#/$defs/rotationKeyframe"
           }
+        },
+        "cameraPathUri": {"type": "string", "minLength": 1},
+        "canonicalModelTransform": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["position", "rotation", "scale"],
+          "properties": {
+            "position": {"$ref": "#/$defs/vec3"},
+            "rotation": {"$ref": "#/$defs/vec3"},
+            "scale": {"$ref": "#/$defs/vec3"}
+          }
+        },
+        "opacityGroupIds": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}
         }
       }
     },

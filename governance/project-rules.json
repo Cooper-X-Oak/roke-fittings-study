@@ -2,56 +2,61 @@
   "schema_version": 1,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-car-camera-previs",
-  "ruleset_version": "2026-07-26.5",
+  "ruleset_id": "ruleset-2026-07-26-car-fpv-runtime-inspected",
+  "ruleset_version": "2026-07-26.7",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
-      "id": "deliver-car-story-preproduction",
-      "statement": "Apply build-scroll-3d-product-story to the current car GLB and deliver a reviewable preproduction package through an authored per-frame camera previs and fixed-duration five-shot path animatic, without entering runtime implementation.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "id": "deliver-car-story-runtime",
+      "statement": "Apply build-scroll-3d-product-story to the current car GLB and directly deliver the selected five-shot virtual-FPV narrative as a production WebGL scroll story; no human screening or narrative approval may block implementation.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
       "id": "evidence-backed-car-advertising-board",
       "statement": "Document applicable automotive or technical product advertising cases from primary or creator-owned sources, extracting narrative thesis, transferable methods, and limitations for this concept car model.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
       "id": "compare-car-creative-routes",
       "statement": "Develop and compare at least two materially different car-story routes before selecting one candidate route for the animatic.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
       "id": "author-continuous-five-shot-script",
       "statement": "Author exactly five continuous shots as one motivated virtual-cinematography path, with narrative purpose, viewer takeaway, model action, camera, lighting, layout, transitions, rhythm, hold, copy, and truth constraints.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
       "id": "bound-story-to-current-car-model",
       "statement": "Base close-ups and component language on inspected GLB nodes and visible geometry; do not claim a verified production powertrain, manufacturing sequence, or engineering function that the concept asset does not establish.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
       "id": "deliver-per-frame-camera-previs",
       "statement": "Deliver deterministic camera state for every frame of the canonical 16-second, 30fps playback, including position, target, roll, FOV, focus distance, part state, light state, shot identity, and continuity metadata.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "deliver-fixed-duration-animatic",
-      "statement": "Deliver a fixed-duration five-shot path animatic that visibly proves the virtual FPV infiltration, one occlusion-motivated hidden cut, cockpit deceleration, door breakout, restrained exterior arc, reversible path, and stable final hero hold.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "id": "translate-previs-to-scroll-runtime",
+      "statement": "Translate the fixed-duration five-shot camera previs to one normalized reversible scroll timeline that visibly delivers virtual FPV infiltration, one occlusion-motivated hidden cut, cockpit deceleration, door breakout, restrained exterior arc, and a stable final hero hold.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "pending-confirmation-blocks-runtime",
-      "statement": "The preproduction record must remain pending external confirmation; runtime-story generation must reject it until the user explicitly approves the route, script, and animatic.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "id": "automatic-creative-release",
+      "statement": "Case research, route comparison, five-shot script, camera previs, and animatic remain mandatory inputs, but successful deterministic validation releases runtime implementation without a human screening or confirmation record.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "do-not-change-public-car-runtime",
-      "statement": "Do not redesign, deploy, publish, or claim acceptance of the current WebGL car page during this preproduction task.",
-      "development_entry_ids": ["develop-car-story-animatic"]
+      "id": "prove-runtime-quality",
+      "statement": "The implemented page must use demand rendering, deterministic reverse scrolling, bounded roll, coordinated camera/parts/light/layout/copy, reduced-motion fallback, and measured desktop frame pacing; inspect the actual rendered delivery after implementation.",
+      "development_entry_ids": ["implement-car-story-runtime"]
+    },
+    {
+      "id": "require-delivery-outcome-inspection",
+      "statement": "Release acceptance requires a passing inspect-delivery-outcome record whose direct evidence covers actual browser pixels, deterministic replay, frame pacing, idle rendering, errors, and fallback behavior for the current runtime.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     }
   ]
 }
