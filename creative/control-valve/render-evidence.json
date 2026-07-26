@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "collectedAt": "2026-07-26T10:12:57.744Z",
+  "sourceUrl": "http://127.0.0.1:4177/roke-fittings-study/control-valve/",
+  "browserMode": "headless Chromium; renderer recorded in benchmark.rendererInfo",
+  "performanceInterpretation": "Short headless diagnostic only. It does not certify discrete-GPU frame rate; the portable performance proof is the six-primitive Draco GLB and demand-rendering behavior.",
+  "viewport": {
+    "width": 1600,
+    "height": 1000,
+    "dpr": 1
+  },
+  "ready": {
+    "state": "ready",
+    "groups": 6
+  },
+  "posterLoadingState": {
+    "complete": true,
+    "naturalWidth": 1600,
+    "naturalHeight": 1000,
+    "opacity": 1,
+    "visible": true,
+    "capturedAtMs": 348.7
+  },
+  "posterAfterReady": {
+    "opacity": 0,
+    "hiddenClass": true
+  },
+  "bodyHasContent": true,
+  "interactiveLabels": [
+    "CV\n            FORCE / CONTROL",
+    "播放 16 秒 Animatic"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "shotId": "monument",
+      "progress": 0.08,
+      "path": "docs/control-valve/evidence/shot-01-monument.png",
+      "runtimeShotId": "monument"
+    },
+    {
+      "shotId": "command-descends",
+      "progress": 0.27,
+      "path": "docs/control-valve/evidence/shot-02-command-descends.png",
+      "runtimeShotId": "command-descends"
+    },
+    {
+      "shotId": "inside-the-cascade",
+      "progress": 0.47,
+      "path": "docs/control-valve/evidence/shot-03-inside-the-cascade.png",
+      "runtimeShotId": "inside-the-cascade"
+    },
+    {
+      "shotId": "six-systems",
+      "progress": 0.73,
+      "path": "docs/control-valve/evidence/shot-04-six-systems.png",
+      "runtimeShotId": "six-systems"
+    },
+    {
+      "shotId": "authority-restored",
+      "progress": 1,
+      "path": "docs/control-valve/evidence/shot-05-authority-restored.png",
+      "runtimeShotId": "authority-restored"
+    }
+  ],
+  "benchmark": {
+    "sampleCount": 23,
+    "p50FrameMs": 16.6,
+    "p95FrameMs": 16.7,
+    "framesOver16_7Ms": 5,
+    "framesOver33_3Ms": 0,
+    "idleRendererFrames": 0,
+    "usableFrameMs": 803.7999999970198,
+    "modelResource": {
+      "durationMs": 671.1,
+      "transferSize": 908980,
+      "encodedBodySize": 908680,
+      "decodedBodySize": 908680
+    },
+    "rendererInfo": {
+      "vendor": "Google Inc. (NVIDIA)",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1050 (0x00001C91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "jsHeapBytes": 22273446
+  }
+}

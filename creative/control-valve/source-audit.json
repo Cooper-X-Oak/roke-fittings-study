@@ -1,0 +1,69 @@
+{
+  "assetId": "dn80-cl2500-pneumatic-cascade-control-valve",
+  "source": {
+    "fileName": "DN80CL2500气动串级式装配体.STEP",
+    "sourceLocation": "external-local-source (path intentionally omitted from the public repository)",
+    "bytes": 18730985,
+    "sha256": "378EFDBB1291612D1BA09A6A6C3533636AB372BFE16099F0DAC9CE39D4DB06B9",
+    "format": "ISO 10303-21 STEP AP214",
+    "authoringMetadata": "SolidWorks 2024 / SwSTEP 2.0",
+    "embeddedTimestamp": "2025-02-25T08:58:58",
+    "repositoryPolicy": "The supplied STEP is not copied into the public repository; only a purpose-made derived GLB and traceability metadata are included."
+  },
+  "structuralInspection": {
+    "entityCountApproximate": 167174,
+    "productDefinitions": 45,
+    "assemblyOccurrences": 124,
+    "manifoldSolidBreps": 44,
+    "advancedBrepRepresentations": 43,
+    "facetedBreps": 0,
+    "classification": "structured-named-parts",
+    "confirmedProductLabel": "DN80CL2500气动串级式装配体",
+    "confirmedNamedComponents": [
+      "壳体",
+      "上盖",
+      "串级式阀芯",
+      "阀笼1",
+      "阀笼2",
+      "阀笼3",
+      "阀座",
+      "导向套",
+      "308气缸装配体孔80",
+      "308气缸推杆",
+      "308气缸活塞",
+      "308气缸支架孔80",
+      "308反作用上缸盖",
+      "308反作用下缸盖",
+      "外密封垫108×92",
+      "内密封垫78×62",
+      "支撑环"
+    ]
+  },
+  "truthBoundary": {
+    "verifiedSourceLabels": [
+      "DN80",
+      "CL2500",
+      "气动",
+      "串级式",
+      "串级式阀芯",
+      "三级命名阀笼",
+      "阀座",
+      "气缸活塞与推杆"
+    ],
+    "visualInferences": [
+      "The assembly uses a vertically aligned actuator and stem/plug motion axis.",
+      "The named cascade plug, three cages and seat are suitable subjects for a staged internal reveal.",
+      "Repeated fasteners can be merged or instanced for a commercial shot asset."
+    ],
+    "prohibitedClaims": [
+      "Certified pressure performance",
+      "Flow coefficient or rangeability",
+      "Leakage or sealing class",
+      "Cavitation, noise or erosion performance",
+      "Fail-safe direction",
+      "Safety certification",
+      "Maintenance sequence",
+      "CFD-accurate flow or pressure distribution"
+    ]
+  }
+}

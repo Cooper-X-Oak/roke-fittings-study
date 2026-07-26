@@ -1,46 +1,21 @@
-# 验收边界
+# 当前验收边界
 
-本项目只有在以下边界全部通过时才视为可交付。部署成功本身不等于验收通过。
+本阶段交付对象是用户提供的 `DN80CL2500气动串级式装配体.STEP` 对应的六语义组轻量 GLB 与专业商业 Animatic，不是完整 CAD/BOM、生产网页或数字孪生。该模型按 STEP 产品树识别为气动串级式调节阀，不得继续沿用球阀的 90° 阀球旋转叙事。
 
-## 内容与路由
+唯一可执行验收由 `governance/project-validation.json` 定义。人工描述、历史汽车实验测试或旧页面部署状态不能替代控制面验收命令。
 
-- 八个真实页面及其 `index.html` 地址均返回 HTTP 200。
-- 页面语言为 `zh-CN`，标题和可见主标题存在。
-- 桌面端、390px 移动端和 320px 回流环境均不得出现可见俄文、HTTrack 路径泄露或横向溢出。
-- 可翻译的界面文案、占位符和可访问名称使用简体中文；品牌、型号、标准、邮箱、电话和技术单位保持原样。
-- 所有站内导航链接返回 HTTP 200。
+## 必须证明
 
-## 资源、动画与媒体
-
-- 无零字节、临时、缺失或超过 100MB 的发布文件。
-- 三套 AVIF 帧分别为 240、240、170 张。
-- 首页拆解动画在 0%、20%、40%、60%、80%、100% 六个进度点均有非空画面和六个不同帧。
-- 首页第二段动画在五个进度点均有非空画面和五个不同帧。
-- 关于页动画只绘制已加载帧；快速滚动和缺帧场景不得出现空白或 JavaScript 错误。
-- 懒加载图片滚动进入视口后必须成功加载；视频必须可播放并使用 fast-start MP4。
-- 360° 模型必须打开、渲染 WebGL 画布并可关闭。
-
-## 静态交互与隐私
-
-- 移动菜单可通过点击和 Escape 键打开、关闭。
-- 网格、视频、360° 模型及其他自定义控件支持键盘，并具有中文可访问名称。
-- 键盘焦点始终可见。
-- 静态镜像不得向 Bitrix、Mango、Yandex 或原站接口发送跟踪、表单、上传和目录 AJAX 请求。
-- 无后端能力的控件必须给出中文静态镜像说明，不得报英文服务器错误或静默失败。
-
-## 响应式与降级
-
-- 1440×1000、390×844、320×800 三个代表性视口通过。
-- `prefers-reduced-motion: reduce` 下，滚动帧动画保持静态，CSS 动画和过渡被压缩。
-- 关于页核心介绍文本在 JavaScript 禁用时仍然可见。
-- 页面控制台不得出现未处理的 JavaScript 异常。
+- 实际视觉检查的源资产、工具和转换路径可追溯；不可见或未确认结构被明确标记。
+- 每个商业镜头都有几何保留、合并、重建、实例化和删除决定。
+- GLB 恰好暴露六个镜头语义组，并能支持完整、执行器至推杆线性动作、串级内件揭示、流路视觉化、局部特写和成组装配状态。
+- Animatic 恰好包含五个连续镜头、专业且有叙事动机的相机运动、遮挡驱动的内部转场、确定性逐帧时间线和渲染证据。
+- 产品事实、视觉推断和未解决声明分开记录。
+- 不把几百个 CAD 零件、维修仿真、CFD 或 FEA 纳入当前交付。
 
 ## 复验命令
 
 ```powershell
-node scripts/localize-pages.mjs docs --check
-node scripts/sanitize-static-pages.mjs docs --check
-node scripts/verify-pages.mjs docs /roke-fittings-study
+python governance/validate_control_plane.py entry --rules governance/project-rules.json --validation governance/project-validation.json --entry-id build-control-valve-shot-asset
+python governance/validate_control_plane.py accept --rules governance/project-rules.json --validation governance/project-validation.json --run-checks --workdir .
 ```
-
-浏览器验收必须针对公开 GitHub Pages 地址执行，而不是只验证本地服务器。
