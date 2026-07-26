@@ -2,77 +2,57 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-story-clarity",
-  "ruleset_version": "2026-07-26.11",
+  "ruleset_id": "ruleset-2026-07-26-control-valve-shot-script",
+  "ruleset_version": "2026-07-26.12",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
-      "id": "build-purpose-made-shot-asset",
-      "statement": "Build a qualified, shot-ready GLB from the supplied DN80 CL2500 pneumatic cascade control-valve STEP assembly that serves professional commercial cinematography; preserve only geometry needed by the shots rather than reproducing every CAD or BOM instance.",
-      "development_entry_ids": ["revise-control-valve-story"],
+      "id": "author-control-valve-five-shot-script",
+      "statement": "Author exactly five materially different commercial shots for the supplied DN80 CL2500 pneumatic cascade control-valve model. The script must tell one causal product-recognition story rather than relabeling five similar camera states.",
+      "development_entry_ids": ["author-control-valve-shot-script"],
       "children": [
         {
-          "id": "source-geometry-proof",
+          "id": "causal-narrative-arc-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must identify the visually inspected source, its provenance, the compatible tool or conversion path used, and any structures that remain unverified."
+          "statement": "Acceptance must show that the five shots advance one explicit causal arc, with a distinct question and viewer takeaway in every shot."
         },
         {
-          "id": "shot-retention-matrix-proof",
+          "id": "material-shot-contrast-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must map every planned shot to geometry that is retained, merged, rebuilt, instanced, or deleted."
+          "statement": "Acceptance must show materially different scale, camera axis, framing, visible action, transition device and rhythm across the five shots."
         },
         {
-          "id": "semantic-runtime-groups-proof",
+          "id": "complete-shot-language-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove that the GLB exposes exactly six bounded semantic groups required for hero, actuator-to-stem motion, cascade-trim reveal, flow-path visualization, detail and grouped assembly actions."
+          "statement": "Every shot must define narrative purpose, viewer takeaway, start and end state, visible action, active components, framing, camera movement, lighting, layout, copy, incoming and outgoing transition, rhythm, comprehension hold and truth constraints."
         }
       ]
     },
     {
-      "id": "author-professional-commercial-animatic",
-      "statement": "Re-direct the exactly five-shot control-valve animatic around restrained industrial authority and product comprehension: preserve a stable external spatial anchor, use slow and monotonic camera motion with zero roll, reveal internals through shell transparency and modest semantic separation, prohibit blackout transitions and camera teleports, and finish with a stable product hero.",
-      "development_entry_ids": ["revise-control-valve-story"],
+      "id": "bind-script-to-observed-product-truth",
+      "statement": "Bind the script to the supplied STEP product tree and observed geometry. DN80, CL2500, pneumatic actuation, cascade plug, three named cages, seat, actuator and stem may be used as source labels; unsupported performance, certification, flow, failure-direction and maintenance claims remain prohibited.",
+      "development_entry_ids": ["author-control-valve-shot-script"],
       "children": [
         {
-          "id": "deterministic-camera-proof",
+          "id": "script-claim-boundary-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must provide deterministic camera, target, field-of-view, focus, part and light state for the canonical animatic timeline."
-        },
-        {
-          "id": "rendered-animatic-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must include rendered frame or video evidence showing that all required camera beats are legible and continuous."
-        },
-        {
-          "id": "viewing-comfort-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove every canonical frame has zero roll, negligible transition occlusion, no hidden camera relocation, bounded field-of-view change, and an external product or valve-body spatial anchor."
-        },
-        {
-          "id": "restrained-industrial-tone-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must visually prove a coherent restrained-industrial direction through quieter type hierarchy, graphite and cool-steel surfaces, one copper focal accent, deliberate pacing and comprehension holds without presenting the direction as an undocumented corporate brand standard."
+          "statement": "Acceptance must keep source facts, visual interpretation and prohibited claims distinguishable in the authored script."
         }
       ]
     },
     {
-      "id": "bind-story-to-observed-product-truth",
-      "statement": "Bind component naming, mechanisms and commercial claims to the supplied STEP product tree and visually observed geometry; DN80, CL2500, pneumatic actuation, cascade trim and named components may be reported as source labels, but pressure performance, flow coefficient, sealing class, safety certification, service procedure and simulated fluid behavior must not be inferred.",
-      "development_entry_ids": ["revise-control-valve-story"],
+      "id": "stop-at-approved-shot-script",
+      "statement": "This development phase stops after the creative route and five-shot script. Camera previs, Animatic, runtime manifests, WebGL, production assets, rendered evidence and public pages must not be changed or released in this phase.",
+      "development_entry_ids": ["author-control-valve-shot-script"],
       "children": [
         {
-          "id": "claim-boundary-proof",
+          "id": "script-only-change-scope-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must enumerate verified facts, visual inferences and unresolved product claims separately."
+          "statement": "Acceptance must prove that only current governance, creative-route, five-shot-script and script-validation files changed relative to origin/main."
         }
       ]
-    },
-    {
-      "id": "exclude-digital-twin-scope",
-      "statement": "Exclude full BOM interaction, hundreds of independently animated fasteners, maintenance simulation, CFD, FEA and other digital-twin behavior from this commercial shot asset.",
-      "development_entry_ids": ["revise-control-valve-story"]
     }
   ]
 }

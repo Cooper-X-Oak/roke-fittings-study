@@ -2,64 +2,34 @@
   "schema_version": 2,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-story-clarity",
-  "ruleset_version": "2026-07-26.11",
-  "validation_contract_version": "2026-07-26.11",
+  "ruleset_id": "ruleset-2026-07-26-control-valve-shot-script",
+  "ruleset_version": "2026-07-26.12",
+  "validation_contract_version": "2026-07-26.12",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
   "checks": [
     {
-      "id": "control-valve-source-and-retention-contract",
-      "behavior_id": "source-geometry-and-shot-retention-decisions-are-evidenced",
+      "id": "control-valve-five-shot-script-contract",
+      "behavior_id": "five-materially-different-shots-form-one-causal-product-story",
       "rule_paths": [
-        ["build-purpose-made-shot-asset"],
-        ["build-purpose-made-shot-asset", "source-geometry-proof"],
-        ["build-purpose-made-shot-asset", "shot-retention-matrix-proof"]
+        ["author-control-valve-five-shot-script"],
+        ["author-control-valve-five-shot-script", "causal-narrative-arc-proof"],
+        ["author-control-valve-five-shot-script", "material-shot-contrast-proof"],
+        ["author-control-valve-five-shot-script", "complete-shot-language-proof"],
+        ["bind-script-to-observed-product-truth"],
+        ["bind-script-to-observed-product-truth", "script-claim-boundary-proof"],
+        ["stop-at-approved-shot-script"],
+        ["stop-at-approved-shot-script", "script-only-change-scope-proof"]
       ],
       "required_for_current_contract": true,
-      "command": "python scripts/validate_control_valve_source.py"
-    },
-    {
-      "id": "control-valve-glb-contract",
-      "behavior_id": "shot-ready-glb-has-bounded-semantic-runtime-groups",
-      "rule_paths": [
-        ["build-purpose-made-shot-asset"],
-        ["build-purpose-made-shot-asset", "semantic-runtime-groups-proof"],
-        ["exclude-digital-twin-scope"]
-      ],
-      "required_for_current_contract": true,
-      "command": "python scripts/validate_control_valve_glb.py"
-    },
-    {
-      "id": "control-valve-animatic-contract",
-      "behavior_id": "professional-commercial-animatic-is-deterministic-and-rendered",
-      "rule_paths": [
-        ["author-professional-commercial-animatic"],
-        ["author-professional-commercial-animatic", "deterministic-camera-proof"],
-        ["author-professional-commercial-animatic", "rendered-animatic-proof"],
-        ["author-professional-commercial-animatic", "viewing-comfort-proof"],
-        ["author-professional-commercial-animatic", "restrained-industrial-tone-proof"]
-      ],
-      "required_for_current_contract": true,
-      "command": "python scripts/validate_control_valve_animatic.py"
-    },
-    {
-      "id": "control-valve-truth-boundary-contract",
-      "behavior_id": "product-claims-remain-bound-to-observed-evidence",
-      "rule_paths": [
-        ["bind-story-to-observed-product-truth"],
-        ["bind-story-to-observed-product-truth", "claim-boundary-proof"]
-      ],
-      "required_for_current_contract": true,
-      "command": "python scripts/validate_control_valve_truth.py"
+      "command": "python scripts/validate_control_valve_shot_script.py"
     },
     {
       "id": "github-pages-repository-policy",
-      "behavior_id": "repository-files-remain-within-pages-policy",
+      "behavior_id": "existing-pages-artifacts-remain-valid-and-unchanged",
       "rule_paths": [
-        ["build-purpose-made-shot-asset"],
-        ["author-professional-commercial-animatic"]
+        ["stop-at-approved-shot-script"]
       ],
       "required_for_current_contract": true,
       "command": "node scripts/verify-pages.mjs"
