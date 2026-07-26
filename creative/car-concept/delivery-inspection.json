@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "run_id": "20260726T055745Z-car-fpv-runtime",
+  "run_id": "20260726T065328Z-car-fpv-immediate-poster",
   "target": {
     "environment": "candidate",
-    "identity": "feat/11-narrative-first-skill:car-fpv-camera-path-v1@20260726T055745Z"
+    "identity": "fix/13-first-shot-poster:car-fpv-poster-handoff-v1@20260726T065328Z"
   },
   "scope": {
     "status": "applicable",
@@ -12,7 +12,8 @@
       "continuous-five-shot-runtime",
       "deterministic-reversible-cinematic-state",
       "high-performance-demand-rendering",
-      "runtime-fallback-and-truthfulness"
+      "runtime-fallback-and-truthfulness",
+      "immediate-poster-handoff"
     ],
     "unaffected_claims": []
   },
@@ -90,6 +91,23 @@
             "probe": "python scripts/validate_car_product_story.py and node scripts/verify-pages.mjs"
           }
         ]
+      },
+      {
+        "claim_id": "immediate-poster-handoff",
+        "statement": "A lightweight INTERCEPT poster is decoded and visible while the empty WebGL canvas remains transparent, then the first verified 3D frame crossfades over it; fallback and load-error routes retain the same product image.",
+        "consumer": "website visitor and release owner",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "cold-browser-poster-probe",
+            "target": "static HTML, loading pixels, first 3D handoff, fallback, and load-error routes",
+            "probe": "python scripts/validate_first_shot_poster.py"
+          }
+        ]
       }
     ]
   },
@@ -121,6 +139,13 @@
       "reason": "",
       "evidence_refs": ["EV-004", "EV-005"],
       "cleanup_evidence": []
+    },
+    {
+      "claim_id": "immediate-poster-handoff",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-006"],
+      "cleanup_evidence": []
     }
   ],
   "evidence": [
@@ -146,7 +171,7 @@
       "quality": "direct",
       "target": "local candidate runtime in desktop Chromium",
       "artifact": "validation-results/car-product-story-browser-metrics.json",
-      "summary": "The measured warm run reached first usable in 992.5ms, with 16.7ms p50 frame interval, 49.6ms p95 interval, 5.2ms p95 render CPU, zero idle renders, zero long animation frames, zero deterministic transform difference, and no console, page, request, or runtime errors. The cold run independently satisfied the declared frame-pacing budget."
+      "summary": "The measured cold run decoded the poster at 272.4ms and reached the first usable 3D frame at 3898.1ms. The warm run decoded the poster at 129.4ms and reached 3D at 1503.3ms. Both runs retained 16.7ms p50 frame intervals, passed the declared frame-pacing budget, produced zero idle renders and zero long animation frames, preserved zero deterministic transform difference, and reported no console, page, request, or runtime errors."
     },
     {
       "id": "EV-004",
@@ -163,6 +188,14 @@
       "target": "GitHub Pages document root and shipped assets",
       "artifact": "scripts/verify-pages.mjs",
       "summary": "Repository policy validation confirms the Pages entry points and compressed live product asset remain publishable, with the visible rail reporting the 2.48 MiB GLB, 109 Draco meshes, and 14 KTX2 textures."
+    },
+    {
+      "id": "EV-006",
+      "type": "immediate-poster-browser-inspection",
+      "quality": "direct",
+      "target": "actual loading pixels and first-frame handoff in desktop Chromium",
+      "artifact": "docs/experiment/assets/first-shot-poster.jpg; validation-results/car-fpv-poster-loading.png; validation-results/car-product-story-browser-metrics.json",
+      "summary": "The 27 KiB poster is present in static HTML and visible while data-webgl-state is loading and canvas opacity is zero. The first rendered 3D product frame changes data-product-frame to ready and reaches canvas opacity one after the 180ms crossfade. Forced fallback and model-load failure both retain the poster."
     }
   ],
   "findings": [],

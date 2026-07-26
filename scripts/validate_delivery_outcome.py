@@ -19,6 +19,7 @@ EXPECTED_CLAIMS = {
     "deterministic-reversible-cinematic-state",
     "high-performance-demand-rendering",
     "runtime-fallback-and-truthfulness",
+    "immediate-poster-handoff",
 }
 
 
