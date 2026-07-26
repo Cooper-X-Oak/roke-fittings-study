@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 
 import { fail, parseArgs, printOrWrite } from "./lib/cli.mjs";
 import { inspectModel } from "./lib/model-analysis.mjs";
+import { loadApprovedCreativeDevelopment } from "./validate-creative-development.mjs";
 
 const TAXONOMY = [
   {
@@ -115,62 +116,12 @@ function round(value) {
   return Number(value.toFixed(5));
 }
 
-function createStages() {
-  return [
-    {
-      id: "intro",
-      range: [0, 0.12],
-      content: {
-        eyebrow: "Product system",
-        title: "Introduce the product promise",
-        body: "Replace this candidate copy with verified product value.",
-        cta: null,
-      },
-    },
-    {
-      id: "exploded",
-      range: [0.12, 0.3],
-      content: {
-        eyebrow: "Architecture",
-        title: "Reveal the meaningful structure",
-        body: "Explain why the visible subsystems matter.",
-        cta: null,
-      },
-    },
-    {
-      id: "assembly",
-      range: [0.3, 0.72],
-      content: {
-        eyebrow: "Assembly",
-        title: "Show how the system becomes one",
-        body: "Connect assembly order to engineering value.",
-        cta: null,
-      },
-    },
-    {
-      id: "reveal",
-      range: [0.72, 0.9],
-      content: {
-        eyebrow: "Complete product",
-        title: "Resolve the complete silhouette",
-        body: "Move from explanation to product desire.",
-        cta: null,
-      },
-    },
-    {
-      id: "hero",
-      range: [0.9, 1],
-      content: {
-        eyebrow: "Product family",
-        title: "Author the final hero promise",
-        body: "Settle the product, message, and action.",
-        cta: {
-          label: "Explore the product",
-          href: "#product",
-        },
-      },
-    },
-  ];
+function createStages(creativePlan) {
+  return creativePlan.shots.map((shot) => ({
+    id: shot.id,
+    range: shot.range,
+    content: shot.content,
+  }));
 }
 
 function groupCandidates(inspection) {
@@ -256,11 +207,21 @@ function buildGroups(inspection) {
   });
 }
 
-export async function generateManifest(modelPath, publicUri) {
+export async function generateManifest(modelPath, publicUri, creativePlan) {
+  if (!creativePlan) {
+    throw new Error(
+      "An automatically released creative-development record is required before runtime-story generation",
+    );
+  }
   const inspection = await inspectModel(modelPath, {
     publicPath: publicUri ?? basename(modelPath),
   });
   const capability = inspection.capability.capability;
+  if (creativePlan.modelAudit.capability !== capability) {
+    throw new Error(
+      `Creative model capability ${creativePlan.modelAudit.capability} does not match inspected capability ${capability}`,
+    );
+  }
   const center = inspection.bounds?.center ?? [0, 0, 0];
   const diagonal = Math.max(inspection.bounds?.diagonal ?? 1, 1);
   const fused = capability === "fused-single-mesh";
@@ -279,7 +240,14 @@ export async function generateManifest(modelPath, publicUri) {
   ];
   return {
     $schema: "./product-story.schema.json",
-    schemaVersion: 1,
+    schemaVersion: 2,
+    creativeDevelopment: {
+      planId: creativePlan.planId,
+      selectedRouteId: creativePlan.selectedRouteId,
+      animaticUri: creativePlan.animatic.uri,
+      approvalId: creativePlan.confirmation.approvalId,
+      evidenceRef: creativePlan.confirmation.evidenceRef,
+    },
     model: {
       uri: publicUri ?? basename(modelPath),
       format: inspection.source.format,
@@ -288,7 +256,7 @@ export async function generateManifest(modelPath, publicUri) {
     },
     story: {
       mode,
-      stages: createStages(),
+      stages: createStages(creativePlan),
       cameraKeyframes: [
         {
           at: 0,
@@ -344,10 +312,18 @@ export async function generateManifest(modelPath, publicUri) {
 async function main() {
   const args = parseArgs(process.argv.slice(2), {
     model: "required",
+    "creative-plan": "required",
     "public-uri": "optional",
     out: "optional",
   });
-  const manifest = await generateManifest(args.model, args["public-uri"]);
+  const creativePlan = await loadApprovedCreativeDevelopment(
+    args["creative-plan"],
+  );
+  const manifest = await generateManifest(
+    args.model,
+    args["public-uri"],
+    creativePlan,
+  );
   await printOrWrite(manifest, args.out);
 }
 

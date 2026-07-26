@@ -1,6 +1,13 @@
 {
   "$schema": "../../.codex/skills/build-scroll-3d-product-story/assets/product-story.schema.json",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "creativeDevelopment": {
+    "planId": "car-concept-precision-becomes-presence",
+    "selectedRouteId": "precision-becomes-presence",
+    "animaticUri": "https://app.chatcut.io/editor/c91db2e4-55a3-4408-b3fa-e96da1818102",
+    "approvalId": "car-fpv-automatic-release-001",
+    "evidenceRef": "creative/car-concept/camera-previs.json"
+  },
   "model": {
     "uri": "./assets/models/car-concept-web.glb",
     "format": "glb",
@@ -8,103 +15,70 @@
     "capability": "structured-named-parts"
   },
   "story": {
-    "mode": "semantic-assembly",
+    "mode": "cinematic-scroll",
+    "cameraPathUri": "./camera-path.json",
+    "canonicalModelTransform": {
+      "position": [0, 0, 0],
+      "rotation": [0.01, -0.07, 0],
+      "scale": [1, 1, 1]
+    },
+    "opacityGroupIds": ["glazing-controls", "body-shell", "access-left", "access-right"],
     "stages": [
       {
-        "id": "intro",
-        "range": [0, 0.14],
+        "id": "intercept",
+        "range": [0, 0.1875],
         "content": {
-          "eyebrow": "CONCEPT VEHICLE / DIGITAL ASSEMBLY",
-          "title": "一台车，先成为一个系统。",
-          "body": "从结构基准、行走机构、功能核心、座舱到外部车身，这个概念样机用真实模型节点讲清产品构成。",
+          "eyebrow": "01 / PRECISION BECOMES PRESENCE",
+          "title": "INTERCEPT",
+          "body": "先让轮廓被看见，再让精密把视线截住。",
           "cta": {
-            "label": "向下滚动探索",
-            "href": "#exploded"
+            "label": "进入镜头",
+            "href": "#thread"
           }
         }
       },
       {
-        "id": "exploded",
-        "range": [0.14, 0.32],
+        "id": "thread",
+        "range": [0.1875, 0.35],
         "content": {
-          "eyebrow": "01 / STRUCTURE",
-          "title": "结构，不只是轮廓。",
-          "body": "拆解状态把十组装配语义同时展开：底部基准保持稳定，其余系统沿各自结构方向分离。",
+          "eyebrow": "02 / PRECISION BECOMES PRESENCE",
+          "title": "THREAD",
+          "body": "穿过接地点，进入控制发生的地方。",
           "cta": null
         }
       },
       {
-        "id": "assembly",
-        "range": [0.32, 0.78],
+        "id": "cockpit-run",
+        "range": [0.35, 0.5625],
         "content": {
-          "eyebrow": "02 / ASSEMBLY",
-          "title": "从承载，到完整。",
-          "body": "滚动依次收拢车轴、左右行走机构、功能核心、座舱、车身与开闭件。这是可解释的展示顺序，不是制造工艺说明。",
+          "eyebrow": "03 / PRECISION BECOMES PRESENCE",
+          "title": "COCKPIT RUN",
+          "body": "速度放慢，结构开始围绕驾驶空间组织。",
           "cta": null
         }
       },
       {
-        "id": "reveal",
-        "range": [0.78, 0.92],
+        "id": "breakout",
+        "range": [0.5625, 0.8125],
         "content": {
-          "eyebrow": "03 / REVEAL",
-          "title": "所有系统，收束成产品。",
-          "body": "部件回到经确认的基准变换后，镜头继续揭示完整外形；反向滚动时，拆解过程可确定性复现。",
+          "eyebrow": "04 / PRECISION BECOMES PRESENCE",
+          "title": "BREAKOUT",
+          "body": "离开座舱，关系沿镜头尾流展开。",
           "cta": null
         }
       },
       {
-        "id": "hero",
-        "range": [0.92, 1],
+        "id": "arrest",
+        "range": [0.8125, 1],
         "content": {
-          "eyebrow": "04 / PRODUCT",
-          "title": "让产品自己证明它的结构。",
-          "body": "一个压缩 GLB、一个语义清单和一个按需渲染循环，完成可复用的网页端产品叙事。",
+          "eyebrow": "05 / PRECISION BECOMES PRESENCE",
+          "title": "ARREST",
+          "body": "运动停止，精密成为完整的存在感。",
           "cta": {
-            "label": "查看结构清单",
+            "label": "查看模型语义",
             "href": "#architecture"
           }
         }
-      }
-    ],
-    "cameraKeyframes": [
-      {
-        "at": 0,
-        "position": [7.2, 3.4, 9.2],
-        "target": [0, 0.1, 0]
-      },
-      {
-        "at": 0.32,
-        "position": [6.5, 3.9, 9.8],
-        "target": [0, 0, 0]
-      },
-      {
-        "at": 0.78,
-        "position": [5.9, 3.25, 8.8],
-        "target": [0, 0, 0]
-      },
-      {
-        "at": 1,
-        "position": [6.2, 2.8, 8.5],
-        "target": [0, 0.05, 0]
-      }
-    ],
-    "modelRotationKeyframes": [
-      {
-        "at": 0,
-        "rotation": [0.04, -0.72, 0]
-      },
-      {
-        "at": 0.32,
-        "rotation": [0.07, 0.38, 0]
-      },
-      {
-        "at": 0.78,
-        "rotation": [0.02, 2.12, 0]
-      },
-      {
-        "at": 1,
-        "rotation": [0.02, 2.55, 0]
       }
     ]
   },

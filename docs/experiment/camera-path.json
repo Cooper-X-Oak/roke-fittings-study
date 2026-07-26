@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "fps": 30,
+  "totalFrames": 480,
+  "stableHeroFromFrame": 408,
+  "maxAbsRollDegrees": 10,
+  "hiddenCut": {"fromFrame": 123, "toFrame": 124, "reason": "brake-disc occlusion"},
+  "keyframes": [
+    {"frame":0,"position":[7.2,2.15,8.4],"target":[0.1,0.55,0.35],"roll":0,"fov":38,"focusDistance":8.2,"explode":0,"bodyOpacity":1,"keyLight":0.45,"rimLight":0.8,"occlusion":0},
+    {"frame":28,"position":[5.45,1.55,6.25],"target":[0.55,0.48,0.8],"roll":-1.5,"fov":34,"focusDistance":6,"explode":0,"bodyOpacity":1,"keyLight":0.55,"rimLight":1,"occlusion":0},
+    {"frame":58,"position":[3.45,0.92,3.75],"target":[0.83,0.38,1.16],"roll":-4.5,"fov":28,"focusDistance":3.5,"explode":0,"bodyOpacity":0.82,"keyLight":0.65,"rimLight":1.35,"occlusion":0},
+    {"frame":89,"position":[2.2,0.58,2.2],"target":[0.83,0.38,1.16],"roll":-8,"fov":22,"focusDistance":1.75,"explode":0,"bodyOpacity":0.45,"keyLight":0.72,"rimLight":1.6,"occlusion":0},
+    {"frame":112,"position":[1.42,0.46,1.52],"target":[0.82,0.39,1.15],"roll":-10,"fov":30,"focusDistance":0.85,"explode":0,"bodyOpacity":0.3,"keyLight":0.62,"rimLight":1.8,"occlusion":0.08},
+    {"frame":123,"position":[1.02,0.42,1.25],"target":[0.78,0.4,1.12],"roll":-6,"fov":42,"focusDistance":0.32,"explode":0,"bodyOpacity":0.18,"keyLight":0.38,"rimLight":1.1,"occlusion":0.96},
+    {"frame":124,"position":[2.8,1.6,2.5],"target":[0,0.65,0.94],"roll":4,"fov":40,"focusDistance":3.4,"explode":0,"bodyOpacity":0.08,"keyLight":0.36,"rimLight":0.85,"occlusion":0.96},
+    {"frame":143,"position":[2.58,1.53,2.24],"target":[0,0.65,0.82],"roll":2,"fov":37,"focusDistance":3.1,"explode":0,"bodyOpacity":0.08,"keyLight":0.5,"rimLight":0.7,"occlusion":0},
+    {"frame":167,"position":[2.38,1.46,1.92],"target":[0,0.6,0.5],"roll":0,"fov":35,"focusDistance":2.9,"explode":0,"bodyOpacity":0.08,"keyLight":0.62,"rimLight":0.58,"occlusion":0},
+    {"frame":205,"position":[2.2,1.4,1.3],"target":[0,0.58,0],"roll":0,"fov":34,"focusDistance":2.7,"explode":0,"bodyOpacity":0.08,"keyLight":0.7,"rimLight":0.55,"occlusion":0},
+    {"frame":238,"position":[2,1.3,0.7],"target":[0.2,0.58,-0.3],"roll":1.5,"fov":33,"focusDistance":2.2,"explode":0,"bodyOpacity":0.1,"keyLight":0.76,"rimLight":0.62,"occlusion":0},
+    {"frame":269,"position":[1.8,1.2,0.2],"target":[1.15,0.6,-0.1],"roll":4,"fov":36,"focusDistance":1.2,"explode":0,"bodyOpacity":0.14,"keyLight":0.8,"rimLight":0.78,"occlusion":0},
+    {"frame":296,"position":[1.75,1.08,-0.05],"target":[0.1,0.52,0.02],"roll":7,"fov":37,"focusDistance":2,"explode":0.16,"bodyOpacity":0.5,"keyLight":0.9,"rimLight":1,"occlusion":0},
+    {"frame":334,"position":[3.72,1.5,2.62],"target":[0,0.5,0.1],"roll":4,"fov":34,"focusDistance":4.7,"explode":0.62,"bodyOpacity":0.72,"keyLight":1,"rimLight":1.25,"occlusion":0},
+    {"frame":368,"position":[5.08,1.9,4.92],"target":[0,0.48,0.14],"roll":1.5,"fov":30,"focusDistance":6.7,"explode":0.46,"bodyOpacity":0.9,"keyLight":1.15,"rimLight":1.38,"occlusion":0},
+    {"frame":389,"position":[5.34,2,5.5],"target":[0,0.47,0.14],"roll":0.5,"fov":29,"focusDistance":7,"explode":0.28,"bodyOpacity":1,"keyLight":1.25,"rimLight":1.45,"occlusion":0},
+    {"frame":408,"position":[4.72,1.82,5.2],"target":[0,0.46,0.14],"roll":0,"fov":27,"focusDistance":6.6,"explode":0,"bodyOpacity":1,"keyLight":1.4,"rimLight":1.25,"occlusion":0},
+    {"frame":479,"position":[4.72,1.82,5.2],"target":[0,0.46,0.14],"roll":0,"fov":27,"focusDistance":6.6,"explode":0,"bodyOpacity":1,"keyLight":1.4,"rimLight":1.25,"occlusion":0}
+  ]
+}

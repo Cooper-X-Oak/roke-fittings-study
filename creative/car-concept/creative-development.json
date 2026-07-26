@@ -1,0 +1,375 @@
+{
+  "$schema": "../../.codex/skills/build-scroll-3d-product-story/assets/creative-development.schema.json",
+  "schemaVersion": 1,
+  "planId": "car-concept-precision-becomes-presence",
+  "modelAudit": {
+    "modelPath": "docs/experiment/assets/models/car-concept-web.glb",
+    "capability": "structured-named-parts",
+    "truths": [
+      "模型包含 101 个节点、97 个网格节点和 109 个 Draco 压缩图元。",
+      "轮圈、制动盘、方向盘、座椅、车门、玻璃和机盖具有可定位的语义节点。",
+      "模型使用 14 张 KTX2/Basis 纹理，适合继续作为实时 WebGL 资产。"
+    ],
+    "limitations": [
+      "模型没有动画、骨骼或相机。",
+      "Engine 节点只有 60 个三角形，不足以支撑可信的发动机英雄特写。",
+      "模型没有驾驶者、空气动力、制造顺序或车辆性能数据。"
+    ],
+    "prohibitedClaims": [
+      "不得声称马力、速度、制动距离、安全等级或人体工学结论。",
+      "不得把视觉拆解或汇聚顺序描述为真实制造、维修或工程依赖顺序。",
+      "不得把红色光线描述为真实热量、能量流或仿真结果。"
+    ]
+  },
+  "research": {
+    "caseStudies": [
+      {
+        "title": "Honda Cog",
+        "sourceUrl": "https://www.honda.co.uk/engineroom/cog/",
+        "narrativeThesis": "用连续机械因果关系表达工程系统，而不是让零件无动机运动。",
+        "transferableMethods": [
+          "每个动作都触发下一动作。",
+          "先建立单一可读关系，再扩大系统尺度。"
+        ],
+        "limitations": [
+          "本项目不能复制 Rube Goldberg 机械关系，只迁移视觉因果原则。"
+        ]
+      },
+      {
+        "title": "Mercedes-AMG ONE — Relative",
+        "sourceUrl": "https://www.relative.berlin/project/mercedes-benz",
+        "narrativeThesis": "每个段落只承担一个系统级观念，并用影像把不可见关系变成可见秩序。",
+        "transferableMethods": [
+          "一镜一命题。",
+          "灯光焦点承担信息层级。"
+        ],
+        "limitations": [
+          "当前模型没有可验证的动力或空气动力数据。"
+        ]
+      },
+      {
+        "title": "Formula E Gen2 Car Exploded",
+        "sourceUrl": "https://www.behance.net/gallery/76199617/Formula-E-Gen2-Car-Exploded?locale=en_US",
+        "narrativeThesis": "拆解镜头服务于未来赛车技术的整体认知，而不是展示网格数量。",
+        "transferableMethods": [
+          "按系统层而非单网格爆炸。",
+          "保持车辆整体轮廓作为空间参照。"
+        ],
+        "limitations": [
+          "当前概念车不是 Formula E 赛车，不能迁移赛事或动力声明。"
+        ]
+      },
+      {
+        "title": "Toyota LC150 Product Movies",
+        "sourceUrl": "https://www.3ds.com/insights/customer-stories/toyota-lc150-movies",
+        "narrativeThesis": "先确定传播范围与功能命题，再选择外观、透视与穿越镜头。",
+        "transferableMethods": [
+          "叙事目标先于镜头技巧。",
+          "外部形态和内部结构承担不同认知任务。"
+        ],
+        "limitations": [
+          "当前模型没有 Toyota 项目所拥有的工程验证资料。"
+        ]
+      },
+      {
+        "title": "Petrol Ofisi Adaptech Maxima",
+        "sourceUrl": "https://www.lhvfx.com/project/adaptech-maxima",
+        "narrativeThesis": "用宏观到微观再回到宏观的连续尺度变化，把技术解释收束为产品形象。",
+        "transferableMethods": [
+          "细节开场、系统展开、英雄帧收束。",
+          "使用形状和运动方向完成连续转场。"
+        ],
+        "limitations": [
+          "本项目不使用流体或分子视觉隐喻。"
+        ]
+      },
+      {
+        "title": "Audi 2025 Retail — Motorized Precision",
+        "sourceUrl": "https://www.motorizedprecision.com/case-studies-audi-2025",
+        "narrativeThesis": "用精密控制制造无人机般的车内穿越，同时让特殊镜头服从产品形态。",
+        "transferableMethods": [
+          "用逐帧预演约束无人机感。",
+          "外部轮廓、内部穿越和宏观掠镜共用一种运动语法。"
+        ],
+        "limitations": [
+          "本项目使用虚拟相机，不复制真实机器人参数。"
+        ]
+      },
+      {
+        "title": "Mercedes C-Class — Single-take Loop",
+        "sourceUrl": "https://www.westley.work/mercedescclass",
+        "narrativeThesis": "单镜头依靠被预演锁定的空间转换、速度和遮挡，而不是无目的地取消剪辑。",
+        "transferableMethods": [
+          "先锁相机路径、速度与时长。",
+          "把外观和座舱转换隐藏在有动机的遮挡中。"
+        ],
+        "limitations": [
+          "本项目允许一次公开的制动盘遮挡隐藏切。"
+        ]
+      },
+      {
+        "title": "Toyota C-HR — Unbroken Camera Move",
+        "sourceUrl": "https://www.andreaswanda.com/portfolio/toyota-chr/",
+        "narrativeThesis": "不间断运镜要求产品运动和相机运动严格同步于 Previs。",
+        "transferableMethods": [
+          "每个速度变化都必须在 Previs 中明确。",
+          "相机、产品和灯光共用同一时间轴。"
+        ],
+        "limitations": [
+          "当前没有道路环境或车辆行驶动画。"
+        ]
+      },
+      {
+        "title": "FFUN Motorsports — FPV One Take",
+        "sourceUrl": "https://www.dirxecp.com/post/how-we-filmed-this-fpv-one-take-video-for-ffun-motorsports",
+        "narrativeThesis": "FPV 穿越的专业性来自路线勘察、入口出口设计和空间编舞，而不只是速度。",
+        "transferableMethods": [
+          "入口、出口和转向点必须被前一段预告。",
+          "高速段之后主动减速，让观众恢复方向感。"
+        ],
+        "limitations": [
+          "不采用展厅八字路线，只迁移外部到内部再回外部的空间逻辑。"
+        ]
+      },
+      {
+        "title": "Drive What You Love — Framestore",
+        "sourceUrl": "https://www.framestore.com/work/drive-what-you-love",
+        "narrativeThesis": "完整预演使宏观近摄、不可能机位和无缝 CG 转换成为同一广告语言。",
+        "transferableMethods": [
+          "先以低成本 Previs 证明特殊机位是否提升产品认知。",
+          "宏观尺度转换必须由形状、运动或遮挡触发。"
+        ],
+        "limitations": [
+          "Animatic 只验收路径、构图和节奏，不冒充最终材质。"
+        ]
+      }
+    ]
+  },
+  "creativeRoutes": [
+    {
+      "id": "precision-becomes-presence",
+      "title": "Precision Becomes Presence",
+      "thesis": "从一个可信机械细节出发，让精密关系逐层形成完整产品的存在感。",
+      "audienceTakeaway": "观众先理解车辆由有秩序的系统构成，最后才获得完整形象。",
+      "shotArc": [
+        "intercept",
+        "thread",
+        "cockpit-run",
+        "breakout",
+        "arrest"
+      ],
+      "modelFit": "轮圈、制动、方向盘、座椅、车门和机盖节点均可控，同时避开低细节发动机。",
+      "risks": [
+        "制动只能表达视觉控制概念，不能声明性能。",
+        "汇聚顺序必须明确是叙事顺序。",
+        "唯一隐藏切必须被制动盘遮挡并在交付中公开。"
+      ]
+    },
+    {
+      "id": "beneath-the-surface",
+      "title": "Beneath The Surface",
+      "thesis": "完整外形之下，是有秩序的内部空间。",
+      "audienceTakeaway": "外壳不是装饰，而是内部系统关系的最终边界。",
+      "shotArc": [
+        "silhouette",
+        "opening",
+        "layers",
+        "interior-journey",
+        "closure"
+      ],
+      "modelFit": "外观和车门结构完整，对内部机械细节的要求低。",
+      "risks": [
+        "容易退化为普通 X-Ray 或 Exploded View。",
+        "缺少强记忆点时会重复现有页面问题。"
+      ]
+    },
+    {
+      "id": "designed-around-the-driver",
+      "title": "Designed Around The Driver",
+      "thesis": "结构围绕驾驶者所在的空间形成。",
+      "audienceTakeaway": "整车外形可以被理解为驾驶空间的外部表达。",
+      "shotArc": [
+        "controls",
+        "driver-space",
+        "vehicle-scale",
+        "enclosure",
+        "external-expression"
+      ],
+      "modelFit": "座舱节点丰富，方向盘、座椅、踏板和仪表可辨识。",
+      "risks": [
+        "没有驾驶者模型或人体工学数据。",
+        "可能削弱车辆的机械精密感。"
+      ]
+    }
+  ],
+  "selectedRouteId": "precision-becomes-presence",
+  "shots": [
+    {
+      "id": "intercept",
+      "order": 1,
+      "range": [0, 0.1875],
+      "narrativePurpose": "先确认完整产品，再让可信机械细节截获视线。",
+      "viewerTakeaway": "轮圈属于一台具有完整方向性的产品，而不是孤立零件。",
+      "startState": "远距低曝光整车轮廓。",
+      "endState": "前轮轮辐成为可见入口。",
+      "action": "相机由远距轮廓俯冲并沿前翼和轮眉掠向左前轮。",
+      "activeComponents": ["BodyUnderside", "WheelFrontL", "WheelFrontLRim"],
+      "camera": {"framing": "远景收至轮圈近景。", "movement": "高度 2.15m 降至 0.58m，FOV 38°收至 22°，横滚到 -8°。"},
+      "lighting": "冷轮廓光建立整车，接近轮圈时红色边缘光增强。",
+      "layout": "整车先居中，随后轮圈占据中右，文案保留左下。",
+      "transitionIn": "暗背景中直接建立远距轮廓。",
+      "transitionOut": "轮辐通道接续相机运动矢量。",
+      "rhythm": "0.9 秒辨认、1.5 秒加速、0.6 秒校准入口。",
+      "hold": "不静止；以减缓校准替代摆拍停顿。",
+      "content": {"eyebrow": "01 / PRECISION BECOMES PRESENCE", "title": "INTERCEPT", "body": "先让轮廓被看见，再让精密把视线截住。", "cta": null},
+      "truthConstraints": ["不表达空气动力、极速或制动性能。", "相机速度只是广告运镜。"]
+    },
+    {
+      "id": "thread",
+      "order": 2,
+      "range": [0.1875, 0.35],
+      "narrativePurpose": "把接地点变成通往驾驶控制空间的物理入口。",
+      "viewerTakeaway": "外部机械细节与内部控制空间位于一条连续路径。",
+      "startState": "轮辐通道位于构图中心。",
+      "endState": "方向盘成为座舱内的明确目标。",
+      "action": "相机穿过轮辐，在制动盘遮挡中完成唯一隐藏切并获得方向盘。",
+      "activeComponents": ["WheelFrontLRim", "WheelFrontLBrakeDisc", "InteriorSteeringWheel01"],
+      "camera": {"framing": "轮辐微距进入座舱近景。", "movement": "唯一高速穿越；横滚峰值 -10°，遮挡后快速归零并减速。"},
+      "lighting": "轮圈窄红边缘光在遮挡处降低，方向盘出现时转为座舱侧光。",
+      "layout": "入口与方向盘均靠近视觉中心，文案保持左下。",
+      "transitionIn": "沿 Shot 01 的运动矢量穿入轮辐。",
+      "transitionOut": "方向盘获得与速度下降触发座舱段。",
+      "rhythm": "1.1 秒穿入、0.4 秒遮挡、1.1 秒获得方向盘。",
+      "hold": "方向盘获得后短暂停留在可读速度，不完全静止。",
+      "content": {"eyebrow": "02 / PRECISION BECOMES PRESENCE", "title": "THREAD", "body": "穿过接地点，进入控制发生的地方。", "cta": null},
+      "truthConstraints": ["公开帧 123–124 的遮挡隐藏切。", "不声称无碰撞真实飞行路径。"]
+    },
+    {
+      "id": "cockpit-run",
+      "order": 3,
+      "range": [0.35, 0.5625],
+      "narrativePurpose": "把速度让位给理解，让驾驶空间的组织关系成为中段。",
+      "viewerTakeaway": "方向盘、座椅和骨架围绕连续驾驶空间组织。",
+      "startState": "方向盘被获得，镜头速度开始下降。",
+      "endState": "驾驶侧车门出口被锁定。",
+      "action": "相机以高速段约 35% 的速度沿驾驶侧切透走廊后移，读取方向盘、座椅与骨架并转向车门出口。",
+      "activeComponents": ["InteriorSteeringWheel01", "InteriorSeatsColor1", "InteriorCage", "BodyDoorLColor1"],
+      "camera": {"framing": "方向盘近景过渡到驾驶侧座舱中景。", "movement": "在外壳低透明的车身外侧减速滑行，避免穿入被座椅填满的实心体积，末段转向驾驶侧车门。"},
+      "lighting": "方向盘局部光扩展为座舱侧光，红色座椅为第二焦点。",
+      "layout": "右侧保留出口负空间，字幕不覆盖方向盘与座椅关系。",
+      "transitionIn": "高速穿入后的主动减速。",
+      "transitionOut": "车门出口扩大并触发加速突破。",
+      "rhythm": "1.2 秒前舱、1.1 秒座椅骨架、1.1 秒锁定出口。",
+      "hold": "以持续低速和更长焦点停留形成理解时间。",
+      "content": {"eyebrow": "03 / PRECISION BECOMES PRESENCE", "title": "COCKPIT RUN", "body": "速度放慢，结构开始围绕驾驶空间组织。", "cta": null},
+      "truthConstraints": ["不声称人体工学、舒适性或安全等级。", "围绕驾驶空间是视觉命题。"]
+    },
+    {
+      "id": "breakout",
+      "order": 4,
+      "range": [0.5625, 0.8125],
+      "narrativePurpose": "把已理解的内部关系释放到完整产品尺度，形成唯一高潮。",
+      "viewerTakeaway": "复杂结构沿镜头尾流成为可读系统，而不是随机爆炸。",
+      "startState": "驾驶侧车门出口被明确预告。",
+      "endState": "相机完成外部反弧，系统尾流开始回收。",
+      "action": "相机突破车门转入约 135°外部反弧，轮组、座舱和外壳按系统组在身后分层。",
+      "activeComponents": ["WheelFrontL", "WheelFrontR", "WheelRearL", "WheelRearR", "Interior", "BodyHood", "BodyDoorLColor1", "BodyDoorRColor1"],
+      "camera": {"framing": "座舱出口扩展为整车三分之四全景。", "movement": "突破后做克制外部反弧，不完成 360°，横滚峰值 +7°。"},
+      "lighting": "内部解释光切换为车身主光，红色车漆在突破后恢复。",
+      "layout": "整车轮廓始终作为参照，系统尾流位于侧后方。",
+      "transitionIn": "可见车门出口触发加速突破。",
+      "transitionOut": "相机、横滚、FOV 与爆炸量同步减速。",
+      "rhythm": "0.9 秒突破、1.3 秒反弧、1.1 秒尾流峰值、0.7 秒制动。",
+      "hold": "尾流峰值短暂保持轮廓可读，随后立即进入制动。",
+      "content": {"eyebrow": "04 / PRECISION BECOMES PRESENCE", "title": "BREAKOUT", "body": "离开座舱，关系沿镜头尾流展开。", "cta": null},
+      "truthConstraints": ["系统分层是广告叙事关系。", "不描述为装配、维修或工程依赖顺序。"]
+    },
+    {
+      "id": "arrest",
+      "order": 5,
+      "range": [0.8125, 1],
+      "narrativePurpose": "让运动本身成为结论，停止后完整产品才获得存在感。",
+      "viewerTakeaway": "精密不是更多运动，而是所有关系准确归位。",
+      "startState": "相机与系统尾流同时进入制动。",
+      "endState": "完整红色车辆在低机位三分之四构图中完全稳定。",
+      "action": "18 帧内完成相机定格和爆炸量 0.28 到 0 的外壳闭合，之后 72 帧保持所有状态不变。",
+      "activeComponents": ["BodyUnderside", "Interior", "BodyHood", "BodyDoorLColor1", "BodyDoorRColor1"],
+      "camera": {"framing": "低机位三分之四英雄全景。", "movement": "帧 390–408 制动，帧 408–479 完全静止。"},
+      "lighting": "暖主光定义红色曲面，冷轮廓光分离车顶与后翼。",
+      "layout": "车辆占据主体，深灰背景与左侧负空间承载文案。",
+      "transitionIn": "所有运动参数同步进入制动曲线。",
+      "transitionOut": "无；终点可无限保持并可精确反向采样。",
+      "rhythm": "0.6 秒制动闭合，2.4 秒稳定英雄停顿。",
+      "hold": "最后 72 帧完全稳定，占全片 15%。",
+      "content": {"eyebrow": "05 / PRECISION BECOMES PRESENCE", "title": "ARREST", "body": "运动停止，精密成为完整的存在感。", "cta": null},
+      "truthConstraints": ["不出现品牌、速度、马力、制造或性能承诺。", "最终句只总结视觉命题。"]
+    }
+  ],
+  "cameraPrevis": {
+    "uri": "creative/car-concept/camera-previs.json",
+    "fps": 30,
+    "totalFrames": 480,
+    "frameStateCount": 480,
+    "continuityPath": [
+      "silhouette intercept",
+      "front-wheel contour skim",
+      "brake-disc occlusion",
+      "steering-wheel acquisition",
+      "cockpit deceleration",
+      "driver-side door breakout",
+      "restrained exterior counter-arc",
+      "system wake",
+      "closure",
+      "stable low three-quarter hero"
+    ],
+    "hiddenCut": "Frames 123–124 relocate the camera only while the brake disc provides 96% occlusion.",
+    "maxAbsRollDegrees": 10,
+    "stableHeroHold": [408, 479],
+    "reviewed": true
+  },
+  "animatic": {
+    "uri": "https://app.chatcut.io/editor/c91db2e4-55a3-4408-b3fa-e96da1818102",
+    "kind": "animatic-video",
+    "durationSeconds": 16,
+    "reviewed": true,
+    "reviewNotes": [
+      "已检查本地逐帧渲染和 ChatCut 交付导出的第 52、123、124、150、220、338、408、430 帧实际像素；遮挡隐藏切、驾驶侧切透走廊、系统尾流和稳定英雄终点均可见。",
+      "ChatCut 时间轴把同一确定性源拆为五个可编辑镜头片段，按 90、78、102、120、90 帧无缝覆盖 0–479。",
+      "720p H.264 ChatCut 导出完成，renderId 为 4de2d92f-f72d-4330-938b-97e1af6548b5，文件大小 9065522 字节，SHA256 为 F47DDE6BE374FC690BA2367FB3575A5E336FD88B12C2F9214251C68A65E93D19。",
+      "本地审片文件：C:/Users/luoxu/Downloads/car-concept-virtual-fpv-camera-previs-animatic.mp4。"
+    ]
+  },
+  "confirmation": {
+    "status": "automated",
+    "approvalId": "car-fpv-automatic-release-001",
+    "releasedAt": "2026-07-26T05:30:00Z",
+    "evidenceRef": "creative/car-concept/camera-previs.json",
+    "checks": [
+      "480 deterministic frame states cover the complete 16-second timeline.",
+      "The five authored shot IDs and boundaries match the selected route.",
+      "The hidden cut is bounded to the brake-disc occlusion and the final 15% is stable."
+    ]
+  },
+  "phaseHistory": [
+    {
+      "phase": "case-research",
+      "completedAt": "2026-07-26T03:00:00Z"
+    },
+    {
+      "phase": "creative-routes",
+      "completedAt": "2026-07-26T03:08:00Z"
+    },
+    {
+      "phase": "five-shot-script",
+      "completedAt": "2026-07-26T03:16:00Z"
+    },
+    {
+      "phase": "animatic",
+      "completedAt": "2026-07-26T05:22:55Z"
+    },
+    {
+      "phase": "automatic-release",
+      "completedAt": "2026-07-26T05:30:00Z"
+    }
+  ]
+}

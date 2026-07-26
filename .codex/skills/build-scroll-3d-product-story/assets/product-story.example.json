@@ -1,6 +1,13 @@
 {
   "$schema": "./product-story.schema.json",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "creativeDevelopment": {
+    "planId": "industrial-product-from-core-to-form",
+    "selectedRouteId": "core-to-form",
+    "animaticUri": "./creative/industrial-product-core-to-form-animatic.mp4",
+    "approvalId": "approval-example-001",
+    "evidenceRef": "project-decision://example/approval-example-001"
+  },
   "model": {
     "uri": "./assets/product.glb",
     "format": "glb",
@@ -11,7 +18,7 @@
     "mode": "semantic-assembly",
     "stages": [
       {
-        "id": "intro",
+        "id": "core-awakens",
         "range": [0, 0.12],
         "content": {
           "eyebrow": "Product system",
@@ -21,7 +28,7 @@
         }
       },
       {
-        "id": "exploded",
+        "id": "architecture-expands",
         "range": [0.12, 0.3],
         "content": {
           "eyebrow": "Architecture",
@@ -31,7 +38,7 @@
         }
       },
       {
-        "id": "assembly",
+        "id": "systems-coordinate",
         "range": [0.3, 0.72],
         "content": {
           "eyebrow": "Assembly",
@@ -41,7 +48,7 @@
         }
       },
       {
-        "id": "reveal",
+        "id": "form-converges",
         "range": [0.72, 0.9],
         "content": {
           "eyebrow": "Complete product",
@@ -51,7 +58,7 @@
         }
       },
       {
-        "id": "hero",
+        "id": "product-resolves",
         "range": [0.9, 1],
         "content": {
           "eyebrow": "Product family",

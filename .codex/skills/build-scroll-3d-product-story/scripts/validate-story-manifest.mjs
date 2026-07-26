@@ -16,8 +16,10 @@ const MODES = new Set([
   "review-required-assembly",
   "hybrid-reveal",
   "whole-product",
+  "cinematic-scroll",
 ]);
-const STAGE_IDS = ["intro", "exploded", "assembly", "reveal", "hero"];
+const SHOT_COUNT = 5;
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
 
 function isFiniteVector(value, length) {
   return (
@@ -41,8 +43,28 @@ export function validateManifest(manifest) {
   if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) {
     return ["manifest must be a JSON object"];
   }
-  if (manifest.schemaVersion !== 1) {
-    errors.push("schemaVersion must equal 1");
+  if (manifest.schemaVersion !== 2) {
+    errors.push("schemaVersion must equal 2");
+  }
+  const creative = manifest.creativeDevelopment;
+  for (const field of [
+    "planId",
+    "selectedRouteId",
+    "animaticUri",
+    "approvalId",
+    "evidenceRef",
+  ]) {
+    if (typeof creative?.[field] !== "string" || !creative[field]) {
+      errors.push(`creativeDevelopment.${field} must be a non-empty string`);
+    }
+  }
+  for (const field of ["planId", "selectedRouteId"]) {
+    if (
+      typeof creative?.[field] === "string" &&
+      !SLUG.test(creative[field])
+    ) {
+      errors.push(`creativeDevelopment.${field} must be kebab-case`);
+    }
   }
   if (
     !manifest.model ||
@@ -65,22 +87,27 @@ export function validateManifest(manifest) {
   }
 
   const stages = manifest.story?.stages;
-  if (!Array.isArray(stages) || stages.length !== STAGE_IDS.length) {
-    errors.push("story.stages must contain exactly five stages");
+  if (!Array.isArray(stages) || stages.length !== SHOT_COUNT) {
+    errors.push("story.stages must contain exactly five approved shots");
   } else {
+    const stageIds = new Set();
     stages.forEach((stage, index) => {
-      if (stage?.id !== STAGE_IDS[index]) {
-        errors.push(`story.stages[${index}].id must be ${STAGE_IDS[index]}`);
+      if (!SLUG.test(stage?.id ?? "")) {
+        errors.push(`story.stages[${index}].id must be kebab-case`);
+      } else if (stageIds.has(stage.id)) {
+        errors.push(`duplicate story stage id: ${stage.id}`);
       }
+      stageIds.add(stage?.id);
       if (!isRange(stage?.range)) {
         errors.push(`story.stages[${index}].range is invalid`);
       }
       if (
         index > 0 &&
         isRange(stage?.range) &&
-        stage.range[0] < stages[index - 1].range[0]
+        isRange(stages[index - 1]?.range) &&
+        Math.abs(stage.range[0] - stages[index - 1].range[1]) > 1e-9
       ) {
-        errors.push("story stage ranges must be ordered");
+        errors.push("story stage ranges must be continuous");
       }
       for (const field of ["eyebrow", "title", "body"]) {
         if (typeof stage?.content?.[field] !== "string") {
@@ -88,9 +115,32 @@ export function validateManifest(manifest) {
         }
       }
     });
+    if (
+      isRange(stages[0]?.range) &&
+      isRange(stages.at(-1)?.range) &&
+      (stages[0].range[0] !== 0 || stages.at(-1).range[1] !== 1)
+    ) {
+      errors.push("story stage ranges must cover [0, 1]");
+    }
   }
 
-  for (const key of ["cameraKeyframes", "modelRotationKeyframes"]) {
+  if (manifest.story?.mode === "cinematic-scroll") {
+    if (typeof manifest.story.cameraPathUri !== "string" || !manifest.story.cameraPathUri) {
+      errors.push("story.cameraPathUri is required for cinematic-scroll");
+    }
+    const transform = manifest.story.canonicalModelTransform;
+    for (const field of ["position", "rotation", "scale"]) {
+      if (!isFiniteVector(transform?.[field], 3)) {
+        errors.push(`story.canonicalModelTransform.${field} must be a vec3`);
+      }
+    }
+    if (
+      !Array.isArray(manifest.story.opacityGroupIds) ||
+      !manifest.story.opacityGroupIds.every((id) => SLUG.test(id))
+    ) {
+      errors.push("story.opacityGroupIds must contain kebab-case group IDs");
+    }
+  } else for (const key of ["cameraKeyframes", "modelRotationKeyframes"]) {
     const keyframes = manifest.story?.[key];
     if (!Array.isArray(keyframes) || keyframes.length < 2) {
       errors.push(`story.${key} must contain at least two keyframes`);

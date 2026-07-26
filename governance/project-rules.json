@@ -2,102 +2,61 @@
   "schema_version": 1,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-car-product-story-2",
-  "ruleset_version": "2026-07-26.2",
+  "ruleset_id": "ruleset-2026-07-26-car-fpv-runtime-inspected",
+  "ruleset_version": "2026-07-26.7",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
-      "id": "deliver-actual-car-story",
-      "statement": "Apply the project-level build-scroll-3d-product-story skill to the existing docs/experiment car GLB route and deliver an actual enterprise product story rather than a technical loader demo.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "deliver-car-story-runtime",
+      "statement": "Apply build-scroll-3d-product-story to the current car GLB and directly deliver the selected five-shot virtual-FPV narrative as a production WebGL scroll story; no human screening or narrative approval may block implementation.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "configuration-driven-car-semantics",
-      "statement": "Keep car-specific node selectors, group labels, offsets, assembly windows, camera, rotation, stage content, and CTA in docs/experiment/product-story.json; keep the runtime generic.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "evidence-backed-car-advertising-board",
+      "statement": "Document applicable automotive or technical product advertising cases from primary or creator-owned sources, extracting narrative thesis, transferable methods, and limitations for this concept car model.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "top-level-assembly-roots",
-      "statement": "Control non-overlapping top-level assembly roots so parent and descendant transforms are not double-applied; keep BodyUnderside as the stationary product foundation.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "compare-car-creative-routes",
+      "statement": "Develop and compare at least two materially different car-story routes before selecting one candidate route for the animatic.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "bounded-car-claims",
-      "statement": "Use model node names as evidence for business-readable groups, but do not claim a production powertrain, manufacturing sequence, or engineering fact that the concept GLB does not establish.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "author-continuous-five-shot-script",
+      "statement": "Author exactly five continuous shots as one motivated virtual-cinematography path, with narrative purpose, viewer takeaway, model action, camera, lighting, layout, transitions, rhythm, hold, copy, and truth constraints.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "roke-style-five-stage-story",
-      "statement": "Deliver intro, exploded structure, semantic assembly, complete-product reveal, and final hero states synchronized from one normalized scroll progress; ROKE remains a narrative reference only.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "bound-story-to-current-car-model",
+      "statement": "Base close-ups and component language on inspected GLB nodes and visible geometry; do not claim a verified production powertrain, manufacturing sequence, or engineering function that the concept asset does not establish.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "deterministic-base-relative-motion",
-      "statement": "Derive every controlled transform from captured base transforms, the approved manifest, and normalized progress so forward and reverse scrolling produce the same pose without drift.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "deliver-per-frame-camera-previs",
+      "statement": "Deliver deterministic camera state for every frame of the canonical 16-second, 30fps playback, including position, target, roll, FOV, focus distance, part state, light state, shot identity, and continuity metadata.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "demand-rendered-desktop-webgl",
-      "statement": "Render on loading, scroll target changes, finite interpolation, resize, or explicit finite motion and stop after settling; do not retain an idle permanent requestAnimationFrame loop or setAnimationLoop.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "translate-previs-to-scroll-runtime",
+      "statement": "Translate the fixed-duration five-shot camera previs to one normalized reversible scroll timeline that visibly delivers virtual FPV infiltration, one occlusion-motivated hidden cut, cockpit deceleration, door breakout, restrained exterior arc, and a stable final hero hold.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "preserve-compressed-licensed-asset",
-      "statement": "Preserve the existing Draco geometry, KTX2/BasisU textures, single-GLB delivery, model attribution, and CC BY 4.0 license notice.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "automatic-creative-release",
+      "statement": "Case research, route comparison, five-shot script, camera previs, and animatic remain mandatory inputs, but successful deterministic validation releases runtime implementation without a human screening or confirmation record.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "fallback-and-reduced-motion",
-      "statement": "Keep loading, WebGL failure, poster-capable fallback, and reduced-motion behavior; reduced motion resolves directly to the final assembled hero state.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "prove-runtime-quality",
+      "statement": "The implemented page must use demand rendering, deterministic reverse scrolling, bounded roll, coordinated camera/parts/light/layout/copy, reduced-motion fallback, and measured desktop frame pacing; inspect the actual rendered delivery after implementation.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     },
     {
-      "id": "desktop-browser-performance-evidence",
-      "statement": "Record browser identity, 1440x900 viewport, device pixel ratio, cache state, first usable product frame, p50 and p95 animation frame time, frames over 16.7 and 33.3 ms, Long Animation Frames when supported, main-thread timing when supported, memory when supported, and idle renders after settling.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
-    },
-    {
-      "id": "desktop-frame-budget",
-      "statement": "On the declared local desktop browser run, require frame-time p50 no greater than 18.5 ms, p95 no greater than 25 ms, frames over 33.3 ms no more than 2 percent, and zero renderer frames during the post-settle idle observation window.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
-    },
-    {
-      "id": "separate-transfer-and-runtime-evidence",
-      "statement": "Keep raw asset bytes and request counts separate from runtime frame evidence; do not use a fixed 4 Mbps weak-network gate or infer GPU performance from file size.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
-    },
-    {
-      "id": "publish-and-recheck-pages",
-      "statement": "Deliver through the configured main:/docs GitHub Pages source, confirm the public experiment route returns HTTP 200, and recheck the consumer-visible page after deployment.",
-      "development_entry_ids": [
-        "deliver-car-product-story"
-      ]
+      "id": "require-delivery-outcome-inspection",
+      "statement": "Release acceptance requires a passing inspect-delivery-outcome record whose direct evidence covers actual browser pixels, deterministic replay, frame pacing, idle rendering, errors, and fallback behavior for the current runtime.",
+      "development_entry_ids": ["implement-car-story-runtime"]
     }
   ]
 }

@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "run_id": "20260726T055745Z-car-fpv-runtime",
+  "target": {
+    "environment": "candidate",
+    "identity": "feat/11-narrative-first-skill:car-fpv-camera-path-v1@20260726T055745Z"
+  },
+  "scope": {
+    "status": "applicable",
+    "basis": "The candidate directly translates the automatically released five-shot Virtual-FPV camera previs into the public WebGL scroll runtime. The inspection therefore covers rendered narrative continuity, deterministic reversible state, desktop performance, and fallback behavior.",
+    "affected_claims": [
+      "continuous-five-shot-runtime",
+      "deterministic-reversible-cinematic-state",
+      "high-performance-demand-rendering",
+      "runtime-fallback-and-truthfulness"
+    ],
+    "unaffected_claims": []
+  },
+  "plan": {
+    "claims": [
+      {
+        "claim_id": "continuous-five-shot-runtime",
+        "statement": "The rendered page visibly delivers INTERCEPT, THREAD, COCKPIT RUN, BREAKOUT, and ARREST as one continuous, motivated product-recognition sequence rather than five unrelated poses.",
+        "consumer": "website visitor and creative owner",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "browser-pixel-inspection",
+            "target": "seven canonical scroll states",
+            "probe": "Playwright screenshots at the five narrative stages, both sides of the hidden cut, and the final hero hold"
+          }
+        ]
+      },
+      {
+        "claim_id": "deterministic-reversible-cinematic-state",
+        "statement": "Every normalized scroll position resolves to deterministic camera, target, roll, FOV, part, light, copy, and occlusion state, and revisiting a position produces the same transform.",
+        "consumer": "runtime implementation and QA",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "browser-state-probe",
+            "target": "forward and reverse canonical progress samples",
+            "probe": "node scripts/measure-car-product-story.mjs"
+          },
+          {
+            "type": "camera-path-validation",
+            "target": "docs/experiment/camera-path.json",
+            "probe": "python scripts/validate_car_product_story.py"
+          }
+        ]
+      },
+      {
+        "claim_id": "high-performance-demand-rendering",
+        "statement": "The desktop runtime maintains responsive frame pacing while scrolling, performs no idle rendering, and reports no browser, page, request, or long-animation-frame errors.",
+        "consumer": "website visitor and release owner",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "browser-performance-probe",
+            "target": "cold and warm local Chromium runs",
+            "probe": "node scripts/measure-car-product-story.mjs"
+          }
+        ]
+      },
+      {
+        "claim_id": "runtime-fallback-and-truthfulness",
+        "statement": "The runtime exposes reduced-motion and load-failure routes, keeps the live GLB facts visible, and avoids unsupported production-engineering claims.",
+        "consumer": "website visitor and release owner",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "browser-route-and-content-probe",
+            "target": "fallback, reduced-motion, asset rail, and narrative copy",
+            "probe": "python scripts/validate_car_product_story.py and node scripts/verify-pages.mjs"
+          }
+        ]
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "claim_id": "continuous-five-shot-runtime",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-001", "EV-002"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "deterministic-reversible-cinematic-state",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-003", "EV-004"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "high-performance-demand-rendering",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-003"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "runtime-fallback-and-truthfulness",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-004", "EV-005"],
+      "cleanup_evidence": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "type": "canonical-browser-screenshots",
+      "quality": "direct",
+      "target": "actual WebGL pixels at seven canonical scroll states",
+      "artifact": "validation-results/car-fpv-intercept.png; validation-results/car-fpv-thread-before-cut.png; validation-results/car-fpv-thread-after-cut.png; validation-results/car-fpv-cockpit-run.png; validation-results/car-fpv-breakout.png; validation-results/car-fpv-arrest.png; validation-results/car-fpv-hero.png",
+      "summary": "Actual 1440x900 Chromium pixels show a readable whole-product intercept, an occlusion-motivated hidden cut, a close cockpit pass, a fast but legible exterior breakout, and a fully assembled stable hero arrest. Each state presents one active narrative card and preserves the car as the visual subject."
+    },
+    {
+      "id": "EV-002",
+      "type": "narrative-and-layout-inspection",
+      "quality": "direct",
+      "target": "rendered five-stage scroll story",
+      "artifact": "docs/experiment/product-story.json",
+      "summary": "The five consecutive stages have distinct recognition jobs and matching camera/layout behavior: establish the silhouette, enter through mechanical detail, acquire the cockpit, exit to exterior form, and arrest on the complete product."
+    },
+    {
+      "id": "EV-003",
+      "type": "browser-runtime-measurement",
+      "quality": "direct",
+      "target": "local candidate runtime in desktop Chromium",
+      "artifact": "validation-results/car-product-story-browser-metrics.json",
+      "summary": "The measured warm run reached first usable in 992.5ms, with 16.7ms p50 frame interval, 49.6ms p95 interval, 5.2ms p95 render CPU, zero idle renders, zero long animation frames, zero deterministic transform difference, and no console, page, request, or runtime errors. The cold run independently satisfied the declared frame-pacing budget."
+    },
+    {
+      "id": "EV-004",
+      "type": "runtime-contract-validation",
+      "quality": "direct",
+      "target": "camera path, story manifest, runtime source, fallbacks, and browser evidence",
+      "artifact": "scripts/validate_car_product_story.py",
+      "summary": "The validation checks the 480-frame camera route, one hidden cut, bounded roll, stable final hold, canonical model transform, cinematic state channels, exact five-stage identity, reduced-motion behavior, load failure behavior, deterministic replay, and measured performance."
+    },
+    {
+      "id": "EV-005",
+      "type": "repository-policy-validation",
+      "quality": "direct",
+      "target": "GitHub Pages document root and shipped assets",
+      "artifact": "scripts/verify-pages.mjs",
+      "summary": "Repository policy validation confirms the Pages entry points and compressed live product asset remain publishable, with the visible rail reporting the 2.48 MiB GLB, 109 Draco meshes, and 14 KTX2 textures."
+    }
+  ],
+  "findings": [],
+  "promotion_candidates": [],
+  "verdict": "pass"
+}

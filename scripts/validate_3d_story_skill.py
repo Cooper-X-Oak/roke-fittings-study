@@ -76,17 +76,21 @@ def required_files() -> list[Path]:
         "agents/openai.yaml",
         "scripts/inspect-model.mjs",
         "scripts/generate-story-manifest.mjs",
+        "scripts/validate-creative-development.mjs",
         "scripts/validate-story-manifest.mjs",
         "scripts/benchmark-assets.mjs",
         "scripts/test-story-math.mjs",
         "scripts/lib/cli.mjs",
         "scripts/lib/model-analysis.mjs",
         "references/model-classification.md",
+        "references/narrative-development-contract.md",
         "references/choreography-contract.md",
         "references/performance-contract.md",
         "references/threejs-runtime-patterns.md",
         "assets/product-story.schema.json",
         "assets/product-story.example.json",
+        "assets/creative-development.schema.json",
+        "assets/creative-development.example.json",
         "assets/threejs-scroll-story/index.html",
         "assets/threejs-scroll-story/styles.css",
         "assets/threejs-scroll-story/app.mjs",
@@ -196,12 +200,40 @@ def validate_manifest_file(path: Path) -> None:
     )
 
 
+def expect_failure(command: list[str], expected: str) -> None:
+    result = subprocess.run(
+        command,
+        cwd=ROOT,
+        check=False,
+        encoding="utf-8",
+        errors="replace",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    require(result.returncode != 0, f"Command unexpectedly passed: {' '.join(command)}")
+    require(
+        expected in result.stdout,
+        f"Expected failure text {expected!r} was missing:\n{result.stdout}",
+    )
+
+
 def check_models_and_benchmark() -> dict[str, Any]:
     require(CAR_MODEL.is_file(), f"Car validation model is missing: {CAR_MODEL}")
     require(FRAME_BASELINE.is_dir(), f"Frame baseline is missing: {FRAME_BASELINE}")
     inspection_script = SKILL / "scripts" / "inspect-model.mjs"
     generator_script = SKILL / "scripts" / "generate-story-manifest.mjs"
+    creative_validator = SKILL / "scripts" / "validate-creative-development.mjs"
     benchmark_script = SKILL / "scripts" / "benchmark-assets.mjs"
+    creative_example_path = SKILL / "assets" / "creative-development.example.json"
+    creative_example = json.loads(creative_example_path.read_text(encoding="utf-8"))
+    run(
+        [
+            "node",
+            str(creative_validator),
+            "--plan",
+            str(creative_example_path),
+        ]
+    )
 
     car_inspection = run(
         ["node", str(inspection_script), "--model", str(CAR_MODEL)],
@@ -225,6 +257,8 @@ def check_models_and_benchmark() -> dict[str, Any]:
                 str(generator_script),
                 "--model",
                 str(CAR_MODEL),
+                "--creative-plan",
+                str(creative_example_path),
                 "--public-uri",
                 "./assets/models/car-concept-web.glb",
             ],
@@ -235,6 +269,17 @@ def check_models_and_benchmark() -> dict[str, Any]:
             encoding="utf-8",
         )
         validate_manifest_file(car_manifest_path)
+        require(
+            car_manifest["schemaVersion"] == 2
+            and car_manifest["creativeDevelopment"]["planId"]
+            == creative_example["planId"],
+            "Runtime story must retain the approved creative-development identity",
+        )
+        require(
+            [stage["id"] for stage in car_manifest["story"]["stages"]]
+            == [shot["id"] for shot in creative_example["shots"]],
+            "Runtime stages must come from the approved five-shot script",
+        )
         require(
             car_manifest["story"]["mode"] == "semantic-assembly",
             "Structured car model must produce semantic-assembly mode",
@@ -255,12 +300,36 @@ def check_models_and_benchmark() -> dict[str, Any]:
         )
 
         fused_path = create_fused_fixture(temp)
+        fused_creative = json.loads(json.dumps(creative_example))
+        fused_creative["planId"] = "fused-product-approved-story"
+        fused_creative["modelAudit"]["modelPath"] = str(fused_path)
+        fused_creative["modelAudit"]["capability"] = "fused-single-mesh"
+        fused_creative_path = temp / "fused-creative-development.json"
+        fused_creative_path.write_text(
+            f"{json.dumps(fused_creative, indent=2)}\n",
+            encoding="utf-8",
+        )
+        run(
+            [
+                "node",
+                str(creative_validator),
+                "--plan",
+                str(fused_creative_path),
+            ]
+        )
         fused_inspection = run(
             ["node", str(inspection_script), "--model", str(fused_path)],
             capture_json=True,
         )
         fused_manifest = run(
-            ["node", str(generator_script), "--model", str(fused_path)],
+            [
+                "node",
+                str(generator_script),
+                "--model",
+                str(fused_path),
+                "--creative-plan",
+                str(fused_creative_path),
+            ],
             capture_json=True,
         )
         fused_manifest_path = temp / "fused-product-story.json"
@@ -284,6 +353,66 @@ def check_models_and_benchmark() -> dict[str, Any]:
                 for group in fused_manifest["groups"]
             ),
             "Fused models must not receive fabricated part offsets",
+        )
+
+        unreleased = json.loads(json.dumps(creative_example))
+        unreleased["confirmation"] = {"status": "pending"}
+        unreleased["phaseHistory"] = unreleased["phaseHistory"][:4]
+        unreleased_path = temp / "unreleased-creative-development.json"
+        unreleased_path.write_text(
+            f"{json.dumps(unreleased, indent=2)}\n",
+            encoding="utf-8",
+        )
+        expect_failure(
+            [
+                "node",
+                str(creative_validator),
+                "--plan",
+                str(unreleased_path),
+            ],
+            "confirmation.status must be automated",
+        )
+        run(
+            [
+                "node",
+                str(creative_validator),
+                "--plan",
+                str(unreleased_path),
+                "--through",
+                "animatic",
+            ]
+        )
+        reordered = json.loads(json.dumps(creative_example))
+        reordered["confirmation"] = {"status": "pending"}
+        reordered["phaseHistory"] = reordered["phaseHistory"][:4]
+        reordered["phaseHistory"][1], reordered["phaseHistory"][2] = (
+            reordered["phaseHistory"][2],
+            reordered["phaseHistory"][1],
+        )
+        reordered_path = temp / "reordered-creative-development.json"
+        reordered_path.write_text(
+            f"{json.dumps(reordered, indent=2)}\n",
+            encoding="utf-8",
+        )
+        expect_failure(
+            [
+                "node",
+                str(creative_validator),
+                "--plan",
+                str(reordered_path),
+                "--through",
+                "animatic",
+            ],
+            "phaseHistory[1].phase must be creative-routes",
+        )
+        expect_failure(
+            [
+                "node",
+                str(generator_script),
+                "--model",
+                str(CAR_MODEL),
+            ],
+            "Missing required option: --creative-plan",
         )
 
     run(["node", str(SKILL / "scripts" / "test-story-math.mjs")])
@@ -320,6 +449,8 @@ def check_models_and_benchmark() -> dict[str, Any]:
             "nodeSyntax": "pass",
             "genericRuntime": "pass",
             "deterministicReversibleTransforms": "pass",
+            "narrativeFirstGate": "pass",
+            "missingReorderedOrUnconfirmedCreativeDevelopmentRejected": "pass",
         },
         "carModel": {
             "source": "docs/experiment/assets/models/car-concept-web.glb",

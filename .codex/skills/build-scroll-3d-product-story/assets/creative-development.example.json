@@ -1,0 +1,202 @@
+{
+  "$schema": "./creative-development.schema.json",
+  "schemaVersion": 1,
+  "planId": "industrial-product-from-core-to-form",
+  "modelAudit": {
+    "modelPath": "./assets/product.glb",
+    "capability": "structured-named-parts",
+    "truths": ["The model exposes independently transformable structural groups."],
+    "limitations": ["Node names do not establish a real manufacturing sequence."],
+    "prohibitedClaims": ["Do not describe inferred motion as a verified manufacturing process."]
+  },
+  "research": {
+    "caseStudies": [
+      {
+        "title": "Honda Cog",
+        "sourceUrl": "https://www.honda.co.uk/engineroom/cog/",
+        "narrativeThesis": "Engineering causality makes product intelligence visible.",
+        "transferableMethods": ["Let one visible action motivate the next."],
+        "limitations": ["The target model may not support mechanically accurate causality."]
+      },
+      {
+        "title": "Mercedes-AMG ONE CGI",
+        "sourceUrl": "https://www.relative.berlin/project/mercedes-benz",
+        "narrativeThesis": "Make otherwise invisible systems legible through distinct visual languages.",
+        "transferableMethods": ["Give each shot one system-level idea."],
+        "limitations": ["Do not copy vehicle-specific engineering claims."]
+      },
+      {
+        "title": "Adaptech Maxima",
+        "sourceUrl": "https://www.lhvfx.com/project/adaptech-maxima",
+        "narrativeThesis": "A macro-to-micro-to-macro journey connects product desire to function.",
+        "transferableMethods": ["Use scale changes as motivated transitions."],
+        "limitations": ["The target model may not contain a credible microscopic interior."]
+      }
+    ]
+  },
+  "creativeRoutes": [
+    {
+      "id": "core-to-form",
+      "title": "From core to form",
+      "thesis": "Internal order grows into a complete product.",
+      "audienceTakeaway": "The final form is the visible result of coordinated systems.",
+      "shotArc": ["core-awakens", "architecture-expands", "systems-coordinate", "form-converges", "product-resolves"],
+      "modelFit": "Uses named structural groups without claiming a real assembly sequence.",
+      "risks": ["Close shots may expose insufficient internal detail."]
+    },
+    {
+      "id": "form-to-system",
+      "title": "Beneath the surface",
+      "thesis": "A complete silhouette opens to reveal purposeful systems.",
+      "audienceTakeaway": "The product is understandable as a hierarchy rather than a pile of parts.",
+      "shotArc": ["product-established", "surface-opens", "systems-isolate", "systems-return", "product-resolves"],
+      "modelFit": "Works when the outer shell is stronger than the internal detail.",
+      "risks": ["Can become a generic exploded view without strict focal control."]
+    }
+  ],
+  "selectedRouteId": "core-to-form",
+  "shots": [
+    {
+      "id": "core-awakens",
+      "order": 1,
+      "range": [0, 0.14],
+      "narrativePurpose": "Create a visual question around the functional core.",
+      "viewerTakeaway": "The product begins with an internal organizing principle.",
+      "startState": "Dark frame with only the core silhouette visible.",
+      "endState": "The core is legible and has initiated the next reveal.",
+      "action": "A restrained light pulse travels across the core.",
+      "activeComponents": ["functional-core"],
+      "camera": {"framing": "macro close-up", "movement": "slow lateral parallax"},
+      "lighting": "Narrow internal key with a controlled rim.",
+      "layout": "Minimal copy outside the active focal region.",
+      "transitionIn": "Fade from black into the rim highlight.",
+      "transitionOut": "The pulse motivates the camera pullback.",
+      "rhythm": "Slow reveal, then a short acceleration.",
+      "hold": "Hold after the core silhouette becomes readable.",
+      "content": {"eyebrow": "Internal order", "title": "It begins within", "body": "A functional core establishes the system.", "cta": null},
+      "truthConstraints": ["Describe the core generically unless product evidence confirms its function."]
+    },
+    {
+      "id": "architecture-expands",
+      "order": 2,
+      "range": [0.14, 0.32],
+      "narrativePurpose": "Connect the core to the wider architecture.",
+      "viewerTakeaway": "The core belongs to a coordinated structure.",
+      "startState": "The camera is close to the illuminated core.",
+      "endState": "The primary architecture is visible around it.",
+      "action": "Structural groups enter through reveal and camera pullback.",
+      "activeComponents": ["functional-core", "primary-structure"],
+      "camera": {"framing": "medium structural view", "movement": "pull back and rise slightly"},
+      "lighting": "Expand the internal key into directional structural light.",
+      "layout": "Copy shifts away from the newly revealed architecture.",
+      "transitionIn": "Continue the core pulse as a leading line.",
+      "transitionOut": "The wider structure resolves into system zones.",
+      "rhythm": "Continuous pullback with one comprehension pause.",
+      "hold": "Pause once the relationship between core and structure is visible.",
+      "content": {"eyebrow": "Architecture", "title": "A system takes shape", "body": "The core connects to a larger spatial order.", "cta": null},
+      "truthConstraints": ["Do not imply verified energy flow."]
+    },
+    {
+      "id": "systems-coordinate",
+      "order": 3,
+      "range": [0.32, 0.56],
+      "narrativePurpose": "Explain the model as a small number of meaningful systems.",
+      "viewerTakeaway": "Complexity is organized rather than chaotic.",
+      "startState": "The wider architecture is visible.",
+      "endState": "Each primary system has received a distinct focal beat.",
+      "action": "Systems receive sequential emphasis while inactive groups recede.",
+      "activeComponents": ["primary-structure", "internal-system", "outer-shell"],
+      "camera": {"framing": "three-quarter anatomy view", "movement": "limited explanatory arc"},
+      "lighting": "Move a focused key between systems; suppress inactive groups.",
+      "layout": "One short statement per focal beat.",
+      "transitionIn": "Resolve the pullback into a stable explanatory angle.",
+      "transitionOut": "The final emphasized group begins moving toward its assembled state.",
+      "rhythm": "Three distinct beats separated by readable holds.",
+      "hold": "Hold after each system emphasis.",
+      "content": {"eyebrow": "System logic", "title": "Complexity, organized", "body": "Each visible group contributes to the whole.", "cta": null},
+      "truthConstraints": ["System labels must be supported by model or product evidence."]
+    },
+    {
+      "id": "form-converges",
+      "order": 4,
+      "range": [0.56, 0.86],
+      "narrativePurpose": "Turn established system knowledge into the story climax.",
+      "viewerTakeaway": "The complete form results from coordinated convergence.",
+      "startState": "Systems are separated but semantically understood.",
+      "endState": "All structural groups are assembled except the final surface beat.",
+      "action": "Groups converge in a motivated sequence with brief lock-off beats.",
+      "activeComponents": ["primary-structure", "internal-system", "outer-shell"],
+      "camera": {"framing": "full product three-quarter view", "movement": "single restrained arc following convergence"},
+      "lighting": "Shift from internal explanatory light toward surface light.",
+      "layout": "Reduce copy as visual density increases.",
+      "transitionIn": "The last explanatory emphasis initiates convergence.",
+      "transitionOut": "The final surface lock triggers the hero light.",
+      "rhythm": "Accelerating convergence with short locks between groups.",
+      "hold": "Hold immediately before the last surface group closes.",
+      "content": {"eyebrow": "Convergence", "title": "The system becomes one", "body": "Coordinated parts resolve into a complete form.", "cta": null},
+      "truthConstraints": ["Present the order as visual storytelling, not verified manufacturing."]
+    },
+    {
+      "id": "product-resolves",
+      "order": 5,
+      "range": [0.86, 1],
+      "narrativePurpose": "Resolve explanation into product desire and a stable conclusion.",
+      "viewerTakeaway": "The viewer now recognizes both the form and the order behind it.",
+      "startState": "The final surface group is about to close.",
+      "endState": "The product rests in its approved hero composition.",
+      "action": "The last group locks, motion settles, and the surface light completes.",
+      "activeComponents": ["whole-product"],
+      "camera": {"framing": "hero three-quarter view", "movement": "settle to a stable endpoint"},
+      "lighting": "Complete product key, rim, and controlled background separation.",
+      "layout": "One final promise and one clear action.",
+      "transitionIn": "Use the final lock as a light transition.",
+      "transitionOut": "No further narrative motion; preserve a stable endpoint.",
+      "rhythm": "Decelerate into a long final hold.",
+      "hold": "Hold the complete product long enough for copy and action.",
+      "content": {"eyebrow": "Complete product", "title": "Order becomes form", "body": "The complete product carries the logic revealed before it.", "cta": {"label": "Explore the product", "href": "#product"}},
+      "truthConstraints": ["Use only approved product claims in the final promise."]
+    }
+  ],
+  "cameraPrevis": {
+    "uri": "./creative/industrial-product-camera-previs.json",
+    "fps": 30,
+    "totalFrames": 480,
+    "frameStateCount": 480,
+    "continuityPath": [
+      "establish product",
+      "enter detail",
+      "traverse interior",
+      "return to exterior",
+      "stable hero"
+    ],
+    "hiddenCut": "One authored occlusion conceals the reviewed spatial relocation.",
+    "maxAbsRollDegrees": 8,
+    "stableHeroHold": [408, 479],
+    "reviewed": true
+  },
+  "animatic": {
+    "uri": "./creative/industrial-product-core-to-form-animatic.mp4",
+    "kind": "animatic-video",
+    "durationSeconds": 16,
+    "reviewed": true,
+    "reviewNotes": ["All five shots, transitions, and comprehension holds are visible."]
+  },
+  "confirmation": {
+    "status": "automated",
+    "approvalId": "automatic-release-example-001",
+    "releasedAt": "2026-07-26T08:30:00Z",
+    "evidenceRef": "./validation-results/creative-release.json",
+    "checks": [
+      "creative-development schema and ordered-phase validation passed",
+      "camera previs covers every canonical frame",
+      "animatic exposes all five authored beats"
+    ]
+  },
+  "phaseHistory": [
+    {"phase": "case-research", "completedAt": "2026-07-26T06:00:00Z"},
+    {"phase": "creative-routes", "completedAt": "2026-07-26T06:45:00Z"},
+    {"phase": "five-shot-script", "completedAt": "2026-07-26T07:15:00Z"},
+    {"phase": "animatic", "completedAt": "2026-07-26T08:00:00Z"},
+    {"phase": "automatic-release", "completedAt": "2026-07-26T08:30:00Z"}
+  ]
+}

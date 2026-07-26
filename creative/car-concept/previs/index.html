@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Car Concept Narrative Previs</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 70% 45%, rgba(144, 12, 24, 0.14), transparent 34%),
+          linear-gradient(145deg, #111317 0%, #08090b 65%, #050506 100%);
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .grain {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.17;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+        mix-blend-mode: soft-light;
+      }
+
+      .guide {
+        position: fixed;
+        inset: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.045);
+        pointer-events: none;
+      }
+
+      .hud {
+        position: fixed;
+        inset: 0;
+        color: #f3f2ef;
+        font-family: "Courier New", monospace;
+        pointer-events: none;
+      }
+
+      .brand {
+        position: absolute;
+        left: 54px;
+        top: 48px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        letter-spacing: 0.18em;
+      }
+
+      .shot {
+        position: absolute;
+        left: 54px;
+        bottom: 72px;
+        width: min(520px, 44vw);
+      }
+
+      .shot h1 {
+        margin: 0 0 12px;
+        color: #ef2438;
+        font-size: clamp(28px, 4vw, 62px);
+        line-height: 0.92;
+        letter-spacing: -0.045em;
+      }
+
+      .shot p {
+        margin: 0;
+        max-width: 440px;
+        color: rgba(255, 255, 255, 0.72);
+        font-family: "Microsoft YaHei", sans-serif;
+        font-size: clamp(14px, 1.3vw, 20px);
+        line-height: 1.6;
+      }
+
+      .technical {
+        position: absolute;
+        right: 54px;
+        top: 48px;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      .progress {
+        position: absolute;
+        left: 54px;
+        right: 54px;
+        bottom: 34px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .progress > div {
+        width: 0;
+        height: 100%;
+        background: #ef2438;
+      }
+
+      .occlusion {
+        position: fixed;
+        inset: 0;
+        opacity: 0;
+        background: radial-gradient(circle at 54% 52%, #121316 0%, #030304 70%);
+        pointer-events: none;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/docs/experiment/assets/vendor/three/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="stage" aria-label="汽车概念叙事低保真预演"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="guide" aria-hidden="true"></div>
+    <div class="hud" aria-hidden="true">
+      <div class="brand">CAMERA PREVIS / VIRTUAL FPV INFILTRATION</div>
+      <div class="shot">
+        <h1 id="shot-title"></h1>
+        <p id="shot-copy"></p>
+      </div>
+      <div class="technical">
+        <div id="frame-counter"></div>
+        <div id="telemetry"></div>
+      </div>
+      <div class="progress"><div id="progress-value"></div></div>
+    </div>
+    <div class="occlusion" id="occlusion" aria-hidden="true"></div>
+    <script type="module" src="./previs.mjs"></script>
+  </body>
+</html>
