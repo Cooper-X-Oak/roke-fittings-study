@@ -1,36 +1,490 @@
 {
   "schemaVersion": 1,
-  "title": "Force Becomes Control — DN80 CL2500 Camera Animatic",
   "fps": 30,
+  "durationSeconds": 16,
   "totalFrames": 480,
+  "title": "CONTROL VALVE — ORDER BECOMES CONTROL",
+  "maxAbsRollDegrees": 0,
   "stableHeroFromFrame": 408,
-  "maxAbsRollDegrees": 4,
+  "direction": {
+    "name": "restrained-industrial-authority",
+    "statement": "The camera observes with control: stable horizon, external spatial anchor, one product question per shot, and no blackout or hidden relocation.",
+    "palette": [
+      "graphite",
+      "cool-steel",
+      "single-copper-accent"
+    ],
+    "brandBoundary": "This is an authored product-film direction, not an undocumented corporate brand standard."
+  },
   "shots": [
-    {"id": "monument", "startFrame": 0, "endFrame": 76, "title": "MONUMENT", "copy": "一股驱动力，贯穿整台设备。"},
-    {"id": "command-descends", "startFrame": 77, "endFrame": 163, "title": "COMMAND DESCENDS", "copy": "动作沿轴线下行。"},
-    {"id": "inside-the-cascade", "startFrame": 164, "endFrame": 277, "title": "INSIDE THE CASCADE", "copy": "不是一次改变，而是逐级抵达核心。"},
-    {"id": "six-systems", "startFrame": 278, "endFrame": 393, "title": "SIX SYSTEMS", "copy": "六个系统，一条动作链。"},
-    {"id": "authority-restored", "startFrame": 394, "endFrame": 479, "title": "AUTHORITY RESTORED", "copy": "看见动作如何抵达核心。"}
+    {
+      "id": "product-authority",
+      "title": "PRODUCT AUTHORITY",
+      "startFrame": 0,
+      "endFrame": 95
+    },
+    {
+      "id": "axial-command",
+      "title": "AXIAL COMMAND",
+      "startFrame": 96,
+      "endFrame": 191
+    },
+    {
+      "id": "cascade-revealed",
+      "title": "CASCADE REVEALED",
+      "startFrame": 192,
+      "endFrame": 287
+    },
+    {
+      "id": "systems-in-order",
+      "title": "SYSTEMS IN ORDER",
+      "startFrame": 288,
+      "endFrame": 383
+    },
+    {
+      "id": "product-resolved",
+      "title": "PRODUCT RESOLVED",
+      "startFrame": 384,
+      "endFrame": 479
+    }
   ],
   "keyframes": [
-    {"frame": 0, "position": [6.8, -1.15, 8.4], "target": [0, 0.15, 0], "roll": 0, "fov": 34, "focusDistance": 10.7, "explode": 0, "bodyOpacity": 1, "stemStroke": 0, "cascadeStage": 0, "keyLight": 0.42, "rimLight": 1.1, "occlusion": 0},
-    {"frame": 36, "position": [5.2, -0.5, 6.6], "target": [0, 0.0, 0], "roll": -0.8, "fov": 31, "focusDistance": 8.4, "explode": 0, "bodyOpacity": 1, "stemStroke": 0, "cascadeStage": 0, "keyLight": 0.58, "rimLight": 1.32, "occlusion": 0},
-    {"frame": 58, "position": [4.4, 0.3, 5.5], "target": [0, 0.35, 0], "roll": -1.2, "fov": 28, "focusDistance": 7.0, "explode": 0, "bodyOpacity": 1, "stemStroke": 0, "cascadeStage": 0, "keyLight": 0.7, "rimLight": 1.45, "occlusion": 0},
-    {"frame": 76, "position": [3.75, 1.65, 4.25], "target": [0, 0.72, 0], "roll": -1.5, "fov": 25, "focusDistance": 5.7, "explode": 0, "bodyOpacity": 0.95, "stemStroke": 0, "cascadeStage": 0, "keyLight": 0.76, "rimLight": 1.5, "occlusion": 0},
-    {"frame": 112, "position": [2.55, 2.85, 2.75], "target": [0, 1.0, 0], "roll": -2.5, "fov": 29, "focusDistance": 4.2, "explode": 0, "bodyOpacity": 0.64, "stemStroke": 0.08, "cascadeStage": 0, "keyLight": 0.72, "rimLight": 1.2, "occlusion": 0},
-    {"frame": 142, "position": [1.0, 1.9, 1.1], "target": [0, 0.45, 0], "roll": -3.2, "fov": 36, "focusDistance": 2.1, "explode": 0, "bodyOpacity": 0.32, "stemStroke": 0.18, "cascadeStage": 0, "keyLight": 0.58, "rimLight": 0.82, "occlusion": 0.2},
-    {"frame": 150, "position": [0.52, 1.3, 0.6], "target": [0, 0.28, 0], "roll": -2, "fov": 46, "focusDistance": 1.25, "explode": 0, "bodyOpacity": 0.18, "stemStroke": 0.2, "cascadeStage": 0, "keyLight": 0.32, "rimLight": 0.45, "occlusion": 0.98},
-    {"frame": 151, "position": [0.28, 0.52, 0.34], "target": [0, -0.15, 0], "roll": 2.5, "fov": 54, "focusDistance": 0.82, "explode": 0, "bodyOpacity": 0.1, "stemStroke": 0.2, "cascadeStage": 0, "keyLight": 0.3, "rimLight": 0.4, "occlusion": 0.98},
-    {"frame": 163, "position": [1.4, 1.08, 1.55], "target": [0, 0.72, 0], "roll": 3, "fov": 38, "focusDistance": 2.12, "explode": 0, "bodyOpacity": 0.1, "stemStroke": 0.2, "cascadeStage": 0.2, "keyLight": 0.42, "rimLight": 0.56, "occlusion": 0},
-    {"frame": 195, "position": [1.52, 0.88, 1.66], "target": [0, 0.58, 0], "roll": 4, "fov": 37, "focusDistance": 2.27, "explode": 0, "bodyOpacity": 0.08, "stemStroke": 0.2, "cascadeStage": 1, "keyLight": 0.56, "rimLight": 0.75, "occlusion": 0},
-    {"frame": 225, "position": [1.66, 0.66, 1.78], "target": [0, 0.4, 0], "roll": 2, "fov": 36, "focusDistance": 2.45, "explode": 0, "bodyOpacity": 0.08, "stemStroke": 0.2, "cascadeStage": 2, "keyLight": 0.65, "rimLight": 0.9, "occlusion": 0},
-    {"frame": 252, "position": [1.78, 0.4, 1.9], "target": [0, 0.18, 0], "roll": 0, "fov": 35, "focusDistance": 2.62, "explode": 0, "bodyOpacity": 0.08, "stemStroke": 0.2, "cascadeStage": 3, "keyLight": 0.72, "rimLight": 1.05, "occlusion": 0},
-    {"frame": 277, "position": [1.25, -0.72, 1.45], "target": [0, -0.82, 0], "roll": -1, "fov": 40, "focusDistance": 2.0, "explode": 0.08, "bodyOpacity": 0.2, "stemStroke": 0.16, "cascadeStage": 3, "keyLight": 0.8, "rimLight": 1.1, "occlusion": 0},
-    {"frame": 306, "position": [3.3, 0.1, 4.8], "target": [0, -0.05, 0], "roll": -2, "fov": 36, "focusDistance": 6.1, "explode": 0.34, "bodyOpacity": 0.56, "stemStroke": 0.1, "cascadeStage": 2.4, "keyLight": 0.9, "rimLight": 1.18, "occlusion": 0},
-    {"frame": 340, "position": [4.7, 0.75, 5.8], "target": [0, 0.05, 0], "roll": -1, "fov": 31, "focusDistance": 7.55, "explode": 0.76, "bodyOpacity": 0.82, "stemStroke": 0.04, "cascadeStage": 1.2, "keyLight": 1.08, "rimLight": 1.3, "occlusion": 0},
-    {"frame": 369, "position": [5.4, 1.0, 6.3], "target": [0, 0.1, 0], "roll": 0, "fov": 29, "focusDistance": 8.35, "explode": 1, "bodyOpacity": 1, "stemStroke": 0, "cascadeStage": 0, "keyLight": 1.2, "rimLight": 1.42, "occlusion": 0},
-    {"frame": 393, "position": [5.15, 0.82, 6.05], "target": [0, 0.05, 0], "roll": 0, "fov": 29, "focusDistance": 8.0, "explode": 0.42, "bodyOpacity": 1, "stemStroke": 0, "cascadeStage": 0, "keyLight": 1.25, "rimLight": 1.42, "occlusion": 0},
-    {"frame": 408, "position": [5.0, 0.65, 6.15], "target": [0, 0.05, 0], "roll": 0, "fov": 28, "focusDistance": 8.0, "explode": 0, "bodyOpacity": 1, "stemStroke": 0, "cascadeStage": 0, "keyLight": 1.34, "rimLight": 1.38, "occlusion": 0},
-    {"frame": 479, "position": [5.0, 0.65, 6.15], "target": [0, 0.05, 0], "roll": 0, "fov": 28, "focusDistance": 8.0, "explode": 0, "bodyOpacity": 1, "stemStroke": 0, "cascadeStage": 0, "keyLight": 1.34, "rimLight": 1.38, "occlusion": 0}
+    {
+      "frame": 0,
+      "position": [
+        6.2,
+        0.45,
+        7.6
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "roll": 0,
+      "fov": 32,
+      "focusDistance": 9.82,
+      "explode": 0,
+      "bodyOpacity": 1,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.72,
+      "rimLight": 1.02,
+      "occlusion": 0
+    },
+    {
+      "frame": 48,
+      "position": [
+        5.7,
+        0.4,
+        7
+      ],
+      "target": [
+        0,
+        0.05,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 9.03,
+      "explode": 0,
+      "bodyOpacity": 1,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.78,
+      "rimLight": 1.08,
+      "occlusion": 0
+    },
+    {
+      "frame": 72,
+      "position": [
+        5.5,
+        0.4,
+        6.8
+      ],
+      "target": [
+        0,
+        0.05,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 8.75,
+      "explode": 0,
+      "bodyOpacity": 1,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.82,
+      "rimLight": 1.1,
+      "occlusion": 0
+    },
+    {
+      "frame": 95,
+      "position": [
+        5.5,
+        0.4,
+        6.8
+      ],
+      "target": [
+        0,
+        0.05,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 8.75,
+      "explode": 0,
+      "bodyOpacity": 1,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.82,
+      "rimLight": 1.1,
+      "occlusion": 0
+    },
+    {
+      "frame": 96,
+      "position": [
+        5.5,
+        0.4,
+        6.8
+      ],
+      "target": [
+        0,
+        0.05,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 8.75,
+      "explode": 0,
+      "bodyOpacity": 1,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.82,
+      "rimLight": 1.1,
+      "occlusion": 0
+    },
+    {
+      "frame": 144,
+      "position": [
+        4.8,
+        0.85,
+        6
+      ],
+      "target": [
+        0,
+        0.5,
+        0
+      ],
+      "roll": 0,
+      "fov": 30,
+      "focusDistance": 7.69,
+      "explode": 0,
+      "bodyOpacity": 0.65,
+      "stemStroke": 0.12,
+      "cascadeStage": 0,
+      "keyLight": 0.86,
+      "rimLight": 1.02,
+      "occlusion": 0
+    },
+    {
+      "frame": 168,
+      "position": [
+        4.6,
+        1,
+        5.8
+      ],
+      "target": [
+        0,
+        0.6,
+        0
+      ],
+      "roll": 0,
+      "fov": 30,
+      "focusDistance": 7.41,
+      "explode": 0,
+      "bodyOpacity": 0.52,
+      "stemStroke": 0.16,
+      "cascadeStage": 0,
+      "keyLight": 0.9,
+      "rimLight": 0.98,
+      "occlusion": 0
+    },
+    {
+      "frame": 191,
+      "position": [
+        4.6,
+        1,
+        5.8
+      ],
+      "target": [
+        0,
+        0.6,
+        0
+      ],
+      "roll": 0,
+      "fov": 30,
+      "focusDistance": 7.41,
+      "explode": 0,
+      "bodyOpacity": 0.52,
+      "stemStroke": 0.16,
+      "cascadeStage": 0,
+      "keyLight": 0.9,
+      "rimLight": 0.98,
+      "occlusion": 0
+    },
+    {
+      "frame": 192,
+      "position": [
+        4.6,
+        1,
+        5.8
+      ],
+      "target": [
+        0,
+        0.6,
+        0
+      ],
+      "roll": 0,
+      "fov": 30,
+      "focusDistance": 7.41,
+      "explode": 0,
+      "bodyOpacity": 0.52,
+      "stemStroke": 0.16,
+      "cascadeStage": 0,
+      "keyLight": 0.9,
+      "rimLight": 0.98,
+      "occlusion": 0
+    },
+    {
+      "frame": 240,
+      "position": [
+        4.25,
+        0.9,
+        5.35
+      ],
+      "target": [
+        0,
+        0.5,
+        0
+      ],
+      "roll": 0,
+      "fov": 30.5,
+      "focusDistance": 6.84,
+      "explode": 0,
+      "bodyOpacity": 0.25,
+      "stemStroke": 0.16,
+      "cascadeStage": 2,
+      "keyLight": 0.94,
+      "rimLight": 0.92,
+      "occlusion": 0
+    },
+    {
+      "frame": 264,
+      "position": [
+        4,
+        0.8,
+        5.1
+      ],
+      "target": [
+        0,
+        0.42,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 6.49,
+      "explode": 0,
+      "bodyOpacity": 0.2,
+      "stemStroke": 0.16,
+      "cascadeStage": 3,
+      "keyLight": 0.98,
+      "rimLight": 0.9,
+      "occlusion": 0
+    },
+    {
+      "frame": 287,
+      "position": [
+        4,
+        0.8,
+        5.1
+      ],
+      "target": [
+        0,
+        0.42,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 6.49,
+      "explode": 0,
+      "bodyOpacity": 0.2,
+      "stemStroke": 0.16,
+      "cascadeStage": 3,
+      "keyLight": 0.98,
+      "rimLight": 0.9,
+      "occlusion": 0
+    },
+    {
+      "frame": 288,
+      "position": [
+        4,
+        0.8,
+        5.1
+      ],
+      "target": [
+        0,
+        0.42,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 6.49,
+      "explode": 0,
+      "bodyOpacity": 0.2,
+      "stemStroke": 0.16,
+      "cascadeStage": 3,
+      "keyLight": 0.98,
+      "rimLight": 0.9,
+      "occlusion": 0
+    },
+    {
+      "frame": 336,
+      "position": [
+        4.7,
+        0.65,
+        5.9
+      ],
+      "target": [
+        0,
+        0.1,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 7.56,
+      "explode": 0.35,
+      "bodyOpacity": 0.65,
+      "stemStroke": 0.08,
+      "cascadeStage": 1.5,
+      "keyLight": 0.94,
+      "rimLight": 1,
+      "occlusion": 0
+    },
+    {
+      "frame": 360,
+      "position": [
+        5.2,
+        0.55,
+        6.5
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "roll": 0,
+      "fov": 32,
+      "focusDistance": 8.34,
+      "explode": 0.55,
+      "bodyOpacity": 0.85,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.92,
+      "rimLight": 1.12,
+      "occlusion": 0
+    },
+    {
+      "frame": 383,
+      "position": [
+        5.2,
+        0.55,
+        6.5
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "roll": 0,
+      "fov": 32,
+      "focusDistance": 8.34,
+      "explode": 0.55,
+      "bodyOpacity": 0.85,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.92,
+      "rimLight": 1.12,
+      "occlusion": 0
+    },
+    {
+      "frame": 384,
+      "position": [
+        5.2,
+        0.55,
+        6.5
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "roll": 0,
+      "fov": 32,
+      "focusDistance": 8.34,
+      "explode": 0.55,
+      "bodyOpacity": 0.85,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.92,
+      "rimLight": 1.12,
+      "occlusion": 0
+    },
+    {
+      "frame": 408,
+      "position": [
+        5.4,
+        0.5,
+        6.8
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 8.7,
+      "explode": 0,
+      "bodyOpacity": 1,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.9,
+      "rimLight": 1.16,
+      "occlusion": 0
+    },
+    {
+      "frame": 479,
+      "position": [
+        5.4,
+        0.5,
+        6.8
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "roll": 0,
+      "fov": 31,
+      "focusDistance": 8.7,
+      "explode": 0,
+      "bodyOpacity": 1,
+      "stemStroke": 0,
+      "cascadeStage": 0,
+      "keyLight": 0.9,
+      "rimLight": 1.16,
+      "occlusion": 0
+    }
   ]
 }

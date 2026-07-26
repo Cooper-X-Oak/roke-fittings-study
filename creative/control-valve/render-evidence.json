@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectedAt": "2026-07-26T10:12:57.744Z",
-  "sourceUrl": "http://127.0.0.1:4177/roke-fittings-study/control-valve/",
+  "collectedAt": "2026-07-26T12:55:51.682Z",
+  "sourceUrl": "http://127.0.0.1:4178/roke-fittings-study/control-valve/",
   "browserMode": "headless Chromium; renderer recorded in benchmark.rendererInfo",
   "performanceInterpretation": "Short headless diagnostic only. It does not certify discrete-GPU frame rate; the portable performance proof is the six-primitive Draco GLB and demand-rendering behavior.",
   "viewport": {
@@ -19,7 +19,7 @@
     "naturalHeight": 1000,
     "opacity": 1,
     "visible": true,
-    "capturedAtMs": 348.7
+    "capturedAtMs": 681.7
   },
   "posterAfterReady": {
     "opacity": 0,
@@ -27,54 +27,740 @@
   },
   "bodyHasContent": true,
   "interactiveLabels": [
-    "CV\n            FORCE / CONTROL",
-    "播放 16 秒 Animatic"
+    "CV\n            CONTROL VALVE / DN80",
+    "重新播放 16 秒 Animatic"
   ],
   "consoleErrors": [],
   "pageErrors": [],
   "failedRequests": [],
   "captures": [
     {
-      "shotId": "monument",
-      "progress": 0.08,
-      "path": "docs/control-valve/evidence/shot-01-monument.png",
-      "runtimeShotId": "monument"
+      "shotId": "product-authority",
+      "progress": 0.1,
+      "path": "docs/control-valve/evidence/shot-01-product-authority.png",
+      "runtimeShotId": "product-authority"
     },
     {
-      "shotId": "command-descends",
-      "progress": 0.27,
-      "path": "docs/control-valve/evidence/shot-02-command-descends.png",
-      "runtimeShotId": "command-descends"
+      "shotId": "axial-command",
+      "progress": 0.3,
+      "path": "docs/control-valve/evidence/shot-02-axial-command.png",
+      "runtimeShotId": "axial-command"
     },
     {
-      "shotId": "inside-the-cascade",
-      "progress": 0.47,
-      "path": "docs/control-valve/evidence/shot-03-inside-the-cascade.png",
-      "runtimeShotId": "inside-the-cascade"
+      "shotId": "cascade-revealed",
+      "progress": 0.5,
+      "path": "docs/control-valve/evidence/shot-03-cascade-revealed.png",
+      "runtimeShotId": "cascade-revealed"
     },
     {
-      "shotId": "six-systems",
-      "progress": 0.73,
-      "path": "docs/control-valve/evidence/shot-04-six-systems.png",
-      "runtimeShotId": "six-systems"
+      "shotId": "systems-in-order",
+      "progress": 0.7,
+      "path": "docs/control-valve/evidence/shot-04-systems-in-order.png",
+      "runtimeShotId": "systems-in-order"
     },
     {
-      "shotId": "authority-restored",
+      "shotId": "product-resolved",
       "progress": 1,
-      "path": "docs/control-valve/evidence/shot-05-authority-restored.png",
-      "runtimeShotId": "authority-restored"
+      "path": "docs/control-valve/evidence/shot-05-product-resolved.png",
+      "runtimeShotId": "product-resolved"
     }
   ],
+  "fullPlayback": {
+    "completed": true,
+    "elapsedMs": 16171,
+    "sampleCount": 61,
+    "observedShotIds": [
+      "product-authority",
+      "axial-command",
+      "cascade-revealed",
+      "systems-in-order",
+      "product-resolved"
+    ],
+    "blackoutElementPresent": false,
+    "samples": [
+      {
+        "elapsedMs": 313,
+        "progress": 0.016718750000186276,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          6.162891047351394,
+          0.4462891047351394,
+          7.555469256821672
+        ],
+        "cameraFov": 31.925782094702786
+      },
+      {
+        "elapsedMs": 578,
+        "progress": 0.03333750000018625,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          6.070805400030334,
+          0.4370805400030334,
+          7.444966480036401
+        ],
+        "cameraFov": 31.74161080006067
+      },
+      {
+        "elapsedMs": 845,
+        "progress": 0.049968750000186274,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.951015134237709,
+          0.42510151342377095,
+          7.3012181610852505
+        ],
+        "cameraFov": 31.50203026847542
+      },
+      {
+        "elapsedMs": 1111,
+        "progress": 0.06658750000018625,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.8310845972666305,
+          0.41310845972666305,
+          7.157301516719956
+        ],
+        "cameraFov": 31.26216919453326
+      },
+      {
+        "elapsedMs": 1372,
+        "progress": 0.08320000000018626,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.738324190418178,
+          0.4038324190418177,
+          7.045989028501813
+        ],
+        "cameraFov": 31.076648380836353
+      },
+      {
+        "elapsedMs": 1638,
+        "progress": 0.09981875000018624,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.700022663207609,
+          0.4000022663207609,
+          7.000027195849131
+        ],
+        "cameraFov": 31.00004532641522
+      },
+      {
+        "elapsedMs": 1905,
+        "progress": 0.11540625000018627,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.655961640562222,
+          0.4,
+          6.955961640562222
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 2170,
+        "progress": 0.13306875000018625,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.55476448029733,
+          0.4,
+          6.85476448029733
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 2437,
+        "progress": 0.14968750000018627,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.500092775978034,
+          0.4,
+          6.800092775978034
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 2695,
+        "progress": 0.1652687500001863,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.5,
+          0.4,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 2961,
+        "progress": 0.1818937500001863,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.5,
+          0.4,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 3224,
+        "progress": 0.19851250000018628,
+        "shotId": "product-authority",
+        "cameraPosition": [
+          5.5,
+          0.4,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 3488,
+        "progress": 0.21513750000018628,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          5.45912458238607,
+          0.42627705418038353,
+          6.753285237012651
+        ],
+        "cameraFov": 30.941606546265813
+      },
+      {
+        "elapsedMs": 3754,
+        "progress": 0.23175625000018624,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          5.337435071856971,
+          0.5045060252348043,
+          6.614211510693681
+        ],
+        "cameraFov": 30.7677643883671
+      },
+      {
+        "elapsedMs": 4019,
+        "progress": 0.24838125000018624,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          5.172416567111278,
+          0.6105893497141782,
+          6.425618933841461
+        ],
+        "cameraFov": 30.532023667301825
+      },
+      {
+        "elapsedMs": 4282,
+        "progress": 0.26500625000018624,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          5.002459104963996,
+          0.719847718237431,
+          6.2313818342445675
+        ],
+        "cameraFov": 30.28922729280571
+      },
+      {
+        "elapsedMs": 4546,
+        "progress": 0.2816187500001863,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.8660004059810085,
+          0.8075711675836376,
+          6.0754290354068665
+        ],
+        "cameraFov": 30.094286294258584
+      },
+      {
+        "elapsedMs": 4806,
+        "progress": 0.2972062500001863,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.802390442948125,
+          0.8484632866762047,
+          6.0027319347978585
+        ],
+        "cameraFov": 30.003414918497324
+      },
+      {
+        "elapsedMs": 5072,
+        "progress": 0.31382500000018626,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.765676516190119,
+          0.8757426128574105,
+          5.965676516190119
+        ],
+        "cameraFov": 30
+      },
+      {
+        "elapsedMs": 5333,
+        "progress": 0.3304437500001862,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.671812151675491,
+          0.9461408862433819,
+          5.871812151675491
+        ],
+        "cameraFov": 30
+      },
+      {
+        "elapsedMs": 5599,
+        "progress": 0.3470687500001862,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.603048796725677,
+          0.9977134024557418,
+          5.803048796725678
+        ],
+        "cameraFov": 30
+      },
+      {
+        "elapsedMs": 5860,
+        "progress": 0.36368750000018624,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.6,
+          1,
+          5.8
+        ],
+        "cameraFov": 30
+      },
+      {
+        "elapsedMs": 6123,
+        "progress": 0.3803062500001863,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.6,
+          1,
+          5.8
+        ],
+        "cameraFov": 30
+      },
+      {
+        "elapsedMs": 6385,
+        "progress": 0.39588750000018624,
+        "shotId": "axial-command",
+        "cameraPosition": [
+          4.6,
+          1,
+          5.8
+        ],
+        "cameraFov": 30
+      },
+      {
+        "elapsedMs": 6649,
+        "progress": 0.4125312500001862,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.586808774472527,
+          0.9962310784207222,
+          5.78303985289325
+        ],
+        "cameraFov": 30.018844607896387
+      },
+      {
+        "elapsedMs": 6913,
+        "progress": 0.42913750000018624,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.532012944369313,
+          0.9805751269626609,
+          5.712588071331974
+        ],
+        "cameraFov": 30.097124365186694
+      },
+      {
+        "elapsedMs": 7177,
+        "progress": 0.44575625000018626,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.452058279320655,
+          0.9577309369487585,
+          5.609789216269413
+        ],
+        "cameraFov": 30.211345315256207
+      },
+      {
+        "elapsedMs": 7441,
+        "progress": 0.46238125000018626,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.366097721349236,
+          0.9331707775283533,
+          5.499268498877589
+        ],
+        "cameraFov": 30.334146112358233
+      },
+      {
+        "elapsedMs": 7705,
+        "progress": 0.4790000000001862,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.293358892754545,
+          0.9123882550727271,
+          5.405747147827272
+        ],
+        "cameraFov": 30.438058724636363
+      },
+      {
+        "elapsedMs": 7971,
+        "progress": 0.4956187500001863,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.252966385416157,
+          0.9008475386903305,
+          5.353813924106487
+        ],
+        "cameraFov": 30.495762306548347
+      },
+      {
+        "elapsedMs": 8237,
+        "progress": 0.5122375000001863,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.218142242399418,
+          0.8872568969597672,
+          5.318142242399418
+        ],
+        "cameraFov": 30.563715515201164
+      },
+      {
+        "elapsedMs": 8503,
+        "progress": 0.5288625000001863,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.104378889154998,
+          0.8417515556619991,
+          5.204378889154998
+        ],
+        "cameraFov": 30.791242221690005
+      },
+      {
+        "elapsedMs": 8770,
+        "progress": 0.5454812500001862,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4.008870851339135,
+          0.8035483405356542,
+          5.108870851339135
+        ],
+        "cameraFov": 30.982258297321728
+      },
+      {
+        "elapsedMs": 9033,
+        "progress": 0.5621062500001862,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4,
+          0.8,
+          5.1
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 9300,
+        "progress": 0.5787187500001862,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4,
+          0.8,
+          5.1
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 9563,
+        "progress": 0.5953437500001862,
+        "shotId": "cascade-revealed",
+        "cameraPosition": [
+          4,
+          0.8,
+          5.1
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 9826,
+        "progress": 0.6109375000001862,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.0183515560143785,
+          0.7960675237112047,
+          5.120973206873575
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 10093,
+        "progress": 0.6275500000001862,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.119319948524644,
+          0.7744314396018621,
+          5.236365655456735
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 10360,
+        "progress": 0.6441687500001863,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.275197432123046,
+          0.7410291216879187,
+          5.414511350997767
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 10623,
+        "progress": 0.6607937500001863,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.4477103379120235,
+          0.7040620704474235,
+          5.611668957613742
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 10887,
+        "progress": 0.6774125000001863,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.598402976337831,
+          0.6717707907847504,
+          5.783889115814665
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 11152,
+        "progress": 0.6940375000001863,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.689043492697933,
+          0.6523478229933001,
+          5.887478277369066
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 11416,
+        "progress": 0.7106750000001862,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.744504303380025,
+          0.6410991393239951,
+          5.95340516405603
+        ],
+        "cameraFov": 31.08900860676005
+      },
+      {
+        "elapsedMs": 11681,
+        "progress": 0.7272812500001862,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          4.961487614162557,
+          0.5977024771674887,
+          6.213785136995068
+        ],
+        "cameraFov": 31.522975228325112
+      },
+      {
+        "elapsedMs": 11946,
+        "progress": 0.7438937500001862,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          5.168421186374789,
+          0.5563157627250424,
+          6.462105423649747
+        ],
+        "cameraFov": 31.936842372749577
+      },
+      {
+        "elapsedMs": 12212,
+        "progress": 0.7605187500001862,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          5.2,
+          0.55,
+          6.5
+        ],
+        "cameraFov": 32
+      },
+      {
+        "elapsedMs": 12478,
+        "progress": 0.7771437500001862,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          5.2,
+          0.55,
+          6.5
+        ],
+        "cameraFov": 32
+      },
+      {
+        "elapsedMs": 12744,
+        "progress": 0.7937562500001863,
+        "shotId": "systems-in-order",
+        "cameraPosition": [
+          5.2,
+          0.55,
+          6.5
+        ],
+        "cameraFov": 32
+      },
+      {
+        "elapsedMs": 13010,
+        "progress": 0.8103812500001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.216034099827821,
+          0.5459914750430447,
+          6.524051149741732
+        ],
+        "cameraFov": 31.919829500860892
+      },
+      {
+        "elapsedMs": 13272,
+        "progress": 0.8270250000001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.301812099334206,
+          0.5245469751664487,
+          6.652718149001308
+        ],
+        "cameraFov": 31.49093950332897
+      },
+      {
+        "elapsedMs": 13537,
+        "progress": 0.8436250000001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.385847980020297,
+          0.5035380049949258,
+          6.778771970030444
+        ],
+        "cameraFov": 31.070760099898518
+      },
+      {
+        "elapsedMs": 13802,
+        "progress": 0.8602500000001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 14067,
+        "progress": 0.8768687500001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 14334,
+        "progress": 0.8934875000001862,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 14594,
+        "progress": 0.9090750000001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 14859,
+        "progress": 0.9256937500001864,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 15112,
+        "progress": 0.9412750000001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 15378,
+        "progress": 0.9579125000001864,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 15644,
+        "progress": 0.9745187500001862,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 15907,
+        "progress": 0.9911375000001863,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      },
+      {
+        "elapsedMs": 16171,
+        "progress": 1,
+        "shotId": "product-resolved",
+        "cameraPosition": [
+          5.4,
+          0.5,
+          6.8
+        ],
+        "cameraFov": 31
+      }
+    ]
+  },
   "benchmark": {
     "sampleCount": 23,
     "p50FrameMs": 16.6,
-    "p95FrameMs": 16.7,
-    "framesOver16_7Ms": 5,
+    "p95FrameMs": 16.8,
+    "framesOver16_7Ms": 8,
     "framesOver33_3Ms": 0,
     "idleRendererFrames": 0,
-    "usableFrameMs": 803.7999999970198,
+    "usableFrameMs": 988.2000000029802,
     "modelResource": {
-      "durationMs": 671.1,
+      "durationMs": 680.4,
       "transferSize": 908980,
       "encodedBodySize": 908680,
       "decodedBodySize": 908680
@@ -84,6 +770,6 @@
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1050 (0x00001C91) Direct3D11 vs_5_0 ps_5_0, D3D11)",
       "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
     },
-    "jsHeapBytes": 22273446
+    "jsHeapBytes": 20344564
   }
 }

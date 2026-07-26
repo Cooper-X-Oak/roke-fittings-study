@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const sourcePath = resolve(here, "camera-path.json");
 const outputPath = resolve(here, "camera-previs.json");
+const runtimePath = resolve(here, "../../docs/control-valve/camera-path.json");
 const source = JSON.parse(await readFile(sourcePath, "utf8"));
 
 const smooth = (value) => value * value * (3 - 2 * value);
@@ -75,21 +76,17 @@ const artifact = {
   maxAbsRollDegrees: source.maxAbsRollDegrees,
   stableHeroHold: [source.stableHeroFromFrame, source.totalFrames - 1],
   hiddenCut: {
-    fromFrame: 150,
-    toFrame: 151,
+    fromFrame: null,
+    toFrame: null,
     motivation:
-      "The actuator support and bonnet fill the frame while the camera relocates to the cascade trim."
+      "None. The camera remains outside the product and all five shots connect through visible continuous motion."
   },
   continuityPath: [
-    "low monumental silhouette",
-    "actuator crown acquisition",
-    "stem-axis descent",
-    "support and bonnet occlusion",
-    "cascade-stage traversal",
-    "lateral body exit",
-    "restrained exterior arc",
-    "six-system separation",
-    "grouped return",
+    "complete product authority",
+    "slow external axial observation",
+    "shell transparency reveals the cascade in context",
+    "modest six-system separation with a fixed horizon",
+    "controlled return",
     "stable three-quarter hero"
   ],
   shots: source.shots,
@@ -101,6 +98,11 @@ await writeFile(
   `${JSON.stringify(artifact, null, 2)}\n`,
   "utf8",
 );
+await writeFile(
+  runtimePath,
+  `${JSON.stringify(source, null, 2)}\n`,
+  "utf8",
+);
 process.stdout.write(
-  `Generated ${frames.length} deterministic camera states at ${outputPath}\n`,
+  `Generated ${frames.length} deterministic camera states at ${outputPath} and synchronized ${runtimePath}\n`,
 );

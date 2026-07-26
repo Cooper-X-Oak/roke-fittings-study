@@ -46,11 +46,11 @@ const browser = await chromium.launch({
 });
 
 const shotFrames = [
-  ["monument", 0.08, "shot-01-monument.png"],
-  ["command-descends", 0.27, "shot-02-command-descends.png"],
-  ["inside-the-cascade", 0.47, "shot-03-inside-the-cascade.png"],
-  ["six-systems", 0.73, "shot-04-six-systems.png"],
-  ["authority-restored", 1, "shot-05-authority-restored.png"],
+  ["product-authority", 0.1, "shot-01-product-authority.png"],
+  ["axial-command", 0.3, "shot-02-axial-command.png"],
+  ["cascade-revealed", 0.5, "shot-03-cascade-revealed.png"],
+  ["systems-in-order", 0.7, "shot-04-systems-in-order.png"],
+  ["product-resolved", 1, "shot-05-product-resolved.png"],
 ];
 
 try {
@@ -144,6 +144,35 @@ try {
     });
   }
 
+  await page.evaluate(() =>
+    window.__CONTROL_VALVE_METRICS__.setProgressForTest(0),
+  );
+  const playbackStartedAt = Date.now();
+  await page.locator("#play").click();
+  const playbackSamples = [];
+  while (Date.now() - playbackStartedAt < 18000) {
+    await page.waitForTimeout(250);
+    const snapshot = await page.evaluate(() =>
+      window.__CONTROL_VALVE_METRICS__.snapshot(),
+    );
+    playbackSamples.push({
+      elapsedMs: Date.now() - playbackStartedAt,
+      progress: snapshot.progress,
+      shotId: snapshot.shotId,
+      cameraPosition: snapshot.cameraPosition,
+      cameraFov: snapshot.cameraFov,
+    });
+    if (snapshot.progress >= 1) break;
+  }
+  const fullPlayback = {
+    completed: playbackSamples.at(-1)?.progress === 1,
+    elapsedMs: Date.now() - playbackStartedAt,
+    sampleCount: playbackSamples.length,
+    observedShotIds: [...new Set(playbackSamples.map((sample) => sample.shotId))],
+    blackoutElementPresent: (await page.locator("#occlusion").count()) > 0,
+    samples: playbackSamples,
+  };
+
   const benchmark = await page.evaluate(async () => {
     const durations = [];
     let previous;
@@ -235,6 +264,7 @@ try {
     pageErrors,
     failedRequests,
     captures,
+    fullPlayback,
     benchmark,
   };
   await writeFile(outputPath, `${JSON.stringify(result, null, 2)}\n`, "utf8");
