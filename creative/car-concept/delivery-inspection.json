@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "run_id": "20260726T041500Z-car-story-preproduction",
+  "target": {
+    "environment": "candidate",
+    "identity": "feat/11-narrative-first-skill@c2503118b9c85e8d06d5538cf703517c58c94ee8"
+  },
+  "scope": {
+    "status": "applicable",
+    "basis": "The candidate delivers new remote preproduction artifacts, an editable ChatCut Animatic, and a downloaded review MP4 while intentionally leaving the public WebGL runtime unchanged.",
+    "affected_claims": [
+      "remote-preproduction-package",
+      "reviewable-five-shot-animatic",
+      "confirmation-blocks-runtime"
+    ],
+    "unaffected_claims": [
+      "current-public-github-pages-runtime",
+      "production-deployment",
+      "runtime-performance"
+    ]
+  },
+  "plan": {
+    "claims": [
+      {
+        "claim_id": "remote-preproduction-package",
+        "statement": "The candidate branch and Draft PR expose the reference board, three routes, five-shot script, storyboards, phase record, and editable Animatic link.",
+        "consumer": "creative decision maker and the next implementation agent",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "remote-github-state",
+            "target": "Draft PR 12 and branch feat/11-narrative-first-skill",
+            "probe": "gh pr view 12; git ls-remote; gh api repository contents"
+          }
+        ]
+      },
+      {
+        "claim_id": "reviewable-five-shot-animatic",
+        "statement": "The delivered 16-second Animatic visibly contains five ordered and legible narrative beats at 1920x1080 and 30fps.",
+        "consumer": "creative decision maker",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "production-media-decode",
+            "target": "downloaded H.264 review export",
+            "probe": "ffprobe export and inspect decoded frames at 0.4s, 3s, 6s, 10s, and 14s"
+          },
+          {
+            "type": "remote-render-job",
+            "target": "ChatCut render 4dd4efad-23f4-4413-8b4e-58e7616acdbc",
+            "probe": "track_export terminal job state"
+          }
+        ]
+      },
+      {
+        "claim_id": "confirmation-blocks-runtime",
+        "statement": "The current candidate is valid through Animatic, remains pending external confirmation, and cannot generate the WebGL runtime yet.",
+        "consumer": "runtime implementation agent and release owner",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "candidate-gate-execution",
+            "target": "project governance acceptance and story skill validators",
+            "probe": "python governance/validate_control_plane.py accept --run-checks"
+          }
+        ]
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "claim_id": "remote-preproduction-package",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-001"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "reviewable-five-shot-animatic",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-002", "EV-003"],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "confirmation-blocks-runtime",
+      "status": "checked",
+      "reason": "",
+      "evidence_refs": ["EV-004", "EV-005"],
+      "cleanup_evidence": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "type": "remote-github-inspection",
+      "quality": "direct",
+      "target": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/12",
+      "artifact": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/12#issuecomment-5081925932",
+      "summary": "The open Draft PR resolves to head c2503118b9c85e8d06d5538cf703517c58c94ee8; the remote branch matches it, and the repository contents API returns creative/car-concept/creative-development.json (14736 bytes)."
+    },
+    {
+      "id": "EV-002",
+      "type": "downloaded-media-decode",
+      "quality": "direct",
+      "target": "D:/Users/luoxu/Downloads/car-concept-precision-becomes-presence-animatic.mp4",
+      "artifact": "sha256:eda4a8a302fc25ae167b6f43c829897ed7612acdea4ce53483b3d172e70be62e",
+      "summary": "The downloaded file decodes as H.264, 1920x1080, 30fps, duration 16.042667 seconds, size 6422178 bytes."
+    },
+    {
+      "id": "EV-003",
+      "type": "export-frame-inspection",
+      "quality": "direct",
+      "target": "decoded frames from the downloaded Animatic",
+      "artifact": "creative/car-concept/storyboards/",
+      "summary": "Actual export pixels at 0.4s, 3s, 6s, 10s, and 14s were viewed. CONTACT isolates the wheel/brake; HUMAN CORE isolates the cockpit; SYSTEM shows ordered separation; CONVERGENCE visibly closes the structure; PRESENCE ends on the complete car. Titles and Chinese thesis lines are legible and do not create a dashboard layout."
+    },
+    {
+      "id": "EV-004",
+      "type": "candidate-governance-acceptance",
+      "quality": "supporting",
+      "target": "candidate worktree",
+      "artifact": "governance/project-validation.json",
+      "summary": "The full control-plane acceptance passed the reusable skill contract, car-story preproduction contract, GitHub Pages repository policy, and aligned business/acceptance gate."
+    },
+    {
+      "id": "EV-005",
+      "type": "phase-gate-negative-check",
+      "quality": "direct",
+      "target": "creative/car-concept/creative-development.json",
+      "artifact": "scripts/validate_car_story_preproduction.py",
+      "summary": "Validation through Animatic passes; confirmation validation and runtime-story generation both fail specifically because confirmation.status is pending rather than approved. docs/experiment has no diff from the declared baseline commit."
+    }
+  ],
+  "findings": [],
+  "promotion_candidates": [],
+  "verdict": "pass"
+}
