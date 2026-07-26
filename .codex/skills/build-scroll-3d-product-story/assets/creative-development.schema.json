@@ -67,7 +67,7 @@
     "confirmation": {"$ref": "#/$defs/confirmation"},
     "phaseHistory": {
       "type": "array",
-      "minItems": 5,
+      "minItems": 4,
       "maxItems": 5,
       "items": {"$ref": "#/$defs/phase"}
     }
@@ -203,16 +203,28 @@
       }
     },
     "confirmation": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["status", "approvalId", "confirmedBy", "confirmedAt", "evidenceRef"],
-      "properties": {
-        "status": {"const": "approved"},
-        "approvalId": {"type": "string", "minLength": 1},
-        "confirmedBy": {"type": "string", "minLength": 1},
-        "confirmedAt": {"type": "string", "format": "date-time"},
-        "evidenceRef": {"type": "string", "minLength": 1}
-      }
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": {"const": "pending"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "approvalId", "confirmedBy", "confirmedAt", "evidenceRef"],
+          "properties": {
+            "status": {"const": "approved"},
+            "approvalId": {"type": "string", "minLength": 1},
+            "confirmedBy": {"type": "string", "minLength": 1},
+            "confirmedAt": {"type": "string", "format": "date-time"},
+            "evidenceRef": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
     },
     "phase": {
       "type": "object",

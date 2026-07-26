@@ -51,8 +51,14 @@ function requireStringFields(value, fields, prefix, errors) {
   }
 }
 
-export function validateCreativeDevelopment(plan) {
+export function validateCreativeDevelopment(
+  plan,
+  { through = "confirmation" } = {},
+) {
   const errors = [];
+  if (!["animatic", "confirmation"].includes(through)) {
+    return ["through must be animatic or confirmation"];
+  }
   if (!plan || typeof plan !== "object" || Array.isArray(plan)) {
     return ["creative development must be a JSON object"];
   }
@@ -225,30 +231,48 @@ export function validateCreativeDevelopment(plan) {
   }
 
   const confirmation = plan.confirmation;
-  requireStringFields(
-    confirmation,
-    ["approvalId", "confirmedBy", "evidenceRef"],
-    "confirmation",
-    errors,
-  );
-  if (confirmation?.status !== "approved") {
-    errors.push("confirmation.status must be approved");
-  }
-  if (!validDate(confirmation?.confirmedAt)) {
-    errors.push("confirmation.confirmedAt must be a valid timestamp");
-  }
-  if (/\b(codex|agent|self|assistant)\b/iu.test(confirmation?.confirmedBy ?? "")) {
-    errors.push("the implementing agent cannot self-confirm the narrative");
+  if (through === "animatic") {
+    if (confirmation?.status !== "pending") {
+      errors.push(
+        "confirmation.status must remain pending at the animatic review gate",
+      );
+    }
+  } else {
+    requireStringFields(
+      confirmation,
+      ["approvalId", "confirmedBy", "evidenceRef"],
+      "confirmation",
+      errors,
+    );
+    if (confirmation?.status !== "approved") {
+      errors.push("confirmation.status must be approved");
+    }
+    if (!validDate(confirmation?.confirmedAt)) {
+      errors.push("confirmation.confirmedAt must be a valid timestamp");
+    }
+    if (
+      /\b(codex|agent|self|assistant)\b/iu.test(
+        confirmation?.confirmedBy ?? "",
+      )
+    ) {
+      errors.push("the implementing agent cannot self-confirm the narrative");
+    }
   }
 
   const history = plan.phaseHistory;
-  if (!Array.isArray(history) || history.length !== PHASES.length) {
-    errors.push("phaseHistory must contain the five required preproduction phases");
+  const expectedPhases =
+    through === "animatic" ? PHASES.slice(0, 4) : PHASES;
+  if (!Array.isArray(history) || history.length !== expectedPhases.length) {
+    errors.push(
+      `phaseHistory must contain the ${expectedPhases.length} required phases through ${through}`,
+    );
   } else {
     let previousTime = -Infinity;
     history.forEach((entry, index) => {
-      if (entry?.phase !== PHASES[index]) {
-        errors.push(`phaseHistory[${index}].phase must be ${PHASES[index]}`);
+      if (entry?.phase !== expectedPhases[index]) {
+        errors.push(
+          `phaseHistory[${index}].phase must be ${expectedPhases[index]}`,
+        );
       }
       if (!validDate(entry?.completedAt)) {
         errors.push(`phaseHistory[${index}].completedAt is invalid`);
@@ -261,6 +285,7 @@ export function validateCreativeDevelopment(plan) {
       }
     });
     if (
+      through === "confirmation" &&
       validDate(confirmation?.confirmedAt) &&
       history.at(-1)?.completedAt !== confirmation.confirmedAt
     ) {
@@ -272,7 +297,7 @@ export function validateCreativeDevelopment(plan) {
 
 export async function loadApprovedCreativeDevelopment(path) {
   const plan = JSON.parse(await readFile(path, "utf8"));
-  const errors = validateCreativeDevelopment(plan);
+  const errors = validateCreativeDevelopment(plan, { through: "confirmation" });
   if (errors.length) {
     const details = errors.map((error) => `- ${error}`).join("\n");
     throw new Error(
@@ -285,10 +310,19 @@ export async function loadApprovedCreativeDevelopment(path) {
 async function main() {
   const args = parseArgs(process.argv.slice(2), {
     plan: "required",
+    through: "optional",
   });
-  await loadApprovedCreativeDevelopment(args.plan);
+  const through = args.through ?? "confirmation";
+  const plan = JSON.parse(await readFile(args.plan, "utf8"));
+  const errors = validateCreativeDevelopment(plan, { through });
+  if (errors.length) {
+    const details = errors.map((error) => `- ${error}`).join("\n");
+    throw new Error(
+      `Creative development validation failed with ${errors.length} error(s)\n${details}`,
+    );
+  }
   process.stdout.write(
-    "PASS: creative development is ordered, complete, and confirmed\n",
+    `PASS: creative development is ordered and complete through ${through}\n`,
   );
 }
 

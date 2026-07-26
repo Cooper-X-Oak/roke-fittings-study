@@ -65,10 +65,15 @@ product copy. Validate the project-authored record:
 
 ```powershell
 node <skill>/scripts/validate-creative-development.mjs `
-  --plan <creative-development.json>
+  --plan <creative-development.json> `
+  --through animatic
 ```
 
-Stop before runtime work when this command fails. Do not create placeholder
+Use `--through animatic` to deliver the preproduction review checkpoint with
+`confirmation.status` still `pending`. After external approval, append the
+confirmation phase and validate again with `--through confirmation`.
+
+Stop before runtime work when either applicable command fails. Do not create placeholder
 approval, mark an unreviewed animatic as reviewed, or name the implementing
 agent as confirmer. When the user has not yet confirmed the narrative, return
 the research, routes, five-shot script, and animatic for review and pause.
@@ -92,6 +97,9 @@ node <skill>/scripts/generate-story-manifest.mjs `
 node <skill>/scripts/validate-story-manifest.mjs `
   --manifest <product-story.json>
 ```
+
+The generator independently requires the complete confirmation gate; an
+animatic-phase record cannot generate a runtime story.
 
 The generator imports the confirmed five shot IDs, normalized ranges, and copy.
 It rejects a missing creative plan and a model capability that differs from the

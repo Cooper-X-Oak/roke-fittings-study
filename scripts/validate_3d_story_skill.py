@@ -357,6 +357,9 @@ def check_models_and_benchmark() -> dict[str, Any]:
 
         unapproved = json.loads(json.dumps(creative_example))
         unapproved["confirmation"]["status"] = "pending"
+        for key in ["approvalId", "confirmedBy", "confirmedAt", "evidenceRef"]:
+            unapproved["confirmation"].pop(key)
+        unapproved["phaseHistory"] = unapproved["phaseHistory"][:4]
         unapproved_path = temp / "unapproved-creative-development.json"
         unapproved_path.write_text(
             f"{json.dumps(unapproved, indent=2)}\n",
@@ -371,7 +374,19 @@ def check_models_and_benchmark() -> dict[str, Any]:
             ],
             "confirmation.status must be approved",
         )
+        run(
+            [
+                "node",
+                str(creative_validator),
+                "--plan",
+                str(unapproved_path),
+                "--through",
+                "animatic",
+            ]
+        )
         reordered = json.loads(json.dumps(creative_example))
+        reordered["confirmation"] = {"status": "pending"}
+        reordered["phaseHistory"] = reordered["phaseHistory"][:4]
         reordered["phaseHistory"][1], reordered["phaseHistory"][2] = (
             reordered["phaseHistory"][2],
             reordered["phaseHistory"][1],
@@ -387,6 +402,8 @@ def check_models_and_benchmark() -> dict[str, Any]:
                 str(creative_validator),
                 "--plan",
                 str(reordered_path),
+                "--through",
+                "animatic",
             ],
             "phaseHistory[1].phase must be creative-routes",
         )

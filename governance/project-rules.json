@@ -2,81 +2,51 @@
   "schema_version": 1,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-narrative-first-skill",
-  "ruleset_version": "2026-07-26.3",
+  "ruleset_id": "ruleset-2026-07-26-car-story-animatic",
+  "ruleset_version": "2026-07-26.4",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
-      "id": "narrative-first-scroll-story-skill",
-      "statement": "The project-level build-scroll-3d-product-story skill must treat model inspection as a prerequisite and then enforce case research, multiple creative routes, an authored five-shot script, an animatic, explicit narrative confirmation, and only then runtime implementation.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "deliver-car-story-preproduction",
+      "statement": "Apply build-scroll-3d-product-story to the current car GLB and deliver a reviewable preproduction package through a fixed-duration five-shot animatic, without entering runtime implementation.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
-      "id": "evidence-backed-advertising-research",
-      "statement": "Creative development must record applicable advertising references with source URLs, narrative theses, transferable methods, and model-specific limitations before a route is selected.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "evidence-backed-car-advertising-board",
+      "statement": "Document applicable automotive or technical product advertising cases from primary or creator-owned sources, extracting narrative thesis, transferable methods, and limitations for this concept car model.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
-      "id": "multiple-creative-routes-before-selection",
-      "statement": "Creative development must compare at least two materially different routes and record the selected route; a generated explode-and-assemble preset is not a creative route.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "compare-car-creative-routes",
+      "statement": "Develop and compare at least two materially different car-story routes before selecting one candidate route for the animatic.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
-      "id": "authored-five-shot-narrative",
-      "statement": "The selected route must be expressed as exactly five continuous shots, each with a narrative purpose, viewer takeaway, action, camera, lighting, layout, transition, rhythm, hold, copy, and truth constraints.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "author-continuous-five-shot-script",
+      "statement": "Author exactly five continuous shots with a narrative purpose, viewer takeaway, model action, camera, lighting, layout, transitions, rhythm, hold, copy, and truth constraints.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
-      "id": "animatic-before-runtime",
-      "statement": "A reviewable animatic with a fixed duration and evidence of review must exist after the five-shot script and before narrative confirmation or runtime manifest generation.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "bound-story-to-current-car-model",
+      "statement": "Base close-ups and component language on inspected GLB nodes and visible geometry; do not claim a verified production powertrain, manufacturing sequence, or engineering function that the concept asset does not establish.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
-      "id": "external-narrative-confirmation",
-      "statement": "Narrative confirmation must identify the confirming person or role and durable evidence; the implementing agent must not self-approve its own route, script, or animatic.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "deliver-fixed-duration-animatic",
+      "statement": "Deliver a fixed-duration five-shot animatic that visibly expresses the selected route, camera intent, lighting progression, transitions, and comprehension holds.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
-      "id": "fail-closed-runtime-generation",
-      "statement": "Runtime-story generation and implementation instructions must fail closed when the ordered creative-development record is missing, incomplete, unapproved, or inconsistent with the selected route.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "pending-confirmation-blocks-runtime",
+      "statement": "The preproduction record must remain pending external confirmation; runtime-story generation must reject it until the user explicitly approves the route, script, and animatic.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
-      "id": "bounded-model-truth",
-      "statement": "Research, scripts, and animation must stay within model and product evidence, record prohibited claims, and avoid inventing engineering function, assembly order, or product facts.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
-    },
-    {
-      "id": "generic-runtime-after-approval",
-      "statement": "After narrative confirmation, keep product-specific choreography and content in approved artifacts while preserving a generic deterministic, reversible, demand-rendered runtime with poster and reduced-motion fallbacks.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
-    },
-    {
-      "id": "performance-evidence-after-narrative",
-      "statement": "Measure asset transfer and browser frame behavior only after the approved narrative is implemented; performance optimization must not substitute for or silently alter the confirmed shot intent.",
-      "development_entry_ids": [
-        "build-narrative-first-scroll-story-skill"
-      ]
+      "id": "do-not-change-public-car-runtime",
+      "statement": "Do not redesign, deploy, publish, or claim acceptance of the current WebGL car page during this preproduction task.",
+      "development_entry_ids": ["develop-car-story-animatic"]
     }
   ]
 }

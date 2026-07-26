@@ -1,0 +1,335 @@
+{
+  "$schema": "../../.codex/skills/build-scroll-3d-product-story/assets/creative-development.schema.json",
+  "schemaVersion": 1,
+  "planId": "car-concept-precision-becomes-presence",
+  "modelAudit": {
+    "modelPath": "docs/experiment/assets/models/car-concept-web.glb",
+    "capability": "structured-named-parts",
+    "truths": [
+      "模型包含 101 个节点、97 个网格节点和 109 个 Draco 压缩图元。",
+      "轮圈、制动盘、方向盘、座椅、车门、玻璃和机盖具有可定位的语义节点。",
+      "模型使用 14 张 KTX2/Basis 纹理，适合继续作为实时 WebGL 资产。"
+    ],
+    "limitations": [
+      "模型没有动画、骨骼或相机。",
+      "Engine 节点只有 60 个三角形，不足以支撑可信的发动机英雄特写。",
+      "模型没有驾驶者、空气动力、制造顺序或车辆性能数据。"
+    ],
+    "prohibitedClaims": [
+      "不得声称马力、速度、制动距离、安全等级或人体工学结论。",
+      "不得把视觉拆解或汇聚顺序描述为真实制造、维修或工程依赖顺序。",
+      "不得把红色光线描述为真实热量、能量流或仿真结果。"
+    ]
+  },
+  "research": {
+    "caseStudies": [
+      {
+        "title": "Honda Cog",
+        "sourceUrl": "https://www.honda.co.uk/engineroom/cog/",
+        "narrativeThesis": "用连续机械因果关系表达工程系统，而不是让零件无动机运动。",
+        "transferableMethods": [
+          "每个动作都触发下一动作。",
+          "先建立单一可读关系，再扩大系统尺度。"
+        ],
+        "limitations": [
+          "本项目不能复制 Rube Goldberg 机械关系，只迁移视觉因果原则。"
+        ]
+      },
+      {
+        "title": "Mercedes-AMG ONE — Relative",
+        "sourceUrl": "https://www.relative.berlin/project/mercedes-benz",
+        "narrativeThesis": "每个段落只承担一个系统级观念，并用影像把不可见关系变成可见秩序。",
+        "transferableMethods": [
+          "一镜一命题。",
+          "灯光焦点承担信息层级。"
+        ],
+        "limitations": [
+          "当前模型没有可验证的动力或空气动力数据。"
+        ]
+      },
+      {
+        "title": "Formula E Gen2 Car Exploded",
+        "sourceUrl": "https://www.behance.net/gallery/76199617/Formula-E-Gen2-Car-Exploded?locale=en_US",
+        "narrativeThesis": "拆解镜头服务于未来赛车技术的整体认知，而不是展示网格数量。",
+        "transferableMethods": [
+          "按系统层而非单网格爆炸。",
+          "保持车辆整体轮廓作为空间参照。"
+        ],
+        "limitations": [
+          "当前概念车不是 Formula E 赛车，不能迁移赛事或动力声明。"
+        ]
+      },
+      {
+        "title": "Toyota LC150 Product Movies",
+        "sourceUrl": "https://www.3ds.com/insights/customer-stories/toyota-lc150-movies",
+        "narrativeThesis": "先确定传播范围与功能命题，再选择外观、透视与穿越镜头。",
+        "transferableMethods": [
+          "叙事目标先于镜头技巧。",
+          "外部形态和内部结构承担不同认知任务。"
+        ],
+        "limitations": [
+          "当前模型没有 Toyota 项目所拥有的工程验证资料。"
+        ]
+      },
+      {
+        "title": "Petrol Ofisi Adaptech Maxima",
+        "sourceUrl": "https://www.lhvfx.com/project/adaptech-maxima",
+        "narrativeThesis": "用宏观到微观再回到宏观的连续尺度变化，把技术解释收束为产品形象。",
+        "transferableMethods": [
+          "细节开场、系统展开、英雄帧收束。",
+          "使用形状和运动方向完成连续转场。"
+        ],
+        "limitations": [
+          "本项目不使用流体或分子视觉隐喻。"
+        ]
+      }
+    ]
+  },
+  "creativeRoutes": [
+    {
+      "id": "precision-becomes-presence",
+      "title": "Precision Becomes Presence",
+      "thesis": "从一个可信机械细节出发，让精密关系逐层形成完整产品的存在感。",
+      "audienceTakeaway": "观众先理解车辆由有秩序的系统构成，最后才获得完整形象。",
+      "shotArc": [
+        "contact",
+        "human-core",
+        "system",
+        "convergence",
+        "presence"
+      ],
+      "modelFit": "轮圈、制动、方向盘、座椅、车门和机盖节点均可控，同时避开低细节发动机。",
+      "risks": [
+        "制动只能表达视觉控制概念，不能声明性能。",
+        "汇聚顺序必须明确是叙事顺序。"
+      ]
+    },
+    {
+      "id": "beneath-the-surface",
+      "title": "Beneath The Surface",
+      "thesis": "完整外形之下，是有秩序的内部空间。",
+      "audienceTakeaway": "外壳不是装饰，而是内部系统关系的最终边界。",
+      "shotArc": [
+        "silhouette",
+        "opening",
+        "layers",
+        "interior-journey",
+        "closure"
+      ],
+      "modelFit": "外观和车门结构完整，对内部机械细节的要求低。",
+      "risks": [
+        "容易退化为普通 X-Ray 或 Exploded View。",
+        "缺少强记忆点时会重复现有页面问题。"
+      ]
+    },
+    {
+      "id": "designed-around-the-driver",
+      "title": "Designed Around The Driver",
+      "thesis": "结构围绕驾驶者所在的空间形成。",
+      "audienceTakeaway": "整车外形可以被理解为驾驶空间的外部表达。",
+      "shotArc": [
+        "controls",
+        "driver-space",
+        "vehicle-scale",
+        "enclosure",
+        "external-expression"
+      ],
+      "modelFit": "座舱节点丰富，方向盘、座椅、踏板和仪表可辨识。",
+      "risks": [
+        "没有驾驶者模型或人体工学数据。",
+        "可能削弱车辆的机械精密感。"
+      ]
+    }
+  ],
+  "selectedRouteId": "precision-becomes-presence",
+  "shots": [
+    {
+      "id": "contact",
+      "order": 1,
+      "range": [0, 0.1625],
+      "narrativePurpose": "从模型最可信的机械细节建立精密的第一印象。",
+      "viewerTakeaway": "性能认知从车辆与地面的接触点开始。",
+      "startState": "黑灰空间和弱红色轮廓。",
+      "endState": "左前轮完整圆形成为画面唯一焦点。",
+      "action": "轮圈与制动结构在克制的弧线和红色反射中被揭示。",
+      "activeComponents": ["WheelFrontLRim", "WheelFrontLBrakeDisc", "WheelFrontLBrakePad"],
+      "camera": {
+        "framing": "微距近景，中长焦压缩背景。",
+        "movement": "沿轮圈外缘小幅顺时针弧移。"
+      },
+      "lighting": "窄冷色轮廓光定义金属圆形，红色只作转场线索。",
+      "layout": "轮圈占左侧主体，右侧保留暗部呼吸空间，字幕位于左下安全区。",
+      "transitionIn": "0.5 秒暗场揭示。",
+      "transitionOut": "轮圈圆形匹配方向盘圆形。",
+      "rhythm": "建立快，理解停顿长。",
+      "hold": "结尾保持完整圆形约 0.5 秒。",
+      "content": {
+        "eyebrow": "01 / PRECISION BECOMES PRESENCE",
+        "title": "CONTACT",
+        "body": "性能，始于接触地面的那一点。",
+        "cta": null
+      },
+      "truthConstraints": [
+        "不出现制动力或刹车距离声明。",
+        "红色反射不代表热量或能量流。"
+      ]
+    },
+    {
+      "id": "human-core",
+      "order": 2,
+      "range": [0.1625, 0.35],
+      "narrativePurpose": "把机械精密与驾驶者所在空间连接起来。",
+      "viewerTakeaway": "车辆系统围绕驾驶核心组织。",
+      "startState": "轮圈圆形占据视觉中心。",
+      "endState": "方向盘、座椅与座舱骨架形成完整空间关系。",
+      "action": "圆形匹配后，镜头从方向盘向后滑动揭示驾驶舱。",
+      "activeComponents": ["InteriorSteeringCylinder", "InteriorSteeringWheel01", "InteriorSeatsColor1", "InteriorCage", "BodyWindshield"],
+      "camera": {
+        "framing": "方向盘近景退到座舱中景。",
+        "movement": "后滑并轻微上升，不穿过实心表面。"
+      },
+      "lighting": "局部方向盘光扩展为座舱侧光，红色座椅是第二焦点。",
+      "layout": "座舱结构占据画面中右部，字幕保持左下。",
+      "transitionIn": "轮圈与方向盘圆形 Match Cut。",
+      "transitionOut": "座舱纵向线条扩展为整车结构轴线。",
+      "rhythm": "先确认方向盘，再稳定后退揭示。",
+      "hold": "完整座舱关系保持约 0.75 秒。",
+      "content": {
+        "eyebrow": "02 / PRECISION BECOMES PRESENCE",
+        "title": "HUMAN CORE",
+        "body": "每一个系统，都围绕驾驶者组织。",
+        "cta": null
+      },
+      "truthConstraints": [
+        "不声称人体工学、舒适度或安全等级。",
+        "驾驶核心是叙事概念，不是工程系统名称。"
+      ]
+    },
+    {
+      "id": "system",
+      "order": 3,
+      "range": [0.35, 0.5625],
+      "narrativePurpose": "证明复杂结构可以按层级理解，而不是随机散落。",
+      "viewerTakeaway": "轮组、驾驶空间和外壳是相互关联的系统层。",
+      "startState": "座舱骨架的纵向关系被建立。",
+      "endState": "三类系统在整车轮廓参照中完成可读分层。",
+      "action": "四轮、座舱和外壳沿少数轴线分开，焦点依次移动。",
+      "activeComponents": ["WheelFrontL", "WheelFrontR", "WheelRearL", "WheelRearR", "Interior", "BodyHood", "BodyDoorLColor1", "BodyDoorRColor1"],
+      "camera": {
+        "framing": "整车三分之四解剖全景。",
+        "movement": "稳定的 12–18 度解释性弧线。"
+      },
+      "lighting": "主光按接地点、驾驶空间、外部形态三次转移。",
+      "layout": "保持整车中心轮廓，系统沿左右和垂直方向分层。",
+      "transitionIn": "座舱轴线扩展为整车空间基准。",
+      "transitionOut": "外壳边缘开始向结构基准回收。",
+      "rhythm": "每个系统一拍，切光后留理解停顿。",
+      "hold": "每次焦点转移后保持约 0.25 秒。",
+      "content": {
+        "eyebrow": "03 / PRECISION BECOMES PRESENCE",
+        "title": "SYSTEM",
+        "body": "结构、控制与运动，展开为可读的功能。",
+        "cta": null
+      },
+      "truthConstraints": [
+        "系统分类只依据节点与可见空间关系。",
+        "不把顺序描述为制造、维修或工程依赖顺序。"
+      ]
+    },
+    {
+      "id": "convergence",
+      "order": 4,
+      "range": [0.5625, 0.8125],
+      "narrativePurpose": "把系统认知转成秩序形成完整产品的高潮。",
+      "viewerTakeaway": "独立关系最终服务于一个整体意图。",
+      "startState": "轮组、座舱和外壳仍处于分层状态。",
+      "endState": "除最后表面光外，车辆已经完整闭合。",
+      "action": "轮组、座舱与外部表面分三组沿结构基准汇聚。",
+      "activeComponents": ["Axles", "WheelFrontL", "WheelFrontR", "WheelRearL", "WheelRearR", "Interior", "BodyHood", "BodyWindshield", "BodyDoorLColor1", "BodyDoorRColor1"],
+      "camera": {
+        "framing": "全景三分之四，逐渐进入低机位销售角度。",
+        "movement": "与组件汇聚方向相反的连续弧线。"
+      },
+      "lighting": "内部解释光逐渐转为车身表面光，每组到位只产生短边缘亮度变化。",
+      "layout": "车辆从分层状态收拢到画面中心，左下字幕不遮挡主结构。",
+      "transitionIn": "外壳边缘回收触发整体汇聚。",
+      "transitionOut": "最后表面闭合触发完整车身主光。",
+      "rhythm": "三段加速汇聚，在最终闭合前停顿。",
+      "hold": "闭合前约 0.35 秒，闭合后约 0.45 秒。",
+      "content": {
+        "eyebrow": "04 / PRECISION BECOMES PRESENCE",
+        "title": "CONVERGENCE",
+        "body": "精密，让每个部件回到同一个意图。",
+        "cta": null
+      },
+      "truthConstraints": [
+        "明确这是视觉汇聚顺序。",
+        "不描述为真实生产装配流程。"
+      ]
+    },
+    {
+      "id": "presence",
+      "order": 5,
+      "range": [0.8125, 1],
+      "narrativePurpose": "把技术解释收束成稳定的产品形象。",
+      "viewerTakeaway": "精密关系最终形成完整、可信的存在感。",
+      "startState": "完整车辆仍处于解释性灯光。",
+      "endState": "红色车身英雄帧完全静止并可长时间保持。",
+      "action": "组件停止，主光扫出曲面，相机完成最后微调后静止。",
+      "activeComponents": ["BodyUnderside"],
+      "camera": {
+        "framing": "低机位三分之四英雄全景。",
+        "movement": "前 1.3 秒完成 5–8 度微调，之后稳定。"
+      },
+      "lighting": "单一主光定义红色车身曲面，轮廓光分离车顶和车门。",
+      "layout": "完整车辆占据画面主体，暗背景保留稳定负空间。",
+      "transitionIn": "表面闭合触发主光。",
+      "transitionOut": "无，保持最终状态。",
+      "rhythm": "快速完成主光，随后长英雄停顿。",
+      "hold": "最后约 1.7 秒完全稳定。",
+      "content": {
+        "eyebrow": "05 / PRECISION BECOMES PRESENCE",
+        "title": "PRESENCE",
+        "body": "精密，最终成为存在感。",
+        "cta": null
+      },
+      "truthConstraints": [
+        "不出现品牌、速度、马力或生产承诺。",
+        "最终句只总结视觉命题。"
+      ]
+    }
+  ],
+  "animatic": {
+    "uri": "https://app.chatcut.io/editor/5e30ef8f-f43f-4642-a3db-29c5fe360c7a",
+    "kind": "animatic-video",
+    "durationSeconds": 16,
+    "reviewed": true,
+    "reviewNotes": [
+      "已检查 ChatCut 云渲染的第 12、90、180、300、420 帧实际像素，五个镜头命题与画面焦点一致。",
+      "五镜头按 78、90、102、120、90 帧编排，总计 480 帧、30fps，并使用四个 8 帧溶接。",
+      "1080p H.264 导出完成，renderId 为 4dd4efad-23f4-4413-8b4e-58e7616acdbc，文件大小 6422178 字节。",
+      "本地审片文件：D:/Users/luoxu/Downloads/car-concept-precision-becomes-presence-animatic.mp4。"
+    ]
+  },
+  "confirmation": {
+    "status": "pending"
+  },
+  "phaseHistory": [
+    {
+      "phase": "case-research",
+      "completedAt": "2026-07-26T03:00:00Z"
+    },
+    {
+      "phase": "creative-routes",
+      "completedAt": "2026-07-26T03:08:00Z"
+    },
+    {
+      "phase": "five-shot-script",
+      "completedAt": "2026-07-26T03:16:00Z"
+    },
+    {
+      "phase": "animatic",
+      "completedAt": "2026-07-26T03:39:58Z"
+    }
+  ]
+}
