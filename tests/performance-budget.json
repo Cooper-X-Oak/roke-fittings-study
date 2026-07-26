@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "route": "/experiment/",
+  "viewport": {
+    "width": 1440,
+    "height": 1000,
+    "deviceScaleFactor": 2
+  },
+  "network": {
+    "latencyMs": 80,
+    "downloadKbps": 4000,
+    "uploadKbps": 1000
+  },
+  "timings": {
+    "posterVisibleMs": 1500,
+    "modelRequestStartMs": 500,
+    "lcpMs": 2500,
+    "first3dFrameMs": 5000,
+    "interactiveReadyMs": 5500,
+    "scrollResponseMs": 200
+  },
+  "stability": {
+    "cls": 0.1,
+    "settleMs": 1000,
+    "observationMs": 1000,
+    "maxRafCallbacksAfterSettle": 2,
+    "maxSingleLongTaskMs": 200,
+    "maxTotalLongTaskMs": 500,
+    "maxPendingRafAfterSettle": 0
+  },
+  "rendering": {
+    "maxDrawingBufferPixels": 3686400,
+    "maxEffectivePixelRatio": 1.5,
+    "minExplodedRenderedProgress": 0.65,
+    "maxReassembledRenderedProgress": 0.02,
+    "minSpatialSignatureLength": 8,
+    "minSpatialSignatureDelta": 0.05,
+    "maxReverseSpatialSignatureDelta": 0.02
+  },
+  "assets": {
+    "maxModelBytes": 3145728,
+    "maxPosterBytes": 250000,
+    "maxCriticalJavaScriptBytes": 1250000,
+    "maxDecoderWasmBytes": 1000000,
+    "maxInitialRequestCount": 12,
+    "maxInitialTransferBytes": 5000000
+  },
+  "requiredMarks": [
+    "roke:poster-visible",
+    "roke:model-request-start",
+    "roke:model-download-end",
+    "roke:model-decoded",
+    "roke:shader-compiled",
+    "roke:first-3d-frame",
+    "roke:interactive-ready"
+  ]
+}

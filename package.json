@@ -1,0 +1,17 @@
+{
+  "name": "roke-fittings-study",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "serve:test": "node scripts/serve-static.mjs docs 4173",
+    "test:e2e": "playwright test",
+    "test:e2e:3d": "playwright test tests/e2e/3d-performance.spec.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1"
+  }
+}
