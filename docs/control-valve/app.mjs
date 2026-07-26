@@ -117,12 +117,13 @@ const GROUP_COLORS = {
   PRODUCTION_DETAILS: 0x5f656a,
 };
 
-const TRIM_SEPARATION_WORLD = [-0.54, -0.18, 0.18, 0.54];
-const BODY_OPEN_OFFSET_WORLD = 0.34;
-const ACTUATOR_OPEN_OFFSET_WORLD = -0.78;
-const SUPPORT_OPEN_OFFSET_WORLD = -0.42;
-const DETAILS_OPEN_OFFSET_WORLD = 0.22;
-const STEM_OPEN_OFFSET_WORLD = 0.18;
+const TRIM_SEPARATION_WORLD = [-1.35, -0.45, 0.45, 1.35];
+const BODY_OPEN_OFFSET_WORLD = 0.92;
+const ACTUATOR_OPEN_OFFSET_WORLD = -1.75;
+const ACTUATOR_SEAT_OFFSET_WORLD = 0.16;
+const SUPPORT_OPEN_OFFSET_WORLD = -0.9;
+const DETAILS_OPEN_OFFSET_WORLD = 0.64;
+const STEM_OPEN_OFFSET_WORLD = 0.72;
 const POSITION_WELD_PRECISION = 10000;
 
 let cameraPath;
@@ -475,7 +476,8 @@ function applyState(state) {
   const actuator = groups.get("PNEUMATIC_ACTUATOR");
   actuator.node.position.z =
     actuator.basePosition.z +
-    (ACTUATOR_OPEN_OFFSET_WORLD * (1 - state.product.actuatorAssembly)) /
+    (ACTUATOR_OPEN_OFFSET_WORLD * (1 - state.product.actuatorAssembly) +
+      ACTUATOR_SEAT_OFFSET_WORLD * state.product.actuatorAssembly) /
       modelScale;
 
   const support = groups.get("SEALS_SUPPORT");
@@ -677,7 +679,61 @@ function stateSnapshot() {
     groups: [...groups].map(([name, entry]) => ({
       name,
       position: entry.node.position.toArray(),
+      worldPosition: entry.node.getWorldPosition(new THREE.Vector3()).toArray(),
     })),
+  };
+}
+
+function canonicalMotionSummary() {
+  const states = Array.from(
+    { length: cameraPath.totalFrames },
+    (_, frame) => samplePath(frame / (cameraPath.totalFrames - 1)),
+  );
+  const vectorDistance = (left, right) =>
+    Math.hypot(...left.map((value, index) => value - right[index]));
+  const productDelta = (left, right) =>
+    vectorDistance(left.trimAssembly, right.trimAssembly) +
+    Math.abs(left.stemAssembly - right.stemAssembly) +
+    Math.abs(left.bodyClosure - right.bodyClosure) +
+    Math.abs(left.actuatorAssembly - right.actuatorAssembly) +
+    Math.abs(left.detailAssembly - right.detailAssembly) +
+    Math.abs(left.productYawDegrees - right.productYawDegrees);
+  let cameraPathLength = 0;
+  let maximumCameraStep = 0;
+  let maximumTargetStep = 0;
+  let coordinatedFrameCount = 0;
+  let coordinatedIntervalCount = 0;
+  let insideCoordinatedInterval = false;
+  for (let index = 1; index < states.length; index += 1) {
+    const cameraStep = vectorDistance(
+      states[index - 1].camera.position,
+      states[index].camera.position,
+    );
+    const targetStep = vectorDistance(
+      states[index - 1].camera.target,
+      states[index].camera.target,
+    );
+    const coordinated =
+      cameraStep > 0.001 &&
+      productDelta(states[index - 1].product, states[index].product) > 0.001;
+    cameraPathLength += cameraStep;
+    maximumCameraStep = Math.max(maximumCameraStep, cameraStep);
+    maximumTargetStep = Math.max(maximumTargetStep, targetStep);
+    if (coordinated) {
+      coordinatedFrameCount += 1;
+      if (!insideCoordinatedInterval) coordinatedIntervalCount += 1;
+    }
+    insideCoordinatedInterval = coordinated;
+  }
+  const yawValues = states.map((state) => state.product.productYawDegrees);
+  return {
+    cameraPathLength,
+    maximumCameraStep,
+    maximumTargetStep,
+    productYawRange:
+      Math.max(...yawValues) - Math.min(...yawValues),
+    coordinatedFrameCount,
+    coordinatedIntervalCount,
   };
 }
 
@@ -699,6 +755,7 @@ window.__CONTROL_VALVE_METRICS__ = {
     return stateSnapshot();
   },
   snapshot: stateSnapshot,
+  canonicalMotionSummary,
 };
 
 forwardButton.addEventListener("click", () => startPlayback(1));

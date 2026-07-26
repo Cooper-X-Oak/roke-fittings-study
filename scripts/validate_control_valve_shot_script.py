@@ -105,7 +105,10 @@ for shot in shots[:4]:
         fail(f"beat {shot['id']} uses the hero orbit before the final beat")
 
 final_camera = shots[-1]["camera"]["movement"]
-if "唯一一次" not in final_camera or "二十四度" not in final_camera:
+if (
+    "唯一一次" not in final_camera
+    or not any(angle in final_camera for angle in ("二十四度", "二十六度"))
+):
     fail("the final beat must contain the single bounded hero arc")
 
 for required_phrase in (

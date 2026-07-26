@@ -2,9 +2,9 @@
   "schema_version": 2,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-grey-animatic",
-  "ruleset_version": "2026-07-26.14",
-  "validation_contract_version": "2026-07-26.14",
+  "ruleset_id": "ruleset-2026-07-26-control-valve-kinetic-animatic",
+  "ruleset_version": "2026-07-26.15",
+  "validation_contract_version": "2026-07-26.15",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
@@ -37,6 +37,9 @@
         ["validate-bidirectional-axis-continuity"],
         ["validate-bidirectional-axis-continuity", "reverse-order-proof"],
         ["validate-bidirectional-axis-continuity", "round-trip-pose-proof"],
+        ["require-commercial-motion-amplitude-and-coordination"],
+        ["require-commercial-motion-amplitude-and-coordination", "motion-amplitude-proof"],
+        ["require-commercial-motion-amplitude-and-coordination", "coordinated-action-proof"],
         ["stop-after-grey-animatic-validation"],
         ["stop-after-grey-animatic-validation", "animatic-only-change-scope-proof"]
       ],

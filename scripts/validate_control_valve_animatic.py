@@ -106,6 +106,44 @@ target_steps = [
 if max(target_steps) > 0.04:
     fail("camera target jumps away from the continuous mechanical axis")
 
+camera_path_length = sum(camera_steps)
+yaw_values = [
+    frame["product"]["productYawDegrees"]
+    for frame in frames
+]
+product_yaw_range = max(yaw_values) - min(yaw_values)
+if camera_path_length < 10:
+    fail("camera path remains too restrained for the kinetic Animatic")
+if product_yaw_range < 20:
+    fail("product observation angle does not change materially")
+
+coordinated_flags = []
+for left, right, camera_step in zip(frames, frames[1:], camera_steps):
+    product_delta = (
+        dist(
+            left["product"]["trimAssembly"],
+            right["product"]["trimAssembly"],
+        )
+        + abs(left["product"]["stemAssembly"] - right["product"]["stemAssembly"])
+        + abs(left["product"]["bodyClosure"] - right["product"]["bodyClosure"])
+        + abs(
+            left["product"]["actuatorAssembly"]
+            - right["product"]["actuatorAssembly"]
+        )
+        + abs(left["product"]["detailAssembly"] - right["product"]["detailAssembly"])
+        + abs(
+            left["product"]["productYawDegrees"]
+            - right["product"]["productYawDegrees"]
+        )
+    )
+    coordinated_flags.append(camera_step > 0.001 and product_delta > 0.001)
+coordinated_intervals = sum(
+    active and (index == 0 or not coordinated_flags[index - 1])
+    for index, active in enumerate(coordinated_flags)
+)
+if coordinated_intervals < 4:
+    fail("camera and product motion lack four authored handoff intervals")
+
 for shot in shots:
     hold_length = 12 if shot["id"] != "product-presence" else 81
     hold = frames[shot["endFrame"] - hold_length + 1 : shot["endFrame"] + 1]
@@ -161,6 +199,22 @@ if separation.get("maximumRadialAxisError", 1) > 0.002:
     fail("trim separation leaves the declared central mechanical axis")
 if separation.get("allProjectedOnScreen") is not True:
     fail("the separated trim layers are not all visible in the authored frame")
+if separation.get("axisSpan", 0) < 3:
+    fail("trim separation span remains too small for a legible commercial beat")
+
+motion = evidence.get("motionAmplitude", {})
+if motion.get("cameraPathLength", 0) < 10:
+    fail("browser evidence does not prove the enhanced camera path")
+if motion.get("maximumCameraStep", 1) > 0.12:
+    fail("enhanced camera path exceeds the comfort step bound")
+if motion.get("maximumTargetStep", 1) > 0.04:
+    fail("enhanced camera target exceeds the continuous-axis bound")
+if motion.get("productYawRange", 0) < 20:
+    fail("browser evidence does not prove a multi-angle product presentation")
+if motion.get("coordinatedIntervalCount", 0) < 4:
+    fail("browser evidence lacks coordinated camera/product action intervals")
+if motion.get("actuatorTravel", 0) < 1.5:
+    fail("actuator descent and seating travel remains visually insignificant")
 
 closure_samples = evidence.get("closureSamples", [])
 if [sample.get("id") for sample in closure_samples] != [
@@ -318,6 +372,7 @@ if unexpected:
 
 print(
     "PASS: 540 deterministic grey-animatic frames prove four real trim "
-    "geometry islands, readable body closure, exact forward/reverse beat order, "
-    "zero round-trip drift and a stable final fifteen-percent hero hold"
+    "geometry islands, commercial motion amplitude, five coordinated action "
+    "intervals, readable body closure, exact forward/reverse beat order, zero "
+    "round-trip drift and a stable final fifteen-percent hero hold"
 )

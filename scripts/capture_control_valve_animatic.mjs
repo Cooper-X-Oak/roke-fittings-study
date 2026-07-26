@@ -168,6 +168,9 @@ try {
   const ready = await page.evaluate(() =>
     window.__CONTROL_VALVE_METRICS__.waitForReady(),
   );
+  const canonicalMotion = await page.evaluate(() =>
+    window.__CONTROL_VALVE_METRICS__.canonicalMotionSummary(),
+  );
   await page.evaluate(() =>
     window.__CONTROL_VALVE_METRICS__.setProgressForTest(0),
   );
@@ -275,6 +278,17 @@ try {
     ...separatedWorldCenters.map(([x, _y, z]) => Math.hypot(x, z)),
   );
   const axisYValues = separatedWorldCenters.map((center) => center[1]);
+  const assembledSnapshot = await page.evaluate(() =>
+    window.__CONTROL_VALVE_METRICS__.setProgressForTest(1),
+  );
+  const groupWorldPosition = (snapshot, name) =>
+    snapshot.groups.find((group) => group.name === name)?.worldPosition;
+  const vectorDistance = (left, right) =>
+    Math.hypot(...left.map((value, index) => value - right[index]));
+  const actuatorTravel = vectorDistance(
+    groupWorldPosition(separatedSnapshot, "PNEUMATIC_ACTUATOR"),
+    groupWorldPosition(assembledSnapshot, "PNEUMATIC_ACTUATOR"),
+  );
 
   const result = {
     schemaVersion: 2,
@@ -301,6 +315,11 @@ try {
       allProjectedOnScreen: separatedSnapshot.trimIslands.every(
         (item) => item.projectedOnScreen,
       ),
+      axisSpan: Math.max(...axisYValues) - Math.min(...axisYValues),
+    },
+    motionAmplitude: {
+      ...canonicalMotion,
+      actuatorTravel,
     },
     closureSamples,
     roundTrip,

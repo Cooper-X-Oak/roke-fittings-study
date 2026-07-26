@@ -57,17 +57,17 @@
     {
       "frame": 0,
       "position": [
-        3.25,
-        -0.85,
-        4.05
+        3.8,
+        -1.4,
+        6.2
       ],
       "target": [
         0,
-        -0.85,
+        -0.65,
         0
       ],
       "roll": 0,
-      "fov": 28,
+      "fov": 32,
       "trimAssembly": [
         0,
         0,
@@ -79,7 +79,7 @@
       "bodyOpacity": 0.1,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": -8,
       "coreEmphasis": 0.25,
       "keyLight": 0.62,
       "rimLight": 0.9,
@@ -89,17 +89,17 @@
     {
       "frame": 42,
       "position": [
-        3.45,
-        -0.85,
-        4.3
+        3.25,
+        -0.65,
+        4.05
       ],
       "target": [
         0,
-        -0.85,
+        -0.6,
         0
       ],
       "roll": 0,
-      "fov": 28.5,
+      "fov": 27.5,
       "trimAssembly": [
         0,
         0,
@@ -111,7 +111,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": -3,
       "coreEmphasis": 1,
       "keyLight": 0.68,
       "rimLight": 0.94,
@@ -121,17 +121,17 @@
     {
       "frame": 75,
       "position": [
-        3.45,
-        -0.85,
-        4.3
+        3.25,
+        -0.65,
+        4.05
       ],
       "target": [
         0,
-        -0.85,
+        -0.6,
         0
       ],
       "roll": 0,
-      "fov": 28.5,
+      "fov": 27.5,
       "trimAssembly": [
         0,
         0,
@@ -143,7 +143,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": -3,
       "coreEmphasis": 1,
       "keyLight": 0.68,
       "rimLight": 0.94,
@@ -153,17 +153,17 @@
     {
       "frame": 76,
       "position": [
-        3.45,
-        -0.85,
-        4.3
+        3.25,
+        -0.65,
+        4.05
       ],
       "target": [
         0,
-        -0.85,
+        -0.6,
         0
       ],
       "roll": 0,
-      "fov": 28.5,
+      "fov": 27.5,
       "trimAssembly": [
         0,
         0,
@@ -175,7 +175,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": -3,
       "coreEmphasis": 1,
       "keyLight": 0.68,
       "rimLight": 0.94,
@@ -185,17 +185,17 @@
     {
       "frame": 104,
       "position": [
-        3.58,
-        -0.8,
-        4.48
+        3.75,
+        -0.4,
+        4.15
       ],
       "target": [
         0,
-        -0.82,
+        -0.5,
         0
       ],
       "roll": 0,
-      "fov": 28.8,
+      "fov": 28,
       "trimAssembly": [
         1,
         0,
@@ -217,17 +217,17 @@
     {
       "frame": 132,
       "position": [
-        3.7,
-        -0.75,
-        4.64
+        4.1,
+        -0.1,
+        4.5
       ],
       "target": [
         0,
-        -0.8,
+        -0.3,
         0
       ],
       "roll": 0,
-      "fov": 29,
+      "fov": 28.5,
       "trimAssembly": [
         1,
         1,
@@ -239,7 +239,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": 4,
       "coreEmphasis": 0.86,
       "keyLight": 0.73,
       "rimLight": 0.95,
@@ -249,17 +249,17 @@
     {
       "frame": 160,
       "position": [
-        3.8,
-        -0.7,
-        4.78
+        3.6,
+        0.2,
+        5.15
       ],
       "target": [
         0,
-        -0.78,
+        -0.1,
         0
       ],
       "roll": 0,
-      "fov": 29.2,
+      "fov": 29,
       "trimAssembly": [
         1,
         1,
@@ -271,7 +271,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": 8,
       "coreEmphasis": 0.8,
       "keyLight": 0.76,
       "rimLight": 0.96,
@@ -281,13 +281,13 @@
     {
       "frame": 184,
       "position": [
-        3.9,
-        -0.65,
-        4.92
+        2.8,
+        0.45,
+        5.8
       ],
       "target": [
         0,
-        -0.75,
+        0.05,
         0
       ],
       "roll": 0,
@@ -303,7 +303,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": 12,
       "coreEmphasis": 0.76,
       "keyLight": 0.78,
       "rimLight": 0.98,
@@ -313,13 +313,13 @@
     {
       "frame": 204,
       "position": [
-        3.9,
-        -0.65,
-        4.92
+        2.8,
+        0.45,
+        5.8
       ],
       "target": [
         0,
-        -0.75,
+        0.05,
         0
       ],
       "roll": 0,
@@ -335,7 +335,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": 12,
       "coreEmphasis": 0.76,
       "keyLight": 0.78,
       "rimLight": 0.98,
@@ -345,13 +345,13 @@
     {
       "frame": 205,
       "position": [
-        3.9,
-        -0.65,
-        4.92
+        2.8,
+        0.45,
+        5.8
       ],
       "target": [
         0,
-        -0.75,
+        0.05,
         0
       ],
       "roll": 0,
@@ -367,7 +367,7 @@
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 0,
+      "productYawDegrees": 12,
       "coreEmphasis": 0.76,
       "keyLight": 0.78,
       "rimLight": 0.98,
@@ -377,13 +377,13 @@
     {
       "frame": 244,
       "position": [
-        4.15,
-        -0.55,
-        5.18
+        3.5,
+        0.25,
+        5.9
       ],
       "target": [
         0,
-        -0.6,
+        -0.05,
         0
       ],
       "roll": 0,
@@ -399,7 +399,7 @@
       "bodyOpacity": 0.24,
       "actuatorAssembly": 0,
       "detailAssembly": 0.1,
-      "productYawDegrees": 0,
+      "productYawDegrees": 8,
       "coreEmphasis": 0.7,
       "keyLight": 0.82,
       "rimLight": 1,
@@ -409,13 +409,13 @@
     {
       "frame": 282,
       "position": [
-        4.45,
-        -0.42,
-        5.5
+        4.4,
+        0,
+        6.25
       ],
       "target": [
         0,
-        -0.45,
+        0,
         0
       ],
       "roll": 0,
@@ -431,7 +431,7 @@
       "bodyOpacity": 0.48,
       "actuatorAssembly": 0,
       "detailAssembly": 0.35,
-      "productYawDegrees": 0,
+      "productYawDegrees": 4,
       "coreEmphasis": 0.6,
       "keyLight": 0.88,
       "rimLight": 1.02,
@@ -441,13 +441,13 @@
     {
       "frame": 314,
       "position": [
-        4.72,
-        -0.28,
-        5.78
+        5.3,
+        0,
+        6.45
       ],
       "target": [
         0,
-        -0.3,
+        0.05,
         0
       ],
       "roll": 0,
@@ -473,13 +473,13 @@
     {
       "frame": 334,
       "position": [
-        4.72,
-        -0.28,
-        5.78
+        5.3,
+        0,
+        6.45
       ],
       "target": [
         0,
-        -0.3,
+        0.05,
         0
       ],
       "roll": 0,
@@ -505,13 +505,13 @@
     {
       "frame": 335,
       "position": [
-        4.72,
-        -0.28,
-        5.78
+        5.3,
+        0,
+        6.45
       ],
       "target": [
         0,
-        -0.3,
+        0.05,
         0
       ],
       "roll": 0,
@@ -537,13 +537,13 @@
     {
       "frame": 372,
       "position": [
-        5.08,
-        0.12,
-        6.2
+        5.9,
+        0.35,
+        6.1
       ],
       "target": [
         0,
-        -0.14,
+        0.2,
         0
       ],
       "roll": 0,
@@ -559,7 +559,7 @@
       "bodyOpacity": 1,
       "actuatorAssembly": 0.48,
       "detailAssembly": 0.78,
-      "productYawDegrees": 0,
+      "productYawDegrees": -4,
       "coreEmphasis": 0.18,
       "keyLight": 0.98,
       "rimLight": 1.08,
@@ -569,13 +569,13 @@
     {
       "frame": 402,
       "position": [
-        5.55,
-        0.28,
-        6.85
+        6.4,
+        0.45,
+        5.55
       ],
       "target": [
         0,
-        0,
+        0.25,
         0
       ],
       "roll": 0,
@@ -591,7 +591,7 @@
       "bodyOpacity": 1,
       "actuatorAssembly": 1,
       "detailAssembly": 1,
-      "productYawDegrees": 0,
+      "productYawDegrees": -8,
       "coreEmphasis": 0.08,
       "keyLight": 1,
       "rimLight": 1.12,
@@ -601,13 +601,13 @@
     {
       "frame": 420,
       "position": [
-        5.55,
-        0.28,
-        6.85
+        6.4,
+        0.45,
+        5.55
       ],
       "target": [
         0,
-        0,
+        0.25,
         0
       ],
       "roll": 0,
@@ -623,7 +623,7 @@
       "bodyOpacity": 1,
       "actuatorAssembly": 1,
       "detailAssembly": 1,
-      "productYawDegrees": 0,
+      "productYawDegrees": -8,
       "coreEmphasis": 0.08,
       "keyLight": 1,
       "rimLight": 1.12,
@@ -633,13 +633,13 @@
     {
       "frame": 421,
       "position": [
-        5.55,
-        0.28,
-        6.85
+        6.4,
+        0.45,
+        5.55
       ],
       "target": [
         0,
-        0,
+        0.25,
         0
       ],
       "roll": 0,
@@ -655,7 +655,7 @@
       "bodyOpacity": 1,
       "actuatorAssembly": 1,
       "detailAssembly": 1,
-      "productYawDegrees": 0,
+      "productYawDegrees": -8,
       "coreEmphasis": 0.08,
       "keyLight": 1,
       "rimLight": 1.12,
@@ -666,12 +666,12 @@
       "frame": 459,
       "position": [
         7.3,
-        0.28,
-        4.65
+        0.3,
+        3.8
       ],
       "target": [
         0,
-        0,
+        0.05,
         0
       ],
       "roll": 0,
@@ -687,7 +687,7 @@
       "bodyOpacity": 1,
       "actuatorAssembly": 1,
       "detailAssembly": 1,
-      "productYawDegrees": 0,
+      "productYawDegrees": -14,
       "coreEmphasis": 0.05,
       "keyLight": 1.02,
       "rimLight": 1.18,
@@ -698,12 +698,12 @@
       "frame": 539,
       "position": [
         7.3,
-        0.28,
-        4.65
+        0.3,
+        3.8
       ],
       "target": [
         0,
-        0,
+        0.05,
         0
       ],
       "roll": 0,
@@ -719,7 +719,7 @@
       "bodyOpacity": 1,
       "actuatorAssembly": 1,
       "detailAssembly": 1,
-      "productYawDegrees": 0,
+      "productYawDegrees": -14,
       "coreEmphasis": 0.05,
       "keyLight": 1.02,
       "rimLight": 1.18,

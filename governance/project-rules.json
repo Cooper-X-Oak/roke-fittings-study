@@ -2,8 +2,8 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-grey-animatic",
-  "ruleset_version": "2026-07-26.14",
+  "ruleset_id": "ruleset-2026-07-26-control-valve-kinetic-animatic",
+  "ruleset_version": "2026-07-26.15",
   "business_gate": {
     "development_entry_required": true
   },
@@ -92,6 +92,23 @@
           "id": "animatic-claim-boundary-proof",
           "node_type": "delivery_acceptance_supplement",
           "statement": "Acceptance must preserve the script truth constraints in visible copy, metadata and evidence."
+        }
+      ]
+    },
+    {
+      "id": "require-commercial-motion-amplitude-and-coordination",
+      "statement": "Increase the Animatic from restrained engineering motion to clearly legible commercial choreography: the trim layers must use materially larger axis-aligned travel, the camera must change distance and observation angle across the five beats, and part, camera, product-yaw and lighting actions must hand off in authored intervals instead of drifting uniformly.",
+      "development_entry_ids": ["author-control-valve-animatic"],
+      "children": [
+        {
+          "id": "motion-amplitude-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must quantify a larger trim separation span, non-trivial camera path length, multi-angle product yaw and actuator seating travel while keeping every per-frame camera and target step within comfort bounds."
+        },
+        {
+          "id": "coordinated-action-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove multiple intervals in which camera motion and a meaningful product-state change occur together, separated by authored comprehension holds, with exact deterministic reverse playback."
         }
       ]
     },
