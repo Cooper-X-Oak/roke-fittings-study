@@ -750,6 +750,20 @@ window.__CONTROL_VALVE_METRICS__ = {
     renderCount += 1;
     return stateSnapshot();
   },
+  setProgressAndCaptureForTest(value) {
+    playing = false;
+    targetProgress = THREE.MathUtils.clamp(value, 0, 1);
+    currentProgress = targetProgress;
+    const state = samplePath(currentProgress);
+    applyState(state);
+    scene.updateMatrixWorld(true);
+    renderer.render(scene, camera);
+    renderCount += 1;
+    return {
+      state: stateSnapshot(),
+      pngDataUrl: renderer.domElement.toDataURL("image/png"),
+    };
+  },
   startPlaybackForTest(direction) {
     startPlayback(direction >= 0 ? 1 : -1);
     return stateSnapshot();

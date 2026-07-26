@@ -1,49 +1,39 @@
 # 当前验收边界
 
-本阶段把已经批准的五节拍脚本翻译为固定时长灰模 Animatic，并验证：
+本阶段从已经通过的 18 秒、30 fps、540 状态灰模 Animatic 派生一个
+“预渲染视频由滚动寻帧控制”的真实浏览器实验，用于比较 GOP 3、6、10
+三种短关键帧间隔。实验不得改变五节拍叙事、相机、零件、灯光或真实性边界。
 
-1. `CASCADE_TRIM` 的实际解码几何能否拆出四个非空连通岛，使三级阀笼候选
-   与阀座候选具备独立镜头位移，而不是只改变发光；
-2. 阀体闭合期间，核心是否在建立位置关系前持续可读，且没有黑场或隐藏
-   相机迁移；
-3. 中央机械轴、相机和部件状态能否在正放、反放及往返取样中保持确定性。
-4. 零部件与相机是否具备商业镜头可感知的运动幅度，并形成错峰接力而非
-   全程等速漂移。
-
-本阶段不得生成 runtime story manifest、最终 WebGL 产品页、最终材质、
-性能结论、自动创意发布、合并或部署。
+本阶段允许生成无 UI 逐帧素材、三种匹配编码、Pages 实验路由和本机浏览器
+运行证据；不允许替换现有 GLB 路由、生成 runtime story manifest、作普遍
+性能结论、合并或部署。
 
 ## 必须满足
 
-- Camera previs 为固定 `30 fps`，每个 canonical frame 恰有一条完整状态；
-  五个节拍连续覆盖完整时间轴。
-- 每帧记录相机位置、目标、roll、FOV、焦距、完整部件状态、四个 trim
-  几何岛状态、阀体透明度、灯光、节拍身份和遮挡值。
-- `CASCADE_TRIM` 必须从真实解码几何得到四个非空连通岛；若只能把整个
-  `CASCADE_TRIM` 一起移动或只改变灯光，本阶段验收失败。
-- 四个几何岛只按相机可读的轴向顺序编号；未经独立证据不得断言每个岛
-  分别对应哪一个源 STEP 标签，也不得把镜头顺序描述为制造或维修顺序。
-- 阀体闭合区间必须存在“核心可读 → 阀体建立位置 → 最终闭合”的连续
-  透明度变化；全帧遮挡始终为零。
-- 正放必须依次观察五个批准节拍，反放必须以精确逆序观察五个节拍。
-- 同一进度的前后往返取样必须复现相机、焦距、阀体与所有活动部件状态，
-  不得累计漂移。
-- 分离状态下的 trim 轴向跨度不得低于 `3.0` 个世界单位，同时所有几何岛
-  保持在中央轴线与验证画面内。
-- 确定性相机路径累计长度不得低于 `10.0` 个世界单位，产品观察角变化不得
-  低于 `20°`；单帧相机和目标位移仍不得超过舒适阈值。
-- 至少四个编排区间必须同时发生可见相机运动与有意义的产品状态变化，并在
-  每个节拍末保留理解停顿。
-- 执行器从展开到最终就位的位移不得低于 `1.5` 个世界单位，结尾必须完成
-  明确的落座动作。
-- 最后 15% 固定为完全静止的英雄停顿。
-- 灰模页面、关键帧、正反向播放证据和结构化浏览器采样必须来自实际 GLB。
-- `creative-development.json` 停在 `animatic` 阶段，确认状态仍为 pending；
-  不得生成自动 release 或 runtime manifest。
+- 从同一确定性状态采样器导出恰好 540 张无 UI 产品帧；分辨率、帧率、
+  首帧、节拍边界和英雄帧可复验。
+- GOP 3、6、10 使用同一帧源、分辨率、30 fps、编解码器系列和质量策略；
+  唯一设计变量是关键帧间隔。
+- 每个视频都必须是 18 秒、540 帧、无音轨、低于 GitHub 单文件 100 MB
+  限制，并用 FFprobe 记录字节数、帧数和关键帧数。
+- 页面文案、章节和控制状态必须保留为 HTML/CSS，不烘焙进视频。
+- 页面必须先显示非空产品海报；视频未出现可用帧时不得显示空白。
+- 滚动控制器只保留最新目标，最多一次在途 seek；必须等待浏览器实际显示
+  目标附近帧，而不是把 `currentTime` 赋值当作完成。
+- 三个版本必须在同一浏览器、同一视口、同一 DPR、同一本地 origin 和明确
+  cache 条件下测试：
+  - 冷启动第一张可用视频帧；
+  - 有序正向寻帧；
+  - 有序反向寻帧；
+  - 快速交替寻帧；
+  - 重复目标的时间误差与超时。
+- 文件大小与浏览器寻帧数据必须分开报告；不得用“文件更小”推断“交互更快”。
+- 现有灰模 Animatic 的几何分离、阀体闭合、五节拍、正反顺序和确定性门禁
+  必须继续通过。
 
 ## 复验命令
 
 ```powershell
-python governance/validate_control_plane.py entry --rules governance/project-rules.json --validation governance/project-validation.json --entry-id author-control-valve-animatic
+python governance/validate_control_plane.py entry --rules governance/project-rules.json --validation governance/project-validation.json --entry-id build-control-valve-video-scrub-experiment
 python governance/validate_control_plane.py accept --rules governance/project-rules.json --validation governance/project-validation.json --run-checks --workdir .
 ```

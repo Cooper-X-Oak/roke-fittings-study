@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "collectedAt": "2026-07-26T16:41:26.769Z",
+  "sourceUrl": "http://127.0.0.1:4182/control-valve-video/",
+  "comparisonBoundary": "Same local origin, browser executable, 1280x800 viewport, DPR 1 and isolated cold browser context per GOP variant.",
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+    "hardwareConcurrency": 2,
+    "deviceMemory": 8
+  },
+  "posterBeforeVideo": {
+    "posterVisible": true,
+    "posterNaturalWidth": 1280,
+    "posterNaturalHeight": 800,
+    "videoReadyState": 0,
+    "videoOpacity": "0",
+    "evidencePath": "docs/control-valve-video/evidence/poster-before-video.png"
+  },
+  "midScrollEvidencePath": "docs/control-valve-video/evidence/gop6-mid-scroll.png",
+  "variants": [
+    {
+      "variant": "gop3",
+      "cacheMode": "cold isolated browser context",
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "dpr": 1
+      },
+      "coldReadyMs": 185.16420000000016,
+      "firstVideoFrameMs": 38.099999994039536,
+      "media": {
+        "duration": 18,
+        "readyState": 1,
+        "seekable": [
+          {
+            "start": 0,
+            "end": 18
+          }
+        ],
+        "seekConfirmation": "seeked + two animation frames"
+      },
+      "forward": {
+        "count": 11,
+        "latencyP50Ms": 52.099999994039536,
+        "latencyP95Ms": 98.29999999701977,
+        "latencyMaxMs": 98.29999999701977,
+        "displayedErrorP95Ms": 0.0009999999974752427,
+        "displayedErrorMaxMs": 0.0009999999974752427
+      },
+      "reverse": {
+        "count": 11,
+        "latencyP50Ms": 45.79999999701977,
+        "latencyP95Ms": 53.900000005960464,
+        "latencyMaxMs": 53.900000005960464,
+        "displayedErrorP95Ms": 0.0009999999974752427,
+        "displayedErrorMaxMs": 0.0009999999974752427
+      },
+      "rapid": {
+        "submittedTargetCount": 7,
+        "committedSeekDelta": 3,
+        "finalTarget": 0.37,
+        "targetProgress": 0.37,
+        "targetTime": 6.647666666666666,
+        "actualTime": 6.647666,
+        "errorSeconds": 6.666666658716736e-7,
+        "elapsedMs": 72.80000001192093
+      },
+      "repeated": {
+        "count": 5,
+        "latencyP50Ms": 0,
+        "latencyP95Ms": 0.10000000894069672,
+        "latencyMaxMs": 0.10000000894069672,
+        "displayedErrorP95Ms": 0.0006666666658716736,
+        "displayedErrorMaxMs": 0.0006666666658716736
+      },
+      "controller": {
+        "timeoutCount": 0,
+        "committedSeekCount": 23,
+        "finalTargetTime": 6.647666666666666,
+        "finalActualTime": 6.647666
+      },
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4182/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 13.099999994039536,
+          "transferSize": 2121389,
+          "encodedBodySize": 2121089,
+          "decodedBodySize": 2121089
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "variant": "gop6",
+      "cacheMode": "cold isolated browser context",
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "dpr": 1
+      },
+      "coldReadyMs": 171.54350000000022,
+      "firstVideoFrameMs": 41.79999999701977,
+      "media": {
+        "duration": 18,
+        "readyState": 1,
+        "seekable": [
+          {
+            "start": 0,
+            "end": 18
+          }
+        ],
+        "seekConfirmation": "seeked + two animation frames"
+      },
+      "forward": {
+        "count": 11,
+        "latencyP50Ms": 45.599999994039536,
+        "latencyP95Ms": 56.6000000089407,
+        "latencyMaxMs": 56.6000000089407,
+        "displayedErrorP95Ms": 0.0009999999974752427,
+        "displayedErrorMaxMs": 0.0009999999974752427
+      },
+      "reverse": {
+        "count": 11,
+        "latencyP50Ms": 51.30000001192093,
+        "latencyP95Ms": 53.20000000298023,
+        "latencyMaxMs": 53.20000000298023,
+        "displayedErrorP95Ms": 0.0009999999974752427,
+        "displayedErrorMaxMs": 0.0009999999974752427
+      },
+      "rapid": {
+        "submittedTargetCount": 7,
+        "committedSeekDelta": 2,
+        "finalTarget": 0.37,
+        "targetProgress": 0.37,
+        "targetTime": 6.647666666666666,
+        "actualTime": 6.647666,
+        "errorSeconds": 6.666666658716736e-7,
+        "elapsedMs": 43.29999999701977
+      },
+      "repeated": {
+        "count": 5,
+        "latencyP50Ms": 0,
+        "latencyP95Ms": 0,
+        "latencyMaxMs": 0,
+        "displayedErrorP95Ms": 0.0006666666658716736,
+        "displayedErrorMaxMs": 0.0006666666658716736
+      },
+      "controller": {
+        "timeoutCount": 0,
+        "committedSeekCount": 23,
+        "finalTargetTime": 8.983333333333333,
+        "finalActualTime": 8.983333
+      },
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4182/control-valve-video/assets/control-valve-gop6.mp4",
+          "durationMs": 14.400000005960464,
+          "transferSize": 1516426,
+          "encodedBodySize": 1516126,
+          "decodedBodySize": 1516126
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "variant": "gop10",
+      "cacheMode": "cold isolated browser context",
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "dpr": 1
+      },
+      "coldReadyMs": 142.01959999999963,
+      "firstVideoFrameMs": 80.29999999701977,
+      "media": {
+        "duration": 18,
+        "readyState": 4,
+        "seekable": [
+          {
+            "start": 0,
+            "end": 18
+          }
+        ],
+        "seekConfirmation": "seeked + two animation frames"
+      },
+      "forward": {
+        "count": 11,
+        "latencyP50Ms": 45.70000000298023,
+        "latencyP95Ms": 55.599999994039536,
+        "latencyMaxMs": 55.599999994039536,
+        "displayedErrorP95Ms": 0.0009999999974752427,
+        "displayedErrorMaxMs": 0.0009999999974752427
+      },
+      "reverse": {
+        "count": 11,
+        "latencyP50Ms": 44.900000005960464,
+        "latencyP95Ms": 54.70000000298023,
+        "latencyMaxMs": 54.70000000298023,
+        "displayedErrorP95Ms": 0.0009999999974752427,
+        "displayedErrorMaxMs": 0.0009999999974752427
+      },
+      "rapid": {
+        "submittedTargetCount": 7,
+        "committedSeekDelta": 2,
+        "finalTarget": 0.37,
+        "targetProgress": 0.37,
+        "targetTime": 6.647666666666666,
+        "actualTime": 6.647666,
+        "errorSeconds": 6.666666658716736e-7,
+        "elapsedMs": 52.5
+      },
+      "repeated": {
+        "count": 5,
+        "latencyP50Ms": 0,
+        "latencyP95Ms": 0,
+        "latencyMaxMs": 0,
+        "displayedErrorP95Ms": 0.0006666666658716736,
+        "displayedErrorMaxMs": 0.0006666666658716736
+      },
+      "controller": {
+        "timeoutCount": 0,
+        "committedSeekCount": 22,
+        "finalTargetTime": 6.647666666666666,
+        "finalActualTime": 6.647666
+      },
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4182/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 6.700000002980232,
+          "transferSize": 1271513,
+          "encodedBodySize": 1271213,
+          "decodedBodySize": 1271213
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    }
+  ]
+}

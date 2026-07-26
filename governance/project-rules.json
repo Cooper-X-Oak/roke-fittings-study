@@ -2,8 +2,8 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-kinetic-animatic",
-  "ruleset_version": "2026-07-26.15",
+  "ruleset_id": "ruleset-2026-07-27-control-valve-video-scrub-experiment",
+  "ruleset_version": "2026-07-27.16",
   "business_gate": {
     "development_entry_required": true
   },
@@ -113,14 +113,70 @@
       ]
     },
     {
-      "id": "stop-after-grey-animatic-validation",
-      "statement": "This phase stops after deterministic camera previs, grey-model fixed-duration Animatic and rendered validation evidence. Runtime story manifest generation, final WebGL implementation, final materials, performance claims, release, merge and deployment remain prohibited.",
-      "development_entry_ids": ["author-control-valve-animatic"],
+      "id": "derive-scroll-video-from-canonical-animatic",
+      "statement": "Derive a browser-scrubbable video experiment from the approved 540-frame control-valve Animatic without changing its five-beat edit, product state, camera, light, timing or truth boundaries.",
+      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
       "children": [
         {
-          "id": "animatic-only-change-scope-proof",
+          "id": "ui-free-frame-parity-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove that changes are limited to current governance, acceptance, creative-development, camera-previs sources and outputs, grey Animatic review surface, evidence, and their validators or capture tooling."
+          "statement": "Acceptance must prove exactly 540 UI-free product frames at 30 fps are rendered from the same deterministic state sampler and preserve the first, beat-boundary and hero states."
+        },
+        {
+          "id": "independent-html-content-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove page copy, chapter state and controls remain HTML/CSS overlays rather than being permanently baked into the product video."
+        }
+      ]
+    },
+    {
+      "id": "compare-short-gop-scroll-video-encodes",
+      "statement": "Encode matched GOP 3, GOP 6 and GOP 10 variants from the same UI-free frame source, using one resolution, frame rate, codec family and quality policy so keyframe interval is the intended independent variable.",
+      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
+      "children": [
+        {
+          "id": "matched-encode-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must use FFprobe evidence to prove each variant is 30 fps, 540 frames, 18 seconds, contains no audio, stays below GitHub's per-file limit and uses the declared GOP interval."
+        },
+        {
+          "id": "asset-size-evidence-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must report encoded bytes and keyframe counts separately from runtime seek behavior and must not infer interaction performance from file size alone."
+        }
+      ]
+    },
+    {
+      "id": "validate-scroll-controlled-video-seeking",
+      "statement": "Provide a Pages-compatible experiment route that maps one normalized scroll progress value to paused video time, coalesces seek requests, preserves the five chapter ranges in both directions and shows the static first-frame poster until a usable video frame exists.",
+      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
+      "children": [
+        {
+          "id": "same-browser-seek-benchmark-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must compare all three variants in the same local origin, browser executable, viewport, DPR and cache mode, including cold first usable frame, ordered forward seeks, ordered reverse seeks, rapid alternating seeks and repeated-target error."
+        },
+        {
+          "id": "seek-coalescing-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove the controller retains only the latest pending target, bounds seek timeout failures and reports actual displayed-media time rather than treating a currentTime assignment as completed display."
+        },
+        {
+          "id": "poster-before-video-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must capture the route before video readiness and prove a non-empty static product poster remains visible instead of a blank canvas."
+        }
+      ]
+    },
+    {
+      "id": "stop-after-video-scrub-experiment",
+      "statement": "This phase stops after local deterministic frame export, three matched short-GOP videos, a Pages-compatible scroll-video review route and same-browser benchmark evidence. Runtime story-manifest release, replacement of the GLB route, universal performance claims, merge and deployment remain prohibited.",
+      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
+      "children": [
+        {
+          "id": "video-experiment-change-scope-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must limit changes to current governance, acceptance, deterministic render/capture tooling, derived video assets, the video experiment route, evidence and their validators."
         }
       ]
     }

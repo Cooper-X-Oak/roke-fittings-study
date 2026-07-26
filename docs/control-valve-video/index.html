@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Control-valve short-GOP scroll-video seeking experiment."
+    >
+    <title>Control Valve — Scroll Video Experiment</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main id="story" class="story">
+      <section class="stage" aria-label="控制阀视频滚动实验">
+        <div class="media">
+          <video
+            id="product-video"
+            muted
+            playsinline
+            preload="auto"
+            poster="./assets/first-frame.png"
+            aria-label="由滚动控制的控制阀预渲染三维影片"
+          ></video>
+          <img
+            id="poster"
+            class="poster"
+            src="./assets/first-frame.png"
+            alt="控制阀灰模首帧"
+            width="1280"
+            height="800"
+          >
+          <div class="media-vignette" aria-hidden="true"></div>
+        </div>
+
+        <header class="masthead">
+          <div class="identity">
+            <span class="mark">CV</span>
+            <span>PRE-RENDERED 3D / SCROLL SEEK</span>
+          </div>
+          <div class="variants" aria-label="关键帧间隔版本">
+            <button type="button" data-variant="gop3">GOP 3</button>
+            <button type="button" data-variant="gop6">GOP 6</button>
+            <button type="button" data-variant="gop10">GOP 10</button>
+          </div>
+        </header>
+
+        <section class="copy" aria-live="polite">
+          <p id="eyebrow" class="eyebrow">01 / THE CORE</p>
+          <h1 id="title">精密，先从<br>核心被看见。</h1>
+          <p id="body">
+            影片只包含产品、灯光和环境；文字仍由 HTML 独立呈现。
+          </p>
+        </section>
+
+        <aside class="telemetry" aria-label="视频寻帧状态">
+          <p class="telemetry-title">LIVE SEEK EVIDENCE</p>
+          <dl>
+            <div><dt>VARIANT</dt><dd id="metric-variant">GOP 6</dd></div>
+            <div><dt>TARGET</dt><dd id="metric-target">0.000 s</dd></div>
+            <div><dt>DISPLAYED</dt><dd id="metric-actual">poster</dd></div>
+            <div><dt>ERROR</dt><dd id="metric-error">—</dd></div>
+            <div><dt>SEEK</dt><dd id="metric-state">loading</dd></div>
+          </dl>
+        </aside>
+
+        <footer class="timeline">
+          <div class="timeline-labels">
+            <span id="shot-label">01 THE CORE</span>
+            <span>SCROLL CONTROLS VIDEO TIME</span>
+          </div>
+          <div class="timeline-track">
+            <span id="timeline-fill"></span>
+          </div>
+        </footer>
+
+        <p class="boundary">
+          预渲染视频实验；页面文案不烘焙进视频，不替代实时 GLB 路线。
+        </p>
+      </section>
+    </main>
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>

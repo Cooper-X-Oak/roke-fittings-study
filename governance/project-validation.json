@@ -2,9 +2,9 @@
   "schema_version": 2,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-kinetic-animatic",
-  "ruleset_version": "2026-07-26.15",
-  "validation_contract_version": "2026-07-26.15",
+  "ruleset_id": "ruleset-2026-07-27-control-valve-video-scrub-experiment",
+  "ruleset_version": "2026-07-27.16",
+  "validation_contract_version": "2026-07-27.16",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
@@ -40,8 +40,8 @@
         ["require-commercial-motion-amplitude-and-coordination"],
         ["require-commercial-motion-amplitude-and-coordination", "motion-amplitude-proof"],
         ["require-commercial-motion-amplitude-and-coordination", "coordinated-action-proof"],
-        ["stop-after-grey-animatic-validation"],
-        ["stop-after-grey-animatic-validation", "animatic-only-change-scope-proof"]
+        ["derive-scroll-video-from-canonical-animatic"],
+        ["derive-scroll-video-from-canonical-animatic", "ui-free-frame-parity-proof"]
       ],
       "required_for_current_contract": true,
       "command": "python scripts/validate_control_valve_animatic.py"
@@ -52,19 +52,39 @@
       "rule_paths": [
         ["preserve-approved-continuous-five-beat-story"],
         ["author-deterministic-per-frame-previs"],
-        ["stop-after-grey-animatic-validation"]
+        ["derive-scroll-video-from-canonical-animatic"]
       ],
       "required_for_current_contract": true,
       "command": "node .codex/skills/build-scroll-3d-product-story/scripts/validate-creative-development.mjs --plan creative/control-valve/creative-development.json --through animatic"
     },
     {
       "id": "github-pages-repository-policy",
-      "behavior_id": "animatic-review-surface-and-existing-pages-artifacts-remain-valid",
+      "behavior_id": "animatic-and-video-experiment-pages-artifacts-remain-valid",
       "rule_paths": [
-        ["stop-after-grey-animatic-validation"]
+        ["stop-after-video-scrub-experiment"]
       ],
       "required_for_current_contract": true,
       "command": "node scripts/verify-pages.mjs"
+    },
+    {
+      "id": "control-valve-video-scrub-experiment-contract",
+      "behavior_id": "matched-short-gop-videos-prove-real-scroll-seek-behavior",
+      "rule_paths": [
+        ["derive-scroll-video-from-canonical-animatic"],
+        ["derive-scroll-video-from-canonical-animatic", "ui-free-frame-parity-proof"],
+        ["derive-scroll-video-from-canonical-animatic", "independent-html-content-proof"],
+        ["compare-short-gop-scroll-video-encodes"],
+        ["compare-short-gop-scroll-video-encodes", "matched-encode-proof"],
+        ["compare-short-gop-scroll-video-encodes", "asset-size-evidence-proof"],
+        ["validate-scroll-controlled-video-seeking"],
+        ["validate-scroll-controlled-video-seeking", "same-browser-seek-benchmark-proof"],
+        ["validate-scroll-controlled-video-seeking", "seek-coalescing-proof"],
+        ["validate-scroll-controlled-video-seeking", "poster-before-video-proof"],
+        ["stop-after-video-scrub-experiment"],
+        ["stop-after-video-scrub-experiment", "video-experiment-change-scope-proof"]
+      ],
+      "required_for_current_contract": true,
+      "command": "python scripts/validate_control_valve_video_experiment.py"
     }
   ]
 }
