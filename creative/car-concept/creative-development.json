@@ -82,6 +82,66 @@
         "limitations": [
           "本项目不使用流体或分子视觉隐喻。"
         ]
+      },
+      {
+        "title": "Audi 2025 Retail — Motorized Precision",
+        "sourceUrl": "https://www.motorizedprecision.com/case-studies-audi-2025",
+        "narrativeThesis": "用精密控制制造无人机般的车内穿越，同时让特殊镜头服从产品形态。",
+        "transferableMethods": [
+          "用逐帧预演约束无人机感。",
+          "外部轮廓、内部穿越和宏观掠镜共用一种运动语法。"
+        ],
+        "limitations": [
+          "本项目使用虚拟相机，不复制真实机器人参数。"
+        ]
+      },
+      {
+        "title": "Mercedes C-Class — Single-take Loop",
+        "sourceUrl": "https://www.westley.work/mercedescclass",
+        "narrativeThesis": "单镜头依靠被预演锁定的空间转换、速度和遮挡，而不是无目的地取消剪辑。",
+        "transferableMethods": [
+          "先锁相机路径、速度与时长。",
+          "把外观和座舱转换隐藏在有动机的遮挡中。"
+        ],
+        "limitations": [
+          "本项目允许一次公开的制动盘遮挡隐藏切。"
+        ]
+      },
+      {
+        "title": "Toyota C-HR — Unbroken Camera Move",
+        "sourceUrl": "https://www.andreaswanda.com/portfolio/toyota-chr/",
+        "narrativeThesis": "不间断运镜要求产品运动和相机运动严格同步于 Previs。",
+        "transferableMethods": [
+          "每个速度变化都必须在 Previs 中明确。",
+          "相机、产品和灯光共用同一时间轴。"
+        ],
+        "limitations": [
+          "当前没有道路环境或车辆行驶动画。"
+        ]
+      },
+      {
+        "title": "FFUN Motorsports — FPV One Take",
+        "sourceUrl": "https://www.dirxecp.com/post/how-we-filmed-this-fpv-one-take-video-for-ffun-motorsports",
+        "narrativeThesis": "FPV 穿越的专业性来自路线勘察、入口出口设计和空间编舞，而不只是速度。",
+        "transferableMethods": [
+          "入口、出口和转向点必须被前一段预告。",
+          "高速段之后主动减速，让观众恢复方向感。"
+        ],
+        "limitations": [
+          "不采用展厅八字路线，只迁移外部到内部再回外部的空间逻辑。"
+        ]
+      },
+      {
+        "title": "Drive What You Love — Framestore",
+        "sourceUrl": "https://www.framestore.com/work/drive-what-you-love",
+        "narrativeThesis": "完整预演使宏观近摄、不可能机位和无缝 CG 转换成为同一广告语言。",
+        "transferableMethods": [
+          "先以低成本 Previs 证明特殊机位是否提升产品认知。",
+          "宏观尺度转换必须由形状、运动或遮挡触发。"
+        ],
+        "limitations": [
+          "Animatic 只验收路径、构图和节奏，不冒充最终材质。"
+        ]
       }
     ]
   },
@@ -92,16 +152,17 @@
       "thesis": "从一个可信机械细节出发，让精密关系逐层形成完整产品的存在感。",
       "audienceTakeaway": "观众先理解车辆由有秩序的系统构成，最后才获得完整形象。",
       "shotArc": [
-        "contact",
-        "human-core",
-        "system",
-        "convergence",
-        "presence"
+        "intercept",
+        "thread",
+        "cockpit-run",
+        "breakout",
+        "arrest"
       ],
       "modelFit": "轮圈、制动、方向盘、座椅、车门和机盖节点均可控，同时避开低细节发动机。",
       "risks": [
         "制动只能表达视觉控制概念，不能声明性能。",
-        "汇聚顺序必须明确是叙事顺序。"
+        "汇聚顺序必须明确是叙事顺序。",
+        "唯一隐藏切必须被制动盘遮挡并在交付中公开。"
       ]
     },
     {
@@ -144,171 +205,138 @@
   "selectedRouteId": "precision-becomes-presence",
   "shots": [
     {
-      "id": "contact",
+      "id": "intercept",
       "order": 1,
-      "range": [0, 0.1625],
-      "narrativePurpose": "从模型最可信的机械细节建立精密的第一印象。",
-      "viewerTakeaway": "性能认知从车辆与地面的接触点开始。",
-      "startState": "黑灰空间和弱红色轮廓。",
-      "endState": "左前轮完整圆形成为画面唯一焦点。",
-      "action": "轮圈与制动结构在克制的弧线和红色反射中被揭示。",
-      "activeComponents": ["WheelFrontLRim", "WheelFrontLBrakeDisc", "WheelFrontLBrakePad"],
-      "camera": {
-        "framing": "微距近景，中长焦压缩背景。",
-        "movement": "沿轮圈外缘小幅顺时针弧移。"
-      },
-      "lighting": "窄冷色轮廓光定义金属圆形，红色只作转场线索。",
-      "layout": "轮圈占左侧主体，右侧保留暗部呼吸空间，字幕位于左下安全区。",
-      "transitionIn": "0.5 秒暗场揭示。",
-      "transitionOut": "轮圈圆形匹配方向盘圆形。",
-      "rhythm": "建立快，理解停顿长。",
-      "hold": "结尾保持完整圆形约 0.5 秒。",
-      "content": {
-        "eyebrow": "01 / PRECISION BECOMES PRESENCE",
-        "title": "CONTACT",
-        "body": "性能，始于接触地面的那一点。",
-        "cta": null
-      },
-      "truthConstraints": [
-        "不出现制动力或刹车距离声明。",
-        "红色反射不代表热量或能量流。"
-      ]
+      "range": [0, 0.1875],
+      "narrativePurpose": "先确认完整产品，再让可信机械细节截获视线。",
+      "viewerTakeaway": "轮圈属于一台具有完整方向性的产品，而不是孤立零件。",
+      "startState": "远距低曝光整车轮廓。",
+      "endState": "前轮轮辐成为可见入口。",
+      "action": "相机由远距轮廓俯冲并沿前翼和轮眉掠向左前轮。",
+      "activeComponents": ["BodyUnderside", "WheelFrontL", "WheelFrontLRim"],
+      "camera": {"framing": "远景收至轮圈近景。", "movement": "高度 2.15m 降至 0.58m，FOV 38°收至 22°，横滚到 -8°。"},
+      "lighting": "冷轮廓光建立整车，接近轮圈时红色边缘光增强。",
+      "layout": "整车先居中，随后轮圈占据中右，文案保留左下。",
+      "transitionIn": "暗背景中直接建立远距轮廓。",
+      "transitionOut": "轮辐通道接续相机运动矢量。",
+      "rhythm": "0.9 秒辨认、1.5 秒加速、0.6 秒校准入口。",
+      "hold": "不静止；以减缓校准替代摆拍停顿。",
+      "content": {"eyebrow": "01 / PRECISION BECOMES PRESENCE", "title": "INTERCEPT", "body": "先让轮廓被看见，再让精密把视线截住。", "cta": null},
+      "truthConstraints": ["不表达空气动力、极速或制动性能。", "相机速度只是广告运镜。"]
     },
     {
-      "id": "human-core",
+      "id": "thread",
       "order": 2,
-      "range": [0.1625, 0.35],
-      "narrativePurpose": "把机械精密与驾驶者所在空间连接起来。",
-      "viewerTakeaway": "车辆系统围绕驾驶核心组织。",
-      "startState": "轮圈圆形占据视觉中心。",
-      "endState": "方向盘、座椅与座舱骨架形成完整空间关系。",
-      "action": "圆形匹配后，镜头从方向盘向后滑动揭示驾驶舱。",
-      "activeComponents": ["InteriorSteeringCylinder", "InteriorSteeringWheel01", "InteriorSeatsColor1", "InteriorCage", "BodyWindshield"],
-      "camera": {
-        "framing": "方向盘近景退到座舱中景。",
-        "movement": "后滑并轻微上升，不穿过实心表面。"
-      },
-      "lighting": "局部方向盘光扩展为座舱侧光，红色座椅是第二焦点。",
-      "layout": "座舱结构占据画面中右部，字幕保持左下。",
-      "transitionIn": "轮圈与方向盘圆形 Match Cut。",
-      "transitionOut": "座舱纵向线条扩展为整车结构轴线。",
-      "rhythm": "先确认方向盘，再稳定后退揭示。",
-      "hold": "完整座舱关系保持约 0.75 秒。",
-      "content": {
-        "eyebrow": "02 / PRECISION BECOMES PRESENCE",
-        "title": "HUMAN CORE",
-        "body": "每一个系统，都围绕驾驶者组织。",
-        "cta": null
-      },
-      "truthConstraints": [
-        "不声称人体工学、舒适度或安全等级。",
-        "驾驶核心是叙事概念，不是工程系统名称。"
-      ]
+      "range": [0.1875, 0.35],
+      "narrativePurpose": "把接地点变成通往驾驶控制空间的物理入口。",
+      "viewerTakeaway": "外部机械细节与内部控制空间位于一条连续路径。",
+      "startState": "轮辐通道位于构图中心。",
+      "endState": "方向盘成为座舱内的明确目标。",
+      "action": "相机穿过轮辐，在制动盘遮挡中完成唯一隐藏切并获得方向盘。",
+      "activeComponents": ["WheelFrontLRim", "WheelFrontLBrakeDisc", "InteriorSteeringWheel01"],
+      "camera": {"framing": "轮辐微距进入座舱近景。", "movement": "唯一高速穿越；横滚峰值 -10°，遮挡后快速归零并减速。"},
+      "lighting": "轮圈窄红边缘光在遮挡处降低，方向盘出现时转为座舱侧光。",
+      "layout": "入口与方向盘均靠近视觉中心，文案保持左下。",
+      "transitionIn": "沿 Shot 01 的运动矢量穿入轮辐。",
+      "transitionOut": "方向盘获得与速度下降触发座舱段。",
+      "rhythm": "1.1 秒穿入、0.4 秒遮挡、1.1 秒获得方向盘。",
+      "hold": "方向盘获得后短暂停留在可读速度，不完全静止。",
+      "content": {"eyebrow": "02 / PRECISION BECOMES PRESENCE", "title": "THREAD", "body": "穿过接地点，进入控制发生的地方。", "cta": null},
+      "truthConstraints": ["公开帧 123–124 的遮挡隐藏切。", "不声称无碰撞真实飞行路径。"]
     },
     {
-      "id": "system",
+      "id": "cockpit-run",
       "order": 3,
       "range": [0.35, 0.5625],
-      "narrativePurpose": "证明复杂结构可以按层级理解，而不是随机散落。",
-      "viewerTakeaway": "轮组、驾驶空间和外壳是相互关联的系统层。",
-      "startState": "座舱骨架的纵向关系被建立。",
-      "endState": "三类系统在整车轮廓参照中完成可读分层。",
-      "action": "四轮、座舱和外壳沿少数轴线分开，焦点依次移动。",
-      "activeComponents": ["WheelFrontL", "WheelFrontR", "WheelRearL", "WheelRearR", "Interior", "BodyHood", "BodyDoorLColor1", "BodyDoorRColor1"],
-      "camera": {
-        "framing": "整车三分之四解剖全景。",
-        "movement": "稳定的 12–18 度解释性弧线。"
-      },
-      "lighting": "主光按接地点、驾驶空间、外部形态三次转移。",
-      "layout": "保持整车中心轮廓，系统沿左右和垂直方向分层。",
-      "transitionIn": "座舱轴线扩展为整车空间基准。",
-      "transitionOut": "外壳边缘开始向结构基准回收。",
-      "rhythm": "每个系统一拍，切光后留理解停顿。",
-      "hold": "每次焦点转移后保持约 0.25 秒。",
-      "content": {
-        "eyebrow": "03 / PRECISION BECOMES PRESENCE",
-        "title": "SYSTEM",
-        "body": "结构、控制与运动，展开为可读的功能。",
-        "cta": null
-      },
-      "truthConstraints": [
-        "系统分类只依据节点与可见空间关系。",
-        "不把顺序描述为制造、维修或工程依赖顺序。"
-      ]
+      "narrativePurpose": "把速度让位给理解，让驾驶空间的组织关系成为中段。",
+      "viewerTakeaway": "方向盘、座椅和骨架围绕连续驾驶空间组织。",
+      "startState": "方向盘被获得，镜头速度开始下降。",
+      "endState": "驾驶侧车门出口被锁定。",
+      "action": "相机以高速段约 35% 的速度沿驾驶侧切透走廊后移，读取方向盘、座椅与骨架并转向车门出口。",
+      "activeComponents": ["InteriorSteeringWheel01", "InteriorSeatsColor1", "InteriorCage", "BodyDoorLColor1"],
+      "camera": {"framing": "方向盘近景过渡到驾驶侧座舱中景。", "movement": "在外壳低透明的车身外侧减速滑行，避免穿入被座椅填满的实心体积，末段转向驾驶侧车门。"},
+      "lighting": "方向盘局部光扩展为座舱侧光，红色座椅为第二焦点。",
+      "layout": "右侧保留出口负空间，字幕不覆盖方向盘与座椅关系。",
+      "transitionIn": "高速穿入后的主动减速。",
+      "transitionOut": "车门出口扩大并触发加速突破。",
+      "rhythm": "1.2 秒前舱、1.1 秒座椅骨架、1.1 秒锁定出口。",
+      "hold": "以持续低速和更长焦点停留形成理解时间。",
+      "content": {"eyebrow": "03 / PRECISION BECOMES PRESENCE", "title": "COCKPIT RUN", "body": "速度放慢，结构开始围绕驾驶空间组织。", "cta": null},
+      "truthConstraints": ["不声称人体工学、舒适性或安全等级。", "围绕驾驶空间是视觉命题。"]
     },
     {
-      "id": "convergence",
+      "id": "breakout",
       "order": 4,
       "range": [0.5625, 0.8125],
-      "narrativePurpose": "把系统认知转成秩序形成完整产品的高潮。",
-      "viewerTakeaway": "独立关系最终服务于一个整体意图。",
-      "startState": "轮组、座舱和外壳仍处于分层状态。",
-      "endState": "除最后表面光外，车辆已经完整闭合。",
-      "action": "轮组、座舱与外部表面分三组沿结构基准汇聚。",
-      "activeComponents": ["Axles", "WheelFrontL", "WheelFrontR", "WheelRearL", "WheelRearR", "Interior", "BodyHood", "BodyWindshield", "BodyDoorLColor1", "BodyDoorRColor1"],
-      "camera": {
-        "framing": "全景三分之四，逐渐进入低机位销售角度。",
-        "movement": "与组件汇聚方向相反的连续弧线。"
-      },
-      "lighting": "内部解释光逐渐转为车身表面光，每组到位只产生短边缘亮度变化。",
-      "layout": "车辆从分层状态收拢到画面中心，左下字幕不遮挡主结构。",
-      "transitionIn": "外壳边缘回收触发整体汇聚。",
-      "transitionOut": "最后表面闭合触发完整车身主光。",
-      "rhythm": "三段加速汇聚，在最终闭合前停顿。",
-      "hold": "闭合前约 0.35 秒，闭合后约 0.45 秒。",
-      "content": {
-        "eyebrow": "04 / PRECISION BECOMES PRESENCE",
-        "title": "CONVERGENCE",
-        "body": "精密，让每个部件回到同一个意图。",
-        "cta": null
-      },
-      "truthConstraints": [
-        "明确这是视觉汇聚顺序。",
-        "不描述为真实生产装配流程。"
-      ]
+      "narrativePurpose": "把已理解的内部关系释放到完整产品尺度，形成唯一高潮。",
+      "viewerTakeaway": "复杂结构沿镜头尾流成为可读系统，而不是随机爆炸。",
+      "startState": "驾驶侧车门出口被明确预告。",
+      "endState": "相机完成外部反弧，系统尾流开始回收。",
+      "action": "相机突破车门转入约 135°外部反弧，轮组、座舱和外壳按系统组在身后分层。",
+      "activeComponents": ["WheelFrontL", "WheelFrontR", "WheelRearL", "WheelRearR", "Interior", "BodyHood", "BodyDoorLColor1", "BodyDoorRColor1"],
+      "camera": {"framing": "座舱出口扩展为整车三分之四全景。", "movement": "突破后做克制外部反弧，不完成 360°，横滚峰值 +7°。"},
+      "lighting": "内部解释光切换为车身主光，红色车漆在突破后恢复。",
+      "layout": "整车轮廓始终作为参照，系统尾流位于侧后方。",
+      "transitionIn": "可见车门出口触发加速突破。",
+      "transitionOut": "相机、横滚、FOV 与爆炸量同步减速。",
+      "rhythm": "0.9 秒突破、1.3 秒反弧、1.1 秒尾流峰值、0.7 秒制动。",
+      "hold": "尾流峰值短暂保持轮廓可读，随后立即进入制动。",
+      "content": {"eyebrow": "04 / PRECISION BECOMES PRESENCE", "title": "BREAKOUT", "body": "离开座舱，关系沿镜头尾流展开。", "cta": null},
+      "truthConstraints": ["系统分层是广告叙事关系。", "不描述为装配、维修或工程依赖顺序。"]
     },
     {
-      "id": "presence",
+      "id": "arrest",
       "order": 5,
       "range": [0.8125, 1],
-      "narrativePurpose": "把技术解释收束成稳定的产品形象。",
-      "viewerTakeaway": "精密关系最终形成完整、可信的存在感。",
-      "startState": "完整车辆仍处于解释性灯光。",
-      "endState": "红色车身英雄帧完全静止并可长时间保持。",
-      "action": "组件停止，主光扫出曲面，相机完成最后微调后静止。",
-      "activeComponents": ["BodyUnderside"],
-      "camera": {
-        "framing": "低机位三分之四英雄全景。",
-        "movement": "前 1.3 秒完成 5–8 度微调，之后稳定。"
-      },
-      "lighting": "单一主光定义红色车身曲面，轮廓光分离车顶和车门。",
-      "layout": "完整车辆占据画面主体，暗背景保留稳定负空间。",
-      "transitionIn": "表面闭合触发主光。",
-      "transitionOut": "无，保持最终状态。",
-      "rhythm": "快速完成主光，随后长英雄停顿。",
-      "hold": "最后约 1.7 秒完全稳定。",
-      "content": {
-        "eyebrow": "05 / PRECISION BECOMES PRESENCE",
-        "title": "PRESENCE",
-        "body": "精密，最终成为存在感。",
-        "cta": null
-      },
-      "truthConstraints": [
-        "不出现品牌、速度、马力或生产承诺。",
-        "最终句只总结视觉命题。"
-      ]
+      "narrativePurpose": "让运动本身成为结论，停止后完整产品才获得存在感。",
+      "viewerTakeaway": "精密不是更多运动，而是所有关系准确归位。",
+      "startState": "相机与系统尾流同时进入制动。",
+      "endState": "完整红色车辆在低机位三分之四构图中完全稳定。",
+      "action": "18 帧内完成相机定格和爆炸量 0.28 到 0 的外壳闭合，之后 72 帧保持所有状态不变。",
+      "activeComponents": ["BodyUnderside", "Interior", "BodyHood", "BodyDoorLColor1", "BodyDoorRColor1"],
+      "camera": {"framing": "低机位三分之四英雄全景。", "movement": "帧 390–408 制动，帧 408–479 完全静止。"},
+      "lighting": "暖主光定义红色曲面，冷轮廓光分离车顶与后翼。",
+      "layout": "车辆占据主体，深灰背景与左侧负空间承载文案。",
+      "transitionIn": "所有运动参数同步进入制动曲线。",
+      "transitionOut": "无；终点可无限保持并可精确反向采样。",
+      "rhythm": "0.6 秒制动闭合，2.4 秒稳定英雄停顿。",
+      "hold": "最后 72 帧完全稳定，占全片 15%。",
+      "content": {"eyebrow": "05 / PRECISION BECOMES PRESENCE", "title": "ARREST", "body": "运动停止，精密成为完整的存在感。", "cta": null},
+      "truthConstraints": ["不出现品牌、速度、马力、制造或性能承诺。", "最终句只总结视觉命题。"]
     }
   ],
+  "cameraPrevis": {
+    "uri": "creative/car-concept/camera-previs.json",
+    "fps": 30,
+    "totalFrames": 480,
+    "frameStateCount": 480,
+    "continuityPath": [
+      "silhouette intercept",
+      "front-wheel contour skim",
+      "brake-disc occlusion",
+      "steering-wheel acquisition",
+      "cockpit deceleration",
+      "driver-side door breakout",
+      "restrained exterior counter-arc",
+      "system wake",
+      "closure",
+      "stable low three-quarter hero"
+    ],
+    "hiddenCut": "Frames 123–124 relocate the camera only while the brake disc provides 96% occlusion.",
+    "maxAbsRollDegrees": 10,
+    "stableHeroHold": [408, 479],
+    "reviewed": true
+  },
   "animatic": {
-    "uri": "https://app.chatcut.io/editor/5e30ef8f-f43f-4642-a3db-29c5fe360c7a",
+    "uri": "https://app.chatcut.io/editor/c91db2e4-55a3-4408-b3fa-e96da1818102",
     "kind": "animatic-video",
     "durationSeconds": 16,
     "reviewed": true,
     "reviewNotes": [
-      "已检查 ChatCut 云渲染的第 12、90、180、300、420 帧实际像素，五个镜头命题与画面焦点一致。",
-      "五镜头按 78、90、102、120、90 帧编排，总计 480 帧、30fps，并使用四个 8 帧溶接。",
-      "1080p H.264 导出完成，renderId 为 4dd4efad-23f4-4413-8b4e-58e7616acdbc，文件大小 6422178 字节。",
-      "本地审片文件：D:/Users/luoxu/Downloads/car-concept-precision-becomes-presence-animatic.mp4。"
+      "已检查本地逐帧渲染和 ChatCut 交付导出的第 52、123、124、150、220、338、408、430 帧实际像素；遮挡隐藏切、驾驶侧切透走廊、系统尾流和稳定英雄终点均可见。",
+      "ChatCut 时间轴把同一确定性源拆为五个可编辑镜头片段，按 90、78、102、120、90 帧无缝覆盖 0–479。",
+      "720p H.264 ChatCut 导出完成，renderId 为 4de2d92f-f72d-4330-938b-97e1af6548b5，文件大小 9065522 字节，SHA256 为 F47DDE6BE374FC690BA2367FB3575A5E336FD88B12C2F9214251C68A65E93D19。",
+      "本地审片文件：C:/Users/luoxu/Downloads/car-concept-virtual-fpv-camera-previs-animatic.mp4。"
     ]
   },
   "confirmation": {
@@ -329,7 +357,7 @@
     },
     {
       "phase": "animatic",
-      "completedAt": "2026-07-26T03:39:58Z"
+      "completedAt": "2026-07-26T05:22:55Z"
     }
   ]
 }

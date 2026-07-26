@@ -2,15 +2,15 @@
   "schema_version": 1,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-car-story-animatic",
-  "ruleset_version": "2026-07-26.4",
+  "ruleset_id": "ruleset-2026-07-26-car-camera-previs",
+  "ruleset_version": "2026-07-26.5",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
       "id": "deliver-car-story-preproduction",
-      "statement": "Apply build-scroll-3d-product-story to the current car GLB and deliver a reviewable preproduction package through a fixed-duration five-shot animatic, without entering runtime implementation.",
+      "statement": "Apply build-scroll-3d-product-story to the current car GLB and deliver a reviewable preproduction package through an authored per-frame camera previs and fixed-duration five-shot path animatic, without entering runtime implementation.",
       "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
@@ -25,7 +25,7 @@
     },
     {
       "id": "author-continuous-five-shot-script",
-      "statement": "Author exactly five continuous shots with a narrative purpose, viewer takeaway, model action, camera, lighting, layout, transitions, rhythm, hold, copy, and truth constraints.",
+      "statement": "Author exactly five continuous shots as one motivated virtual-cinematography path, with narrative purpose, viewer takeaway, model action, camera, lighting, layout, transitions, rhythm, hold, copy, and truth constraints.",
       "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
@@ -34,8 +34,13 @@
       "development_entry_ids": ["develop-car-story-animatic"]
     },
     {
+      "id": "deliver-per-frame-camera-previs",
+      "statement": "Deliver deterministic camera state for every frame of the canonical 16-second, 30fps playback, including position, target, roll, FOV, focus distance, part state, light state, shot identity, and continuity metadata.",
+      "development_entry_ids": ["develop-car-story-animatic"]
+    },
+    {
       "id": "deliver-fixed-duration-animatic",
-      "statement": "Deliver a fixed-duration five-shot animatic that visibly expresses the selected route, camera intent, lighting progression, transitions, and comprehension holds.",
+      "statement": "Deliver a fixed-duration five-shot path animatic that visibly proves the virtual FPV infiltration, one occlusion-motivated hidden cut, cockpit deceleration, door breakout, restrained exterior arc, reversible path, and stable final hero hold.",
       "development_entry_ids": ["develop-car-story-animatic"]
     },
     {

@@ -216,6 +216,42 @@ export function validateCreativeDevelopment(
   }
 
   const animatic = plan.animatic;
+  const cameraPrevis = plan.cameraPrevis;
+  requireStringFields(cameraPrevis, ["uri", "hiddenCut"], "cameraPrevis", errors);
+  if (!Number.isInteger(cameraPrevis?.fps) || cameraPrevis.fps <= 0) {
+    errors.push("cameraPrevis.fps must be a positive integer");
+  }
+  if (
+    !Number.isInteger(cameraPrevis?.totalFrames) ||
+    cameraPrevis.totalFrames <= 0 ||
+    cameraPrevis?.frameStateCount !== cameraPrevis?.totalFrames
+  ) {
+    errors.push("cameraPrevis must provide exactly one state per canonical frame");
+  }
+  if (!nonEmptyStrings(cameraPrevis?.continuityPath)) {
+    errors.push("cameraPrevis.continuityPath must contain the authored path");
+  }
+  if (
+    !Number.isFinite(cameraPrevis?.maxAbsRollDegrees) ||
+    cameraPrevis.maxAbsRollDegrees > 12
+  ) {
+    errors.push("cameraPrevis.maxAbsRollDegrees must not exceed 12");
+  }
+  const heroHold = cameraPrevis?.stableHeroHold;
+  if (
+    !Array.isArray(heroHold) ||
+    heroHold.length !== 2 ||
+    !heroHold.every(Number.isInteger) ||
+    heroHold[0] < 0 ||
+    heroHold[1] !== cameraPrevis?.totalFrames - 1 ||
+    heroHold[1] - heroHold[0] + 1 < Math.ceil(cameraPrevis?.totalFrames * 0.15)
+  ) {
+    errors.push("cameraPrevis stable hero hold must cover the final 15% of frames");
+  }
+  if (cameraPrevis?.reviewed !== true) {
+    errors.push("cameraPrevis.reviewed must be true");
+  }
+
   requireStringFields(animatic, ["uri"], "animatic", errors);
   if (animatic?.kind !== "animatic-video") {
     errors.push("animatic.kind must be animatic-video");

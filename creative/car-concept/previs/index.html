@@ -37,6 +37,80 @@
         border: 1px solid rgba(255, 255, 255, 0.045);
         pointer-events: none;
       }
+
+      .hud {
+        position: fixed;
+        inset: 0;
+        color: #f3f2ef;
+        font-family: "Courier New", monospace;
+        pointer-events: none;
+      }
+
+      .brand {
+        position: absolute;
+        left: 54px;
+        top: 48px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        letter-spacing: 0.18em;
+      }
+
+      .shot {
+        position: absolute;
+        left: 54px;
+        bottom: 72px;
+        width: min(520px, 44vw);
+      }
+
+      .shot h1 {
+        margin: 0 0 12px;
+        color: #ef2438;
+        font-size: clamp(28px, 4vw, 62px);
+        line-height: 0.92;
+        letter-spacing: -0.045em;
+      }
+
+      .shot p {
+        margin: 0;
+        max-width: 440px;
+        color: rgba(255, 255, 255, 0.72);
+        font-family: "Microsoft YaHei", sans-serif;
+        font-size: clamp(14px, 1.3vw, 20px);
+        line-height: 1.6;
+      }
+
+      .technical {
+        position: absolute;
+        right: 54px;
+        top: 48px;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      .progress {
+        position: absolute;
+        left: 54px;
+        right: 54px;
+        bottom: 34px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .progress > div {
+        width: 0;
+        height: 100%;
+        background: #ef2438;
+      }
+
+      .occlusion {
+        position: fixed;
+        inset: 0;
+        opacity: 0;
+        background: radial-gradient(circle at 54% 52%, #121316 0%, #030304 70%);
+        pointer-events: none;
+      }
     </style>
     <script type="importmap">
       {
@@ -50,6 +124,19 @@
     <canvas id="stage" aria-label="汽车概念叙事低保真预演"></canvas>
     <div class="grain" aria-hidden="true"></div>
     <div class="guide" aria-hidden="true"></div>
+    <div class="hud" aria-hidden="true">
+      <div class="brand">CAMERA PREVIS / VIRTUAL FPV INFILTRATION</div>
+      <div class="shot">
+        <h1 id="shot-title"></h1>
+        <p id="shot-copy"></p>
+      </div>
+      <div class="technical">
+        <div id="frame-counter"></div>
+        <div id="telemetry"></div>
+      </div>
+      <div class="progress"><div id="progress-value"></div></div>
+    </div>
+    <div class="occlusion" id="occlusion" aria-hidden="true"></div>
     <script type="module" src="./previs.mjs"></script>
   </body>
 </html>

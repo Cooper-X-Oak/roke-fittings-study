@@ -12,6 +12,7 @@
     "creativeRoutes",
     "selectedRouteId",
     "shots",
+    "cameraPrevis",
     "animatic",
     "confirmation",
     "phaseHistory"
@@ -63,6 +64,7 @@
       "maxItems": 5,
       "items": {"$ref": "#/$defs/shot"}
     },
+    "cameraPrevis": {"$ref": "#/$defs/cameraPrevis"},
     "animatic": {"$ref": "#/$defs/animatic"},
     "confirmation": {"$ref": "#/$defs/confirmation"},
     "phaseHistory": {
@@ -200,6 +202,37 @@
         "durationSeconds": {"type": "number", "exclusiveMinimum": 0},
         "reviewed": {"const": true},
         "reviewNotes": {"$ref": "#/$defs/nonEmptyStrings"}
+      }
+    },
+    "cameraPrevis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uri",
+        "fps",
+        "totalFrames",
+        "frameStateCount",
+        "continuityPath",
+        "hiddenCut",
+        "maxAbsRollDegrees",
+        "stableHeroHold",
+        "reviewed"
+      ],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "fps": {"type": "integer", "minimum": 1},
+        "totalFrames": {"type": "integer", "minimum": 1},
+        "frameStateCount": {"type": "integer", "minimum": 1},
+        "continuityPath": {"$ref": "#/$defs/nonEmptyStrings"},
+        "hiddenCut": {"type": "string", "minLength": 1},
+        "maxAbsRollDegrees": {"type": "number", "minimum": 0, "maximum": 12},
+        "stableHeroHold": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "integer", "minimum": 0}
+        },
+        "reviewed": {"const": true}
       }
     },
     "confirmation": {

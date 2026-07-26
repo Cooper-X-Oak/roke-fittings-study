@@ -170,14 +170,110 @@
 - 当前网页 Animatic 不采用无休止的一镜到底；
 - 只在镜头 1–2 使用一次明确的空间连续动作，随后进入可理解的系统全景。
 
+### 8. Audi 2025 Retail — Motorized Precision
+
+来源：[Motorized Precision — Audi 2025](https://www.motorizedprecision.com/case-studies-audi-2025)
+
+叙事命题：
+
+> 机器人精密控制可以制造看似无人机的车内穿越，同时保留商业摄影的可控性。
+
+可迁移方法：
+
+- 用精确预演约束“无人机感”，而不是依赖即兴飞行；
+- 外部轮廓、车内穿越和宏观掠镜可以属于同一运动语法；
+- 特殊镜头必须服务产品形态，避免明显人工化的无动机运动。
+
+对当前模型的限制：
+
+- 采用虚拟相机与确定性曲线，不复制真实机器人或镜头参数；
+- 只保留一次高速穿越，避免全片持续高速。
+
+### 9. Mercedes C-Class — Single-take Loop
+
+来源：[Westley Sarokin — Mercedes C-Class](https://www.westley.work/mercedescclass)
+
+叙事命题：
+
+> 单镜头成立的前提是预先设计空间转换、速度和时间，而不是消除所有剪辑。
+
+可迁移方法：
+
+- 用 Previs 先锁定相机运动、速度和段落时长；
+- 将外观与座舱转换藏在画面遮挡和连续运动中；
+- 让镜头结尾能够回到可保持的产品状态。
+
+对当前模型的限制：
+
+- 不追求字面上的物理一镜到底；
+- 制动盘遮挡中允许一次公开的隐藏切。
+
+### 10. Toyota C-HR — Unbroken Camera Move
+
+来源：[Andreas Wanda — Toyota C-HR](https://www.andreaswanda.com/portfolio/toyota-chr/)
+
+叙事命题：
+
+> 一条不间断运镜需要真实摄影、CG 产品和环境运动严格同步于 Previs。
+
+可迁移方法：
+
+- 每个速度变化都在 Previs 中明确；
+- 镜头路径和产品运动共用一个时间轴；
+- 连续性来自运动因果，不来自后期溶接。
+
+对当前模型的限制：
+
+- 当前没有道路环境和车辆行驶动画；
+- 用静态产品周围的虚拟摄影路径表达连续性。
+
+### 11. FFUN Motorsports — FPV One Take
+
+来源：[DIRX ECP — FPV One Take](https://www.dirxecp.com/post/how-we-filmed-this-fpv-one-take-video-for-ffun-motorsports)
+
+叙事命题：
+
+> FPV 穿越的专业性来自路线勘察、空间编舞和反复测试，而不只是飞得快。
+
+可迁移方法：
+
+- 先画清楚外部到内部再回到外部的空间路径；
+- 入口、出口和转向点必须在前一段被看见；
+- 高速段之后需要减速，让观众重新获得方向感。
+
+对当前模型的限制：
+
+- 没有展厅环境，不采用复杂八字路线；
+- 只迁移“入口可见、路径可读、内部减速、出口预告”。
+
+### 12. Drive What You Love — Framestore
+
+来源：[Framestore — Drive What You Love](https://www.framestore.com/work/drive-what-you-love)
+
+叙事命题：
+
+> 完整预演使宏观近摄、物理上不可能的机位和无缝 CG 转换成为同一广告语言。
+
+可迁移方法：
+
+- 先用低成本 Previs 证明不可能机位是否真的提升产品认知；
+- 宏观尺度变化要由可见形状或遮挡触发；
+- 最终成片只保留最能表达产品的特殊镜头。
+
+对当前模型的限制：
+
+- 低成本 Animatic 不追求最终材质和景深；
+- 先验收路径、构图和节奏，再进入实时 WebGL。
+
 ## 综合决策
 
 当前汽车模型最值得迁移的组合不是“发动机拆解”，而是：
 
 ```text
 Honda Cog 的视觉因果
-+ Adaptech Maxima 的尺度 / 形状 Match Cut
-+ Toyota 的信息驱动镜头
++ Motorized Precision 的受控无人机感
++ Mercedes C-Class / Toyota C-HR 的逐帧 Previs
++ FFUN FPV 的入口—内部—出口空间编舞
 + Formula E 的受控系统分层
 + Porsche 的单一情绪定义
 ```
@@ -199,3 +295,8 @@ Honda Cog 的视觉因果
 - 最终阶段才使用完整车身表面光；
 - 文案作为电影字幕层，不制造网页仪表盘；
 - 所有拆分沿少数清晰轴线，禁止全方向随机爆炸。
+- 相机只允许一次高速穿越，进入座舱后必须明显减速；
+- 以制动盘遮挡隐藏唯一一次空间重定位；
+- 横滚绝对值不超过 10°，禁止完整 360° 环绕；
+- 最后 15% 时间轴完全稳定，确保网页终点可读；
+- 相机、焦点、零件和灯光由同一逐帧时间轴驱动。

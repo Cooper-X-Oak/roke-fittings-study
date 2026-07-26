@@ -7,9 +7,10 @@ After model inspection, complete these phases in order:
 1. `case-research`
 2. `creative-routes`
 3. `five-shot-script`
-4. `animatic`
-5. `confirmation`
-6. runtime implementation
+4. `camera-previs` inside the animatic phase
+5. `animatic`
+6. `confirmation`
+7. runtime implementation
 
 Record phases 1–5 in one `creative-development.json`. Runtime-story generation
 is phase 6 and must reject a missing or invalid creative-development record.
@@ -57,7 +58,14 @@ independently justifies those exact beats.
 
 ## Animatic
 
-Create a fixed-duration, reviewable animatic after the script. It may use a
+Create a deterministic per-frame camera previs after the script and before the
+animatic. The previs must provide every canonical frame's camera position,
+target, roll, FOV, focus distance, part state, light state, shot identity, and
+transition occlusion. It must also declare its frame rate, total frame count,
+shot boundaries, continuity path, hidden-cut reason, maximum roll, and stable
+hero-hold range.
+
+Then create a fixed-duration, reviewable animatic. It may use a
 grey model, viewport captures, or low-fidelity rendering, but it must express
 all five shots, transitions, holds, camera intent, lighting intent, and total
 rhythm. Record its URI, duration, review status, and review notes.

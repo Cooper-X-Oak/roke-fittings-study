@@ -96,12 +96,12 @@ def main() -> None:
     require_text(
         CREATIVE / "five-shot-script.md",
         [
-            "Shot 01 — CONTACT",
-            "Shot 02 — HUMAN CORE",
-            "Shot 03 — SYSTEM",
-            "Shot 04 — CONVERGENCE",
-            "Shot 05 — PRESENCE",
-            "连续性检查",
+            "Shot 01 — INTERCEPT",
+            "Shot 02 — THREAD",
+            "Shot 03 — COCKPIT RUN",
+            "Shot 04 — BREAKOUT",
+            "Shot 05 — ARREST",
+            "Camera Previs 验收契约",
         ],
     )
 
@@ -146,6 +146,52 @@ def main() -> None:
         fail("animatic must retain explicit visual-review evidence")
     if len(plan.get("shots", [])) != 5:
         fail("creative development must contain exactly five shots")
+    if [shot.get("id") for shot in plan.get("shots", [])] != [
+        "intercept",
+        "thread",
+        "cockpit-run",
+        "breakout",
+        "arrest",
+    ]:
+        fail("the selected route must use the approved virtual-FPV five-shot arc")
+
+    camera_previs_path = CREATIVE / "camera-previs.json"
+    camera_previs = json.loads(camera_previs_path.read_text(encoding="utf-8"))
+    if camera_previs.get("fps") != 30 or camera_previs.get("totalFrames") != 480:
+        fail("camera previs must be the canonical 480-frame, 30fps playback")
+    frames = camera_previs.get("frames", [])
+    if len(frames) != 480:
+        fail("camera previs must contain exactly one state for every frame")
+    if [entry.get("frame") for entry in frames] != list(range(480)):
+        fail("camera previs frame identities must be contiguous and deterministic")
+    if camera_previs.get("stableHeroHold") != [408, 479]:
+        fail("camera previs must reserve the final 15% for the stable hero")
+    if camera_previs.get("maxAbsRollDegrees", 99) > 10:
+        fail("camera previs roll must remain within the authored 10-degree limit")
+    hidden_cut = camera_previs.get("hiddenCut", {})
+    if (hidden_cut.get("fromFrame"), hidden_cut.get("toFrame")) != (123, 124):
+        fail("camera previs must retain the brake-disc-motivated hidden cut")
+    stable_frames = frames[408:]
+    stable_projection = [
+        (
+            frame["camera"],
+            frame["product"],
+            frame["light"],
+            frame["transition"],
+        )
+        for frame in stable_frames
+    ]
+    if len({json.dumps(value, sort_keys=True) for value in stable_projection}) != 1:
+        fail("camera, product, light, and transition states must be stable from frame 408")
+    if max(abs(frame["camera"]["rollDegrees"]) for frame in frames) > 10:
+        fail("sampled camera roll exceeds the authored limit")
+    reverse_projection = [
+        json.dumps(frames[index], sort_keys=True)
+        for index in range(479, -1, -1)
+    ][::-1]
+    forward_projection = [json.dumps(frame, sort_keys=True) for frame in frames]
+    if reverse_projection != forward_projection:
+        fail("camera previs is not exactly reversible by frame index")
     if [entry.get("phase") for entry in plan.get("phaseHistory", [])] != [
         "case-research",
         "creative-routes",
@@ -201,8 +247,9 @@ def main() -> None:
         fail("public runtime changed during preproduction-only work")
 
     print(
-        "PASS: car story has traceable research, three routes, five reviewed "
-        "storyboard shots, a 16-second animatic record, and a closed runtime gate"
+        "PASS: car story has traceable professional-camera research, three routes, "
+        "a deterministic 480-frame camera previs, five reviewed storyboard shots, "
+        "a 16-second path animatic record, and a closed runtime gate"
     )
 
 

@@ -55,6 +55,7 @@ model inspection prerequisite
   -> advertising case research
   -> at least two creative routes
   -> one selected route and exactly five authored shots
+  -> deterministic per-frame camera previs
   -> fixed-duration animatic
   -> explicit external confirmation
   -> runtime implementation
@@ -82,6 +83,14 @@ Treat ROKE and other references as methods, not templates. Extract narrative
 thesis, information order, camera motivation, light progression, transition
 logic, rhythm, and applicability. Do not copy brands, assets, product claims, or
 a universal `intro/exploded/assembly/reveal/hero` sequence.
+
+Before rendering the animatic, author a deterministic camera-previs artifact for
+the canonical playback. It must contain one state for every frame and record:
+camera position, target, roll, FOV, focus distance, shot identity, product/part
+state, light state, and transition occlusion. Camera motion must be motivated by
+the selected narrative, not added as generic orbiting. Hidden cuts must occur
+behind an authored visual occlusion and remain exactly reproducible in reverse.
+The final 15% of the canonical playback must be a stable hero hold.
 
 ## Generate Runtime Only After Confirmation
 

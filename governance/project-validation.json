@@ -2,9 +2,9 @@
   "schema_version": 1,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-car-story-animatic",
-  "ruleset_version": "2026-07-26.4",
-  "validation_contract_version": "2026-07-26.4",
+  "ruleset_id": "ruleset-2026-07-26-car-camera-previs",
+  "ruleset_version": "2026-07-26.5",
+  "validation_contract_version": "2026-07-26.5",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
@@ -17,7 +17,7 @@
     },
     {
       "id": "car-story-preproduction-contract",
-      "behavior_id": "current-car-has-researched-routed-scripted-reviewable-animatic",
+      "behavior_id": "current-car-has-researched-routed-scripted-per-frame-camera-previs-and-reviewable-path-animatic",
       "required_for_current_contract": true,
       "command": "python scripts/validate_car_story_preproduction.py"
     },

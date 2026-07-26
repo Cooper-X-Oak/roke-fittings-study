@@ -157,6 +157,23 @@
       "truthConstraints": ["Use only approved product claims in the final promise."]
     }
   ],
+  "cameraPrevis": {
+    "uri": "./creative/industrial-product-camera-previs.json",
+    "fps": 30,
+    "totalFrames": 480,
+    "frameStateCount": 480,
+    "continuityPath": [
+      "establish product",
+      "enter detail",
+      "traverse interior",
+      "return to exterior",
+      "stable hero"
+    ],
+    "hiddenCut": "One authored occlusion conceals the reviewed spatial relocation.",
+    "maxAbsRollDegrees": 8,
+    "stableHeroHold": [408, 479],
+    "reviewed": true
+  },
   "animatic": {
     "uri": "./creative/industrial-product-core-to-form-animatic.mp4",
     "kind": "animatic-video",

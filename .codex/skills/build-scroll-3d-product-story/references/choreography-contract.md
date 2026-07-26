@@ -39,6 +39,12 @@ Implement the confirmed lighting and layout progression beside camera motion.
 Prefer a small number of camera and rotation keyframes. Sample keyframes from
 normalized progress so reverse scrolling remains exact.
 
+For a camera-previs deliverable, expand the authored keyframes into exactly one
+deterministic state per canonical frame. A professional traversal may use one
+occlusion-motivated hidden cut, but never an unmotivated teleport. Constrain
+roll, decelerate for interior comprehension, and stop camera, parts, focus, and
+light motion for the final 15% hero hold.
+
 ## Content
 
 Bind content to approved shots rather than arbitrary scroll pixels. Keep
