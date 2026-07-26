@@ -202,7 +202,7 @@
       "quality": "supporting",
       "target": "GitHub Draft PR #16",
       "artifact": "https://github.com/Cooper-X-Oak/roke-fittings-study/pull/16",
-      "summary": "The remote candidate points at commit 29c885637b0a89700580eb58543f191d4fa51acf and GitHub reports a clean merge state."
+      "summary": "Draft PR #16 contains inspected implementation commit 29c885637b0a89700580eb58543f191d4fa51acf and GitHub reports a clean merge state."
     }
   ],
   "findings": [],
