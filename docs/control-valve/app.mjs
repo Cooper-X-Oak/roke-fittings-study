@@ -577,7 +577,6 @@ function applyState(state) {
   setGroupOpacity("PNEUMATIC_ACTUATOR", 0.35 + 0.65 * state.product.actuatorAssembly);
   setGroupOpacity("SEALS_SUPPORT", 0.28 + 0.72 * state.product.detailAssembly);
   setGroupOpacity("PRODUCTION_DETAILS", 0.2 + 0.8 * state.product.detailAssembly);
-  updateBrandGlyphLayer(state);
 
   keyLight.intensity = state.light.key * 1.9;
   rimLight.intensity = state.light.rim * 2;
@@ -863,7 +862,6 @@ async function start() {
     productRig = new THREE.Group();
     productRig.name = "CONTROL_VALVE_PRODUCT_RIG";
     productRig.add(product);
-    buildBrandGlyphLayer();
     scene.add(productRig);
     draco.dispose();
     geometryStatus.textContent = `${trimIslands.length} 个实际内件几何岛`;

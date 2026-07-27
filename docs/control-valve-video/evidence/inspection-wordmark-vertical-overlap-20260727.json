@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "run_id": "20260727T000000Z-control-valve-wordmark-vertical-overlap",
+  "target": {
+    "environment": "local-candidate",
+    "identity": "workspace/control-valve-shot-script at local range preview http://127.0.0.1:4183/control-valve-video/"
+  },
+  "scope": {
+    "status": "applicable",
+    "basis": "The current delivery changes the HTML brand wordmark's vertical scroll relationship to the rendered product.",
+    "affected_claims": [
+      "wordmark-vertical-overlap"
+    ],
+    "unaffected_claims": [
+      "GOP 6 media encoding",
+      "product material rendering",
+      "catalog navigation"
+    ]
+  },
+  "plan": {
+    "claims": [
+      {
+        "claim_id": "wordmark-vertical-overlap",
+        "statement": "At hero start and 30% scroll, the single HTML wordmark remains a coherent horizontal brand field with an intentional vertical relationship to the product rather than an accidental top-edge crop.",
+        "consumer": "desktop visitor reviewing the control-valve product story",
+        "critical": true,
+        "environment": "local-candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "rendered-ui-screenshot",
+            "target": "1280x800 local range-preview page at scroll progress 0 and 0.30",
+            "probe": "Playwright screenshot with scroll travel derived from .video-scroll-shell"
+          }
+        ]
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "claim_id": "wordmark-vertical-overlap",
+      "status": "checked",
+      "reason": "Direct screenshots were captured and visually reviewed at both requested scroll states after the timing adjustment.",
+      "evidence_refs": [
+        "EV-001",
+        "EV-002"
+      ],
+      "cleanup_evidence": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "type": "rendered-ui-screenshot",
+      "quality": "direct",
+      "target": "local candidate, 1280x800, scroll progress 0",
+      "artifact": "D:/Temp/control-valve-wordmark-start-after.png",
+      "summary": "The complete wordmark is centered at y=280px to y=408px; the product's vertical axis crosses the brand field without clipping the viewport."
+    },
+    {
+      "id": "EV-002",
+      "type": "rendered-ui-screenshot",
+      "quality": "direct",
+      "target": "local candidate, 1280x800, scroll progress 0.30",
+      "artifact": "D:/Temp/control-valve-wordmark-30-after.png",
+      "summary": "The complete wordmark remains visible at y=77px to y=205px with opacity 0.78125 and maintains an intentional overlap with the upper product axis."
+    }
+  ],
+  "findings": [
+    {
+      "id": "DELIVERY-001",
+      "claim_id": "wordmark-vertical-overlap",
+      "severity": "observation",
+      "kind": "quality-risk",
+      "environment": "local-candidate",
+      "subject": "HTML wordmark scroll timing",
+      "observed": "Before the adjustment, the 30% wordmark top was -4px, leaving the field mostly cropped. After changing the upward-motion interval from [0.08, 0.80] to [0.16, 0.80], its top is 77px at 30% while its exit remains complete by 80%.",
+      "expected": "The brand field remains visibly and intentionally related to the product through the early motion beat, then leaves the viewport during the later story.",
+      "impact": "The early product story retains a stable brand anchor instead of presenting an abrupt, accidental-looking title loss.",
+      "evidence_refs": [
+        "EV-001",
+        "EV-002"
+      ],
+      "reproduction": [
+        "Open the local candidate at 1280x800.",
+        "Capture at page scroll 0.",
+        "Set page scroll to the video-scroll-shell travel multiplied by 0.30 and capture again."
+      ],
+      "confidence": "high",
+      "blocking": false
+    }
+  ],
+  "promotion_candidates": [],
+  "verdict": "pass"
+}

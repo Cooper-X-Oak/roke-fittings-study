@@ -4,11 +4,11 @@ const VIDEO_SOURCE = ["gop3", "gop6", "gop10"].includes(requestedVariant)
   : "./assets/control-valve-gop6.mp4";
 
 const SHOTS = [
-  { id: "core", range: [0, 0.13], eyebrow: "CONTROL VALVE", label: "01 / FORM", title: "精密<br>有形。", body: "" },
-  { id: "nested", range: [0.13, 0.32], eyebrow: "CONTROL VALVE", label: "02 / RHYTHM", title: "层层<br>向前。", body: "" },
-  { id: "body", range: [0.32, 0.55], eyebrow: "CONTROL VALVE", label: "03 / WEIGHT", title: "结构<br>成势。", body: "" },
-  { id: "assembly", range: [0.55, 0.77], eyebrow: "CONTROL VALVE", label: "04 / ONE", title: "合而<br>为一。", body: "" },
-  { id: "presence", range: [0.77, 1], eyebrow: "CONTROL VALVE", label: "05 / PRESENCE", title: "精密<br>向前。", body: "" },
+  { id: "core", range: [0, 0.13], label: "01 / FORM" },
+  { id: "nested", range: [0.13, 0.32], label: "02 / RHYTHM" },
+  { id: "body", range: [0.32, 0.55], label: "03 / WEIGHT" },
+  { id: "assembly", range: [0.55, 0.77], label: "04 / ONE" },
+  { id: "presence", range: [0.77, 1], label: "05 / PRESENCE" },
 ];
 
 const stage = document.querySelector(".stage");
@@ -47,14 +47,13 @@ function updateContent(progress) {
   const shot = chapterAt(progress);
   if (shot.id !== currentShotId) {
     currentShotId = shot.id;
-    eyebrow.textContent = shot.eyebrow;
-    title.innerHTML = shot.title;
-    body.textContent = shot.body;
-    stage.classList.remove("copy-enter");
-    requestAnimationFrame(() => stage.classList.add("copy-enter"));
     shotLabel.textContent = shot.label;
   }
   timelineFill.style.transform = `scaleX(${progress})`;
+  const titleProgress = clamp((progress - 0.16) / 0.64);
+  title.style.setProperty("--hero-title-y", `${titleProgress * -116}vh`);
+  title.style.opacity = `${1 - titleProgress}`;
+  eyebrow.style.opacity = `${Math.max(0, 1 - titleProgress * 1.6)}`;
   progressLabel.textContent = `${Math.round(progress * 100)}% EXPLORED`;
 }
 
