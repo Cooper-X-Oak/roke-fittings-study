@@ -5,7 +5,7 @@ body { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--ink); 
 a { color: inherit; }
 a:focus-visible { outline: 3px solid #f7b373; outline-offset: 5px; }
 .story { min-height: 100vh; }
-.video-scroll-shell { height: 620vh; }
+.video-scroll-shell { height: 280vh; }
 .stage { position: sticky; top: 0; height: 100vh; min-height: 620px; overflow: hidden; background: var(--ink); }
 .media, .media video, .poster, .media-vignette { position: absolute; inset: 0; width: 100%; height: 100%; }
 .media { background: var(--ink); }

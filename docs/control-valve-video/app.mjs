@@ -20,7 +20,8 @@ const timelineFill = document.querySelector("#timeline-fill");
 const progressLabel = document.querySelector("#progress-label");
 const catalogAction = document.querySelector("#catalog-action");
 const frameRate = 30;
-const lastFrameTime = (540 - 1) / frameRate;
+const motionEndFraction = 0.85;
+const lastFrameTime = ((540 - 1) / frameRate) * motionEndFraction;
 const frameTolerance = 0.55 / frameRate;
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 

@@ -54,6 +54,7 @@ for token, message in (
     ('const VIDEO_SOURCE = "./assets/control-valve-gop6.mp4"', "runtime does not select GOP 6"),
     ("video.currentTime = targetTime", "runtime no longer maps scroll to video time"),
     ("catalogAction", "runtime does not preserve the primary catalog action"),
+    ("motionEndFraction = 0.85", "runtime does not stop at the retained source's motion end"),
     ("scrollShell.offsetHeight", "runtime does not map video time to the dedicated scroll track"),
     ("prefers-reduced-motion", "runtime does not respect reduced motion"),
 ):
@@ -61,7 +62,7 @@ for token, message in (
 
 for token, message in (
     ("@media (max-width: 900px)", "business page lacks narrow-screen layout"),
-    (".video-scroll-shell { height: 620vh; }", "business page lacks a full video scroll track"),
+    (".video-scroll-shell { height: 280vh; }", "business page does not use the compact 280vh video scroll track"),
     ("@media (prefers-reduced-motion: reduce)", "business page lacks reduced-motion fallback"),
     (":focus-visible", "business page lacks a visible keyboard focus treatment"),
 ):

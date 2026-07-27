@@ -3,7 +3,7 @@
   "kind": "project_rules",
   "status": "active",
   "ruleset_id": "ruleset-2026-07-27-control-valve-business-page",
-  "ruleset_version": "2026-07-27.17",
+  "ruleset_version": "2026-07-27.18",
   "business_gate": {
     "development_entry_required": true
   },
@@ -143,6 +143,11 @@
           "id": "business-page-motion-and-fallback-proof",
           "node_type": "delivery_acceptance_supplement",
           "statement": "Acceptance must prove that the selected GOP 6 media is scroll-seekable with the non-empty static poster visible before video readiness, and that reduced-motion users retain visible product content and a usable catalog action."
+        },
+        {
+          "id": "business-page-compact-motion-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove that the business-page scroll track is 280vh and maps only the motion-bearing first 85 percent of the retained GOP 6 source to visitor scroll progress, so the full product is reached at the end of the track without a terminal hero hold."
         }
       ]
     }
