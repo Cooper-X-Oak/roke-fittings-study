@@ -30,6 +30,7 @@ if not video.is_file() or video.stat().st_size < 1_000_000:
 
 for token, message in (
     ('<main id="story"', "business page lacks a main landmark"),
+    ('class="video-scroll-shell"', "business page lacks a dedicated video scroll track"),
     ('<nav class="site-nav"', "business page lacks semantic navigation"),
     ('<h1 id="title"', "business page lacks a primary product heading"),
     ('href="../catalog/"', "business page lacks a real catalog action"),
@@ -53,12 +54,14 @@ for token, message in (
     ('const VIDEO_SOURCE = "./assets/control-valve-gop6.mp4"', "runtime does not select GOP 6"),
     ("video.currentTime = targetTime", "runtime no longer maps scroll to video time"),
     ("catalogAction", "runtime does not preserve the primary catalog action"),
+    ("scrollShell.offsetHeight", "runtime does not map video time to the dedicated scroll track"),
     ("prefers-reduced-motion", "runtime does not respect reduced motion"),
 ):
     required(script, token, message)
 
 for token, message in (
     ("@media (max-width: 900px)", "business page lacks narrow-screen layout"),
+    (".video-scroll-shell { height: 620vh; }", "business page lacks a full video scroll track"),
     ("@media (prefers-reduced-motion: reduce)", "business page lacks reduced-motion fallback"),
     (":focus-visible", "business page lacks a visible keyboard focus treatment"),
 ):

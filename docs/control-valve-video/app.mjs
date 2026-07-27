@@ -9,6 +9,7 @@ const SHOTS = [
 ];
 
 const stage = document.querySelector(".stage");
+const scrollShell = document.querySelector(".video-scroll-shell");
 const video = document.querySelector("#product-video");
 const poster = document.querySelector("#poster");
 const eyebrow = document.querySelector("#eyebrow");
@@ -93,8 +94,8 @@ function requestProgress(progress) {
 }
 
 function scrollProgress() {
-  const range = Math.max(1, stage.parentElement.scrollHeight - innerHeight);
-  return clamp(scrollY / range);
+  const range = Math.max(1, scrollShell.offsetHeight - innerHeight);
+  return clamp(-scrollShell.getBoundingClientRect().top / range);
 }
 
 video.addEventListener("loadedmetadata", () => {

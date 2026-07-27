@@ -5,6 +5,7 @@ body { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--ink); 
 a { color: inherit; }
 a:focus-visible { outline: 3px solid #f7b373; outline-offset: 5px; }
 .story { min-height: 100vh; }
+.video-scroll-shell { height: 620vh; }
 .stage { position: sticky; top: 0; height: 100vh; min-height: 620px; overflow: hidden; background: var(--ink); }
 .media, .media video, .poster, .media-vignette { position: absolute; inset: 0; width: 100%; height: 100%; }
 .media { background: var(--ink); }
@@ -57,4 +58,4 @@ a:focus-visible { outline: 3px solid #f7b373; outline-offset: 5px; }
 .button-link:hover { border-color: #ef9b6b; background: #2b373c; }
 @media (max-width: 900px) { .stage { min-height: 560px; } .masthead { align-items: flex-start; } .identity > span:last-child, .site-nav a:not(:last-child) { display: none; } .site-nav { gap: 0; } .copy { top: auto; bottom: 16vh; width: min(82vw, 34rem); transform: none; } .copy h1 { font-size: clamp(3rem, 13vw, 5.6rem); } .timeline { right: auto; left: 5.3vw; bottom: 6.8vh; width: 89vw; } .product-intro, .structure, .catalog-cta { padding-right: 6vw; padding-left: 6vw; } .product-intro__grid { grid-template-columns: 1fr; margin-top: 3rem; } .section-heading { display: block; } .section-heading h2 { margin-top: 2rem; } .beats { grid-template-columns: 1fr 1fr; margin-top: 3rem; } .beats li:nth-child(2) { border-right: 0; } .beats li:nth-child(n + 3) { border-top: 1px solid #778184; } .beats li:nth-child(3) { padding-left: 0; } }
 @media (max-width: 480px) { .site-nav a:last-child { padding: .64rem .72rem; font-size: .63rem; } .copy > p { max-width: 20rem; font-size: .9rem; } .beats { grid-template-columns: 1fr; } .beats li, .beats li:nth-child(2) { min-height: 0; padding: 1.25rem 0 2rem; border-right: 0; border-top: 1px solid #778184; } .beats li:first-child { border-top: 0; } .beats strong { margin-top: 2rem; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .stage { position: relative; min-height: 46rem; } .media video { display: none; } .poster { opacity: 1 !important; } .timeline-track span { transform: scaleX(.14); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .video-scroll-shell { height: auto; } .stage { position: relative; min-height: 46rem; } .media video { display: none; } .poster { opacity: 1 !important; } .timeline-track span { transform: scaleX(.14); } }
