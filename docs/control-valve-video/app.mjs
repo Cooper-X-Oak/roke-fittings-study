@@ -54,6 +54,8 @@ function updateContent(progress) {
   title.style.setProperty("--hero-title-y", `${titleProgress * -116}vh`);
   title.style.opacity = `${1 - titleProgress}`;
   eyebrow.style.opacity = `${Math.max(0, 1 - titleProgress * 1.6)}`;
+  const mobileExitFocus = clamp((progress - 0.82) / 0.18);
+  stage.style.setProperty("--mobile-video-focus-x", `${50 * (1 - mobileExitFocus)}%`);
   progressLabel.textContent = `${Math.round(progress * 100)}% EXPLORED`;
 }
 
