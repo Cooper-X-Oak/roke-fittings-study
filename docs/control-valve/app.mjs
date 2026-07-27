@@ -33,7 +33,8 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
 renderer.setClearColor(0x11161b, 1);
-renderer.shadowMap.enabled = false;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
 
 const scene = new THREE.Scene();
@@ -54,6 +55,8 @@ scene.add(hemi);
 
 const keyLight = new THREE.DirectionalLight(0xf4f0e8, 1.8);
 keyLight.position.set(5, 7, 6);
+keyLight.castShadow = true;
+keyLight.shadow.mapSize.set(2048, 2048);
 scene.add(keyLight);
 
 const rimLight = new THREE.DirectionalLight(0xa8b5be, 2.2);
@@ -74,6 +77,7 @@ const floor = new THREE.Mesh(
 );
 floor.rotation.x = -Math.PI / 2;
 floor.position.y = -1.88;
+floor.receiveShadow = true;
 scene.add(floor);
 
 const SHOT_COPY = {
@@ -87,7 +91,7 @@ const SHOT_COPY = {
   },
   "body-encloses": {
     title: "核心，被<br>结构承载。",
-    body: "阀体先以灰模透明度建立内部位置，再连续闭合。",
+    body: "阀体以商业可视化透明度建立内部位置，再连续闭合。",
   },
   "assembly-complete": {
     title: "直到每一层，<br>成为同一台设备。",
@@ -95,7 +99,7 @@ const SHOT_COPY = {
   },
   "product-presence": {
     title: "精密，最终<br>成为整体。",
-    body: "DN80 CL2500 气动串级式调节阀灰模预演。",
+    body: "DN80 CL2500 气动串级式调节阀。",
   },
 };
 
@@ -108,13 +112,13 @@ const GROUP_NAMES = [
   "PRODUCTION_DETAILS",
 ];
 
-const GROUP_COLORS = {
-  VALVE_BODY_BONNET: 0x697077,
-  PNEUMATIC_ACTUATOR: 0x858b90,
-  STEM_CASCADE_PLUG: 0xb8a08b,
-  CASCADE_TRIM: 0xb09a82,
-  SEALS_SUPPORT: 0x777e83,
-  PRODUCTION_DETAILS: 0x5f656a,
+const MATERIAL_PROFILES = {
+  VALVE_BODY_BONNET: { color: 0x78858b, metalness: 0.82, roughness: 0.3, environment: 1.32 },
+  PNEUMATIC_ACTUATOR: { color: 0x66747b, metalness: 0.76, roughness: 0.27, environment: 1.4 },
+  STEM_CASCADE_PLUG: { color: 0xaebbc0, metalness: 0.94, roughness: 0.2, environment: 1.55 },
+  CASCADE_TRIM: { color: 0xc5d0d2, metalness: 0.96, roughness: 0.16, environment: 1.65 },
+  SEALS_SUPPORT: { color: 0x59656a, metalness: 0.2, roughness: 0.5, environment: 0.75 },
+  PRODUCTION_DETAILS: { color: 0x8a969a, metalness: 0.9, roughness: 0.24, environment: 1.35 },
 };
 
 const TRIM_SEPARATION_WORLD = [-1.35, -0.45, 0.45, 1.35];
@@ -133,6 +137,7 @@ let modelScale = 1;
 let groups = new Map();
 let trimIslands = [];
 let trimDiagnostics = [];
+let brandGlyphs = [];
 let currentProgress = 0;
 let targetProgress = 0;
 let scheduled = false;
@@ -145,6 +150,58 @@ const loadStartedAt = performance.now();
 let renderCount = 0;
 let lastRenderAt = 0;
 const frameTimes = [];
+const BRAND_WORDS = ["精密有形", "层层向前", "结构成势", "合而为一", "精密向前"];
+
+function createBrandGlyph(character, column, row) {
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = 512;
+  const context = canvas.getContext("2d");
+  context.clearRect(0, 0, 512, 512);
+  context.fillStyle = "#dbe3e5";
+  context.font = "700 340px 'Microsoft YaHei', 'Noto Sans SC', sans-serif";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillText(character, 256, 276);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.38, depthWrite: false }));
+  sprite.scale.set(1.45, 1.45, 1);
+  sprite.userData = { column, row, character };
+  return sprite;
+}
+
+function buildBrandGlyphLayer() {
+  const layer = new THREE.Group();
+  layer.name = "BRAND_GLYPH_BACKGROUND";
+  layer.position.set(0, 0, -0.9);
+  for (let index = 0; index < 4; index += 1) {
+    const sprite = createBrandGlyph(BRAND_WORDS[0][index], index < 2 ? -1 : 1, index % 2);
+    layer.add(sprite);
+    brandGlyphs.push(sprite);
+  }
+  scene.add(layer);
+}
+
+function updateBrandGlyphLayer(state) {
+  const shotIndex = cameraPath.shots.findIndex((shot) => shot.id === state.shot.id);
+  const shot = cameraPath.shots[shotIndex];
+  const local = THREE.MathUtils.clamp((state.frame - shot.startFrame) / Math.max(1, shot.endFrame - shot.startFrame), 0, 1);
+  const outgoing = THREE.MathUtils.smoothstep(local, 0.72, 1);
+  const incoming = THREE.MathUtils.smoothstep(local, 0, 0.24);
+  const word = BRAND_WORDS[shotIndex] ?? BRAND_WORDS.at(-1);
+  brandGlyphs.forEach((sprite, index) => {
+    if (sprite.userData.character !== word[index]) {
+      sprite.material.map.dispose();
+      const replacement = createBrandGlyph(word[index], sprite.userData.column, sprite.userData.row);
+      sprite.material.map = replacement.material.map;
+      sprite.userData.character = word[index];
+    }
+    const x = sprite.userData.column * 2.35;
+    const y = sprite.userData.row === 0 ? 0.82 : -0.82;
+    sprite.position.set(x, y + incoming * 0.22 + outgoing * 1.5, 0);
+    sprite.material.opacity = 0.34 * incoming * (1 - outgoing);
+  });
+}
 let readyResolve;
 let readyReject;
 const readyPromise = new Promise((resolve, reject) => {
@@ -237,11 +294,15 @@ function configureMaterials(root) {
       : [node.material];
     const cloned = sourceMaterials.map((source) => {
       const material = source.clone();
-      material.metalness = 0.22;
-      material.roughness = 0.7;
-      material.envMapIntensity = 0.7;
+      const profile = MATERIAL_PROFILES[node.name] ?? MATERIAL_PROFILES.PRODUCTION_DETAILS;
+      material.color.setHex(profile.color);
+      material.metalness = profile.metalness;
+      material.roughness = profile.roughness;
+      material.envMapIntensity = profile.environment;
       material.side = THREE.DoubleSide;
       material.userData.baseOpacity = 1;
+      node.castShadow = true;
+      node.receiveShadow = true;
       return material;
     });
     node.material = Array.isArray(node.material) ? cloned : cloned[0];
@@ -262,7 +323,7 @@ function findAndCaptureGroups(root) {
         ? child.material
         : [child.material];
       for (const material of materials) {
-        material.color?.setHex(GROUP_COLORS[name]);
+        material.color?.setHex(MATERIAL_PROFILES[name].color);
       }
     });
   }
@@ -382,10 +443,11 @@ function splitTrimIntoActualIslands() {
   trimIslands = candidates.map((candidate, index) => {
     const material = sourceMaterials[0].clone();
     material.visible = true;
-    material.color.setHex([0x8c8278, 0xa29485, 0xb1a18f, 0xc0aa91][index]);
-    material.metalness = 0.28;
-    material.roughness = 0.62;
-    material.emissive = new THREE.Color(0x2c1609);
+    material.color.setHex(0xc5d0d2);
+    material.metalness = 0.96;
+    material.roughness = 0.16 + index * 0.025;
+    material.envMapIntensity = 1.65;
+    material.emissive = new THREE.Color(0x17252c);
     material.emissiveIntensity = 0;
     const mesh = new THREE.Mesh(candidate.geometry, material);
     mesh.name = `CASCADE_GEOMETRY_ISLAND_${index + 1}`;
@@ -515,6 +577,7 @@ function applyState(state) {
   setGroupOpacity("PNEUMATIC_ACTUATOR", 0.35 + 0.65 * state.product.actuatorAssembly);
   setGroupOpacity("SEALS_SUPPORT", 0.28 + 0.72 * state.product.detailAssembly);
   setGroupOpacity("PRODUCTION_DETAILS", 0.2 + 0.8 * state.product.detailAssembly);
+  updateBrandGlyphLayer(state);
 
   keyLight.intensity = state.light.key * 1.9;
   rimLight.intensity = state.light.rim * 2;
@@ -800,6 +863,7 @@ async function start() {
     productRig = new THREE.Group();
     productRig.name = "CONTROL_VALVE_PRODUCT_RIG";
     productRig.add(product);
+    buildBrandGlyphLayer();
     scene.add(productRig);
     draco.dispose();
     geometryStatus.textContent = `${trimIslands.length} 个实际内件几何岛`;

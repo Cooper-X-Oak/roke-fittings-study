@@ -60,8 +60,9 @@ const sourceManifestPath = resolve(
 const ffmpeg = args.ffmpeg ?? "ffmpeg";
 const ffprobe = args.ffprobe ?? "ffprobe";
 const variants = [3, 6, 10];
-const fps = 30;
-const frameCount = 540;
+const sourceManifest = JSON.parse(await readFile(sourceManifestPath, "utf8"));
+const fps = sourceManifest.renderProfile?.fps;
+const frameCount = sourceManifest.renderProfile?.frameCount;
 
 if (!args["frame-dir"]) {
   throw new Error("--frame-dir is required");
@@ -69,9 +70,8 @@ if (!args["frame-dir"]) {
 
 await mkdir(outputDirectory, { recursive: true });
 await mkdir(dirname(manifestPath), { recursive: true });
-const sourceManifest = JSON.parse(await readFile(sourceManifestPath, "utf8"));
-if (sourceManifest.renderProfile?.frameCount !== frameCount) {
-  throw new Error("Render manifest does not contain 540 source frames");
+if (!Number.isInteger(frameCount) || frameCount < 2 || !Number.isFinite(fps)) {
+  throw new Error("Render manifest must declare a valid frame count and fps");
 }
 
 const results = [];
@@ -191,8 +191,8 @@ const manifest = {
     width: 1280,
     height: 800,
     frameRate: 30,
-    frameCount: 540,
-    durationSeconds: 18,
+      frameCount,
+      durationSeconds: frameCount / fps,
     preset: "medium",
     crf: 21,
     profile: "high",

@@ -51,10 +51,13 @@ for forbidden in (
         fail(f"visitor-facing route still exposes experiment-only content: {forbidden}")
 
 for token, message in (
-    ('const VIDEO_SOURCE = "./assets/control-valve-gop6.mp4"', "runtime does not select GOP 6"),
+    ('const requestedVariant = new URLSearchParams(location.search).get("variant")', "runtime does not expose the isolated benchmark variant selector"),
+    ('? `./assets/control-valve-${requestedVariant}.mp4`', "runtime does not resolve benchmark variants safely"),
+    (': "./assets/control-valve-gop6.mp4"', "runtime does not default visitors to GOP 6"),
     ("video.currentTime = targetTime", "runtime no longer maps scroll to video time"),
     ("catalogAction", "runtime does not preserve the primary catalog action"),
-    ("motionEndFraction = 0.85", "runtime does not stop at the retained source's motion end"),
+    ("const sourceFrameCount = 330", "runtime does not target the compact source frame count"),
+    ("const lastFrameTime = (sourceFrameCount - 1) / frameRate", "runtime does not map the complete compact source"),
     ("scrollShell.offsetHeight", "runtime does not map video time to the dedicated scroll track"),
     ("prefers-reduced-motion", "runtime does not respect reduced motion"),
 ):

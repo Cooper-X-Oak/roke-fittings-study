@@ -332,8 +332,8 @@
   "cameraPrevis": {
     "uri": "creative/control-valve/camera-previs.json",
     "fps": 30,
-    "totalFrames": 540,
-    "frameStateCount": 540,
+    "totalFrames": 330,
+    "frameStateCount": 330,
     "continuityPath": [
       "四个实际 CASCADE_TRIM 连通几何岛沿中央轴保持拆分。",
       "四个几何岛与阀芯组分阶段沿同一轴线归位。",
@@ -344,13 +344,13 @@
     ],
     "hiddenCut": "无隐藏剪辑、黑场或遮挡迁移；五节拍共享一个世界和同一条机械轴。",
     "maxAbsRollDegrees": 0,
-    "stableHeroHold": [459, 539],
+    "stableHeroHold": null,
     "reviewed": true
   },
   "animatic": {
     "uri": "docs/control-valve/evidence/control-valve-grey-animatic.webm",
     "kind": "animatic-video",
-    "durationSeconds": 18,
+    "durationSeconds": 11,
     "reviewed": true,
     "reviewNotes": [
       "浏览器从实际 Draco GLB 解码 CASCADE_TRIM，并以连通性提取四个非空几何岛。",

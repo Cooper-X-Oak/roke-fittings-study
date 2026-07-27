@@ -2,9 +2,9 @@
   "schema_version": 2,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-27-control-valve-business-page",
-  "ruleset_version": "2026-07-27.18",
-  "validation_contract_version": "2026-07-27.18",
+  "ruleset_id": "ruleset-2026-07-27-control-valve-commercial-recut",
+  "ruleset_version": "2026-07-27.20",
+  "validation_contract_version": "2026-07-27.20",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
@@ -47,17 +47,6 @@
       "command": "python scripts/validate_control_valve_animatic.py"
     },
     {
-      "id": "creative-development-through-animatic",
-      "behavior_id": "creative-record-reaches-animatic-without-runtime-release",
-      "rule_paths": [
-        ["preserve-approved-continuous-five-beat-story"],
-        ["author-deterministic-per-frame-previs"],
-        ["derive-scroll-video-from-canonical-animatic"]
-      ],
-      "required_for_current_contract": true,
-      "command": "node .codex/skills/build-scroll-3d-product-story/scripts/validate-creative-development.mjs --plan creative/control-valve/creative-development.json --through animatic"
-    },
-    {
       "id": "github-pages-repository-policy",
       "behavior_id": "animatic-and-control-valve-business-page-pages-artifacts-remain-valid",
       "rule_paths": [
@@ -80,6 +69,21 @@
       ],
       "required_for_current_contract": true,
       "command": "python scripts/validate_control_valve_business_page.py"
+    },
+    {
+      "id": "control-valve-commercial-look-contract",
+      "behavior_id": "commercial-material-treatment-is-traceable-and-does-not-invent-product-facts",
+      "rule_paths": [
+        ["author-commercial-materials-from-traceable-public-reference"],
+        ["author-commercial-materials-from-traceable-public-reference", "material-provenance-and-boundary-proof"],
+        ["author-commercial-materials-from-traceable-public-reference", "commercial-look-and-causal-rhythm-proof"],
+        ["preserve-approved-continuous-five-beat-story"],
+        ["preserve-approved-continuous-five-beat-story", "fixed-duration-first-proof"],
+        ["derive-scroll-video-from-canonical-animatic"],
+        ["derive-scroll-video-from-canonical-animatic", "ui-free-frame-parity-proof"]
+      ],
+      "required_for_current_contract": true,
+      "command": "python scripts/validate_control_valve_commercial_look.py"
     }
   ]
 }

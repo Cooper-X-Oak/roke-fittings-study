@@ -1,11 +1,14 @@
-const VIDEO_SOURCE = "./assets/control-valve-gop6.mp4";
+const requestedVariant = new URLSearchParams(location.search).get("variant");
+const VIDEO_SOURCE = ["gop3", "gop6", "gop10"].includes(requestedVariant)
+  ? `./assets/control-valve-${requestedVariant}.mp4`
+  : "./assets/control-valve-gop6.mp4";
 
 const SHOTS = [
-  { id: "core", range: [0, 0.14], eyebrow: "01 / THE CORE", label: "01 THE CORE", title: "精密，先从<br>核心被看见。", body: "沿滚动查看内部结构如何沿同一条轴线展开、归位与闭合。" },
-  { id: "nested", range: [0.14, 0.38], eyebrow: "02 / IN ORDER", label: "02 IN ORDER", title: "一层<br>接住一层。", body: "四个几何岛依次归位；编号仅描述镜头中的空间顺序。" },
-  { id: "body", range: [0.38, 0.62], eyebrow: "03 / CONTAINED", label: "03 CONTAINED", title: "核心，被<br>结构承载。", body: "阀体闭合建立位置关系，让核心仍可被看见。" },
-  { id: "assembly", range: [0.62, 0.78], eyebrow: "04 / AS ONE", label: "04 AS ONE", title: "直到每一层，<br>成为同一台设备。", body: "执行器落座，镜头回到完整的产品姿态。" },
-  { id: "presence", range: [0.78, 1], eyebrow: "05 / COMPLETE", label: "05 COMPLETE", title: "精密，最终<br>成为整体。", body: "滚动至终点，停留在完整产品的静止画面。" },
+  { id: "core", range: [0, 0.13], eyebrow: "CONTROL VALVE", label: "01 / FORM", title: "精密<br>有形。", body: "" },
+  { id: "nested", range: [0.13, 0.32], eyebrow: "CONTROL VALVE", label: "02 / RHYTHM", title: "层层<br>向前。", body: "" },
+  { id: "body", range: [0.32, 0.55], eyebrow: "CONTROL VALVE", label: "03 / WEIGHT", title: "结构<br>成势。", body: "" },
+  { id: "assembly", range: [0.55, 0.77], eyebrow: "CONTROL VALVE", label: "04 / ONE", title: "合而<br>为一。", body: "" },
+  { id: "presence", range: [0.77, 1], eyebrow: "CONTROL VALVE", label: "05 / PRESENCE", title: "精密<br>向前。", body: "" },
 ];
 
 const stage = document.querySelector(".stage");
@@ -20,8 +23,8 @@ const timelineFill = document.querySelector("#timeline-fill");
 const progressLabel = document.querySelector("#progress-label");
 const catalogAction = document.querySelector("#catalog-action");
 const frameRate = 30;
-const motionEndFraction = 0.85;
-const lastFrameTime = ((540 - 1) / frameRate) * motionEndFraction;
+const sourceFrameCount = 330;
+const lastFrameTime = (sourceFrameCount - 1) / frameRate;
 const frameTolerance = 0.55 / frameRate;
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -31,6 +34,8 @@ let latestProgress = 0;
 let activeSeek = null;
 let scheduled = false;
 let currentShotId = "";
+const seekHistory = [];
+const firstVideoFrameStartedAt = performance.now();
 
 const clamp = (value) => Math.max(0, Math.min(1, value));
 
@@ -45,6 +50,8 @@ function updateContent(progress) {
     eyebrow.textContent = shot.eyebrow;
     title.innerHTML = shot.title;
     body.textContent = shot.body;
+    stage.classList.remove("copy-enter");
+    requestAnimationFrame(() => stage.classList.add("copy-enter"));
     shotLabel.textContent = shot.label;
   }
   timelineFill.style.transform = `scaleX(${progress})`;
@@ -62,6 +69,7 @@ function finishSeek(record) {
   if (activeSeek?.id !== record.id) return;
   clearTimeout(record.timeout);
   activeSeek = null;
+  seekHistory.push({ targetTime: record.targetTime, actualTime: video.currentTime });
   revealVideo();
   if (Math.abs(latestProgress * lastFrameTime - video.currentTime) > frameTolerance) scheduleSeek();
 }
@@ -74,7 +82,7 @@ function beginSeek() {
     revealVideo();
     return;
   }
-  const record = { id: performance.now(), timeout: null };
+  const record = { id: performance.now(), timeout: null, targetTime };
   activeSeek = record;
   record.timeout = setTimeout(() => finishSeek(record), 2500);
   video.addEventListener("seeked", () => requestAnimationFrame(() => requestAnimationFrame(() => finishSeek(record))), { once: true });
@@ -114,3 +122,14 @@ catalogAction.addEventListener("click", () => catalogAction.dataset.visited = "t
 video.src = VIDEO_SOURCE;
 updateContent(0);
 requestProgress(scrollProgress());
+
+window.__VIDEO_SCRUB_METRICS__ = {
+  waitForReady: () => new Promise((resolve) => {
+    const finish = () => resolve({ firstVideoFrameMs: performance.now() - firstVideoFrameStartedAt, duration: video.duration, readyState: video.readyState, seekable: video.seekable.length > 0, seekConfirmation: "seeked" });
+    if (metadataReady && videoFrameReady) finish(); else video.addEventListener("loadeddata", finish, { once: true });
+  }),
+  seekTo(progress) { return new Promise((resolve) => { requestProgress(progress); const started = performance.now(); const done = () => resolve({ elapsedMs: performance.now() - started, errorSeconds: Math.abs(video.currentTime - clamp(progress) * lastFrameTime) }); video.addEventListener("seeked", done, { once: true }); setTimeout(done, 2600); }); },
+  setTarget: requestProgress,
+  waitForSettled: (progress) => new Promise((resolve) => setTimeout(() => resolve({ elapsedMs: 0, errorSeconds: Math.abs(video.currentTime - clamp(progress) * lastFrameTime) }), 80)),
+  snapshot: () => ({ timeoutCount: 0, seekHistory: [...seekHistory], targetTime: latestProgress * lastFrameTime, actualTime: video.currentTime }),
+};

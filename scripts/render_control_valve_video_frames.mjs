@@ -37,8 +37,9 @@ const posterPath = resolve(
   args.poster ?? "docs/control-valve-video/assets/first-frame.png",
 );
 const viewport = { width: 1280, height: 800 };
-const fps = 30;
-const frameCount = 540;
+const cameraPrevis = JSON.parse(await readFile(resolve("creative/control-valve/camera-previs.json"), "utf8"));
+const fps = cameraPrevis.fps;
+const frameCount = cameraPrevis.totalFrames;
 
 if (!url || !modulePath) {
   throw new Error("--url and --playwright-module are required");

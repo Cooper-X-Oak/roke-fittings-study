@@ -2,15 +2,15 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-27-control-valve-business-page",
-  "ruleset_version": "2026-07-27.18",
+  "ruleset_id": "ruleset-2026-07-27-control-valve-commercial-recut",
+  "ruleset_version": "2026-07-27.20",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
       "id": "preserve-approved-continuous-five-beat-story",
-      "statement": "Translate the approved control-valve arc — core suspended, precision nested, body encloses, assembly complete, product presence — into one fixed-duration grey-model Animatic without changing its thesis, order, product-state handoffs or truth constraints.",
+      "statement": "Re-author the approved control-valve arc — core suspended, precision nested, body encloses, assembly complete, product presence — as a compact commercial product story. It must retain the five cognitive beats and truth constraints, but may change timing, camera, lighting, materials and product-state handoffs to create a stronger causal narrative without a terminal hero hold.",
       "development_entry_ids": ["author-control-valve-animatic"],
       "children": [
         {
@@ -21,7 +21,7 @@
         {
           "id": "fixed-duration-first-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove a canonical fixed-duration forward playback exists independently of scroll control and ends with a motionless final fifteen-percent hero hold."
+          "statement": "Acceptance must prove a compact canonical forward playback exists independently of scroll control, contains no terminal hero hold and resolves the final product-presence beat before immediate exit."
         }
       ]
     },
@@ -114,18 +114,18 @@
     },
     {
       "id": "derive-scroll-video-from-canonical-animatic",
-      "statement": "Derive a browser-scrubbable video experiment from the approved 540-frame control-valve Animatic without changing its five-beat edit, product state, camera, light, timing or truth boundaries.",
+      "statement": "Derive a browser-scrubbable GOP 6 video from the approved compact commercial control-valve story. The derived frames must preserve its selected five-beat edit, material hierarchy, product state, camera, light and truth boundaries.",
       "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
       "children": [
         {
           "id": "ui-free-frame-parity-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove exactly 540 UI-free product frames at 30 fps are rendered from the same deterministic state sampler and preserve the first, beat-boundary and hero states."
+          "statement": "Acceptance must prove UI-free product frames at 30 fps are rendered from the same deterministic state sampler, cover the complete compact source and preserve the first and beat-boundary states."
         },
         {
           "id": "independent-html-content-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove page copy, chapter state and controls remain HTML/CSS overlays rather than being permanently baked into the product video."
+          "statement": "Acceptance must prove accessible product title, navigation, progress and catalog controls remain HTML/CSS overlays. Non-explanatory four-character brand typography may be baked into the product video only as a background composition layer behind the rendered model; it must not state product facts, materials, performance, certification or technical instructions."
         }
       ]
     },
@@ -147,7 +147,24 @@
         {
           "id": "business-page-compact-motion-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove that the business-page scroll track is 280vh and maps only the motion-bearing first 85 percent of the retained GOP 6 source to visitor scroll progress, so the full product is reached at the end of the track without a terminal hero hold."
+          "statement": "Acceptance must prove that the business-page scroll track is 280vh and maps the complete motion-bearing GOP 6 source to visitor scroll progress, so the final product-presence resolve is reached at the end of the track without a terminal hero hold."
+        }
+      ]
+    },
+    {
+      "id": "author-commercial-materials-from-traceable-public-reference",
+      "statement": "Author a commercial material and lighting treatment for the control-valve story using traceable public manufacturer or renderer references when product-specific finish data is unavailable. Each resulting material assignment must be identified as either directly evidenced product fact or industry-reference visual treatment; reference treatment is permitted and must not make an exact product-material, coating, certification or performance claim.",
+      "development_entry_ids": ["author-control-valve-commercial-look"],
+      "children": [
+        {
+          "id": "material-provenance-and-boundary-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must record a component-to-material taxonomy, the public reference URL and retrieval date for every reference-driven assignment, the asset or texture license/source, and the visible-copy boundary that prevents reference treatment from being represented as a verified product specification."
+        },
+        {
+          "id": "commercial-look-and-causal-rhythm-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove a differentiated PBR material hierarchy, controlled reflection and contact-depth lighting, a compact causal five-beat motion sequence, and a final product resolve with no passive hold."
         }
       ]
     }

@@ -27,7 +27,14 @@ a:focus-visible { outline: 3px solid #f7b373; outline-offset: 5px; }
 .copy { position: absolute; z-index: 2; top: 42%; left: 5.3vw; width: min(34rem, 39vw); transform: translateY(-50%); }
 .eyebrow { margin: 0; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .72rem; font-weight: 700; letter-spacing: .2em; }
 .copy h1 { margin: 1.35rem 0 1rem; font-size: clamp(3rem, 5.5vw, 6.5rem); line-height: .91; letter-spacing: -.085em; }
-.copy > p { max-width: 28rem; color: var(--muted); font-size: clamp(.95rem, 1.1vw, 1.1rem); line-height: 1.8; }
+.copy > p { display: none; }
+.copy h1, .eyebrow, .timeline { will-change: transform, opacity; }
+.stage.copy-enter .eyebrow { animation: brand-kicker 440ms cubic-bezier(.16,1,.3,1) both; }
+.stage.copy-enter .copy h1 { animation: brand-title 620ms 45ms cubic-bezier(.16,1,.3,1) both; }
+.stage.copy-enter .timeline { animation: brand-timeline 540ms 90ms cubic-bezier(.16,1,.3,1) both; }
+@keyframes brand-kicker { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
+@keyframes brand-title { from { opacity: 0; transform: translateY(2.4rem) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes brand-timeline { from { opacity: 0; transform: translateX(1.5rem); } to { opacity: 1; transform: translateX(0); } }
 .scroll-cue { display: inline-flex; align-items: center; gap: .8rem; margin-top: 1.1rem; color: #f2f3ef; text-decoration: none; }
 .scroll-cue span:last-child { color: var(--accent); font-size: 1.2rem; }
 .timeline { position: absolute; z-index: 2; right: 4.2vw; bottom: 8vh; width: min(29rem, 36vw); }
