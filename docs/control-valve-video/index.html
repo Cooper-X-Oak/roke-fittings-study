@@ -5,28 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Control-valve short-GOP scroll-video seeking experiment."
+      content="控制阀产品叙事：沿滚动观看核心、内件与阀体如何回到同一条轴线。"
     >
-    <title>Control Valve — Scroll Video Experiment</title>
+    <title>控制阀｜让精密回到同一条轴线</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <main id="story" class="story">
-      <section class="stage" aria-label="控制阀视频滚动实验">
+      <section class="stage" aria-label="控制阀产品叙事">
         <div class="media">
           <video
             id="product-video"
             muted
             playsinline
-            preload="auto"
+            preload="metadata"
             poster="./assets/first-frame.png"
-            aria-label="由滚动控制的控制阀预渲染三维影片"
+            aria-label="由滚动控制的控制阀产品影片"
           ></video>
           <img
             id="poster"
             class="poster"
             src="./assets/first-frame.png"
-            alt="控制阀灰模首帧"
+            alt="控制阀精密核心的灰模首帧"
             width="1280"
             height="800"
           >
@@ -34,49 +34,69 @@
         </div>
 
         <header class="masthead">
-          <div class="identity">
+          <a class="identity" href="../" aria-label="返回网站首页">
             <span class="mark">CV</span>
-            <span>PRE-RENDERED 3D / SCROLL SEEK</span>
-          </div>
-          <div class="variants" aria-label="关键帧间隔版本">
-            <button type="button" data-variant="gop3">GOP 3</button>
-            <button type="button" data-variant="gop6">GOP 6</button>
-            <button type="button" data-variant="gop10">GOP 10</button>
-          </div>
+            <span>CONTROL VALVE</span>
+          </a>
+          <nav class="site-nav" aria-label="页面导航">
+            <a href="#product">产品</a>
+            <a href="#structure">结构</a>
+            <a id="catalog-action" href="../catalog/">查看目录 <span aria-hidden="true">↗</span></a>
+          </nav>
         </header>
 
         <section class="copy" aria-live="polite">
           <p id="eyebrow" class="eyebrow">01 / THE CORE</p>
           <h1 id="title">精密，先从<br>核心被看见。</h1>
           <p id="body">
-            影片只包含产品、灯光和环境；文字仍由 HTML 独立呈现。
+            沿滚动查看内部结构如何沿同一条轴线展开、归位与闭合。
           </p>
+          <a class="scroll-cue" href="#structure">
+            <span>向下探索结构</span><span aria-hidden="true">↓</span>
+          </a>
         </section>
 
-        <aside class="telemetry" aria-label="视频寻帧状态">
-          <p class="telemetry-title">LIVE SEEK EVIDENCE</p>
-          <dl>
-            <div><dt>VARIANT</dt><dd id="metric-variant">GOP 6</dd></div>
-            <div><dt>TARGET</dt><dd id="metric-target">0.000 s</dd></div>
-            <div><dt>DISPLAYED</dt><dd id="metric-actual">poster</dd></div>
-            <div><dt>ERROR</dt><dd id="metric-error">—</dd></div>
-            <div><dt>SEEK</dt><dd id="metric-state">loading</dd></div>
-          </dl>
-        </aside>
-
-        <footer class="timeline">
+        <footer class="timeline" aria-label="产品叙事进度">
           <div class="timeline-labels">
             <span id="shot-label">01 THE CORE</span>
-            <span>SCROLL CONTROLS VIDEO TIME</span>
+            <span id="progress-label">SCROLL TO EXPLORE</span>
           </div>
-          <div class="timeline-track">
+          <div class="timeline-track" aria-hidden="true">
             <span id="timeline-fill"></span>
           </div>
         </footer>
+      </section>
 
-        <p class="boundary">
-          预渲染视频实验；页面文案不烘焙进视频，不替代实时 GLB 路线。
-        </p>
+      <section id="product" class="product-intro" aria-labelledby="product-heading">
+        <p class="section-index">CONTROL VALVE / 01</p>
+        <div class="product-intro__grid">
+          <h2 id="product-heading">让每一层结构，<br>回到同一条轴线。</h2>
+          <div>
+            <p>
+              这段产品叙事将视线从核心移向内件、阀体与执行器。它呈现的是镜头中的几何关系，而不是制造、维护、流向或性能说明。
+            </p>
+            <a class="text-link" href="../catalog/">浏览产品目录 <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="structure" class="structure" aria-labelledby="structure-heading">
+        <div class="section-heading">
+          <p class="section-index">STRUCTURE / 02</p>
+          <h2 id="structure-heading">看见结构的秩序。</h2>
+        </div>
+        <ol class="beats">
+          <li><span>01</span><strong>核心</strong><p>从完整轴线推入可见的核心。</p></li>
+          <li><span>02</span><strong>内件</strong><p>四个几何岛沿镜头轴线依次归位。</p></li>
+          <li><span>03</span><strong>阀体</strong><p>外部结构闭合，保留对核心位置的阅读。</p></li>
+          <li><span>04</span><strong>整体</strong><p>执行器落座，结构成为同一台设备。</p></li>
+        </ol>
+      </section>
+
+      <section class="catalog-cta" aria-labelledby="catalog-heading">
+        <p class="section-index">NEXT / 03</p>
+        <h2 id="catalog-heading">继续了解<br>适合项目的产品。</h2>
+        <a class="button-link" href="../catalog/">进入产品目录 <span aria-hidden="true">↗</span></a>
       </section>
     </main>
     <script type="module" src="./app.mjs"></script>

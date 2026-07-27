@@ -362,6 +362,7 @@ allowed_paths = {
     "scripts/validate_control_valve_animatic.py",
     "scripts/validate_control_valve_shot_script.py",
     "scripts/validate_control_valve_video_experiment.py",
+    "scripts/validate_control_valve_business_page.py",
 }
 commands = [
     ["git", "diff", "--name-only", "origin/main...HEAD"],

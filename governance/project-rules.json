@@ -2,8 +2,8 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-27-control-valve-video-scrub-experiment",
-  "ruleset_version": "2026-07-27.16",
+  "ruleset_id": "ruleset-2026-07-27-control-valve-business-page",
+  "ruleset_version": "2026-07-27.17",
   "business_gate": {
     "development_entry_required": true
   },
@@ -130,53 +130,19 @@
       ]
     },
     {
-      "id": "compare-short-gop-scroll-video-encodes",
-      "statement": "Encode matched GOP 3, GOP 6 and GOP 10 variants from the same UI-free frame source, using one resolution, frame rate, codec family and quality policy so keyframe interval is the intended independent variable.",
-      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
+      "id": "deliver-control-valve-business-page",
+      "statement": "Promote the verified control-valve scroll-video route into a visitor-facing, Pages-compatible product story. It must use the selected GOP 6 video and static first-frame fallback to explain the observed product structure without exposing experimental instrumentation, inventing product claims, collecting user data, or making universal performance promises.",
+      "development_entry_ids": ["promote-control-valve-video-business-page"],
       "children": [
         {
-          "id": "matched-encode-proof",
+          "id": "business-page-content-and-action-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must use FFprobe evidence to prove each variant is 30 fps, 540 frames, 18 seconds, contains no audio, stays below GitHub's per-file limit and uses the declared GOP interval."
+          "statement": "Acceptance must prove that the route gives visitors a clear product narrative, a real catalog destination, semantic content, and no visitor-facing GOP comparison, engineering telemetry, fake form, fabricated proof, certification, performance, manufacturing or maintenance claims."
         },
         {
-          "id": "asset-size-evidence-proof",
+          "id": "business-page-motion-and-fallback-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must report encoded bytes and keyframe counts separately from runtime seek behavior and must not infer interaction performance from file size alone."
-        }
-      ]
-    },
-    {
-      "id": "validate-scroll-controlled-video-seeking",
-      "statement": "Provide a Pages-compatible experiment route that maps one normalized scroll progress value to paused video time, coalesces seek requests, preserves the five chapter ranges in both directions and shows the static first-frame poster until a usable video frame exists.",
-      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
-      "children": [
-        {
-          "id": "same-browser-seek-benchmark-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must compare all three variants in the same local origin, browser executable, viewport, DPR and cache mode, including cold first usable frame, ordered forward seeks, ordered reverse seeks, rapid alternating seeks and repeated-target error."
-        },
-        {
-          "id": "seek-coalescing-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove the controller retains only the latest pending target, bounds seek timeout failures and reports actual displayed-media time rather than treating a currentTime assignment as completed display."
-        },
-        {
-          "id": "poster-before-video-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must capture the route before video readiness and prove a non-empty static product poster remains visible instead of a blank canvas."
-        }
-      ]
-    },
-    {
-      "id": "stop-after-video-scrub-experiment",
-      "statement": "This phase stops after local deterministic frame export, three matched short-GOP videos, a Pages-compatible scroll-video review route and same-browser benchmark evidence. Runtime story-manifest release, replacement of the GLB route, universal performance claims, merge and deployment remain prohibited.",
-      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
-      "children": [
-        {
-          "id": "video-experiment-change-scope-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must limit changes to current governance, acceptance, deterministic render/capture tooling, derived video assets, the video experiment route, evidence and their validators."
+          "statement": "Acceptance must prove that the selected GOP 6 media is scroll-seekable with the non-empty static poster visible before video readiness, and that reduced-motion users retain visible product content and a usable catalog action."
         }
       ]
     }
