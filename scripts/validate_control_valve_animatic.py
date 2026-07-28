@@ -22,4 +22,10 @@ previous = previs["frames"][-2]
 if last["camera"] == previous["camera"] and last["product"] == previous["product"]: fail("final product resolve must continue moving to the exit")
 if max(abs(frame["camera"]["rollDegrees"]) for frame in previs["frames"]) != 0: fail("camera roll must remain zero")
 if any(not math.isfinite(value) for frame in previs["frames"] for value in [*frame["camera"]["position"], *frame["camera"]["target"]]): fail("camera path contains non-finite value")
+targets = {tuple(frame["camera"]["target"]) for frame in previs["frames"]}
+if targets != {(0, 0, 0)}: fail("camera target must stay locked on the product axis")
+distances = [frame["camera"]["focusDistance"] for frame in previs["frames"]]
+if any(right < left for left, right in zip(distances, distances[1:])): fail("camera must only travel from near to far")
+yaws = [frame["product"]["productYawDegrees"] for frame in previs["frames"]]
+if abs(yaws[0]) > 0.01 or abs(yaws[-1] - 180) > 0.01 or any(right < left for left, right in zip(yaws, yaws[1:])): fail("product must complete a continuous 180 degree vertical-axis turn")
 print("PASS: 330-frame compact commercial story retains five beats, continuous axis and no terminal hold")

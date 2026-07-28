@@ -12,8 +12,8 @@
     0
   ],
   "direction": {
-    "name": "compact-commercial-causal-story",
-    "statement": "A compact causal product story: the visible core nests, the body closes around that resolved core, the actuator seats under a rising camera, then the completed product drives one continuous off-axis pass into the next section rather than a terminal display hold.",
+    "name": "two-stable-motion-lines",
+    "statement": "A locked, single-direction near-to-far camera reveal; all angular change belongs to the product's continuous vertical-axis half turn, while real groups settle downward onto the shared axis.",
     "palette": [
       "graphite-coated-body",
       "machined-cool-metal",
@@ -58,17 +58,17 @@
     {
       "frame": 0,
       "position": [
-        4.8,
-        -1,
-        6.8
+        2.25,
+        -0.25,
+        2.15
       ],
       "target": [
         0,
-        -0.62,
+        0,
         0
       ],
       "roll": 0,
-      "fov": 33,
+      "fov": 30,
       "trimAssembly": [
         0,
         0,
@@ -80,115 +80,19 @@
       "bodyOpacity": 0.1,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": -12,
-      "coreEmphasis": 0.32,
+      "productYawDegrees": 0,
+      "coreEmphasis": 1,
       "keyLight": 0.72,
       "rimLight": 1,
-      "coreLight": 0.58,
-      "occlusion": 0
-    },
-    {
-      "frame": 28,
-      "position": [
-        2.75,
-        -0.5,
-        4.15
-      ],
-      "target": [
-        0,
-        -0.5,
-        0
-      ],
-      "roll": 0,
-      "fov": 26,
-      "trimAssembly": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "stemAssembly": 0,
-      "bodyClosure": 0,
-      "bodyOpacity": 0.12,
-      "actuatorAssembly": 0,
-      "detailAssembly": 0,
-      "productYawDegrees": -4,
-      "coreEmphasis": 1,
-      "keyLight": 0.78,
-      "rimLight": 1.08,
       "coreLight": 1,
       "occlusion": 0
     },
     {
       "frame": 36,
       "position": [
-        2.75,
-        -0.5,
-        4.15
-      ],
-      "target": [
-        0,
-        -0.5,
-        0
-      ],
-      "roll": 0,
-      "fov": 26,
-      "trimAssembly": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "stemAssembly": 0,
-      "bodyClosure": 0,
-      "bodyOpacity": 0.12,
-      "actuatorAssembly": 0,
-      "detailAssembly": 0,
-      "productYawDegrees": -4,
-      "coreEmphasis": 1,
-      "keyLight": 0.78,
-      "rimLight": 1.08,
-      "coreLight": 1,
-      "occlusion": 0
-    },
-    {
-      "frame": 60,
-      "position": [
-        4.6,
+        2.65,
         -0.15,
-        4.8
-      ],
-      "target": [
-        -0.3,
-        -0.2,
-        0
-      ],
-      "roll": 0,
-      "fov": 28,
-      "trimAssembly": [
-        1,
-        0,
-        0,
-        0
-      ],
-      "stemAssembly": 0.35,
-      "bodyClosure": 0,
-      "bodyOpacity": 0.12,
-      "actuatorAssembly": 0,
-      "detailAssembly": 0,
-      "productYawDegrees": 8,
-      "coreEmphasis": 0.9,
-      "keyLight": 0.9,
-      "rimLight": 1.16,
-      "coreLight": 0.92,
-      "occlusion": 0
-    },
-    {
-      "frame": 82,
-      "position": [
-        2.2,
-        0.45,
-        5.8
+        2.75
       ],
       "target": [
         0,
@@ -196,31 +100,31 @@
         0
       ],
       "roll": 0,
-      "fov": 29,
+      "fov": 30,
       "trimAssembly": [
-        1,
-        1,
-        1,
-        1
+        0.15,
+        0,
+        0,
+        0
       ],
-      "stemAssembly": 1,
+      "stemAssembly": 0.08,
       "bodyClosure": 0,
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
       "detailAssembly": 0,
-      "productYawDegrees": 17,
-      "coreEmphasis": 0.72,
-      "keyLight": 0.98,
-      "rimLight": 1.22,
-      "coreLight": 0.76,
+      "productYawDegrees": 12,
+      "coreEmphasis": 1,
+      "keyLight": 0.8,
+      "rimLight": 1.1,
+      "coreLight": 1,
       "occlusion": 0
     },
     {
       "frame": 89,
       "position": [
-        2.2,
-        0.45,
-        5.8
+        3.35,
+        -0.05,
+        3.75
       ],
       "target": [
         0,
@@ -228,7 +132,7 @@
         0
       ],
       "roll": 0,
-      "fov": 29,
+      "fov": 30,
       "trimAssembly": [
         1,
         1,
@@ -239,8 +143,8 @@
       "bodyClosure": 0,
       "bodyOpacity": 0.12,
       "actuatorAssembly": 0,
-      "detailAssembly": 0,
-      "productYawDegrees": 17,
+      "detailAssembly": 0.15,
+      "productYawDegrees": 42,
       "coreEmphasis": 0.72,
       "keyLight": 0.98,
       "rimLight": 1.22,
@@ -248,83 +152,19 @@
       "occlusion": 0
     },
     {
-      "frame": 118,
-      "position": [
-        4.6,
-        0.25,
-        6.4
-      ],
-      "target": [
-        0.2,
-        0,
-        0
-      ],
-      "roll": 0,
-      "fov": 29,
-      "trimAssembly": [
-        1,
-        1,
-        1,
-        1
-      ],
-      "stemAssembly": 1,
-      "bodyClosure": 0.45,
-      "bodyOpacity": 0.45,
-      "actuatorAssembly": 0,
-      "detailAssembly": 0.35,
-      "productYawDegrees": 8,
-      "coreEmphasis": 0.42,
-      "keyLight": 1.06,
-      "rimLight": 1.28,
-      "coreLight": 0.52,
-      "occlusion": 0
-    },
-    {
-      "frame": 148,
-      "position": [
-        6.8,
-        0.45,
-        5.6
-      ],
-      "target": [
-        0,
-        0.1,
-        0
-      ],
-      "roll": 0,
-      "fov": 32,
-      "trimAssembly": [
-        1,
-        1,
-        1,
-        1
-      ],
-      "stemAssembly": 1,
-      "bodyClosure": 0.9,
-      "bodyOpacity": 0.85,
-      "actuatorAssembly": 0,
-      "detailAssembly": 0.65,
-      "productYawDegrees": -6,
-      "coreEmphasis": 0.16,
-      "keyLight": 1.14,
-      "rimLight": 1.36,
-      "coreLight": 0.24,
-      "occlusion": 0
-    },
-    {
       "frame": 163,
       "position": [
-        7.1,
-        0.35,
-        4.8
+        4.45,
+        0,
+        5.1
       ],
       "target": [
         0,
-        0.14,
+        0,
         0
       ],
       "roll": 0,
-      "fov": 34,
+      "fov": 30,
       "trimAssembly": [
         1,
         1,
@@ -334,9 +174,9 @@
       "stemAssembly": 1,
       "bodyClosure": 1,
       "bodyOpacity": 1,
-      "actuatorAssembly": 0,
-      "detailAssembly": 0.85,
-      "productYawDegrees": -12,
+      "actuatorAssembly": 0.12,
+      "detailAssembly": 0.9,
+      "productYawDegrees": 88,
       "coreEmphasis": 0.1,
       "keyLight": 1.18,
       "rimLight": 1.42,
@@ -344,15 +184,15 @@
       "occlusion": 0
     },
     {
-      "frame": 190,
+      "frame": 244,
       "position": [
-        4.4,
-        0.85,
-        6.8
+        5.55,
+        0.05,
+        6.3
       ],
       "target": [
         0,
-        0.35,
+        0,
         0
       ],
       "roll": 0,
@@ -366,73 +206,9 @@
       "stemAssembly": 1,
       "bodyClosure": 1,
       "bodyOpacity": 1,
-      "actuatorAssembly": 0.3,
+      "actuatorAssembly": 1,
       "detailAssembly": 1,
-      "productYawDegrees": -22,
-      "coreEmphasis": 0.07,
-      "keyLight": 1.24,
-      "rimLight": 1.48,
-      "coreLight": 0.12,
-      "occlusion": 0
-    },
-    {
-      "frame": 225,
-      "position": [
-        5.3,
-        1.2,
-        4.5
-      ],
-      "target": [
-        0,
-        0.45,
-        0
-      ],
-      "roll": 0,
-      "fov": 33,
-      "trimAssembly": [
-        1,
-        1,
-        1,
-        1
-      ],
-      "stemAssembly": 1,
-      "bodyClosure": 1,
-      "bodyOpacity": 1,
-      "actuatorAssembly": 0.85,
-      "detailAssembly": 1,
-      "productYawDegrees": -30,
-      "coreEmphasis": 0.05,
-      "keyLight": 1.3,
-      "rimLight": 1.56,
-      "coreLight": 0.1,
-      "occlusion": 0
-    },
-    {
-      "frame": 244,
-      "position": [
-        6.5,
-        1,
-        3.9
-      ],
-      "target": [
-        0.1,
-        0.4,
-        0
-      ],
-      "roll": 0,
-      "fov": 34,
-      "trimAssembly": [
-        1,
-        1,
-        1,
-        1
-      ],
-      "stemAssembly": 1,
-      "bodyClosure": 1,
-      "bodyOpacity": 1,
-      "actuatorAssembly": 0.97,
-      "detailAssembly": 1,
-      "productYawDegrees": -34,
+      "productYawDegrees": 142,
       "coreEmphasis": 0.04,
       "keyLight": 1.34,
       "rimLight": 1.62,
@@ -440,110 +216,14 @@
       "occlusion": 0
     },
     {
-      "frame": 262,
-      "position": [
-        7.2,
-        0.72,
-        3.25
-      ],
-      "target": [
-        0.15,
-        0.25,
-        0
-      ],
-      "roll": 0,
-      "fov": 36,
-      "trimAssembly": [
-        1,
-        1,
-        1,
-        1
-      ],
-      "stemAssembly": 1,
-      "bodyClosure": 1,
-      "bodyOpacity": 1,
-      "actuatorAssembly": 1,
-      "detailAssembly": 1,
-      "productYawDegrees": -40,
-      "coreEmphasis": 0.03,
-      "keyLight": 1.4,
-      "rimLight": 1.7,
-      "coreLight": 0.07,
-      "occlusion": 0
-    },
-    {
-      "frame": 286,
-      "position": [
-        4.2,
-        0.32,
-        2.2
-      ],
-      "target": [
-        0.8,
-        0.16,
-        0
-      ],
-      "roll": 0,
-      "fov": 31,
-      "trimAssembly": [
-        1,
-        1,
-        1,
-        1
-      ],
-      "stemAssembly": 1,
-      "bodyClosure": 1,
-      "bodyOpacity": 1,
-      "actuatorAssembly": 1,
-      "detailAssembly": 1,
-      "productYawDegrees": -48,
-      "coreEmphasis": 0.02,
-      "keyLight": 1.46,
-      "rimLight": 1.78,
-      "coreLight": 0.06,
-      "occlusion": 0
-    },
-    {
-      "frame": 315,
-      "position": [
-        2.6,
-        0.15,
-        1.6
-      ],
-      "target": [
-        0.85,
-        0.05,
-        0
-      ],
-      "roll": 0,
-      "fov": 30,
-      "trimAssembly": [
-        1,
-        1,
-        1,
-        1
-      ],
-      "stemAssembly": 1,
-      "bodyClosure": 1,
-      "bodyOpacity": 1,
-      "actuatorAssembly": 1,
-      "detailAssembly": 1,
-      "productYawDegrees": -56,
-      "coreEmphasis": 0.02,
-      "keyLight": 1.52,
-      "rimLight": 1.86,
-      "coreLight": 0.05,
-      "occlusion": 0
-    },
-    {
       "frame": 329,
       "position": [
-        2.25,
-        0.05,
-        1.45
+        6.45,
+        0.1,
+        7.25
       ],
       "target": [
-        0.9,
+        0,
         0,
         0
       ],
@@ -560,7 +240,7 @@
       "bodyOpacity": 1,
       "actuatorAssembly": 1,
       "detailAssembly": 1,
-      "productYawDegrees": -60,
+      "productYawDegrees": 180,
       "coreEmphasis": 0.01,
       "keyLight": 1.56,
       "rimLight": 1.92,
