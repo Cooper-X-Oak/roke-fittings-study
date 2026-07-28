@@ -2,8 +2,8 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-27-control-valve-commercial-recut",
-  "ruleset_version": "2026-07-27.20",
+  "ruleset_id": "ruleset-2026-07-28-control-valve-pages-publication",
+  "ruleset_version": "2026-07-28.1",
   "business_gate": {
     "development_entry_required": true
   },
@@ -165,6 +165,18 @@
           "id": "commercial-look-and-causal-rhythm-proof",
           "node_type": "delivery_acceptance_supplement",
           "statement": "Acceptance must prove a differentiated PBR material hierarchy, controlled reflection and contact-depth lighting, a compact causal five-beat motion sequence, and a final product resolve with no passive hold."
+        }
+      ]
+    },
+    {
+      "id": "publish-verified-control-valve-pages-artifact",
+      "statement": "Publish the verified control-valve product-story artifact from the current synchronized development branch's /docs directory to GitHub Pages without merging to protected main. The public route must expose the selected GOP 6 experience and remain visibly usable.",
+      "development_entry_ids": ["publish-control-valve-pages"],
+      "children": [
+        {
+          "id": "pages-source-and-public-route-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove the configured Pages source branch and /docs path, an HTTP 200 response at the public control-valve route, the visible story and product-video containers, and the selected GOP 6 media reference."
         }
       ]
     }

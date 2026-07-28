@@ -12,7 +12,10 @@
   same-name remote branch. Development branches use `workspace/<short-slug>`;
   visual variants may use `theme/<theme-slug>`.
 - Issue, PR, protected-branch integration, merge, release, and deployment are
-  outside the default workflow and require an explicit project workflow change.
+  outside the default workflow. A scoped GitHub Pages publication from the
+  current verified development branch is permitted only when the current
+  control-plane entry and acceptance checks explicitly authorize it and the
+  Pages publication policy is followed.
 - If workflow resolution or preflight fails, remain read-only and report the blocker.
 
 # Governance control plane

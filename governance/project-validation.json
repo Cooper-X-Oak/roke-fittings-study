@@ -2,9 +2,9 @@
   "schema_version": 2,
   "kind": "project_validation",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-27-control-valve-commercial-recut",
-  "ruleset_version": "2026-07-27.20",
-  "validation_contract_version": "2026-07-27.20",
+  "ruleset_id": "ruleset-2026-07-28-control-valve-pages-publication",
+  "ruleset_version": "2026-07-28.1",
+  "validation_contract_version": "2026-07-28.1",
   "acceptance_gate": {
     "development_acceptance_required": true
   },
@@ -84,6 +84,16 @@
       ],
       "required_for_current_contract": true,
       "command": "python scripts/validate_control_valve_commercial_look.py"
+    },
+    {
+      "id": "published-control-valve-pages-contract",
+      "behavior_id": "public-pages-route-is-sourced-from-the-verified-development-branch-and-exposes-gop6-story",
+      "rule_paths": [
+        ["publish-verified-control-valve-pages-artifact"],
+        ["publish-verified-control-valve-pages-artifact", "pages-source-and-public-route-proof"]
+      ],
+      "required_for_current_contract": true,
+      "command": "python scripts/validate_published_pages.py --url https://cooper-x-oak.github.io/roke-fittings-study/control-valve-video/ --api-url https://api.github.com/repos/Cooper-X-Oak/roke-fittings-study/pages --branch workspace/control-valve-shot-script --path /docs"
     }
   ]
 }
