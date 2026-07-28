@@ -5,8 +5,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 
 
@@ -33,16 +35,21 @@ def main() -> int:
     page_status, html = fetch(args.url, "text/html")
     if page_status != 200:
         failures.append(f"public URL returned HTTP {page_status}, expected 200")
-    for marker in ("id=\"story\"", "id=\"product-video\"", "control-valve-gop6.mp4"):
+    for marker in ("id=\"story\"", "id=\"product-video\""):
         if marker not in html:
             failures.append(f"public page is missing required marker: {marker}")
 
-    api_status, api_body = fetch(args.api_url, "application/vnd.github+json")
-    if api_status != 200:
-        failures.append(f"Pages API returned HTTP {api_status}, expected 200")
+    app_status, app_source = fetch(urllib.parse.urljoin(args.url, "app.mjs"), "text/javascript")
+    if app_status != 200 or "control-valve-gop6.mp4" not in app_source:
+        failures.append("public app module does not select the GOP 6 media asset")
+
+    api_path = urllib.parse.urlparse(args.api_url).path.lstrip("/")
+    api_result = subprocess.run(["gh", "api", api_path], capture_output=True, text=True, check=False)
+    if api_result.returncode:
+        failures.append("authenticated Pages API probe failed")
     else:
         try:
-            page_config = json.loads(api_body)
+            page_config = json.loads(api_result.stdout)
         except json.JSONDecodeError:
             failures.append("Pages API response is not valid JSON")
         else:
