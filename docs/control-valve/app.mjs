@@ -7,13 +7,16 @@ const canvas = document.querySelector("#canvas");
 const story = document.querySelector("#story");
 const poster = document.querySelector("#poster");
 const loading = document.querySelector("#loading");
-const playButton = document.querySelector("#play");
+const forwardButton = document.querySelector("#play-forward");
+const reverseButton = document.querySelector("#play-reverse");
 const timelineFill = document.querySelector("#timeline-fill");
 const shotNumber = document.querySelector("#shot-number");
 const shotName = document.querySelector("#shot-name");
 const eyebrow = document.querySelector("#eyebrow");
 const title = document.querySelector("#title");
 const body = document.querySelector("#body");
+const directionLabel = document.querySelector("#direction");
+const geometryStatus = document.querySelector("#geometry-status");
 const debug = document.querySelector("#debug");
 
 const params = new URLSearchParams(location.search);
@@ -24,22 +27,21 @@ const renderer = new THREE.WebGLRenderer({
   canvas,
   antialias: true,
   alpha: false,
-  powerPreference: "high-performance"
+  powerPreference: "high-performance",
 });
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.06;
-renderer.setClearColor(0x0c1117, 1);
-renderer.shadowMap.enabled = false;
-
-const dprCap = Math.min(devicePixelRatio, 1.75);
-renderer.setPixelRatio(dprCap);
+renderer.toneMappingExposure = 1;
+renderer.setClearColor(0x11161b, 1);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0c1117);
-scene.fog = new THREE.FogExp2(0x0c1117, 0.018);
+scene.background = new THREE.Color(0x11161b);
+scene.fog = new THREE.FogExp2(0x11161b, 0.012);
 
-const camera = new THREE.PerspectiveCamera(34, 1, 0.015, 80);
+const camera = new THREE.PerspectiveCamera(31, 1, 0.015, 80);
 scene.add(camera);
 
 const environment = new RoomEnvironment();
@@ -48,54 +50,57 @@ scene.environment = pmrem.fromScene(environment, 0.05).texture;
 environment.dispose();
 pmrem.dispose();
 
-const hemi = new THREE.HemisphereLight(0xb9c5cc, 0x12171c, 0.5);
+const hemi = new THREE.HemisphereLight(0xd8dde0, 0x171b1f, 0.58);
 scene.add(hemi);
 
-const keyLight = new THREE.DirectionalLight(0xfff3e8, 2.0);
-keyLight.position.set(4, 7, 6);
+const keyLight = new THREE.DirectionalLight(0xf4f0e8, 1.8);
+keyLight.position.set(5, 7, 6);
+keyLight.castShadow = true;
+keyLight.shadow.mapSize.set(2048, 2048);
 scene.add(keyLight);
 
-const rimLight = new THREE.DirectionalLight(0xa9bfd0, 2.25);
-rimLight.position.set(-5, 3, -6);
+const rimLight = new THREE.DirectionalLight(0xa8b5be, 2.2);
+rimLight.position.set(-5, 4, -6);
 scene.add(rimLight);
 
-const accentLight = new THREE.PointLight(0xc46a3c, 4, 9, 2);
-accentLight.position.set(1.5, -1, 2.4);
-scene.add(accentLight);
+const coreLight = new THREE.PointLight(0xd19a68, 3.2, 8, 2);
+coreLight.position.set(1.2, -0.8, 2.2);
+scene.add(coreLight);
 
 const floor = new THREE.Mesh(
   new THREE.CircleGeometry(8, 80),
   new THREE.MeshStandardMaterial({
-    color: 0x18212a,
-    roughness: 0.88,
-    metalness: 0.08
-  })
+    color: 0x242a2f,
+    roughness: 0.94,
+    metalness: 0.02,
+  }),
 );
 floor.rotation.x = -Math.PI / 2;
-floor.position.y = -1.9;
+floor.position.y = -1.88;
+floor.receiveShadow = true;
 scene.add(floor);
 
 const SHOT_COPY = {
-  "product-authority": {
-    title: "秩序<br>先于动作",
-    body: "先看清整机，再理解内部。"
+  "core-suspended": {
+    title: "精密，先从<br>核心被看见。",
+    body: "四个真实几何岛沿中央轴展开；编号只代表镜头中的空间顺序。",
   },
-  "axial-command": {
-    title: "一条轴线<br>传递动作",
-    body: "执行器、推杆与阀芯，始终保持在同一观察方向。"
+  "precision-nested": {
+    title: "一层<br>接住一层。",
+    body: "三级阀笼候选与阀座候选分阶段归位，不用发光冒充分离。",
   },
-  "cascade-revealed": {
-    title: "核心结构<br>逐级显现",
-    body: "外壳退为参照，串级阀芯与三级阀笼仍处在完整空间中。"
+  "body-encloses": {
+    title: "核心，被<br>结构承载。",
+    body: "阀体以商业可视化透明度建立内部位置，再连续闭合。",
   },
-  "systems-in-order": {
-    title: "六个系统<br>各在其位",
-    body: "有限分离说明职责，不打散产品秩序。"
+  "assembly-complete": {
+    title: "直到每一层，<br>成为同一台设备。",
+    body: "主体与气动执行器沿同一机械轴完成整机轮廓。",
   },
-  "product-resolved": {
-    title: "理解之后<br>仍是整体",
-    body: "DN80 CL2500 气动串级式装配体。"
-  }
+  "product-presence": {
+    title: "精密，最终<br>成为整体。",
+    body: "DN80 CL2500 气动串级式调节阀。",
+  },
 };
 
 const GROUP_NAMES = [
@@ -104,42 +109,99 @@ const GROUP_NAMES = [
   "STEM_CASCADE_PLUG",
   "CASCADE_TRIM",
   "SEALS_SUPPORT",
-  "PRODUCTION_DETAILS"
+  "PRODUCTION_DETAILS",
 ];
 
-const EXPLODE_OFFSETS = {
-  VALVE_BODY_BONNET: [0, 0, 0],
-  PNEUMATIC_ACTUATOR: [0, 0.78, 0],
-  STEM_CASCADE_PLUG: [0, 0.34, 0],
-  CASCADE_TRIM: [0, -0.5, 0],
-  SEALS_SUPPORT: [0.52, -0.1, 0.24],
-  PRODUCTION_DETAILS: [-0.5, 0.08, -0.2]
+const MATERIAL_PROFILES = {
+  VALVE_BODY_BONNET: { color: 0x78858b, metalness: 0.82, roughness: 0.3, environment: 1.32 },
+  PNEUMATIC_ACTUATOR: { color: 0x66747b, metalness: 0.76, roughness: 0.27, environment: 1.4 },
+  STEM_CASCADE_PLUG: { color: 0xaebbc0, metalness: 0.94, roughness: 0.2, environment: 1.55 },
+  CASCADE_TRIM: { color: 0xc5d0d2, metalness: 0.96, roughness: 0.16, environment: 1.65 },
+  SEALS_SUPPORT: { color: 0x59656a, metalness: 0.2, roughness: 0.5, environment: 0.75 },
+  PRODUCTION_DETAILS: { color: 0x8a969a, metalness: 0.9, roughness: 0.24, environment: 1.35 },
 };
 
-const GROUP_COLORS = {
-  VALVE_BODY_BONNET: 0x626a74,
-  PNEUMATIC_ACTUATOR: 0x7a828b,
-  STEM_CASCADE_PLUG: 0xc46a3c,
-  CASCADE_TRIM: 0xb18a4a,
-  SEALS_SUPPORT: 0x66888c,
-  PRODUCTION_DETAILS: 0x8b9096
-};
+const TRIM_SEPARATION_WORLD = [-1.35, -0.45, 0.45, 1.35];
+const BODY_OPEN_OFFSET_WORLD = 0.92;
+const ACTUATOR_OPEN_OFFSET_WORLD = -1.75;
+const ACTUATOR_SEAT_OFFSET_WORLD = 0.16;
+const SUPPORT_OPEN_OFFSET_WORLD = -0.9;
+const DETAILS_OPEN_OFFSET_WORLD = 0.64;
+const STEM_OPEN_OFFSET_WORLD = 0.72;
+const POSITION_WELD_PRECISION = 10000;
 
 let cameraPath;
 let product;
+let productRig;
 let modelScale = 1;
 let groups = new Map();
+let trimIslands = [];
+let trimDiagnostics = [];
+let brandGlyphs = [];
 let currentProgress = 0;
 let targetProgress = 0;
 let scheduled = false;
 let playing = false;
+let playbackDirection = 1;
 let playbackStartedAt = 0;
 let currentShotId = "";
 let usableFrameAt = 0;
-let loadStartedAt = performance.now();
+const loadStartedAt = performance.now();
 let renderCount = 0;
 let lastRenderAt = 0;
 const frameTimes = [];
+const BRAND_WORDS = ["精密有形", "层层向前", "结构成势", "合而为一", "精密向前"];
+
+function createBrandGlyph(character, column, row) {
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = 512;
+  const context = canvas.getContext("2d");
+  context.clearRect(0, 0, 512, 512);
+  context.fillStyle = "#dbe3e5";
+  context.font = "700 340px 'Microsoft YaHei', 'Noto Sans SC', sans-serif";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillText(character, 256, 276);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.38, depthWrite: false }));
+  sprite.scale.set(1.45, 1.45, 1);
+  sprite.userData = { column, row, character };
+  return sprite;
+}
+
+function buildBrandGlyphLayer() {
+  const layer = new THREE.Group();
+  layer.name = "BRAND_GLYPH_BACKGROUND";
+  layer.position.set(0, 0, -0.9);
+  for (let index = 0; index < 4; index += 1) {
+    const sprite = createBrandGlyph(BRAND_WORDS[0][index], index < 2 ? -1 : 1, index % 2);
+    layer.add(sprite);
+    brandGlyphs.push(sprite);
+  }
+  scene.add(layer);
+}
+
+function updateBrandGlyphLayer(state) {
+  const shotIndex = cameraPath.shots.findIndex((shot) => shot.id === state.shot.id);
+  const shot = cameraPath.shots[shotIndex];
+  const local = THREE.MathUtils.clamp((state.frame - shot.startFrame) / Math.max(1, shot.endFrame - shot.startFrame), 0, 1);
+  const outgoing = THREE.MathUtils.smoothstep(local, 0.72, 1);
+  const incoming = THREE.MathUtils.smoothstep(local, 0, 0.24);
+  const word = BRAND_WORDS[shotIndex] ?? BRAND_WORDS.at(-1);
+  brandGlyphs.forEach((sprite, index) => {
+    if (sprite.userData.character !== word[index]) {
+      sprite.material.map.dispose();
+      const replacement = createBrandGlyph(word[index], sprite.userData.column, sprite.userData.row);
+      sprite.material.map = replacement.material.map;
+      sprite.userData.character = word[index];
+    }
+    const x = sprite.userData.column * 2.35;
+    const y = sprite.userData.row === 0 ? 0.82 : -0.82;
+    sprite.position.set(x, y + incoming * 0.22 + outgoing * 1.5, 0);
+    sprite.material.opacity = 0.34 * incoming * (1 - outgoing);
+  });
+}
 let readyResolve;
 let readyReject;
 const readyPromise = new Promise((resolve, reject) => {
@@ -149,7 +211,8 @@ const readyPromise = new Promise((resolve, reject) => {
 
 const smooth = (value) => value * value * (3 - 2 * value);
 const mix = (a, b, t) => a + (b - a) * t;
-const mixVector = (a, b, t) => a.map((value, index) => mix(value, b[index], t));
+const mixVector = (a, b, t) =>
+  a.map((value, index) => mix(value, b[index], t));
 
 function samplePath(progress) {
   const frame = progress * (cameraPath.totalFrames - 1);
@@ -164,9 +227,16 @@ function samplePath(progress) {
   }
   const span = Math.max(1, right.frame - left.frame);
   const t = smooth((frame - left.frame) / span);
-  const shot = cameraPath.shots.find(
-    (candidate) => frame >= candidate.startFrame && frame < candidate.endFrame + 1
-  ) ?? cameraPath.shots.at(-1);
+  const frameIndex = Math.min(
+    cameraPath.totalFrames - 1,
+    Math.floor(frame),
+  );
+  const shot =
+    cameraPath.shots.find(
+      (candidate) =>
+        frameIndex >= candidate.startFrame &&
+        frameIndex <= candidate.endFrame,
+    ) ?? cameraPath.shots.at(-1);
   return {
     frame,
     shot,
@@ -174,35 +244,65 @@ function samplePath(progress) {
       position: mixVector(left.position, right.position, t),
       target: mixVector(left.target, right.target, t),
       roll: mix(left.roll, right.roll, t),
-      fov: mix(left.fov, right.fov, t)
+      fov: mix(left.fov, right.fov, t),
+      focusDistance: mix(
+        new THREE.Vector3(...left.position).distanceTo(
+          new THREE.Vector3(...left.target),
+        ),
+        new THREE.Vector3(...right.position).distanceTo(
+          new THREE.Vector3(...right.target),
+        ),
+        t,
+      ),
     },
     product: {
-      explode: mix(left.explode, right.explode, t),
+      trimAssembly: mixVector(left.trimAssembly, right.trimAssembly, t),
+      stemAssembly: mix(left.stemAssembly, right.stemAssembly, t),
+      bodyClosure: mix(left.bodyClosure, right.bodyClosure, t),
       bodyOpacity: mix(left.bodyOpacity, right.bodyOpacity, t),
-      stemStroke: mix(left.stemStroke, right.stemStroke, t),
-      cascadeStage: mix(left.cascadeStage, right.cascadeStage, t)
+      actuatorAssembly: mix(
+        left.actuatorAssembly,
+        right.actuatorAssembly,
+        t,
+      ),
+      detailAssembly: mix(
+        left.detailAssembly,
+        right.detailAssembly,
+        t,
+      ),
+      productYawDegrees: mix(
+        left.productYawDegrees,
+        right.productYawDegrees,
+        t,
+      ),
+      coreEmphasis: mix(left.coreEmphasis, right.coreEmphasis, t),
     },
     light: {
       key: mix(left.keyLight, right.keyLight, t),
-      rim: mix(left.rimLight, right.rimLight, t)
+      rim: mix(left.rimLight, right.rimLight, t),
+      core: mix(left.coreLight, right.coreLight, t),
     },
-    occlusion: mix(left.occlusion, right.occlusion, t)
+    occlusion: mix(left.occlusion, right.occlusion, t),
   };
 }
 
 function configureMaterials(root) {
   root.traverse((node) => {
     if (!node.isMesh) return;
-    node.frustumCulled = true;
     const sourceMaterials = Array.isArray(node.material)
       ? node.material
       : [node.material];
     const cloned = sourceMaterials.map((source) => {
       const material = source.clone();
-      material.metalness = Math.max(material.metalness ?? 0, 0.45);
-      material.roughness = Math.max(material.roughness ?? 0.5, 0.32);
-      material.envMapIntensity = 0.85;
-      material.userData.baseOpacity = material.opacity;
+      const profile = MATERIAL_PROFILES[node.name] ?? MATERIAL_PROFILES.PRODUCTION_DETAILS;
+      material.color.setHex(profile.color);
+      material.metalness = profile.metalness;
+      material.roughness = profile.roughness;
+      material.envMapIntensity = profile.environment;
+      material.side = THREE.DoubleSide;
+      material.userData.baseOpacity = 1;
+      node.castShadow = true;
+      node.receiveShadow = true;
       return material;
     });
     node.material = Array.isArray(node.material) ? cloned : cloned[0];
@@ -215,7 +315,7 @@ function findAndCaptureGroups(root) {
     if (!node) throw new Error(`GLB is missing semantic group ${name}`);
     groups.set(name, {
       node,
-      basePosition: node.position.clone()
+      basePosition: node.position.clone(),
     });
     node.traverse((child) => {
       if (!child.isMesh) return;
@@ -223,10 +323,149 @@ function findAndCaptureGroups(root) {
         ? child.material
         : [child.material];
       for (const material of materials) {
-        material.color?.setHex(GROUP_COLORS[name]);
+        material.color?.setHex(MATERIAL_PROFILES[name].color);
       }
     });
   }
+}
+
+function findTrimMesh() {
+  const root = groups.get("CASCADE_TRIM")?.node;
+  let result = null;
+  root?.traverse((node) => {
+    if (!result && node.isMesh && node.geometry?.getAttribute("position")) {
+      result = node;
+    }
+  });
+  if (!result) throw new Error("CASCADE_TRIM has no decodable mesh geometry");
+  return result;
+}
+
+function connectedTriangleComponents(geometry) {
+  const position = geometry.getAttribute("position");
+  const index = geometry.index;
+  const triangleCount = Math.floor(
+    (index ? index.count : position.count) / 3,
+  );
+  const parents = new Int32Array(triangleCount);
+  const ranks = new Uint8Array(triangleCount);
+  for (let value = 0; value < triangleCount; value += 1) parents[value] = value;
+
+  const find = (value) => {
+    let cursor = value;
+    while (parents[cursor] !== cursor) {
+      parents[cursor] = parents[parents[cursor]];
+      cursor = parents[cursor];
+    }
+    return cursor;
+  };
+  const union = (left, right) => {
+    let leftRoot = find(left);
+    let rightRoot = find(right);
+    if (leftRoot === rightRoot) return;
+    if (ranks[leftRoot] < ranks[rightRoot]) {
+      [leftRoot, rightRoot] = [rightRoot, leftRoot];
+    }
+    parents[rightRoot] = leftRoot;
+    if (ranks[leftRoot] === ranks[rightRoot]) ranks[leftRoot] += 1;
+  };
+  const vertexIndexAt = (offset) => (index ? index.getX(offset) : offset);
+  const weldedOwner = new Map();
+
+  for (let triangle = 0; triangle < triangleCount; triangle += 1) {
+    for (let corner = 0; corner < 3; corner += 1) {
+      const vertex = vertexIndexAt(triangle * 3 + corner);
+      const key = [
+        Math.round(position.getX(vertex) * POSITION_WELD_PRECISION),
+        Math.round(position.getY(vertex) * POSITION_WELD_PRECISION),
+        Math.round(position.getZ(vertex) * POSITION_WELD_PRECISION),
+      ].join(",");
+      const owner = weldedOwner.get(key);
+      if (owner === undefined) weldedOwner.set(key, triangle);
+      else union(triangle, owner);
+    }
+  }
+
+  const components = new Map();
+  for (let triangle = 0; triangle < triangleCount; triangle += 1) {
+    const root = find(triangle);
+    if (!components.has(root)) components.set(root, []);
+    const values = components.get(root);
+    values.push(
+      vertexIndexAt(triangle * 3),
+      vertexIndexAt(triangle * 3 + 1),
+      vertexIndexAt(triangle * 3 + 2),
+    );
+  }
+  return [...components.values()].filter((values) => values.length >= 30);
+}
+
+function splitTrimIntoActualIslands() {
+  const sourceMesh = findTrimMesh();
+  const geometry = sourceMesh.geometry;
+  const components = connectedTriangleComponents(geometry);
+  const maximumIndex = geometry.getAttribute("position").count - 1;
+  const IndexArray = maximumIndex > 65535 ? Uint32Array : Uint16Array;
+  const candidates = components.map((indices) => {
+    const componentGeometry = new THREE.BufferGeometry();
+    for (const [name, attribute] of Object.entries(geometry.attributes)) {
+      componentGeometry.setAttribute(name, attribute);
+    }
+    componentGeometry.setIndex(
+      new THREE.BufferAttribute(new IndexArray(indices), 1),
+    );
+    const position = geometry.getAttribute("position");
+    const bounds = new THREE.Box3();
+    const point = new THREE.Vector3();
+    for (const vertexIndex of new Set(indices)) {
+      point.fromBufferAttribute(position, vertexIndex);
+      bounds.expandByPoint(point);
+    }
+    componentGeometry.boundingBox = bounds;
+    const center = bounds.getCenter(new THREE.Vector3());
+    const sphere = new THREE.Sphere();
+    bounds.getBoundingSphere(sphere);
+    componentGeometry.boundingSphere = sphere;
+    return { indices, geometry: componentGeometry, center };
+  });
+  candidates.sort((left, right) => left.center.y - right.center.y);
+  if (candidates.length !== 4) {
+    throw new Error(
+      `CASCADE_TRIM exposes ${candidates.length} connected geometry islands; exactly 4 are required`,
+    );
+  }
+
+  const sourceMaterials = Array.isArray(sourceMesh.material)
+    ? sourceMesh.material
+    : [sourceMesh.material];
+  for (const material of sourceMaterials) material.visible = false;
+
+  trimIslands = candidates.map((candidate, index) => {
+    const material = sourceMaterials[0].clone();
+    material.visible = true;
+    material.color.setHex(0xc5d0d2);
+    material.metalness = 0.96;
+    material.roughness = 0.16 + index * 0.025;
+    material.envMapIntensity = 1.65;
+    material.emissive = new THREE.Color(0x17252c);
+    material.emissiveIntensity = 0;
+    const mesh = new THREE.Mesh(candidate.geometry, material);
+    mesh.name = `CASCADE_GEOMETRY_ISLAND_${index + 1}`;
+    sourceMesh.add(mesh);
+    return {
+      name: mesh.name,
+      node: mesh,
+      basePosition: mesh.position.clone(),
+      triangleCount: candidate.indices.length / 3,
+      localCenter: candidate.center.clone(),
+    };
+  });
+  trimDiagnostics = trimIslands.map((island, index) => ({
+    name: island.name,
+    axisOrder: index + 1,
+    triangleCount: island.triangleCount,
+    localCenter: island.localCenter.toArray(),
+  }));
 }
 
 function orientAndFit(root) {
@@ -236,14 +475,11 @@ function orientAndFit(root) {
   if (size.x > size.y && size.x > size.z) {
     root.rotation.z = Math.PI / 2;
   } else if (size.z > size.y && size.z > size.x) {
-    root.rotation.x = -Math.PI / 2;
+    root.rotation.x = Math.PI / 2;
   }
   root.updateMatrixWorld(true);
   box = new THREE.Box3().setFromObject(root);
   const orientedSize = box.getSize(new THREE.Vector3());
-  // Leave enough headroom for the complete product silhouette in both hero
-  // shots. Macro shots obtain scale from camera travel, not from cropping the
-  // assembly at the viewport edges.
   modelScale = 3.4 / orientedSize.y;
   root.scale.setScalar(modelScale);
   root.updateMatrixWorld(true);
@@ -257,57 +493,94 @@ function setGroupOpacity(name, opacity) {
   const entry = groups.get(name);
   if (!entry) return;
   entry.node.traverse((node) => {
-    if (!node.isMesh) return;
-    const materials = Array.isArray(node.material) ? node.material : [node.material];
+    if (!node.isMesh || node.name.startsWith("CASCADE_GEOMETRY_ISLAND_")) {
+      return;
+    }
+    const materials = Array.isArray(node.material)
+      ? node.material
+      : [node.material];
     for (const material of materials) {
-      const finalOpacity = Math.min(material.userData.baseOpacity ?? 1, opacity);
+      if (material.visible === false) continue;
+      const finalOpacity = Math.min(
+        material.userData.baseOpacity ?? 1,
+        opacity,
+      );
       material.opacity = finalOpacity;
       material.transparent = finalOpacity < 0.995;
-      material.depthWrite = finalOpacity > 0.34;
+      material.depthWrite = finalOpacity > 0.52;
     }
   });
 }
 
+function resetGroupPositions() {
+  for (const entry of groups.values()) {
+    entry.node.position.copy(entry.basePosition);
+  }
+}
+
 function applyState(state) {
-  const up = new THREE.Vector3(0, 1, 0);
   const position = new THREE.Vector3(...state.camera.position);
   const target = new THREE.Vector3(...state.camera.target);
   camera.position.copy(position);
   camera.fov = state.camera.fov;
-  camera.up.copy(up);
+  camera.up.set(0, 1, 0);
   camera.lookAt(target);
   camera.rotateZ(THREE.MathUtils.degToRad(state.camera.roll));
   camera.updateProjectionMatrix();
 
-  for (const [name, entry] of groups) {
-    const offset = EXPLODE_OFFSETS[name];
-    entry.node.position.set(
-      entry.basePosition.x + (offset[0] * state.product.explode) / modelScale,
-      entry.basePosition.y + (offset[1] * state.product.explode) / modelScale,
-      entry.basePosition.z + (offset[2] * state.product.explode) / modelScale
-    );
-  }
+  resetGroupPositions();
+
+  const bodyEntry = groups.get("VALVE_BODY_BONNET");
+  bodyEntry.node.position.z =
+    bodyEntry.basePosition.z +
+    (BODY_OPEN_OFFSET_WORLD * (1 - state.product.bodyClosure)) / modelScale;
+
+  const actuator = groups.get("PNEUMATIC_ACTUATOR");
+  actuator.node.position.z =
+    actuator.basePosition.z +
+    (ACTUATOR_OPEN_OFFSET_WORLD * (1 - state.product.actuatorAssembly) +
+      ACTUATOR_SEAT_OFFSET_WORLD * state.product.actuatorAssembly) /
+      modelScale;
+
+  const support = groups.get("SEALS_SUPPORT");
+  support.node.position.z =
+    support.basePosition.z +
+    (SUPPORT_OPEN_OFFSET_WORLD * (1 - state.product.detailAssembly)) /
+      modelScale;
+
+  const details = groups.get("PRODUCTION_DETAILS");
+  details.node.position.z =
+    details.basePosition.z +
+    (DETAILS_OPEN_OFFSET_WORLD * (1 - state.product.detailAssembly)) /
+      modelScale;
 
   const stem = groups.get("STEM_CASCADE_PLUG");
-  if (stem) {
-    stem.node.position.y -= state.product.stemStroke / modelScale;
-  }
-  setGroupOpacity("VALVE_BODY_BONNET", state.product.bodyOpacity);
+  stem.node.position.z =
+    stem.basePosition.z +
+    (STEM_OPEN_OFFSET_WORLD * (1 - state.product.stemAssembly)) / modelScale;
 
-  const cascadeGlow = Math.min(1, state.product.cascadeStage / 3);
-  const trim = groups.get("CASCADE_TRIM");
-  trim?.node.traverse((node) => {
-    if (!node.isMesh) return;
-    const materials = Array.isArray(node.material) ? node.material : [node.material];
-    for (const material of materials) {
-      material.emissive?.setRGB(0.18 * cascadeGlow, 0.045 * cascadeGlow, 0.008);
-      material.emissiveIntensity = 0.45 * cascadeGlow;
-    }
+  trimIslands.forEach((island, index) => {
+    island.node.position.copy(island.basePosition);
+    island.node.position.y +=
+      (TRIM_SEPARATION_WORLD[index] *
+        (1 - state.product.trimAssembly[index])) /
+      modelScale;
+    island.node.material.emissiveIntensity =
+      state.product.coreEmphasis *
+      (0.24 + 0.16 * (1 - state.product.trimAssembly[index]));
   });
 
-  keyLight.intensity = state.light.key * 2.25;
-  rimLight.intensity = state.light.rim * 2.1;
-  accentLight.intensity = 2.8 + state.product.cascadeStage * 1.3;
+  productRig.rotation.y = THREE.MathUtils.degToRad(
+    state.product.productYawDegrees,
+  );
+  setGroupOpacity("VALVE_BODY_BONNET", state.product.bodyOpacity);
+  setGroupOpacity("PNEUMATIC_ACTUATOR", 0.35 + 0.65 * state.product.actuatorAssembly);
+  setGroupOpacity("SEALS_SUPPORT", 0.28 + 0.72 * state.product.detailAssembly);
+  setGroupOpacity("PRODUCTION_DETAILS", 0.2 + 0.8 * state.product.detailAssembly);
+
+  keyLight.intensity = state.light.key * 1.9;
+  rimLight.intensity = state.light.rim * 2;
+  coreLight.intensity = state.light.core * 3.4;
   timelineFill.style.transform = `scaleX(${currentProgress})`;
   updateCopy(state.shot);
 }
@@ -315,7 +588,9 @@ function applyState(state) {
 function updateCopy(shot) {
   if (shot.id === currentShotId) return;
   currentShotId = shot.id;
-  const index = cameraPath.shots.findIndex((candidate) => candidate.id === shot.id);
+  const index = cameraPath.shots.findIndex(
+    (candidate) => candidate.id === shot.id,
+  );
   const number = String(index + 1).padStart(2, "0");
   const copy = SHOT_COPY[shot.id];
   shotNumber.textContent = number;
@@ -331,15 +606,17 @@ function render(timestamp = performance.now()) {
 
   if (lastRenderAt) frameTimes.push(timestamp - lastRenderAt);
   lastRenderAt = timestamp;
-  if (frameTimes.length > 900) frameTimes.shift();
+  if (frameTimes.length > 1200) frameTimes.shift();
 
   if (playing) {
     const elapsed = (timestamp - playbackStartedAt) / 1000;
-    targetProgress = Math.min(1, elapsed / 16);
-    currentProgress = targetProgress;
-    if (targetProgress >= 1) {
+    const phase = Math.min(1, elapsed / cameraPath.durationSeconds);
+    currentProgress = playbackDirection > 0 ? phase : 1 - phase;
+    targetProgress = currentProgress;
+    if (phase >= 1) {
       playing = false;
-      playButton.lastChild.textContent = " 重新播放 16 秒 Animatic";
+      directionLabel.textContent =
+        playbackDirection > 0 ? "FORWARD COMPLETE" : "REVERSE COMPLETE";
     }
   } else {
     currentProgress += (targetProgress - currentProgress) * 0.16;
@@ -356,31 +633,30 @@ function render(timestamp = performance.now()) {
   if (!usableFrameAt) {
     usableFrameAt = performance.now();
     poster.classList.add("is-hidden");
-    loading.textContent = "六组实时资产已就绪";
+    loading.textContent = `灰模已就绪 · ${trimIslands.length} 个实际内件几何岛`;
     setTimeout(() => {
       loading.style.display = "none";
-    }, 1200);
+    }, 1600);
   }
 
   if (debugEnabled) {
     const sorted = [...frameTimes].sort((a, b) => a - b);
-    const percentile = (p) => sorted[Math.floor((sorted.length - 1) * p)] ?? 0;
+    const percentile = (p) =>
+      sorted[Math.floor((sorted.length - 1) * p)] ?? 0;
     debug.value = [
       `shot ${state.shot.id}`,
-      `frame ${state.frame.toFixed(1)} / 479`,
+      `frame ${state.frame.toFixed(1)} / ${cameraPath.totalFrames - 1}`,
       `progress ${currentProgress.toFixed(4)}`,
+      `direction ${playbackDirection > 0 ? "forward" : "reverse"}`,
+      `trim islands ${trimIslands.length}`,
+      `body opacity ${state.product.bodyOpacity.toFixed(3)}`,
       `renders ${renderCount}`,
-      `usable ${(usableFrameAt - loadStartedAt).toFixed(1)} ms`,
       `p50 ${percentile(0.5).toFixed(2)} ms`,
       `p95 ${percentile(0.95).toFixed(2)} ms`,
-      `dpr ${dprCap.toFixed(2)}`
     ].join("\n");
   }
 
-  if (
-    playing ||
-    Math.abs(targetProgress - currentProgress) > 0.00008
-  ) {
+  if (playing || Math.abs(targetProgress - currentProgress) > 0.00008) {
     schedule();
   }
 }
@@ -389,6 +665,16 @@ function schedule() {
   if (scheduled) return;
   scheduled = true;
   requestAnimationFrame(render);
+}
+
+function startPlayback(direction) {
+  playbackDirection = direction;
+  playing = true;
+  playbackStartedAt = performance.now();
+  currentProgress = direction > 0 ? 0 : 1;
+  targetProgress = currentProgress;
+  directionLabel.textContent = direction > 0 ? "FORWARD" : "REVERSE";
+  schedule();
 }
 
 function scrollProgress() {
@@ -400,6 +686,7 @@ function scrollProgress() {
 function onScroll() {
   if (playing) return;
   targetProgress = scrollProgress();
+  directionLabel.textContent = "SCROLL SCRUB";
   schedule();
 }
 
@@ -412,48 +699,143 @@ function resize() {
   schedule();
 }
 
+function islandSnapshot(island) {
+  island.node.updateWorldMatrix(true, false);
+  const worldCenter = island.localCenter
+    .clone()
+    .applyMatrix4(island.node.matrixWorld);
+  const projected = worldCenter.clone().project(camera);
+  return {
+    name: island.name,
+    triangleCount: island.triangleCount,
+    position: island.node.position.toArray(),
+    worldCenter: worldCenter.toArray(),
+    ndc: projected.toArray(),
+    projectedOnScreen:
+      Math.abs(projected.x) <= 1 &&
+      Math.abs(projected.y) <= 1 &&
+      projected.z >= -1 &&
+      projected.z <= 1,
+  };
+}
+
 function stateSnapshot() {
   const sampled = samplePath(currentProgress);
+  scene.updateMatrixWorld(true);
   return {
     progress: currentProgress,
+    frame: sampled.frame,
     shotId: sampled.shot.id,
     cameraPosition: camera.position.toArray(),
+    cameraTarget: sampled.camera.target,
     cameraFov: camera.fov,
-    explode: sampled.product.explode,
-    bodyOpacity: sampled.product.bodyOpacity,
-    stemStroke: sampled.product.stemStroke,
+    focusDistance: sampled.camera.focusDistance,
+    mechanicalAxisWorld: cameraPath.mechanicalAxisWorld,
+    productState: structuredClone(sampled.product),
+    occlusion: sampled.occlusion,
     renderCount,
     usableFrameMs: usableFrameAt ? usableFrameAt - loadStartedAt : null,
+    trimConnectedComponentCount: trimIslands.length,
+    trimDiagnostics,
+    trimIslands: trimIslands.map(islandSnapshot),
     groups: [...groups].map(([name, entry]) => ({
       name,
-      position: entry.node.position.toArray()
-    }))
+      position: entry.node.position.toArray(),
+      worldPosition: entry.node.getWorldPosition(new THREE.Vector3()).toArray(),
+    })),
+  };
+}
+
+function canonicalMotionSummary() {
+  const states = Array.from(
+    { length: cameraPath.totalFrames },
+    (_, frame) => samplePath(frame / (cameraPath.totalFrames - 1)),
+  );
+  const vectorDistance = (left, right) =>
+    Math.hypot(...left.map((value, index) => value - right[index]));
+  const productDelta = (left, right) =>
+    vectorDistance(left.trimAssembly, right.trimAssembly) +
+    Math.abs(left.stemAssembly - right.stemAssembly) +
+    Math.abs(left.bodyClosure - right.bodyClosure) +
+    Math.abs(left.actuatorAssembly - right.actuatorAssembly) +
+    Math.abs(left.detailAssembly - right.detailAssembly) +
+    Math.abs(left.productYawDegrees - right.productYawDegrees);
+  let cameraPathLength = 0;
+  let maximumCameraStep = 0;
+  let maximumTargetStep = 0;
+  let coordinatedFrameCount = 0;
+  let coordinatedIntervalCount = 0;
+  let insideCoordinatedInterval = false;
+  for (let index = 1; index < states.length; index += 1) {
+    const cameraStep = vectorDistance(
+      states[index - 1].camera.position,
+      states[index].camera.position,
+    );
+    const targetStep = vectorDistance(
+      states[index - 1].camera.target,
+      states[index].camera.target,
+    );
+    const coordinated =
+      cameraStep > 0.001 &&
+      productDelta(states[index - 1].product, states[index].product) > 0.001;
+    cameraPathLength += cameraStep;
+    maximumCameraStep = Math.max(maximumCameraStep, cameraStep);
+    maximumTargetStep = Math.max(maximumTargetStep, targetStep);
+    if (coordinated) {
+      coordinatedFrameCount += 1;
+      if (!insideCoordinatedInterval) coordinatedIntervalCount += 1;
+    }
+    insideCoordinatedInterval = coordinated;
+  }
+  const yawValues = states.map((state) => state.product.productYawDegrees);
+  return {
+    cameraPathLength,
+    maximumCameraStep,
+    maximumTargetStep,
+    productYawRange:
+      Math.max(...yawValues) - Math.min(...yawValues),
+    coordinatedFrameCount,
+    coordinatedIntervalCount,
   };
 }
 
 window.__CONTROL_VALVE_METRICS__ = {
   waitForReady: () => readyPromise,
   setProgressForTest(value) {
+    playing = false;
     targetProgress = THREE.MathUtils.clamp(value, 0, 1);
     currentProgress = targetProgress;
     const state = samplePath(currentProgress);
     applyState(state);
+    scene.updateMatrixWorld(true);
     renderer.render(scene, camera);
     renderCount += 1;
     return stateSnapshot();
   },
-  snapshot: stateSnapshot
+  setProgressAndCaptureForTest(value) {
+    playing = false;
+    targetProgress = THREE.MathUtils.clamp(value, 0, 1);
+    currentProgress = targetProgress;
+    const state = samplePath(currentProgress);
+    applyState(state);
+    scene.updateMatrixWorld(true);
+    renderer.render(scene, camera);
+    renderCount += 1;
+    return {
+      state: stateSnapshot(),
+      pngDataUrl: renderer.domElement.toDataURL("image/png"),
+    };
+  },
+  startPlaybackForTest(direction) {
+    startPlayback(direction >= 0 ? 1 : -1);
+    return stateSnapshot();
+  },
+  snapshot: stateSnapshot,
+  canonicalMotionSummary,
 };
 
-playButton.addEventListener("click", () => {
-  playing = true;
-  playbackStartedAt = performance.now();
-  currentProgress = 0;
-  targetProgress = 0;
-  playButton.lastChild.textContent = " 正在播放";
-  schedule();
-});
-
+forwardButton.addEventListener("click", () => startPlayback(1));
+reverseButton.addEventListener("click", () => startPlayback(-1));
 addEventListener("scroll", onScroll, { passive: true });
 new ResizeObserver(resize).observe(canvas);
 
@@ -465,17 +847,25 @@ async function start() {
     loader.setDRACOLoader(draco);
     const [pathResponse, gltf] = await Promise.all([
       fetch("./camera-path.json"),
-      loader.loadAsync("./assets/control-valve-shot-ready.glb")
+      loader.loadAsync("./assets/control-valve-shot-ready.glb"),
     ]);
-    if (!pathResponse.ok) throw new Error(`camera path HTTP ${pathResponse.status}`);
+    if (!pathResponse.ok) {
+      throw new Error(`camera path HTTP ${pathResponse.status}`);
+    }
     cameraPath = await pathResponse.json();
     product = gltf.scene;
     product.name = "CONTROL_VALVE_PRODUCT";
     configureMaterials(product);
     findAndCaptureGroups(product);
+    splitTrimIntoActualIslands();
     orientAndFit(product);
-    scene.add(product);
+    productRig = new THREE.Group();
+    productRig.name = "CONTROL_VALVE_PRODUCT_RIG";
+    productRig.add(product);
+    scene.add(productRig);
     draco.dispose();
+    geometryStatus.textContent = `${trimIslands.length} 个实际内件几何岛`;
+
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
       targetProgress = 1;
       currentProgress = 1;
@@ -484,9 +874,14 @@ async function start() {
       currentProgress = targetProgress;
     }
     resize();
-    readyResolve({ state: "ready", groups: groups.size });
+    readyResolve({
+      state: "ready",
+      groups: groups.size,
+      trimConnectedComponentCount: trimIslands.length,
+      trimDiagnostics,
+    });
   } catch (error) {
-    loading.textContent = `实时模型不可用：${error.message}`;
+    loading.textContent = `灰模不可用：${error.message}`;
     loading.classList.add("is-error");
     console.error(error);
     readyReject(error);

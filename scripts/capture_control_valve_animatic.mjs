@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, rm, stat, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -27,6 +27,13 @@ const outputPath = resolve(
 const routeRoot = resolve("docs/control-valve");
 const evidenceDirectory = resolve(routeRoot, "evidence");
 const posterPath = resolve(routeRoot, "assets/first-frame-poster.jpg");
+const videoPath = resolve(
+  evidenceDirectory,
+  "control-valve-grey-animatic.webm",
+);
+const temporaryVideoDirectory = resolve(
+  args["video-temp"] ?? "D:/Temp/control-valve-grey-animatic-video",
+);
 
 if (!url || !modulePath) {
   throw new Error("--url and --playwright-module are required");
@@ -34,49 +41,109 @@ if (!url || !modulePath) {
 
 await mkdir(evidenceDirectory, { recursive: true });
 await mkdir(dirname(posterPath), { recursive: true });
+await rm(temporaryVideoDirectory, { recursive: true, force: true });
+await mkdir(temporaryVideoDirectory, { recursive: true });
 const { chromium } = await import(pathToFileURL(modulePath).href);
 const browser = await chromium.launch({
   headless: true,
   executablePath: browserExecutable || undefined,
-  args: [
-    "--enable-gpu",
-    "--enable-webgl",
-    "--ignore-gpu-blocklist",
-  ],
+  args: ["--enable-gpu", "--enable-webgl", "--ignore-gpu-blocklist"],
 });
 
-const shotFrames = [
-  ["product-authority", 0.1, "shot-01-product-authority.png"],
-  ["axial-command", 0.3, "shot-02-axial-command.png"],
-  ["cascade-revealed", 0.5, "shot-03-cascade-revealed.png"],
-  ["systems-in-order", 0.7, "shot-04-systems-in-order.png"],
-  ["product-resolved", 1, "shot-05-product-resolved.png"],
+const shotCaptures = [
+  ["core-suspended", 0.08, "shot-01-core-suspended.png"],
+  ["precision-nested", 0.28, "shot-02-precision-nested.png"],
+  ["body-encloses", 0.48, "shot-03-body-encloses.png"],
+  ["assembly-complete", 0.7, "shot-04-assembly-complete.png"],
+  ["product-presence", 1, "shot-05-product-presence.png"],
 ];
 
-try {
-  // Bootstrap the actual model once to create the image that is shown before
-  // WebGL is usable on later loads. This first page is intentionally separate
-  // from official console/network evidence.
-  const bootstrap = await browser.newPage({
-    viewport: { width: 1600, height: 1000 },
-    deviceScaleFactor: 1,
-  });
-  bootstrap.on("console", () => {});
-  await bootstrap.goto(url, { waitUntil: "networkidle" });
-  await bootstrap.evaluate(() =>
-    window.__CONTROL_VALVE_METRICS__.waitForReady(),
-  );
-  await bootstrap.evaluate(() =>
-    window.__CONTROL_VALVE_METRICS__.setProgressForTest(0.08),
-  );
-  await bootstrap.waitForTimeout(180);
-  await bootstrap.locator("#canvas").screenshot({
-    path: posterPath,
-    type: "jpeg",
-    quality: 86,
-  });
-  await bootstrap.close();
+const validationCaptures = [
+  ["trim-separated", 0, "validation-trim-separated.png"],
+  ["trim-mid-assembly", 0.25, "validation-trim-mid-assembly.png"],
+  ["closure-start", 0.4, "validation-closure-start.png"],
+  ["closure-mid", 0.49, "validation-closure-mid.png"],
+  ["closure-complete", 0.59, "validation-closure-complete.png"],
+];
 
+function maxAbsDelta(left, right) {
+  if (Array.isArray(left) && Array.isArray(right)) {
+    return Math.max(
+      0,
+      ...left.map((value, index) => maxAbsDelta(value, right[index])),
+    );
+  }
+  if (
+    left &&
+    right &&
+    typeof left === "object" &&
+    typeof right === "object"
+  ) {
+    const keys = new Set([...Object.keys(left), ...Object.keys(right)]);
+    return Math.max(
+      0,
+      ...[...keys].map((key) => maxAbsDelta(left[key], right[key])),
+    );
+  }
+  if (
+    typeof left === "number" &&
+    Number.isFinite(left) &&
+    typeof right === "number" &&
+    Number.isFinite(right)
+  ) {
+    return Math.abs(left - right);
+  }
+  return left === right ? 0 : Number.POSITIVE_INFINITY;
+}
+
+async function playAndSample(page, direction) {
+  await page.evaluate((value) => {
+    window.__CONTROL_VALVE_METRICS__.setProgressForTest(value > 0 ? 0 : 1);
+    window.__CONTROL_VALVE_METRICS__.startPlaybackForTest(value);
+  }, direction);
+  const startedAt = Date.now();
+  const samples = [];
+  while (Date.now() - startedAt < 20500) {
+    await page.waitForTimeout(180);
+    const snapshot = await page.evaluate(() =>
+      window.__CONTROL_VALVE_METRICS__.snapshot(),
+    );
+    samples.push({
+      elapsedMs: Date.now() - startedAt,
+      progress: snapshot.progress,
+      frame: snapshot.frame,
+      shotId: snapshot.shotId,
+      cameraPosition: snapshot.cameraPosition,
+      focusDistance: snapshot.focusDistance,
+      bodyOpacity: snapshot.productState.bodyOpacity,
+      trimAssembly: snapshot.productState.trimAssembly,
+      occlusion: snapshot.occlusion,
+    });
+    if (
+      (direction > 0 && snapshot.progress >= 1) ||
+      (direction < 0 && snapshot.progress <= 0)
+    ) {
+      break;
+    }
+  }
+  const observed = [];
+  for (const sample of samples) {
+    if (observed.at(-1) !== sample.shotId) observed.push(sample.shotId);
+  }
+  return {
+    direction: direction > 0 ? "forward" : "reverse",
+    completed:
+      direction > 0
+        ? samples.at(-1)?.progress === 1
+        : samples.at(-1)?.progress === 0,
+    elapsedMs: Date.now() - startedAt,
+    sampleCount: samples.length,
+    observedShotIds: observed,
+    samples,
+  };
+}
+
+try {
   const context = await browser.newContext({
     viewport: { width: 1600, height: 1000 },
     deviceScaleFactor: 1,
@@ -97,43 +164,30 @@ try {
     });
   });
 
-  // Ensure the poster has a measurable period in which it is the usable
-  // product frame before model bytes and Draco decoding complete.
-  await page.route("**/control-valve-shot-ready.glb", async (route) => {
-    await new Promise((resolveDelay) => setTimeout(resolveDelay, 650));
-    await route.continue();
-  });
-  await page.goto(url, { waitUntil: "domcontentloaded" });
-  const posterLoadingState = await page.locator("#poster").evaluate(async (node) => {
-    await node.decode();
-    const style = getComputedStyle(node);
-    return {
-      complete: node.complete,
-      naturalWidth: node.naturalWidth,
-      naturalHeight: node.naturalHeight,
-      opacity: Number(style.opacity),
-      visible: style.display !== "none" && style.visibility !== "hidden",
-      capturedAtMs: Number(performance.now().toFixed(2)),
-    };
-  });
-
-  await page.waitForLoadState("networkidle");
+  await page.goto(url, { waitUntil: "networkidle" });
   const ready = await page.evaluate(() =>
     window.__CONTROL_VALVE_METRICS__.waitForReady(),
   );
-  await page.waitForTimeout(200);
-  const posterAfterReady = await page.locator("#poster").evaluate((node) => ({
-    opacity: Number(getComputedStyle(node).opacity),
-    hiddenClass: node.classList.contains("is-hidden"),
-  }));
+  const canonicalMotion = await page.evaluate(() =>
+    window.__CONTROL_VALVE_METRICS__.canonicalMotionSummary(),
+  );
+  await page.evaluate(() =>
+    window.__CONTROL_VALVE_METRICS__.setProgressForTest(0),
+  );
+  await page.waitForTimeout(180);
+  await page.locator("#canvas").screenshot({
+    path: posterPath,
+    type: "jpeg",
+    quality: 88,
+  });
 
   const captures = [];
-  for (const [shotId, progress, filename] of shotFrames) {
+  for (const [shotId, progress, filename] of shotCaptures) {
     const snapshot = await page.evaluate(
       (value) => window.__CONTROL_VALVE_METRICS__.setProgressForTest(value),
       progress,
     );
-    await page.waitForTimeout(160);
+    await page.waitForTimeout(120);
     const absolutePath = resolve(evidenceDirectory, filename);
     await page.screenshot({ path: absolutePath });
     captures.push({
@@ -141,135 +195,176 @@ try {
       progress,
       path: `docs/control-valve/evidence/${filename}`,
       runtimeShotId: snapshot.shotId,
+      frame: snapshot.frame,
     });
   }
 
-  await page.evaluate(() =>
-    window.__CONTROL_VALVE_METRICS__.setProgressForTest(0),
-  );
-  const playbackStartedAt = Date.now();
-  await page.locator("#play").click();
-  const playbackSamples = [];
-  while (Date.now() - playbackStartedAt < 18000) {
-    await page.waitForTimeout(250);
-    const snapshot = await page.evaluate(() =>
-      window.__CONTROL_VALVE_METRICS__.snapshot(),
+  const validationFrames = [];
+  for (const [id, progress, filename] of validationCaptures) {
+    const snapshot = await page.evaluate(
+      (value) => window.__CONTROL_VALVE_METRICS__.setProgressForTest(value),
+      progress,
     );
-    playbackSamples.push({
-      elapsedMs: Date.now() - playbackStartedAt,
-      progress: snapshot.progress,
-      shotId: snapshot.shotId,
-      cameraPosition: snapshot.cameraPosition,
-      cameraFov: snapshot.cameraFov,
+    await page.waitForTimeout(120);
+    const absolutePath = resolve(evidenceDirectory, filename);
+    await page.screenshot({ path: absolutePath });
+    validationFrames.push({
+      id,
+      progress,
+      path: `docs/control-valve/evidence/${filename}`,
+      snapshot,
     });
-    if (snapshot.progress >= 1) break;
   }
-  const fullPlayback = {
-    completed: playbackSamples.at(-1)?.progress === 1,
-    elapsedMs: Date.now() - playbackStartedAt,
-    sampleCount: playbackSamples.length,
-    observedShotIds: [...new Set(playbackSamples.map((sample) => sample.shotId))],
-    blackoutElementPresent: (await page.locator("#occlusion").count()) > 0,
-    samples: playbackSamples,
+
+  const roundTripSequence = [0.22, 0.67, 0.22, 0.67, 0.22];
+  const roundTripSnapshots = [];
+  for (const progress of roundTripSequence) {
+    roundTripSnapshots.push(
+      await page.evaluate(
+        (value) => window.__CONTROL_VALVE_METRICS__.setProgressForTest(value),
+        progress,
+      ),
+    );
+  }
+  const roundTrip = {
+    sequence: roundTripSequence,
+    progress022CameraMaxDelta: maxAbsDelta(
+      roundTripSnapshots[0].cameraPosition,
+      roundTripSnapshots[2].cameraPosition,
+    ),
+    progress022ProductMaxDelta: maxAbsDelta(
+      roundTripSnapshots[0].productState,
+      roundTripSnapshots[2].productState,
+    ),
+    progress022TrimTransformMaxDelta: maxAbsDelta(
+      roundTripSnapshots[0].trimIslands.map((item) => item.position),
+      roundTripSnapshots[4].trimIslands.map((item) => item.position),
+    ),
+    progress067CameraMaxDelta: maxAbsDelta(
+      roundTripSnapshots[1].cameraPosition,
+      roundTripSnapshots[3].cameraPosition,
+    ),
+    progress067ProductMaxDelta: maxAbsDelta(
+      roundTripSnapshots[1].productState,
+      roundTripSnapshots[3].productState,
+    ),
   };
 
-  const benchmark = await page.evaluate(async () => {
-    const durations = [];
-    let previous;
-    // This headless pass is a short runtime diagnostic, not a substitute for
-    // hardware-GPU profiling. Structural cost is asserted separately from the
-    // GLB (six primitives / six draw-call candidates).
-    const total = 24;
-    for (let index = 0; index < total; index += 1) {
-      await new Promise((resolveFrame) => {
-        requestAnimationFrame((timestamp) => {
-          if (previous !== undefined) durations.push(timestamp - previous);
-          previous = timestamp;
-          window.__CONTROL_VALVE_METRICS__.setProgressForTest(
-            index / (total - 1),
-          );
-          resolveFrame();
-        });
-      });
-    }
-    const sorted = [...durations].sort((a, b) => a - b);
-    const percentile = (value) =>
-      sorted[Math.floor((sorted.length - 1) * value)] ?? 0;
-    const beforeIdle =
-      window.__CONTROL_VALVE_METRICS__.snapshot().renderCount;
-    await new Promise((resolveDelay) => setTimeout(resolveDelay, 900));
-    const afterIdle =
-      window.__CONTROL_VALVE_METRICS__.snapshot().renderCount;
-    const modelResource = performance
-      .getEntriesByType("resource")
-      .find((entry) => entry.name.endsWith("control-valve-shot-ready.glb"));
-    const canvas = document.querySelector("#canvas");
-    const gl = canvas?.getContext("webgl2") ?? canvas?.getContext("webgl");
-    const rendererInfo = (() => {
-      if (!gl) return null;
-      const extension = gl.getExtension("WEBGL_debug_renderer_info");
-      return {
-        vendor: extension
-          ? gl.getParameter(extension.UNMASKED_VENDOR_WEBGL)
-          : gl.getParameter(gl.VENDOR),
-        renderer: extension
-          ? gl.getParameter(extension.UNMASKED_RENDERER_WEBGL)
-          : gl.getParameter(gl.RENDERER),
-        version: gl.getParameter(gl.VERSION),
-      };
-    })();
-    return {
-      sampleCount: durations.length,
-      p50FrameMs: Number(percentile(0.5).toFixed(3)),
-      p95FrameMs: Number(percentile(0.95).toFixed(3)),
-      framesOver16_7Ms: durations.filter((value) => value > 16.7).length,
-      framesOver33_3Ms: durations.filter((value) => value > 33.3).length,
-      idleRendererFrames: afterIdle - beforeIdle,
-      usableFrameMs:
-        window.__CONTROL_VALVE_METRICS__.snapshot().usableFrameMs,
-      modelResource: modelResource
-        ? {
-            durationMs: Number(modelResource.duration.toFixed(3)),
-            transferSize: modelResource.transferSize,
-            encodedBodySize: modelResource.encodedBodySize,
-            decodedBodySize: modelResource.decodedBodySize,
-          }
-        : null,
-      rendererInfo,
-      jsHeapBytes: performance.memory?.usedJSHeapSize ?? null,
-    };
-  });
+  const forwardPlayback = await playAndSample(page, 1);
+  const reversePlayback = await playAndSample(page, -1);
 
-  const bodyHasContent = await page.evaluate(
-    () => document.body.innerText.trim().length > 0,
+  const closureSamples = validationFrames
+    .filter((item) => item.id.startsWith("closure-"))
+    .map((item) => ({
+      id: item.id,
+      progress: item.progress,
+      frame: item.snapshot.frame,
+      bodyOpacity: item.snapshot.productState.bodyOpacity,
+      bodyClosure: item.snapshot.productState.bodyClosure,
+      occlusion: item.snapshot.occlusion,
+      trimProjectedOnScreen: item.snapshot.trimIslands.map(
+        (island) => island.projectedOnScreen,
+      ),
+      trimNdc: item.snapshot.trimIslands.map((island) => island.ndc),
+    }));
+
+  const separatedSnapshot = validationFrames.find(
+    (item) => item.id === "trim-separated",
+  ).snapshot;
+  const separatedWorldCenters = separatedSnapshot.trimIslands.map(
+    (item) => item.worldCenter,
   );
-  const interactiveLabels = await page
-    .locator("button, a")
-    .evaluateAll((nodes) => nodes.map((node) => node.textContent.trim()));
+  const maximumRadialAxisError = Math.max(
+    ...separatedWorldCenters.map(([x, _y, z]) => Math.hypot(x, z)),
+  );
+  const axisYValues = separatedWorldCenters.map((center) => center[1]);
+  const assembledSnapshot = await page.evaluate(() =>
+    window.__CONTROL_VALVE_METRICS__.setProgressForTest(1),
+  );
+  const groupWorldPosition = (snapshot, name) =>
+    snapshot.groups.find((group) => group.name === name)?.worldPosition;
+  const vectorDistance = (left, right) =>
+    Math.hypot(...left.map((value, index) => value - right[index]));
+  const actuatorTravel = vectorDistance(
+    groupWorldPosition(separatedSnapshot, "PNEUMATIC_ACTUATOR"),
+    groupWorldPosition(assembledSnapshot, "PNEUMATIC_ACTUATOR"),
+  );
 
   const result = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     collectedAt: new Date().toISOString(),
     sourceUrl: url,
-    browserMode: "headless Chromium; renderer recorded in benchmark.rendererInfo",
-    performanceInterpretation:
-      "Short headless diagnostic only. It does not certify discrete-GPU frame rate; the portable performance proof is the six-primitive Draco GLB and demand-rendering behavior.",
     viewport: { width: 1600, height: 1000, dpr: 1 },
     ready,
-    posterLoadingState,
-    posterAfterReady,
-    bodyHasContent,
-    interactiveLabels,
     consoleErrors,
     pageErrors,
     failedRequests,
+    geometry: {
+      trimConnectedComponentCount: ready.trimConnectedComponentCount,
+      trimDiagnostics: ready.trimDiagnostics,
+      independentlyTransformable: ready.trimConnectedComponentCount === 4,
+      labelBoundary:
+        "Geometry islands are numbered only by camera-readable axis order; individual STEP cage/seat identity is not asserted.",
+    },
+    separation: {
+      maximumRadialAxisError,
+      axisYValues,
+      distinctAxisPositions: new Set(
+        axisYValues.map((value) => value.toFixed(6)),
+      ).size,
+      allProjectedOnScreen: separatedSnapshot.trimIslands.every(
+        (item) => item.projectedOnScreen,
+      ),
+      axisSpan: Math.max(...axisYValues) - Math.min(...axisYValues),
+    },
+    motionAmplitude: {
+      ...canonicalMotion,
+      actuatorTravel,
+    },
+    closureSamples,
+    roundTrip,
+    forwardPlayback,
+    reversePlayback,
     captures,
-    fullPlayback,
-    benchmark,
+    validationFrames: validationFrames.map(({ snapshot, ...item }) => ({
+      ...item,
+      shotId: snapshot.shotId,
+      frame: snapshot.frame,
+    })),
+  };
+
+  await writeFile(outputPath, `${JSON.stringify(result, null, 2)}\n`, "utf8");
+  await context.close();
+
+  const videoContext = await browser.newContext({
+    viewport: { width: 1600, height: 1000 },
+    deviceScaleFactor: 1,
+    reducedMotion: "no-preference",
+    recordVideo: {
+      dir: temporaryVideoDirectory,
+      size: { width: 1280, height: 800 },
+    },
+  });
+  const videoPage = await videoContext.newPage();
+  await videoPage.goto(url, { waitUntil: "networkidle" });
+  await videoPage.evaluate(() =>
+    window.__CONTROL_VALVE_METRICS__.waitForReady(),
+  );
+  const video = videoPage.video();
+  await videoPage.locator("#play-forward").click();
+  await videoPage.waitForTimeout(18800);
+  await videoPage.close();
+  await video.saveAs(videoPath);
+  await videoContext.close();
+  result.video = {
+    path: "docs/control-valve/evidence/control-valve-grey-animatic.webm",
+    bytes: (await stat(videoPath)).size,
+    direction: "forward",
+    canonicalDurationSeconds: 18,
   };
   await writeFile(outputPath, `${JSON.stringify(result, null, 2)}\n`, "utf8");
+  await rm(temporaryVideoDirectory, { recursive: true, force: true });
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
-  await context.close();
 } finally {
   await browser.close();
 }

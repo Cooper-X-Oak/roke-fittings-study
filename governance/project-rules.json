@@ -2,77 +2,183 @@
   "schema_version": 2,
   "kind": "project_rules",
   "status": "active",
-  "ruleset_id": "ruleset-2026-07-26-control-valve-story-clarity",
-  "ruleset_version": "2026-07-26.11",
+  "ruleset_id": "ruleset-2026-07-28-control-valve-pages-publication",
+  "ruleset_version": "2026-07-28.1",
   "business_gate": {
     "development_entry_required": true
   },
   "rules": [
     {
-      "id": "build-purpose-made-shot-asset",
-      "statement": "Build a qualified, shot-ready GLB from the supplied DN80 CL2500 pneumatic cascade control-valve STEP assembly that serves professional commercial cinematography; preserve only geometry needed by the shots rather than reproducing every CAD or BOM instance.",
-      "development_entry_ids": ["revise-control-valve-story"],
+      "id": "preserve-approved-continuous-five-beat-story",
+      "statement": "Re-author the approved control-valve arc — core suspended, precision nested, body encloses, assembly complete, product presence — as a compact commercial product story. It must retain the five cognitive beats and truth constraints, but may change timing, camera, lighting, materials and product-state handoffs to create a stronger causal narrative without a terminal hero hold.",
+      "development_entry_ids": ["author-control-valve-animatic"],
       "children": [
         {
-          "id": "source-geometry-proof",
+          "id": "five-beat-conformance-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must identify the visually inspected source, its provenance, the compatible tool or conversion path used, and any structures that remain unverified."
+          "statement": "Acceptance must prove that the camera previs and rendered Animatic use the five approved IDs in order, cover the complete timeline and preserve the released copy and cognitive purpose."
         },
         {
-          "id": "shot-retention-matrix-proof",
+          "id": "fixed-duration-first-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must map every planned shot to geometry that is retained, merged, rebuilt, instanced, or deleted."
-        },
-        {
-          "id": "semantic-runtime-groups-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove that the GLB exposes exactly six bounded semantic groups required for hero, actuator-to-stem motion, cascade-trim reveal, flow-path visualization, detail and grouped assembly actions."
+          "statement": "Acceptance must prove a compact canonical forward playback exists independently of scroll control, contains no terminal hero hold and resolves the final product-presence beat before immediate exit."
         }
       ]
     },
     {
-      "id": "author-professional-commercial-animatic",
-      "statement": "Re-direct the exactly five-shot control-valve animatic around restrained industrial authority and product comprehension: preserve a stable external spatial anchor, use slow and monotonic camera motion with zero roll, reveal internals through shell transparency and modest semantic separation, prohibit blackout transitions and camera teleports, and finish with a stable product hero.",
-      "development_entry_ids": ["revise-control-valve-story"],
+      "id": "author-deterministic-per-frame-previs",
+      "statement": "Author exactly one deterministic state for every canonical Animatic frame, including camera position, target, roll, field of view, focus distance, product and trim-layer transforms, body opacity, light state, shot identity and transition occlusion.",
+      "development_entry_ids": ["author-control-valve-animatic"],
       "children": [
         {
-          "id": "deterministic-camera-proof",
+          "id": "frame-completeness-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must provide deterministic camera, target, field-of-view, focus, part and light state for the canonical animatic timeline."
-        },
-        {
-          "id": "rendered-animatic-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must include rendered frame or video evidence showing that all required camera beats are legible and continuous."
-        },
-        {
-          "id": "viewing-comfort-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must prove every canonical frame has zero roll, negligible transition occlusion, no hidden camera relocation, bounded field-of-view change, and an external product or valve-body spatial anchor."
-        },
-        {
-          "id": "restrained-industrial-tone-proof",
-          "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must visually prove a coherent restrained-industrial direction through quieter type hierarchy, graphite and cool-steel surfaces, one copper focal accent, deliberate pacing and comprehension holds without presenting the direction as an undocumented corporate brand standard."
+          "statement": "Acceptance must reject missing, duplicate or unordered frames, timeline gaps, non-finite states, roll, blackout, teleporting or drift in comprehension holds."
         }
       ]
     },
     {
-      "id": "bind-story-to-observed-product-truth",
-      "statement": "Bind component naming, mechanisms and commercial claims to the supplied STEP product tree and visually observed geometry; DN80, CL2500, pneumatic actuation, cascade trim and named components may be reported as source labels, but pressure performance, flow coefficient, sealing class, safety certification, service procedure and simulated fluid behavior must not be inferred.",
-      "development_entry_ids": ["revise-control-valve-story"],
+      "id": "validate-cascade-trim-separability",
+      "statement": "Use the actual decoded CASCADE_TRIM geometry to determine whether the current shot asset can expose four independently transformable connected geometry islands corresponding collectively to the three named cages and seat. Lighting-only stage changes do not count as separation.",
+      "development_entry_ids": ["author-control-valve-animatic"],
       "children": [
         {
-          "id": "claim-boundary-proof",
+          "id": "four-geometry-islands-proof",
           "node_type": "delivery_acceptance_supplement",
-          "statement": "Acceptance must enumerate verified facts, visual inferences and unresolved product claims separately."
+          "statement": "Acceptance must record exactly four non-empty connected geometry islands from CASCADE_TRIM, expose their independent transforms and show staged axis-aligned separation in rendered evidence."
+        },
+        {
+          "id": "separation-truth-boundary-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must describe island numbering as camera-readable geometric order unless individual source-label identity is independently proven; it must not invent manufacturing or maintenance order."
         }
       ]
     },
     {
-      "id": "exclude-digital-twin-scope",
-      "statement": "Exclude full BOM interaction, hundreds of independently animated fasteners, maintenance simulation, CFD, FEA and other digital-twin behavior from this commercial shot asset.",
-      "development_entry_ids": ["revise-control-valve-story"]
+      "id": "validate-body-closure-occlusion",
+      "statement": "Validate the body-enclosure beat against the real model: the completed core must remain screen-visible while body opacity and closure progress establish its location, then may become physically enclosed without a blackout or hidden camera relocation.",
+      "development_entry_ids": ["author-control-valve-animatic"],
+      "children": [
+        {
+          "id": "core-readable-during-closure-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must sample the closure interval and prove a bounded opacity progression, persistent core visibility before final enclosure, zero full-frame occlusion and a stable camera axis."
+        }
+      ]
+    },
+    {
+      "id": "validate-bidirectional-axis-continuity",
+      "statement": "Validate the same central mechanical axis and deterministic product pose during canonical forward playback, canonical reverse playback and forward-back-forward scrubbing.",
+      "development_entry_ids": ["author-control-valve-animatic"],
+      "children": [
+        {
+          "id": "reverse-order-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must observe all five beat IDs in forward order and exact reverse order without blackout, missing beat or camera teleport."
+        },
+        {
+          "id": "round-trip-pose-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must compare repeated samples at the same normalized progress and prove camera, focus, body and independently controlled part transforms reproduce without drift."
+        }
+      ]
+    },
+    {
+      "id": "bind-animatic-to-observed-product-truth",
+      "statement": "Bind the Animatic to the supplied STEP product tree and observed GLB geometry. Visual decomposition, opacity and authored paths are commercial camera methods; unsupported performance, certification, flow, failure-direction, manufacturing and maintenance claims remain prohibited.",
+      "development_entry_ids": ["author-control-valve-animatic"],
+      "children": [
+        {
+          "id": "animatic-claim-boundary-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must preserve the script truth constraints in visible copy, metadata and evidence."
+        }
+      ]
+    },
+    {
+      "id": "require-commercial-motion-amplitude-and-coordination",
+      "statement": "Increase the Animatic from restrained engineering motion to clearly legible commercial choreography: the trim layers must use materially larger axis-aligned travel, the camera must change distance and observation angle across the five beats, and part, camera, product-yaw and lighting actions must hand off in authored intervals instead of drifting uniformly.",
+      "development_entry_ids": ["author-control-valve-animatic"],
+      "children": [
+        {
+          "id": "motion-amplitude-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must quantify a larger trim separation span, non-trivial camera path length, multi-angle product yaw and actuator seating travel while keeping every per-frame camera and target step within comfort bounds."
+        },
+        {
+          "id": "coordinated-action-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove multiple intervals in which camera motion and a meaningful product-state change occur together, separated by authored comprehension holds, with exact deterministic reverse playback."
+        }
+      ]
+    },
+    {
+      "id": "derive-scroll-video-from-canonical-animatic",
+      "statement": "Derive a browser-scrubbable GOP 6 video from the approved compact commercial control-valve story. The derived frames must preserve its selected five-beat edit, material hierarchy, product state, camera, light and truth boundaries.",
+      "development_entry_ids": ["build-control-valve-video-scrub-experiment"],
+      "children": [
+        {
+          "id": "ui-free-frame-parity-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove UI-free product frames at 30 fps are rendered from the same deterministic state sampler, cover the complete compact source and preserve the first and beat-boundary states."
+        },
+        {
+          "id": "independent-html-content-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove accessible product title, navigation, progress and catalog controls remain HTML/CSS overlays. Non-explanatory four-character brand typography may be baked into the product video only as a background composition layer behind the rendered model; it must not state product facts, materials, performance, certification or technical instructions."
+        }
+      ]
+    },
+    {
+      "id": "deliver-control-valve-business-page",
+      "statement": "Promote the verified control-valve scroll-video route into a visitor-facing, Pages-compatible product story. It must use the selected GOP 6 video and static first-frame fallback to explain the observed product structure without exposing experimental instrumentation, inventing product claims, collecting user data, or making universal performance promises.",
+      "development_entry_ids": ["promote-control-valve-video-business-page"],
+      "children": [
+        {
+          "id": "business-page-content-and-action-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove that the route gives visitors a clear product narrative, a real catalog destination, semantic content, and no visitor-facing GOP comparison, engineering telemetry, fake form, fabricated proof, certification, performance, manufacturing or maintenance claims."
+        },
+        {
+          "id": "business-page-motion-and-fallback-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove that the selected GOP 6 media is scroll-seekable with the non-empty static poster visible before video readiness, and that reduced-motion users retain visible product content and a usable catalog action."
+        },
+        {
+          "id": "business-page-compact-motion-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove that the business-page scroll track is 280vh and maps the complete motion-bearing GOP 6 source to visitor scroll progress, so the final product-presence resolve is reached at the end of the track without a terminal hero hold."
+        }
+      ]
+    },
+    {
+      "id": "author-commercial-materials-from-traceable-public-reference",
+      "statement": "Author a commercial material and lighting treatment for the control-valve story using traceable public manufacturer or renderer references when product-specific finish data is unavailable. Each resulting material assignment must be identified as either directly evidenced product fact or industry-reference visual treatment; reference treatment is permitted and must not make an exact product-material, coating, certification or performance claim.",
+      "development_entry_ids": ["author-control-valve-commercial-look"],
+      "children": [
+        {
+          "id": "material-provenance-and-boundary-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must record a component-to-material taxonomy, the public reference URL and retrieval date for every reference-driven assignment, the asset or texture license/source, and the visible-copy boundary that prevents reference treatment from being represented as a verified product specification."
+        },
+        {
+          "id": "commercial-look-and-causal-rhythm-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove a differentiated PBR material hierarchy, controlled reflection and contact-depth lighting, a compact causal five-beat motion sequence, and a final product resolve with no passive hold."
+        }
+      ]
+    },
+    {
+      "id": "publish-verified-control-valve-pages-artifact",
+      "statement": "Publish the verified control-valve product-story artifact from the current synchronized development branch's /docs directory to GitHub Pages without merging to protected main. The public route must expose the selected GOP 6 experience and remain visibly usable.",
+      "development_entry_ids": ["publish-control-valve-pages"],
+      "children": [
+        {
+          "id": "pages-source-and-public-route-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove the configured Pages source branch and /docs path, an HTTP 200 response at the public control-valve route, the visible story and product-video containers, and the selected GOP 6 media reference."
+        }
+      ]
     }
   ]
 }

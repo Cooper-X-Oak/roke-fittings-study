@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "collectedAt": "2026-07-28T05:21:09.614Z",
+  "sourceUrl": "http://127.0.0.1:4183/control-valve-video/",
+  "comparisonBoundary": "Same local origin, browser executable, 1280x800 viewport, DPR 1 and isolated cold browser context per GOP variant.",
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+    "hardwareConcurrency": 8,
+    "deviceMemory": 16
+  },
+  "posterBeforeVideo": {
+    "posterVisible": true,
+    "posterNaturalWidth": 1280,
+    "posterNaturalHeight": 800,
+    "videoReadyState": 0,
+    "videoOpacity": "0",
+    "evidencePath": "docs/control-valve-video/evidence/poster-before-video.png"
+  },
+  "midScrollEvidencePath": "docs/control-valve-video/evidence/gop6-mid-scroll.png",
+  "variants": [
+    {
+      "variant": "gop3",
+      "cacheMode": "cold isolated browser context",
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "dpr": 1
+      },
+      "coldReadyMs": 142.33150000000023,
+      "firstVideoFrameMs": 15.399999999906868,
+      "media": {
+        "duration": 11,
+        "readyState": 4,
+        "seekable": true,
+        "seekConfirmation": "seeked"
+      },
+      "forward": {
+        "count": 11,
+        "latencyP50Ms": 45.700000000186265,
+        "latencyP95Ms": 2612.899999999907,
+        "latencyMaxMs": 2612.899999999907,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "reverse": {
+        "count": 11,
+        "latencyP50Ms": 47.10000000009313,
+        "latencyP95Ms": 2605.5,
+        "latencyMaxMs": 2605.5,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "rapid": {
+        "submittedTargetCount": 7,
+        "committedSeekDelta": 2,
+        "finalTarget": 0.37,
+        "elapsedMs": 0,
+        "errorSeconds": 6.66666666759852e-7
+      },
+      "repeated": {
+        "count": 5,
+        "latencyP50Ms": 2603.9000000003725,
+        "latencyP95Ms": 2614.600000000093,
+        "latencyMaxMs": 2614.600000000093,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "controller": {
+        "timeoutCount": 0,
+        "committedSeekCount": 21,
+        "finalTargetTime": 4.057666666666667,
+        "finalActualTime": 4.057666
+      },
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 7.800000000279397,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 4.399999999906868,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 4.699999999720603,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 5.400000000372529,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 4.800000000279397,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 4.7999999998137355,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 4.5,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "durationMs": 2.1999999997206032,
+          "transferSize": 68696,
+          "encodedBodySize": 68396,
+          "decodedBodySize": 68396
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop3.mp4",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "variant": "gop6",
+      "cacheMode": "cold isolated browser context",
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "dpr": 1
+      },
+      "coldReadyMs": 126.83000000000175,
+      "firstVideoFrameMs": 96.5,
+      "media": {
+        "duration": 11,
+        "readyState": 4,
+        "seekable": true,
+        "seekConfirmation": "seeked"
+      },
+      "forward": {
+        "count": 11,
+        "latencyP50Ms": 47,
+        "latencyP95Ms": 2604.2999999998137,
+        "latencyMaxMs": 2604.2999999998137,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "reverse": {
+        "count": 11,
+        "latencyP50Ms": 46.1999999997206,
+        "latencyP95Ms": 2600.399999999907,
+        "latencyMaxMs": 2600.399999999907,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "rapid": {
+        "submittedTargetCount": 7,
+        "committedSeekDelta": 2,
+        "finalTarget": 0.37,
+        "elapsedMs": 0,
+        "errorSeconds": 6.66666666759852e-7
+      },
+      "repeated": {
+        "count": 5,
+        "latencyP50Ms": 2604.6999999997206,
+        "latencyP95Ms": 2613.600000000093,
+        "latencyMaxMs": 2613.600000000093,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "controller": {
+        "timeoutCount": 0,
+        "committedSeekCount": 22,
+        "finalTargetTime": 5.483333333333333,
+        "finalActualTime": 5.483333
+      },
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "durationMs": 12,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "durationMs": 6.199999999720603,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "durationMs": 4,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "durationMs": 6.699999999720603,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "durationMs": 3.8999999999068677,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "durationMs": 2.6000000000931323,
+          "transferSize": 17902,
+          "encodedBodySize": 17602,
+          "decodedBodySize": 17602
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop6.mp4",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "variant": "gop10",
+      "cacheMode": "cold isolated browser context",
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "dpr": 1
+      },
+      "coldReadyMs": 125.32819999999629,
+      "firstVideoFrameMs": 15.200000000186265,
+      "media": {
+        "duration": 11,
+        "readyState": 4,
+        "seekable": true,
+        "seekConfirmation": "seeked"
+      },
+      "forward": {
+        "count": 11,
+        "latencyP50Ms": 46.40000000037253,
+        "latencyP95Ms": 2601.1999999997206,
+        "latencyMaxMs": 2601.1999999997206,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "reverse": {
+        "count": 11,
+        "latencyP50Ms": 47.10000000009313,
+        "latencyP95Ms": 2602.5,
+        "latencyMaxMs": 2602.5,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "rapid": {
+        "submittedTargetCount": 7,
+        "committedSeekDelta": 2,
+        "finalTarget": 0.37,
+        "elapsedMs": 0,
+        "errorSeconds": 6.66666666759852e-7
+      },
+      "repeated": {
+        "count": 5,
+        "latencyP50Ms": 2611,
+        "latencyP95Ms": 2614.5,
+        "latencyMaxMs": 2614.5,
+        "displayedErrorP95Ms": 0.000666666666759852,
+        "displayedErrorMaxMs": 0.000666666666759852
+      },
+      "controller": {
+        "timeoutCount": 0,
+        "committedSeekCount": 21,
+        "finalTargetTime": 4.057666666666667,
+        "finalActualTime": 4.057666
+      },
+      "resources": [
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 8.5,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 4.7999999998137355,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 4.899999999906868,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 6,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 3.8000000002793968,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 5,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0
+        },
+        {
+          "name": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "durationMs": 3.1999999997206032,
+          "transferSize": 44099,
+          "encodedBodySize": 43799,
+          "decodedBodySize": 43799
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4183/control-valve-video/assets/control-valve-gop10.mp4",
+          "failure": "net::ERR_ABORTED"
+        }
+      ]
+    }
+  ]
+}
