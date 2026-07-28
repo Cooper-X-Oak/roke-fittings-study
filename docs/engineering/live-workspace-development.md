@@ -17,7 +17,10 @@
   media. Record the source branch, source path, commit, public URL and any
   previous Pages state for rollback. Restore the recorded Pages source if the
   release acceptance gate cannot pass. Issue, PR, merge, protected-branch
-  integration, branch deletion, and worktree deletion remain unauthorized.
+  integration, branch deletion, and worktree deletion remain outside
+  `live-workspace-development`. An explicit user request for Issue/PR review
+  or protected-branch integration must instead select the repository-declared
+  `github-standard-development` workflow and its dedicated policy.
 - Before a verified checkpoint, run the project-declared acceptance command,
   `git diff --check`, inspect the complete diff, and verify there are no
   zero-byte or temporary files, unprefixed same-site root references, or files
