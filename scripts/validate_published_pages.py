@@ -17,6 +17,8 @@ def fetch(url: str, accept: str) -> tuple[int, str]:
             return response.status, response.read().decode("utf-8", errors="replace")
     except urllib.error.HTTPError as error:
         return error.code, error.read().decode("utf-8", errors="replace")
+    except urllib.error.URLError as error:
+        return 0, f"network error: {error.reason}"
 
 
 def main() -> int:
