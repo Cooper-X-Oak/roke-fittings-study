@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>Goal 11 ROKE-like Hero Still Direction</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f3f4f4;
+        --ink: #111518;
+        --muted: #5d666c;
+        --line: #d6dbde;
+        --brand: #c91d26;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+      }
+
+      header,
+      main,
+      footer {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      header {
+        padding-top: 54px;
+        padding-bottom: 38px;
+      }
+
+      .kicker {
+        margin: 0 0 18px;
+        color: var(--brand);
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 980px;
+        margin: 0;
+        font-size: clamp(44px, 6vw, 96px);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.58fr);
+        gap: 48px;
+        align-items: end;
+        margin-top: 28px;
+      }
+
+      .intro p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 20px;
+        line-height: 1.55;
+      }
+
+      .rules {
+        margin: 0;
+        padding: 22px 24px;
+        border: 1px solid var(--line);
+        background: #fff;
+        list-style: none;
+      }
+
+      .rules li {
+        display: flex;
+        gap: 12px;
+        color: #2a3034;
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .rules li + li {
+        margin-top: 12px;
+      }
+
+      .rules b {
+        color: var(--brand);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px;
+        padding-bottom: 58px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        background: #e3e6e8;
+      }
+
+      .card-body {
+        padding: 20px 22px 24px;
+      }
+
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 12px;
+        color: var(--brand);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 25px;
+        line-height: 1.12;
+      }
+
+      .card p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .decision {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        padding: 36px 0 70px;
+        border-top: 1px solid var(--line);
+      }
+
+      .decision section {
+        padding: 22px;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .decision h3 {
+        margin: 0 0 12px;
+        font-size: 20px;
+      }
+
+      .decision p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      footer {
+        padding-bottom: 44px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 900px) {
+        header,
+        main,
+        footer {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .intro,
+        .grid,
+        .decision {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 44px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="kicker">Goal 11 / Still direction draft</p>
+      <h1>ROKE-like hero 六张关键帧方向稿</h1>
+      <div class="intro">
+        <p>
+          这版不渲染 240 帧，只用 6 张 still 判断新版方向是否成立：
+          主体稳定、轴向运动克制、零件不飞散、材质回到工业金属、最终帧能直接作为首页截图。
+        </p>
+        <ul class="rules">
+          <li><b>01</b><span>主体视觉中心保持稳定，不做大幅推拉或裁切。</span></li>
+          <li><b>02</b><span>运动只保留左右轴向合体、轴线提示、合体后小角度转体。</span></li>
+          <li><b>03</b><span>小五金作为细节纹理，不再承担独立飞行动作。</span></li>
+          <li><b>04</b><span>画面服务采购入口，不写未经客户确认的性能或认证声明。</span></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid" aria-label="Six still frames">
+        <article class="card">
+          <img src="still-001-stable-product-entry.jpg" alt="001 完整产品建立">
+          <div class="card-body">
+            <div class="meta"><span>001</span><span>完整产品建立</span></div>
+            <h2>稳定主视觉</h2>
+            <p>产品先以完整形态建立重量感和采购入口，避免一上来进入 CAD 拆解。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="still-048-axial-alignment.jpg" alt="048 左右轴向对位">
+          <div class="card-body">
+            <div class="meta"><span>048</span><span>左右轴向对位</span></div>
+            <h2>轴向合体</h2>
+            <p>左右方向逐步归位，只保留一条主要运动轴，画面稳定性优先。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="still-096-seat-system-held.jpg" alt="096 密封层克制显影">
+          <div class="card-body">
+            <div class="meta"><span>096</span><span>密封层克制显影</span></div>
+            <h2>讲解式部件运动</h2>
+            <p>密封候选层做短距离显影，不做零件飞散；这是结构提示，不是维修顺序。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="still-132-axis-rotation.jpg" alt="132 合体后轴线旋转">
+          <div class="card-body">
+            <div class="meta"><span>132</span><span>合体后轴线旋转</span></div>
+            <h2>合体后再旋转</h2>
+            <p>核心运动发生在合体后，旋转幅度小、方向固定，让“稳定轴线”成为记忆点。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="still-180-commercial-turn.jpg" alt="180 完整产品轻微转体">
+          <div class="card-body">
+            <div class="meta"><span>180</span><span>完整产品轻微转体</span></div>
+            <h2>商业展示段</h2>
+            <p>所有部件已归位，只保留完整产品的克制转体和边缘高光。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="still-240-final-hero-hold.jpg" alt="240 最终商业 hold">
+          <div class="card-body">
+            <div class="meta"><span>240</span><span>最终商业 hold</span></div>
+            <h2>最终可截图画面</h2>
+            <p>产品、字标、CTA 稳定，作为决定是否进入 24 帧 animatic 的最后判断帧。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="decision" aria-label="Review gates">
+        <section>
+          <h3>进入 animatic 的条件</h3>
+          <p>六张 still 必须都像完整商业画面，而不是中间过程截图；产品比例、文字层级和最终 hold 先过关。</p>
+        </section>
+        <section>
+          <h3>继续打磨的重点</h3>
+          <p>若方向成立，下一步只做 24 帧低清 animatic，重点验证合体节奏、轴线提示和产品转体是否克制。</p>
+        </section>
+        <section>
+          <h3>暂不做的事项</h3>
+          <p>本稿不接首页、不替换 Goal 9 序列、不生成 240 帧，也不写未经客户确认的材质、认证或性能承诺。</p>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      Source model: <code>../fixed-ball-valve.glb</code>. This page is a direction draft for review, not a final product claim.
+    </footer>
+  </body>
+</html>
