@@ -7,20 +7,35 @@ import argparse
 import json
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
 
 
 def fetch(url: str, accept: str) -> tuple[int, str]:
-    request = urllib.request.Request(url, headers={"Accept": accept, "User-Agent": "pages-publication-validator"})
-    try:
-        with urllib.request.urlopen(request, timeout=20) as response:
-            return response.status, response.read().decode("utf-8", errors="replace")
-    except urllib.error.HTTPError as error:
-        return error.code, error.read().decode("utf-8", errors="replace")
-    except urllib.error.URLError as error:
-        return 0, f"network error: {error.reason}"
+    last_error = ""
+    for attempt in range(4):
+        request = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (compatible; pages-publication-validator/1.0; "
+                    "+https://github.com/Cooper-X-Oak/roke-fittings-study)"
+                ),
+                "Accept": accept,
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=20) as response:
+                return response.status, response.read().decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as error:
+            return error.code, error.read().decode("utf-8", errors="replace")
+        except urllib.error.URLError as error:
+            last_error = f"network error: {error.reason}"
+            if attempt < 3:
+                time.sleep(0.75 * (attempt + 1))
+    return 0, last_error
 
 
 def main() -> int:
