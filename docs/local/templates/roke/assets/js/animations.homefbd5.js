@@ -86,22 +86,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_new_kraken_fullhd/${(i+1).toString().padStart(4, '0')}.png`);
   let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_avif_new/${(i+1).toString().padStart(4, '0')}.avif`);
 
-  imageSequence({
-    urls, // Array of image URLs
-    canvas: "#image-sequence", // <canvas> object to draw images to
-    clear: true, // only necessary if your images contain transparency
-    // onUpdate: (index, image) => console.log("drew image index", index, ", image:", image),
-    // fps: 720,
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      // snap: 1,
-      scrub: true, // important!
-      start: 0,   // start at the very top
-      end: 'bottom',
-      // end: "max", // entire page
-      // markers: true,
-    }
-  });
+  const heroSequenceCanvas = document.querySelector('#image-sequence');
+  if (heroSequenceCanvas && heroSequenceCanvas.dataset.staticSample !== 'true') {
+    imageSequence({
+      urls, // Array of image URLs
+      canvas: "#image-sequence", // <canvas> object to draw images to
+      clear: true, // only necessary if your images contain transparency
+      // onUpdate: (index, image) => console.log("drew image index", index, ", image:", image),
+      // fps: 720,
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        // snap: 1,
+        scrub: true, // important!
+        start: 0,   // start at the very top
+        end: 'bottom',
+        // end: "max", // entire page
+        // markers: true,
+      }
+    });
+  }
 
 
   let frameCount3 = 170;
