@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>Goal 12 ROKE-like 24 Frame Animatic Preview</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #eef0f1;
+        --paper-deep: #dfe3e5;
+        --ink: #101417;
+        --muted: #5f686e;
+        --line: rgba(16, 20, 23, 0.14);
+        --brand: #c91d26;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #cfd4d7;
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+      }
+
+      #stage {
+        position: relative;
+        width: 960px;
+        height: 540px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, #f5f6f6 0%, var(--paper) 48%, var(--paper-deep) 100%);
+        color: var(--ink);
+        isolation: isolate;
+      }
+
+      .nav {
+        position: absolute;
+        z-index: 6;
+        left: 44px;
+        right: 44px;
+        top: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 9px;
+      }
+
+      .logo strong {
+        display: block;
+        font-size: 16px;
+        line-height: 0.92;
+        letter-spacing: 0;
+      }
+
+      .logo span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 8px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 26px;
+        color: #121619;
+      }
+
+      .contact {
+        display: grid;
+        gap: 5px;
+        min-width: 142px;
+        text-align: center;
+      }
+
+      .contact b,
+      .contact span {
+        display: block;
+        border-radius: 999px;
+        padding: 6px 9px;
+      }
+
+      .contact b {
+        background: var(--brand);
+        color: #fff;
+        font-size: 9px;
+      }
+
+      .contact span {
+        background: #fff;
+        font-size: 8px;
+      }
+
+      #hero-canvas {
+        position: absolute;
+        z-index: 3;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .wordmark {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        bottom: 46px;
+        transform: translateX(-50%);
+        color: rgba(18, 23, 27, 0.105);
+        font-size: 89px;
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: 0;
+        pointer-events: none;
+      }
+
+      .copy {
+        position: absolute;
+        z-index: 5;
+        left: 44px;
+        top: 153px;
+        width: 260px;
+      }
+
+      .eyebrow {
+        margin: 0 0 9px;
+        color: var(--brand);
+        font-size: 8px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 36px;
+        line-height: 0.98;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .body {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.48;
+      }
+
+      .actions {
+        display: flex;
+        gap: 9px;
+        margin-top: 22px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 82px;
+        min-height: 28px;
+        border: 1px solid #111;
+        border-radius: 999px;
+        background: transparent;
+        color: #111;
+        font-size: 9px;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        background: #111;
+        color: #fff;
+      }
+
+      .side-proof {
+        position: absolute;
+        z-index: 5;
+        right: 44px;
+        top: 143px;
+        width: 150px;
+        text-align: right;
+        color: var(--muted);
+      }
+
+      .side-proof strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #111;
+        font-size: 16px;
+        line-height: 1.08;
+        font-weight: 700;
+      }
+
+      .side-proof span {
+        display: block;
+        font-size: 9px;
+        line-height: 1.45;
+      }
+
+      .motion-rail {
+        position: absolute;
+        z-index: 2;
+        left: 38%;
+        right: 18%;
+        top: 53%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(16, 20, 23, 0.28), transparent);
+        opacity: var(--rail-opacity, 0);
+      }
+
+      .axis-rail {
+        position: absolute;
+        z-index: 2;
+        left: 57.5%;
+        top: 26%;
+        width: 1px;
+        height: 46%;
+        background: linear-gradient(180deg, transparent, rgba(201, 29, 38, 0.5), transparent);
+        opacity: var(--axis-opacity, 0);
+      }
+
+      .floor-shadow {
+        position: absolute;
+        z-index: 2;
+        left: 44%;
+        top: 73%;
+        width: 360px;
+        height: 54px;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2), transparent 68%);
+        filter: blur(3px);
+        opacity: 0.5;
+      }
+
+      .frame-note {
+        position: absolute;
+        z-index: 6;
+        left: 44px;
+        bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #1e2529;
+        font-size: 8px;
+      }
+
+      .frame-note b {
+        font-size: 9px;
+      }
+
+      .frame-note span {
+        color: var(--muted);
+      }
+
+      .marquee-hint {
+        position: absolute;
+        z-index: 4;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-top: 1px solid var(--line);
+        color: rgba(16, 20, 23, 0.35);
+        font-size: 12px;
+        line-height: 28px;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="stage">
+      <header class="nav">
+        <div class="logo">
+          <strong>ZTOVALVE</strong>
+          <span>正拓阀门</span>
+        </div>
+        <nav class="nav-links" aria-label="Primary">
+          <span>质量与服务</span>
+          <span>产品展示</span>
+          <span>资料下载</span>
+          <span>联系我们</span>
+        </nav>
+        <div class="contact">
+          <b>0577-86913387</b>
+          <span>zhengtuo@ztovalve.com</span>
+        </div>
+      </header>
+
+      <section class="copy" aria-label="Hero copy">
+        <p class="eyebrow">Goal 12 rhythm animatic</p>
+        <h1>法兰阀门与螺纹阀门制造</h1>
+        <p class="body">球阀、闸阀、截止阀、止回阀、过滤器，面向采购场景的产品入口。</p>
+        <div class="actions">
+          <a class="button primary" href="../../../../catalog/">查看产品</a>
+          <a class="button" href="../fixed-ball-valve-brochure-poster.jpg">查看画册</a>
+        </div>
+      </section>
+
+      <aside class="side-proof" aria-label="Motion note">
+        <strong id="side-title">稳定主视觉</strong>
+        <span id="side-body">主体不漂移，画面先建立产品重量和采购入口。</span>
+      </aside>
+
+      <div class="motion-rail" aria-hidden="true"></div>
+      <div class="axis-rail" aria-hidden="true"></div>
+      <div class="floor-shadow" aria-hidden="true"></div>
+      <canvas id="hero-canvas" width="960" height="540"></canvas>
+      <div class="wordmark" aria-hidden="true">ZTOVALVE</div>
+      <div class="frame-note" aria-hidden="true">
+        <b id="frame-id">01</b>
+        <span id="frame-name">完整产品建立</span>
+      </div>
+      <div class="marquee-hint" aria-hidden="true">
+        法兰阀门 / 螺纹阀门 / 球阀 / 闸阀 / 截止阀 / 止回阀 / 过滤器 / 非标定制 / 法兰阀门 / 螺纹阀门 / 球阀
+      </div>
+    </main>
+
+    <script type="module">
+      import * as THREE from "../../../../local/templates/roke/assets/js/three/three.module.js";
+      import { GLTFLoader } from "../../../../local/templates/roke/assets/js/three/GLTFLoader.js";
+
+      const KEY_STATES = [
+        {
+          frame: 0,
+          name: "完整产品建立",
+          noteTitle: "稳定主视觉",
+          noteBody: "主体不漂移，先建立产品重量和采购入口。",
+          split: 0,
+          seat: 0,
+          axis: 0,
+          stemLift: 0,
+          coreSpin: 0,
+          productYaw: -7,
+          productX: 0.16,
+          camera: [-0.54, 0.25, 1.48],
+          target: [0.02, 0.05, 0.0],
+          railOpacity: 0,
+          axisOpacity: 0,
+        },
+        {
+          frame: 4,
+          name: "左右轴向对位",
+          noteTitle: "轴向合体",
+          noteBody: "左右方向逐步归位，只保留一条主要运动轴。",
+          split: 0.36,
+          seat: 0,
+          axis: 0.12,
+          stemLift: 0,
+          coreSpin: 0,
+          productYaw: -5,
+          productX: 0.16,
+          camera: [-0.54, 0.25, 1.48],
+          target: [0.02, 0.05, 0.0],
+          railOpacity: 1,
+          axisOpacity: 0.25,
+        },
+        {
+          frame: 8,
+          name: "密封层克制显影",
+          noteTitle: "讲解式部件运动",
+          noteBody: "密封候选层只做短距离显影，不做零件飞散。",
+          split: 0.2,
+          seat: 0.18,
+          axis: 0.2,
+          stemLift: 0,
+          coreSpin: 0,
+          productYaw: -2,
+          productX: 0.16,
+          camera: [-0.52, 0.25, 1.42],
+          target: [0.02, 0.05, 0.0],
+          railOpacity: 0.8,
+          axisOpacity: 0.42,
+        },
+        {
+          frame: 12,
+          name: "合体后轴线旋转",
+          noteTitle: "合体后再旋转",
+          noteBody: "核心运动发生在合体后，旋转幅度小，方向固定。",
+          split: 0,
+          seat: 0,
+          axis: 0.36,
+          stemLift: 0.15,
+          coreSpin: 0.5,
+          productYaw: 1,
+          productX: 0.16,
+          camera: [-0.52, 0.25, 1.42],
+          target: [0.02, 0.06, 0.0],
+          railOpacity: 0.28,
+          axisOpacity: 0.52,
+        },
+        {
+          frame: 16,
+          name: "完整产品轻微转体",
+          noteTitle: "商业展示段",
+          noteBody: "部件已经归位，只保留完整产品的克制转体。",
+          split: 0,
+          seat: 0,
+          axis: 0.12,
+          stemLift: 0,
+          coreSpin: 0,
+          productYaw: 5,
+          productX: 0.16,
+          camera: [-0.54, 0.25, 1.48],
+          target: [0.02, 0.05, 0.0],
+          railOpacity: 0,
+          axisOpacity: 0.08,
+        },
+        {
+          frame: 20,
+          name: "最终商业 hold",
+          noteTitle: "最终可截图画面",
+          noteBody: "产品、字标、CTA 稳定，可作为首页最终帧判断。",
+          split: 0,
+          seat: 0,
+          axis: 0,
+          stemLift: 0,
+          coreSpin: 0,
+          productYaw: 7,
+          productX: 0.16,
+          camera: [-0.54, 0.25, 1.48],
+          target: [0.02, 0.05, 0.0],
+          railOpacity: 0,
+          axisOpacity: 0,
+        },
+        {
+          frame: 23,
+          name: "最终商业 hold",
+          noteTitle: "最终可截图画面",
+          noteBody: "最后 4 帧稳定 hold，只验证节奏，不进入正式渲染。",
+          split: 0,
+          seat: 0,
+          axis: 0,
+          stemLift: 0,
+          coreSpin: 0,
+          productYaw: 7,
+          productX: 0.16,
+          camera: [-0.54, 0.25, 1.48],
+          target: [0.02, 0.05, 0.0],
+          railOpacity: 0,
+          axisOpacity: 0,
+        },
+      ];
+
+      const FRAME_COUNT = 24;
+      const FPS = 12;
+      const stage = document.querySelector("#stage");
+      const canvas = document.querySelector("#hero-canvas");
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+        preserveDrawingBuffer: true,
+      });
+      renderer.setPixelRatio(1);
+      renderer.setSize(960, 540, false);
+      renderer.setClearColor(0x000000, 0);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.08;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(31, 960 / 540, 0.01, 8);
+      const productRig = new THREE.Group();
+      const modelRoot = new THREE.Group();
+      productRig.add(modelRoot);
+      scene.add(productRig);
+
+      const floor = new THREE.Mesh(
+        new THREE.PlaneGeometry(2.2, 1.35),
+        new THREE.ShadowMaterial({ color: 0x172026, opacity: 0.18 }),
+      );
+      floor.rotation.x = -Math.PI / 2;
+      floor.position.set(0.16, -0.32, 0.04);
+      floor.receiveShadow = true;
+      scene.add(floor);
+
+      const hemi = new THREE.HemisphereLight(0xffffff, 0x9fa7ab, 1.42);
+      const key = new THREE.DirectionalLight(0xffffff, 2.7);
+      key.position.set(-0.72, 0.86, 1.18);
+      key.castShadow = true;
+      key.shadow.mapSize.set(1024, 1024);
+      key.shadow.camera.near = 0.1;
+      key.shadow.camera.far = 4;
+      key.shadow.camera.left = -1.4;
+      key.shadow.camera.right = 1.4;
+      key.shadow.camera.top = 1.1;
+      key.shadow.camera.bottom = -1.1;
+      const rim = new THREE.DirectionalLight(0xddeeff, 2.35);
+      rim.position.set(0.86, 0.35, -0.88);
+      const lowFill = new THREE.DirectionalLight(0xc9d2d8, 0.95);
+      lowFill.position.set(0.25, -0.2, 0.65);
+      scene.add(hemi, key, rim, lowFill);
+
+      const loader = new GLTFLoader();
+      const gltf = await loader.loadAsync("../fixed-ball-valve.glb");
+      modelRoot.add(gltf.scene);
+
+      const sourceBox = new THREE.Box3().setFromObject(gltf.scene);
+      const sourceCenter = sourceBox.getCenter(new THREE.Vector3());
+      const sourceSize = sourceBox.getSize(new THREE.Vector3());
+      gltf.scene.position.sub(sourceCenter);
+      modelRoot.scale.setScalar(1.18);
+
+      const bodyMat = new THREE.MeshPhysicalMaterial({
+        color: 0x586167,
+        metalness: 0.86,
+        roughness: 0.34,
+        clearcoat: 0.32,
+        clearcoatRoughness: 0.46,
+      });
+      const darkMat = new THREE.MeshPhysicalMaterial({
+        color: 0x353c41,
+        metalness: 0.78,
+        roughness: 0.42,
+        clearcoat: 0.18,
+      });
+      const coreMat = new THREE.MeshPhysicalMaterial({
+        color: 0xaab2b7,
+        metalness: 0.92,
+        roughness: 0.27,
+        clearcoat: 0.36,
+      });
+      const fastenerMat = new THREE.MeshPhysicalMaterial({
+        color: 0x7a8388,
+        metalness: 0.9,
+        roughness: 0.31,
+        clearcoat: 0.24,
+      });
+      const sealMat = new THREE.MeshPhysicalMaterial({
+        color: 0x30383d,
+        metalness: 0.78,
+        roughness: 0.36,
+        clearcoat: 0.12,
+      });
+
+      const records = [];
+      const center = sourceCenter.clone();
+      const size = sourceSize.clone();
+
+      function classify(centerPoint, partSize) {
+        const diagonal = partSize.length();
+        if (diagonal < 0.035) return "fastener";
+        if (centerPoint.y > center.y + size.y * 0.2) return "stem";
+        if (Math.abs(centerPoint.x - center.x) < size.x * 0.18 && diagonal > 0.06) return "core";
+        if (Math.abs(centerPoint.x - center.x) < size.x * 0.28 && diagonal < 0.09) return "seal";
+        if (centerPoint.x < center.x - size.x * 0.11) return "left";
+        if (centerPoint.x > center.x + size.x * 0.11) return "right";
+        return "body";
+      }
+
+      gltf.scene.traverse((node) => {
+        if (!node.isMesh) return;
+        const box = new THREE.Box3().setFromObject(node);
+        const partCenter = box.getCenter(new THREE.Vector3());
+        const partSize = box.getSize(new THREE.Vector3());
+        const group = classify(partCenter, partSize);
+        const material =
+          group === "fastener" ? fastenerMat.clone() :
+          group === "core" ? coreMat.clone() :
+          group === "seal" ? sealMat.clone() :
+          group === "stem" ? bodyMat.clone() :
+          group === "left" || group === "right" ? darkMat.clone() :
+          bodyMat.clone();
+        node.material = material;
+        node.castShadow = true;
+        node.receiveShadow = true;
+        records.push({
+          node,
+          group,
+          basePosition: node.position.clone(),
+          localCenter: partCenter.sub(sourceCenter),
+        });
+      });
+
+      function clamp(value) {
+        return Math.max(0, Math.min(1, value));
+      }
+
+      function smoothstep(value) {
+        const t = clamp(value);
+        return t * t * (3 - 2 * t);
+      }
+
+      function lerp(left, right, t) {
+        return left + (right - left) * t;
+      }
+
+      function lerpArray(left, right, t) {
+        return left.map((value, index) => lerp(value, right[index], t));
+      }
+
+      function frameState(frame) {
+        let left = KEY_STATES[0];
+        let right = KEY_STATES[KEY_STATES.length - 1];
+        for (let index = 0; index < KEY_STATES.length - 1; index += 1) {
+          const a = KEY_STATES[index];
+          const b = KEY_STATES[index + 1];
+          if (frame >= a.frame && frame <= b.frame) {
+            left = a;
+            right = b;
+            break;
+          }
+        }
+        const segmentLength = Math.max(1, right.frame - left.frame);
+        const t = smoothstep((frame - left.frame) / segmentLength);
+        const numericKeys = [
+          "split",
+          "seat",
+          "axis",
+          "stemLift",
+          "coreSpin",
+          "productYaw",
+          "productX",
+          "railOpacity",
+          "axisOpacity",
+        ];
+        const state = {
+          frame,
+          name: frame < right.frame ? left.name : right.name,
+          noteTitle: frame < right.frame ? left.noteTitle : right.noteTitle,
+          noteBody: frame < right.frame ? left.noteBody : right.noteBody,
+          camera: lerpArray(left.camera, right.camera, t),
+          target: lerpArray(left.target, right.target, t),
+        };
+        for (const keyName of numericKeys) {
+          state[keyName] = lerp(left[keyName] || 0, right[keyName] || 0, t);
+        }
+        return state;
+      }
+
+      function applyState(state) {
+        productRig.position.set(state.productX, -0.035, 0);
+        productRig.rotation.set(0, THREE.MathUtils.degToRad(state.productYaw), 0);
+
+        for (const record of records) {
+          const offset = new THREE.Vector3();
+          if (record.group === "left") {
+            offset.x -= state.split * 0.055;
+          } else if (record.group === "right") {
+            offset.x += state.split * 0.055;
+          } else if (record.group === "seal") {
+            offset.x += Math.sign(record.localCenter.x || 1) * state.seat * 0.045;
+          } else if (record.group === "stem") {
+            offset.y += state.stemLift * 0.035;
+          }
+          record.node.position.copy(record.basePosition).add(offset);
+          record.node.rotation.y = record.group === "core" ? state.coreSpin * 0.24 : 0;
+          record.node.material.opacity = 1;
+          record.node.material.transparent = false;
+          if (record.group === "core") {
+            record.node.material.emissive = new THREE.Color(0xdce9ef).multiplyScalar(state.axis * 0.08);
+          }
+          if (record.group === "seal") {
+            record.node.material.emissive = new THREE.Color(0xdce9ef).multiplyScalar(state.axis * 0.025);
+          }
+        }
+
+        camera.position.fromArray(state.camera);
+        camera.lookAt(new THREE.Vector3().fromArray(state.target));
+        key.intensity = 2.1 + state.axis * 0.3;
+        rim.intensity = 1.65 + state.axis * 0.7;
+        stage.style.setProperty("--rail-opacity", String(state.railOpacity));
+        stage.style.setProperty("--axis-opacity", String(state.axisOpacity));
+        document.querySelector("#frame-id").textContent = String(state.frame + 1).padStart(2, "0");
+        document.querySelector("#frame-name").textContent = state.name;
+        document.querySelector("#side-title").textContent = state.noteTitle;
+        document.querySelector("#side-body").textContent = state.noteBody;
+        renderer.render(scene, camera);
+      }
+
+      const frameStates = Array.from({ length: FRAME_COUNT }, (_, frame) => frameState(frame));
+      applyState(frameStates[0]);
+
+      window.__GOAL12_ANIMATIC__ = {
+        waitForReady: async () => ({
+          frameCount: FRAME_COUNT,
+          fps: FPS,
+          durationSeconds: FRAME_COUNT / FPS,
+          width: 960,
+          height: 540,
+          model: "../fixed-ball-valve.glb",
+          sourceStillDirection: "../goal11-rokelike-stills/",
+          finalHoldFrames: [20, 23],
+          frameSequenceRendered: false,
+          grammar: "restrained axial assembly rhythm only; no 240-frame output",
+          meshCount: records.length,
+        }),
+        setFrame: (frame) => {
+          const bounded = Math.max(0, Math.min(FRAME_COUNT - 1, Math.round(frame)));
+          const state = frameStates[bounded];
+          applyState(state);
+          return state;
+        },
+        captureFrame: (frame) => {
+          const bounded = Math.max(0, Math.min(FRAME_COUNT - 1, Math.round(frame)));
+          const state = frameStates[bounded];
+          applyState(state);
+          return {
+            ...state,
+            pngDataUrl: canvas.toDataURL("image/png"),
+          };
+        },
+        frameStates,
+      };
+    </script>
+  </body>
+</html>
