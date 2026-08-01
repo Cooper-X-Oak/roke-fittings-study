@@ -197,6 +197,7 @@ const frameSets = [
   ["frames1_avif_new", 240],
   ["frames2_avif_new", 240],
   ["frames3_avif", 170],
+  ["zt-hero-fixed-ball-valve", 240],
 ].map(([name, expected]) => {
   const directory = path.join(artifactRoot, "upload/images", name);
   const actual = fs.existsSync(directory)

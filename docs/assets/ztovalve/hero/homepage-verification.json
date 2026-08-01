@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-01T17:31:05.131Z",
+  "url": "http://127.0.0.1:4192/roke-fittings-study/",
+  "desktop": {
+    "firstProbe": {
+      "exists": true,
+      "width": 1920,
+      "height": 1080,
+      "classReady": true,
+      "alphaPixels": 4,
+      "mean": [
+        160,
+        125,
+        109,
+        255
+      ],
+      "dataPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08"
+    },
+    "scrolledProbe": {
+      "exists": true,
+      "width": 1920,
+      "height": 1080,
+      "classReady": true,
+      "alphaPixels": 4,
+      "mean": [
+        171,
+        117,
+        95,
+        255
+      ],
+      "dataPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08"
+    },
+    "catalogLink": {
+      "text": "查看产品",
+      "href": "http://127.0.0.1:4192/roke-fittings-study/catalog/index.html"
+    },
+    "screenshots": [
+      "docs/assets/ztovalve/hero/homepage-desktop-first-view.png",
+      "docs/assets/ztovalve/hero/homepage-desktop-scrolled.png"
+    ]
+  },
+  "mobile": {
+    "probe": {
+      "desktopHeroVisible": false,
+      "imageSrc": "http://127.0.0.1:4192/roke-fittings-study/assets/ztovalve/hero/fixed-ball-valve-mobile-fallback.png",
+      "complete": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1080
+    },
+    "screenshot": "docs/assets/ztovalve/hero/homepage-mobile-fallback.png"
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [
+    {
+      "url": "http://127.0.0.1:4192/roke-fittings-study/upload/iblock/e06/bh7rr01l12oz5oq58ryfjukgeuxaejsi.mp4",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:4192/roke-fittings-study/upload/iblock/f8f/o76jwnhvqfie30jibw0h5bvnpisyjxpo.mp4",
+      "failure": "net::ERR_ABORTED"
+    }
+  ]
+}

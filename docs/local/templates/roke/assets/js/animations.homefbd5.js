@@ -84,15 +84,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_new_kraken/${(i+1).toString().padStart(4, '0')}.webp`);
 
   // let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_new_kraken_fullhd/${(i+1).toString().padStart(4, '0')}.png`);
-  let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_avif_new/${(i+1).toString().padStart(4, '0')}.avif`);
+  let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/zt-hero-fixed-ball-valve/${(i+1).toString().padStart(4, '0')}.avif`);
 
   const heroSequenceCanvas = document.querySelector('#image-sequence');
+  const heroFramesElement = document.querySelector('.hero-frames');
   if (heroSequenceCanvas && heroSequenceCanvas.dataset.staticSample !== 'true') {
     imageSequence({
       urls, // Array of image URLs
       canvas: "#image-sequence", // <canvas> object to draw images to
       clear: true, // only necessary if your images contain transparency
-      // onUpdate: (index, image) => console.log("drew image index", index, ", image:", image),
+      onUpdate: () => heroFramesElement && heroFramesElement.classList.add('is-sequence-ready'),
       // fps: 720,
       scrollTrigger: {
         trigger: '.hero-wrapper',

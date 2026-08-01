@@ -70,8 +70,46 @@
     width: 100%;
   }
 
+  .hero-frames {
+    position: relative;
+  }
+
   .zt-hero-sequence-canvas {
+    display: block;
+    height: 100%;
     opacity: 0;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+  }
+
+  .hero-frames.is-sequence-ready .zt-hero-product-image {
+    opacity: 0;
+  }
+
+  .hero-frames.is-sequence-ready .zt-hero-sequence-canvas {
+    opacity: 1;
+  }
+
+  #image-sequence.zt-hero-sequence-canvas {
+    transform: translate(-50%, -32%) scale(.74);
+  }
+
+  .section-hero-mobile .hero-info-title {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 28px !important;
+  }
+
+  .section-hero-mobile-image-wrapper {
+    aspect-ratio: 4 / 3;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .section-hero-mobile-image {
+    object-fit: contain;
+    object-position: center;
   }
 
   .zt-prefooter-logo {
@@ -214,10 +252,10 @@
             <div class="hero-frames">
                             <img
                               class="zt-hero-product-image"
-                              src="upload/ztovalve/threaded-high-platform-ball-valve.jpg"
-                              alt="正拓二片式螺纹高平台球阀"
+                              src="/roke-fittings-study/assets/ztovalve/hero/fixed-ball-valve-mobile-fallback.png"
+                              alt="正拓法兰固定式球阀"
                             />
-                            <canvas id="image-sequence" class="zt-hero-sequence-canvas" width="1920" height="1080" data-static-sample="true"></canvas>
+                            <canvas id="image-sequence" class="zt-hero-sequence-canvas" width="1920" height="1080"></canvas>
             </div>
           </div>
 
@@ -271,9 +309,9 @@
     <div class="section-hero-mobile-image-wrapper">
       <img
         class="section-hero-mobile-image lazyload"
-        src="/roke-fittings-study/upload/ztovalve/threaded-high-platform-ball-valve.jpg"
-        data-src="/roke-fittings-study/upload/ztovalve/threaded-high-platform-ball-valve.jpg"
-        alt="正拓二片式螺纹高平台球阀"
+        src="/roke-fittings-study/assets/ztovalve/hero/fixed-ball-valve-mobile-fallback.png"
+        data-src="/roke-fittings-study/assets/ztovalve/hero/fixed-ball-valve-mobile-fallback.png"
+        alt="正拓法兰固定式球阀"
       />
     </div>
     <div>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>Fixed Ball Valve Hero Animatic</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f7f8fb;
+        --muted: rgba(247, 248, 251, 0.72);
+        --line: rgba(255, 255, 255, 0.18);
+        --panel: rgba(4, 10, 18, 0.54);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #080b10;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #stage {
+        position: relative;
+        width: 960px;
+        height: 540px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 72% 18%, rgba(44, 118, 159, 0.36), transparent 34%),
+          linear-gradient(135deg, #07121f 0%, #0b2340 44%, #11151a 100%);
+      }
+
+      #animatic-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .copy {
+        position: absolute;
+        left: 48px;
+        top: 48px;
+        width: 330px;
+        color: var(--ink);
+        text-shadow: 0 2px 22px rgba(0, 0, 0, 0.58);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        font-size: 12px;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: #83d2ff;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 42px;
+        line-height: 0.98;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .body {
+        margin: 16px 0 0;
+        font-size: 15px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+
+      .hud {
+        position: absolute;
+        right: 34px;
+        bottom: 30px;
+        width: 226px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+        pointer-events: none;
+      }
+
+      .hud strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink);
+        font-size: 13px;
+      }
+
+      body.sequence-mode {
+        background: transparent;
+      }
+
+      body.sequence-mode #stage {
+        background: transparent;
+      }
+
+      body.sequence-mode .copy,
+      body.sequence-mode .hud {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="stage">
+      <canvas id="animatic-canvas" width="960" height="540"></canvas>
+      <section class="copy" aria-label="Shot copy">
+        <p class="eyebrow" id="eyebrow">Fixed ball valve</p>
+        <h1 id="title">Built around a fixed axis</h1>
+        <p class="body" id="body-copy">A complete commercial form first, then the structure behind it.</p>
+      </section>
+      <aside class="hud" aria-hidden="true">
+        <strong id="shot-id">contracted-presence</strong>
+        <span id="frame-label">Frame 01 / 24</span>
+      </aside>
+    </main>
+
+    <script type="module">
+      import * as THREE from "../../../local/templates/roke/assets/js/three/three.module.js";
+      import { GLTFLoader } from "../../../local/templates/roke/assets/js/three/GLTFLoader.js";
+
+      const params = new URLSearchParams(window.location.search);
+      const renderMode = params.get("mode") || "animatic";
+      const isSequenceMode = renderMode === "sequence";
+      const previsPath = params.get("previs") || "./camera-previs-24.json";
+      const renderWidth = Number(params.get("w") || 960);
+      const renderHeight = Number(params.get("h") || 540);
+      document.body.classList.toggle("sequence-mode", isSequenceMode);
+      const stage = document.querySelector("#stage");
+      stage.style.width = `${renderWidth}px`;
+      stage.style.height = `${renderHeight}px`;
+
+      const canvas = document.querySelector("#animatic-canvas");
+      canvas.width = renderWidth;
+      canvas.height = renderHeight;
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+        preserveDrawingBuffer: true,
+      });
+      renderer.setPixelRatio(1);
+      renderer.setSize(renderWidth, renderHeight, false);
+      renderer.setClearColor(0x000000, 0);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.02;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(42, renderWidth / renderHeight, 0.01, 8);
+      const root = new THREE.Group();
+      scene.add(root);
+
+      const ambient = new THREE.HemisphereLight(0x8fbfe8, 0x151920, 1.35);
+      const key = new THREE.DirectionalLight(0xffffff, 2.0);
+      key.position.set(-0.65, 0.85, 1.35);
+      const rim = new THREE.DirectionalLight(0x7fd1ff, 1.8);
+      rim.position.set(0.95, 0.35, -0.7);
+      const warm = new THREE.PointLight(0xff8c4a, 0.45, 2.4);
+      warm.position.set(-0.05, 0.25, 0.48);
+      scene.add(ambient, key, rim, warm);
+
+      const loader = new GLTFLoader();
+      const [plan, previs, gltf] = await Promise.all([
+        fetch("./creative-development.json").then((response) => response.json()),
+        fetch(previsPath).then((response) => response.json()),
+        loader.loadAsync("./fixed-ball-valve.glb"),
+      ]);
+      root.add(gltf.scene);
+
+      const meshRecords = [];
+      const overallBox = new THREE.Box3().setFromObject(gltf.scene);
+      const overallCenter = overallBox.getCenter(new THREE.Vector3());
+      const overallSize = overallBox.getSize(new THREE.Vector3());
+
+      function classifyMesh(node, box, size, center) {
+        const diagonal = size.length();
+        if (diagonal > 0.19) return "body-pressure-shell";
+        if (diagonal < 0.038) return "fasteners-small-hardware";
+        if (center.y > overallCenter.y + overallSize.y * 0.16) return "stem-packing-drive";
+        if (Math.abs(center.x - overallCenter.x) < overallSize.x * 0.2 && diagonal > 0.07) return "ball-trunnion-core";
+        if (Math.abs(center.z - overallCenter.z) < overallSize.z * 0.46) return "seat-seal-system";
+        return "body-pressure-shell";
+      }
+
+      gltf.scene.traverse((node) => {
+        if (!node.isMesh) return;
+        const box = new THREE.Box3().setFromObject(node);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const group = classifyMesh(node, box, size, center);
+        node.material = node.material.clone();
+        node.material.transparent = true;
+        node.material.depthWrite = true;
+        node.material.metalness = Math.max(0.35, node.material.metalness ?? 0.5);
+        node.material.roughness = Math.min(0.46, node.material.roughness ?? 0.34);
+        meshRecords.push({
+          node,
+          group,
+          basePosition: node.position.clone(),
+          center,
+          direction: center.clone().sub(overallCenter).normalize(),
+        });
+      });
+
+      const shotCopy = new Map(plan.shots.map((shot) => [shot.id, shot.content]));
+
+      function applyParts(state) {
+        const part = state.partState;
+        for (const record of meshRecords) {
+          const offset = new THREE.Vector3();
+          if (record.group === "body-pressure-shell") {
+            offset.add(record.direction.clone().multiplyScalar(part.shellOpen * 0.085));
+          } else if (record.group === "ball-trunnion-core") {
+            offset.y += part.axisEmphasis * 0.028;
+          } else if (record.group === "seat-seal-system") {
+            const side = record.center.x < overallCenter.x ? -1 : 1;
+            offset.x += side * part.seatSeparation * 0.105;
+            offset.z += Math.sign(record.center.z - overallCenter.z || 1) * part.seatSeparation * 0.026;
+          } else if (record.group === "stem-packing-drive") {
+            offset.y += part.stemLift * 0.08;
+          } else if (record.group === "fasteners-small-hardware") {
+            offset.add(record.direction.clone().multiplyScalar((part.shellOpen + part.seatSeparation) * 0.044));
+          }
+          record.node.position.copy(record.basePosition).add(offset);
+          const shellFade = record.group === "body-pressure-shell" ? part.axisEmphasis * 0.28 + part.seatSeparation * 0.18 : 0;
+          record.node.material.opacity = Math.max(0.5, 1 - shellFade);
+          if (record.group === "fasteners-small-hardware") {
+            record.node.material.emissive = new THREE.Color(0xff7a2f).multiplyScalar(part.fastenerGlint * 0.24);
+          }
+        }
+      }
+
+      function setCopy(state) {
+        const content = shotCopy.get(state.shotId);
+        if (!content) return;
+        document.querySelector("#eyebrow").textContent = content.eyebrow;
+        document.querySelector("#title").textContent = content.title;
+        document.querySelector("#body-copy").textContent = content.body;
+        document.querySelector("#shot-id").textContent = state.shotId;
+        document.querySelector("#frame-label").textContent = `Frame ${String(state.frame + 1).padStart(2, "0")} / ${previs.totalFrames}`;
+      }
+
+      function renderFrame(index) {
+        const state = previs.frameStates[index];
+        camera.position.fromArray(state.cameraPosition);
+        camera.fov = state.fovDegrees;
+        camera.updateProjectionMatrix();
+        camera.lookAt(new THREE.Vector3().fromArray(state.target));
+        key.intensity = state.lightState.keyIntensity;
+        rim.intensity = state.lightState.rimIntensity;
+        warm.intensity = 0.34 + state.partState.fastenerGlint * 0.9;
+        applyParts(state);
+        if (!isSequenceMode) setCopy(state);
+        renderer.render(scene, camera);
+        return {
+          frame: state.frame,
+          shotId: state.shotId,
+          meshCount: meshRecords.length,
+          bounds: {
+            min: overallBox.min.toArray(),
+            max: overallBox.max.toArray(),
+          },
+        };
+      }
+
+      renderFrame(0);
+
+      window.__FIXED_BALL_ANIMATIC__ = {
+        waitForReady: async () => ({
+          frameCount: previs.totalFrames,
+          fps: previs.fps,
+          meshCount: meshRecords.length,
+          renderMode,
+          renderWidth,
+          renderHeight,
+          previsPath,
+          modelBounds: {
+            min: overallBox.min.toArray(),
+            max: overallBox.max.toArray(),
+            size: overallSize.toArray(),
+          },
+        }),
+        setFrame: (index) => renderFrame(index),
+        captureFrame: (index) => {
+          const capture = renderFrame(index);
+          return {
+            ...capture,
+            pngDataUrl: canvas.toDataURL("image/png"),
+          };
+        },
+        plan,
+        previs,
+      };
+    </script>
+  </body>
+</html>
