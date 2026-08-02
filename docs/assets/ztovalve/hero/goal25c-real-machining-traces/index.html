@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goal 25-C Real Machining Traces</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, "Noto Sans SC", system-ui, sans-serif; background: #e3e7e4; color: #101514; }
+    body { margin: 0; }
+    main { width: min(1480px, calc(100% - 40px)); margin: 0 auto; padding: 32px 0 56px; }
+    header { display: grid; gap: 10px; margin-bottom: 18px; }
+    .eyebrow { margin: 0; color: #5b6661; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 46px); line-height: 1.04; letter-spacing: 0; }
+    p { margin: 0; max-width: 980px; color: #4d5853; line-height: 1.6; }
+    .stills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    figure { margin: 0; border: 1px solid #b7c0bc; border-radius: 8px; overflow: hidden; background: #303532; }
+    img { display: block; width: 100%; height: auto; }
+    figcaption { display: grid; gap: 2px; padding: 10px 12px 12px; background: #f5f7f5; }
+    figcaption b { font-size: 13px; }
+    figcaption span { color: #68736e; font-size: 12px; }
+    .library { margin-top: 14px; border: 1px solid #b7c0bc; border-radius: 8px; background: #f5f7f5; padding: 16px; }
+    h2 { margin: 0 0 12px; font-size: 16px; letter-spacing: 0; }
+    ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    li { display: grid; grid-template-columns: minmax(260px, .85fr) minmax(120px, .38fr) minmax(280px, 1.35fr) minmax(220px, .8fr); gap: 10px; align-items: start; }
+    li b, li small, li em, code { font-size: 12px; line-height: 1.4; font-style: normal; }
+    li small, li em { color: #5d6863; }
+    code { background: #dfe4e1; padding: 2px 5px; border-radius: 5px; color: #26312d; }
+    footer { margin-top: 14px; color: #5b6661; font-size: 13px; }
+    @media (max-width: 980px) {
+      main { width: min(100% - 24px, 760px); padding-top: 24px; }
+      .stills { grid-template-columns: 1fr; }
+      li { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Goal 25-C / real machining traces / no procedural wave</p>
+    <h1>真实加工痕迹样片</h1>
+    <p>这组样片把加工痕迹从 Goal 25-D 的材质分区中单独拆出来，用显式几何痕迹表达车削、拉丝、内孔、螺栓孔、倒角磨亮和珠喷微坑，避免用 procedural shader 直接冒充制造痕。</p>
+  </header>
+  <section class="stills">
+    
+            <figure>
+              <img src="stills/01-real-machining-trace-contact-sheet.png" alt="real machining trace contact sheet">
+              <figcaption><b>real machining trace contact sheet</b><span>01-real-machining-trace-contact-sheet</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/02-g25-trace-mach-flange-radial-geom-01.png" alt="radial machined flange face">
+              <figcaption><b>radial machined flange face</b><span>02-g25-trace-mach-flange-radial-geom-01</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/03-g25-trace-brush-no4-linear-geom-01.png" alt="No.4 linear brushed finish">
+              <figcaption><b>No.4 linear brushed finish</b><span>03-g25-trace-brush-no4-linear-geom-01</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/04-g25-trace-mach-bore-circular-geom-01.png" alt="circular machined bore wall">
+              <figcaption><b>circular machined bore wall</b><span>04-g25-trace-mach-bore-circular-geom-01</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/05-g25-trace-mach-bolt-bore-dark-geom-01.png" alt="dark machined bolt bore">
+              <figcaption><b>dark machined bolt bore</b><span>05-g25-trace-mach-bolt-bore-dark-geom-01</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/06-g25-trace-edge-deburr-burnish-geom-01.png" alt="edge deburr burnish">
+              <figcaption><b>edge deburr burnish</b><span>06-g25-trace-edge-deburr-burnish-geom-01</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/07-g25-trace-blast-bead-micropit-geom-01.png" alt="bead blast micro pitting">
+              <figcaption><b>bead blast micro pitting</b><span>07-g25-trace-blast-bead-micropit-geom-01</span></figcaption>
+            </figure>
+            
+  </section>
+  <section class="library">
+    <h2>Trace IDs</h2>
+    <ul><li><b>G25-TRACE-MACH-FLANGE-RADIAL-GEOM-01</b><small>法兰端面车削/平面加工痕</small><em>Concentric tool-path rings and hole-rim witness marks are explicit torus geometry on a machined stainless flange coupon.</em><code>G25-SS-MACH-FLANGE-RADIAL-01</code></li><li><b>G25-TRACE-BRUSH-NO4-LINEAR-GEOM-01</b><small>#4 线性拉丝/砂带痕</small><em>Overlapping short linear strokes with small angle and length variation are explicit curve geometry, not a shader wave.</em><code>G25-SS-BRUSH-NO4-LINEAR-01</code></li><li><b>G25-TRACE-MACH-BORE-CIRCULAR-GEOM-01</b><small>内孔环向加工痕</small><em>A cutaway bore wall uses circumferential curve rings at varying pitch to read as boring/turning marks inside the flow passage.</em><code>G25-SS-MACH-BORE-CIRCULAR-01</code></li><li><b>G25-TRACE-MACH-BOLT-BORE-DARK-GEOM-01</b><small>螺栓孔暗加工内壁</small><em>Small dark cylindrical hole caps and rim witness rings separate bolt bores from broad flange faces.</em><code>G25-SS-MACH-BOLT-BORE-DARK-01</code></li><li><b>G25-TRACE-EDGE-DEBURR-BURNISH-GEOM-01</b><small>倒角去毛刺磨亮痕</small><em>Thin bright strokes on bevel-adjacent edges emulate final deburring and handling polish without brightening the whole part.</em><code>G25-SS-EDGE-BURNISH-01</code></li><li><b>G25-TRACE-BLAST-BEAD-MICROPIT-GEOM-01</b><small>珠喷/喷砂微坑参考</small><em>Non-directional micro-pit dots are small geometry marks on a satin cast coupon, useful as the restrained boundary for blasted body surfaces.</em><code>G25-SS-CAST-BLASTED-SATIN-01</code></li></ul>
+  </section>
+  <footer>Manifest: <code>render-manifest.json</code>. Status: <code>material-status.md</code>. These traces are implementation candidates for Goal 25-D material zones.</footer>
+</main>
+</body>
+</html>
