@@ -2,5 +2,7 @@
 docs/** -text -diff
 
 # Keep repository-authored documentation and scripts consistent.
+/.gitattributes text eol=lf
 *.md text eol=lf
 scripts/*.mjs text eol=lf
+scripts/*.py text eol=lf
