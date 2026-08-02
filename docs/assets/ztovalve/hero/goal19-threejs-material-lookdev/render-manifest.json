@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-02T09:30:21.230Z",
+  "generatedAt": "2026-08-02T09:44:07.325Z",
   "sourceUrl": "http://127.0.0.1:4194/assets/ztovalve/hero/goal19-threejs-material-lookdev/preview.html",
   "preview": "docs/assets/ztovalve/hero/goal19-threejs-material-lookdev/preview.html",
   "stateSource": "docs/assets/ztovalve/hero/goal19-threejs-material-lookdev/preview.html",
@@ -42,7 +42,8 @@
       "fastenerStainless": 73,
       "polishedStainlessBall": 1,
       "machinedStainless": 43,
-      "softSealPtfe": 12
+      "softSealPtfe": 11,
+      "graphitePackingDarkSeal": 1
     },
     "supplierTerms": {
       "castBody": "不锈钢硅溶胶铸造材质，表面有喷砂效果 / investment cast stainless steel, bead-blasted or sandblasted satin finish",
@@ -153,9 +154,9 @@
   "consoleErrors": [],
   "pageErrors": [],
   "failedRequests": [],
-  "combinedStillSha256": "78702a6499cbd5018005db8763d1cbde946a83d2604cdd40131c5fd4645a97fe",
-  "totalStillBytes": 5085018,
-  "renderDurationMs": 6219,
+  "combinedStillSha256": "bb9a6190e5188c9e61d5e8ae6db3530b9ddb673511577b414a35c49ac885f74c",
+  "totalStillBytes": 5092915,
+  "renderDurationMs": 6883,
   "stills": [
     {
       "id": "assembled-material-balance",
@@ -198,8 +199,8 @@
       "path": "docs/assets/ztovalve/hero/goal19-threejs-material-lookdev/stills/02-front-exploded-start-4k.png",
       "width": 3840,
       "height": 2160,
-      "bytes": 1059343,
-      "sha256": "412ba69dd58737fabc00de59bf9fed6d2db9fdea06c73110d2f0e0ccafcb0bbd"
+      "bytes": 1061697,
+      "sha256": "c187ebc23a9c51755b230595ea8f99c3fcd725dc2ff0d412217072d060e1bd32"
     },
     {
       "id": "polished-ball-close",
@@ -220,8 +221,8 @@
       "path": "docs/assets/ztovalve/hero/goal19-threejs-material-lookdev/stills/03-polished-ball-close-4k.png",
       "width": 3840,
       "height": 2160,
-      "bytes": 1060481,
-      "sha256": "f801416284e0a18a214bb30097e8aa71871641a2ed3a2de3411d0b7625c25840"
+      "bytes": 1061372,
+      "sha256": "1ba2d097fe04d2ff8a07b566c77877483375766a115693ea5d54fd4daaf06b15"
     },
     {
       "id": "sandblasted-body-flange",
@@ -264,8 +265,8 @@
       "path": "docs/assets/ztovalve/hero/goal19-threejs-material-lookdev/stills/05-fastener-seal-detail-4k.png",
       "width": 3840,
       "height": 2160,
-      "bytes": 1162623,
-      "sha256": "c1d542e7166ce0f6ac46e77c67ecd1d8c5986a62c21bae4018f807c220bda4f1"
+      "bytes": 1167275,
+      "sha256": "d65c4e7d802e249de09ff609d0b366a18268442221cd45bb76f580fa263e2575"
     }
   ]
 }

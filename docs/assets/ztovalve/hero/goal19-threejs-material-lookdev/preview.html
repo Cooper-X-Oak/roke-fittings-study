@@ -482,7 +482,7 @@
 
         if (group === "ball") return polishedBallMat.clone();
         if (group === "fastener") return fastenerStainlessMat.clone();
-        if (group === "seat" && darkSource && diagonal < 0.2) return graphitePackingMat.clone();
+        if (group === "seat" && darkSource && diagonal < 0.28) return graphitePackingMat.clone();
         if (group === "seat") return softSealPtfeMat.clone();
         if (group === "upperDrive" || group === "lowerSupport") return machinedStainlessMat.clone();
         if (nearCore && ringLike && diagonal < 0.18) return machinedStainlessMat.clone();
