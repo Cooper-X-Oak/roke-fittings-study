@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goal 21 Blender Material Micro Loop</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, "Noto Sans SC", system-ui, sans-serif; background: #eceeec; color: #111827; }
+    body { margin: 0; }
+    main { width: min(1440px, calc(100% - 40px)); margin: 0 auto; padding: 34px 0 54px; }
+    header { display: grid; gap: 10px; margin-bottom: 22px; }
+    .eyebrow { margin: 0; color: #58606c; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 46px); line-height: 1.03; letter-spacing: 0; }
+    .summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 26px; }
+    .metric { border: 1px solid #d0d5dd; background: #fff; border-radius: 8px; padding: 14px 16px; }
+    .metric b { display: block; font-size: 22px; }
+    .metric span { color: #667085; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    figure { margin: 0; border: 1px solid #d0d5dd; background: #fff; border-radius: 8px; overflow: hidden; }
+    img { display: block; width: 100%; height: auto; background: #d7dad8; }
+    figcaption { display: grid; gap: 4px; padding: 12px 14px 14px; }
+    figcaption span { color: #667085; font-size: 13px; line-height: 1.45; }
+    code { background: #e4e7ec; padding: 2px 5px; border-radius: 5px; }
+    @media (max-width: 820px) {
+      main { width: min(100% - 24px, 720px); padding-top: 24px; }
+      .summary, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Goal 21 / Blender Cycles / material micro-loop</p>
+    <h1>喷砂不锈钢与抛光球体</h1>
+    <p>这里只做两张材质 still：阀体喷砂不锈钢和球体棚拍反射。不替换 hero，不生成 24 或 240 帧。</p>
+  </header>
+  <section class="summary">
+    <div class="metric"><b>1600x900</b><span>render size</span></div>
+    <div class="metric"><b>138</b><span>STEP mesh instances</span></div>
+    <div class="metric"><b>2</b><span>focused materials</span></div>
+    <div class="metric"><b>2</b><span>rendered stills</span></div>
+  </section>
+  <section class="grid">
+    
+            <figure>
+              <img src="stills/01-cast-blasted-stainless-body.png" alt="喷砂不锈钢阀体">
+              <figcaption><b>喷砂不锈钢阀体</b><span>专门检查 castBlastedStainless 是否脱离白模感，呈现较暗的喷砂/珠喷 satin stainless 中灰表面。</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/02-polished-stainless-ball-reflection.png" alt="抛光球体棚拍反射">
+              <figcaption><b>抛光球体棚拍反射</b><span>专门检查 polishedStainlessBall 是否使用宽软棚拍反射，减少硬黑白块。</span></figcaption>
+            </figure>
+            
+  </section>
+  <p>Manifest: <code>render-manifest.json</code>. Material status: <code>material-status.md</code>. Source mesh remains Goal 20's STEP-derived <code>goal20-step-mesh.glb</code>.</p>
+</main>
+</body>
+</html>
