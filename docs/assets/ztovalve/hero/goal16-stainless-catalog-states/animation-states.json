@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "goal": "Goal 16 stainless catalogue material render plus reusable animation states",
+  "sourceModel": "../fixed-ball-valve.glb",
+  "sourceBoundary": "Original STEP, brochure, and fixed-ball-valve.glb are not modified.",
+  "referenceBoundary": "The user-provided floating soft-seal catalogue image is used as material, lighting, and exploded-layout reference only; it is not treated as a fixed-ball-valve mechanical specification.",
+  "renderBoundary": "Goal 16 defines still lookdev and animation states only; no 240-frame release sequence and no homepage integration.",
+  "states": [
+    {
+      "id": "assembled",
+      "label": "Assembled stainless product",
+      "description": "Complete product view for catalogue-style stainless material approval.",
+      "values": {
+        "shellSplit": 0,
+        "seatSpread": 0,
+        "stemLift": 0,
+        "lowerDrop": 0,
+        "fastenerSpread": 0,
+        "ballTurn": 0
+      }
+    },
+    {
+      "id": "exploded",
+      "label": "Axis-ordered catalogue explosion",
+      "description": "Large ordered explosion along left-right pipeline axis, with drive stack upward and support downward.",
+      "values": {
+        "shellSplit": 1.08,
+        "seatSpread": 1,
+        "stemLift": 0.92,
+        "lowerDrop": 0.78,
+        "fastenerSpread": 0.76,
+        "ballTurn": 0
+      }
+    },
+    {
+      "id": "ball-open",
+      "label": "Ball open functional state",
+      "description": "True ball core quarter-turn state for later functional animation; valve seats stay fixed.",
+      "values": {
+        "shellSplit": 0.34,
+        "seatSpread": 0.52,
+        "stemLift": 0.28,
+        "lowerDrop": 0.22,
+        "fastenerSpread": 0.18,
+        "ballTurn": 1
+      }
+    },
+    {
+      "id": "ball-closed",
+      "label": "Ball closed functional state",
+      "description": "Matching closed-state endpoint for later quarter-turn interpolation; only the true ball core changes rotation.",
+      "values": {
+        "shellSplit": 0.34,
+        "seatSpread": 0.52,
+        "stemLift": 0.28,
+        "lowerDrop": 0.22,
+        "fastenerSpread": 0.18,
+        "ballTurn": 0
+      }
+    }
+  ],
+  "materialAssignments": {
+    "leftBody": "brushed_stainless_shell",
+    "rightBody": "brushed_stainless_shell",
+    "centerBody": "brushed_stainless_shell",
+    "ball": "polished_stainless_ball",
+    "seat": "light_soft_seal",
+    "upperDrive": "machined_stainless_drive",
+    "lowerSupport": "machined_stainless_support",
+    "fastener": "bright_stainless_fastener"
+  }
+}
