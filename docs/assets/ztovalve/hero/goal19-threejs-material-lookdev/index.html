@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>Goal 19 Three.js Material Lookdev</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f3f4f1;
+        --panel: #ffffff;
+        --ink: #111518;
+        --muted: #5c6568;
+        --line: #d4d9d7;
+        --red: #c91d26;
+        --steel: #7f8988;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+      }
+
+      header,
+      main,
+      footer {
+        max-width: 1480px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      header {
+        padding-top: 52px;
+        padding-bottom: 30px;
+      }
+
+      .kicker {
+        margin: 0 0 14px;
+        color: var(--red);
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 1120px;
+        font-size: clamp(40px, 5.4vw, 80px);
+        line-height: 1;
+      }
+
+      h2 {
+        font-size: clamp(25px, 3vw, 42px);
+      }
+
+      h3 {
+        font-size: 21px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.5fr);
+        gap: 34px;
+        align-items: end;
+        margin-top: 24px;
+      }
+
+      .intro p,
+      figcaption span,
+      .panel p,
+      .terms li {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .status {
+        display: grid;
+        gap: 10px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .status-row:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .status-row strong {
+        color: var(--ink);
+        text-align: right;
+      }
+
+      .gallery {
+        display: grid;
+        gap: 26px;
+        padding-bottom: 38px;
+      }
+
+      figure {
+        margin: 0;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      figure img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        background: #d8d9d6;
+      }
+
+      figcaption {
+        display: grid;
+        grid-template-columns: minmax(0, 0.36fr) minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px 20px 20px;
+      }
+
+      figcaption strong {
+        display: block;
+        font-size: 20px;
+      }
+
+      .section {
+        padding: 34px 0 44px;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr);
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 20px;
+      }
+
+      .terms,
+      .panels {
+        display: grid;
+        gap: 16px;
+      }
+
+      .terms {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .terms li,
+      .panel {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 18px;
+      }
+
+      .terms b {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--steel);
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .panels {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .panel h3 {
+        margin-bottom: 10px;
+      }
+
+      .panel p {
+        font-size: 15px;
+      }
+
+      footer {
+        padding-bottom: 44px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      code {
+        font-family: Consolas, "SFMono-Regular", monospace;
+      }
+
+      @media (max-width: 1080px) {
+        .terms,
+        .panels {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 840px) {
+        header,
+        main,
+        footer {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .intro,
+        .section-head,
+        .terms,
+        .panels,
+        figcaption {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="kicker">Goal 19 / Three.js material lookdev</p>
+      <h1>供应商材质术语落地到网页级 Three.js 渲染</h1>
+      <div class="intro">
+        <p>
+          这一版继承 Goal 16 的 GLB、分组和爆炸状态，只做材质、灯光和反射环境升级：
+          阀体转为喷砂铸造不锈钢，球体转为高亮抛光不锈钢，密封/填料压暗，机加工件和紧固件分层。
+        </p>
+        <div class="status">
+          <div class="status-row"><span>源模型</span><strong><code>fixed-ball-valve.glb</code></strong></div>
+          <div class="status-row"><span>渲染方式</span><strong>Three.js WebGL + Playwright PNG</strong></div>
+          <div class="status-row"><span>输出</span><strong>5 张 3840 x 2160 still</strong></div>
+          <div class="status-row"><span>首页接入</span><strong>未接入</strong></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="gallery" aria-label="Goal 19 material lookdev stills">
+        <figure>
+          <img src="stills/01-assembled-material-balance-4k.png" alt="完整产品材质平衡">
+          <figcaption>
+            <strong>01 / material balance</strong>
+            <span>完整产品，检查喷砂铸造阀体、机加工细节、抛光球体、黑色密封和紧固件是否有层级。</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="stills/02-front-exploded-start-4k.png" alt="正面爆炸首帧候选">
+          <figcaption>
+            <strong>02 / exploded start</strong>
+            <span>未来滚动动画首帧候选：一开始就是完整爆炸状态，后续只做逐步合体。</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="stills/03-polished-ball-close-4k.png" alt="高亮抛光球体近景">
+          <figcaption>
+            <strong>03 / polished ball</strong>
+            <span>球体按高亮抛光不锈钢处理，反射比 Goal 16 更柔，减少硬黑白块。</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="stills/04-sandblasted-body-flange-4k.png" alt="喷砂铸造阀体和法兰近景">
+          <figcaption>
+            <strong>04 / cast shell</strong>
+            <span>阀体/阀盖/法兰检查点：从白亮银转为不锈钢硅溶胶铸造喷砂表面。</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="stills/05-fastener-seal-detail-4k.png" alt="紧固件和密封圈细节">
+          <figcaption>
+            <strong>05 / seals and fasteners</strong>
+            <span>检查螺栓、黑色密封/石墨填料、浅色 PTFE 视觉是否和主体金属拉开。</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section" aria-labelledby="terms-title">
+        <div class="section-head">
+          <h2 id="terms-title">材质术语</h2>
+          <p>这些名称是视觉材质方向，不在网页文案里声明为认证材质牌号。</p>
+        </div>
+        <ul class="terms">
+          <li><b>castBlastedStainless</b>不锈钢硅溶胶铸造材质，表面喷砂效果 / investment cast stainless steel, bead-blasted or sandblasted satin finish.</li>
+          <li><b>polishedStainlessBall</b>不锈钢高亮度抛光球体 / mirror polished stainless steel ball.</li>
+          <li><b>machinedStainless</b>机加工不锈钢零件 / machined stainless steel.</li>
+          <li><b>graphitePackingDarkSeal</b>石墨填料或黑色密封圈 / graphite packing or dark sealing ring.</li>
+          <li><b>softSealPtfe</b>PTFE 或浅色软密封视觉 / PTFE or light soft-seat visual treatment.</li>
+          <li><b>fastenerStainless</b>不锈钢紧固件 / stainless fasteners.</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="boundary-title">
+        <div class="section-head">
+          <h2 id="boundary-title">边界</h2>
+          <p>Goal 19 是材质闭环，不是最终 240 帧交付。</p>
+        </div>
+        <div class="panels">
+          <article class="panel">
+            <h3>继承</h3>
+            <p>沿用 Goal 16 的 GLB、Three.js 分组和可复用状态。</p>
+          </article>
+          <article class="panel">
+            <h3>升级</h3>
+            <p>重做 PBR 材质、程序纹理和 studio reflection environment。</p>
+          </article>
+          <article class="panel">
+            <h3>未做</h3>
+            <p>不接首页，不生成 240 帧，不替代 KeyShot 或 Blender/Cycles。</p>
+          </article>
+          <article class="panel">
+            <h3>下一步</h3>
+            <p>审阅通过后，再迁移到爆炸首帧到合体的 240 帧动画。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Preview source: <code>preview.html</code> · Capture script:
+      <code>scripts/capture_goal19_threejs_material_lookdev.mjs</code>
+    </footer>
+  </body>
+</html>
