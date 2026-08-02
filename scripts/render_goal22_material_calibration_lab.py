@@ -706,6 +706,13 @@ def add_plane(name: str, material, location, scale, rotation=(0, 0, 0), camera_v
     obj.scale = scale
     obj.data.materials.append(material)
     if not camera_visible:
+        if hasattr(obj, "cycles_visibility"):
+            obj.cycles_visibility.camera = False
+            obj.cycles_visibility.shadow = False
+            obj.cycles_visibility.diffuse = False
+            obj.cycles_visibility.glossy = True
+            obj.cycles_visibility.transmission = False
+            obj.cycles_visibility.scatter = False
         for attr, value in (
             ("visible_camera", False),
             ("visible_shadow", False),

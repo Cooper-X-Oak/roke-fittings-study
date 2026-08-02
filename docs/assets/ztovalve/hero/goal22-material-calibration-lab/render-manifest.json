@@ -206,5 +206,20 @@
     "height": 1440,
     "bytes": 2383564,
     "sha256": "e8e3b462823f7a0c1ea062367b04abe4475ef4b283566181e6375c839f0ded70"
+  },
+  "castSatinRoughnessLadder": {
+    "id": "cast-satin-roughness-ladder",
+    "name": "Cast satin stainless roughness ladder",
+    "path": "docs/assets/ztovalve/hero/goal22-material-calibration-lab/stills/02-cast-satin-roughness-ladder.png",
+    "width": 1800,
+    "height": 1200,
+    "bytes": 2183367,
+    "sha256": "eb04e5edab3338fd219ace956d71152e9e354e6d03fc1e2527cfb045a0b07a90",
+    "matrix": {
+      "columns": ["roughness 0.30", "roughness 0.38", "roughness 0.46", "roughness 0.54"],
+      "rows": ["smooth satin cast", "fine cast satin", "bead-blasted satin"],
+      "readingOrder": "left-to-right, top-to-bottom"
+    },
+    "likelyUsefulRegion": ["fine_r38", "fine_r46"]
   }
 }

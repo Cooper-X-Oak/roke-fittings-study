@@ -6,6 +6,7 @@ Generated: 2026-08-02T14:25:13.064585+00:00
 
 - This is a tiny Blender/Cycles material test.
 - It renders 20 centered primitive swatches in one contact sheet.
+- It also renders a focused cast satin stainless roughness ladder.
 - It does not import the full STEP/GLB valve.
 - It does not replace the homepage hero.
 - It does not render 24-frame or 240-frame animation.
@@ -39,6 +40,28 @@ Generated: 2026-08-02T14:25:13.064585+00:00
 18. `ptfe_warm_off_white` - PTFE warm off-white
 19. `ptfe_pale_grey` - PTFE pale grey
 20. `dark_inner_bore` - dark inner bore / cavity
+
+## Cast Satin Roughness Ladder
+
+File: `stills/02-cast-satin-roughness-ladder.png`
+
+Columns:
+
+1. roughness `0.30`
+2. roughness `0.38`
+3. roughness `0.46`
+4. roughness `0.54`
+
+Rows:
+
+1. `smooth satin cast`
+2. `fine cast satin`
+3. `bead-blasted satin`
+
+Current visual read: the useful region is likely the middle of the ladder,
+especially `fine_r38` and `fine_r46`. The `bead` row starts to push toward a
+heavier blasted look, and `roughness 0.54` risks losing too much metallic
+reflection for a catalogue valve body.
 
 ## Open/Public Reference Direction
 
