@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-02T06:41:29.534428+00:00",
+  "goal": "Goal 18 STEP-first professional render input-chain validation",
+  "status": "step-first-recommended-renderer-blocked",
+  "verdict": {
+    "primaryInputForFinalCommercialRender": "STEP-first",
+    "currentOperationalFallback": "existing audited GLB for lookdev, blocking, and web-preview continuity",
+    "decision": "Use the fixed-ball-valve STEP and brochure as the authoritative upstream inputs for any final commercial render. Reuse the current GLB only as a verified derivative fallback until a STEP-capable renderer or STEP re-import pass is available.",
+    "confidence": "high",
+    "stopCondition": "Do not label a still or 240-frame release as final photoreal output until the renderer input is rebuilt or revalidated from STEP and the material assignments are visually checked against the brochure references."
+  },
+  "sourceBoundary": {
+    "rule": "Original STEP, brochure PDF, and delivered GLB are read-only inputs for this audit.",
+    "rawStep": {
+      "path": "asset/固定式球阀.STEP",
+      "exists": true,
+      "bytes": 3589381,
+      "sha256": "3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547",
+      "hashMatchesManifest": true
+    },
+    "derivedStepCopy": {
+      "path": "asset/derived/fixed-ball-valve/source/固定式球阀.STEP",
+      "exists": true,
+      "bytes": 3589381,
+      "sha256": "3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547",
+      "hashMatchesManifest": true
+    },
+    "rawBrochure": {
+      "path": "asset/一阀画册 2026-8.pdf",
+      "exists": true,
+      "bytes": 39989992,
+      "sha256": "5d515a1213d2c943b63754d5eff2029ed326762dd52de4025432398fcd5d5cbf",
+      "hashMatchesManifest": true
+    },
+    "derivedBrochureCopy": {
+      "path": "asset/derived/fixed-ball-valve/source/一阀画册 2026-8.pdf",
+      "exists": true,
+      "bytes": 39989992,
+      "sha256": "5d515a1213d2c943b63754d5eff2029ed326762dd52de4025432398fcd5d5cbf",
+      "hashMatchesManifest": true
+    },
+    "currentGlb": {
+      "path": "docs/assets/ztovalve/hero/fixed-ball-valve.glb",
+      "exists": true,
+      "bytes": 11952892,
+      "sha256": "89024869647b3aaf3fe5301694a2753dc87e9dd3d05b41b9c651ef4e9754384b",
+      "hashMatchesManifest": true
+    }
+  },
+  "stepAuthority": {
+    "path": "asset/derived/fixed-ball-valve/model-audit-step.json",
+    "format": "STEP AP214",
+    "authoringTool": "SolidWorks 2018, detected from header",
+    "unit": "millimeter",
+    "encoding": "GBK for Chinese product names",
+    "productNameCount": 36,
+    "suggestedMovableGroupCount": 5,
+    "sourceColorCount": 5,
+    "entityCounts": {
+      "PRODUCT": 36,
+      "NEXT_ASSEMBLY_USAGE_OCCURRENCE": 138,
+      "ADVANCED_FACE": 1022,
+      "ADVANCED_BREP_SHAPE_REPRESENTATION": 35,
+      "MANIFOLD_SOLID_BREP": 35
+    },
+    "productNames": [
+      "体盖螺柱",
+      "平键",
+      "填料",
+      "固定轴",
+      "填料压盖",
+      "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "球体",
+      "阀杆",
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "阀座盘根",
+      "阀盖",
+      "球体轴承",
+      "弹簧",
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "阀体",
+      "排污阀垫片",
+      "填料压圈",
+      "固定轴垫片",
+      "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "阀座",
+      "阀座密封圈",
+      "支架",
+      "阀杆轴承",
+      "填料箱垫片",
+      "止推垫",
+      "中道垫片",
+      "填料箱",
+      "连接轴",
+      "阀座压圈",
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "支架螺柱",
+      "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+      "固定式球阀",
+      "固定轴轴承",
+      "堵头"
+    ],
+    "groups": [
+      {
+        "id": "body-pressure-shell",
+        "label": "阀体/阀盖压力壳体",
+        "members": [
+          "阀盖",
+          "阀体",
+          "堵头"
+        ],
+        "motion": "外壳分离和回装；仅作为广告可视化，不声称真实装配顺序。",
+        "reviewRequired": true
+      },
+      {
+        "id": "ball-trunnion-core",
+        "label": "球体/固定轴/轴承核心",
+        "members": [
+          "固定轴",
+          "球体",
+          "球体轴承",
+          "固定轴垫片",
+          "阀杆轴承",
+          "固定轴轴承"
+        ],
+        "motion": "核心悬停、特写和轻微旋转；不声称流体性能。",
+        "reviewRequired": true
+      },
+      {
+        "id": "stem-packing-drive",
+        "label": "阀杆/填料/支架传动密封区",
+        "members": [
+          "填料",
+          "填料压盖",
+          "阀杆",
+          "填料压圈",
+          "支架",
+          "阀杆轴承",
+          "填料箱垫片",
+          "填料箱",
+          "连接轴",
+          "支架螺柱"
+        ],
+        "motion": "纵向层级展开与局部强调；不声称现场维修流程。",
+        "reviewRequired": true
+      },
+      {
+        "id": "seat-seal-system",
+        "label": "阀座/密封圈/盘根系统",
+        "members": [
+          "阀座盘根",
+          "阀座",
+          "阀座密封圈",
+          "阀座压圈"
+        ],
+        "motion": "围绕球体做对称层级显影；须由客户确认材料与功能表述。",
+        "reviewRequired": true
+      },
+      {
+        "id": "fasteners-small-hardware",
+        "label": "螺柱/螺母/垫片/弹簧小件",
+        "members": [
+          "体盖螺柱",
+          "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+          "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+          "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+          "弹簧",
+          "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+          "排污阀垫片",
+          "固定轴垫片",
+          "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+          "填料箱垫片",
+          "中道垫片",
+          "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+          "支架螺柱",
+          "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26"
+        ],
+        "motion": "细节点亮或弱化为结构纹理；避免让画面变成零件清单。",
+        "reviewRequired": true
+      }
+    ],
+    "issues": [
+      "STEP text audit cannot prove mesh-bearing node hierarchy; GLB inspection is required after conversion.",
+      "Suggested groups are semantic candidates from part names and must be reviewed by the client or engineer.",
+      "Assembly animation order is advertising choreography only unless the client confirms a real service sequence."
+    ]
+  },
+  "glbDerivative": {
+    "conversionReport": "asset/derived/fixed-ball-valve/glb-conversion-report.json",
+    "modelInspection": "asset/derived/fixed-ball-valve/model-inspection.json",
+    "engine": "occt-import-js / OpenCascade WASM",
+    "outputScale": 0.001,
+    "outputUnit": "meter",
+    "linearDeflectionType": "bounding_box_ratio",
+    "linearDeflection": 0.0009,
+    "angularDeflection": 0.35,
+    "meshCountFromOcct": 138,
+    "meshBearingNodeCount": 138,
+    "triangles": 559104,
+    "nodes": 140,
+    "meshNodes": 138,
+    "materials": 4,
+    "textures": 0,
+    "animations": 0,
+    "cameras": 0,
+    "skins": 0,
+    "meaningfulMeshNodeRatio": 0.666667,
+    "duplicateNodeNameGroupCount": 14,
+    "largestDuplicateNodeNameGroups": [
+      {
+        "name": "µ¯»",
+        "count": 32
+      },
+      {
+        "name": "·§عĜ·㈦",
+        "count": 2
+      },
+      {
+        "name": "·§عѹȦ",
+        "count": 2
+      },
+      {
+        "name": "·§ع",
+        "count": 2
+      },
+      {
+        "name": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+        "count": 6
+      },
+      {
+        "name": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+        "count": 18
+      }
+    ],
+    "capability": {
+      "capability": "structured-named-parts",
+      "truePartAnimation": true,
+      "semanticGrouping": true,
+      "reason": "The model exposes multiple independent parts and most have meaningful node names."
+    },
+    "warnings": [
+      "Duplicate node names require node-index selectors or manual disambiguation."
+    ],
+    "issues": [
+      "GLB node hierarchy is converted from STEP import metadata and remains subject to engineering review.",
+      "Materials use source colors with a commercial metallic treatment; exact alloy/coating claims require client evidence.",
+      "Output geometry is scaled from millimeters to meters for web camera fitting.",
+      "GLB mesh hierarchy is usable for animation, but duplicate node names require node-index selectors or grouped motion rather than name-only selectors.",
+      "Some GLB node names are GBK mojibake after the WASM import; decoded STEP product names are the semantic authority for client review.",
+      "The 559k-triangle GLB is good for offline hero frame rendering; direct mobile real-time rendering should use poster fallback or a later optimized GLB.",
+      "No textures, cameras, or baked animations are present; all hero lighting, materials, and camera motion must be authored.",
+      "STEP raw bounds include local CAD point coordinates; GLB inspection bounds are the web-rendering bounds.",
+      "Catalogue material, pressure, fire-safe, anti-static, and service-life claims require client approval before final homepage copy."
+    ]
+  },
+  "goal17CarryForward": {
+    "manifest": "docs/assets/ztovalve/hero/goal17-offline-lookdev/render-manifest.json",
+    "rendererAvailability": {
+      "blenderFound": false,
+      "keyshotFound": false,
+      "solidworksVisualizeFound": false,
+      "note": "No local offline renderer was found during this run, so commercial still rendering is pending installation."
+    },
+    "renderBoundary": {
+      "stillCount": 0,
+      "plannedStillCount": 3,
+      "frameSequenceRendered": false,
+      "fullReleaseFrameCount": 0,
+      "homepageConnected": false
+    },
+    "plannedOutputs": [
+      "docs/assets/ztovalve/hero/goal17-offline-lookdev/renders/01-assembled-photoreal.png",
+      "docs/assets/ztovalve/hero/goal17-offline-lookdev/renders/02-exploded-photoreal.png",
+      "docs/assets/ztovalve/hero/goal17-offline-lookdev/renders/03-ball-seat-photoreal.png",
+      "docs/assets/ztovalve/hero/goal17-offline-lookdev/render-results.json"
+    ],
+    "nextRequiredAction": "Run scripts/render_goal17_blender_lookdev.py inside Blender 4.x and visually compare the three rendered stills against brochure Page 11/12 and Page 13/14."
+  },
+  "toolchain": {
+    "commands": [
+      {
+        "name": "blender",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "FreeCADCmd",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "FreeCAD",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "keyshot",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "SolidWorksVisualize",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "swvisualize",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "gmsh",
+        "available": true,
+        "source": "D:/program/Python/Python312/Scripts/gmsh.BAT"
+      },
+      {
+        "name": "node",
+        "available": true,
+        "source": "C:/nvm4w/nodejs/node.EXE"
+      },
+      {
+        "name": "python",
+        "available": true,
+        "source": "D:/Users/cooper/Practice-Project/202607/hermes-local/hermes-agent/venv/Scripts/python.EXE"
+      }
+    ],
+    "pythonModules": [
+      {
+        "name": "python:cadquery",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "python:OCP",
+        "available": false,
+        "source": null
+      },
+      {
+        "name": "python:gmsh",
+        "available": false,
+        "source": null
+      }
+    ],
+    "nodeTools": {
+      "packagePath": ".scratch/goal9-tools/package.json",
+      "available": true,
+      "dependencies": {
+        "@gltf-transform/core": "^4.4.2",
+        "occt-import-js": "^0.0.23",
+        "playwright-core": "^1.62.1",
+        "sharp": "^0.35.3"
+      },
+      "modules": [
+        {
+          "name": "occt-import-js",
+          "available": true,
+          "path": ".scratch/goal9-tools/node_modules/occt-import-js"
+        },
+        {
+          "name": "@gltf-transform/core",
+          "available": true,
+          "path": ".scratch/goal9-tools/node_modules/@gltf-transform/core"
+        },
+        {
+          "name": "playwright-core",
+          "available": true,
+          "path": ".scratch/goal9-tools/node_modules/playwright-core"
+        },
+        {
+          "name": "sharp",
+          "available": true,
+          "path": ".scratch/goal9-tools/node_modules/sharp"
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "step-first-native-or-reimport",
+      "label": "STEP-first professional render path",
+      "status": "recommended",
+      "localReadiness": "blocked until a STEP-capable offline renderer or native STEP inspection workstation is available",
+      "availableNow": false,
+      "why": [
+        "STEP preserves the decoded Chinese product tree, units, source colors, and B-Rep authority before tessellation.",
+        "Final material and part grouping decisions should be made from STEP labels plus brochure references, then carried into renderer-specific meshes.",
+        "A fresh STEP import can tune tessellation, bevel strategy, normals, and material IDs before the photoreal pass."
+      ],
+      "risks": [
+        "Current machine has no detected Blender, KeyShot, SOLIDWORKS Visualize, or FreeCAD native workstation path.",
+        "occt-import-js is available as a conversion bridge, but it already produced mojibake GLB names; semantic mapping must come from the STEP audit."
+      ]
+    },
+    {
+      "id": "existing-glb-lookdev-fallback",
+      "label": "Existing GLB lookdev fallback",
+      "status": "allowed for continuity, not final source authority",
+      "localReadiness": "available as current Goal 17 script input if an offline renderer is installed later",
+      "availableNow": true,
+      "why": [
+        "The GLB is already hash-bound to the STEP conversion report and exposes 138 mesh-bearing nodes.",
+        "It is sufficient for current blocking, material lookdev planning, and web-preview continuity.",
+        "It keeps homepage and Goal 16/17 references stable while the STEP-first renderer path is prepared."
+      ],
+      "risks": [
+        "GLB node names include duplicate groups and mojibake, so name-only material assignment is unsafe.",
+        "The GLB has no textures, cameras, or baked animations; all commercial rendering work is authored downstream.",
+        "Using the GLB as final input without STEP revalidation can lock in tessellation and naming defects."
+      ]
+    },
+    {
+      "id": "direct-final-render-from-current-glb",
+      "label": "Direct final render from current GLB",
+      "status": "not recommended",
+      "localReadiness": "blocked by missing renderer and by semantic-name risk",
+      "availableNow": false,
+      "why": [
+        "It would be fast to continue from the existing Goal 17 script, but it would not solve the input-authority problem.",
+        "It cannot recover STEP-native semantic labels, source units, B-Rep surfaces, or tessellation decisions after the fact."
+      ],
+      "risks": [
+        "High risk of material assignment mistakes on repeated fasteners, seats, seals, and small hardware.",
+        "High risk of calling a render final while the upstream CAD truth was never re-imported for final quality."
+      ]
+    }
+  ],
+  "nextGates": [
+    {
+      "id": "install-or-access-renderer",
+      "status": "blocked",
+      "acceptance": "Blender with a STEP import route, KeyShot, SOLIDWORKS Visualize, or FreeCAD-to-renderer workflow is available and records the input file hash."
+    },
+    {
+      "id": "rerun-step-derived-render-mesh",
+      "status": "pending",
+      "acceptance": "Renderer mesh or GLB is regenerated from the STEP with current hash 3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547 and records tessellation/material mapping."
+    },
+    {
+      "id": "material-map-review",
+      "status": "pending",
+      "acceptance": "At least five material families are assigned using STEP labels, GLB node indices, and brochure reference pages without inventing product material grades."
+    },
+    {
+      "id": "photoreal-still-proof",
+      "status": "pending",
+      "acceptance": "Three stills are rendered by an offline renderer and visually compared against the brochure product and structure references."
+    }
+  ]
+}

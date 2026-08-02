@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>Goal 18 STEP-first Input Chain</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f3f4f2;
+        --surface: #ffffff;
+        --ink: #151a1d;
+        --muted: #586164;
+        --line: #d2d8d5;
+        --red: #c91d26;
+        --green: #167568;
+        --amber: #b97619;
+        --blue: #1f5e9d;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+      }
+      header, main, footer {
+        width: min(1440px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+      header { padding: 46px 0 28px; }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--red);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+      h1, h2, h3 {
+        margin: 0;
+        line-height: 1.12;
+        letter-spacing: 0;
+      }
+      h1 {
+        max-width: 1160px;
+        font-size: clamp(38px, 5vw, 72px);
+      }
+      h2 { font-size: clamp(26px, 3vw, 42px); }
+      h3 { font-size: 20px; }
+      p { margin: 0; }
+      code {
+        font-family: "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.48fr);
+        gap: 28px;
+        align-items: end;
+        margin-top: 22px;
+      }
+      .intro p, .note, .route p, .route li, .group p, .gate p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+      }
+      .decision {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .decision-row {
+        display: grid;
+        grid-template-columns: 126px minmax(0, 1fr);
+        gap: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+      }
+      .decision-row:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+      .decision-row span { color: var(--muted); }
+      .decision-row strong { color: var(--ink); }
+      .section {
+        padding: 32px 0;
+        border-top: 1px solid var(--line);
+      }
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr);
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .metric {
+        min-height: 118px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .metric b {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 28px;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .visuals {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+      figure {
+        margin: 0;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+      }
+      figcaption {
+        padding: 14px 16px 16px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.5;
+      }
+      figcaption strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--ink);
+        font-size: 17px;
+      }
+      .routes {
+        display: grid;
+        gap: 12px;
+      }
+      .route {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.7fr) minmax(260px, 1fr) minmax(260px, 1fr);
+        gap: 16px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-left: 6px solid var(--green);
+        background: var(--surface);
+      }
+      .route--direct-final-render-from-current-glb { border-left-color: var(--red); }
+      .route--existing-glb-lookdev-fallback { border-left-color: var(--amber); }
+      .route ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+      .route li + li { margin-top: 4px; }
+      .group-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .group {
+        min-height: 142px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .group h3 { margin-bottom: 8px; }
+      .tool-grid, .gate-grid {
+        display: grid;
+        gap: 8px;
+      }
+      .tool-row, .gate {
+        display: grid;
+        grid-template-columns: 190px 92px minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+        padding: 12px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .tool-row b, .gate span {
+        color: var(--green);
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      .tool-row[data-state="missing"] b,
+      .gate[data-state="blocked"] span {
+        color: var(--red);
+      }
+      .gate[data-state="pending"] span { color: var(--amber); }
+      .gate {
+        grid-template-columns: 92px 220px minmax(0, 1fr);
+      }
+      footer {
+        padding: 24px 0 42px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+      @media (max-width: 1040px) {
+        .intro, .section-head, .visuals, .route, .metric-grid, .group-grid {
+          grid-template-columns: 1fr;
+        }
+        .tool-row, .gate {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        header, main, footer {
+          width: min(100% - 28px, 1440px);
+        }
+        header { padding-top: 34px; }
+        .decision-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">Goal 18 / STEP-first input chain</p>
+      <h1>正式商业渲染前，先把输入链路切回 STEP 权威</h1>
+      <div class="intro">
+        <p>
+          本页验证固定式球阀后续 photoreal still 和 240 帧商业输出应从 STEP 走，
+          还是继续沿用当前 GLB。结论：STEP 是最终渲染权威输入；现有 GLB 保留为
+          lookdev、blocking 和网页连续性 fallback。
+        </p>
+        <div class="decision" aria-label="Goal 18 decision">
+          <div class="decision-row"><span>Primary</span><strong>STEP-first</strong></div>
+          <div class="decision-row"><span>Fallback</span><strong>existing audited GLB for lookdev, blocking, and web-preview continuity</strong></div>
+          <div class="decision-row"><span>Status</span><strong>step-first-recommended-renderer-blocked</strong></div>
+          <div class="decision-row"><span>Confidence</span><strong>high</strong></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" aria-labelledby="evidence-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 / evidence</p>
+            <h2 id="evidence-title">输入事实</h2>
+          </div>
+          <p class="note">Use the fixed-ball-valve STEP and brochure as the authoritative upstream inputs for any final commercial render. Reuse the current GLB only as a verified derivative fallback until a STEP-capable renderer or STEP re-import pass is available.</p>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><b>36</b><span>STEP product names</span></div>
+          <div class="metric"><b>5</b><span>semantic motion groups</span></div>
+          <div class="metric"><b>138</b><span>GLB mesh-bearing nodes</span></div>
+          <div class="metric"><b>559,104</b><span>GLB triangles after OCCT tessellation</span></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="refs-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 / product reference</p>
+            <h2 id="refs-title">画册参考仍是材质验收线</h2>
+          </div>
+          <p class="note">
+            STEP 决定几何和产品树，画册决定商业材质观感；GLB 只能证明当前派生模型可用，不能替代上游真值。
+          </p>
+        </div>
+        <div class="visuals">
+          <figure>
+            <img src="../fixed-ball-valve-brochure-poster.jpg" alt="固定式球阀画册商业产品参考">
+            <figcaption><strong>商业主图</strong>用于核对不锈钢层次、深色小件、黑位和产品摄影棚质感。</figcaption>
+          </figure>
+          <figure>
+            <img src="../fixed-ball-valve-structure-reference.jpg" alt="固定式球阀画册结构爆炸参考">
+            <figcaption><strong>结构页</strong>用于核对球芯、阀座、密封、阀体和支撑结构的语义边界。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="routes-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 / route decision</p>
+            <h2 id="routes-title">三条输入路线</h2>
+          </div>
+          <p class="note">Do not label a still or 240-frame release as final photoreal output until the renderer input is rebuilt or revalidated from STEP and the material assignments are visually checked against the brochure references.</p>
+        </div>
+        <div class="routes">
+
+          <article class="route route--step-first-native-or-reimport">
+            <div>
+              <p class="eyebrow">recommended</p>
+              <h3>STEP-first professional render path</h3>
+              <p>blocked until a STEP-capable offline renderer or native STEP inspection workstation is available</p>
+            </div>
+            <div>
+              <strong>Why</strong>
+              <ul><li>STEP preserves the decoded Chinese product tree, units, source colors, and B-Rep authority before tessellation.</li><li>Final material and part grouping decisions should be made from STEP labels plus brochure references, then carried into renderer-specific meshes.</li><li>A fresh STEP import can tune tessellation, bevel strategy, normals, and material IDs before the photoreal pass.</li></ul>
+            </div>
+            <div>
+              <strong>Risk</strong>
+              <ul><li>Current machine has no detected Blender, KeyShot, SOLIDWORKS Visualize, or FreeCAD native workstation path.</li><li>occt-import-js is available as a conversion bridge, but it already produced mojibake GLB names; semantic mapping must come from the STEP audit.</li></ul>
+            </div>
+          </article>
+          <article class="route route--existing-glb-lookdev-fallback">
+            <div>
+              <p class="eyebrow">allowed for continuity, not final source authority</p>
+              <h3>Existing GLB lookdev fallback</h3>
+              <p>available as current Goal 17 script input if an offline renderer is installed later</p>
+            </div>
+            <div>
+              <strong>Why</strong>
+              <ul><li>The GLB is already hash-bound to the STEP conversion report and exposes 138 mesh-bearing nodes.</li><li>It is sufficient for current blocking, material lookdev planning, and web-preview continuity.</li><li>It keeps homepage and Goal 16/17 references stable while the STEP-first renderer path is prepared.</li></ul>
+            </div>
+            <div>
+              <strong>Risk</strong>
+              <ul><li>GLB node names include duplicate groups and mojibake, so name-only material assignment is unsafe.</li><li>The GLB has no textures, cameras, or baked animations; all commercial rendering work is authored downstream.</li><li>Using the GLB as final input without STEP revalidation can lock in tessellation and naming defects.</li></ul>
+            </div>
+          </article>
+          <article class="route route--direct-final-render-from-current-glb">
+            <div>
+              <p class="eyebrow">not recommended</p>
+              <h3>Direct final render from current GLB</h3>
+              <p>blocked by missing renderer and by semantic-name risk</p>
+            </div>
+            <div>
+              <strong>Why</strong>
+              <ul><li>It would be fast to continue from the existing Goal 17 script, but it would not solve the input-authority problem.</li><li>It cannot recover STEP-native semantic labels, source units, B-Rep surfaces, or tessellation decisions after the fact.</li></ul>
+            </div>
+            <div>
+              <strong>Risk</strong>
+              <ul><li>High risk of material assignment mistakes on repeated fasteners, seats, seals, and small hardware.</li><li>High risk of calling a render final while the upstream CAD truth was never re-imported for final quality.</li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="groups-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 / STEP semantic authority</p>
+            <h2 id="groups-title">STEP 产品树分组</h2>
+          </div>
+          <p class="note">
+            当前 GLB 有 14 组重复节点名，且中文节点经过转换后出现 mojibake；正式材质分配必须回看 STEP 审计。
+          </p>
+        </div>
+        <div class="group-grid">
+
+            <article class="group">
+              <h3>阀体/阀盖压力壳体</h3>
+              <p>阀盖, 阀体, 堵头</p>
+            </article>
+            <article class="group">
+              <h3>球体/固定轴/轴承核心</h3>
+              <p>固定轴, 球体, 球体轴承, 固定轴垫片, 阀杆轴承, 固定轴轴承</p>
+            </article>
+            <article class="group">
+              <h3>阀杆/填料/支架传动密封区</h3>
+              <p>填料, 填料压盖, 阀杆, 填料压圈, 支架, 阀杆轴承, 填料箱垫片, 填料箱, 连接轴, 支架螺柱</p>
+            </article>
+            <article class="group">
+              <h3>阀座/密封圈/盘根系统</h3>
+              <p>阀座盘根, 阀座, 阀座密封圈, 阀座压圈</p>
+            </article>
+            <article class="group">
+              <h3>螺柱/螺母/垫片/弹簧小件</h3>
+              <p>体盖螺柱, spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10, double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N, hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N, 弹簧, hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N, 排污阀垫片, 固定轴垫片, hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N, 填料箱垫片, 中道垫片, double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N, 支架螺柱, parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26</p>
+            </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="tools-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 / local toolchain</p>
+            <h2 id="tools-title">本机链路探测</h2>
+          </div>
+          <p class="note">
+            occt-import-js 转换桥可用；本机未检测到可直接完成商业 still 的离线渲染器。
+          </p>
+        </div>
+        <div class="tool-grid">
+
+            <div class="tool-row" data-state="missing">
+              <span>blender</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>FreeCADCmd</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>FreeCAD</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>keyshot</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>SolidWorksVisualize</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>swvisualize</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="available">
+              <span>gmsh</span>
+              <b>available</b>
+              <code>D:/program/Python/Python312/Scripts/gmsh.BAT</code>
+            </div>
+            <div class="tool-row" data-state="available">
+              <span>node</span>
+              <b>available</b>
+              <code>C:/nvm4w/nodejs/node.EXE</code>
+            </div>
+            <div class="tool-row" data-state="available">
+              <span>python</span>
+              <b>available</b>
+              <code>D:/Users/cooper/Practice-Project/202607/hermes-local/hermes-agent/venv/Scripts/python.EXE</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>python:cadquery</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>python:OCP</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="missing">
+              <span>python:gmsh</span>
+              <b>missing</b>
+              <code>not detected</code>
+            </div>
+            <div class="tool-row" data-state="available">
+              <span>occt-import-js</span>
+              <b>available</b>
+              <code>.scratch/goal9-tools/node_modules/occt-import-js</code>
+            </div>
+            <div class="tool-row" data-state="available">
+              <span>@gltf-transform/core</span>
+              <b>available</b>
+              <code>.scratch/goal9-tools/node_modules/@gltf-transform/core</code>
+            </div>
+            <div class="tool-row" data-state="available">
+              <span>playwright-core</span>
+              <b>available</b>
+              <code>.scratch/goal9-tools/node_modules/playwright-core</code>
+            </div>
+            <div class="tool-row" data-state="available">
+              <span>sharp</span>
+              <b>available</b>
+              <code>.scratch/goal9-tools/node_modules/sharp</code>
+            </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="gates-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">06 / next gates</p>
+            <h2 id="gates-title">正式渲染前置门</h2>
+          </div>
+          <p class="note">
+            Goal 18 不产出 photoreal still；它把正式渲染前必须补齐的输入链路验收条件固定下来。
+          </p>
+        </div>
+        <div class="gate-grid">
+
+            <div class="gate" data-state="blocked">
+              <span>blocked</span>
+              <strong>install-or-access-renderer</strong>
+              <p>Blender with a STEP import route, KeyShot, SOLIDWORKS Visualize, or FreeCAD-to-renderer workflow is available and records the input file hash.</p>
+            </div>
+            <div class="gate" data-state="pending">
+              <span>pending</span>
+              <strong>rerun-step-derived-render-mesh</strong>
+              <p>Renderer mesh or GLB is regenerated from the STEP with current hash 3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547 and records tessellation/material mapping.</p>
+            </div>
+            <div class="gate" data-state="pending">
+              <span>pending</span>
+              <strong>material-map-review</strong>
+              <p>At least five material families are assigned using STEP labels, GLB node indices, and brochure reference pages without inventing product material grades.</p>
+            </div>
+            <div class="gate" data-state="pending">
+              <span>pending</span>
+              <strong>photoreal-still-proof</strong>
+              <p>Three stills are rendered by an offline renderer and visually compared against the brochure product and structure references.</p>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Manifest: <code>input-chain-manifest.json</code>. Source audit: <code>asset/derived/fixed-ball-valve/model-audit-step.json</code>. Previous lookdev: <code>../goal17-offline-lookdev/index.html</code>.
+    </footer>
+  </body>
+</html>
