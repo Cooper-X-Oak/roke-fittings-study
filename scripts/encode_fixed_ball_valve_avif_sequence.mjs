@@ -29,13 +29,17 @@ const avifDir = resolve(args["avif-dir"] ?? "docs/upload/images/zt-hero-fixed-ba
 const outputPath = resolve(args.out ?? "docs/assets/ztovalve/hero/avif-sequence-manifest.json");
 const quality = Number(args.quality ?? 54);
 const effort = Number(args.effort ?? 4);
+const overwrite = args.overwrite === "true";
 const requireFromTools = createRequire(resolve(toolsDir, "package.json"));
 const sharp = requireFromTools("sharp");
 
 await mkdir(avifDir, { recursive: true });
 const existingAvif = (await readdir(avifDir)).filter((name) => /^\d{4}\.avif$/u.test(name));
-if (existingAvif.length > 0) {
+if (existingAvif.length > 0 && !overwrite) {
   throw new Error(`AVIF output directory already contains numbered frames: ${avifDir}`);
+}
+if (overwrite && existingAvif.length > 0 && existingAvif.length !== 240) {
+  throw new Error(`Refusing overwrite because expected 240 existing AVIF frames, found ${existingAvif.length} in ${avifDir}`);
 }
 
 const pngFrames = (await readdir(pngDir))

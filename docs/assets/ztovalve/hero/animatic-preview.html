@@ -23,7 +23,7 @@
         min-height: 100vh;
         display: grid;
         place-items: center;
-        background: #080b10;
+        background: #747673;
         font-family: Arial, Helvetica, sans-serif;
       }
 
@@ -33,8 +33,8 @@
         height: 540px;
         overflow: hidden;
         background:
-          radial-gradient(circle at 72% 18%, rgba(44, 118, 159, 0.36), transparent 34%),
-          linear-gradient(135deg, #07121f 0%, #0b2340 44%, #11151a 100%);
+          radial-gradient(circle at 58% 18%, rgba(255, 255, 255, 0.7), transparent 28%),
+          linear-gradient(180deg, #8d8e8a 0%, #6f716e 100%);
       }
 
       #animatic-canvas {
@@ -129,6 +129,7 @@
     <script type="module">
       import * as THREE from "../../../local/templates/roke/assets/js/three/three.module.js";
       import { GLTFLoader } from "../../../local/templates/roke/assets/js/three/GLTFLoader.js";
+      import { RoomEnvironment } from "../../../local/templates/roke/assets/js/three/RoomEnvironment.js";
 
       const params = new URLSearchParams(window.location.search);
       const renderMode = params.get("mode") || "animatic";
@@ -153,22 +154,105 @@
       renderer.setPixelRatio(1);
       renderer.setSize(renderWidth, renderHeight, false);
       renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.02;
+      renderer.toneMappingExposure = 0.86;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.physicallyCorrectLights = true;
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(42, renderWidth / renderHeight, 0.01, 8);
       const root = new THREE.Group();
       scene.add(root);
 
-      const ambient = new THREE.HemisphereLight(0x8fbfe8, 0x151920, 1.35);
-      const key = new THREE.DirectionalLight(0xffffff, 2.0);
-      key.position.set(-0.65, 0.85, 1.35);
-      const rim = new THREE.DirectionalLight(0x7fd1ff, 1.8);
-      rim.position.set(0.95, 0.35, -0.7);
-      const warm = new THREE.PointLight(0xff8c4a, 0.45, 2.4);
-      warm.position.set(-0.05, 0.25, 0.48);
-      scene.add(ambient, key, rim, warm);
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.035).texture;
+
+      const ambient = new THREE.HemisphereLight(0xffffff, 0xc8cdd0, 1.05);
+      const key = new THREE.DirectionalLight(0xffffff, 3.55);
+      key.position.set(-0.72, 0.92, 1.22);
+      key.castShadow = true;
+      key.shadow.mapSize.set(2048, 2048);
+      const topStrip = new THREE.DirectionalLight(0xffffff, 1.48);
+      topStrip.position.set(-0.12, 1.08, 0.52);
+      const rim = new THREE.DirectionalLight(0xf2f7ff, 2.08);
+      rim.position.set(0.82, 0.46, -0.95);
+      const sideFill = new THREE.DirectionalLight(0xdce6ea, 0.72);
+      sideFill.position.set(0.46, 0.06, 0.92);
+      const ballGlint = new THREE.PointLight(0xffffff, 1.42, 1.1, 2);
+      ballGlint.position.set(-0.06, 0.16, 0.36);
+      scene.add(ambient, key, topStrip, rim, sideFill, ballGlint);
+
+      function makeNoiseTexture(seedOffset) {
+        const size = 256;
+        const data = new Uint8Array(size * size * 4);
+        let seed = 1447 + seedOffset;
+        function random() {
+          seed = (seed * 1664525 + 1013904223) >>> 0;
+          return seed / 4294967296;
+        }
+        for (let index = 0; index < size * size; index += 1) {
+          const value = 170 + Math.floor(random() * 46);
+          data[index * 4] = value;
+          data[index * 4 + 1] = value;
+          data[index * 4 + 2] = value;
+          data[index * 4 + 3] = 255;
+        }
+        const texture = new THREE.DataTexture(data, size, size);
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(8, 8);
+        texture.needsUpdate = true;
+        return texture;
+      }
+
+      const shellRoughness = makeNoiseTexture(1);
+      const fastenerRoughness = makeNoiseTexture(2);
+      const stainlessShellMat = new THREE.MeshPhysicalMaterial({
+        color: 0xb9bfbd,
+        metalness: 1,
+        roughness: 0.26,
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.24,
+        envMapIntensity: 1.34,
+        roughnessMap: shellRoughness,
+      });
+      const machinedDriveMat = new THREE.MeshPhysicalMaterial({
+        color: 0xc7ccca,
+        metalness: 1,
+        roughness: 0.2,
+        clearcoat: 0.32,
+        clearcoatRoughness: 0.18,
+        envMapIntensity: 1.48,
+      });
+      const polishedBallMat = new THREE.MeshPhysicalMaterial({
+        color: 0xdfe4e3,
+        metalness: 1,
+        roughness: 0.12,
+        clearcoat: 0.64,
+        clearcoatRoughness: 0.12,
+        envMapIntensity: 1.64,
+      });
+      const softSealMat = new THREE.MeshPhysicalMaterial({
+        color: 0xd9d4c8,
+        metalness: 0,
+        roughness: 0.42,
+        clearcoat: 0.08,
+        clearcoatRoughness: 0.44,
+        envMapIntensity: 0.55,
+        transparent: true,
+        opacity: 0.98,
+      });
+      const fastenerMat = new THREE.MeshPhysicalMaterial({
+        color: 0xd3d8d6,
+        metalness: 1,
+        roughness: 0.18,
+        clearcoat: 0.36,
+        clearcoatRoughness: 0.16,
+        envMapIntensity: 1.56,
+        roughnessMap: fastenerRoughness,
+      });
 
       const loader = new GLTFLoader();
       const [plan, previs, gltf] = await Promise.all([
@@ -183,60 +267,159 @@
       const overallCenter = overallBox.getCenter(new THREE.Vector3());
       const overallSize = overallBox.getSize(new THREE.Vector3());
 
-      function classifyMesh(node, box, size, center) {
-        const diagonal = size.length();
-        if (diagonal > 0.19) return "body-pressure-shell";
-        if (diagonal < 0.038) return "fasteners-small-hardware";
-        if (center.y > overallCenter.y + overallSize.y * 0.16) return "stem-packing-drive";
-        if (Math.abs(center.x - overallCenter.x) < overallSize.x * 0.2 && diagonal > 0.07) return "ball-trunnion-core";
-        if (Math.abs(center.z - overallCenter.z) < overallSize.z * 0.46) return "seat-seal-system";
-        return "body-pressure-shell";
+      const partGroups = {
+        leftBody: new THREE.Group(),
+        rightBody: new THREE.Group(),
+        centerBody: new THREE.Group(),
+        ball: new THREE.Group(),
+        seat: new THREE.Group(),
+        upperDrive: new THREE.Group(),
+        lowerSupport: new THREE.Group(),
+        fastener: new THREE.Group(),
+      };
+      for (const [id, group] of Object.entries(partGroups)) {
+        group.name = `release-${id}-group`;
+        gltf.scene.add(group);
       }
 
+      function classifyMesh(partCenter, partSize) {
+        const diagonal = partSize.length();
+        const nearBallX = Math.abs(partCenter.x - overallCenter.x) < overallSize.x * 0.24;
+        const nearBallZ = Math.abs(partCenter.z - overallCenter.z) < overallSize.z * 0.48;
+        const yDelta = partCenter.y - overallCenter.y;
+        const maxExtent = Math.max(partSize.x, partSize.y, partSize.z);
+        const minExtent = Math.min(partSize.x, partSize.y, partSize.z);
+        const extentRatio = maxExtent ? minExtent / maxExtent : 0;
+        const sphereLike = extentRatio > 0.68;
+        const thinAxialSeat =
+          nearBallX &&
+          nearBallZ &&
+          diagonal > 0.09 &&
+          diagonal < 0.34 &&
+          extentRatio < 0.24 &&
+          partSize.x < partSize.y * 0.24 &&
+          partSize.x < partSize.z * 0.24;
+        const trueBallCore =
+          nearBallX &&
+          nearBallZ &&
+          sphereLike &&
+          diagonal > 0.29 &&
+          diagonal < 0.33 &&
+          partSize.x > overallSize.x * 0.32 &&
+          yDelta > -overallSize.y * 0.23 &&
+          yDelta < overallSize.y * 0.03;
+
+        if (trueBallCore) return "ball";
+        if (diagonal < 0.036) return "fastener";
+        if (nearBallX && yDelta > overallSize.y * 0.06 && diagonal < 0.18) return "upperDrive";
+        if (nearBallX && yDelta > overallSize.y * 0.2 && diagonal < 0.3) return "upperDrive";
+        if (nearBallX && yDelta < -overallSize.y * 0.23 && diagonal < 0.18) return "lowerSupport";
+        if (thinAxialSeat) return "seat";
+        if (nearBallX && diagonal < 0.12) return "seat";
+        if (partCenter.x < overallCenter.x - overallSize.x * 0.13) return "leftBody";
+        if (partCenter.x > overallCenter.x + overallSize.x * 0.13) return "rightBody";
+        return "centerBody";
+      }
+
+      const classified = [];
       gltf.scene.traverse((node) => {
         if (!node.isMesh) return;
         const box = new THREE.Box3().setFromObject(node);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
-        const group = classifyMesh(node, box, size, center);
-        node.material = node.material.clone();
-        node.material.transparent = true;
-        node.material.depthWrite = true;
-        node.material.metalness = Math.max(0.35, node.material.metalness ?? 0.5);
-        node.material.roughness = Math.min(0.46, node.material.roughness ?? 0.34);
-        meshRecords.push({
+        const group = classifyMesh(center, size);
+        node.material =
+          group === "ball" ? polishedBallMat.clone() :
+          group === "seat" ? softSealMat.clone() :
+          group === "fastener" ? fastenerMat.clone() :
+          group === "upperDrive" || group === "lowerSupport" ? machinedDriveMat.clone() :
+          stainlessShellMat.clone();
+        if (node.geometry) node.geometry.computeVertexNormals();
+        node.castShadow = true;
+        node.receiveShadow = true;
+        classified.push({
           node,
           group,
-          basePosition: node.position.clone(),
-          center,
-          direction: center.clone().sub(overallCenter).normalize(),
+          localCenter: center.clone().sub(overallCenter),
         });
       });
+      gltf.scene.updateMatrixWorld(true);
+      for (const item of classified) {
+        partGroups[item.group].attach(item.node);
+      }
+      gltf.scene.updateMatrixWorld(true);
+      for (const item of classified) {
+        meshRecords.push({
+          node: item.node,
+          group: item.group,
+          basePosition: item.node.position.clone(),
+          baseRotation: item.node.rotation.clone(),
+          localCenter: item.localCenter,
+        });
+      }
+
+      const groupCounts = meshRecords.reduce((acc, record) => {
+        acc[record.group] = (acc[record.group] || 0) + 1;
+        return acc;
+      }, {});
 
       const shotCopy = new Map(plan.shots.map((shot) => [shot.id, shot.content]));
 
-      function applyParts(state) {
-        const part = state.partState;
+      function smoothstep(value) {
+        const t = Math.max(0, Math.min(1, value));
+        return t * t * (3 - 2 * t);
+      }
+
+      function animationStateFor(previsState) {
+        const progress = previsState.progress;
+        const explodeIn = smoothstep((progress - 0.18) / 0.32);
+        const explodeOut = 1 - smoothstep((progress - 0.62) / 0.22);
+        const exploded = Math.max(0, Math.min(1, explodeIn * explodeOut));
+        const ballTurnIn = smoothstep((progress - 0.46) / 0.12);
+        const ballTurnOut = 1 - smoothstep((progress - 0.64) / 0.1);
+        const ballTurn = Math.max(0, Math.min(1, ballTurnIn * ballTurnOut));
+        return {
+          exploded,
+          shellSplit: exploded * 1.08,
+          seatSpread: exploded,
+          stemLift: exploded * 0.92,
+          lowerDrop: exploded * 0.78,
+          fastenerSpread: exploded * 0.76,
+          ballTurn,
+        };
+      }
+
+      function applyParts(state, part = animationStateFor(state)) {
+        for (const group of Object.values(partGroups)) {
+          group.position.set(0, 0, 0);
+          group.rotation.set(0, 0, 0);
+        }
+
+        partGroups.leftBody.position.x = -part.shellSplit * 0.235;
+        partGroups.rightBody.position.x = part.shellSplit * 0.235;
+        partGroups.upperDrive.position.y = part.stemLift * 0.155;
+        partGroups.upperDrive.position.z = part.stemLift * 0.035;
+        partGroups.lowerSupport.position.y = -part.lowerDrop * 0.132;
+        partGroups.lowerSupport.position.z = -part.lowerDrop * 0.025;
+        partGroups.ball.rotation.y = part.ballTurn * THREE.MathUtils.degToRad(90);
+
         for (const record of meshRecords) {
           const offset = new THREE.Vector3();
-          if (record.group === "body-pressure-shell") {
-            offset.add(record.direction.clone().multiplyScalar(part.shellOpen * 0.085));
-          } else if (record.group === "ball-trunnion-core") {
-            offset.y += part.axisEmphasis * 0.028;
-          } else if (record.group === "seat-seal-system") {
-            const side = record.center.x < overallCenter.x ? -1 : 1;
-            offset.x += side * part.seatSeparation * 0.105;
-            offset.z += Math.sign(record.center.z - overallCenter.z || 1) * part.seatSeparation * 0.026;
-          } else if (record.group === "stem-packing-drive") {
-            offset.y += part.stemLift * 0.08;
-          } else if (record.group === "fasteners-small-hardware") {
-            offset.add(record.direction.clone().multiplyScalar((part.shellOpen + part.seatSeparation) * 0.044));
+          const xSign = Math.sign(record.localCenter.x) || 1;
+          const ySign = Math.sign(record.localCenter.y) || 1;
+          const zSign = Math.sign(record.localCenter.z) || 1;
+          if (record.group === "seat") {
+            offset.x += xSign * part.seatSpread * 0.1;
+            offset.z += zSign * part.seatSpread * 0.024;
+          } else if (record.group === "fastener") {
+            offset.x += xSign * part.fastenerSpread * 0.074;
+            offset.y += ySign * part.fastenerSpread * 0.032;
+            offset.z += zSign * part.fastenerSpread * 0.04;
           }
           record.node.position.copy(record.basePosition).add(offset);
-          const shellFade = record.group === "body-pressure-shell" ? part.axisEmphasis * 0.28 + part.seatSeparation * 0.18 : 0;
-          record.node.material.opacity = Math.max(0.5, 1 - shellFade);
-          if (record.group === "fasteners-small-hardware") {
-            record.node.material.emissive = new THREE.Color(0xff7a2f).multiplyScalar(part.fastenerGlint * 0.24);
+          record.node.rotation.copy(record.baseRotation);
+          if (record.group === "fastener" && record.node.material.emissive) {
+            record.node.material.emissive.copy(new THREE.Color(0xffffff)).multiplyScalar(state.partState.fastenerGlint * 0.08);
           }
         }
       }
@@ -253,14 +436,23 @@
 
       function renderFrame(index) {
         const state = previs.frameStates[index];
-        camera.position.fromArray(state.cameraPosition);
-        camera.fov = state.fovDegrees;
+        const releasePart = animationStateFor(state);
+        const releaseCameraMix = Math.min(1, releasePart.exploded * 0.98);
+        const baseCamera = new THREE.Vector3().fromArray(state.cameraPosition);
+        const baseTarget = new THREE.Vector3().fromArray(state.target);
+        const catalogueCamera = overallCenter.clone().add(new THREE.Vector3(-0.62, 0.285, 1.72));
+        const catalogueTarget = overallCenter.clone().add(new THREE.Vector3(-0.018, 0.04, 0));
+        camera.position.copy(baseCamera.lerp(catalogueCamera, releaseCameraMix));
+        camera.fov = state.fovDegrees + (32 - state.fovDegrees) * releaseCameraMix;
         camera.updateProjectionMatrix();
-        camera.lookAt(new THREE.Vector3().fromArray(state.target));
-        key.intensity = state.lightState.keyIntensity;
-        rim.intensity = state.lightState.rimIntensity;
-        warm.intensity = 0.34 + state.partState.fastenerGlint * 0.9;
-        applyParts(state);
+        camera.lookAt(baseTarget.lerp(catalogueTarget, releaseCameraMix));
+        const releaseHold = smoothstep((state.progress - 0.82) / 0.12);
+        renderer.toneMappingExposure = 0.84 + releaseHold * 0.04;
+        key.intensity = 3.35 + releaseHold * 0.28;
+        rim.intensity = 1.88 + state.partState.axisEmphasis * 0.34 + releaseHold * 0.26;
+        sideFill.intensity = 0.66 + state.partState.seatSeparation * 0.18;
+        ballGlint.intensity = 1.24 + state.partState.fastenerGlint * 0.58;
+        applyParts(state, releasePart);
         if (!isSequenceMode) setCopy(state);
         renderer.render(scene, camera);
         return {
@@ -271,6 +463,7 @@
             min: overallBox.min.toArray(),
             max: overallBox.max.toArray(),
           },
+          groupCounts,
         };
       }
 
