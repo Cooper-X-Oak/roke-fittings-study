@@ -144,8 +144,8 @@ try {
     constraints: [
       "Goal 14 renders exactly 96 low-resolution blocking frames.",
       "No 240-frame release sequence is rendered or connected to the homepage.",
-      "The blocking validates ball-core anchoring, multi-direction anatomy, 90-degree quarter-turn, and restrained flow-path lines.",
-      "Only the ball candidate receives the functional quarter-turn; seat, shell, seals, and fasteners do not follow that rotation.",
+      "The blocking validates single-ball-core anchoring, multi-direction anatomy, 90-degree quarter-turn, and restrained flow-path lines.",
+      "Only the true ball core receives the functional quarter-turn; valve seats, seat seals, shell, support parts, and fasteners do not follow that rotation.",
       "Flow lines express path only and make no pressure, flow-rate, zero-leakage, material, DBB/DIB, or medium claim.",
     ],
     consoleErrors,

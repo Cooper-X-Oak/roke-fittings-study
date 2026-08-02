@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-02T02:49:09.333Z",
+  "generatedAt": "2026-08-02T03:05:41.953Z",
   "sourceUrl": "http://127.0.0.1:4192/roke-fittings-study/assets/ztovalve/hero/goal14-ball-core-flow-blocking/preview.html",
   "preview": "docs/assets/ztovalve/hero/goal14-ball-core-flow-blocking/preview.html",
   "sourceGoal13": "docs/assets/ztovalve/hero/goal13-ordered-assembly-blocking/",
@@ -29,17 +29,22 @@
     ],
     "frameSequenceRendered": false,
     "fullReleaseFrameCount": 0,
-    "grammar": "ball-core anchored multi-direction anatomy plus 90-degree quarter-turn and flow-path lines; no 240-frame output",
+    "grammar": "single true ball core anchored multi-direction anatomy plus 90-degree quarter-turn; valve seats remain fixed during ball rotation; no 240-frame output",
     "meshCount": 138,
     "groupCounts": {
       "rightBody": 5,
       "fastener": 73,
-      "ball": 5,
+      "ball": 1,
       "lowerSupport": 16,
       "centerBody": 2,
-      "seat": 9,
-      "upperDrive": 26,
+      "seat": 12,
+      "upperDrive": 27,
       "leftBody": 2
+    },
+    "ballIsolation": {
+      "expectedBallMeshCount": 1,
+      "actualBallMeshCount": 1,
+      "invariant": "Only the true ball core rotates; valve seats, seat seals, shell, support parts, and fasteners do not inherit ballTurn."
     },
     "truthBoundary": "flow lines express path only; no pressure, flow rate, zero-leakage, material grade, DBB/DIB, or real maintenance claims"
   },
@@ -50,16 +55,16 @@
   "constraints": [
     "Goal 14 renders exactly 96 low-resolution blocking frames.",
     "No 240-frame release sequence is rendered or connected to the homepage.",
-    "The blocking validates ball-core anchoring, multi-direction anatomy, 90-degree quarter-turn, and restrained flow-path lines.",
-    "Only the ball candidate receives the functional quarter-turn; seat, shell, seals, and fasteners do not follow that rotation.",
+    "The blocking validates single-ball-core anchoring, multi-direction anatomy, 90-degree quarter-turn, and restrained flow-path lines.",
+    "Only the true ball core receives the functional quarter-turn; valve seats, seat seals, shell, support parts, and fasteners do not follow that rotation.",
     "Flow lines express path only and make no pressure, flow-rate, zero-leakage, material, DBB/DIB, or medium claim."
   ],
   "consoleErrors": [],
   "pageErrors": [],
   "failedRequests": [],
-  "combinedFrameSha256": "54e12831768d15634df5dab234595e19d75e7f4d35d296b9d410bd2401ae24af",
-  "totalFrameBytes": 5398196,
-  "renderDurationMs": 14450,
+  "combinedFrameSha256": "94cf4587f2423a8edd1590e2a3e9e19ee42d8c905e2b81be7568967f9844a0fc",
+  "totalFrameBytes": 5474724,
+  "renderDurationMs": 14777,
   "frames": [
     {
       "frame": 0,
@@ -75,8 +80,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50032,
-      "sha256": "90bd3b6102f5d0218de0850fcabfa1880f20ee6b3a3cd0726a36229485a71c2c"
+      "bytes": 50074,
+      "sha256": "ba18c118022cef039b119c0c5e1c0325707ca89306aad9bc86f9e0f0abfd7471"
     },
     {
       "frame": 1,
@@ -92,8 +97,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50072,
-      "sha256": "8356fea41cdad6dd05163ac3a85376ae4118341435bce5b11d37da24167ec851"
+      "bytes": 50129,
+      "sha256": "9874e93749d5fa3260120161ac408103af0d214d9211139ab0616488e597993c"
     },
     {
       "frame": 2,
@@ -109,8 +114,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50156,
-      "sha256": "7807afeb04dc29f3cfed4f3599f052a31637d406f6e44c5b93736c7f9fd77128"
+      "bytes": 50185,
+      "sha256": "0edf22311bc2afa2da73adc8752f962af3cbe63a61742592b628b34ad2d2822f"
     },
     {
       "frame": 3,
@@ -126,8 +131,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50091,
-      "sha256": "ad0c041f7dad185937edf02f2e4ff224b09c2bcd1609be1dfe3bcd56259ef09a"
+      "bytes": 50179,
+      "sha256": "b882b91a5312818ff4fc115eb75d95842147d1180b01ae703c4814c3c5c76b1b"
     },
     {
       "frame": 4,
@@ -143,8 +148,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50030,
-      "sha256": "a74b5a97fa81e1659ecace3886f8c7e44b861d502dd6308aacbb7fc0960998f0"
+      "bytes": 50100,
+      "sha256": "76baaa7714405639f57bda64df581eb3661337019e81beb19d3a4af2da89b640"
     },
     {
       "frame": 5,
@@ -160,8 +165,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 49933,
-      "sha256": "33b35808434945062749fd2ba139a6a361e36712ac70ee718cf1cbc1291c7ae9"
+      "bytes": 50003,
+      "sha256": "9c2c000bdd5b2c4738a3c8bebc42949ed07c3af30d69b111e0852cf31a50eb5a"
     },
     {
       "frame": 6,
@@ -177,8 +182,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50045,
-      "sha256": "147a305bf8bac05f7823732a9c26caa092e29dd2c9df3da82ebc2faebfa77856"
+      "bytes": 50112,
+      "sha256": "38e6b068cee18422b2c99646429434ebd7697611dbe73e23651108b19363a24c"
     },
     {
       "frame": 7,
@@ -194,8 +199,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50082,
-      "sha256": "761b55cd31929faa8f66884152d3acf85db872a91678872a4248f2650c4f22f3"
+      "bytes": 50164,
+      "sha256": "026b2e9c0deffda110b9fde2f313cb078ae4cb022f3806e3da9dec80059a7759"
     },
     {
       "frame": 8,
@@ -211,8 +216,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50158,
-      "sha256": "0eac937a576c637b2ea159074e66b98d561fa40b522cf60594998d94fbd4e30a"
+      "bytes": 50267,
+      "sha256": "f454e90542e688594f85c7923e153c3d5f25625efc4f2b9590d101d1da5d8437"
     },
     {
       "frame": 9,
@@ -228,8 +233,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50401,
-      "sha256": "a590a02a869683c54cbca6c65aff72f60af43e1e9382a11b1014ed97b17199ac"
+      "bytes": 50447,
+      "sha256": "f4f8cb8d160204bc0e1293db5e5e2624548abec1bff3fa29c4e91121e18a3500"
     },
     {
       "frame": 10,
@@ -245,8 +250,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50548,
-      "sha256": "35d5d6e6d02d922c80b8a4df3d535b650fa79abba5238314a77ff8fc4640ab52"
+      "bytes": 50604,
+      "sha256": "24bedc502f330c8b3e9134586e85be90e279a1fc48f3bacd78f487a6ec38f8a8"
     },
     {
       "frame": 11,
@@ -262,8 +267,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50643,
-      "sha256": "605ec24dcf6361a6489800e024048512b95acb187188389645230bb7b6b860e7"
+      "bytes": 50731,
+      "sha256": "9144815acc1998d790beffb65c412c6897cbc794a341098779cfd1961408dc52"
     },
     {
       "frame": 12,
@@ -279,8 +284,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50660,
-      "sha256": "ebefd1894060da25f5fc5dbf6a7512df904b257f58b31437bdf2f2b0ab9d9228"
+      "bytes": 50714,
+      "sha256": "36cea46424ccae6ce473aaf5c0a66de7f59932a1517fe8aa50459720e2728f16"
     },
     {
       "frame": 13,
@@ -296,8 +301,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50703,
-      "sha256": "da0327feea4e026b197704a0f8d88e7095b81f61c1fe1d73369de2a0536a43de"
+      "bytes": 50756,
+      "sha256": "3cea9da94a82ec0f50d3542aab00e7732c71881c262f3258686cc218d2a82785"
     },
     {
       "frame": 14,
@@ -313,8 +318,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50771,
-      "sha256": "6c5394099aa9de8d65cdd6f36f42f3c66550e1a7402825eb1e09c72f16de78dc"
+      "bytes": 50852,
+      "sha256": "243bb4ed59e53880d10409fe94caeabb32c2e9fa60e722111164875f7665c48b"
     },
     {
       "frame": 15,
@@ -330,8 +335,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 50976,
-      "sha256": "fb286c646a2368e936774aa92ac85b4bca7e9d3dfe25ad52588e5d3dbd05af6b"
+      "bytes": 51064,
+      "sha256": "f64f020ad918ad48e65465f2abbad3b9bbc747135c5b1f0376b3537f410a6aef"
     },
     {
       "frame": 16,
@@ -347,8 +352,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.0033,
-      "bytes": 50963,
-      "sha256": "b9ea2f1563e41d54d38a8eee760a3c3aff3eca5ccffb50f9b2e7f69ec412c011"
+      "bytes": 51120,
+      "sha256": "e3d517dc16daa6da895ba7717ca5e0c0803c58bc0909b5512e81d720b79b3f3f"
     },
     {
       "frame": 17,
@@ -364,8 +369,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.0127,
-      "bytes": 51192,
-      "sha256": "315ea935718f7268d3ca0c7e1b4339003de4bc1afab70b4558c68c197cf8286e"
+      "bytes": 51278,
+      "sha256": "d5f9eb2f876be4c5d9df3cc782dca8c79277fc92f529881e675cb10d3b893906"
     },
     {
       "frame": 18,
@@ -381,8 +386,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.028,
-      "bytes": 51709,
-      "sha256": "505ded0b75c41b25ac6d8ed4aadc84e8a0618ab88ab069f13399ce22369f1c52"
+      "bytes": 51683,
+      "sha256": "c43cd15ea14c5685e033f36a27cc768e14804d69763d54a33d3b849be90a397b"
     },
     {
       "frame": 19,
@@ -399,7 +404,7 @@
       "flowProgress": 0,
       "productYaw": -9.0486,
       "bytes": 51802,
-      "sha256": "3a56e94a604673f4548c042d03908a4e86bb22889cb8a0bee314c6b7f31ff7ed"
+      "sha256": "a56537552e8975f61608b30b237ef5dbcc8a5bd7c019bb4fc9df439fdbbe675a"
     },
     {
       "frame": 20,
@@ -415,8 +420,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.0741,
-      "bytes": 52210,
-      "sha256": "b7529a404a1716f4d469bb88d550182594d3ae0b1a80109a835177a3bc16d707"
+      "bytes": 51970,
+      "sha256": "5d2c5de6e7f70da3b11ac0b846c0d958bee97abcf393167f27269d1bee25152c"
     },
     {
       "frame": 21,
@@ -432,8 +437,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.104,
-      "bytes": 52537,
-      "sha256": "ab4f9ba0514507361b173ea7c0660903938c7fa148dedc52ba49505839cc3dfc"
+      "bytes": 52577,
+      "sha256": "75e2548ecca1a744c622feed835556ad2fac79ed50c1d2f2d3fe86196b00fd29"
     },
     {
       "frame": 22,
@@ -449,8 +454,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.1379,
-      "bytes": 53356,
-      "sha256": "5d23a4e03c8af0c2f093d84483a0f33f76c3a4ae4ab0f03f46fa400e803da48a"
+      "bytes": 53348,
+      "sha256": "b433f913d375b4953bb97c7d8188750d7cde480469bd528607c705d37c285f44"
     },
     {
       "frame": 23,
@@ -466,8 +471,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.1754,
-      "bytes": 53906,
-      "sha256": "056836651d66a305fb5228dcbf9f740fe18e12d6d359e0dd97f1ae354579e08b"
+      "bytes": 54013,
+      "sha256": "f703ef83a371fe633588d20915a5b3c3258c6cc9f15c5543194eca14750299a2"
     },
     {
       "frame": 24,
@@ -483,8 +488,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.216,
-      "bytes": 54671,
-      "sha256": "72917e64f099cb2383b17ebd0e7780852e5b6147942f6bb96097ebf73f767170"
+      "bytes": 54958,
+      "sha256": "0d24f68c85c194fbf250ddf9599104a64288a10d8b6a09f3167e69a07002d917"
     },
     {
       "frame": 25,
@@ -500,8 +505,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.2593,
-      "bytes": 55590,
-      "sha256": "8676cf57193d1d67b925be8a195670172a4a3b105af5b2019dd5d00cf5fb5a02"
+      "bytes": 55865,
+      "sha256": "db77f02ce83c22bbe270529f8ef4e6eb8c941a4b7936f673b3a928d33bb7ea34"
     },
     {
       "frame": 26,
@@ -517,8 +522,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.3047,
-      "bytes": 56192,
-      "sha256": "56946db72ca7c85e10058f0a18d0d3f10fb10e88fcef156dda598895e15890ba"
+      "bytes": 56311,
+      "sha256": "0fccee0021f82e9e27ed1ce46e127ae7f263c59ae723095b0e0f21ced9e8faee"
     },
     {
       "frame": 27,
@@ -534,8 +539,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.352,
-      "bytes": 56804,
-      "sha256": "a374ef94f03d98cb18cf88851b7ad1f6732032ec21ea84d846b9921143a5a1ac"
+      "bytes": 56784,
+      "sha256": "5d48e8f33162ea453d77d0d98694cff0559e7736b094438ac22ad8f7aa966bd7"
     },
     {
       "frame": 28,
@@ -551,8 +556,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.4006,
-      "bytes": 57353,
-      "sha256": "0eb0935ee125bca445021302c228ecfbc18c7ea7e9a986f7097e45136f90fcbd"
+      "bytes": 57887,
+      "sha256": "13a4df1be92f49dc6660d904958e4093913b7db93b5c2251b122c0e2ef3c1116"
     },
     {
       "frame": 29,
@@ -568,8 +573,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.4501,
-      "bytes": 58084,
-      "sha256": "a1059bcee3dbc099b86654b38e2faaa44ad97cc8ee95f6cd5549e9b5c486b343"
+      "bytes": 58745,
+      "sha256": "f19aa3f8bce3ae650812e939ba4cfd8eaba799368991a43b1b8b1108d12d14c5"
     },
     {
       "frame": 30,
@@ -585,8 +590,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.5,
-      "bytes": 58391,
-      "sha256": "49e81f0f2db3c502cb3736d551d205f49a07584eea887071657ca285e1ebbebb"
+      "bytes": 58875,
+      "sha256": "20756a8c07e5cf6e7aea30970d1f7875d1b5efd697cf6474d1960ae82e68aaa2"
     },
     {
       "frame": 31,
@@ -602,8 +607,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.5499,
-      "bytes": 59015,
-      "sha256": "cd7845381e6a247ee5672d3e5b3699f1f8137fd5ab44ecf34843fe1677b4bcb1"
+      "bytes": 59820,
+      "sha256": "1902386d17b5865eafee007280610d1fb2b3ec9eedb0caae8d416b4a01742927"
     },
     {
       "frame": 32,
@@ -619,8 +624,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.5994,
-      "bytes": 59011,
-      "sha256": "6be125f88270038d2609cf31611da439163a5b238c61e0107cd0467f527e3181"
+      "bytes": 59847,
+      "sha256": "4ffac0d6ad81977890cd72492549a0047c5efcdff3f693b56896d81e117221ad"
     },
     {
       "frame": 33,
@@ -636,8 +641,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.648,
-      "bytes": 59382,
-      "sha256": "f963a93a1888b3d7c7d1a0ffc17c9e847a16396c66c4308b5afbb32133e54234"
+      "bytes": 60688,
+      "sha256": "ff417ef51d075e311cd1bd78c2fc921f68fae61d00493ec70be234cbe49ed557"
     },
     {
       "frame": 34,
@@ -653,8 +658,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.6953,
-      "bytes": 59452,
-      "sha256": "3b6d0f1fa78f290a4d279d1f780e1c70ab1609cebb0ea6f6421e1c96de8e2e57"
+      "bytes": 60592,
+      "sha256": "847d21c1bc52d2d8e892241496c90aa73b082b42b6bfa9afbae689e299152607"
     },
     {
       "frame": 35,
@@ -670,8 +675,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.7407,
-      "bytes": 59915,
-      "sha256": "5f8de10e89775841ce53a59311dfb764e310263054a1c5d7866a5a07f1e4acc8"
+      "bytes": 61061,
+      "sha256": "f0b637bddaaff23914be019d93339a9bf02c4942904c5fd2405f63d914467106"
     },
     {
       "frame": 36,
@@ -687,8 +692,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.784,
-      "bytes": 60299,
-      "sha256": "4f9817dacdda3b00a602092ea334ff80e8bd0ded479c8b4c92dcae46cb141f4d"
+      "bytes": 61105,
+      "sha256": "f0546265c4dd2e115f368c3a0173ddf901c27a5a13cafc22107f127e54b97818"
     },
     {
       "frame": 37,
@@ -704,8 +709,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.8246,
-      "bytes": 60198,
-      "sha256": "daf3e04f08e66c1d9c87a2965ca3179c1344e86cbb59b0e04ca8f1564fcff17e"
+      "bytes": 60837,
+      "sha256": "db68fc5768507e12a238dc3fedead25ad15c6958157137ba4c3fe382d847304f"
     },
     {
       "frame": 38,
@@ -721,8 +726,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.8621,
-      "bytes": 60526,
-      "sha256": "ac3fa23b8c5e5599d60843f9b36f8f1832c776e50bde52b05656697e9dbcde77"
+      "bytes": 61197,
+      "sha256": "db1d70c31dbe44c2ecc1ccdc3382654deab7957267ede6e070c6078b7b966ac6"
     },
     {
       "frame": 39,
@@ -738,8 +743,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.896,
-      "bytes": 60477,
-      "sha256": "cb0eee15cb3a4e1096f236a3e7b97c2447fb9abdbffc8b26836efbea1424bd72"
+      "bytes": 60811,
+      "sha256": "ed72eb60d68f24894e7706b4832398e2d397f6261044a5fe0d5f439d6271b931"
     },
     {
       "frame": 40,
@@ -755,8 +760,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.9259,
-      "bytes": 60586,
-      "sha256": "3a8424bff0b77723d02bf063b614498dc9ba85f6280963f33fca4854a4d91d5c"
+      "bytes": 60840,
+      "sha256": "adb9f10c677fa2fea861f241a660681236945609695200db97fcc5912d050c9c"
     },
     {
       "frame": 41,
@@ -772,8 +777,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.9514,
-      "bytes": 60780,
-      "sha256": "f725536e7c79c1fa0d7fd32053a93e67cc5aae7ae580fb60265e17e6a6a964b6"
+      "bytes": 61022,
+      "sha256": "0e39bde42120361a1ddbbc18a3888955d21f77e7527ef4064e891f4da9f0d461"
     },
     {
       "frame": 42,
@@ -789,8 +794,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.972,
-      "bytes": 60859,
-      "sha256": "eb4152c6f3a217da68b4e78b0788a8e15a2f7c04f21f87a51450d11edeb62e2b"
+      "bytes": 61117,
+      "sha256": "8ff16f0b876eae4ead0e07ad0cfb38eab27ddd4317a521f3340b7af0a18028a0"
     },
     {
       "frame": 43,
@@ -806,8 +811,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.9873,
-      "bytes": 60875,
-      "sha256": "30446ab6d0111e9e0d468618dc0a11c6d85e597e2004c3a0bfd468483381d424"
+      "bytes": 61288,
+      "sha256": "44d5d76197c1c0cfbed92e0ccbc9a645516f6415cbb596c890c87e110bf3242c"
     },
     {
       "frame": 44,
@@ -823,8 +828,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.9967,
-      "bytes": 60764,
-      "sha256": "05a7916a730f832907f03b69227c71945faae7e75919e2f412fa994f0b1cb32c"
+      "bytes": 61228,
+      "sha256": "0ab08aacfa296f5942512ed53cdc2aa57fd0b01c5d586d431d1940cbed394382"
     },
     {
       "frame": 45,
@@ -840,8 +845,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -10,
-      "bytes": 60916,
-      "sha256": "f1d904782d45ec78444076f8346a9279214f96b12e6c901c0affbeed4a1d84a0"
+      "bytes": 61444,
+      "sha256": "0c5e3e657b9911b45de0a3ce2453f2b8ad88b7773217371e8f908df3802055f7"
     },
     {
       "frame": 46,
@@ -857,8 +862,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.9775,
-      "bytes": 60835,
-      "sha256": "b2c4b88feaf838f41426d0287d544d6bb9677e696f3f24112454d6ee23cde14b"
+      "bytes": 61333,
+      "sha256": "e9999ffa828206e592a225d5ce5016a69fb3373fce365393c60b635d0584a99e"
     },
     {
       "frame": 47,
@@ -874,8 +879,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.9141,
-      "bytes": 61015,
-      "sha256": "50ed6da8a4f0f4dcafb596d73ac5de7cde04a4f7af103a87d715dd06b8239661"
+      "bytes": 61376,
+      "sha256": "212ecdec798b37fa6c5c750d41f57140d0deeebe362c3a4eadb3937a0eb17b8c"
     },
     {
       "frame": 48,
@@ -891,8 +896,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.8154,
-      "bytes": 61039,
-      "sha256": "70e8cb09898388df25a42aaa164c959ee63e838540bb0b3dc299eeecf3dd7688"
+      "bytes": 61103,
+      "sha256": "378287fe9225eaba26e521c56c23d6e1958472060bef6d999491122dfbc77d91"
     },
     {
       "frame": 49,
@@ -908,8 +913,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.6875,
-      "bytes": 60969,
-      "sha256": "da6f9b360cf06b3bb76a4ec2fec886c2ca5d5d5b29f5d286ed9e91339b120914"
+      "bytes": 61085,
+      "sha256": "915fb7df0a52f0cfe2c47d2c2738d99f5513ae134b7ea05607cdc96e0d954bea"
     },
     {
       "frame": 50,
@@ -925,8 +930,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.5361,
-      "bytes": 60731,
-      "sha256": "a5831cbf6075f91ace8b30ab57437d5bbe2c8410eb8ac3c0f87a156970f96cc9"
+      "bytes": 60824,
+      "sha256": "b7a71b0050006dca11510caed7748d9c2562647e3e4f34ca0a5f08cce00d89b2"
     },
     {
       "frame": 51,
@@ -942,8 +947,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.3672,
-      "bytes": 60998,
-      "sha256": "bf8ace0670ebdd5ef8d9e0295e1403a9498c4661fdd82bf3230892fb152dcea6"
+      "bytes": 61140,
+      "sha256": "0864d49f88d9884c27de4b49ee69a24311ad2ef9bd1defc7bc9538f8640e60a2"
     },
     {
       "frame": 52,
@@ -959,8 +964,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9.1865,
-      "bytes": 61201,
-      "sha256": "a0ad19d4002641492d86e3f6a5b2c40923b8cf056529c5417f6af09fad73cad0"
+      "bytes": 61671,
+      "sha256": "ee5924f39c037f75b103cc2acb1c72e2936979dd17e3f89446f364a474645312"
     },
     {
       "frame": 53,
@@ -976,8 +981,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -9,
-      "bytes": 60875,
-      "sha256": "d0dec4f76c406bf363f4f969c21a111d13ca1e45bf5ac1bdd0ee67d2f4c1a1be"
+      "bytes": 61572,
+      "sha256": "a25dc64a3321df3a9d854576df9bdf7ce3cdcf728f1f7b10e9940d57579f531f"
     },
     {
       "frame": 54,
@@ -993,8 +998,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8.8135,
-      "bytes": 60903,
-      "sha256": "26f7d44dbc1330002679adfb2dd7ca85973baa99169bd677dfaf4acf56e6b405"
+      "bytes": 61730,
+      "sha256": "5efb3cacd923e9394f510d5872170e3426e92e3bbd34e2e63089f4c6d5ef3e1a"
     },
     {
       "frame": 55,
@@ -1010,8 +1015,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8.6328,
-      "bytes": 60907,
-      "sha256": "3a8bd4bcc0e9fa9741f3f24bd3d224e532614d12293ea83eca017f0c07a9572c"
+      "bytes": 61860,
+      "sha256": "8e64b56a5e7002a4691b15c39cdea5e32cd05c5717862dd3fb4d7a7d9e637bc0"
     },
     {
       "frame": 56,
@@ -1027,8 +1032,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8.4639,
-      "bytes": 61084,
-      "sha256": "0bc863af55d361eb7506d8f506e6ed88b1b4e6593e1d1cbead6dd5d35c1cd343"
+      "bytes": 62055,
+      "sha256": "e78d2e54cdea7e45d430697f038f016b620e10afd9b2ff7184d8429cc62f76e4"
     },
     {
       "frame": 57,
@@ -1044,8 +1049,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8.3125,
-      "bytes": 60967,
-      "sha256": "b544fc6b72e5e17b2609aed79ead54c8620b121ce55534634e0217e62e9fe324"
+      "bytes": 61491,
+      "sha256": "c0ffa1a1a0a737f538e24623d6418ff6f91c09739b49302c4cfd10cf67d28f0e"
     },
     {
       "frame": 58,
@@ -1061,8 +1066,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8.1846,
-      "bytes": 61021,
-      "sha256": "9e9b6378ad272e34655e4000e1cd42245b50de06faff35a90f52bfc871d63243"
+      "bytes": 61541,
+      "sha256": "8efd3dfebab324d2f22ab3a35cd665c290764f6437646cc33ccaa55c900f2c07"
     },
     {
       "frame": 59,
@@ -1078,8 +1083,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8.0859,
-      "bytes": 60881,
-      "sha256": "493c4ffc875d8a414a77a97312354475d3346f376e1a6157608b06a8811716f5"
+      "bytes": 61235,
+      "sha256": "d9de82bb36f5ff81f02e73f2f1b922b40aec04958bf8f7d33c60fe5142a75296"
     },
     {
       "frame": 60,
@@ -1095,8 +1100,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8.0225,
-      "bytes": 60887,
-      "sha256": "41a48b751b466877ff9cc636fa8c28da1895b31f88e1ac8940801a9f5a836033"
+      "bytes": 61305,
+      "sha256": "ff749b1e3c738991e8cb2ce33c428cf82c22788580ee10d9443e69cd87029289"
     },
     {
       "frame": 61,
@@ -1112,8 +1117,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -8,
-      "bytes": 61316,
-      "sha256": "23ed4b9ee64df8dfdec505e5cc85b7bd4948b90d867bf92cfc4edbfe4c534469"
+      "bytes": 61780,
+      "sha256": "caa6276ec68619c957cb85b9a34bc8c5db5de3011d425373998652e1a4188b27"
     },
     {
       "frame": 62,
@@ -1129,8 +1134,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -7.9551,
-      "bytes": 61411,
-      "sha256": "f70924a621904b8bd7bd6a2e09d136c691359cc7f89f7a833938f6d71b9db0a0"
+      "bytes": 61773,
+      "sha256": "8db1df29ea4f3303e47123e327b3eb718a69a7eed2702a99a37b7a77aa1b4de2"
     },
     {
       "frame": 63,
@@ -1146,8 +1151,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -7.8281,
-      "bytes": 61010,
-      "sha256": "62588d597f1c39a2ebbbe9872eeeb5aeeb3ee4c88fbd187f443a218dfed307b1"
+      "bytes": 61503,
+      "sha256": "081ca7a590714647b8eeb7ca32ae2d4c6163cc7e699a36f8f1e60c0ab76f6894"
     },
     {
       "frame": 64,
@@ -1163,8 +1168,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -7.6309,
-      "bytes": 60610,
-      "sha256": "5dd2c19a8bfb98e39a34ab1a8a4198ab947b9ac67d5b44dbd46688fcbd61d6fc"
+      "bytes": 61422,
+      "sha256": "c08ac10c82b467d5d53fcb5efbe4b010148d67b8d70991ccfe30f4e35c46e4f3"
     },
     {
       "frame": 65,
@@ -1180,8 +1185,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -7.375,
-      "bytes": 60149,
-      "sha256": "37f152fb63bd961c85ccbbef04627b5c8011df7fba2ccbae61f4735b5e37596b"
+      "bytes": 61330,
+      "sha256": "3e0d7506351da432b4fb92eba5aa75ac02ac273f9242e0c059c66bc08f4c5639"
     },
     {
       "frame": 66,
@@ -1197,8 +1202,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -7.0723,
-      "bytes": 59554,
-      "sha256": "44674293b73d9808206772d89b04539f685481e829e3f329827f3682ae7eb1cd"
+      "bytes": 61000,
+      "sha256": "45fa422852e8969c2bcbe284df598a5da2651beb7ab785a900168b5406237706"
     },
     {
       "frame": 67,
@@ -1214,8 +1219,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -6.7344,
-      "bytes": 59517,
-      "sha256": "e1faa8a9407b3d129ace0c128a3b05e9e6b641da20868a4a8413efbab496811e"
+      "bytes": 60888,
+      "sha256": "727841fd15e65d8f5b97e419993794c26eb9e43ad5590b3e51f2945df0ed41af"
     },
     {
       "frame": 68,
@@ -1231,8 +1236,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -6.373,
-      "bytes": 59347,
-      "sha256": "05f79365f896a98bc23dd08f2e10ceb7a9f3f624d33314d76add426401e4b21a"
+      "bytes": 61351,
+      "sha256": "fda7d29cd8ebe3f09175aaa83143717d50636668148fe4785b5fff0578a3de5b"
     },
     {
       "frame": 69,
@@ -1248,8 +1253,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -6,
-      "bytes": 58997,
-      "sha256": "09a332c9c0b98665248349135e15491f1c35cfeec85009a2ac283d2dfe9ac0d5"
+      "bytes": 61268,
+      "sha256": "afc44fbad654b4a79894f41c1b703528fb1f760697be63972640bd856e5af3ee"
     },
     {
       "frame": 70,
@@ -1265,8 +1270,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -5.627,
-      "bytes": 58730,
-      "sha256": "5902f811016c669a4717e75690d96a474447e102bc251cd5f0901d69aa289379"
+      "bytes": 61533,
+      "sha256": "c442199c5d018b8823588c7475fd91832a0f17872077328c333944066fcb56be"
     },
     {
       "frame": 71,
@@ -1282,8 +1287,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -5.2656,
-      "bytes": 58059,
-      "sha256": "97d262988d9a2f8cae424c1572fe4b04cbd89c8e0cd5519f4f9076df2b324671"
+      "bytes": 61036,
+      "sha256": "098385793b135d90b4c1e226bc504115eff2bec38692ab91efaafdf087b98fef"
     },
     {
       "frame": 72,
@@ -1299,8 +1304,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -4.9277,
-      "bytes": 57844,
-      "sha256": "935a4b0d2c964bba03656f26f88381c45bd1f4f5cdaabb6a66ec5a0d455db1bb"
+      "bytes": 61142,
+      "sha256": "3808430266028a2b306fb8030a148584f1e0ca44cf4bf2f68c54d0351d66873c"
     },
     {
       "frame": 73,
@@ -1316,8 +1321,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -4.625,
-      "bytes": 57617,
-      "sha256": "1886f51aac2703d2b6210d93fff4111c558dac2529dc7e809270e1640902b073"
+      "bytes": 60788,
+      "sha256": "365813eb43dc62e8b354201d206de16c06ff2d64b8730ee466f2e2dfd5bac102"
     },
     {
       "frame": 74,
@@ -1333,8 +1338,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -4.3691,
-      "bytes": 57471,
-      "sha256": "068b67fa410f6c6429a81a6baa60aeb39cada4cc9bb774de5078236c999a2f2b"
+      "bytes": 60497,
+      "sha256": "3f64e06e0d6109c628b281a3f1c495aac11ed85cd68de48c3b39b4061d96452c"
     },
     {
       "frame": 75,
@@ -1350,8 +1355,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -4.1719,
-      "bytes": 57721,
-      "sha256": "69c0e12f884b8a07f730c2963ebf3c2aaafeb071f743c387ea142c74f431f0d2"
+      "bytes": 60221,
+      "sha256": "173f677db394d7d347181b52f80eef06934932400a913b32c9001e4afb382dca"
     },
     {
       "frame": 76,
@@ -1367,8 +1372,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -4.0449,
-      "bytes": 58092,
-      "sha256": "7f283f9f575321c761fa0270615bb7fd8db9010c7192a0758149bcfe2da5746c"
+      "bytes": 60148,
+      "sha256": "16e565bc14fc1f9e278d62577d8990edb1a04fce948e1c1a6e4ce182c7df1f58"
     },
     {
       "frame": 77,
@@ -1384,8 +1389,8 @@
       "flowOpacity": 0,
       "flowProgress": 0,
       "productYaw": -4,
-      "bytes": 57946,
-      "sha256": "58550d2692dab26eefd0809bf77b4705dee0b93f073bab7a5d00c7d0b6aeb0d7"
+      "bytes": 59835,
+      "sha256": "1d93e26c22f55e52b64537182c193060011b27ff71399f5f92c862c23326092f"
     },
     {
       "frame": 78,
@@ -1401,8 +1406,8 @@
       "flowOpacity": 0.0343,
       "flowProgress": 0.0343,
       "productYaw": -3.8628,
-      "bytes": 57878,
-      "sha256": "0d496d165f631c2e7ecf41241bb8966bcfe3b9ea031fcbb0ce3dacf6d133d554"
+      "bytes": 59798,
+      "sha256": "042511b000d3541aad04f41e98a7c76947e606b642c53492d6f4374118ad8d5f"
     },
     {
       "frame": 79,
@@ -1418,8 +1423,8 @@
       "flowOpacity": 0.1262,
       "flowProgress": 0.1262,
       "productYaw": -3.4952,
-      "bytes": 57792,
-      "sha256": "a96a1f3f8e7b0a85a0c8ffb83fb6599fcdb08143937857650fc03af0da9996e6"
+      "bytes": 59328,
+      "sha256": "c283571ed119b4b99b36fa67d1a7d9ba0e2df405f85e6a32bb5c9fac2ff50fc2"
     },
     {
       "frame": 80,
@@ -1435,8 +1440,8 @@
       "flowOpacity": 0.2593,
       "flowProgress": 0.2593,
       "productYaw": -2.963,
-      "bytes": 57514,
-      "sha256": "c7c2d88a630bbffd650469cb0515d549eb046f5fa0534787acb4b3fe8d6df468"
+      "bytes": 59095,
+      "sha256": "99383511a307b6a7613a4c5d096230618b8816cb1338480c3cce3dd7697b36e9"
     },
     {
       "frame": 81,
@@ -1452,8 +1457,8 @@
       "flowOpacity": 0.417,
       "flowProgress": 0.417,
       "productYaw": -2.332,
-      "bytes": 57442,
-      "sha256": "5fa198bf053ecb38966b2491e5ab93c58f5a9e016d9c758e4c12bf8fd6052938"
+      "bytes": 59140,
+      "sha256": "84db7f64714d4b5e84e8926f7cb2de0db7732dd00b3c4b1ff727cedbea46aaaf"
     },
     {
       "frame": 82,
@@ -1469,8 +1474,8 @@
       "flowOpacity": 0.583,
       "flowProgress": 0.583,
       "productYaw": -1.668,
-      "bytes": 56923,
-      "sha256": "25df6f9368550733f883aceb9fe8239884194ad6d59e98533b4846ba15644481"
+      "bytes": 58641,
+      "sha256": "b8bb241fadb9ab5b9fe35de0db05795fa16535ac7fb4a3237a3075fac9403871"
     },
     {
       "frame": 83,
@@ -1486,8 +1491,8 @@
       "flowOpacity": 0.7407,
       "flowProgress": 0.7407,
       "productYaw": -1.037,
-      "bytes": 56617,
-      "sha256": "e945080533233a22de6891e463f33122ad612eb39f1eaba380a4d9213dc66fd3"
+      "bytes": 58135,
+      "sha256": "9ac729dc0921c82ed7678b84476d5290471f90333b63d6f0b57a70cb6e5c5ae9"
     },
     {
       "frame": 84,
@@ -1503,8 +1508,8 @@
       "flowOpacity": 0.8738,
       "flowProgress": 0.8738,
       "productYaw": -0.5048,
-      "bytes": 56210,
-      "sha256": "bb812e14eebc39626b347bfdea455794fcfe07d4dfa15838fe37d1e208e24f2b"
+      "bytes": 57962,
+      "sha256": "7f2d20ded97013e890733c07a512441edd949ceb5fbab10faa6f5a5d14a8f154"
     },
     {
       "frame": 85,
@@ -1520,8 +1525,8 @@
       "flowOpacity": 0.9657,
       "flowProgress": 0.9657,
       "productYaw": -0.1372,
-      "bytes": 56196,
-      "sha256": "a3b89ab2da23ce405d7049438daed105b6615e2643e0a8990df2749db720ac5d"
+      "bytes": 57811,
+      "sha256": "339631a0a19704d764cd0a1334be5a1ff97323684753fc71571e6d55234a8505"
     },
     {
       "frame": 86,
@@ -1537,8 +1542,8 @@
       "flowOpacity": 1,
       "flowProgress": 1,
       "productYaw": 0,
-      "bytes": 56075,
-      "sha256": "d99c2355bf309bc7bcceaad8798bd9a6c162585e19b17bc33b3eb994e6eeb8c7"
+      "bytes": 57595,
+      "sha256": "1b0971622316756dab9f9ceeae6982737a4d025d7f52db0a3af0436c7c76fe66"
     },
     {
       "frame": 87,
@@ -1554,8 +1559,8 @@
       "flowOpacity": 0.8438,
       "flowProgress": 1,
       "productYaw": 0.9375,
-      "bytes": 54629,
-      "sha256": "3378347c1a0b1bd5559325f5958ba89ce2f19a611513565a59d483ef2c960bce"
+      "bytes": 56013,
+      "sha256": "2f8c9333eb052af34225be31f841a962126fac5eaa2e5ff71bb6c3b3c9399ac5"
     },
     {
       "frame": 88,
@@ -1571,8 +1576,8 @@
       "flowOpacity": 0.5,
       "flowProgress": 1,
       "productYaw": 3,
-      "bytes": 51915,
-      "sha256": "588a9d1fd6a35e9adda75c4f112c61ffdfb72b4064e3f0e3cc611f87c5401da9"
+      "bytes": 53459,
+      "sha256": "a3290480378b8b873d0c044864a584b002905aacf9c31053b100469c18a8c3d1"
     },
     {
       "frame": 89,
@@ -1588,8 +1593,8 @@
       "flowOpacity": 0.1563,
       "flowProgress": 1,
       "productYaw": 5.0625,
-      "bytes": 49487,
-      "sha256": "92501852419249b57083ab3f0d151111ead0f8182700f0f110f505d8ec322da9"
+      "bytes": 50644,
+      "sha256": "e3166c42fc3d684c63d6c6fe8874d231b1cff098bcc7fcf0b99fd84adebbc6d0"
     },
     {
       "frame": 90,
@@ -1605,8 +1610,8 @@
       "flowOpacity": 0,
       "flowProgress": 1,
       "productYaw": 6,
-      "bytes": 47975,
-      "sha256": "91e56bedfc3975a44387595aebd40a06bc32d533c96ca640f31d618a7555007e"
+      "bytes": 48843,
+      "sha256": "784d7933c35cbbd2059d547b80ad9d22f1441ad1d6e68daa4fea87e063332114"
     },
     {
       "frame": 91,
@@ -1622,8 +1627,8 @@
       "flowOpacity": 0,
       "flowProgress": 1,
       "productYaw": 6,
-      "bytes": 47947,
-      "sha256": "bc8ed3a36939630efa62bef37f09032a9d56da628af369121f5604903126dbe6"
+      "bytes": 48791,
+      "sha256": "30b36684155abe8773ec3370356da4bab35aa52ef92fbc4754297ea7fbda6e52"
     },
     {
       "frame": 92,
@@ -1639,8 +1644,8 @@
       "flowOpacity": 0,
       "flowProgress": 1,
       "productYaw": 6,
-      "bytes": 47875,
-      "sha256": "543cc9c48553b439088f040a09837359460acae665af23df22dffce4f4a91ccf"
+      "bytes": 48726,
+      "sha256": "25d08d1852f0572dc447f14d82bb4ae41fcdfd35a0bbc6eab4f0c06d9b187808"
     },
     {
       "frame": 93,
@@ -1656,8 +1661,8 @@
       "flowOpacity": 0,
       "flowProgress": 1,
       "productYaw": 6,
-      "bytes": 47780,
-      "sha256": "ccb18d164a9e5d49644412d277bb7bfae16a9d9a30ef8efbb0160323dccc7a50"
+      "bytes": 48641,
+      "sha256": "82f066e45df10265cc02d7860da61f260993b35839c98f0730c1bd7610f09a1c"
     },
     {
       "frame": 94,
@@ -1673,8 +1678,8 @@
       "flowOpacity": 0,
       "flowProgress": 1,
       "productYaw": 6,
-      "bytes": 47728,
-      "sha256": "fa80bc37d86ccbc0519a9fe2bd50e1a733faf7c52ca98dbd5174a5a524e9a710"
+      "bytes": 48544,
+      "sha256": "51cf6b11d68f9b5aefed3e4720d9331ddc9bdf991dfc453fe736edfdc47c780f"
     },
     {
       "frame": 95,
@@ -1690,8 +1695,8 @@
       "flowOpacity": 0,
       "flowProgress": 1,
       "productYaw": 6,
-      "bytes": 47393,
-      "sha256": "fe7f9f26bd759bfef8f872a0713345441aeb37405dbaa0856e5ce23f2457ada0"
+      "bytes": 48228,
+      "sha256": "5024180780e273027410ef0737eb02c2474b2f9029ccd869bd65a2c615d954f6"
     }
   ]
 }

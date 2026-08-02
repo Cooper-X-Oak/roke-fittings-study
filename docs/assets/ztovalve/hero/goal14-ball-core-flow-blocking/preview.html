@@ -656,11 +656,34 @@
         const nearBallX = Math.abs(partCenter.x - center.x) < size.x * 0.24;
         const nearBallZ = Math.abs(partCenter.z - center.z) < size.z * 0.48;
         const yDelta = partCenter.y - center.y;
+        const maxExtent = Math.max(partSize.x, partSize.y, partSize.z);
+        const minExtent = Math.min(partSize.x, partSize.y, partSize.z);
+        const extentRatio = minExtent / maxExtent;
+        const sphereLike = extentRatio > 0.68;
+        const thinAxialSeat =
+          nearBallX &&
+          nearBallZ &&
+          diagonal > 0.09 &&
+          diagonal < 0.34 &&
+          extentRatio < 0.24 &&
+          partSize.x < partSize.y * 0.24 &&
+          partSize.x < partSize.z * 0.24;
+        const trueBallCore =
+          nearBallX &&
+          nearBallZ &&
+          sphereLike &&
+          diagonal > 0.29 &&
+          diagonal < 0.33 &&
+          partSize.x > size.x * 0.32 &&
+          yDelta > -size.y * 0.23 &&
+          yDelta < size.y * 0.03;
 
-        if (nearBallX && nearBallZ && diagonal > 0.22 && diagonal < 0.36) return "ball";
+        if (trueBallCore) return "ball";
         if (diagonal < 0.036) return "fastener";
         if (nearBallX && yDelta > size.y * 0.06 && diagonal < 0.18) return "upperDrive";
+        if (nearBallX && yDelta > size.y * 0.2 && diagonal < 0.3) return "upperDrive";
         if (nearBallX && yDelta < -size.y * 0.23 && diagonal < 0.18) return "lowerSupport";
+        if (thinAxialSeat) return "seat";
         if (nearBallX && diagonal < 0.12) return "seat";
         if (partCenter.x < center.x - size.x * 0.13) return "leftBody";
         if (partCenter.x > center.x + size.x * 0.13) return "rightBody";
@@ -847,9 +870,14 @@
           finalHoldFrames: [90, 95],
           frameSequenceRendered: false,
           fullReleaseFrameCount: 0,
-          grammar: "ball-core anchored multi-direction anatomy plus 90-degree quarter-turn and flow-path lines; no 240-frame output",
+          grammar: "single true ball core anchored multi-direction anatomy plus 90-degree quarter-turn; valve seats remain fixed during ball rotation; no 240-frame output",
           meshCount: records.length,
           groupCounts,
+          ballIsolation: {
+            expectedBallMeshCount: 1,
+            actualBallMeshCount: groupCounts.ball || 0,
+            invariant: "Only the true ball core rotates; valve seats, seat seals, shell, support parts, and fasteners do not inherit ballTurn.",
+          },
           truthBoundary: "flow lines express path only; no pressure, flow rate, zero-leakage, material grade, DBB/DIB, or real maintenance claims",
         }),
         setFrame: (frame) => {
