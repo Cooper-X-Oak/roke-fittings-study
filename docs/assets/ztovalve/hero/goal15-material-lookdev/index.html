@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>Goal 15 Material Lookdev</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f5f4;
+        --ink: #111518;
+        --muted: #5e666b;
+        --line: #d5dadc;
+        --brand: #c91d26;
+        --panel: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+      }
+
+      header,
+      main,
+      footer {
+        max-width: 1480px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      header {
+        padding-top: 52px;
+        padding-bottom: 30px;
+      }
+
+      .kicker {
+        margin: 0 0 16px;
+        color: var(--brand);
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 1120px;
+        margin: 0;
+        font-size: clamp(42px, 5.8vw, 86px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.48fr);
+        gap: 42px;
+        align-items: end;
+        margin-top: 26px;
+      }
+
+      .intro p,
+      .panel p,
+      .audit p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .rules {
+        margin: 0;
+        padding: 22px 24px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        list-style: none;
+      }
+
+      .rules li {
+        display: flex;
+        gap: 12px;
+        color: #2a3034;
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .rules li + li {
+        margin-top: 12px;
+      }
+
+      .rules b {
+        color: var(--brand);
+      }
+
+      .gallery {
+        display: grid;
+        gap: 28px;
+        padding-bottom: 46px;
+      }
+
+      figure {
+        margin: 0;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      figure img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      figcaption {
+        display: grid;
+        grid-template-columns: minmax(0, 0.38fr) minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px 20px 20px;
+      }
+
+      figcaption strong {
+        display: block;
+        font-size: 20px;
+      }
+
+      figcaption span {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .audit {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        padding: 30px 0 62px;
+        border-top: 1px solid var(--line);
+      }
+
+      .panel {
+        padding: 24px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .panel h2 {
+        margin: 0 0 12px;
+        font-size: 22px;
+      }
+
+      footer {
+        padding-bottom: 44px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 980px) {
+        header,
+        main,
+        footer {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .intro,
+        .audit,
+        figcaption {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="kicker">Goal 15 / 4K industrial material lookdev</p>
+      <h1>固定式球阀超高清材质 lookdev still</h1>
+      <div class="intro">
+        <p>
+          这一版暂停流体动画，把重点收敛到工业产品广告质感：深石墨阀体、抛光球芯、暗色固定阀座、机加工小五金和摄影棚长条高光。
+          它是 4K 静帧材质基准，不接首页，不生成 240 帧正式序列。
+        </p>
+        <ul class="rules">
+          <li><b>01</b><span>先判断阀门本体能否拍得真实、厚重、精密。</span></li>
+          <li><b>02</b><span>球芯是最亮的功能锚点；阀座固定且低反射。</span></li>
+          <li><b>03</b><span>黑色阀体靠反射和边缘高光建立体积，不靠纯黑。</span></li>
+          <li><b>04</b><span>不声明压力、流量、零泄漏、材质牌号或介质类型。</span></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="gallery" aria-label="4K material lookdev stills">
+        <figure>
+          <img src="stills/01-master-product-4k.png" alt="完整产品商业主视角 4K 材质 lookdev">
+          <figcaption>
+            <strong>01 / 完整产品商业主视角</strong>
+            <span>看黑色阀体是否有真实金属体积、法兰边缘是否吃到高光、球芯是否成为更贵的视觉锚点。</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="stills/02-ball-seat-core-4k.png" alt="球芯与阀座材质近景 4K lookdev">
+          <figcaption>
+            <strong>02 / 球芯与阀座材质近景</strong>
+            <span>看球芯抛光不锈钢、固定阀座/密封低反射、上驱动与下支撑的金属层级是否清楚。</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="stills/03-flange-fastener-detail-4k.png" alt="法兰与螺栓细节近景 4K lookdev">
+          <figcaption>
+            <strong>03 / 法兰与螺栓细节近景</strong>
+            <span>看螺栓、孔位、法兰边缘和接触阴影是否能承载高端工业产品的细节可信度。</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="audit" aria-label="Material audit">
+        <section class="panel">
+          <h2>材质分层</h2>
+          <p>阀体为深石墨金属，球芯为抛光不锈钢，阀座/密封为暗色低反射，小五金更亮但不抢主角。</p>
+        </section>
+        <section class="panel">
+          <h2>机械边界</h2>
+          <p>球芯仍是单件隔离；阀座和阀座密封保持固定材质组，不跟随球体旋转。</p>
+        </section>
+        <section class="panel">
+          <h2>生产边界</h2>
+          <p>这是 Three.js 高分辨率 lookdev 基准，不是最终路径追踪母版；正式 240 帧需在通过后另开。</p>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      Source model: <code>../fixed-ball-valve.glb</code>. Manifest: <code>lookdev-manifest.json</code>. Audit: <code>material-audit.md</code>.
+    </footer>
+  </body>
+</html>

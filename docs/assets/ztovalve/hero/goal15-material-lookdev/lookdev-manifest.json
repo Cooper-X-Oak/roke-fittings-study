@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-02T03:27:38.385Z",
+  "sourceUrl": "http://127.0.0.1:4192/roke-fittings-study/assets/ztovalve/hero/goal15-material-lookdev/preview.html",
+  "preview": "docs/assets/ztovalve/hero/goal15-material-lookdev/preview.html",
+  "renderProfile": {
+    "width": 3840,
+    "height": 2160,
+    "dpr": 1,
+    "stillCount": 3,
+    "kind": "4K industrial material lookdev stills for fixed ball valve",
+    "frameSequenceRendered": false,
+    "fullReleaseFrameCount": 0,
+    "homepageConnected": false
+  },
+  "ready": {
+    "width": 3840,
+    "height": 2160,
+    "stillCount": 3,
+    "model": "../fixed-ball-valve.glb",
+    "modelSha256": "89024869647b3aaf3fe5301694a2753dc87e9dd3d05b41b9c651ef4e9754384b",
+    "sourceBoundary": "Original STEP and brochure are not modified; this lookdev uses the derived fixed-ball-valve.glb.",
+    "renderBoundary": "Goal 15 renders 4K material lookdev stills only; no 240-frame release sequence, homepage replacement, or fluid claim.",
+    "materialThesis": "commercial graphite pressure body, polished stainless ball core, dark fixed seat/seal system, satin machined drive/support, brighter steel fasteners",
+    "groupCounts": {
+      "rightBody": 5,
+      "fastener": 73,
+      "ball": 1,
+      "lowerSupport": 16,
+      "centerBody": 2,
+      "seat": 12,
+      "upperDrive": 27,
+      "leftBody": 2
+    },
+    "ballIsolation": {
+      "expectedBallMeshCount": 1,
+      "actualBallMeshCount": 1,
+      "invariant": "Only the true ball core receives ballTurn; valve seats and seat seals remain fixed material groups."
+    },
+    "truthBoundary": "No pressure, flow rate, zero-leakage, fire-safe, anti-static, DBB/DIB, material grade, or medium claim is made.",
+    "states": [
+      {
+        "id": "master-product",
+        "name": "完整产品商业主视角",
+        "filename": "01-master-product-4k.png",
+        "purpose": "验证黑色阀体、抛光球芯和小五金在完整采购视角下是否具有工业广告质感。"
+      },
+      {
+        "id": "ball-seat-core",
+        "name": "球芯与阀座材质近景",
+        "filename": "02-ball-seat-core-4k.png",
+        "purpose": "验证球芯抛光不锈钢、阀座/密封深色低反射、阀座固定不随球转的材质分层。"
+      },
+      {
+        "id": "flange-fastener-detail",
+        "name": "法兰与螺栓细节近景",
+        "filename": "03-flange-fastener-detail-4k.png",
+        "purpose": "验证法兰边缘、孔位、螺栓和接触阴影是否能撑起高端工业产品细节。"
+      }
+    ]
+  },
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1050 (0x00001C91) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "constraints": [
+    "Goal 15 renders 4K material lookdev stills only.",
+    "No 240-frame release sequence is rendered.",
+    "The homepage is not replaced or connected to these stills.",
+    "The fluid-line layer is intentionally out of scope for this material pass.",
+    "Only the true ball core is isolated as polished stainless; valve seats remain fixed dark seat/seal material.",
+    "No pressure, flow-rate, zero-leakage, fire-safe, anti-static, DBB/DIB, material grade, or medium claim is made."
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "combinedStillSha256": "0ac75362dfac10b1151a2a5b0f7190d4899f7ad1eadb964542e70b53a5d0aaf4",
+  "totalStillBytes": 3637757,
+  "renderDurationMs": 3914,
+  "stills": [
+    {
+      "id": "master-product",
+      "name": "完整产品商业主视角",
+      "purpose": "验证黑色阀体、抛光球芯和小五金在完整采购视角下是否具有工业广告质感。",
+      "filename": "01-master-product-4k.png",
+      "path": "docs/assets/ztovalve/hero/goal15-material-lookdev/stills/01-master-product-4k.png",
+      "width": 3840,
+      "height": 2160,
+      "bytes": 896035,
+      "sha256": "a197b596a781d9bb631e81e73a6cc19aa6486b18d94b6925bb5db0330b7b6e9d"
+    },
+    {
+      "id": "ball-seat-core",
+      "name": "球芯与阀座材质近景",
+      "purpose": "验证球芯抛光不锈钢、阀座/密封深色低反射、阀座固定不随球转的材质分层。",
+      "filename": "02-ball-seat-core-4k.png",
+      "path": "docs/assets/ztovalve/hero/goal15-material-lookdev/stills/02-ball-seat-core-4k.png",
+      "width": 3840,
+      "height": 2160,
+      "bytes": 1558396,
+      "sha256": "97bcb6987e580f1e839d2a32027b82e3a7d60114d33779ed216efe563859bbce"
+    },
+    {
+      "id": "flange-fastener-detail",
+      "name": "法兰与螺栓细节近景",
+      "purpose": "验证法兰边缘、孔位、螺栓和接触阴影是否能撑起高端工业产品细节。",
+      "filename": "03-flange-fastener-detail-4k.png",
+      "path": "docs/assets/ztovalve/hero/goal15-material-lookdev/stills/03-flange-fastener-detail-4k.png",
+      "width": 3840,
+      "height": 2160,
+      "bytes": 1183326,
+      "sha256": "f388843cee97d3a05b448d0bb2580da496b24e7ca3b20a2834cb2a6e3e51dbc3"
+    }
+  ]
+}
