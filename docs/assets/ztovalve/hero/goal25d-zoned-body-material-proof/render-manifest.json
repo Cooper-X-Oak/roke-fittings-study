@@ -1,0 +1,689 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-03T00:16:00.004271+00:00",
+  "goal": "Goal 25-D isolated valve body material zoning proof",
+  "profile": "smoke",
+  "renderer": "Blender Cycles",
+  "blender": "5.2.0 LTS",
+  "sourceBoundary": {
+    "stepSource": "D:/program/WXrecord/xwechat_files/wxid_p21a7v5850v922_6db6/msg/file/2026-08/固定式球阀(1).STEP",
+    "stepSourceSha256": "3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547",
+    "stepMesh": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/goal20-step-mesh.glb",
+    "stepMeshSha256": "0326bbf77f186dc9869bd0715d7096f94bad3d502b1b0cab1d93860dcef4888f",
+    "goal20SemanticMap": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/semantic-material-map.json",
+    "rule": "Goal 25-D isolates only the STEP-derived valve body mesh and assigns per-zone material IDs."
+  },
+  "researchReferences": [
+    {
+      "id": "adobe-pbr-metal-roughness",
+      "title": "Adobe Substance 3D - The PBR Guide",
+      "url": "https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-2",
+      "takeaway": "Keep metalness, roughness, normal/height and base reflection values separated; do not fake rough stainless by whitening diffuse color."
+    },
+    {
+      "id": "openpbr-layering",
+      "title": "OpenPBR Surface Specification",
+      "url": "https://academysoftwarefoundation.github.io/OpenPBR/",
+      "takeaway": "Use layered base/coat/roughness/normal/tangent controls for real material behavior instead of one monolithic shader."
+    },
+    {
+      "id": "bssa-blasted-finish",
+      "title": "BSSA - Bead and shot blasted stainless steel finishes",
+      "url": "https://bssa.org.uk/bssa_articles/specifying-bead-and-shot-blasted-stainless-steel-finishes-and-their-applications/",
+      "takeaway": "Blasted stainless is a non-directional low-reflective satin finish, not a powder-white coating."
+    },
+    {
+      "id": "bssa-mechanical-finish",
+      "title": "BSSA - Mechanically polished, brushed and buffed stainless finishes",
+      "url": "https://bssa.org.uk/bssa_articles/specifying-mechanically-polished-brushed-and-buffed-stainless-steel-finishes-and-their-applications/",
+      "takeaway": "Machined, brushed and polished zones need named finish intent, abrasive direction and surface quality boundaries."
+    },
+    {
+      "id": "casting-source-surface-texture",
+      "title": "Casting Source - Surface finish requirements and inspection",
+      "url": "https://www.castingsource.com/articles/2024/11/21/surface-finish-requirements-and-inspection",
+      "takeaway": "Casting texture should be treated as roughness, waviness and lay produced by process plus finishing, not as uniform noise."
+    }
+  ],
+  "bodyIdentity": {
+    "sourceName": "·§ͥ",
+    "partName": "阀体",
+    "originalCenter": [
+      -0.097058,
+      -0.2855,
+      0.023408
+    ],
+    "originalSize": [
+      0.2475,
+      0.27,
+      0.2855
+    ],
+    "centeredCenter": [
+      -0.0,
+      -0.0,
+      0.0
+    ],
+    "centeredSize": [
+      0.2475,
+      0.27,
+      0.2855
+    ],
+    "goal20PartCountForBody": 1
+  },
+  "materialLibrary": [
+    {
+      "id": "G25-SS-CAST-BLASTED-SATIN-01",
+      "label": "cast blasted satin shell",
+      "cn": "阀体主壳/柱体",
+      "intent": "investment-cast stainless body, bead/sand blasted satin, non-directional, metal reflection retained",
+      "debugColor": [
+        0.34,
+        0.53,
+        0.72,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.33,
+          0.35,
+          0.32,
+          1.0
+        ],
+        "roughness": 0.45,
+        "anisotropic": 0.22,
+        "coat": 0.018,
+        "texture": "cast_noise",
+        "roughness_variation": [
+          0.4,
+          0.56
+        ],
+        "roughness_noise_scale": 420,
+        "roughness_noise_detail": 14,
+        "bump": 0.0065,
+        "bump_distance": 0.0011,
+        "bump_scale": 880,
+        "bump_detail": 15
+      }
+    },
+    {
+      "id": "G25-SS-MACH-FLANGE-RADIAL-01",
+      "label": "machined radial flange face",
+      "cn": "法兰正面",
+      "intent": "flat machined flange face with restrained explicit concentric tool-path trace migrated from Goal 25-C",
+      "debugColor": [
+        0.86,
+        0.78,
+        0.28,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.52,
+          0.54,
+          0.5,
+          1.0
+        ],
+        "roughness": 0.29,
+        "anisotropic": 0.7,
+        "coat": 0.055,
+        "texture": "none",
+        "roughness_variation": null,
+        "bump": 0.0
+      }
+    },
+    {
+      "id": "G25-SS-BRUSH-NO4-LINEAR-01",
+      "label": "brushed no.4 flange side",
+      "cn": "法兰外圆侧面",
+      "intent": "brushed/satin stainless on flange outside diameter, directional but still industrial",
+      "debugColor": [
+        0.45,
+        0.72,
+        0.38,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.46,
+          0.48,
+          0.44,
+          1.0
+        ],
+        "roughness": 0.34,
+        "anisotropic": 0.82,
+        "coat": 0.035,
+        "texture": "none",
+        "roughness_variation": null,
+        "bump": 0.0
+      }
+    },
+    {
+      "id": "G25-SS-MACH-BORE-CIRCULAR-01",
+      "label": "machined circular bore",
+      "cn": "内孔/流道入口",
+      "intent": "darker cylindrical machined bore with restrained circumferential cutting trace migrated from Goal 25-C",
+      "debugColor": [
+        0.82,
+        0.44,
+        0.34,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.32,
+          0.34,
+          0.31,
+          1.0
+        ],
+        "roughness": 0.31,
+        "anisotropic": 0.74,
+        "coat": 0.04,
+        "texture": "none",
+        "roughness_variation": null,
+        "bump": 0.0
+      }
+    },
+    {
+      "id": "G25-SS-EDGE-BURNISH-01",
+      "label": "edge burnish",
+      "cn": "倒角/棱线/凸筋高点",
+      "intent": "thin brighter worn edges and bevel highlights from handling or final deburring",
+      "debugColor": [
+        0.96,
+        0.96,
+        0.88,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.56,
+          0.58,
+          0.54,
+          1.0
+        ],
+        "roughness": 0.24,
+        "anisotropic": 0.48,
+        "coat": 0.08,
+        "texture": "none",
+        "bump": 0.001,
+        "bump_distance": 0.0004
+      }
+    },
+    {
+      "id": "G25-SS-MACH-BOLT-BORE-DARK-01",
+      "label": "dark machined bolt bore",
+      "cn": "螺栓孔内壁",
+      "intent": "smaller darker, rougher machined cylindrical walls with local rim and inside-ring witness traces",
+      "debugColor": [
+        0.62,
+        0.42,
+        0.74,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.24,
+          0.26,
+          0.24,
+          1.0
+        ],
+        "roughness": 0.43,
+        "anisotropic": 0.58,
+        "coat": 0.018,
+        "texture": "none",
+        "roughness_variation": null,
+        "bump": 0.0
+      }
+    },
+    {
+      "id": "G25-SS-ROOT-DARK-AO-01",
+      "label": "dark groove root",
+      "cn": "凹槽根部",
+      "intent": "dark reflection-retaining metal in shoulder grooves and root transitions; explicitly not lifted to powder white",
+      "debugColor": [
+        0.2,
+        0.22,
+        0.23,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.28,
+          0.3,
+          0.28,
+          1.0
+        ],
+        "roughness": 0.54,
+        "anisotropic": 0.18,
+        "coat": 0.01,
+        "texture": "cast_noise",
+        "roughness_variation": [
+          0.48,
+          0.62
+        ],
+        "roughness_noise_scale": 240,
+        "roughness_noise_detail": 12,
+        "bump": 0.0045,
+        "bump_distance": 0.0009,
+        "bump_scale": 760,
+        "bump_detail": 12
+      }
+    }
+  ],
+  "zoneAssignment": {
+    "flowAxis": "x",
+    "axisInference": {
+      "scores": [
+        {
+          "axis": "x",
+          "index": 0,
+          "sideAreas": [
+            0.025197124746705768,
+            0.038676172607438275
+          ],
+          "score": 0.1016689844742027
+        },
+        {
+          "axis": "y",
+          "index": 1,
+          "sideAreas": [
+            0.007326851826633174,
+            0.007326573593928742
+          ],
+          "score": 0.02564328581145503
+        },
+        {
+          "axis": "z",
+          "index": 2,
+          "sideAreas": [
+            0.012767401715799006,
+            0.01911506194795887
+          ],
+          "score": 0.05103356623745638
+        }
+      ],
+      "selectedAxis": "x"
+    },
+    "localBounds": {
+      "min": [
+        -0.220808,
+        -0.4205,
+        -0.119342
+      ],
+      "max": [
+        0.026692,
+        -0.1505,
+        0.166158
+      ],
+      "center": [
+        -0.097058,
+        -0.2855,
+        0.023408
+      ],
+      "size": [
+        0.2475,
+        0.27,
+        0.2855
+      ]
+    },
+    "radialAxes": [
+      "y",
+      "z"
+    ],
+    "innerRadiusEstimate": 0.07843,
+    "outerRadiusEstimate": 0.13814,
+    "zoneCounts": {
+      "G25-SS-CAST-BLASTED-SATIN-01": 25462,
+      "G25-SS-EDGE-BURNISH-01": 170,
+      "G25-SS-MACH-FLANGE-RADIAL-01": 9410,
+      "G25-SS-ROOT-DARK-AO-01": 2390,
+      "G25-SS-BRUSH-NO4-LINEAR-01": 2357,
+      "G25-SS-MACH-BOLT-BORE-DARK-01": 1368,
+      "G25-SS-MACH-BORE-CIRCULAR-01": 521
+    },
+    "zoneAreas": {
+      "G25-SS-CAST-BLASTED-SATIN-01": 0.28445763,
+      "G25-SS-EDGE-BURNISH-01": 0.00083303,
+      "G25-SS-MACH-FLANGE-RADIAL-01": 0.12215705,
+      "G25-SS-ROOT-DARK-AO-01": 0.00793834,
+      "G25-SS-BRUSH-NO4-LINEAR-01": 0.04408381,
+      "G25-SS-MACH-BOLT-BORE-DARK-01": 0.0259487,
+      "G25-SS-MACH-BORE-CIRCULAR-01": 0.02488127
+    },
+    "zoneExamples": {
+      "G25-SS-CAST-BLASTED-SATIN-01": [
+        [
+          -0.14154,
+          -0.36611,
+          -0.05507
+        ],
+        [
+          -0.14232,
+          -0.36606,
+          -0.05512
+        ],
+        [
+          -0.14186,
+          -0.36945,
+          -0.05844
+        ],
+        [
+          -0.14315,
+          -0.36594,
+          -0.05525
+        ],
+        [
+          -0.14272,
+          -0.36936,
+          -0.05853
+        ]
+      ],
+      "G25-SS-EDGE-BURNISH-01": [
+        [
+          -0.1887,
+          -0.32516,
+          0.16116
+        ],
+        [
+          -0.1887,
+          -0.33635,
+          0.15616
+        ],
+        [
+          -0.20195,
+          -0.30603,
+          0.15416
+        ],
+        [
+          -0.20176,
+          -0.30596,
+          0.16016
+        ],
+        [
+          -0.20195,
+          -0.31395,
+          0.15416
+        ]
+      ],
+      "G25-SS-MACH-FLANGE-RADIAL-01": [
+        [
+          -0.18944,
+          -0.3255,
+          0.15616
+        ],
+        [
+          -0.1899,
+          -0.32579,
+          0.15616
+        ],
+        [
+          -0.1892,
+          -0.32538,
+          0.16116
+        ],
+        [
+          -0.19013,
+          -0.32594,
+          0.16116
+        ],
+        [
+          -0.19075,
+          -0.32647,
+          0.15616
+        ]
+      ],
+      "G25-SS-ROOT-DARK-AO-01": [
+        [
+          -0.18123,
+          -0.29772,
+          0.13382
+        ],
+        [
+          -0.18142,
+          -0.29773,
+          0.14049
+        ],
+        [
+          -0.18199,
+          -0.29782,
+          0.13382
+        ],
+        [
+          -0.1818,
+          -0.29778,
+          0.14049
+        ],
+        [
+          -0.18255,
+          -0.29799,
+          0.13382
+        ]
+      ],
+      "G25-SS-BRUSH-NO4-LINEAR-01": [
+        [
+          -0.20063,
+          -0.30575,
+          0.16016
+        ],
+        [
+          -0.20082,
+          -0.30577,
+          0.15416
+        ],
+        [
+          -0.20139,
+          -0.30586,
+          0.15416
+        ],
+        [
+          -0.2012,
+          -0.30582,
+          0.16016
+        ],
+        [
+          -0.20139,
+          -0.31412,
+          0.16016
+        ]
+      ],
+      "G25-SS-MACH-BOLT-BORE-DARK-01": [
+        [
+          -0.21347,
+          -0.39543,
+          -0.01567
+        ],
+        [
+          -0.20614,
+          -0.39545,
+          -0.01594
+        ],
+        [
+          -0.20614,
+          -0.39558,
+          -0.01675
+        ],
+        [
+          -0.20614,
+          -0.39573,
+          -0.01728
+        ],
+        [
+          -0.21347,
+          -0.39552,
+          -0.01648
+        ]
+      ],
+      "G25-SS-MACH-BORE-CIRCULAR-01": [
+        [
+          0.00869,
+          -0.37745,
+          0.04912
+        ],
+        [
+          0.00869,
+          -0.37636,
+          0.05052
+        ],
+        [
+          0.01669,
+          -0.3767,
+          0.05003
+        ],
+        [
+          0.01669,
+          -0.37575,
+          0.05152
+        ],
+        [
+          0.00869,
+          -0.37548,
+          0.05205
+        ]
+      ]
+    },
+    "classificationRule": [
+      "Infer the main flow axis from the largest paired planar end-face area.",
+      "Classify end planar rings as machined radial flange faces.",
+      "Classify central low-radius cylindrical surfaces as machined bores.",
+      "Classify smaller non-planar end-band holes as darker bolt bores.",
+      "Classify outside flange side walls as brushed No.4/satin side finish.",
+      "Classify shoulder bands as dark groove/root reflection zones.",
+      "Use a bevel modifier with edge-burnish material for thin worn highlights."
+    ]
+  },
+  "traceMigration": {
+    "source": "Goal 25-C restrained geometric machining traces",
+    "sourceManifest": "docs/assets/ztovalve/hero/goal25c-real-machining-traces/render-manifest.json",
+    "appliedTraceIds": [
+      "G25-TRACE-MACH-FLANGE-RADIAL-GEOM-01",
+      "G25-TRACE-MACH-BORE-CIRCULAR-GEOM-01",
+      "G25-TRACE-MACH-BOLT-BORE-DARK-GEOM-01"
+    ],
+    "targetZoneIds": [
+      "G25-SS-MACH-FLANGE-RADIAL-01",
+      "G25-SS-MACH-BORE-CIRCULAR-01",
+      "G25-SS-MACH-BOLT-BORE-DARK-01"
+    ],
+    "implementedAs": "explicit body-local bevel curve geometry parented to the STEP-derived valve body",
+    "randomSeed": 250528,
+    "flangeTraceRingsPerEnd": 9,
+    "flangeTraceCurveSegments": 82,
+    "boreCircumferentialRings": 10,
+    "boreMouthRimObjects": 4,
+    "boltHoleRingObjects": 18,
+    "detectedBoltHoleClusters": {
+      "min": [
+        {
+          "thetaDegrees": 90.26,
+          "radius": 0.01934,
+          "sampleCount": 896
+        }
+      ],
+      "max": [
+        {
+          "thetaDegrees": 18.63,
+          "radius": 0.013096,
+          "sampleCount": 65
+        },
+        {
+          "thetaDegrees": 65.79,
+          "radius": 0.014696,
+          "sampleCount": 65
+        },
+        {
+          "thetaDegrees": 114.21,
+          "radius": 0.014696,
+          "sampleCount": 65
+        },
+        {
+          "thetaDegrees": 161.37,
+          "radius": 0.013096,
+          "sampleCount": 65
+        },
+        {
+          "thetaDegrees": 206.06,
+          "radius": 0.014544,
+          "sampleCount": 58
+        },
+        {
+          "thetaDegrees": 248.84,
+          "radius": 0.013414,
+          "sampleCount": 48
+        },
+        {
+          "thetaDegrees": 291.16,
+          "radius": 0.013414,
+          "sampleCount": 48
+        },
+        {
+          "thetaDegrees": 333.94,
+          "radius": 0.014544,
+          "sampleCount": 58
+        }
+      ]
+    },
+    "visibleTraceObjects": 114
+  },
+  "renderProfile": {
+    "width": 1200,
+    "height": 675,
+    "samples": 40,
+    "engine": "Cycles",
+    "isolatedBodyOnly": true,
+    "fullValveRendered": false,
+    "homepageConnected": false,
+    "motionTestRendered": false,
+    "frameSequenceRendered": false,
+    "published": false
+  },
+  "lighting": {
+    "hdri": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/studio_small_09_1k.hdr",
+    "strategy": "studio HDRI plus white panels and charcoal reflection flags, keeping metal dark/bright value evidence visible",
+    "areaLights": [
+      "goal25d_left_large_softbox",
+      "goal25d_top_long_softbox",
+      "goal25d_right_edge_softbox",
+      "goal25d_front_low_fill"
+    ],
+    "reflectionFlags": [
+      "goal25d_right_charcoal_flag",
+      "goal25d_low_charcoal_flag"
+    ]
+  },
+  "stills": [
+    {
+      "id": "01-zoned-body-material-proof",
+      "title": "zoned body material proof",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/01-zoned-body-material-proof.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 949274,
+      "sha256": "76726dc3bf8bc17f6ae08879ec46c425977f0637b57f6702d1698ad4989f6719"
+    },
+    {
+      "id": "02-material-zone-id",
+      "title": "material zone id map",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/02-material-zone-id.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 856210,
+      "sha256": "29f7587f7c386faa7c30bdde8291004528ae3266654118bcae60be430c03de63"
+    },
+    {
+      "id": "03-flange-bore-zone-close",
+      "title": "flange and bore zoning close-up",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/03-flange-bore-zone-close.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 928734,
+      "sha256": "4c379015a4d53b7a090450d82e3090c87f60b5fdd89f2f6caf8e305261eaa8c5"
+    }
+  ],
+  "constraints": [
+    "Only the isolated valve body mesh is rendered.",
+    "No homepage hero replacement is performed.",
+    "No GitHub Pages publication is performed.",
+    "No 24-frame or 240-frame animation is rendered.",
+    "Material labels are reusable visual lookdev IDs, not certified alloy or surface finish claims."
+  ]
+}
