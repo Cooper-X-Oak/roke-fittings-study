@@ -1,52 +1,297 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-02T07:32:50.299Z",
-  "url": "http://127.0.0.1:4193/roke-fittings-study/",
+  "verifiedAt": "2026-08-04T20:16:53.302Z",
+  "url": "http://127.0.0.1:4180/roke-fittings-study/",
   "desktop": {
+    "wordmarkProbe": {
+      "exists": false,
+      "visible": false,
+      "text": ""
+    },
     "firstProbe": {
       "exists": true,
-      "width": 1920,
-      "height": 1080,
+      "width": 960,
+      "height": 540,
       "classReady": true,
-      "alphaPixels": 4,
+      "staticSample": false,
+      "alphaPixels": 13,
+      "cornerAlphaMax": 0,
+      "signature": "7736fe3c",
       "mean": [
-        176,
-        180,
-        179,
-        255
+        61,
+        62,
+        61,
+        95
       ],
-      "dataPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08"
+      "dataPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAAIcCAYAAAA5Xc"
     },
-    "scrolledProbe": {
+    "midProbe": {
       "exists": true,
-      "width": 1920,
-      "height": 1080,
+      "width": 960,
+      "height": 540,
       "classReady": true,
-      "alphaPixels": 4,
+      "staticSample": false,
+      "alphaPixels": 10,
+      "cornerAlphaMax": 0,
+      "signature": "84863e0e",
       "mean": [
-        223,
-        224,
-        224,
-        255
+        53,
+        53,
+        53,
+        67
       ],
-      "dataPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08"
+      "dataPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAAIcCAYAAAA5Xc"
+    },
+    "expandedProbe": {
+      "exists": true,
+      "width": 960,
+      "height": 540,
+      "classReady": true,
+      "staticSample": false,
+      "alphaPixels": 10,
+      "cornerAlphaMax": 0,
+      "signature": "43f57348",
+      "mean": [
+        48,
+        49,
+        48,
+        73
+      ],
+      "dataPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8AAAAIcCAYAAAA5Xc"
+    },
+    "geometry": {
+      "scrollTargets": {
+        "mid": 484,
+        "expanded": 862,
+        "info": 1015
+      },
+      "first": {
+        "scrollY": 0,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "heroElements": {
+          "top": 0,
+          "right": 1360,
+          "bottom": 900,
+          "left": 80,
+          "width": 1280,
+          "height": 900
+        },
+        "heroFrames": {
+          "top": 492,
+          "right": 1360,
+          "bottom": 798,
+          "left": 80,
+          "width": 1280,
+          "height": 306
+        },
+        "heroFramesStyle": {
+          "position": "absolute",
+          "bottom": "0px",
+          "height": "306px"
+        },
+        "canvas": {
+          "top": 378,
+          "right": 1194,
+          "bottom": 911,
+          "left": 246,
+          "width": 947,
+          "height": 533
+        },
+        "canvasStyle": {
+          "transform": "matrix(0.74, 0, 0, 0.74, -640.016, -360.008)",
+          "opacity": "1"
+        },
+        "heroInfo": {
+          "rect": {
+            "top": 310,
+            "right": 1440,
+            "bottom": 805,
+            "left": 0,
+            "width": 1440,
+            "height": 495
+          },
+          "opacity": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, -50)"
+        }
+      },
+      "mid": {
+        "scrollY": 484,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "heroElements": {
+          "top": 0,
+          "right": 1360,
+          "bottom": 900,
+          "left": 80,
+          "width": 1280,
+          "height": 900
+        },
+        "heroFrames": {
+          "top": 173,
+          "right": 1360,
+          "bottom": 798,
+          "left": 80,
+          "width": 1280,
+          "height": 625
+        },
+        "heroFramesStyle": {
+          "position": "absolute",
+          "bottom": "0px",
+          "height": "625px"
+        },
+        "canvas": {
+          "top": 219,
+          "right": 1194,
+          "bottom": 752,
+          "left": 246,
+          "width": 947,
+          "height": 533
+        },
+        "canvasStyle": {
+          "transform": "matrix(0.74, 0, 0, 0.74, -640.016, -360.008)",
+          "opacity": "1"
+        },
+        "heroInfo": {
+          "rect": {
+            "top": 310,
+            "right": 1440,
+            "bottom": 805,
+            "left": 0,
+            "width": 1440,
+            "height": 495
+          },
+          "opacity": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, -50)"
+        }
+      },
+      "expanded": {
+        "scrollY": 862,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "heroElements": {
+          "top": 0,
+          "right": 1360,
+          "bottom": 900,
+          "left": 80,
+          "width": 1280,
+          "height": 900
+        },
+        "heroFrames": {
+          "top": -77,
+          "right": 1360,
+          "bottom": 798,
+          "left": 80,
+          "width": 1280,
+          "height": 875
+        },
+        "heroFramesStyle": {
+          "position": "absolute",
+          "bottom": "0px",
+          "height": "875px"
+        },
+        "canvas": {
+          "top": 94,
+          "right": 1194,
+          "bottom": 627,
+          "left": 246,
+          "width": 947,
+          "height": 533
+        },
+        "canvasStyle": {
+          "transform": "matrix(0.74, 0, 0, 0.74, -640.016, -360.008)",
+          "opacity": "1"
+        },
+        "heroInfo": {
+          "rect": {
+            "top": 310,
+            "right": 1440,
+            "bottom": 805,
+            "left": 0,
+            "width": 1440,
+            "height": 495
+          },
+          "opacity": 0,
+          "transform": "matrix(1, 0, 0, 1, 0, -50)"
+        }
+      },
+      "info": {
+        "scrollY": 1015,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "heroElements": {
+          "top": -135,
+          "right": 1360,
+          "bottom": 765,
+          "left": 80,
+          "width": 1280,
+          "height": 900
+        },
+        "heroFrames": {
+          "top": -237,
+          "right": 1360,
+          "bottom": 663,
+          "left": 80,
+          "width": 1280,
+          "height": 900
+        },
+        "heroFramesStyle": {
+          "position": "absolute",
+          "bottom": "0px",
+          "height": "900px"
+        },
+        "canvas": {
+          "top": -54,
+          "right": 1194,
+          "bottom": 479,
+          "left": 246,
+          "width": 947,
+          "height": 533
+        },
+        "canvasStyle": {
+          "transform": "matrix(0.74, 0, 0, 0.74, -640.016, -360.008)",
+          "opacity": "1"
+        },
+        "heroInfo": {
+          "rect": {
+            "top": 225,
+            "right": 1440,
+            "bottom": 720,
+            "left": 0,
+            "width": 1440,
+            "height": 495
+          },
+          "opacity": 1,
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      }
     },
     "catalogLink": {
       "text": "查看产品",
-      "href": "http://127.0.0.1:4193/roke-fittings-study/catalog/index.html"
+      "href": "http://127.0.0.1:4180/roke-fittings-study/catalog/index.html"
     },
     "screenshots": [
       "docs/assets/ztovalve/hero/homepage-desktop-first-view.png",
-      "docs/assets/ztovalve/hero/homepage-desktop-scrolled.png"
+      "docs/assets/ztovalve/hero/homepage-desktop-mid-expand.png",
+      "docs/assets/ztovalve/hero/homepage-desktop-expanded.png",
+      "docs/assets/ztovalve/hero/homepage-desktop-info-visible.png"
     ]
   },
   "mobile": {
     "probe": {
       "desktopHeroVisible": false,
-      "imageSrc": "http://127.0.0.1:4193/roke-fittings-study/assets/ztovalve/hero/fixed-ball-valve-mobile-fallback.png",
+      "imageSrc": "http://127.0.0.1:4180/roke-fittings-study/assets/ztovalve/hero/fixed-ball-valve-mobile-fallback.png",
       "complete": true,
-      "naturalWidth": 1920,
-      "naturalHeight": 1080
+      "naturalWidth": 960,
+      "naturalHeight": 540
     },
     "screenshot": "docs/assets/ztovalve/hero/homepage-mobile-fallback.png"
   },
@@ -54,11 +299,11 @@
   "pageErrors": [],
   "failedRequests": [
     {
-      "url": "http://127.0.0.1:4193/roke-fittings-study/upload/iblock/f8f/o76jwnhvqfie30jibw0h5bvnpisyjxpo.mp4",
+      "url": "http://127.0.0.1:4180/roke-fittings-study/upload/iblock/f8f/o76jwnhvqfie30jibw0h5bvnpisyjxpo.mp4",
       "failure": "net::ERR_ABORTED"
     },
     {
-      "url": "http://127.0.0.1:4193/roke-fittings-study/upload/iblock/e06/bh7rr01l12oz5oq58ryfjukgeuxaejsi.mp4",
+      "url": "http://127.0.0.1:4180/roke-fittings-study/upload/iblock/e06/bh7rr01l12oz5oq58ryfjukgeuxaejsi.mp4",
       "failure": "net::ERR_ABORTED"
     }
   ]

@@ -1,0 +1,603 @@
+{
+  "schema": "ztovalve-v3-semantic-node-map/v1",
+  "kind": "semantic_node_map",
+  "mapId": "ztovalve-fixed-ball-valve-hero-v3",
+  "status": "selector-ready-needs-blender-contact-check",
+  "createdFor": "v3 staged score: ROKE-style controlled explosion, assembly lock-in, and 90-degree ball-core proof",
+  "createdAtLocal": "2026-08-05",
+  "scope": {
+    "product": "ztovalve fixed ball valve",
+    "heroMotionVersion": "v3",
+    "purpose": "Bind STEP semantic part names to GLB nodeIndex selectors for the next Blender asset inspection and preview bundle.",
+    "homepageConnected": false,
+    "final240FrameSequenceConnected": false,
+    "usesThreeJsForHomepageHero": false,
+    "touchesGoal30": false,
+    "modifiesExistingRenderScripts": false
+  },
+  "sourceEvidence": {
+    "stepSource": {
+      "path": "asset/derived/fixed-ball-valve/source/固定式球阀.STEP",
+      "sha256": "3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547",
+      "format": "STEP AP214",
+      "unit": "millimeter",
+      "authoringTool": "SolidWorks 2018, detected from header",
+      "semanticAuthority": "decoded STEP product names"
+    },
+    "glbSource": {
+      "preferredPath": "docs/assets/ztovalve/hero/fixed-ball-valve.glb",
+      "scratchMirrorPath": ".scratch/assets/ztovalve/hero/fixed-ball-valve.glb",
+      "sha256": "89024869647b3aaf3fe5301694a2753dc87e9dd3d05b41b9c651ef4e9754384b",
+      "nodeCount": 140,
+      "meshNodeCount": 138,
+      "meshCount": 138,
+      "primitiveCount": 138,
+      "triangleCount": 559104,
+      "textureCount": 0,
+      "animationCount": 0,
+      "cameraCount": 0
+    },
+    "auditFiles": [
+      "asset/derived/fixed-ball-valve/model-audit-step.json",
+      "asset/derived/fixed-ball-valve/model-inspection.json",
+      ".scratch/assets/ztovalve/hero/goal20-blender-cycles-step-proof/semantic-material-map.json"
+    ],
+    "namingWarning": "GLB node names include GBK mojibake and duplicate names; use gltf nodeIndex selectors as the stable binding."
+  },
+  "coordinateNotes": {
+    "units": "meters in GLB, millimeters in STEP audit",
+    "productBoundsMeters": {
+      "min": [
+        -0.329308,
+        -0.148342,
+        0.1505
+      ],
+      "max": [
+        0.026692,
+        0.359158,
+        0.4205
+      ],
+      "center": [
+        -0.151308,
+        0.105408,
+        0.2855
+      ],
+      "extent": [
+        0.356,
+        0.5075,
+        0.27
+      ],
+      "diagonal": 0.67616
+    },
+    "axisPolicy": "Treat body, seat, ball, stem, and bracket axes as candidates until Blender close-up and six-side inspection confirm contact and alignment."
+  },
+  "groups": [
+    {
+      "groupId": "body-pressure-shell",
+      "label": "阀体/阀盖压力壳体",
+      "v3Role": "Primary visual mass for controlled explosion and assembly lock-in.",
+      "motionPolicy": "Allowed to separate along the body axis for advertising choreography; do not claim this as a service sequence.",
+      "selectorConfidence": "high",
+      "nodeIndexCount": 4,
+      "triangleCount": 40164,
+      "parts": [
+        {
+          "partName": "阀体",
+          "expectedGlbName": "·§ͥ",
+          "nodeIndices": [
+            2
+          ],
+          "triangleCount": 28606
+        },
+        {
+          "partName": "阀盖",
+          "expectedGlbName": "·§¸",
+          "nodeIndices": [
+            39,
+            64
+          ],
+          "triangleCount": 11010
+        },
+        {
+          "partName": "堵头",
+          "expectedGlbName": "¶Í·",
+          "nodeIndices": [
+            139
+          ],
+          "triangleCount": 548
+        }
+      ],
+      "inspectionFocus": [
+        "Check shell seam contact after reassembly.",
+        "Check whether shell edges catch light without black blotches.",
+        "Check if partial shell transparency is usable for the ball-core proof."
+      ]
+    },
+    {
+      "groupId": "ball-trunnion-core",
+      "label": "球体/固定轴/轴承核心",
+      "v3Role": "Functional proof group: ball core visibility and 90-degree quarter-turn.",
+      "motionPolicy": "Only the real ball mesh may carry the 90-degree function rotation unless Blender inspection proves a better coupled axis.",
+      "selectorConfidence": "high-for-ball, medium-for-support-axis",
+      "nodeIndexCount": 6,
+      "triangleCount": 8514,
+      "parts": [
+        {
+          "partName": "球体",
+          "expectedGlbName": "Ȳͥ",
+          "nodeIndices": [
+            23
+          ],
+          "triangleCount": 5686,
+          "v3Required": true
+        },
+        {
+          "partName": "固定轴",
+          "expectedGlbName": "¹̶¨ס",
+          "nodeIndices": [
+            24
+          ],
+          "triangleCount": 1676
+        },
+        {
+          "partName": "固定轴垫片",
+          "expectedGlbName": "¹̶¨סµ熬",
+          "nodeIndices": [
+            25
+          ],
+          "triangleCount": 288
+        },
+        {
+          "partName": "固定轴轴承",
+          "expectedGlbName": "¹̶¨סס³",
+          "nodeIndices": [
+            26
+          ],
+          "triangleCount": 288
+        },
+        {
+          "partName": "止推垫",
+          "expectedGlbName": "ֹΆµ",
+          "nodeIndices": [
+            40
+          ],
+          "triangleCount": 288
+        },
+        {
+          "partName": "球体轴承",
+          "expectedGlbName": "Ȳͥס³",
+          "nodeIndices": [
+            44
+          ],
+          "triangleCount": 288
+        }
+      ],
+      "inspectionFocus": [
+        "Confirm the ball bore direction is readable in the hero camera.",
+        "Confirm the quarter-turn axis aligns with the visual stem axis.",
+        "Confirm fixed-axis/trunnion support reads as stable instead of loose floating parts."
+      ]
+    },
+    {
+      "groupId": "seat-seal-system",
+      "label": "阀座/密封圈/盘根系统",
+      "v3Role": "Seat closure and sealing relationship around the ball.",
+      "motionPolicy": "Allowed to move subtly toward the ball as a sealing cue; do not over-separate into a parts catalogue.",
+      "selectorConfidence": "high",
+      "nodeIndexCount": 7,
+      "triangleCount": 10760,
+      "parts": [
+        {
+          "partName": "阀座",
+          "expectedGlbName": "·§ع",
+          "nodeIndices": [
+            7,
+            66
+          ],
+          "triangleCount": 1672
+        },
+        {
+          "partName": "阀座压圈",
+          "expectedGlbName": "·§عѹȦ",
+          "nodeIndices": [
+            5,
+            67
+          ],
+          "triangleCount": 7976
+        },
+        {
+          "partName": "阀座密封圈",
+          "expectedGlbName": "·§عĜ·㈦",
+          "nodeIndices": [
+            4,
+            68
+          ],
+          "triangleCount": 752
+        },
+        {
+          "partName": "阀座盘根",
+          "expectedGlbName": "·§×ùÅÌ¸ù",
+          "nodeIndices": [
+            6
+          ],
+          "triangleCount": 360
+        }
+      ],
+      "inspectionFocus": [
+        "Confirm left/right seat symmetry.",
+        "Confirm seat contact gap against ball at assembled state.",
+        "Confirm close-up highlight does not turn seals into unreadable dark rings."
+      ]
+    },
+    {
+      "groupId": "stem-packing-drive",
+      "label": "阀杆/填料/填料箱传动密封区",
+      "v3Role": "Vertical drive and packing stack that supports the quarter-turn proof.",
+      "motionPolicy": "Use vertical staged assembly and subtle emphasis; do not imply unverified maintenance order.",
+      "selectorConfidence": "medium",
+      "nodeIndexCount": 6,
+      "triangleCount": 7552,
+      "parts": [
+        {
+          "partName": "阀杆轴承",
+          "expectedGlbName": "·§¸̖ᴐ",
+          "nodeIndices": [
+            43
+          ],
+          "triangleCount": 288
+        },
+        {
+          "partName": "填料箱",
+          "expectedGlbName": "ͮФ",
+          "nodeIndices": [
+            41
+          ],
+          "triangleCount": 4872
+        },
+        {
+          "partName": "填料箱垫片",
+          "expectedGlbName": "ͮФµ熬",
+          "nodeIndices": [
+            42
+          ],
+          "triangleCount": 288
+        },
+        {
+          "partName": "填料",
+          "expectedGlbName": "ͮ",
+          "nodeIndices": [
+            45
+          ],
+          "triangleCount": 288
+        },
+        {
+          "partName": "填料压圈",
+          "expectedGlbName": "ͮѹȦ",
+          "nodeIndices": [
+            54
+          ],
+          "triangleCount": 720
+        },
+        {
+          "partName": "填料压盖",
+          "expectedGlbName": "ͮѹ¸",
+          "nodeIndices": [
+            55
+          ],
+          "triangleCount": 1096
+        }
+      ],
+      "inspectionFocus": [
+        "STEP product tree lists 阀杆, but current GLB inspection exposes no independent 阀杆 node.",
+        "Confirm whether the stem is merged into another mesh or must be rebuilt before a stem-driven animation.",
+        "Keep the ball 90-degree proof bound to the ball mesh until the drive axis is verified."
+      ]
+    },
+    {
+      "groupId": "top-bracket-actuator",
+      "label": "顶部支架/连接轴/支架螺柱",
+      "v3Role": "Top vertical structure that locks the visual axis and must not cover navigation.",
+      "motionPolicy": "Allowed to descend along the vertical axis during assembly; keep it compact in frame 0001.",
+      "selectorConfidence": "high-for-visible-top-structure",
+      "nodeIndexCount": 10,
+      "triangleCount": 4438,
+      "parts": [
+        {
+          "partName": "支架",
+          "expectedGlbName": "֧¼",
+          "nodeIndices": [
+            109
+          ],
+          "triangleCount": 2576
+        },
+        {
+          "partName": "支架螺柱",
+          "expectedGlbName": "Ö§¼ÜÂÝÖù",
+          "nodeIndices": [
+            112,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121
+          ],
+          "triangleCount": 1120
+        },
+        {
+          "partName": "连接轴",
+          "expectedGlbName": "Á¬½ÓÖá",
+          "nodeIndices": [
+            136
+          ],
+          "triangleCount": 742
+        }
+      ],
+      "inspectionFocus": [
+        "Check top bracket-to-packing contact.",
+        "Check whether the connecting shaft reads as actuator linkage or needs a rebuilt stem proxy.",
+        "Keep all top motion outside the desktop navigation clearance."
+      ]
+    },
+    {
+      "groupId": "fasteners-small-hardware",
+      "label": "螺柱/螺母/垫片/弹簧小件",
+      "v3Role": "Secondary detail texture for controlled assembly, not the main hero story.",
+      "motionPolicy": "Use grouped ring motion or mild emphasis only; avoid animating every small part independently.",
+      "selectorConfidence": "high-for-grouped-motion, low-for-individual-storytelling",
+      "nodeIndexCount": 97,
+      "triangleCount": 486556,
+      "parts": [
+        {
+          "partName": "弹簧",
+          "expectedGlbName": "µ¯»",
+          "nodeIndices": [
+            3,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84
+          ],
+          "triangleCount": 455168
+        },
+        {
+          "partName": "体盖螺柱",
+          "expectedGlbName": "Ìå¸ÇÂÝÖù",
+          "nodeIndices": [
+            85,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108
+          ],
+          "triangleCount": 1680
+        },
+        {
+          "partName": "M14螺母",
+          "expectedGlbName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+          "nodeIndices": [
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97
+          ],
+          "triangleCount": 6624
+        },
+        {
+          "partName": "M10螺母",
+          "expectedGlbName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+          "nodeIndices": [
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            57,
+            58,
+            59,
+            60,
+            113,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128
+          ],
+          "triangleCount": 9720
+        },
+        {
+          "partName": "M10x45双头螺柱",
+          "expectedGlbName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+          "nodeIndices": [
+            27,
+            34,
+            35,
+            36,
+            37,
+            38
+          ],
+          "triangleCount": 840
+        },
+        {
+          "partName": "M10x55双头螺柱",
+          "expectedGlbName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+          "nodeIndices": [
+            56,
+            61,
+            62,
+            63
+          ],
+          "triangleCount": 560
+        },
+        {
+          "partName": "内六角螺钉",
+          "expectedGlbName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+          "nodeIndices": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53
+          ],
+          "triangleCount": 9344
+        },
+        {
+          "partName": "弹簧垫圈",
+          "expectedGlbName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+          "nodeIndices": [
+            114,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135
+          ],
+          "triangleCount": 2272
+        },
+        {
+          "partName": "平键",
+          "expectedGlbName": "Æ½¼ü",
+          "nodeIndices": [
+            137
+          ],
+          "triangleCount": 28
+        },
+        {
+          "partName": "中道垫片",
+          "expectedGlbName": "אµ5熬",
+          "nodeIndices": [
+            65
+          ],
+          "triangleCount": 456
+        },
+        {
+          "partName": "排污阀垫片",
+          "expectedGlbName": "ƅϛ·§µ熬",
+          "nodeIndices": [
+            138
+          ],
+          "triangleCount": 288
+        },
+        {
+          "partName": "圆柱销",
+          "expectedGlbName": "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+          "nodeIndices": [
+            110,
+            111
+          ],
+          "triangleCount": 696
+        }
+      ],
+      "inspectionFocus": [
+        "Do not animate all 97 small hardware nodes as independent hero beats.",
+        "Spring meshes are triangle-heavy and should be treated carefully in preview performance checks.",
+        "Use grouped rings or selective visibility for the commercial hero."
+      ]
+    }
+  ],
+  "controlledGaps": [
+    {
+      "gapId": "missing-independent-stem-node",
+      "status": "open",
+      "evidence": "STEP productNames contains 阀杆, but current GLB node inspection and semantic-material-map do not expose an independent 阀杆 nodeIndex.",
+      "impact": "The 90-degree proof can be staged on 球体 nodeIndex 23 now, but a visible stem-driven coupling must be confirmed or rebuilt in Blender."
+    },
+    {
+      "gapId": "contact-and-axis-not-yet-viewport-proven",
+      "status": "open",
+      "evidence": "This map is generated from structured JSON audits, not from Blender close-up viewport or six-side inspection.",
+      "impact": "Do not approve high-quality preview or 240-frame rendering until body-seat-ball-stem contact is visually and numerically inspected."
+    }
+  ],
+  "v3StageBindings": [
+    {
+      "stage": "frame-0001-controlled-explosion",
+      "primaryGroups": [
+        "body-pressure-shell",
+        "ball-trunnion-core",
+        "seat-seal-system",
+        "top-bracket-actuator"
+      ],
+      "secondaryGroups": [
+        "fasteners-small-hardware",
+        "stem-packing-drive"
+      ]
+    },
+    {
+      "stage": "frame-0120-assembly-lock-and-quarter-turn-proof",
+      "primaryGroups": [
+        "ball-trunnion-core",
+        "seat-seal-system",
+        "stem-packing-drive"
+      ],
+      "criticalNodeIndices": [
+        23
+      ]
+    },
+    {
+      "stage": "frame-0240-commercial-poster-hold",
+      "primaryGroups": [
+        "body-pressure-shell",
+        "top-bracket-actuator"
+      ],
+      "policy": "Return to complete product, not a maintenance cutaway."
+    }
+  ],
+  "acceptanceForNextStep": [
+    "Every group has at least one nodeIndex selector.",
+    "All nodeIndex selectors must exist in the target GLB.",
+    "The preview entry must not call goal30 or any existing render script.",
+    "Blender preview must start with low-cost import/contact inspection before rendered stills."
+  ]
+}

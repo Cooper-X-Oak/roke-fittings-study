@@ -2,3 +2,9 @@ __pycache__/
 *.py[cod]
 .scratch/
 asset/
+creative/
+docs/experiment/
+validation-results/
+docs/assets/ztovalve/hero/v3-blender-preview-entry/
+docs/assets/ztovalve/hero/v3-closeup-asset-inspection/
+docs/assets/ztovalve/hero/v3-low-cost-preview-bundle/

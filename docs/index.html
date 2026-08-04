@@ -46,9 +46,7 @@
   }
 
   .zt-hero-wordmark-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none !important;
   }
 
   .hero-title-wordmark {
@@ -67,11 +65,17 @@
     object-position: center;
     padding: 24px;
     position: absolute;
+    inset: 0;
     width: 100%;
   }
 
   .hero-frames {
-    position: relative;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    will-change: height;
   }
 
   .zt-hero-sequence-canvas {
@@ -92,7 +96,14 @@
   }
 
   #image-sequence.zt-hero-sequence-canvas {
-    transform: translate(-50%, -32%) scale(.74);
+    transform: translate(-50%, -50%) scale(.74);
+  }
+
+  @media (min-width: 992px) {
+    .page-home .header {
+      background-color: rgba(244, 244, 246, .96);
+    }
+
   }
 
   .section-hero-mobile .hero-info-title {
@@ -243,9 +254,6 @@
       <div class="hero-elements position-relative w-100 h-100">
         <div class="hero-title">
           <div class="hero-title-wrapper position-relative w-100 h-100">
-            <div class="hero-title-svg-wrapper zt-hero-wordmark-wrap">
-              <div class="hero-title-svg hero-title-wordmark" aria-hidden="true">ZTOVALVE</div>
-            </div>
           </div>
 
           <div class="position-absolute start-0 end-0 top-0 bottom-0">
@@ -255,7 +263,7 @@
                               src="/roke-fittings-study/assets/ztovalve/hero/fixed-ball-valve-mobile-fallback.png"
                               alt="正拓法兰固定式球阀"
                             />
-                            <canvas id="image-sequence" class="zt-hero-sequence-canvas" width="1920" height="1080"></canvas>
+                            <canvas id="image-sequence" class="zt-hero-sequence-canvas" width="960" height="540"></canvas>
             </div>
           </div>
 

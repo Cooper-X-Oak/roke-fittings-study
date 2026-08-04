@@ -1,19 +1,79 @@
 'use strict';
 
-var svgHeight = $('.hero-title-svg-wrapper').height();
-var heroElementsHeight = $('.hero-elements').height();
-var heroFramesHeight = svgHeight / 4;
+var ROKE_HERO_TITLE_WIDTH = 817;
+var ROKE_HERO_TITLE_HEIGHT = 204;
+var heroMotionMediaQuery = window.matchMedia
+  ? window.matchMedia('(prefers-reduced-motion: reduce)')
+  : { matches: false };
+var heroSequenceCanvasElement = document.querySelector('#image-sequence');
+var isHeroStaticSample = heroSequenceCanvasElement && heroSequenceCanvasElement.dataset.staticSample === 'true';
 
-// console.log('svgHeight: ', svgHeight);
-// console.log('heroFramesHeight: ', heroFramesHeight);
-// console.log('heroElementsHeight: ', heroElementsHeight);
+function clampHeroHeight(value, min, max) {
+  return Math.min(Math.max(value, min), Math.max(min, max));
+}
+
+function measureHeroLayout() {
+  var heroElements = document.querySelector('.hero-elements');
+  var heroTitle = document.querySelector('.hero-title');
+  var heroElementsRect = heroElements ? heroElements.getBoundingClientRect() : { width: 0, height: 0 };
+  var heroTitleInnerWidth = 0;
+
+  if (heroTitle) {
+    var heroTitleRect = heroTitle.getBoundingClientRect();
+    var heroTitleStyle = window.getComputedStyle(heroTitle);
+    heroTitleInnerWidth = Math.max(
+      0,
+      heroTitleRect.width
+        - (parseFloat(heroTitleStyle.paddingLeft) || 0)
+        - (parseFloat(heroTitleStyle.paddingRight) || 0)
+    );
+  }
+
+  if (!heroTitleInnerWidth) {
+    heroTitleInnerWidth = heroElementsRect.width;
+  }
+
+  var syntheticTitleHeight = heroTitleInnerWidth * ROKE_HERO_TITLE_HEIGHT / ROKE_HERO_TITLE_WIDTH;
+  var heroElementsHeight = Math.round(heroElementsRect.height);
+  var rokeStartHeight = syntheticTitleHeight / 4 || 56;
+  var transparentAssetStartFloor = heroElementsHeight * 0.34;
+  var startHeightMax = Math.max(56, heroElementsHeight * 0.35);
+  var startHeight = Math.round(clampHeroHeight(Math.max(rokeStartHeight, transparentAssetStartFloor), 56, startHeightMax));
+
+  return {
+    heroElementsHeight: heroElementsHeight,
+    heroTitleInnerWidth: Math.round(heroTitleInnerWidth),
+    syntheticTitleHeight: Math.round(syntheticTitleHeight),
+    startHeight: startHeight
+  };
+}
+
+var initialHeroLayout = measureHeroLayout();
+var initialHeroFramesHeight = heroMotionMediaQuery.matches && initialHeroLayout.heroElementsHeight
+  ? initialHeroLayout.heroElementsHeight
+  : initialHeroLayout.startHeight;
+
+// console.log('heroFramesStartHeight: ', initialHeroLayout.startHeight);
+// console.log('heroElementsHeight: ', initialHeroLayout.heroElementsHeight);
 
 
-$('.hero-frames').height(heroFramesHeight);
+$('.hero-frames')
+  .toggleClass('is-static-sample', !!isHeroStaticSample)
+  .height(initialHeroFramesHeight);
 
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(ScrollTrigger);
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = heroMotionMediaQuery.matches;
+
+  const applyHeroFrameStart = () => {
+    const layout = measureHeroLayout();
+    gsap.set('.hero-frames', {
+      height: reducedMotion && layout.heroElementsHeight ? layout.heroElementsHeight : layout.startHeight
+    });
+    return layout;
+  };
+
+  applyHeroFrameStart();
 
 
   // gsap.fromTo('.section-promo', {
@@ -28,55 +88,72 @@ document.addEventListener("DOMContentLoaded", (event) => {
   //   }
   // });
 
-  gsap.to('.hero-title-svg-wrapper', {
-    bottom: '110%',
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      scrub: true,
-      start: 'top',
-      end: 'bottom top',
-      // markers: true,
-    }
+  if (!reducedMotion && document.querySelector('.hero-title-svg-wrapper')) {
+    gsap.to('.hero-title-svg-wrapper', {
+      bottom: '110%',
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        scrub: true,
+        start: 'top',
+        end: 'bottom top',
+        // markers: true,
+      }
+    });
+  }
+
+  if (!reducedMotion && document.querySelector('.hero-title-svg')) {
+    gsap.to('.hero-title-svg', {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        scrub: true,
+        start: 'top',
+        end: 'bottom top',
+        // markers: true,
+      }
+    });
+  }
+
+  if (reducedMotion) {
+    gsap.set('.hero-info', { opacity: 1, y: 0 });
+  } else {
+    gsap.to('.hero-info', {
+      opacity: 1,
+      y: 0,
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        scrub: true,
+        start: 'bottom top',
+        end: 'bottom',
+        duration: 2,
+      }
+    });
+
+
+    gsap.fromTo('.hero-frames', {
+      height: () => measureHeroLayout().startHeight
+    }, {
+      height: () => measureHeroLayout().heroElementsHeight,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-wrapper',
+        scrub: true,
+        start: 'top',
+        end: 'bottom',
+        invalidateOnRefresh: true,
+      }
+    });
+  }
+
+
+
+  const goal31HeroSequence = Object.freeze({
+    frameCount: 240,
+    fps: 30,
+    durationSeconds: 8,
+    basePath: '/roke-fittings-study/upload/images/zt-hero-fixed-ball-valve/',
   });
-
-  gsap.to('.hero-title-svg', {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      scrub: true,
-      start: 'top',
-      end: 'bottom top',
-      // markers: true,
-    }
-  });
-
-
-  gsap.to('.hero-info', {
-    opacity: 1,
-    y: 0,
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      scrub: true,
-      start: 'bottom top',
-      end: 'bottom',
-      duration: 2,
-    }
-  });
-
-
-  gsap.to('.hero-frames', {
-    height: heroElementsHeight,
-    scrollTrigger: {
-      trigger: '.hero-wrapper',
-      scrub: true,
-      start: 'top',
-      end: 'bottom',
-    }
-  });
-
-
-
-  let frameCount = 240;
+  let frameCount = goal31HeroSequence.frameCount;
   // let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1/${(i+1).toString().padStart(4, '0')}.webp`);
   // let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_avif/${(i+1).toString().padStart(4, '0')}.avif`);
 
@@ -84,7 +161,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_new_kraken/${(i+1).toString().padStart(4, '0')}.webp`);
 
   // let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/frames1_new_kraken_fullhd/${(i+1).toString().padStart(4, '0')}.png`);
-  let urls = new Array(frameCount).fill().map((o, i) => `/roke-fittings-study/upload/images/zt-hero-fixed-ball-valve/${(i+1).toString().padStart(4, '0')}.avif`);
+  let urls = new Array(frameCount).fill().map((o, i) => `${goal31HeroSequence.basePath}${(i+1).toString().padStart(4, '0')}.avif`);
 
   const heroSequenceCanvas = document.querySelector('#image-sequence');
   const heroFramesElement = document.querySelector('.hero-frames');
@@ -94,7 +171,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       canvas: "#image-sequence", // <canvas> object to draw images to
       clear: true, // only necessary if your images contain transparency
       onUpdate: () => heroFramesElement && heroFramesElement.classList.add('is-sequence-ready'),
-      // fps: 720,
+      fps: goal31HeroSequence.fps,
       scrollTrigger: {
         trigger: '.hero-wrapper',
         // snap: 1,
@@ -113,16 +190,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let urls3 = new Array(frameCount3).fill().map((o, i) => `/roke-fittings-study/upload/images/frames3_avif/${(i+1).toString().padStart(4, '0')}.avif`);
   // console.log(urls3);
 
-  gsap.to('#section-promo-image-sequence', {
-    scale: 1.025,
-    scrollTrigger: {
-      trigger: '.section-promo',
-      scrub: true,
-      start: 'top top',
-      end: 'bottom bottom',
-      // markers: true,
-    }
-  });
+  if (!reducedMotion) {
+    gsap.to('#section-promo-image-sequence', {
+      scale: 1.025,
+      scrollTrigger: {
+        trigger: '.section-promo',
+        scrub: true,
+        start: 'top top',
+        end: 'bottom bottom',
+        // markers: true,
+      }
+    });
+  }
 
   imageSequence({
     urls: urls3, // Array of image URLs
@@ -130,7 +209,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     clear: true, // only necessary if your images contain transparency
     // onUpdate: (index, image) => console.log("drew image index", index, ", image:", image),
     // fps: 720,
-    scrollTrigger: {
+    scrollTrigger: reducedMotion ? undefined : {
       trigger: '.section-promo',
       // snap: 1,
       scrub: true, // important!
