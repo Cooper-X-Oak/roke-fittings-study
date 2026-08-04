@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blender Offline Hero Preview</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="story" class="scroll-shell">
+    <section class="stage" aria-label="Blender offline rendered control valve hero preview">
+      <video
+        id="product-video"
+        class="hero-video"
+        muted
+        playsinline
+        preload="auto"
+        poster="./assets/first-frame.png"
+      ></video>
+      <img id="poster" class="poster" src="./assets/first-frame.png" alt="">
+      <div class="hud" aria-hidden="true">
+        <p class="eyebrow">Blender offline render / scheduler bridge</p>
+        <h1>Offline Hero Frames</h1>
+        <p id="shot-label">00 / READY</p>
+      </div>
+      <div class="timeline" aria-hidden="true"><span id="timeline-fill"></span></div>
+    </section>
+  </main>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

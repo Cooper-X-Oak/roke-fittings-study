@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "kind": "hero_runtime_release_gate_authority",
+  "authority_id": "hero-runtime",
+  "control_id": "hero-runtime-delivery-gate",
+  "status": "active",
+  "statement": "交付门槛权威要求在 240 帧渲染、首页替换或 Pages 发布前，先有被视觉批准的 clean commercial lookdev，并通过材质、灯光、镜头、运动与 storyboard 验证。",
+  "approval_state": {
+    "approved_for_240_frame_render": false,
+    "approved_for_homepage_replacement": false,
+    "approved_for_pages_publication": false
+  },
+  "runtime_authority_policy": {
+    "sole_current_hero_render_authority": true,
+    "render_manifest_authority_binding_required": true,
+    "non_runtime_render_authority_allowed": false,
+    "runtime_authority_files_must_be_hashed": true
+  },
+  "required_before_release": [
+    "approved clean commercial lookdev",
+    "runtime validator pass",
+    "render manifest declares hero-runtime as sole current hero render authority",
+    "no non-runtime material experiment treated as current hero render authority",
+    "no product-facing polygon material-zone artifacts",
+    "white background is proven to be background and controlled environment only, not the primary subject light",
+    "subject lighting is proven to come from independently tunable far large soft sources",
+    "continuous white-silver reflection environment is proven to create metal layering without readable equipment",
+    "polished ball is proven free of readable non-ball product-part reflections",
+    "material is proven as clean metallic-roughness stainless under the active lighting authority",
+    "camera is proven wide and stable enough for fully exploded opening, assembly, ball core, cutaway and flow phases",
+    "motion is proven as one-way fully-exploded-to-assembled route, not assembled-exploded-assembled round trip",
+    "storyboard is proven as fully exploded opening, precision assembly, ball core presentation, cutaway reveal and clear water flow hold",
+    "no camera-readable glossy light equipment",
+    "no black-flag reflection pollution",
+    "material, lighting, camera, motion and storyboard all match this authority folder"
+  ],
+  "lookdev_evidence_state": {
+    "current_visual_approval": false,
+    "current_authority_lookdev_revalidation_required": true,
+    "runtime_revalidation_scope": [
+      "lighting",
+      "material",
+      "camera",
+      "motion",
+      "storyboard",
+      "delivery"
+    ],
+    "stale_lookdev_binding_allowed_only_while_release_blocked": true,
+    "reason": "运行权威已升级为证据校准后的工业 Blender 商业渲染路线；既有小样不得被解释为新权威下的视觉批准。"
+  },
+  "controlled_unknowns": [
+    {
+      "control_id": "unresolved-reflection-contamination-policy",
+      "status": "open",
+      "statement": "尚未视觉批准球体和不锈钢表面的反射污染边界；黑旗、灯具、发光板和周边产品部件在 glossy 反射中的可读形状必须在后续 clean white-studio reflection correction 小样中被消除或经人工明确批准。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    },
+    {
+      "control_id": "unresolved-background-as-primary-light",
+      "status": "open",
+      "statement": "尚未视觉证明白背景只承担背景与受控环境职责，而不是主体主光；必须避免大面积白光正面平洗导致阀体阴影纹理糟糕、金属层次消失。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    },
+    {
+      "control_id": "unresolved-product-part-reflection-contamination",
+      "status": "open",
+      "statement": "尚未视觉证明抛光球体不会反射可读的左右阀盖、阀体、阀座、支架、阀杆、小五金、弹簧或其他非球体产品部件。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    },
+    {
+      "control_id": "unresolved-lighting-lookdev-revalidation",
+      "status": "open",
+      "statement": "灯光权威升级后，需要重新生成并人工审查 clean commercial white-studio lookdev；旧小样只能作为历史证据，不能作为新灯光权威的视觉批准。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    },
+    {
+      "control_id": "unresolved-material-lookdev-revalidation",
+      "status": "open",
+      "statement": "尚未视觉证明材质在当前灯光权威下呈现商业级硅溶胶精密铸造不锈钢，而不是白塑料、黑铸钢、战损噪声或脏污表面。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    },
+    {
+      "control_id": "unresolved-camera-lookdev-revalidation",
+      "status": "open",
+      "statement": "尚未视觉证明镜头在短滚动中保持足够距离、长焦商业感、产品留白和阶段性构图，不裁掉关键爆炸部件、不拍进灯具、不用过近视角压迫产品。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    },
+    {
+      "control_id": "unresolved-motion-route-revalidation",
+      "status": "open",
+      "statement": "尚未视觉证明动画路线已从合体-爆炸-合体往返改为完全爆炸首帧到精密合体、球体慢旋、剖面和清水流的单向短滚动过程。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    },
+    {
+      "control_id": "unresolved-storyboard-delivery-revalidation",
+      "status": "open",
+      "statement": "尚未视觉证明分镜和交付资产已按新短滚动路线完成，且没有把旧小样、旧分镜或旧动画解释为当前可发布 hero。",
+      "blocks": [
+        "approved_for_240_frame_render",
+        "approved_for_homepage_replacement",
+        "approved_for_pages_publication"
+      ]
+    }
+  ],
+  "next_required_milestone": "evidence-calibrated-runtime-lookdev"
+}

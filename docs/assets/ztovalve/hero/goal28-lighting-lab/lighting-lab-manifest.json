@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "goalId": "goal28-lighting-lab",
+  "generatedAt": "2026-08-03T08:07:50.843761+00:00",
+  "product": "ztovalve fixed ball valve",
+  "purpose": "Compare three reflection-environment lighting samples before any Goal28 240-frame render.",
+  "sampleFrames": [
+    0,
+    72,
+    136,
+    216
+  ],
+  "reviewFramePriority": [
+    136,
+    72,
+    216,
+    0
+  ],
+  "variants": [
+    {
+      "variantId": "lighting-v01",
+      "label": "v01 direct five-light on white cloth",
+      "strategy": "direct-five-light-white-cloth-baseline",
+      "intent": "五灯位置保持不变，但改成白色布景/自然光棚基线，确认产品不再被黑背景吃成黑阀门。",
+      "route": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v01/index.html",
+      "manifest": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v01/render-manifest.json",
+      "priorityFrame": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v01/frames/frame0136.png",
+      "driverLightsHiddenFromGlossy": false,
+      "reflectionCardCount": 0,
+      "blackFlagCount": 0
+    },
+    {
+      "variantId": "lighting-v02",
+      "label": "v02 diffused reflection cove",
+      "strategy": "diffused-white-black-reflection-environment",
+      "intent": "同五灯角色改为驱动大面积扩散板、白卡、黑旗和低强度正面补光，减少可读灯具反射。",
+      "route": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/index.html",
+      "manifest": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/render-manifest.json",
+      "priorityFrame": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/frames/frame0136.png",
+      "driverLightsHiddenFromGlossy": false,
+      "reflectionCardCount": 6,
+      "blackFlagCount": 3
+    },
+    {
+      "variantId": "lighting-v03",
+      "label": "v03 reflection family trim",
+      "strategy": "v02-plus-camera-family-of-angles-trim",
+      "intent": "在 v02 环境上拉远并略收视角，把主要可见反射角族从灯具/板边移动到大渐变反射区。",
+      "route": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v03/index.html",
+      "manifest": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v03/render-manifest.json",
+      "priorityFrame": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v03/frames/frame0136.png",
+      "driverLightsHiddenFromGlossy": false,
+      "reflectionCardCount": 7,
+      "blackFlagCount": 4
+    }
+  ],
+  "sourceBoundary": {
+    "motionControl": "docs/assets/ztovalve/hero/goal26-blender-camera-explosion-proof/motion-control.json",
+    "cameraPrevis": "docs/assets/ztovalve/hero/camera-previs-240.json",
+    "goal25dMaterialManifest": "docs/experiment/hero/goal25d-zoned-body-material-proof/render-manifest.json",
+    "goal26RenderManifest": "docs/assets/ztovalve/hero/goal26-blender-camera-explosion-proof/render-manifest.json"
+  },
+  "constraints": [
+    "Lighting lab only; no homepage connection.",
+    "Lighting lab only; no 240-frame completion claim.",
+    "Lighting lab only; no Pages publication."
+  ]
+}

@@ -169,6 +169,58 @@
       ]
     },
     {
+      "id": "bind-fixed-ball-valve-hero-to-step-source",
+      "statement": "The ztovalve fixed-ball-valve hero work must remain bound to the customer-supplied fixed ball valve STEP and brochure evidence. The STEP-derived GLB and Blender meshes are derived working assets; they do not replace the original STEP/PDF authority, and unsupported pressure, certification, material-grade, maintenance, service-life, fire-safe, anti-static, leakage or performance claims remain prohibited.",
+      "development_entry_ids": ["author-control-valve-commercial-look", "author-fixed-ball-valve-commercial-hero"]
+    },
+    {
+      "id": "require-step-first-blender-commercial-render-route",
+      "statement": "The commercial-quality fixed-ball-valve hero route is STEP-first and Blender/Cycles-first: Three.js and the audited GLB may be used for blocking, preview and continuity, but final commercial render decisions must be revalidated from the STEP-derived mesh, brochure references and traceable material lookdev evidence before replacing homepage hero media.",
+      "development_entry_ids": ["author-control-valve-commercial-look", "author-fixed-ball-valve-commercial-hero"]
+    },
+    {
+      "id": "author-deterministic-fixed-ball-valve-motion-controls",
+      "statement": "Fixed-ball-valve animation must be controlled by deterministic progress-sampled channels for pressure-shell split, seat/seal spread, stem/packing lift, lower support drop, fastener spread and true ball-core quarter-turn. Ball rotation may affect only the real ball core; seats, seals, body, supports and small hardware must not be presented as rotating with the ball unless separately proven.",
+      "development_entry_ids": ["author-control-valve-commercial-look", "author-fixed-ball-valve-commercial-hero"]
+    },
+    {
+      "id": "preserve-fixed-ball-valve-axis-to-seal-storyboard",
+      "statement": "The fixed-ball-valve hero storyboard must preserve the current product cognition route: complete commercial product presence, fixed-axis legibility, seat/seal system proof, pressure-shell closure, and final homepage product composition. Later choreography may tune timing, materials and camera, but must not become a random CAD explosion, a real assembly or repair procedure, or a claim-heavy technical diagram.",
+      "development_entry_ids": ["author-control-valve-commercial-look", "author-fixed-ball-valve-commercial-hero"]
+    },
+    {
+      "id": "bind-fixed-ball-valve-camera-previs-to-blender-control",
+      "statement": "Fixed-ball-valve camera work must remain driven by the authored camera-previs timeline, including per-frame camera/target/FOV state, five shot IDs, a bounded roll envelope and the documented Three.js-to-Blender coordinate conversion. Catalogue/hero camera overrides may improve composition only while preserving product center, pipe axis readability and deterministic frame-state reproduction.",
+      "development_entry_ids": ["author-control-valve-commercial-look", "author-fixed-ball-valve-commercial-hero"]
+    },
+    {
+      "id": "deliver-fixed-ball-valve-hero-composition-contract",
+      "statement": "The fixed-ball-valve hero must be composed as a visitor-facing product hero: product and brand are visible in the first viewport, navigation/contact/catalog actions remain HTML/CSS page content, desktop motion must have a usable static first-frame/fallback state, mobile must retain visible product content, and experimental instrumentation must not become visitor-facing delivery.",
+      "development_entry_ids": ["author-control-valve-commercial-look", "author-fixed-ball-valve-commercial-hero"]
+    },
+    {
+      "id": "establish-fixed-ball-valve-hero-runtime-authority",
+      "statement": "The fixed-ball-valve hero3d runtime must use the named cross-session control authority folder at governance/control/hero-runtime/ before further commercial render work. Governance contains this folder as the authority object; the authority folder itself must be self-contained and must not reference project test artifacts, delivery artifacts or Goal-numbered evidence. It governs material, lighting, camera, motion, storyboard and delivery gates for the current hero-runtime line; alternative runtime versions must create separately named authority folders instead of silently changing this one.",
+      "development_entry_ids": ["author-control-valve-commercial-look", "author-fixed-ball-valve-commercial-hero"],
+      "children": [
+        {
+          "id": "runtime-material-lighting-camera-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove the current hero-runtime authority fixes the commercial appearance baseline as silica-sol investment-cast stainless steel visual, high-key white studio, far large soft sources, clean PBR, pulled-back long-lens camera, no WCB/black cast-steel interpretation, no war-damage dirt, no explicit scratch geometry, no dirty blotch noise and no camera-readable light equipment or black-flag reflection pollution in approved release lookdev."
+        },
+        {
+          "id": "runtime-motion-storyboard-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove the current hero-runtime authority binds animation to deterministic progress-sampled shell split, seat/seal spread, stem lift, lower support drop, fastener spread and true ball-core quarter-turn, while preserving the fixed-ball-valve cognition storyboard: complete product presence, fixed-axis legibility, seat/seal system proof, pressure-shell closure and final homepage product composition."
+        },
+        {
+          "id": "runtime-release-gate-proof",
+          "node_type": "delivery_acceptance_supplement",
+          "statement": "Acceptance must prove the current hero-runtime authority blocks 240-frame render, homepage replacement and Pages publication until a visually approved clean commercial lookdev manifest satisfies the runtime material, lighting, camera, motion and storyboard boundaries."
+        }
+      ]
+    },
+    {
       "id": "publish-verified-control-valve-pages-artifact",
       "statement": "Publish the verified control-valve product-story artifact from the current synchronized development branch's /docs directory to GitHub Pages without merging to protected main. The public route must expose the selected GOP 6 experience and remain visibly usable.",
       "development_entry_ids": ["publish-control-valve-pages"],

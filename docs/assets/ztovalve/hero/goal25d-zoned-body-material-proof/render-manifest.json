@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-03T00:16:00.004271+00:00",
-  "goal": "Goal 25-D isolated valve body material zoning proof",
+  "generatedAt": "2026-08-03T00:43:47.869346+00:00",
+  "goal": "Goal 25-D isolated valve body clean PBR material proof",
   "profile": "smoke",
   "renderer": "Blender Cycles",
   "blender": "5.2.0 LTS",
@@ -11,9 +11,21 @@
     "stepMesh": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/goal20-step-mesh.glb",
     "stepMeshSha256": "0326bbf77f186dc9869bd0715d7096f94bad3d502b1b0cab1d93860dcef4888f",
     "goal20SemanticMap": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/semantic-material-map.json",
-    "rule": "Goal 25-D isolates only the STEP-derived valve body mesh and assigns per-zone material IDs."
+    "rule": "Goal 25-D isolates only the STEP-derived valve body mesh and assigns per-zone material IDs; the clean main render disables explicit trace/scratch curve geometry."
   },
   "researchReferences": [
+    {
+      "id": "polyhaven-studio-small-09",
+      "title": "Poly Haven - studio_small_09 HDRI",
+      "url": "https://polyhaven.com/a/studio_small_09",
+      "takeaway": "Use a real CC0 studio HDRI for metal reflections instead of flat grey world lighting."
+    },
+    {
+      "id": "ambientcg-metal009",
+      "title": "ambientCG - Metal009 PBR material",
+      "url": "https://ambientcg.com/view?id=Metal009",
+      "takeaway": "Use a traceable CC0 metal material reference for clean stainless roughness, normal and value ranges."
+    },
     {
       "id": "adobe-pbr-metal-roughness",
       "title": "Adobe Substance 3D - The PBR Guide",
@@ -45,6 +57,34 @@
       "takeaway": "Casting texture should be treated as roughness, waviness and lay produced by process plus finishing, not as uniform noise."
     }
   ],
+  "externalReferenceAssets": [
+    {
+      "id": "polyhaven-studio-small-09-1k-hdri",
+      "kind": "connected-hdri",
+      "title": "Poly Haven studio_small_09 1K HDRI",
+      "license": "CC0",
+      "url": "https://polyhaven.com/a/studio_small_09",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr",
+      "usage": "environment reflection and soft studio value reference",
+      "localPath": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/studio_small_09_1k.hdr",
+      "availableLocally": true,
+      "bytes": 1615248,
+      "sha256": "e7cfda5f4e98e623db12b8bfd0184e048488e4855d9c83e2751fb44a32e80c45"
+    },
+    {
+      "id": "ambientcg-metal009-1k-jpg",
+      "kind": "downloaded-pbr-reference",
+      "title": "ambientCG Metal009 1K JPG PBR material",
+      "license": "CC0",
+      "url": "https://ambientcg.com/view?id=Metal009",
+      "downloadUrl": "https://ambientcg.com/get?file=Metal009_1K-JPG.zip",
+      "usage": "clean machined stainless roughness/normal/base-value reference",
+      "localPath": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/references/Metal009_1K-JPG.zip",
+      "availableLocally": true,
+      "bytes": 4767000,
+      "sha256": "1b1970219b40fe707e7194b28702f1a65b0d227bbea56da69dfbc8d8b5cfcb5e"
+    }
+  ],
   "bodyIdentity": {
     "sourceName": "·§ͥ",
     "partName": "阀体",
@@ -70,6 +110,8 @@
     ],
     "goal20PartCountForBody": 1
   },
+  "mainStillId": "02-clean-pbr-stainless-look",
+  "comparisonStillId": "00-old-vs-clean-comparison",
   "materialLibrary": [
     {
       "id": "G25-SS-CAST-BLASTED-SATIN-01",
@@ -84,32 +126,32 @@
       ],
       "parameters": {
         "base_color": [
-          0.33,
-          0.35,
-          0.32,
+          0.39,
+          0.41,
+          0.38,
           1.0
         ],
-        "roughness": 0.45,
-        "anisotropic": 0.22,
-        "coat": 0.018,
+        "roughness": 0.52,
+        "anisotropic": 0.08,
+        "coat": 0.012,
         "texture": "cast_noise",
         "roughness_variation": [
-          0.4,
-          0.56
+          0.48,
+          0.6
         ],
-        "roughness_noise_scale": 420,
-        "roughness_noise_detail": 14,
-        "bump": 0.0065,
-        "bump_distance": 0.0011,
-        "bump_scale": 880,
-        "bump_detail": 15
+        "roughness_noise_scale": 340,
+        "roughness_noise_detail": 12,
+        "bump": 0.0038,
+        "bump_distance": 0.00075,
+        "bump_scale": 620,
+        "bump_detail": 11
       }
     },
     {
       "id": "G25-SS-MACH-FLANGE-RADIAL-01",
       "label": "machined radial flange face",
       "cn": "法兰正面",
-      "intent": "flat machined flange face with restrained explicit concentric tool-path trace migrated from Goal 25-C",
+      "intent": "clean machined stainless flange face with broad satin reflection; no explicit curve scratches",
       "debugColor": [
         0.86,
         0.78,
@@ -118,17 +160,18 @@
       ],
       "parameters": {
         "base_color": [
-          0.52,
-          0.54,
-          0.5,
+          0.58,
+          0.6,
+          0.56,
           1.0
         ],
-        "roughness": 0.29,
-        "anisotropic": 0.7,
-        "coat": 0.055,
+        "roughness": 0.24,
+        "anisotropic": 0.48,
+        "coat": 0.065,
         "texture": "none",
         "roughness_variation": null,
-        "bump": 0.0
+        "bump": 0.00035,
+        "bump_distance": 0.00018
       }
     },
     {
@@ -144,106 +187,29 @@
       ],
       "parameters": {
         "base_color": [
-          0.46,
           0.48,
-          0.44,
+          0.5,
+          0.46,
           1.0
         ],
-        "roughness": 0.34,
-        "anisotropic": 0.82,
-        "coat": 0.035,
+        "roughness": 0.38,
+        "anisotropic": 0.62,
+        "coat": 0.028,
         "texture": "none",
         "roughness_variation": null,
-        "bump": 0.0
+        "bump": 0.00025,
+        "bump_distance": 0.00014
       }
     },
     {
       "id": "G25-SS-MACH-BORE-CIRCULAR-01",
       "label": "machined circular bore",
       "cn": "内孔/流道入口",
-      "intent": "darker cylindrical machined bore with restrained circumferential cutting trace migrated from Goal 25-C",
+      "intent": "dark clean machined bore, reflection-retaining and not dirty; no circumferential curve scratches",
       "debugColor": [
         0.82,
         0.44,
         0.34,
-        1.0
-      ],
-      "parameters": {
-        "base_color": [
-          0.32,
-          0.34,
-          0.31,
-          1.0
-        ],
-        "roughness": 0.31,
-        "anisotropic": 0.74,
-        "coat": 0.04,
-        "texture": "none",
-        "roughness_variation": null,
-        "bump": 0.0
-      }
-    },
-    {
-      "id": "G25-SS-EDGE-BURNISH-01",
-      "label": "edge burnish",
-      "cn": "倒角/棱线/凸筋高点",
-      "intent": "thin brighter worn edges and bevel highlights from handling or final deburring",
-      "debugColor": [
-        0.96,
-        0.96,
-        0.88,
-        1.0
-      ],
-      "parameters": {
-        "base_color": [
-          0.56,
-          0.58,
-          0.54,
-          1.0
-        ],
-        "roughness": 0.24,
-        "anisotropic": 0.48,
-        "coat": 0.08,
-        "texture": "none",
-        "bump": 0.001,
-        "bump_distance": 0.0004
-      }
-    },
-    {
-      "id": "G25-SS-MACH-BOLT-BORE-DARK-01",
-      "label": "dark machined bolt bore",
-      "cn": "螺栓孔内壁",
-      "intent": "smaller darker, rougher machined cylindrical walls with local rim and inside-ring witness traces",
-      "debugColor": [
-        0.62,
-        0.42,
-        0.74,
-        1.0
-      ],
-      "parameters": {
-        "base_color": [
-          0.24,
-          0.26,
-          0.24,
-          1.0
-        ],
-        "roughness": 0.43,
-        "anisotropic": 0.58,
-        "coat": 0.018,
-        "texture": "none",
-        "roughness_variation": null,
-        "bump": 0.0
-      }
-    },
-    {
-      "id": "G25-SS-ROOT-DARK-AO-01",
-      "label": "dark groove root",
-      "cn": "凹槽根部",
-      "intent": "dark reflection-retaining metal in shoulder grooves and root transitions; explicitly not lifted to powder white",
-      "debugColor": [
-        0.2,
-        0.22,
-        0.23,
         1.0
       ],
       "parameters": {
@@ -253,20 +219,100 @@
           0.28,
           1.0
         ],
-        "roughness": 0.54,
-        "anisotropic": 0.18,
-        "coat": 0.01,
+        "roughness": 0.37,
+        "anisotropic": 0.42,
+        "coat": 0.03,
+        "texture": "none",
+        "roughness_variation": null,
+        "bump": 0.0002,
+        "bump_distance": 0.00012
+      }
+    },
+    {
+      "id": "G25-SS-EDGE-BURNISH-01",
+      "label": "edge burnish",
+      "cn": "倒角/棱线/凸筋高点",
+      "intent": "thin bright bevel highlights from clean chamfers and final deburring",
+      "debugColor": [
+        0.96,
+        0.96,
+        0.88,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.68,
+          0.7,
+          0.66,
+          1.0
+        ],
+        "roughness": 0.2,
+        "anisotropic": 0.36,
+        "coat": 0.09,
+        "texture": "none",
+        "bump": 0.0003,
+        "bump_distance": 0.00016
+      }
+    },
+    {
+      "id": "G25-SS-MACH-BOLT-BORE-DARK-01",
+      "label": "dark machined bolt bore",
+      "cn": "螺栓孔内壁",
+      "intent": "clean darker machined bolt-hole walls with crisp rims and no drawn witness rings",
+      "debugColor": [
+        0.62,
+        0.42,
+        0.74,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.31,
+          0.33,
+          0.3,
+          1.0
+        ],
+        "roughness": 0.4,
+        "anisotropic": 0.34,
+        "coat": 0.026,
+        "texture": "none",
+        "roughness_variation": null,
+        "bump": 0.0002,
+        "bump_distance": 0.0001
+      }
+    },
+    {
+      "id": "G25-SS-ROOT-DARK-AO-01",
+      "label": "dark groove root",
+      "cn": "凹槽根部",
+      "intent": "dark reflection-retaining clean metal in shoulder grooves and root transitions; explicitly not dirt",
+      "debugColor": [
+        0.2,
+        0.22,
+        0.23,
+        1.0
+      ],
+      "parameters": {
+        "base_color": [
+          0.25,
+          0.27,
+          0.25,
+          1.0
+        ],
+        "roughness": 0.5,
+        "anisotropic": 0.12,
+        "coat": 0.014,
         "texture": "cast_noise",
         "roughness_variation": [
-          0.48,
-          0.62
+          0.46,
+          0.56
         ],
-        "roughness_noise_scale": 240,
-        "roughness_noise_detail": 12,
-        "bump": 0.0045,
-        "bump_distance": 0.0009,
-        "bump_scale": 760,
-        "bump_detail": 12
+        "roughness_noise_scale": 220,
+        "roughness_noise_detail": 10,
+        "bump": 0.0022,
+        "bump_distance": 0.00045,
+        "bump_scale": 520,
+        "bump_detail": 10
       }
     }
   ],
@@ -551,8 +597,8 @@
       "Use a bevel modifier with edge-burnish material for thin worn highlights."
     ]
   },
-  "traceMigration": {
-    "source": "Goal 25-C restrained geometric machining traces",
+  "legacyTraceComparison": {
+    "source": "Goal 25-C-style explicit geometric machining traces retained only for old-vs-clean comparison",
     "sourceManifest": "docs/assets/ztovalve/hero/goal25c-real-machining-traces/render-manifest.json",
     "appliedTraceIds": [
       "G25-TRACE-MACH-FLANGE-RADIAL-GEOM-01",
@@ -622,7 +668,14 @@
         }
       ]
     },
-    "visibleTraceObjects": 114
+    "visibleTraceObjects": 114,
+    "legacyStillId": "01-old-trace-scratch-look",
+    "cleanStillId": "02-clean-pbr-stainless-look",
+    "comparisonStillId": "00-old-vs-clean-comparison",
+    "legacyExplicitTraceObjectsVisible": true,
+    "cleanMainExplicitTraceObjectsVisible": false,
+    "cleanMainImplementsTraceWithCurves": false,
+    "legacyVisibleTraceObjects": 114
   },
   "renderProfile": {
     "width": 1200,
@@ -630,6 +683,9 @@
     "samples": 40,
     "engine": "Cycles",
     "isolatedBodyOnly": true,
+    "mainStill": "02-clean-pbr-stainless-look",
+    "mainStillExplicitTraceObjectsVisible": false,
+    "mainStillExplicitScratchCurves": false,
     "fullValveRendered": false,
     "homepageConnected": false,
     "motionTestRendered": false,
@@ -652,35 +708,59 @@
   },
   "stills": [
     {
-      "id": "01-zoned-body-material-proof",
-      "title": "zoned body material proof",
-      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/01-zoned-body-material-proof.png",
+      "id": "00-old-vs-clean-comparison",
+      "title": "old trace-scratch look vs clean PBR stainless look",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/00-old-vs-clean-comparison.png",
+      "width": 2400,
+      "height": 793,
+      "bytes": 1091788,
+      "sha256": "2282016ca275c144ffd1396fbdbb3778cbf716c36a4a06f96b7dbe1c0be15e1d",
+      "inputs": [
+        "01-old-trace-scratch-look",
+        "02-clean-pbr-stainless-look"
+      ]
+    },
+    {
+      "id": "01-old-trace-scratch-look",
+      "title": "old trace-scratch look",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/01-old-trace-scratch-look.png",
       "width": 1200,
       "height": 675,
       "bytes": 949274,
-      "sha256": "76726dc3bf8bc17f6ae08879ec46c425977f0637b57f6702d1698ad4989f6719"
+      "sha256": "3d92e5bf428ffdce80e6c7a1c04b2836f69378edbbe7b3c5e846d984c572da7c"
     },
     {
-      "id": "02-material-zone-id",
+      "id": "02-clean-pbr-stainless-look",
+      "title": "clean PBR stainless look",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/02-clean-pbr-stainless-look.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 918112,
+      "sha256": "63e4216dc682d0646e0b646310bf3eca2aa2b469579e45ac14fdd5d127c52f50"
+    },
+    {
+      "id": "03-material-zone-id",
       "title": "material zone id map",
-      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/02-material-zone-id.png",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/03-material-zone-id.png",
       "width": 1200,
       "height": 675,
       "bytes": 856210,
-      "sha256": "29f7587f7c386faa7c30bdde8291004528ae3266654118bcae60be430c03de63"
+      "sha256": "d0cdbec9f9252c6a5241e0f7b6bea15c7647635383b98e4fe75f5e00406c7b34"
     },
     {
-      "id": "03-flange-bore-zone-close",
-      "title": "flange and bore zoning close-up",
-      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/03-flange-bore-zone-close.png",
+      "id": "04-clean-flange-bore-close",
+      "title": "clean flange and bore close-up",
+      "path": "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof/stills/04-clean-flange-bore-close.png",
       "width": 1200,
       "height": 675,
-      "bytes": 928734,
-      "sha256": "4c379015a4d53b7a090450d82e3090c87f60b5fdd89f2f6caf8e305261eaa8c5"
+      "bytes": 871907,
+      "sha256": "b3918a17c7bbbad41c9f05c5ad32049d70224c05f2559ba4279510b8ab6bc86e"
     }
   ],
   "constraints": [
     "Only the isolated valve body mesh is rendered.",
+    "The clean 25-D main still hides all explicit trace/scratch curve objects.",
+    "Legacy trace geometry is retained only in the comparison still.",
     "No homepage hero replacement is performed.",
     "No GitHub Pages publication is performed.",
     "No 24-frame or 240-frame animation is rendered.",

@@ -1,0 +1,1078 @@
+{
+  "schemaVersion": 1,
+  "goalId": "goal28-lighting-lab",
+  "variantId": "lighting-v02",
+  "variantLabel": "v02 diffused reflection cove",
+  "strategy": "diffused-white-black-reflection-environment",
+  "generatedAt": "2026-08-03T08:06:58.486878+00:00",
+  "intent": "同五灯角色改为驱动大面积扩散板、白卡、黑旗和低强度正面补光，减少可读灯具反射。",
+  "product": "ztovalve fixed ball valve",
+  "renderer": {
+    "engine": "CYCLES",
+    "profile": "cycles-smoke",
+    "blender": "5.2.0 LTS"
+  },
+  "sourceBoundary": {
+    "stepMesh": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/goal20-step-mesh.glb",
+    "stepMeshSha256": "0326bbf77f186dc9869bd0715d7096f94bad3d502b1b0cab1d93860dcef4888f",
+    "goal20SemanticMap": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/semantic-material-map.json",
+    "goal20SemanticMapSha256": "b7d68d694413907fe56f52ec1f36bad2e645f76da940c5aa0e550d18834e66fb",
+    "cameraPrevis": "docs/assets/ztovalve/hero/camera-previs-240.json",
+    "cameraPrevisSha256": "f516790db1b8c0eec94b50e48af49dbc80936bde3fd9c3d593900d3f639e16e9",
+    "motionControl": "docs/assets/ztovalve/hero/goal26-blender-camera-explosion-proof/motion-control.json",
+    "motionControlSha256": "1588741797937cbd045e1652796513b2b94e4b0dab1fb7b980d2b690f99a7d48",
+    "goal25dMaterialManifest": "docs/experiment/hero/goal25d-zoned-body-material-proof/render-manifest.json",
+    "goal25dMaterialManifestSha256": "dabd514357ce9e008b410dbc5dd83acca45b1d582237aa905873689e24680076",
+    "goal26RenderManifest": "docs/assets/ztovalve/hero/goal26-blender-camera-explosion-proof/render-manifest.json",
+    "goal26RenderManifestSha256": "b5665a082ab0b822be35cf96e522524bcb0dfe663cc37f26b84d6f2a2b16a4cf",
+    "rule": "Lighting lab consumes Goal20/25D/26/28 fixed-ball-valve sources only; it does not publish or replace homepage assets."
+  },
+  "renderProfile": {
+    "width": 960,
+    "height": 540,
+    "samples": 20,
+    "engine": "CYCLES",
+    "fps": 30,
+    "sourceTotalFrames": 240,
+    "sampleFrames": [
+      0,
+      72,
+      136,
+      216
+    ],
+    "sequenceFrameCount": 4,
+    "homepageConnected": false,
+    "heroAvifReplaced": false,
+    "published": false
+  },
+  "previewSurface": {
+    "route": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/index.html",
+    "frameDirectory": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/frames",
+    "poster": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/poster.png"
+  },
+  "partIdentity": {
+    "meshCount": 138,
+    "goal20SemanticMeshCount": 138,
+    "groupCounts": {
+      "fastenersSmallHardware": 105,
+      "bodyPressureShell": 4,
+      "ballTrunnionCore": 7,
+      "seatSealSystem": 7,
+      "stemPackingDrive": 15
+    },
+    "materialCounts": {
+      "fastenerStainless": 111,
+      "machinedStainless": 14,
+      "castBlastedStainless": 3,
+      "graphitePacking": 7,
+      "softSealPtfe": 2,
+      "polishedStainlessBall": 1
+    },
+    "partCounts": {
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N": 6,
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N": 4,
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N": 18,
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N": 12,
+      "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N": 8,
+      "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26": 2,
+      "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10": 8,
+      "弹簧": 32,
+      "堵头": 1,
+      "阀盖": 2,
+      "阀杆轴承": 1,
+      "阀座盘根": 1,
+      "阀体": 1,
+      "阀座": 2,
+      "阀座密封圈": 2,
+      "阀座压圈": 2,
+      "固定轴": 1,
+      "固定轴垫片": 1,
+      "固定轴轴承": 1,
+      "连接轴": 1,
+      "平键": 1,
+      "体盖螺柱": 12,
+      "支架螺柱": 8,
+      "排污阀垫片": 1,
+      "球体": 1,
+      "球体轴承": 1,
+      "填料": 1,
+      "填料箱": 1,
+      "填料箱垫片": 1,
+      "填料压盖": 1,
+      "填料压圈": 1,
+      "支架": 1,
+      "止推垫": 1,
+      "中道垫片": 1
+    }
+  },
+  "materialFusion": {
+    "sourceGoal": "Goal 25-D isolated valve body clean PBR material proof",
+    "bodyZoneCount": 7,
+    "zoneAssignment": {
+      "flowAxis": "x",
+      "axisInference": {
+        "scores": [
+          {
+            "axis": "x",
+            "index": 0,
+            "sideAreas": [
+              0.025197124746705768,
+              0.038676172607438275
+            ],
+            "score": 0.1016689844742027
+          },
+          {
+            "axis": "y",
+            "index": 1,
+            "sideAreas": [
+              0.007326851826633174,
+              0.007326573593928742
+            ],
+            "score": 0.02564328581145503
+          },
+          {
+            "axis": "z",
+            "index": 2,
+            "sideAreas": [
+              0.012767401715799006,
+              0.01911506194795887
+            ],
+            "score": 0.05103356623745638
+          }
+        ],
+        "selectedAxis": "x"
+      },
+      "localBounds": {
+        "min": [
+          -0.220808,
+          -0.4205,
+          -0.119342
+        ],
+        "max": [
+          0.026692,
+          -0.1505,
+          0.166158
+        ],
+        "center": [
+          -0.097058,
+          -0.2855,
+          0.023408
+        ],
+        "size": [
+          0.2475,
+          0.27,
+          0.2855
+        ]
+      },
+      "radialAxes": [
+        "y",
+        "z"
+      ],
+      "innerRadiusEstimate": 0.07843,
+      "outerRadiusEstimate": 0.13814,
+      "zoneCounts": {
+        "G25-SS-CAST-BLASTED-SATIN-01": 25462,
+        "G25-SS-EDGE-BURNISH-01": 170,
+        "G25-SS-MACH-FLANGE-RADIAL-01": 9410,
+        "G25-SS-ROOT-DARK-AO-01": 2390,
+        "G25-SS-BRUSH-NO4-LINEAR-01": 2357,
+        "G25-SS-MACH-BOLT-BORE-DARK-01": 1368,
+        "G25-SS-MACH-BORE-CIRCULAR-01": 521
+      },
+      "zoneAreas": {
+        "G25-SS-CAST-BLASTED-SATIN-01": 0.28445763,
+        "G25-SS-EDGE-BURNISH-01": 0.00083303,
+        "G25-SS-MACH-FLANGE-RADIAL-01": 0.12215705,
+        "G25-SS-ROOT-DARK-AO-01": 0.00793834,
+        "G25-SS-BRUSH-NO4-LINEAR-01": 0.04408381,
+        "G25-SS-MACH-BOLT-BORE-DARK-01": 0.0259487,
+        "G25-SS-MACH-BORE-CIRCULAR-01": 0.02488127
+      },
+      "zoneExamples": {
+        "G25-SS-CAST-BLASTED-SATIN-01": [
+          [
+            -0.14154,
+            -0.36611,
+            -0.05507
+          ],
+          [
+            -0.14232,
+            -0.36606,
+            -0.05512
+          ],
+          [
+            -0.14186,
+            -0.36945,
+            -0.05844
+          ],
+          [
+            -0.14315,
+            -0.36594,
+            -0.05525
+          ],
+          [
+            -0.14272,
+            -0.36936,
+            -0.05853
+          ]
+        ],
+        "G25-SS-EDGE-BURNISH-01": [
+          [
+            -0.1887,
+            -0.32516,
+            0.16116
+          ],
+          [
+            -0.1887,
+            -0.33635,
+            0.15616
+          ],
+          [
+            -0.20195,
+            -0.30603,
+            0.15416
+          ],
+          [
+            -0.20176,
+            -0.30596,
+            0.16016
+          ],
+          [
+            -0.20195,
+            -0.31395,
+            0.15416
+          ]
+        ],
+        "G25-SS-MACH-FLANGE-RADIAL-01": [
+          [
+            -0.18944,
+            -0.3255,
+            0.15616
+          ],
+          [
+            -0.1899,
+            -0.32579,
+            0.15616
+          ],
+          [
+            -0.1892,
+            -0.32538,
+            0.16116
+          ],
+          [
+            -0.19013,
+            -0.32594,
+            0.16116
+          ],
+          [
+            -0.19075,
+            -0.32647,
+            0.15616
+          ]
+        ],
+        "G25-SS-ROOT-DARK-AO-01": [
+          [
+            -0.18123,
+            -0.29772,
+            0.13382
+          ],
+          [
+            -0.18142,
+            -0.29773,
+            0.14049
+          ],
+          [
+            -0.18199,
+            -0.29782,
+            0.13382
+          ],
+          [
+            -0.1818,
+            -0.29778,
+            0.14049
+          ],
+          [
+            -0.18255,
+            -0.29799,
+            0.13382
+          ]
+        ],
+        "G25-SS-BRUSH-NO4-LINEAR-01": [
+          [
+            -0.20063,
+            -0.30575,
+            0.16016
+          ],
+          [
+            -0.20082,
+            -0.30577,
+            0.15416
+          ],
+          [
+            -0.20139,
+            -0.30586,
+            0.15416
+          ],
+          [
+            -0.2012,
+            -0.30582,
+            0.16016
+          ],
+          [
+            -0.20139,
+            -0.31412,
+            0.16016
+          ]
+        ],
+        "G25-SS-MACH-BOLT-BORE-DARK-01": [
+          [
+            -0.21347,
+            -0.39543,
+            -0.01567
+          ],
+          [
+            -0.20614,
+            -0.39545,
+            -0.01594
+          ],
+          [
+            -0.20614,
+            -0.39558,
+            -0.01675
+          ],
+          [
+            -0.20614,
+            -0.39573,
+            -0.01728
+          ],
+          [
+            -0.21347,
+            -0.39552,
+            -0.01648
+          ]
+        ],
+        "G25-SS-MACH-BORE-CIRCULAR-01": [
+          [
+            0.00869,
+            -0.37745,
+            0.04912
+          ],
+          [
+            0.00869,
+            -0.37636,
+            0.05052
+          ],
+          [
+            0.01669,
+            -0.3767,
+            0.05003
+          ],
+          [
+            0.01669,
+            -0.37575,
+            0.05152
+          ],
+          [
+            0.00869,
+            -0.37548,
+            0.05205
+          ]
+        ]
+      },
+      "classificationRule": [
+        "Infer the main flow axis from the largest paired planar end-face area.",
+        "Classify end planar rings as machined radial flange faces.",
+        "Classify central low-radius cylindrical surfaces as machined bores.",
+        "Classify smaller non-planar end-band holes as darker bolt bores.",
+        "Classify outside flange side walls as brushed No.4/satin side finish.",
+        "Classify shoulder bands as dark groove/root reflection zones.",
+        "Use a bevel modifier with edge-burnish material for thin worn highlights."
+      ]
+    },
+    "zoneMaterialIds": [
+      "G25-SS-CAST-BLASTED-SATIN-01",
+      "G25-SS-MACH-FLANGE-RADIAL-01",
+      "G25-SS-BRUSH-NO4-LINEAR-01",
+      "G25-SS-MACH-BORE-CIRCULAR-01",
+      "G25-SS-EDGE-BURNISH-01",
+      "G25-SS-MACH-BOLT-BORE-DARK-01",
+      "G25-SS-ROOT-DARK-AO-01"
+    ],
+    "fullValveFamilyMaterialIds": [
+      "castBlastedStainless",
+      "fastenerStainless",
+      "goal26DarkFlag",
+      "goal26SoftPanel",
+      "graphitePacking",
+      "machinedStainless",
+      "polishedStainlessBall",
+      "softSealPtfe"
+    ],
+    "polishedBallRoughnessRange": [
+      0.2,
+      0.3
+    ]
+  },
+  "motionFusion": {
+    "sourceGoal": "Goal 26 Blender camera and exploded-part motion proof",
+    "controlledChannels": {
+      "shellSplit": {
+        "from": "exploded",
+        "multiplier": 1.08,
+        "meaning": "Open the pressure shell along the pipeline axis."
+      },
+      "seatSpread": {
+        "from": "exploded",
+        "multiplier": 1.0,
+        "meaning": "Separate seat and seal layers around the ball without rotating them."
+      },
+      "stemLift": {
+        "from": "exploded",
+        "multiplier": 0.92,
+        "meaning": "Lift stem, packing, bracket, and upper drive along the vertical axis."
+      },
+      "lowerDrop": {
+        "from": "exploded",
+        "multiplier": 0.78,
+        "meaning": "Drop lower trunnion support and lower bearing parts along the vertical axis."
+      },
+      "fastenerSpread": {
+        "from": "exploded",
+        "multiplier": 0.76,
+        "meaning": "Spread studs, nuts, washers, springs, pins, and small hardware outward."
+      },
+      "ballTurn": {
+        "from": "ballTurn",
+        "degrees": 90,
+        "meaning": "Rotate only the true ball core around the vertical stem axis."
+      }
+    },
+    "axisMap": {
+      "threeToBlender": {
+        "x": "x",
+        "y": "z",
+        "z": "-y"
+      },
+      "threeModelCenter": [
+        -0.15130786132067442,
+        0.10540807247161865,
+        0.28550000488758087
+      ],
+      "blenderProductCenter": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pipeAxis": "blender.x",
+      "verticalAxis": "blender.z",
+      "depthAxis": "blender.y"
+    },
+    "cameraOverride": {
+      "source": "Goal26 keeps the existing camera previs editable, then mixes toward the commercial catalogue hold when the exploded state is active.",
+      "catalogueCameraOffsetThree": [
+        -0.62,
+        0.285,
+        1.72
+      ],
+      "catalogueTargetOffsetThree": [
+        -0.018,
+        0.04,
+        0.0
+      ],
+      "explodedMixMultiplier": 0.98,
+      "catalogueFovDegrees": 32,
+      "compositionSafety": {
+        "distanceMultiplier": 1.24,
+        "fovAddDegrees": 5.0
+      }
+    },
+    "maxOffset": 0.196266,
+    "maxBallAngleDegrees": 87.8841,
+    "renderSeconds": 45.966
+  },
+  "lighting": {
+    "feedbackBasis": "上方左右斜照、底部双灯、正面补光；镜面球体需要环境反射梯度，而不是可识别灯具形状。",
+    "acceptanceFocus": [
+      "frame0136 polished ball must not show hard readable light fixtures.",
+      "ball should retain broad white, dark and mid-gray reflection zones.",
+      "body/cylinder/flange should show dark edge, bright edge and mid-gray transition.",
+      "front fill remains weak; top/side/bottom roles shape the metal."
+    ],
+    "rig": [
+      {
+        "role": "top-left-oblique-key",
+        "name": "goal28_lab_top_left_driver",
+        "location": [
+          -3.35,
+          -2.16,
+          2.72
+        ],
+        "target": [
+          -2.95,
+          -1.28,
+          2.08
+        ],
+        "power": 500,
+        "size": 7.8,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": true,
+        "specularFactor": 0.22
+      },
+      {
+        "role": "top-right-oblique-rim",
+        "name": "goal28_lab_top_right_driver",
+        "location": [
+          3.18,
+          1.08,
+          2.34
+        ],
+        "target": [
+          2.82,
+          0.52,
+          1.86
+        ],
+        "power": 360,
+        "size": 7.1,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": true,
+        "specularFactor": 0.22
+      },
+      {
+        "role": "bottom-left-lift",
+        "name": "goal28_lab_bottom_left_driver",
+        "location": [
+          -2.18,
+          -1.82,
+          -0.42
+        ],
+        "target": [
+          -1.85,
+          -1.1,
+          -0.66
+        ],
+        "power": 105,
+        "size": 5.1,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": true,
+        "specularFactor": 0.22
+      },
+      {
+        "role": "bottom-right-lift",
+        "name": "goal28_lab_bottom_right_driver",
+        "location": [
+          2.14,
+          -1.52,
+          -0.4
+        ],
+        "target": [
+          1.78,
+          -0.8,
+          -0.62
+        ],
+        "power": 112,
+        "size": 5.1,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": true,
+        "specularFactor": 0.22
+      },
+      {
+        "role": "front-fill",
+        "name": "goal28_lab_front_fill_driver",
+        "location": [
+          0.0,
+          -4.18,
+          0.62
+        ],
+        "target": [
+          0.0,
+          -3.45,
+          0.44
+        ],
+        "power": 58,
+        "size": 8.8,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": true,
+        "specularFactor": 0.22
+      }
+    ],
+    "reflectionCards": [
+      {
+        "role": "top-left-oblique-key-diffusion-card",
+        "name": "goal28_lab_top_left_white_cove",
+        "location": [
+          -2.95,
+          -1.28,
+          2.08
+        ],
+        "target": [
+          -0.02,
+          0.0,
+          0.1
+        ],
+        "width": 5.6,
+        "height": 3.0,
+        "material": "goal28_lab_warm_white_diffusion",
+        "hideCamera": true,
+        "visibleGlossy": true
+      },
+      {
+        "role": "top-right-oblique-rim-diffusion-card",
+        "name": "goal28_lab_top_right_white_cove",
+        "location": [
+          2.82,
+          0.52,
+          1.86
+        ],
+        "target": [
+          0.04,
+          0.02,
+          0.08
+        ],
+        "width": 4.6,
+        "height": 2.7,
+        "material": "goal28_lab_soft_grey_diffusion",
+        "hideCamera": true,
+        "visibleGlossy": true
+      },
+      {
+        "role": "bottom-left-lift-bounce-card",
+        "name": "goal28_lab_bottom_left_bounce",
+        "location": [
+          -1.85,
+          -1.1,
+          -0.66
+        ],
+        "target": [
+          -0.02,
+          0.0,
+          0.0
+        ],
+        "width": 3.2,
+        "height": 1.35,
+        "material": "goal28_lab_low_silver_bounce",
+        "hideCamera": true,
+        "visibleGlossy": true
+      },
+      {
+        "role": "bottom-right-lift-bounce-card",
+        "name": "goal28_lab_bottom_right_bounce",
+        "location": [
+          1.78,
+          -0.8,
+          -0.62
+        ],
+        "target": [
+          0.04,
+          0.0,
+          0.0
+        ],
+        "width": 3.0,
+        "height": 1.32,
+        "material": "goal28_lab_low_silver_bounce",
+        "hideCamera": true,
+        "visibleGlossy": true
+      },
+      {
+        "role": "front-fill-wide-scrim",
+        "name": "goal28_lab_front_broad_fill_scrim",
+        "location": [
+          0.0,
+          -3.45,
+          0.44
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.05
+        ],
+        "width": 6.4,
+        "height": 3.2,
+        "material": "goal28_lab_soft_grey_diffusion",
+        "hideCamera": true,
+        "visibleGlossy": true
+      },
+      {
+        "role": "rear-mid-grey-cove",
+        "name": "goal28_lab_rear_mid_grey_cove",
+        "location": [
+          0.0,
+          1.88,
+          0.42
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.08
+        ],
+        "width": 6.2,
+        "height": 3.4,
+        "material": "goal28_lab_rear_light_grey",
+        "hideCamera": true,
+        "visibleGlossy": true
+      }
+    ],
+    "blackFlags": [
+      {
+        "role": "left-soft-dark-edge-flag",
+        "name": "goal28_lab_left_soft_edge_flag",
+        "location": [
+          -3.55,
+          -0.02,
+          0.42
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.08
+        ],
+        "width": 0.82,
+        "height": 2.6,
+        "material": "goal28_lab_soft_black_flag",
+        "hideCamera": true,
+        "visibleGlossy": true
+      },
+      {
+        "role": "right-soft-dark-edge-flag",
+        "name": "goal28_lab_right_soft_edge_flag",
+        "location": [
+          3.55,
+          -0.02,
+          0.36
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.06
+        ],
+        "width": 0.76,
+        "height": 2.4,
+        "material": "goal28_lab_soft_black_flag",
+        "hideCamera": true,
+        "visibleGlossy": true
+      },
+      {
+        "role": "upper-soft-dark-cut-flag",
+        "name": "goal28_lab_upper_soft_cut",
+        "location": [
+          0.0,
+          -0.24,
+          3.12
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.12
+        ],
+        "width": 4.2,
+        "height": 0.58,
+        "material": "goal28_lab_soft_black_flag",
+        "hideCamera": true,
+        "visibleGlossy": true
+      }
+    ],
+    "whiteClothStage": [
+      {
+        "role": "visible-white-cloth-floor",
+        "name": "goal28_lab_white_cloth_floor",
+        "location": [
+          0.0,
+          -0.35,
+          -0.92
+        ],
+        "width": 5.9,
+        "height": 4.4,
+        "material": "goal28_lab_white_cloth_stage.001",
+        "hideCamera": false,
+        "visibleGlossy": true
+      },
+      {
+        "role": "visible-white-cloth-backdrop",
+        "name": "goal28_lab_white_cloth_backdrop",
+        "location": [
+          0.0,
+          2.35,
+          0.72
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.2
+        ],
+        "width": 7.6,
+        "height": 4.4,
+        "material": "goal28_lab_white_cloth_stage.001",
+        "hideCamera": false,
+        "visibleGlossy": true
+      },
+      {
+        "role": "visible-left-white-cloth-reflector",
+        "name": "goal28_lab_left_white_reflection_wall",
+        "location": [
+          -4.25,
+          -0.18,
+          0.65
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.16
+        ],
+        "width": 4.6,
+        "height": 3.8,
+        "material": "goal28_lab_side_white_cloth.001",
+        "hideCamera": false,
+        "visibleGlossy": true
+      },
+      {
+        "role": "visible-right-white-cloth-reflector",
+        "name": "goal28_lab_right_white_reflection_wall",
+        "location": [
+          4.25,
+          -0.12,
+          0.62
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.14
+        ],
+        "width": 4.4,
+        "height": 3.7,
+        "material": "goal28_lab_side_white_cloth.001",
+        "hideCamera": false,
+        "visibleGlossy": true
+      },
+      {
+        "role": "visible-overhead-white-cloth-reflector",
+        "name": "goal28_lab_overhead_white_cloth",
+        "location": [
+          0.0,
+          -0.2,
+          3.1
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.12
+        ],
+        "width": 7.2,
+        "height": 3.2,
+        "material": "goal28_lab_white_cloth_stage.001",
+        "hideCamera": false,
+        "visibleGlossy": true
+      }
+    ],
+    "backgroundMode": "white-cloth-natural-light",
+    "driverLightMode": "large-soft-specular-drivers-plus-reflection-cards",
+    "driverLightsHiddenFromGlossy": false,
+    "removedMirrorReadablePanels": true,
+    "reviewFramePriority": [
+      136,
+      72,
+      216,
+      0
+    ]
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "progress": 0.0,
+      "shotId": "contracted-presence",
+      "path": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/frames/frame0000.png",
+      "width": 960,
+      "height": 540,
+      "bytes": 577164,
+      "sha256": "e2c1923b2e7e9a3d14dc9cd402446e6c4ea6ba519e11dd83059369e1ed8ce965",
+      "camera": {
+        "position": [
+          -0.539092,
+          -1.1105,
+          0.277392
+        ],
+        "target": [
+          0.031308,
+          0.0055,
+          0.004592
+        ],
+        "fovDegrees": 47.0,
+        "distanceMultiplier": 1.0,
+        "fovMultiplier": 1.0,
+        "offset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "channels": {
+        "exploded": 0.0,
+        "shellSplit": 0.0,
+        "seatSpread": 0.0,
+        "stemLift": 0.0,
+        "lowerDrop": 0.0,
+        "fastenerSpread": 0.0,
+        "ballTurn": 0.0
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 0.0,
+        "movedCounts": {},
+        "maxOffset": 0.0
+      }
+    },
+    {
+      "frame": 72,
+      "progress": 0.301255,
+      "shotId": "axis-made-legible",
+      "path": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/frames/frame0072.png",
+      "width": 960,
+      "height": 540,
+      "bytes": 613520,
+      "sha256": "c21092bb8679f69ef69063c9d4753f6cebc52886cf1af36de17340758ef98449",
+      "camera": {
+        "position": [
+          -0.335413,
+          -1.039223,
+          0.328391
+        ],
+        "target": [
+          0.004409,
+          0.003765,
+          0.026907
+        ],
+        "fovDegrees": 40.2472,
+        "distanceMultiplier": 1.0,
+        "fovMultiplier": 1.0,
+        "offset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "channels": {
+        "exploded": 0.321933,
+        "shellSplit": 0.347687,
+        "seatSpread": 0.321933,
+        "stemLift": 0.296178,
+        "lowerDrop": 0.251108,
+        "fastenerSpread": 0.244669,
+        "ballTurn": 0.0
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 0.0,
+        "movedCounts": {
+          "fastenersSmallHardware": 105,
+          "bodyPressureShell": 4,
+          "seatSealSystem": 7,
+          "ballTrunnionCore": 3,
+          "stemPackingDrive": 15
+        },
+        "maxOffset": 0.063184
+      }
+    },
+    {
+      "frame": 136,
+      "progress": 0.569038,
+      "shotId": "seat-system-proof",
+      "path": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/frames/frame0136.png",
+      "width": 960,
+      "height": 540,
+      "bytes": 591051,
+      "sha256": "e58174b789c9a33231aef07485e937010814a3395b9293659244e50eddaa020e",
+      "camera": {
+        "position": [
+          -0.742007,
+          -2.097589,
+          0.3406
+        ],
+        "target": [
+          -0.017414,
+          0.00011,
+          0.038124
+        ],
+        "fovDegrees": 37.0586,
+        "distanceMultiplier": 1.0,
+        "fovMultiplier": 1.0,
+        "offset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "channels": {
+        "exploded": 1.0,
+        "shellSplit": 1.08,
+        "seatSpread": 1.0,
+        "stemLift": 0.92,
+        "lowerDrop": 0.78,
+        "fastenerSpread": 0.76,
+        "ballTurn": 0.97649
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 87.8841,
+        "movedCounts": {
+          "fastenersSmallHardware": 105,
+          "bodyPressureShell": 4,
+          "seatSealSystem": 7,
+          "ballTrunnionCore": 3,
+          "stemPackingDrive": 15
+        },
+        "maxOffset": 0.196266
+      }
+    },
+    {
+      "frame": 216,
+      "progress": 0.903766,
+      "shotId": "commercial-hero-hold",
+      "path": "docs/assets/ztovalve/hero/goal28-lighting-lab/lighting-v02/frames/frame0216.png",
+      "width": 960,
+      "height": 540,
+      "bytes": 601595,
+      "sha256": "7f991e772cd7465f155d494fb0c056b1027274c6949ff39f4e2c782a2c676d30",
+      "camera": {
+        "position": [
+          -0.288692,
+          -0.7137,
+          0.247392
+        ],
+        "target": [
+          0.021308,
+          0.0055,
+          -0.025408
+        ],
+        "fovDegrees": 45.6004,
+        "distanceMultiplier": 1.0,
+        "fovMultiplier": 1.0,
+        "offset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "channels": {
+        "exploded": 0.0,
+        "shellSplit": 0.0,
+        "seatSpread": 0.0,
+        "stemLift": 0.0,
+        "lowerDrop": 0.0,
+        "fastenerSpread": 0.0,
+        "ballTurn": 0.0
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 0.0,
+        "movedCounts": {},
+        "maxOffset": 0.0
+      }
+    }
+  ],
+  "constraints": [
+    "Four-frame lighting sample only.",
+    "No homepage hero replacement is performed.",
+    "No existing AVIF sequence is overwritten.",
+    "No Pages publication is performed.",
+    "No control-valve asset is consumed."
+  ]
+}

@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-02T16:26:18.875224+00:00",
+  "goal": "Goal 23 STEP full-valve material v1",
+  "profile": "smoke",
+  "renderer": "Blender Cycles",
+  "blender": "5.2.0 LTS",
+  "sourceBoundary": {
+    "stepSource": "D:/program/WXrecord/xwechat_files/wxid_p21a7v5850v922_6db6/msg/file/2026-08/固定式球阀(1).STEP",
+    "stepSourceSha256": "3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547",
+    "stepMesh": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/goal20-step-mesh.glb",
+    "stepMeshSha256": "0326bbf77f186dc9869bd0715d7096f94bad3d502b1b0cab1d93860dcef4888f",
+    "goal20SemanticMap": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/semantic-material-map.json",
+    "goal22Ladder": "docs/assets/ztovalve/hero/goal22-material-calibration-lab/cast-satin-roughness-ladder.json",
+    "rule": "Goal 23 reuses the STEP-derived Goal 20 GLB and only renders stills for material review."
+  },
+  "renderProfile": {
+    "width": 1600,
+    "height": 900,
+    "samples": 44,
+    "engine": "Cycles",
+    "homepageConnected": false,
+    "motionTestRendered": false,
+    "frameSequenceRendered": false,
+    "fullReleaseFrameCount": 0
+  },
+  "materialDecision": {
+    "castBlastedStainless": {
+      "source": "Goal 22 cast satin roughness ladder",
+      "selectedCandidate": "fine_r46_full_valve_micro_tune",
+      "sourceCandidate": "fine_r46",
+      "textureBand": "fine/bead hybrid cast satin",
+      "roughness": 0.4,
+      "materialName": "goal23_castBlastedStainless"
+    },
+    "polishedStainlessBall": "Goal 22 polished ball soft/mirror direction, kept unchanged after review focus moved to satin cast body",
+    "softSealPtfe": "Goal 22 warm off-white PTFE direction",
+    "graphitePacking": "Goal 22 matte graphite/dark seal direction",
+    "fastenerStainless": "Goal 22 fastener stainless direction, brightened for full-valve separation"
+  },
+  "goal22Evidence": {
+    "ladderStill": "docs/assets/ztovalve/hero/goal22-material-calibration-lab/stills/02-cast-satin-roughness-ladder.png",
+    "ladderSha256": "eb04e5edab3338fd219ace956d71152e9e354e6d03fc1e2527cfb045a0b07a90",
+    "selectedCandidate": {
+      "id": "fine_r46",
+      "label": "fine cast satin / roughness 0.46",
+      "roughness": 0.46,
+      "textureBand": "fine",
+      "materialName": "goal22_cast_satin_fine_r46"
+    }
+  },
+  "lighting": {
+    "hdri": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/studio_small_09_1k.hdr",
+    "strategy": "darker neutral grey studio, reduced HDRI/white-panel strength, broad softboxes, and camera-invisible charcoal reflection flags for steel dark values; no animation lighting",
+    "areaLights": [
+      "goal23_left_broad_softbox",
+      "goal23_top_long_soft_strip",
+      "goal23_right_edge_softbox",
+      "goal23_front_low_fill"
+    ],
+    "reflectionFlags": [
+      "goal23_left_charcoal_reflection_flag",
+      "goal23_overhead_charcoal_reflection_flag"
+    ]
+  },
+  "partIdentity": {
+    "meshCount": 138,
+    "sourceStepProductNameCount": 36,
+    "goal20MeshCount": {
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N": 6,
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N": 4,
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N": 18,
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N": 12,
+      "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N": 8,
+      "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26": 2,
+      "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10": 8,
+      "弹簧": 32,
+      "堵头": 1,
+      "阀盖": 2,
+      "阀杆轴承": 1,
+      "阀座盘根": 1,
+      "阀体": 1,
+      "阀座": 2,
+      "阀座密封圈": 2,
+      "阀座压圈": 2,
+      "固定轴": 1,
+      "固定轴垫片": 1,
+      "固定轴轴承": 1,
+      "连接轴": 1,
+      "平键": 1,
+      "体盖螺柱": 12,
+      "支架螺柱": 8,
+      "排污阀垫片": 1,
+      "球体": 1,
+      "球体轴承": 1,
+      "填料": 1,
+      "填料箱": 1,
+      "填料箱垫片": 1,
+      "填料压盖": 1,
+      "填料压圈": 1,
+      "支架": 1,
+      "止推垫": 1,
+      "中道垫片": 1
+    },
+    "focusPartCount": 13
+  },
+  "groupCounts": {
+    "fastenersSmallHardware": 105,
+    "bodyPressureShell": 4,
+    "ballTrunnionCore": 7,
+    "seatSealSystem": 7,
+    "stemPackingDrive": 15
+  },
+  "materialCounts": {
+    "fastenerStainless": 111,
+    "machinedStainless": 14,
+    "castBlastedStainless": 3,
+    "graphitePacking": 7,
+    "softSealPtfe": 2,
+    "polishedStainlessBall": 1
+  },
+  "partCounts": {
+    "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N": 6,
+    "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N": 4,
+    "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N": 18,
+    "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N": 12,
+    "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N": 8,
+    "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26": 2,
+    "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10": 8,
+    "弹簧": 32,
+    "堵头": 1,
+    "阀盖": 2,
+    "阀杆轴承": 1,
+    "阀座盘根": 1,
+    "阀体": 1,
+    "阀座": 2,
+    "阀座密封圈": 2,
+    "阀座压圈": 2,
+    "固定轴": 1,
+    "固定轴垫片": 1,
+    "固定轴轴承": 1,
+    "连接轴": 1,
+    "平键": 1,
+    "体盖螺柱": 12,
+    "支架螺柱": 8,
+    "排污阀垫片": 1,
+    "球体": 1,
+    "球体轴承": 1,
+    "填料": 1,
+    "填料箱": 1,
+    "填料箱垫片": 1,
+    "填料压盖": 1,
+    "填料压圈": 1,
+    "支架": 1,
+    "止推垫": 1,
+    "中道垫片": 1
+  },
+  "focusParts": [
+    {
+      "sourceName": "·§¸",
+      "partName": "阀盖",
+      "group": "bodyPressureShell",
+      "material": "castBlastedStainless",
+      "center": [
+        0.016284,
+        0.00937,
+        0.08025
+      ],
+      "size": [
+        0.049034,
+        0.049034,
+        0.211
+      ]
+    },
+    {
+      "sourceName": "·§¸",
+      "partName": "阀盖",
+      "group": "bodyPressureShell",
+      "material": "castBlastedStainless",
+      "center": [
+        -0.190067,
+        0.044836,
+        -0.08975
+      ],
+      "size": [
+        0.153499,
+        0.282795,
+        0.27
+      ]
+    },
+    {
+      "sourceName": "·§×ùÅÌ¸ù",
+      "partName": "阀座盘根",
+      "group": "seatSealSystem",
+      "material": "graphitePacking",
+      "center": [
+        0.150098,
+        -0.009424,
+        -0.08975
+      ],
+      "size": [
+        0.019649,
+        0.136146,
+        0.1368
+      ]
+    },
+    {
+      "sourceName": "·§ͥ",
+      "partName": "阀体",
+      "group": "bodyPressureShell",
+      "material": "castBlastedStainless",
+      "center": [
+        0.060204,
+        0.003977,
+        -0.082
+      ],
+      "size": [
+        0.27856,
+        0.29815,
+        0.2855
+      ]
+    },
+    {
+      "sourceName": "·§ع",
+      "partName": "阀座",
+      "group": "seatSealSystem",
+      "material": "softSealPtfe",
+      "center": [
+        0.114366,
+        -0.005037,
+        -0.08975
+      ],
+      "size": [
+        0.04184,
+        0.157636,
+        0.155798
+      ]
+    },
+    {
+      "sourceName": "·§ع",
+      "partName": "阀座",
+      "group": "seatSealSystem",
+      "material": "softSealPtfe",
+      "center": [
+        -0.161847,
+        0.043735,
+        -0.08975
+      ],
+      "size": [
+        0.04184,
+        0.15764,
+        0.155757
+      ]
+    },
+    {
+      "sourceName": "·§عĜ·㈦",
+      "partName": "阀座密封圈",
+      "group": "seatSealSystem",
+      "material": "graphitePacking",
+      "center": [
+        0.122803,
+        -0.006073,
+        -0.08975
+      ],
+      "size": [
+        0.027917,
+        0.155708,
+        0.155999
+      ]
+    },
+    {
+      "sourceName": "·§عĜ·㈦",
+      "partName": "阀座密封圈",
+      "group": "seatSealSystem",
+      "material": "graphitePacking",
+      "center": [
+        -0.170284,
+        0.044771,
+        -0.08975
+      ],
+      "size": [
+        0.027922,
+        0.155747,
+        0.155994
+      ]
+    },
+    {
+      "sourceName": "ƅϛ·§µ熬",
+      "partName": "排污阀垫片",
+      "group": "fastenersSmallHardware",
+      "material": "graphitePacking",
+      "center": [
+        -0.042749,
+        -0.134063,
+        -0.192085
+      ],
+      "size": [
+        0.026057,
+        0.02114,
+        0.018352
+      ]
+    },
+    {
+      "sourceName": "Ȳͥ",
+      "partName": "球体",
+      "group": "ballTrunnionCore",
+      "material": "polishedStainlessBall",
+      "center": [
+        -0.018086,
+        -0.104813,
+        -0.0803
+      ],
+      "size": [
+        0.167684,
+        0.211218,
+        0.1855
+      ]
+    },
+    {
+      "sourceName": "ͮ",
+      "partName": "填料",
+      "group": "stemPackingDrive",
+      "material": "graphitePacking",
+      "center": [
+        0.00401,
+        0.01243,
+        0.1335
+      ],
+      "size": [
+        0.050137,
+        0.050062,
+        0.026
+      ]
+    },
+    {
+      "sourceName": "ͮФµ熬",
+      "partName": "填料箱垫片",
+      "group": "stemPackingDrive",
+      "material": "graphitePacking",
+      "center": [
+        0.00401,
+        0.01243,
+        0.11825
+      ],
+      "size": [
+        0.080184,
+        0.080198,
+        0.0025
+      ]
+    },
+    {
+      "sourceName": "אµ5熬",
+      "partName": "中道垫片",
+      "group": "fastenersSmallHardware",
+      "material": "graphitePacking",
+      "center": [
+        -0.16855,
+        0.045909,
+        -0.109
+      ],
+      "size": [
+        0.029776,
+        0.218619,
+        0.219892
+      ]
+    }
+  ],
+  "stills": [
+    {
+      "id": "assembled-material-v1",
+      "stateId": "assembled",
+      "name": "完整整阀材质 v1",
+      "purpose": "检查基于 fine_r46 微调后的铸造缎面不锈钢在整阀上的商业质感、色调和材质分离。",
+      "path": "docs/assets/ztovalve/hero/goal23-step-material-v1/stills/01-assembled-material-v1.png",
+      "width": 1600,
+      "height": 900,
+      "bytes": 1619454,
+      "sha256": "890619011a264a28edb15ea36dac0a8fc87f377faaac247907fe90a014de32ec"
+    },
+    {
+      "id": "body-flange-cast-satin-close",
+      "stateId": "assembled",
+      "name": "阀体/法兰铸造缎面近景",
+      "purpose": "专门检查阀体、阀盖、法兰上的铸后磨砂/喷砂缎面不锈钢是否还有粉感、白感或粗糙度不足。",
+      "path": "docs/assets/ztovalve/hero/goal23-step-material-v1/stills/02-body-flange-cast-satin-close.png",
+      "width": 1600,
+      "height": 900,
+      "bytes": 1706196,
+      "sha256": "18dbc16f6cbd55d5759d6aeb922effc1f84fb994e64acaba23a13a1fdc2d59db"
+    },
+    {
+      "id": "ball-seat-seal-close",
+      "stateId": "detail-open",
+      "name": "球体/阀座/密封近景",
+      "purpose": "检查抛光球体、PTFE 阀座和石墨密封在同一真实阀门局部里的分离度。",
+      "path": "docs/assets/ztovalve/hero/goal23-step-material-v1/stills/03-ball-seat-seal-close.png",
+      "width": 1600,
+      "height": 900,
+      "bytes": 1793551,
+      "sha256": "4e1d62149f4c4edec1b42306c1ea8b689bba011bc7f0e2ea21f0d5ae39ce8b5a"
+    }
+  ],
+  "constraints": [
+    "No homepage hero replacement is performed.",
+    "No 24-frame or 240-frame animation is rendered.",
+    "Material labels remain visual treatments, not certified product material claims.",
+    "Goal 23 is a first full-valve material still pass for review and micro-tuning only."
+  ]
+}

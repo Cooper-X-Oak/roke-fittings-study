@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "kind": "hero_runtime_material_authority",
+  "authority_id": "hero-runtime",
+  "control_id": "hero-runtime-material-authority",
+  "status": "active",
+  "statement": "材质权威采用证据校准后的商业级硅溶胶精密铸造不锈钢视觉：以金属度、粗糙度、各向异性、清洁微表面和受控反射环境形成工业摄影质感；不通过白色漫反射、脏污噪声、战损划痕或黑色 WCB 观感伪造高级感。",
+  "appearance_state": {
+    "body_material_truth": "silica-sol investment-cast stainless steel visual",
+    "body_visual_family": "silver-white stainless investment casting",
+    "body_surface_style": "commercial mid-grey fine satin stainless lifted by white-studio reflection",
+    "flange_surface_style": "clean machined stainless with broad satin reflection",
+    "ball_material_style": "clean polished stainless ball with soft-studio reflection gradient",
+    "rendering_model": "clean PBR",
+    "commercial_finish_grade": "refined industrial product photography, not used-part realism",
+    "material_profile": "commercial-silica-sol-cast-stainless-v1"
+  },
+  "pbr_calibration_policy": {
+    "workflow": "metallic-roughness-clean-commercial-pbr",
+    "metallic_materials_require_metallic_one": true,
+    "non_metallic_materials_require_metallic_zero_or_low": true,
+    "base_color_is_material_substrate_not_lighting": true,
+    "roughness_controls_reflection_spread_not_dirt": true,
+    "anisotropy_allowed_only_for_machined_or_directional_faces": true,
+    "coat_allowed_only_for_controlled_commercial_sheen": true,
+    "normal_or_bump_micro_variation_allowed": true,
+    "displacement_damage_or_scratch_geometry_allowed": false,
+    "lighting_environment_dependency": "commercial stainless brightness must be reviewed under the active white-studio reflection authority before changing material substrate values"
+  },
+  "commercial_pbr_envelope": {
+    "lightness_policy": {
+      "principle": "white-studio brightness must come from metal reflection and environment, not from pushing stainless base color to white diffuse",
+      "direct_white_diffuse_shortcut_allowed": false,
+      "dominant_body_base_color_max_component": 0.55,
+      "dominant_body_base_color_min_component": 0.34
+    },
+    "roles": {
+      "cast-satin-body": {
+        "purpose": "dominant pressure shell and cast body surfaces",
+        "base_color_target": [0.46, 0.48, 0.45, 1.0],
+        "base_color_range": [[0.36, 0.38, 0.35, 1.0], [0.52, 0.54, 0.50, 1.0]],
+        "metallic": 1.0,
+        "roughness_target": 0.40,
+        "roughness_range": [0.38, 0.46],
+        "anisotropic_range": [0.12, 0.24],
+        "coat_range": [0.03, 0.07],
+        "texture_band": "fine clean satin casting",
+        "micro_variation": {
+          "color_variation_max_span": 0.18,
+          "roughness_variation_max_span": 0.14,
+          "bump_strength_max": 0.0045,
+          "bump_distance_max": 0.0012
+        }
+      },
+      "machined-flange-faces": {
+        "purpose": "flat flanges, machined rings and catalogue-facing cut faces",
+        "base_color_target": [0.58, 0.60, 0.56, 1.0],
+        "base_color_range": [[0.46, 0.48, 0.44, 1.0], [0.66, 0.68, 0.63, 1.0]],
+        "metallic": 1.0,
+        "roughness_range": [0.20, 0.30],
+        "anisotropic_range": [0.48, 0.78],
+        "coat_range": [0.06, 0.12],
+        "texture_band": "controlled machining direction without dirty rings"
+      },
+      "brushed-side-faces": {
+        "purpose": "secondary satin side faces and flange side walls",
+        "base_color_target": [0.48, 0.50, 0.46, 1.0],
+        "base_color_range": [[0.40, 0.42, 0.38, 1.0], [0.58, 0.60, 0.55, 1.0]],
+        "metallic": 1.0,
+        "roughness_range": [0.30, 0.38],
+        "anisotropic_range": [0.50, 0.72],
+        "texture_band": "clean satin brush, not scratch damage"
+      },
+      "edge-burnish": {
+        "purpose": "small bevel highlights that separate industrial edges",
+        "base_color_target": [0.68, 0.70, 0.66, 1.0],
+        "base_color_range": [[0.60, 0.62, 0.58, 1.0], [0.78, 0.80, 0.74, 1.0]],
+        "metallic": 1.0,
+        "roughness_range": [0.14, 0.24],
+        "anisotropic_range": [0.28, 0.48],
+        "coverage_policy": "thin edge highlight only; never a broad white body material"
+      },
+      "machined-bores-and-root-shadows": {
+        "purpose": "inner bores, bolt bores and root grooves that preserve depth hierarchy",
+        "base_color_target": [0.28, 0.30, 0.28, 1.0],
+        "base_color_range": [[0.18, 0.20, 0.18, 1.0], [0.38, 0.40, 0.36, 1.0]],
+        "metallic_range": [0.75, 1.0],
+        "roughness_range": [0.34, 0.54],
+        "edge_policy": "darkened by geometry and reflection hierarchy, not by dirty blotches"
+      },
+      "fastener-stainless": {
+        "purpose": "studs, nuts, washers and small stainless hardware",
+        "base_color_target": [0.47, 0.49, 0.46, 1.0],
+        "base_color_range": [[0.38, 0.40, 0.36, 1.0], [0.58, 0.60, 0.55, 1.0]],
+        "metallic": 1.0,
+        "roughness_range": [0.24, 0.34],
+        "anisotropic_range": [0.35, 0.62],
+        "visual_priority": "lower than body and ball"
+      },
+      "polished-stainless-ball": {
+        "purpose": "true ball core only",
+        "base_color_target": [0.74, 0.76, 0.72, 1.0],
+        "base_color_range": [[0.64, 0.66, 0.62, 1.0], [0.82, 0.84, 0.78, 1.0]],
+        "metallic": 1.0,
+        "roughness_target": 0.08,
+        "roughness_range": [0.06, 0.10],
+        "anisotropic_range": [0.0, 0.08],
+        "coat_range": [0.12, 0.20],
+        "reflection_policy": "broad white and soft silver gradients only; no readable equipment, black flags, hard panel shapes or surrounding non-ball product parts"
+      },
+      "graphite-packing": {
+        "purpose": "graphite packing and dark seal hierarchy",
+        "base_color_target": [0.018, 0.019, 0.019, 1.0],
+        "base_color_range": [[0.010, 0.010, 0.011, 1.0], [0.040, 0.042, 0.040, 1.0]],
+        "metallic_range": [0.0, 0.22],
+        "roughness_range": [0.58, 0.78],
+        "texture_policy": "fine matte sheen only, not dirty grease"
+      },
+      "rubber-seal": {
+        "purpose": "black rubber seal where distinct from graphite packing",
+        "base_color_target": [0.012, 0.013, 0.013, 1.0],
+        "base_color_range": [[0.006, 0.006, 0.006, 1.0], [0.030, 0.032, 0.030, 1.0]],
+        "metallic": 0.0,
+        "roughness_range": [0.38, 0.56],
+        "coat_range": [0.03, 0.10]
+      },
+      "soft-seal-ptfe": {
+        "purpose": "warm off-white or pale grey soft-seat material",
+        "base_color_target": [0.70, 0.66, 0.54, 1.0],
+        "base_color_range": [[0.58, 0.56, 0.48, 1.0], [0.82, 0.78, 0.66, 1.0]],
+        "metallic": 0.0,
+        "roughness_range": [0.48, 0.62],
+        "whiteness_policy": "warm technical polymer, not pure white plastic"
+      }
+    }
+  },
+  "allowed_surface_texture": {
+    "body": "fine clean satin casting texture with low-amplitude micro variation only",
+    "machined_faces": "controlled machining direction without visible dirty rings or dirty radial bands",
+    "ball": "smooth polished metal with clean reflection gradients",
+    "fasteners": "clean stainless hierarchy, lower visual priority than body and ball",
+    "dark_seals": "graphite or rubber hierarchy with fine matte sheen only",
+    "soft_seats": "warm off-white or pale grey PTFE-style polymer, never pure white plastic"
+  },
+  "commercial_surface_integrity": {
+    "sole_runtime_material_authority": true,
+    "commercial_body_assignment_policy": "continuous-commercial-body",
+    "body_material_roles_allowed": true,
+    "body_material_role_count_requirement": "not a release criterion",
+    "visual_priority_order": [
+      "polished ball core",
+      "continuous cast stainless body",
+      "machined flange and bore edges",
+      "seat and seal system",
+      "stem drive and small hardware"
+    ],
+    "clean_micro_surface_policy": "micro variation may break perfect CG smoothness, but must remain below the threshold where it reads as dirt, corrosion, stains, scratches or war damage",
+    "material_lighting_separation_required": true,
+    "body_must_not_be_lightened_by_white_diffuse_shortcut": true,
+    "product_facing_polygon_material_hard_edges_visible_allowed": false,
+    "polygon_zone_triangles_visible_allowed": false,
+    "dirty_blotch_highlights_visible_allowed": false,
+    "body_shell_rule": "dominant cast-satin body shell must read as one continuous commercial stainless surface; secondary machining, bore, seal and hardware roles may exist only where real part boundaries support them",
+    "audit_expectation": "runtime manifests must declare whether non-runtime material sources, polygon-zone artifacts, product-facing material hard edges and dirty-blotch highlights are present"
+  },
+  "forbidden": [
+    "WCB interpretation",
+    "cast carbon steel look",
+    "black cast steel look",
+    "white diffuse shortcut on stainless body",
+    "pure white plastic body look",
+    "chalky powder-coated stainless look",
+    "heavy bead-blasted commercial release body",
+    "war-damaged look",
+    "dirty scratch proof",
+    "explicit scratch geometry in approved runtime",
+    "dirty blotch procedural color noise in approved runtime",
+    "cast_noise texture in approved release material path",
+    "cloudy color variation presented as commercial finish",
+    "roughness noise that reads as dirt",
+    "broad edge-burnish material replacing the cast body material",
+    "polished ball roughness high enough to kill commercial studio reflection",
+    "visible polygon material-zone triangles on product-facing stainless body",
+    "hard material-zone seams on curved body shell",
+    "dirty white blotch highlights that read as stain or light gear",
+    "non-runtime material experiment treated as current hero render authority"
+  ],
+  "release_expectations": {
+    "clean_pbr": true,
+    "metallic_roughness_workflow_required": true,
+    "commercial_clean_micro_surface_required": true,
+    "material_lighting_separation_required": true,
+    "explicit_scratch_geometry_visible": false,
+    "dirty_blotch_noise_visible": false,
+    "dirty_blotch_highlights_visible": false,
+    "polygon_zone_artifacts_visible": false,
+    "product_facing_material_hard_edges_visible": false,
+    "non_runtime_material_source_used": false,
+    "commercial_body_assignment_policy": "continuous-commercial-body",
+    "commercial_body_zone_count": 1,
+    "material_parameter_snapshot_required": true,
+    "dominant_body_base_color_max_component": 0.55,
+    "dominant_body_roughness_min": 0.38,
+    "dominant_body_roughness_max": 0.46,
+    "polished_ball_roughness_min": 0.06,
+    "polished_ball_roughness_max": 0.10,
+    "stainless_white_diffuse_shortcut_allowed": false
+  }
+}

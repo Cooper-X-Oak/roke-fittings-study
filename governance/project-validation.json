@@ -86,6 +86,32 @@
       "command": "python scripts/validate_control_valve_commercial_look.py"
     },
     {
+      "id": "fixed-ball-valve-hero-control-facts-contract",
+      "behavior_id": "fixed-ball-valve-hero-route-source-motion-story-camera-and-composition-remain-bound",
+      "rule_paths": [
+        ["bind-fixed-ball-valve-hero-to-step-source"],
+        ["require-step-first-blender-commercial-render-route"],
+        ["author-deterministic-fixed-ball-valve-motion-controls"],
+        ["preserve-fixed-ball-valve-axis-to-seal-storyboard"],
+        ["bind-fixed-ball-valve-camera-previs-to-blender-control"],
+        ["deliver-fixed-ball-valve-hero-composition-contract"]
+      ],
+      "required_for_current_contract": true,
+      "command": "python scripts/validate_fixed_ball_valve_hero_control_facts.py"
+    },
+    {
+      "id": "fixed-ball-valve-hero-runtime-authority-contract",
+      "behavior_id": "fixed-ball-valve-hero-runtime-material-lighting-camera-motion-and-storyboard-remain-bound",
+      "rule_paths": [
+        ["establish-fixed-ball-valve-hero-runtime-authority"],
+        ["establish-fixed-ball-valve-hero-runtime-authority", "runtime-material-lighting-camera-proof"],
+        ["establish-fixed-ball-valve-hero-runtime-authority", "runtime-motion-storyboard-proof"],
+        ["establish-fixed-ball-valve-hero-runtime-authority", "runtime-release-gate-proof"]
+      ],
+      "required_for_current_contract": true,
+      "command": "python scripts/validate_hero_runtime_authority.py"
+    },
+    {
       "id": "published-control-valve-pages-contract",
       "behavior_id": "public-pages-route-is-sourced-from-the-verified-development-branch-and-exposes-gop6-story",
       "rule_paths": [

@@ -1,0 +1,108 @@
+{
+  "schema": "control-model-root/v0",
+  "kind": "control_root",
+  "authority_status": "candidate",
+  "root_id": "client-old-site-roke-migration",
+  "root_version": "2026-08-01",
+  "statement": "客户旧站迁移到 ROKE 风格站的主线任务候选控制根，用于在后续跨会话工作中定位少数需要稳定审阅的迁移边界。",
+  "boundary": "本候选根只登记迁移主线的可审阅边界和受控未知；不授权当前开发，不晋升为 current，不登记临时计划、会话日志、具体截图、未验证素材或一次性调试结论。",
+  "validator": {
+    "path": "validate.py",
+    "interface": "describe/check",
+    "statement": "该脚本是本候选控制根唯一程序化一致性检查入口。"
+  },
+  "nodes": [
+    {
+      "id": "migration-mainline",
+      "node_role": "locator",
+      "statement": "定位客户旧站迁移为 ROKE 视觉与交互参考风格网站的主线任务。",
+      "children": [
+        {
+          "id": "reference-style-ownership-boundary",
+          "node_role": "control",
+          "control_id": "reference-style-ownership-boundary",
+          "statement": "迁移必须把 ROKE 视为视觉和交互参考，而不是商用资产来源；上线内容应使用客户自有或已授权的素材、文案、商标、产品资料与法律文本。",
+          "boundary": "该控制不禁止复刻版式、节奏、动效和交互体验，但不允许把 ROKE 品牌、原站图片、PDF、专有字体、产品资料或未授权素材当作客户商用交付资产。",
+          "validator_required": true
+        },
+        {
+          "id": "legacy-site-inventory-before-bulk-migration",
+          "node_role": "control",
+          "control_id": "legacy-site-inventory-before-bulk-migration",
+          "statement": "批量迁移前必须先形成旧站页面、内容、产品、资料、表单、SEO 与旧 URL 到新路由的映射清单。",
+          "boundary": "该控制不固定具体旧站 URL、信息架构、页面数量或产品分类；这些必须由后续客户资料、源码包或授权抓取结果填充。",
+          "validator_required": true
+        },
+        {
+          "id": "template-mapping-first-delivery-slice",
+          "node_role": "control",
+          "control_id": "template-mapping-first-delivery-slice",
+          "statement": "首批交付应先完成首页、产品目录、一个重点产品或系列页、关于或服务页的模板映射样板，再扩展到全站迁移。",
+          "boundary": "该控制不要求一次迁完整站，也不把当前 ROKE 学习镜像中的全部实验路由纳入客户商业交付范围。",
+          "validator_required": true
+        },
+        {
+          "id": "unresolved-client-source-package",
+          "node_role": "controlled_unknown",
+          "control_id": "unresolved-client-source-package",
+          "statement": "客户旧站 URL、源码包、品牌素材、产品资料与素材授权边界尚未登记；该不确定性会影响迁移范围、内容完整性和可商用素材替换。",
+          "boundary": "未解决前，不得把当前 ROKE 学习镜像内容视为客户可上线内容。",
+          "validator_required": true
+        },
+        {
+          "id": "unresolved-dynamic-feature-scope",
+          "node_role": "controlled_unknown",
+          "control_id": "unresolved-dynamic-feature-scope",
+          "statement": "旧站是否包含表单、搜索、筛选、产品数据库、CMS、多语言、统计或 CRM/API 接入尚未确认；该范围会决定静态站是否足够。",
+          "boundary": "未确认前，不得承诺现有静态镜像已经覆盖动态功能、数据收集或后台能力。",
+          "validator_required": true
+        },
+        {
+          "id": "unresolved-deployment-path-scope",
+          "node_role": "controlled_unknown",
+          "control_id": "unresolved-deployment-path-scope",
+          "statement": "目标部署域名、路径前缀和托管平台尚未确认；当前 /roke-fittings-study 路径前缀是否保留必须后续决策。",
+          "boundary": "未确认前，不得把本地预览或 GitHub Pages 子路径视为客户生产部署结构。",
+          "validator_required": true
+        }
+      ]
+    },
+    {
+      "id": "implementation-surfaces",
+      "node_role": "locator",
+      "statement": "定位后续可能涉及的实现表面，包括 docs 静态页面、素材、样式、脚本、资料下载、表单服务或 API 集成。"
+    }
+  ],
+  "edges": [
+    {
+      "from": "unresolved-client-source-package",
+      "to": "legacy-site-inventory-before-bulk-migration",
+      "edge_type": "blocks",
+      "statement": "客户旧站和授权素材未登记前，旧站迁移清单不能被视为完成。"
+    },
+    {
+      "from": "legacy-site-inventory-before-bulk-migration",
+      "to": "template-mapping-first-delivery-slice",
+      "edge_type": "supports",
+      "statement": "旧站内容与 URL 映射清单为首批模板样板选择和验收提供依据。"
+    },
+    {
+      "from": "reference-style-ownership-boundary",
+      "to": "template-mapping-first-delivery-slice",
+      "edge_type": "supports",
+      "statement": "ROKE 参考与客户资产所有权边界决定样板页面可商用替换方式。"
+    },
+    {
+      "from": "unresolved-dynamic-feature-scope",
+      "to": "implementation-surfaces",
+      "edge_type": "relates-to",
+      "statement": "动态功能范围决定后续是否只改静态页面，或需要新增表单服务、搜索、CMS 或 API 集成。"
+    },
+    {
+      "from": "unresolved-deployment-path-scope",
+      "to": "implementation-surfaces",
+      "edge_type": "relates-to",
+      "statement": "部署路径决策会影响资源路径、GitHub Pages 前缀、根域名路由和上线检查。"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "kind": "hero_runtime_lighting_authority",
+  "authority_id": "hero-runtime",
+  "control_id": "hero-runtime-lighting-authority",
+  "status": "active",
+  "statement": "灯光权威采用证据校准后的高调白棚商业摄影：白背景只作为背景与受控环境，不作为主体主光；主体由远距超大柔光和反射层建模，金属由连续白/银渐变反射出层次，镜面球体不得反射可读灯具、黑旗、近距发光板或周边产品部件。",
+  "lighting_state": {
+    "background_mode": "high-key-white-studio",
+    "studio_environment": "white cyclorama or white cloth environment with separated subject lighting",
+    "lighting_separation_model": "background-subject-reflection-contamination-separated",
+    "background_role": "camera background and low-intensity white environment only",
+    "subject_light_role": "independent far large diffused sources and bounce surfaces for valve form modeling",
+    "reflection_environment_role": "continuous white and soft silver gradients for stainless readability",
+    "dominant_reflection_family": "white and soft silver gradients",
+    "source_distance_class": "far-large-soft-source",
+    "minimum_far_light_size": 10.0,
+    "large_apparent_source_required": true,
+    "far_distance_requires_larger_source_or_diffusion": true,
+    "background_subject_lighting_separation_required": true,
+    "front_fill_required": true,
+    "bottom_lift_count": 2,
+    "white_world_primary_exposure_allowed": false,
+    "background_as_primary_subject_light_allowed": false
+  },
+  "lighting_layers": [
+    {
+      "layer": "white-background-layer",
+      "purpose": "保持商业白棚和干净首页背景；不得承担主体主光，不得用大面积正面平行白光洗平阀体阴影纹理。"
+    },
+    {
+      "layer": "subject-modeling-light-layer",
+      "purpose": "用远距、超大、扩散后的左右上方主光和轮廓光塑造阀体体块、法兰边缘和不锈钢高光层次。"
+    },
+    {
+      "layer": "lower-lift-and-front-fill-layer",
+      "purpose": "底部两侧和正面只做柔和补光，抬亮下缘与孔腔可读性，不形成硬影、白斑或灯具形状。"
+    },
+    {
+      "layer": "continuous-reflection-environment-layer",
+      "purpose": "为金属和抛光球体提供连续白/银渐变反射；该层可以被 glossy 看到，但不能被相机读成摄影棚设备。"
+    },
+    {
+      "layer": "reflection-contamination-isolation-layer",
+      "purpose": "通过 ray visibility 和对象可见性隔离，防止灯具、反光板、黑旗和非球体产品部件在抛光球体上形成可读反射。"
+    }
+  ],
+  "roles": [
+    {
+      "role": "top-left-oblique-key",
+      "purpose": "main far large diffused modeling highlight from upper left; not a readable panel reflection"
+    },
+    {
+      "role": "top-right-oblique-rim",
+      "purpose": "controlled upper right stainless edge definition; not a hard light stripe"
+    },
+    {
+      "role": "bottom-left-lift",
+      "purpose": "lift lower stainless surfaces softly without hard underside glare"
+    },
+    {
+      "role": "bottom-right-lift",
+      "purpose": "balance lower stainless surfaces without black studio falloff"
+    },
+    {
+      "role": "front-fill",
+      "purpose": "soft front visibility fill; not a camera-readable or glossy-readable panel"
+    },
+    {
+      "role": "ambient-white-studio",
+      "purpose": "low-intensity white environmental floor only; never the primary subject exposure"
+    }
+  ],
+  "subject_light_policy": {
+    "background_as_primary_subject_light_allowed": false,
+    "white_world_as_main_exposure_allowed": false,
+    "direct_parallel_flat_wash_allowed": false,
+    "overbright_background_spill_allowed": false,
+    "subject_and_background_lights_must_be_tunable_independently": true,
+    "softness_definition": "softness is controlled by large apparent source size, diffusion and reflection angle, not by distance alone",
+    "far_soft_source_requirement": "if a light is moved farther away, its emitting or diffusing surface must remain large enough to read as broad soft light on the valve",
+    "metal_form_priority": "lighting must preserve cast body shadow texture, flange depth, bore darkness and edge separation"
+  },
+  "background_policy": {
+    "white_background_required": true,
+    "background_camera_visible_allowed": true,
+    "background_glossy_readable_as_equipment_allowed": false,
+    "background_primary_light_allowed": false,
+    "background_spill_must_not_wash_subject": true,
+    "white_sweep_or_cyclorama_allowed": true,
+    "dark_or_black_dominant_stage_allowed": false
+  },
+  "reflection_policy": {
+    "visible_light_panels_in_camera": false,
+    "camera_readable_light_equipment_allowed": false,
+    "driver_light_glossy_readable_allowed": false,
+    "black_flags_glossy_readable_allowed": false,
+    "reflection_cards_glossy_readable_allowed": false,
+    "glossy_equipment_reflection_allowed": false,
+    "hard_white_blotch_reflection_allowed": false,
+    "product_part_glossy_reflection_on_polished_ball_allowed": false,
+    "readable_left_right_body_reflection_on_polished_ball_allowed": false,
+    "readable_seat_stem_fastener_reflection_on_polished_ball_allowed": false,
+    "non_ball_product_parts_glossy_visible_to_ball_allowed": false,
+    "polished_ball_allowed_reflection_sources": [
+      "continuous white-silver environment",
+      "soft studio gradient",
+      "the ball core own bore and edge depth"
+    ],
+    "black_or_dark_grey_dominant_background_allowed": false,
+    "overexposed_white_emitter_inside_product_composition_allowed": false,
+    "runtime_manifest_must_report_glossy_visibility": true
+  },
+  "ray_visibility_requirements": {
+    "driver_lights": {
+      "visible_camera": false,
+      "visible_glossy": false
+    },
+    "white_background_and_cards": {
+      "camera_visibility": "allowed only when used as background, not as readable equipment",
+      "visible_glossy": false
+    },
+    "continuous_reflection_environment": {
+      "visible_camera": false,
+      "visible_glossy": true,
+      "visible_diffuse": false,
+      "visible_shadow": false
+    },
+    "non_ball_product_parts": {
+      "visible_camera": true,
+      "visible_diffuse_and_shadow": true,
+      "visible_glossy_to_polished_ball": false
+    },
+    "polished_ball_core": {
+      "visible_camera": true,
+      "visible_glossy": true
+    }
+  },
+  "forbidden": [
+    "black or dark-grey studio as the dominant background",
+    "white background used as the primary subject key light",
+    "white world light used as the primary subject exposure",
+    "large parallel front wash that flattens cast body shadow texture",
+    "overbright background spill that washes the stainless body grey",
+    "visible light panels in camera",
+    "camera-readable light equipment reflected on polished ball",
+    "readable surrounding product parts reflected on polished ball",
+    "left or right valve body reflection readable on polished ball",
+    "seat, stem, bracket, fastener or spring reflection readable on polished ball",
+    "black-flag reflection pollution in approved release lookdev",
+    "reflection-card shapes readable as equipment on stainless body or ball",
+    "hard white blotch highlights on product-facing stainless body",
+    "overexposed white emitter panels inside the product composition",
+    "close light sources that read as equipment rather than soft studio reflection"
+  ]
+}

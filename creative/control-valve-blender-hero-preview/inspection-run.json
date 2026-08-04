@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "run_id": "20260803T022304Z-control-valve-blender-hero-preview",
+  "target": {
+    "environment": "candidate",
+    "identity": "workspace/control-valve-shot-script@57d712f plus working-tree candidate"
+  },
+  "scope": {
+    "status": "applicable",
+    "basis": "Blender offline render bridge, GOP6 video asset, and isolated preview route changed",
+    "affected_claims": [
+      "bridge-render-frames",
+      "bridge-gop6-video",
+      "preview-route-scroll-seek"
+    ],
+    "unaffected_claims": [
+      "production GitHub Pages publication",
+      "main homepage Hero replacement",
+      "PR or protected-branch integration"
+    ]
+  },
+  "plan": {
+    "claims": [
+      {
+        "claim_id": "bridge-render-frames",
+        "statement": "The candidate uses Blender/Cycles UI-free PNG frames generated from the approved camera scheduler and current material manifest.",
+        "consumer": "Hero media producer and reviewer",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "artifact-validation",
+            "target": "creative/control-valve-blender-hero-preview/render-manifest.json and docs/control-valve-blender-hero-preview/assets/frames",
+            "probe": "python scripts/validate_control_valve_blender_hero_bridge.py"
+          }
+        ]
+      },
+      {
+        "claim_id": "bridge-gop6-video",
+        "statement": "The candidate encodes the latest Blender frame set into a seekable H.264 MP4 with GOP 6 and no audio.",
+        "consumer": "Web Hero runtime",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "media-inspection",
+            "target": "docs/control-valve-blender-hero-preview/assets/blender-hero-preview-gop6.mp4",
+            "probe": "ffprobe and python scripts/validate_control_valve_blender_hero_bridge.py"
+          }
+        ]
+      },
+      {
+        "claim_id": "preview-route-scroll-seek",
+        "statement": "The isolated preview route loads the Blender poster/video and maps scroll progress to video seeking.",
+        "consumer": "Reviewer opening the candidate preview route",
+        "critical": true,
+        "environment": "candidate",
+        "side_effects": "none",
+        "authorization": null,
+        "cleanup_plan": null,
+        "evidence_strategies": [
+          {
+            "type": "rendered-ui-inspection",
+            "target": "docs/control-valve-blender-hero-preview/index.html",
+            "probe": "local static server plus Playwright desktop/mobile screenshot and runtime hook checks"
+          }
+        ]
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "claim_id": "bridge-render-frames",
+      "status": "checked",
+      "reason": "The bridge validator checked scheduler/model/material hashes, Blender/Cycles UI-free render metadata, poster, and eight non-tiny PNG frames.",
+      "evidence_refs": [
+        "EV-001"
+      ],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "bridge-gop6-video",
+      "status": "checked",
+      "reason": "The encode manifest was regenerated from the current render manifest and the validator checked current render hash, MP4 hash, H.264 codec, frame count, dimensions, GOP6 policy, B-frame policy, fast-start flag, and keyframes.",
+      "evidence_refs": [
+        "EV-001",
+        "EV-002"
+      ],
+      "cleanup_evidence": []
+    },
+    {
+      "claim_id": "preview-route-scroll-seek",
+      "status": "checked",
+      "reason": "A local byte-range static server and real Chrome loaded the candidate route on desktop and mobile; the MP4 returned 206, the seekable range covered the full duration, hook-based seeking changed currentTime, scroll changed currentTime again, and screenshots were captured.",
+      "evidence_refs": [
+        "EV-003",
+        "EV-004"
+      ],
+      "cleanup_evidence": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "type": "artifact-validation",
+      "quality": "direct",
+      "target": "Blender render frames, render manifest, encode manifest, poster, GOP6 MP4, and preview route source",
+      "artifact": "terminal: python scripts/validate_control_valve_blender_hero_bridge.py",
+      "summary": "PASS: Blender offline render frames, GOP6 video, poster, and preview route are connected."
+    },
+    {
+      "id": "EV-002",
+      "type": "media-inspection",
+      "quality": "direct",
+      "target": "docs/control-valve-blender-hero-preview/assets/blender-hero-preview-gop6.mp4",
+      "artifact": "creative/control-valve-blender-hero-preview/encode-manifest.json",
+      "summary": "H.264 MP4, 960x600, 8 frames at 6 fps, GOP 6, 2 keyframes, no audio, no B-frames, fast-start, source render hash 77117e5f3caa7c91fd93a852127276bed69cab310be036a75a04a4b964ae3ab9."
+    },
+    {
+      "id": "EV-003",
+      "type": "range-server-probe",
+      "quality": "direct",
+      "target": "http://127.0.0.1:4173/control-valve-blender-hero-preview/assets/blender-hero-preview-gop6.mp4",
+      "artifact": "terminal: curl.exe -I -H \"Range: bytes=0-1023\"",
+      "summary": "The local review server returned HTTP 206 Partial Content, Content-Range bytes 0-1023/238471, Content-Type video/mp4, and Accept-Ranges bytes."
+    },
+    {
+      "id": "EV-004",
+      "type": "rendered-ui-inspection",
+      "quality": "direct",
+      "target": "http://127.0.0.1:4173/control-valve-blender-hero-preview/index.html",
+      "artifact": "creative/control-valve-blender-hero-preview/evidence/preview-route-playwright.json",
+      "summary": "Chrome desktop and mobile loaded the page with no console errors or failed requests; MP4 response was 206; seekable range was 0-1.333333s; seekTo(0.75) reached currentTime about 0.999999s; scroll reached currentTime about 1.26s."
+    },
+    {
+      "id": "EV-005",
+      "type": "visual-screenshot-inspection",
+      "quality": "direct",
+      "target": "Desktop and mobile candidate preview states",
+      "artifact": "creative/control-valve-blender-hero-preview/evidence/*.png",
+      "summary": "Screenshots were viewed for desktop initial/scroll and mobile initial/scroll states. The route renders nonblank Blender frames, HUD text remains in-bounds, and the mobile route now uses object-fit: contain to avoid extra crop of the offline frame."
+    }
+  ],
+  "findings": [
+    {
+      "id": "DELIVERY-OBS-001",
+      "claim_id": "bridge-render-frames",
+      "severity": "observation",
+      "kind": "quality-risk",
+      "environment": "candidate",
+      "subject": "local Blender rerender environment",
+      "observed": "The existing render manifest records Blender 5.2.0 LTS output, but no blender executable was found in PATH, Program Files, scoop apps, or common local Blender directories during this session.",
+      "expected": "A future full-quality render pass should run with an explicitly recorded Blender executable path or documented installation requirement.",
+      "impact": "The current bridge proof remains valid from existing Blender-rendered frames, but this session could not rerun Blender from a discovered executable path.",
+      "evidence_refs": [
+        "EV-001"
+      ],
+      "reproduction": [
+        "Run where.exe blender from the repository root.",
+        "Search common Blender install directories if PATH lookup fails."
+      ],
+      "confidence": "medium",
+      "blocking": false
+    },
+    {
+      "id": "DELIVERY-OBS-002",
+      "claim_id": "preview-route-scroll-seek",
+      "severity": "observation",
+      "kind": "quality-risk",
+      "environment": "candidate",
+      "subject": "first proof frame composition",
+      "observed": "The first low-sample proof frame is an extreme core/edge close-up and has limited product legibility, especially before scrolling.",
+      "expected": "The final offline render should use approved responsive camera framing or a dedicated poster that preserves the intended subject on first view.",
+      "impact": "This does not block the technical bridge proof, but it should not be mistaken for final Hero art direction.",
+      "evidence_refs": [
+        "EV-005"
+      ],
+      "reproduction": [
+        "Open creative/control-valve-blender-hero-preview/evidence/mobile-initial.png or docs/control-valve-blender-hero-preview/assets/frames/frame0000.png."
+      ],
+      "confidence": "high",
+      "blocking": false
+    }
+  ],
+  "promotion_candidates": [
+    {
+      "claim_id": "bridge-gop6-video",
+      "proposed_invariant": "A Blender Hero bridge proof can pass only when the encode manifest sourceRenderManifestSha256 matches the current render manifest and the MP4 hash matches the encoded asset.",
+      "rationale": "This caught the stale encode-manifest risk and is deterministic, scoped, low-cost, and decision-relevant for future preview passes.",
+      "affected_entries": [
+        "author-control-valve-commercial-look"
+      ],
+      "suggested_probe": "python scripts/validate_control_valve_blender_hero_bridge.py",
+      "deterministic": true,
+      "expected_cost": "low",
+      "requires_authorization": true
+    }
+  ],
+  "verdict": "pass"
+}

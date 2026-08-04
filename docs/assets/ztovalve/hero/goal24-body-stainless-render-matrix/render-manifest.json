@@ -1,0 +1,638 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-02T21:45:28.758900+00:00",
+  "goal": "Goal 24 isolated valve body stainless render matrix",
+  "profile": "smoke",
+  "renderer": "Blender Cycles",
+  "blender": "5.2.0 LTS",
+  "sourceBoundary": {
+    "stepSource": "D:/program/WXrecord/xwechat_files/wxid_p21a7v5850v922_6db6/msg/file/2026-08/固定式球阀(1).STEP",
+    "stepSourceSha256": "3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547",
+    "stepMesh": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/goal20-step-mesh.glb",
+    "stepMeshSha256": "0326bbf77f186dc9869bd0715d7096f94bad3d502b1b0cab1d93860dcef4888f",
+    "goal20SemanticMap": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/semantic-material-map.json",
+    "rule": "Goal 24 isolates only the STEP-derived valve body mesh for material lookdev."
+  },
+  "researchReferences": [
+    {
+      "id": "blender-principled-bsdf",
+      "title": "Blender Manual - Principled BSDF",
+      "url": "https://docs.blender.org/manual/en/2.83/render/shader_nodes/shader/principled.html",
+      "takeaway": "Use a metallic material model with roughness and anisotropic controls instead of treating stainless as diffuse grey."
+    },
+    {
+      "id": "ambientcg-metal-pbr",
+      "title": "ambientCG metal PBR materials",
+      "url": "https://ambientcg.com/list?category=Metal",
+      "takeaway": "Industrial metal assets separate base color, roughness and normal/height information; Goal 24 mirrors that separation procedurally."
+    },
+    {
+      "id": "polyhaven-studio-small-09",
+      "title": "Poly Haven Studio Small 09 HDRI",
+      "url": "https://polyhaven.com/a/studio_small_09",
+      "takeaway": "Use a studio HDRI and visible dark/bright reflection bands so metal has something real to reflect."
+    },
+    {
+      "id": "blender-cli-rendering",
+      "title": "yuki-koyama/blender-cli-rendering",
+      "url": "https://github.com/yuki-koyama/blender-cli-rendering",
+      "takeaway": "Keep Blender lookdev repeatable from CLI scripts so material matrices can be rerun after small parameter changes."
+    }
+  ],
+  "renderProfile": {
+    "width": 1200,
+    "height": 675,
+    "samples": 32,
+    "engine": "Cycles",
+    "isolatedBodyOnly": true,
+    "fullValveRendered": false,
+    "homepageConnected": false,
+    "motionTestRendered": false,
+    "frameSequenceRendered": false
+  },
+  "lighting": {
+    "hdri": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/studio_small_09_1k.hdr",
+    "strategy": "studio HDRI plus white soft strips and charcoal reflection flags to test stainless dark/bright value structure",
+    "areaLights": [
+      "goal24_left_large_softbox",
+      "goal24_top_long_softbox",
+      "goal24_right_edge_softbox",
+      "goal24_front_low_fill"
+    ],
+    "reflectionFlags": [
+      "goal24_right_charcoal_flag",
+      "goal24_overhead_charcoal_flag"
+    ]
+  },
+  "matrix": {
+    "rows": [
+      {
+        "id": "pure-stainless",
+        "label": "pure stainless",
+        "name": "纯不锈钢",
+        "description": "No procedural grit; only metallic base, roughness, anisotropy and studio reflections.",
+        "coarse": false
+      },
+      {
+        "id": "coarse-grit-stainless",
+        "label": "pure stainless + coarse grit",
+        "name": "纯不锈钢 + 粗粒磨砂",
+        "description": "Same stainless base plus coarse roughness variation and bump texture.",
+        "coarse": true
+      }
+    ],
+    "columns": [
+      {
+        "id": "r24-bright-controlled",
+        "label": "R0.24 bright controlled",
+        "roughness": 0.24,
+        "anisotropic": 0.32,
+        "baseColor": [
+          0.55,
+          0.57,
+          0.54,
+          1.0
+        ]
+      },
+      {
+        "id": "r32-commercial-satin",
+        "label": "R0.32 commercial satin",
+        "roughness": 0.32,
+        "anisotropic": 0.46,
+        "baseColor": [
+          0.47,
+          0.49,
+          0.46,
+          1.0
+        ]
+      },
+      {
+        "id": "r40-industrial-satin",
+        "label": "R0.40 industrial satin",
+        "roughness": 0.4,
+        "anisotropic": 0.55,
+        "baseColor": [
+          0.4,
+          0.42,
+          0.39,
+          1.0
+        ]
+      },
+      {
+        "id": "r48-muted-satin",
+        "label": "R0.48 muted satin",
+        "roughness": 0.48,
+        "anisotropic": 0.38,
+        "baseColor": [
+          0.34,
+          0.36,
+          0.34,
+          1.0
+        ]
+      }
+    ],
+    "readingOrder": "top row left-to-right, then bottom row left-to-right",
+    "records": [
+      {
+        "id": "pure-stainless__r24-bright-controlled",
+        "order": 1,
+        "rowId": "pure-stainless",
+        "rowName": "纯不锈钢",
+        "columnId": "r24-bright-controlled",
+        "columnLabel": "R0.24 bright controlled",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/01-pure-stainless-r24-bright-controlled.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 946962,
+        "sha256": "2433595dee8851a8719750d124018ecd1dae2d0e444dbb46bdced85c2acac7f2",
+        "materialName": "goal24_pure-stainless_r24-bright-controlled",
+        "materialParams": {
+          "baseColor": [
+            0.55,
+            0.57,
+            0.54,
+            1.0
+          ],
+          "roughness": 0.24,
+          "anisotropic": 0.32,
+          "coat": 0.04,
+          "coarseGrit": false
+        }
+      },
+      {
+        "id": "pure-stainless__r32-commercial-satin",
+        "order": 2,
+        "rowId": "pure-stainless",
+        "rowName": "纯不锈钢",
+        "columnId": "r32-commercial-satin",
+        "columnLabel": "R0.32 commercial satin",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/02-pure-stainless-r32-commercial-satin.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 917031,
+        "sha256": "2ec131693cf8b2cbebb61d05b96f89b31ceb985bfbf7a7721fb0f106012ddf6e",
+        "materialName": "goal24_pure-stainless_r32-commercial-satin",
+        "materialParams": {
+          "baseColor": [
+            0.47,
+            0.49,
+            0.46,
+            1.0
+          ],
+          "roughness": 0.32,
+          "anisotropic": 0.46,
+          "coat": 0.025,
+          "coarseGrit": false
+        }
+      },
+      {
+        "id": "pure-stainless__r40-industrial-satin",
+        "order": 3,
+        "rowId": "pure-stainless",
+        "rowName": "纯不锈钢",
+        "columnId": "r40-industrial-satin",
+        "columnLabel": "R0.40 industrial satin",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/03-pure-stainless-r40-industrial-satin.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 907778,
+        "sha256": "36aaaf663b3fe9881cad995f69c1a835e30b31164a11c5937869675cf296bbcf",
+        "materialName": "goal24_pure-stainless_r40-industrial-satin",
+        "materialParams": {
+          "baseColor": [
+            0.4,
+            0.42,
+            0.39,
+            1.0
+          ],
+          "roughness": 0.4,
+          "anisotropic": 0.55,
+          "coat": 0.015,
+          "coarseGrit": false
+        }
+      },
+      {
+        "id": "pure-stainless__r48-muted-satin",
+        "order": 4,
+        "rowId": "pure-stainless",
+        "rowName": "纯不锈钢",
+        "columnId": "r48-muted-satin",
+        "columnLabel": "R0.48 muted satin",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/04-pure-stainless-r48-muted-satin.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 893588,
+        "sha256": "92189d6e594fe4c475b79eac6545afe3b4fede9c76503416b471cf640e1c834d",
+        "materialName": "goal24_pure-stainless_r48-muted-satin",
+        "materialParams": {
+          "baseColor": [
+            0.34,
+            0.36,
+            0.34,
+            1.0
+          ],
+          "roughness": 0.48,
+          "anisotropic": 0.38,
+          "coat": 0.01,
+          "coarseGrit": false
+        }
+      },
+      {
+        "id": "coarse-grit-stainless__r24-bright-controlled",
+        "order": 5,
+        "rowId": "coarse-grit-stainless",
+        "rowName": "纯不锈钢 + 粗粒磨砂",
+        "columnId": "r24-bright-controlled",
+        "columnLabel": "R0.24 bright controlled",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/05-coarse-grit-stainless-r24-bright-controlled.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 1064977,
+        "sha256": "2f6699794ca41ef45730fe17012e08526a767739df190d9da5bd1cd53de32ce1",
+        "materialName": "goal24_coarse-grit-stainless_r24-bright-controlled",
+        "materialParams": {
+          "baseColor": [
+            0.55,
+            0.57,
+            0.54,
+            1.0
+          ],
+          "roughness": 0.24,
+          "anisotropic": 0.32,
+          "coat": 0.04,
+          "coarseGrit": true,
+          "bumpStrength": 0.01,
+          "bumpDistance": 0.0014,
+          "bumpScale": 1040,
+          "roughnessLow": 0.22,
+          "roughnessHigh": 0.42
+        }
+      },
+      {
+        "id": "coarse-grit-stainless__r32-commercial-satin",
+        "order": 6,
+        "rowId": "coarse-grit-stainless",
+        "rowName": "纯不锈钢 + 粗粒磨砂",
+        "columnId": "r32-commercial-satin",
+        "columnLabel": "R0.32 commercial satin",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/06-coarse-grit-stainless-r32-commercial-satin.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 930560,
+        "sha256": "24506907480ed505b79645da14689102a8638eabf24acdd3f5a152c943075a32",
+        "materialName": "goal24_coarse-grit-stainless_r32-commercial-satin",
+        "materialParams": {
+          "baseColor": [
+            0.47,
+            0.49,
+            0.46,
+            1.0
+          ],
+          "roughness": 0.32,
+          "anisotropic": 0.46,
+          "coat": 0.025,
+          "coarseGrit": true,
+          "bumpStrength": 0.018,
+          "bumpDistance": 0.0025,
+          "bumpScale": 700,
+          "roughnessLow": 0.29,
+          "roughnessHigh": 0.55
+        }
+      },
+      {
+        "id": "coarse-grit-stainless__r40-industrial-satin",
+        "order": 7,
+        "rowId": "coarse-grit-stainless",
+        "rowName": "纯不锈钢 + 粗粒磨砂",
+        "columnId": "r40-industrial-satin",
+        "columnLabel": "R0.40 industrial satin",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/07-coarse-grit-stainless-r40-industrial-satin.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 941482,
+        "sha256": "0d5dec77ae7cb96e4420a2718ab548794060a63dca72f85c41b0fac53cd9a0bb",
+        "materialName": "goal24_coarse-grit-stainless_r40-industrial-satin",
+        "materialParams": {
+          "baseColor": [
+            0.4,
+            0.42,
+            0.39,
+            1.0
+          ],
+          "roughness": 0.4,
+          "anisotropic": 0.55,
+          "coat": 0.015,
+          "coarseGrit": true,
+          "bumpStrength": 0.03,
+          "bumpDistance": 0.0042,
+          "bumpScale": 470,
+          "roughnessLow": 0.35,
+          "roughnessHigh": 0.67
+        }
+      },
+      {
+        "id": "coarse-grit-stainless__r48-muted-satin",
+        "order": 8,
+        "rowId": "coarse-grit-stainless",
+        "rowName": "纯不锈钢 + 粗粒磨砂",
+        "columnId": "r48-muted-satin",
+        "columnLabel": "R0.48 muted satin",
+        "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/08-coarse-grit-stainless-r48-muted-satin.png",
+        "width": 1200,
+        "height": 675,
+        "bytes": 988393,
+        "sha256": "81f5b19eee30967cb725fac2525d47a70c6efa2250e25c4b1b86302f23ff0c75",
+        "materialName": "goal24_coarse-grit-stainless_r48-muted-satin",
+        "materialParams": {
+          "baseColor": [
+            0.34,
+            0.36,
+            0.34,
+            1.0
+          ],
+          "roughness": 0.48,
+          "anisotropic": 0.38,
+          "coat": 0.01,
+          "coarseGrit": true,
+          "bumpStrength": 0.044,
+          "bumpDistance": 0.0062,
+          "bumpScale": 320,
+          "roughnessLow": 0.42,
+          "roughnessHigh": 0.78
+        }
+      }
+    ]
+  },
+  "bodyIdentity": {
+    "sourceName": "·§ͥ",
+    "partName": "阀体",
+    "originalCenter": [
+      -0.097058,
+      -0.2855,
+      0.023408
+    ],
+    "originalSize": [
+      0.2475,
+      0.27,
+      0.2855
+    ],
+    "centeredCenter": [
+      -0.0,
+      -0.0,
+      0.0
+    ],
+    "centeredSize": [
+      0.2475,
+      0.27,
+      0.2855
+    ],
+    "goal20PartCountForBody": 1
+  },
+  "contactSheet": {
+    "id": "body-stainless-render-matrix",
+    "name": "阀体不锈钢材质矩阵",
+    "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/01-body-stainless-render-matrix.png",
+    "composedFromCellStills": true,
+    "createdBy": "Pillow post-process",
+    "width": 3248,
+    "height": 996,
+    "bytes": 1988216,
+    "sha256": "b7d24ae341a21f37ac424257450b229fbdbf7044c5d0b09c394c50ac78f941f0"
+  },
+  "cellStills": [
+    {
+      "id": "pure-stainless__r24-bright-controlled",
+      "order": 1,
+      "rowId": "pure-stainless",
+      "rowName": "纯不锈钢",
+      "columnId": "r24-bright-controlled",
+      "columnLabel": "R0.24 bright controlled",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/01-pure-stainless-r24-bright-controlled.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 946962,
+      "sha256": "2433595dee8851a8719750d124018ecd1dae2d0e444dbb46bdced85c2acac7f2",
+      "materialName": "goal24_pure-stainless_r24-bright-controlled",
+      "materialParams": {
+        "baseColor": [
+          0.55,
+          0.57,
+          0.54,
+          1.0
+        ],
+        "roughness": 0.24,
+        "anisotropic": 0.32,
+        "coat": 0.04,
+        "coarseGrit": false
+      }
+    },
+    {
+      "id": "pure-stainless__r32-commercial-satin",
+      "order": 2,
+      "rowId": "pure-stainless",
+      "rowName": "纯不锈钢",
+      "columnId": "r32-commercial-satin",
+      "columnLabel": "R0.32 commercial satin",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/02-pure-stainless-r32-commercial-satin.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 917031,
+      "sha256": "2ec131693cf8b2cbebb61d05b96f89b31ceb985bfbf7a7721fb0f106012ddf6e",
+      "materialName": "goal24_pure-stainless_r32-commercial-satin",
+      "materialParams": {
+        "baseColor": [
+          0.47,
+          0.49,
+          0.46,
+          1.0
+        ],
+        "roughness": 0.32,
+        "anisotropic": 0.46,
+        "coat": 0.025,
+        "coarseGrit": false
+      }
+    },
+    {
+      "id": "pure-stainless__r40-industrial-satin",
+      "order": 3,
+      "rowId": "pure-stainless",
+      "rowName": "纯不锈钢",
+      "columnId": "r40-industrial-satin",
+      "columnLabel": "R0.40 industrial satin",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/03-pure-stainless-r40-industrial-satin.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 907778,
+      "sha256": "36aaaf663b3fe9881cad995f69c1a835e30b31164a11c5937869675cf296bbcf",
+      "materialName": "goal24_pure-stainless_r40-industrial-satin",
+      "materialParams": {
+        "baseColor": [
+          0.4,
+          0.42,
+          0.39,
+          1.0
+        ],
+        "roughness": 0.4,
+        "anisotropic": 0.55,
+        "coat": 0.015,
+        "coarseGrit": false
+      }
+    },
+    {
+      "id": "pure-stainless__r48-muted-satin",
+      "order": 4,
+      "rowId": "pure-stainless",
+      "rowName": "纯不锈钢",
+      "columnId": "r48-muted-satin",
+      "columnLabel": "R0.48 muted satin",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/04-pure-stainless-r48-muted-satin.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 893588,
+      "sha256": "92189d6e594fe4c475b79eac6545afe3b4fede9c76503416b471cf640e1c834d",
+      "materialName": "goal24_pure-stainless_r48-muted-satin",
+      "materialParams": {
+        "baseColor": [
+          0.34,
+          0.36,
+          0.34,
+          1.0
+        ],
+        "roughness": 0.48,
+        "anisotropic": 0.38,
+        "coat": 0.01,
+        "coarseGrit": false
+      }
+    },
+    {
+      "id": "coarse-grit-stainless__r24-bright-controlled",
+      "order": 5,
+      "rowId": "coarse-grit-stainless",
+      "rowName": "纯不锈钢 + 粗粒磨砂",
+      "columnId": "r24-bright-controlled",
+      "columnLabel": "R0.24 bright controlled",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/05-coarse-grit-stainless-r24-bright-controlled.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 1064977,
+      "sha256": "2f6699794ca41ef45730fe17012e08526a767739df190d9da5bd1cd53de32ce1",
+      "materialName": "goal24_coarse-grit-stainless_r24-bright-controlled",
+      "materialParams": {
+        "baseColor": [
+          0.55,
+          0.57,
+          0.54,
+          1.0
+        ],
+        "roughness": 0.24,
+        "anisotropic": 0.32,
+        "coat": 0.04,
+        "coarseGrit": true,
+        "bumpStrength": 0.01,
+        "bumpDistance": 0.0014,
+        "bumpScale": 1040,
+        "roughnessLow": 0.22,
+        "roughnessHigh": 0.42
+      }
+    },
+    {
+      "id": "coarse-grit-stainless__r32-commercial-satin",
+      "order": 6,
+      "rowId": "coarse-grit-stainless",
+      "rowName": "纯不锈钢 + 粗粒磨砂",
+      "columnId": "r32-commercial-satin",
+      "columnLabel": "R0.32 commercial satin",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/06-coarse-grit-stainless-r32-commercial-satin.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 930560,
+      "sha256": "24506907480ed505b79645da14689102a8638eabf24acdd3f5a152c943075a32",
+      "materialName": "goal24_coarse-grit-stainless_r32-commercial-satin",
+      "materialParams": {
+        "baseColor": [
+          0.47,
+          0.49,
+          0.46,
+          1.0
+        ],
+        "roughness": 0.32,
+        "anisotropic": 0.46,
+        "coat": 0.025,
+        "coarseGrit": true,
+        "bumpStrength": 0.018,
+        "bumpDistance": 0.0025,
+        "bumpScale": 700,
+        "roughnessLow": 0.29,
+        "roughnessHigh": 0.55
+      }
+    },
+    {
+      "id": "coarse-grit-stainless__r40-industrial-satin",
+      "order": 7,
+      "rowId": "coarse-grit-stainless",
+      "rowName": "纯不锈钢 + 粗粒磨砂",
+      "columnId": "r40-industrial-satin",
+      "columnLabel": "R0.40 industrial satin",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/07-coarse-grit-stainless-r40-industrial-satin.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 941482,
+      "sha256": "0d5dec77ae7cb96e4420a2718ab548794060a63dca72f85c41b0fac53cd9a0bb",
+      "materialName": "goal24_coarse-grit-stainless_r40-industrial-satin",
+      "materialParams": {
+        "baseColor": [
+          0.4,
+          0.42,
+          0.39,
+          1.0
+        ],
+        "roughness": 0.4,
+        "anisotropic": 0.55,
+        "coat": 0.015,
+        "coarseGrit": true,
+        "bumpStrength": 0.03,
+        "bumpDistance": 0.0042,
+        "bumpScale": 470,
+        "roughnessLow": 0.35,
+        "roughnessHigh": 0.67
+      }
+    },
+    {
+      "id": "coarse-grit-stainless__r48-muted-satin",
+      "order": 8,
+      "rowId": "coarse-grit-stainless",
+      "rowName": "纯不锈钢 + 粗粒磨砂",
+      "columnId": "r48-muted-satin",
+      "columnLabel": "R0.48 muted satin",
+      "path": "docs/assets/ztovalve/hero/goal24-body-stainless-render-matrix/stills/cells/08-coarse-grit-stainless-r48-muted-satin.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 988393,
+      "sha256": "81f5b19eee30967cb725fac2525d47a70c6efa2250e25c4b1b86302f23ff0c75",
+      "materialName": "goal24_coarse-grit-stainless_r48-muted-satin",
+      "materialParams": {
+        "baseColor": [
+          0.34,
+          0.36,
+          0.34,
+          1.0
+        ],
+        "roughness": 0.48,
+        "anisotropic": 0.38,
+        "coat": 0.01,
+        "coarseGrit": true,
+        "bumpStrength": 0.044,
+        "bumpDistance": 0.0062,
+        "bumpScale": 320,
+        "roughnessLow": 0.42,
+        "roughnessHigh": 0.78
+      }
+    }
+  ],
+  "constraints": [
+    "Only the isolated valve body mesh is rendered.",
+    "No homepage hero replacement is performed.",
+    "No 24-frame or 240-frame animation is rendered.",
+    "Material labels are visual lookdev treatments, not certified alloy or surface-finish claims."
+  ]
+}

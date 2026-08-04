@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "kind": "hero_runtime_storyboard_authority",
+  "authority_id": "hero-runtime",
+  "control_id": "hero-runtime-storyboard-authority",
+  "status": "active",
+  "statement": "storyboard 权威采用短滚动商业产品路线：从完全爆炸首帧开始，依次完成精密合体、球体核心展示、结尾剖面和清水流动；叙事重点是商业级工业摄影中的结构可靠感，而不是维修教程或随机 CAD 爆炸。",
+  "shot_order": [
+    {
+      "shot_id": "fully-exploded-opening",
+      "progress_range": [0.0, 0.16],
+      "cognition": "all major valve systems are already separated and readable"
+    },
+    {
+      "shot_id": "precision-assembly",
+      "progress_range": [0.16, 0.54],
+      "cognition": "the separated components assemble into a precise fixed ball valve"
+    },
+    {
+      "shot_id": "ball-core-presentation",
+      "progress_range": [0.54, 0.70],
+      "cognition": "the polished ball core becomes the calm visual and functional center"
+    },
+    {
+      "shot_id": "cutaway-reveal",
+      "progress_range": [0.70, 0.84],
+      "cognition": "a controlled cutaway reveals the internal flow path without becoming a repair diagram"
+    },
+    {
+      "shot_id": "clear-water-flow-hold",
+      "progress_range": [0.84, 1.0],
+      "cognition": "clean water flow and final commercial hero hold communicate clarity and product confidence"
+    }
+  ],
+  "story_rhythm_policy": {
+    "single_primary_motion": "assembly",
+    "secondary_motion": "ball core presentation, cutaway reveal and clean water flow",
+    "opening_explosion_motion_allowed": false,
+    "maximum_major_story_events": 5,
+    "short_scroll_density_policy": "one readable product idea at a time; do not force a full disassembly and reassembly cycle into the same short scroll"
+  },
+  "forbidden": [
+    "random CAD explosion",
+    "assembled first frame in the current short-scroll route",
+    "explode then reassemble round trip in the current short-scroll route",
+    "real assembly or repair procedure claim",
+    "claim-heavy technical diagram",
+    "opaque liquid or dirty fluid as product proof",
+    "unsupported pressure, certification, material-grade, maintenance, service-life, fire-safe, anti-static, leakage or performance claims"
+  ]
+}

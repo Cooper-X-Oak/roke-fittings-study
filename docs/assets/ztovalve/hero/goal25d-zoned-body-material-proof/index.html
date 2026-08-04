@@ -39,32 +39,42 @@
 <main>
   <header>
     <p class="eyebrow">Goal 25-D / isolated valve body / material zoning proof</p>
-    <h1>阀体多材质分区渲染</h1>
-    <p>同一个 STEP-derived <code>阀体</code> 网格按制造区域分配可复用不锈钢材质编号，并把 Goal 25-C 更克制的显式几何加工痕回迁到法兰端面、主内孔和螺栓孔口。</p>
+    <h1>Clean PBR 不锈钢阀体材质方向</h1>
+    <p>同一个 STEP-derived <code>阀体</code> 网格按制造区域分配可复用不锈钢材质编号；主渲染禁用显式划痕曲线，改用干净机加工法兰、深色洁净内孔、干净螺栓孔、铸造喷砂主体和倒角高光来建立商业质感。</p>
   </header>
   <section class="stills">
     
             <figure>
-              <img src="stills/01-zoned-body-material-proof.png" alt="zoned body material proof">
-              <figcaption><b>zoned body material proof</b><span>01-zoned-body-material-proof</span></figcaption>
+              <img src="stills/00-old-vs-clean-comparison.png" alt="old trace-scratch look vs clean PBR stainless look">
+              <figcaption><b>old trace-scratch look vs clean PBR stainless look</b><span>00-old-vs-clean-comparison</span></figcaption>
             </figure>
             
             <figure>
-              <img src="stills/02-material-zone-id.png" alt="material zone id map">
-              <figcaption><b>material zone id map</b><span>02-material-zone-id</span></figcaption>
+              <img src="stills/01-old-trace-scratch-look.png" alt="old trace-scratch look">
+              <figcaption><b>old trace-scratch look</b><span>01-old-trace-scratch-look</span></figcaption>
             </figure>
             
             <figure>
-              <img src="stills/03-flange-bore-zone-close.png" alt="flange and bore zoning close-up">
-              <figcaption><b>flange and bore zoning close-up</b><span>03-flange-bore-zone-close</span></figcaption>
+              <img src="stills/02-clean-pbr-stainless-look.png" alt="clean PBR stainless look">
+              <figcaption><b>clean PBR stainless look</b><span>02-clean-pbr-stainless-look</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/03-material-zone-id.png" alt="material zone id map">
+              <figcaption><b>material zone id map</b><span>03-material-zone-id</span></figcaption>
+            </figure>
+            
+            <figure>
+              <img src="stills/04-clean-flange-bore-close.png" alt="clean flange and bore close-up">
+              <figcaption><b>clean flange and bore close-up</b><span>04-clean-flange-bore-close</span></figcaption>
             </figure>
             
   </section>
   <section class="library">
     <h2>Material IDs</h2>
-    <ul><li><span style="--swatch:rgb(87 135 184)"></span><b>G25-SS-CAST-BLASTED-SATIN-01</b><small>阀体主壳/柱体</small><em>investment-cast stainless body, bead/sand blasted satin, non-directional, metal reflection retained</em></li><li><span style="--swatch:rgb(219 199 71)"></span><b>G25-SS-MACH-FLANGE-RADIAL-01</b><small>法兰正面</small><em>flat machined flange face with restrained explicit concentric tool-path trace migrated from Goal 25-C</em></li><li><span style="--swatch:rgb(115 184 97)"></span><b>G25-SS-BRUSH-NO4-LINEAR-01</b><small>法兰外圆侧面</small><em>brushed/satin stainless on flange outside diameter, directional but still industrial</em></li><li><span style="--swatch:rgb(209 112 87)"></span><b>G25-SS-MACH-BORE-CIRCULAR-01</b><small>内孔/流道入口</small><em>darker cylindrical machined bore with restrained circumferential cutting trace migrated from Goal 25-C</em></li><li><span style="--swatch:rgb(245 245 224)"></span><b>G25-SS-EDGE-BURNISH-01</b><small>倒角/棱线/凸筋高点</small><em>thin brighter worn edges and bevel highlights from handling or final deburring</em></li><li><span style="--swatch:rgb(158 107 189)"></span><b>G25-SS-MACH-BOLT-BORE-DARK-01</b><small>螺栓孔内壁</small><em>smaller darker, rougher machined cylindrical walls with local rim and inside-ring witness traces</em></li><li><span style="--swatch:rgb(51 56 59)"></span><b>G25-SS-ROOT-DARK-AO-01</b><small>凹槽根部</small><em>dark reflection-retaining metal in shoulder grooves and root transitions; explicitly not lifted to powder white</em></li></ul>
+    <ul><li><span style="--swatch:rgb(87 135 184)"></span><b>G25-SS-CAST-BLASTED-SATIN-01</b><small>阀体主壳/柱体</small><em>investment-cast stainless body, bead/sand blasted satin, non-directional, metal reflection retained</em></li><li><span style="--swatch:rgb(219 199 71)"></span><b>G25-SS-MACH-FLANGE-RADIAL-01</b><small>法兰正面</small><em>clean machined stainless flange face with broad satin reflection; no explicit curve scratches</em></li><li><span style="--swatch:rgb(115 184 97)"></span><b>G25-SS-BRUSH-NO4-LINEAR-01</b><small>法兰外圆侧面</small><em>brushed/satin stainless on flange outside diameter, directional but still industrial</em></li><li><span style="--swatch:rgb(209 112 87)"></span><b>G25-SS-MACH-BORE-CIRCULAR-01</b><small>内孔/流道入口</small><em>dark clean machined bore, reflection-retaining and not dirty; no circumferential curve scratches</em></li><li><span style="--swatch:rgb(245 245 224)"></span><b>G25-SS-EDGE-BURNISH-01</b><small>倒角/棱线/凸筋高点</small><em>thin bright bevel highlights from clean chamfers and final deburring</em></li><li><span style="--swatch:rgb(158 107 189)"></span><b>G25-SS-MACH-BOLT-BORE-DARK-01</b><small>螺栓孔内壁</small><em>clean darker machined bolt-hole walls with crisp rims and no drawn witness rings</em></li><li><span style="--swatch:rgb(51 56 59)"></span><b>G25-SS-ROOT-DARK-AO-01</b><small>凹槽根部</small><em>dark reflection-retaining clean metal in shoulder grooves and root transitions; explicitly not dirt</em></li></ul>
   </section>
-  <footer>Manifest: <code>render-manifest.json</code>. Status: <code>material-status.md</code>. Trace source: <code>../goal25c-real-machining-traces/render-manifest.json</code>.</footer>
+  <footer>Manifest: <code>render-manifest.json</code>. Status: <code>material-status.md</code>. Open references: Poly Haven HDRI and ambientCG Metal009.</footer>
 </main>
 </body>
 </html>

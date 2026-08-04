@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Render Goal 25-D isolated valve-body material zoning proof.
+"""Render Goal 25-D isolated valve-body clean PBR material proof.
 
 This pass keeps the real STEP-derived valve body as one object, but assigns
 different named stainless finish materials to inferred manufacturing zones:
 cast/blasted shell, machined flange faces, brushed flange outer side, machined
 bores, edge burnish, bolt-hole bores and dark groove roots.
+
+The main 25-D render disables the explicit curve-based trace/scratch geometry
+from Goal 25-C. That legacy trace geometry is kept only long enough to render a
+single old-vs-clean comparison still.
 
 Run inside Blender:
 D:\\TOOLS\\render-pipeline\\apps\\Blender-5.2.0\\Blender Foundation\\Blender 5.2\\blender.exe --background --python scripts\\render_goal25d_zoned_body_materials.py -- --repo-root . --profile smoke
@@ -33,9 +37,45 @@ except ImportError as exc:  # pragma: no cover
 
 GOAL20_DIR = "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof"
 GOAL25D_DIR = "docs/assets/ztovalve/hero/goal25d-zoned-body-material-proof"
+GOAL25D_REFERENCE_DIR = f"{GOAL25D_DIR}/references"
 RANDOM_SEED = 250503
 
+REFERENCE_ASSETS = [
+    {
+        "id": "polyhaven-studio-small-09-1k-hdri",
+        "kind": "connected-hdri",
+        "title": "Poly Haven studio_small_09 1K HDRI",
+        "license": "CC0",
+        "url": "https://polyhaven.com/a/studio_small_09",
+        "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr",
+        "localPath": f"{GOAL20_DIR}/studio_small_09_1k.hdr",
+        "usage": "environment reflection and soft studio value reference",
+    },
+    {
+        "id": "ambientcg-metal009-1k-jpg",
+        "kind": "downloaded-pbr-reference",
+        "title": "ambientCG Metal009 1K JPG PBR material",
+        "license": "CC0",
+        "url": "https://ambientcg.com/view?id=Metal009",
+        "downloadUrl": "https://ambientcg.com/get?file=Metal009_1K-JPG.zip",
+        "localPath": f"{GOAL25D_REFERENCE_DIR}/Metal009_1K-JPG.zip",
+        "usage": "clean machined stainless roughness/normal/base-value reference",
+    },
+]
+
 REFERENCE_NOTES = [
+    {
+        "id": "polyhaven-studio-small-09",
+        "title": "Poly Haven - studio_small_09 HDRI",
+        "url": "https://polyhaven.com/a/studio_small_09",
+        "takeaway": "Use a real CC0 studio HDRI for metal reflections instead of flat grey world lighting.",
+    },
+    {
+        "id": "ambientcg-metal009",
+        "title": "ambientCG - Metal009 PBR material",
+        "url": "https://ambientcg.com/view?id=Metal009",
+        "takeaway": "Use a traceable CC0 metal material reference for clean stainless roughness, normal and value ranges.",
+    },
     {
         "id": "adobe-pbr-metal-roughness",
         "title": "Adobe Substance 3D - The PBR Guide",
@@ -76,34 +116,35 @@ ZONE_SPECS = [
         "intent": "investment-cast stainless body, bead/sand blasted satin, non-directional, metal reflection retained",
         "debug": (0.34, 0.53, 0.72, 1.0),
         "material": {
-            "base_color": (0.33, 0.35, 0.32, 1.0),
-            "roughness": 0.45,
-            "anisotropic": 0.22,
-            "coat": 0.018,
+            "base_color": (0.39, 0.41, 0.38, 1.0),
+            "roughness": 0.52,
+            "anisotropic": 0.08,
+            "coat": 0.012,
             "texture": "cast_noise",
-            "roughness_variation": (0.40, 0.56),
-            "roughness_noise_scale": 420,
-            "roughness_noise_detail": 14,
-            "bump": 0.0065,
-            "bump_distance": 0.0011,
-            "bump_scale": 880,
-            "bump_detail": 15,
+            "roughness_variation": (0.48, 0.60),
+            "roughness_noise_scale": 340,
+            "roughness_noise_detail": 12,
+            "bump": 0.0038,
+            "bump_distance": 0.00075,
+            "bump_scale": 620,
+            "bump_detail": 11,
         },
     },
     {
         "id": "G25-SS-MACH-FLANGE-RADIAL-01",
         "label": "machined radial flange face",
         "cn": "法兰正面",
-        "intent": "flat machined flange face with restrained explicit concentric tool-path trace migrated from Goal 25-C",
+        "intent": "clean machined stainless flange face with broad satin reflection; no explicit curve scratches",
         "debug": (0.86, 0.78, 0.28, 1.0),
         "material": {
-            "base_color": (0.52, 0.54, 0.50, 1.0),
-            "roughness": 0.29,
-            "anisotropic": 0.70,
-            "coat": 0.055,
+            "base_color": (0.58, 0.60, 0.56, 1.0),
+            "roughness": 0.24,
+            "anisotropic": 0.48,
+            "coat": 0.065,
             "texture": "none",
             "roughness_variation": None,
-            "bump": 0.0,
+            "bump": 0.00035,
+            "bump_distance": 0.00018,
         },
     },
     {
@@ -113,87 +154,166 @@ ZONE_SPECS = [
         "intent": "brushed/satin stainless on flange outside diameter, directional but still industrial",
         "debug": (0.45, 0.72, 0.38, 1.0),
         "material": {
-            "base_color": (0.46, 0.48, 0.44, 1.0),
-            "roughness": 0.34,
-            "anisotropic": 0.82,
-            "coat": 0.035,
+            "base_color": (0.48, 0.50, 0.46, 1.0),
+            "roughness": 0.38,
+            "anisotropic": 0.62,
+            "coat": 0.028,
             "texture": "none",
             "roughness_variation": None,
-            "bump": 0.0,
+            "bump": 0.00025,
+            "bump_distance": 0.00014,
         },
     },
     {
         "id": "G25-SS-MACH-BORE-CIRCULAR-01",
         "label": "machined circular bore",
         "cn": "内孔/流道入口",
-        "intent": "darker cylindrical machined bore with restrained circumferential cutting trace migrated from Goal 25-C",
+        "intent": "dark clean machined bore, reflection-retaining and not dirty; no circumferential curve scratches",
         "debug": (0.82, 0.44, 0.34, 1.0),
         "material": {
-            "base_color": (0.32, 0.34, 0.31, 1.0),
-            "roughness": 0.31,
-            "anisotropic": 0.74,
-            "coat": 0.040,
+            "base_color": (0.28, 0.30, 0.28, 1.0),
+            "roughness": 0.37,
+            "anisotropic": 0.42,
+            "coat": 0.030,
             "texture": "none",
             "roughness_variation": None,
-            "bump": 0.0,
+            "bump": 0.0002,
+            "bump_distance": 0.00012,
         },
     },
     {
         "id": "G25-SS-EDGE-BURNISH-01",
         "label": "edge burnish",
         "cn": "倒角/棱线/凸筋高点",
-        "intent": "thin brighter worn edges and bevel highlights from handling or final deburring",
+        "intent": "thin bright bevel highlights from clean chamfers and final deburring",
         "debug": (0.96, 0.96, 0.88, 1.0),
         "material": {
-            "base_color": (0.56, 0.58, 0.54, 1.0),
-            "roughness": 0.24,
-            "anisotropic": 0.48,
-            "coat": 0.080,
+            "base_color": (0.68, 0.70, 0.66, 1.0),
+            "roughness": 0.20,
+            "anisotropic": 0.36,
+            "coat": 0.090,
             "texture": "none",
-            "bump": 0.0010,
-            "bump_distance": 0.0004,
+            "bump": 0.0003,
+            "bump_distance": 0.00016,
         },
     },
     {
         "id": "G25-SS-MACH-BOLT-BORE-DARK-01",
         "label": "dark machined bolt bore",
         "cn": "螺栓孔内壁",
-        "intent": "smaller darker, rougher machined cylindrical walls with local rim and inside-ring witness traces",
+        "intent": "clean darker machined bolt-hole walls with crisp rims and no drawn witness rings",
         "debug": (0.62, 0.42, 0.74, 1.0),
         "material": {
-            "base_color": (0.24, 0.26, 0.24, 1.0),
-            "roughness": 0.43,
-            "anisotropic": 0.58,
-            "coat": 0.018,
+            "base_color": (0.31, 0.33, 0.30, 1.0),
+            "roughness": 0.40,
+            "anisotropic": 0.34,
+            "coat": 0.026,
             "texture": "none",
             "roughness_variation": None,
-            "bump": 0.0,
+            "bump": 0.0002,
+            "bump_distance": 0.00010,
         },
     },
     {
         "id": "G25-SS-ROOT-DARK-AO-01",
         "label": "dark groove root",
         "cn": "凹槽根部",
-        "intent": "dark reflection-retaining metal in shoulder grooves and root transitions; explicitly not lifted to powder white",
+        "intent": "dark reflection-retaining clean metal in shoulder grooves and root transitions; explicitly not dirt",
         "debug": (0.20, 0.22, 0.23, 1.0),
         "material": {
-            "base_color": (0.28, 0.30, 0.28, 1.0),
-            "roughness": 0.54,
-            "anisotropic": 0.18,
-            "coat": 0.010,
+            "base_color": (0.25, 0.27, 0.25, 1.0),
+            "roughness": 0.50,
+            "anisotropic": 0.12,
+            "coat": 0.014,
             "texture": "cast_noise",
-            "roughness_variation": (0.48, 0.62),
-            "roughness_noise_scale": 240,
-            "roughness_noise_detail": 12,
-            "bump": 0.0045,
-            "bump_distance": 0.0009,
-            "bump_scale": 760,
-            "bump_detail": 12,
+            "roughness_variation": (0.46, 0.56),
+            "roughness_noise_scale": 220,
+            "roughness_noise_detail": 10,
+            "bump": 0.0022,
+            "bump_distance": 0.00045,
+            "bump_scale": 520,
+            "bump_detail": 10,
         },
     },
 ]
 
 ZONE_INDEX = {spec["id"]: index for index, spec in enumerate(ZONE_SPECS)}
+
+LEGACY_ZONE_MATERIAL_OVERRIDES = {
+    "G25-SS-CAST-BLASTED-SATIN-01": {
+        "base_color": (0.33, 0.35, 0.32, 1.0),
+        "roughness": 0.45,
+        "anisotropic": 0.22,
+        "coat": 0.018,
+        "texture": "cast_noise",
+        "roughness_variation": (0.40, 0.56),
+        "roughness_noise_scale": 420,
+        "roughness_noise_detail": 14,
+        "bump": 0.0065,
+        "bump_distance": 0.0011,
+        "bump_scale": 880,
+        "bump_detail": 15,
+    },
+    "G25-SS-MACH-FLANGE-RADIAL-01": {
+        "base_color": (0.52, 0.54, 0.50, 1.0),
+        "roughness": 0.29,
+        "anisotropic": 0.70,
+        "coat": 0.055,
+        "texture": "none",
+        "roughness_variation": None,
+        "bump": 0.0,
+    },
+    "G25-SS-BRUSH-NO4-LINEAR-01": {
+        "base_color": (0.46, 0.48, 0.44, 1.0),
+        "roughness": 0.34,
+        "anisotropic": 0.82,
+        "coat": 0.035,
+        "texture": "none",
+        "roughness_variation": None,
+        "bump": 0.0,
+    },
+    "G25-SS-MACH-BORE-CIRCULAR-01": {
+        "base_color": (0.32, 0.34, 0.31, 1.0),
+        "roughness": 0.31,
+        "anisotropic": 0.74,
+        "coat": 0.040,
+        "texture": "none",
+        "roughness_variation": None,
+        "bump": 0.0,
+    },
+    "G25-SS-EDGE-BURNISH-01": {
+        "base_color": (0.56, 0.58, 0.54, 1.0),
+        "roughness": 0.24,
+        "anisotropic": 0.48,
+        "coat": 0.080,
+        "texture": "none",
+        "bump": 0.0010,
+        "bump_distance": 0.0004,
+    },
+    "G25-SS-MACH-BOLT-BORE-DARK-01": {
+        "base_color": (0.24, 0.26, 0.24, 1.0),
+        "roughness": 0.43,
+        "anisotropic": 0.58,
+        "coat": 0.018,
+        "texture": "none",
+        "roughness_variation": None,
+        "bump": 0.0,
+    },
+    "G25-SS-ROOT-DARK-AO-01": {
+        "base_color": (0.28, 0.30, 0.28, 1.0),
+        "roughness": 0.54,
+        "anisotropic": 0.18,
+        "coat": 0.010,
+        "texture": "cast_noise",
+        "roughness_variation": (0.48, 0.62),
+        "roughness_noise_scale": 240,
+        "roughness_noise_detail": 12,
+        "bump": 0.0045,
+        "bump_distance": 0.0009,
+        "bump_scale": 760,
+        "bump_detail": 12,
+    },
+}
 
 STUDIO_MATERIALS = {
     "floorGrey": {"base_color": (0.30, 0.31, 0.30, 1.0), "roughness": 0.88},
@@ -262,6 +382,20 @@ def write_text_lf(path: Path, text: str) -> None:
         file.write(text)
 
 
+def collect_reference_assets(repo_root: Path, hdri_path: Path) -> list[dict]:
+    records = []
+    for asset in REFERENCE_ASSETS:
+        local_path = hdri_path if asset["id"] == "polyhaven-studio-small-09-1k-hdri" else (repo_root / asset["localPath"]).resolve()
+        record = {key: value for key, value in asset.items() if key != "localPath"}
+        record["localPath"] = str(local_path.relative_to(repo_root)).replace("\\", "/") if local_path.exists() else asset["localPath"]
+        record["availableLocally"] = local_path.is_file()
+        if local_path.is_file():
+            record["bytes"] = local_path.stat().st_size
+            record["sha256"] = sha256(local_path)
+        records.append(record)
+    return records
+
+
 def load_goal20_module(repo_root: Path):
     script_path = repo_root / "scripts" / "render_goal20_blender_step_proof.py"
     spec = importlib.util.spec_from_file_location("goal20_render_helpers", script_path)
@@ -293,8 +427,8 @@ def make_simple_material(name: str, spec: dict) -> bpy.types.Material:
     return material
 
 
-def make_trace_material(name: str, spec: dict) -> bpy.types.Material:
-    material = bpy.data.materials.new(f"goal25d_{name}")
+def make_trace_material(name: str, spec: dict, prefix: str = "goal25d") -> bpy.types.Material:
+    material = bpy.data.materials.new(f"{prefix}_{name}")
     material.use_nodes = True
     nodes = material.node_tree.nodes
     principled = nodes.get("Principled BSDF")
@@ -323,9 +457,14 @@ def make_debug_material(spec: dict) -> bpy.types.Material:
     return material
 
 
-def make_zone_material(spec: dict) -> bpy.types.Material:
+def material_spec_with_override(spec: dict, overrides: dict[str, dict]) -> dict:
+    copied = {**spec, "material": overrides.get(spec["id"], spec["material"])}
+    return copied
+
+
+def make_zone_material(spec: dict, prefix: str = "") -> bpy.types.Material:
     params = spec["material"]
-    material = bpy.data.materials.new(spec["id"])
+    material = bpy.data.materials.new(f"{prefix}{spec['id']}")
     material.use_nodes = True
     nodes = material.node_tree.nodes
     principled = nodes.get("Principled BSDF")
@@ -1174,12 +1313,147 @@ def render_still(repo_root: Path, output_path: Path, render_profile: dict, title
     }
 
 
+def make_emission_color_material(name: str, color: tuple[float, float, float, float], strength: float = 1.0) -> bpy.types.Material:
+    material = bpy.data.materials.new(name)
+    material.use_nodes = True
+    nodes = material.node_tree.nodes
+    nodes.clear()
+    output = nodes.new(type="ShaderNodeOutputMaterial")
+    emission = nodes.new(type="ShaderNodeEmission")
+    emission.inputs["Color"].default_value = color
+    emission.inputs["Strength"].default_value = strength
+    material.node_tree.links.new(emission.outputs["Emission"], output.inputs["Surface"])
+    material.diffuse_color = color
+    return material
+
+
+def make_image_emission_material(name: str, image_path: Path) -> bpy.types.Material:
+    material = bpy.data.materials.new(name)
+    material.use_nodes = True
+    nodes = material.node_tree.nodes
+    nodes.clear()
+    output = nodes.new(type="ShaderNodeOutputMaterial")
+    emission = nodes.new(type="ShaderNodeEmission")
+    image = nodes.new(type="ShaderNodeTexImage")
+    image.image = bpy.data.images.load(str(image_path))
+    try:
+        image.image.colorspace_settings.name = "sRGB"
+    except TypeError:
+        pass
+    emission.inputs["Strength"].default_value = 1.0
+    material.node_tree.links.new(image.outputs["Color"], emission.inputs["Color"])
+    material.node_tree.links.new(emission.outputs["Emission"], output.inputs["Surface"])
+    return material
+
+
+def add_image_plane(name: str, material: bpy.types.Material, location, scale) -> bpy.types.Object:
+    bpy.ops.mesh.primitive_plane_add(size=1, location=location)
+    obj = bpy.context.object
+    obj.name = name
+    obj.scale = scale
+    obj.data.materials.append(material)
+    return obj
+
+
+def add_label(name: str, text: str, location, size: float, material: bpy.types.Material) -> bpy.types.Object:
+    curve = bpy.data.curves.new(name, type="FONT")
+    curve.body = text
+    curve.align_x = "CENTER"
+    curve.align_y = "CENTER"
+    curve.size = size
+    obj = bpy.data.objects.new(name, curve)
+    bpy.context.collection.objects.link(obj)
+    obj.location = location
+    obj.data.materials.append(material)
+    return obj
+
+
+def render_comparison_still(
+    repo_root: Path,
+    old_still: dict,
+    clean_still: dict,
+    output_path: Path,
+    render_profile: dict,
+) -> dict:
+    bpy.ops.object.select_all(action="SELECT")
+    bpy.ops.object.delete()
+
+    scene = bpy.context.scene
+    scene.render.engine = "CYCLES"
+    scene.cycles.samples = 8
+    scene.cycles.use_denoising = True
+    scene.render.resolution_x = render_profile["width"] * 2
+    scene.render.resolution_y = render_profile["height"] + 160
+    scene.render.film_transparent = False
+    scene.render.image_settings.file_format = "PNG"
+    scene.render.image_settings.color_mode = "RGBA"
+    scene.view_settings.exposure = 0.0
+    scene.view_settings.gamma = 1.0
+    world = scene.world or bpy.data.worlds.new("World")
+    scene.world = world
+    world.use_nodes = False
+    world.color = (0.84, 0.86, 0.84)
+
+    old_path = repo_root / old_still["path"]
+    clean_path = repo_root / clean_still["path"]
+    image_aspect = render_profile["width"] / render_profile["height"]
+    image_height = 1.52
+    image_width = image_height * image_aspect
+    gap = 0.12
+    left_x = -(image_width + gap) / 2
+    right_x = (image_width + gap) / 2
+
+    add_image_plane(
+        "goal25d_comparison_old_plane",
+        make_image_emission_material("goal25d_comparison_old_image", old_path),
+        (left_x, -0.10, 0.0),
+        (image_width, image_height, 1),
+    )
+    add_image_plane(
+        "goal25d_comparison_clean_plane",
+        make_image_emission_material("goal25d_comparison_clean_image", clean_path),
+        (right_x, -0.10, 0.0),
+        (image_width, image_height, 1),
+    )
+
+    text_material = make_emission_color_material("goal25d_comparison_text", (0.055, 0.070, 0.064, 1.0), 1.0)
+    rule_material = make_emission_color_material("goal25d_comparison_rule", (0.58, 0.62, 0.59, 1.0), 1.0)
+    add_label("goal25d_old_label", "OLD: explicit trace-scratch curves", (left_x, image_height * 0.5 + 0.14, 0.03), 0.072, text_material)
+    add_label("goal25d_clean_label", "CLEAN PBR STAINLESS: no explicit scratch curves", (right_x, image_height * 0.5 + 0.14, 0.03), 0.066, text_material)
+    add_image_plane("goal25d_comparison_divider", rule_material, (0.0, -0.10, 0.02), (0.010, image_height, 1))
+
+    camera_data = bpy.data.cameras.new("goal25d_comparison_camera")
+    camera = bpy.data.objects.new("goal25d_comparison_camera", camera_data)
+    bpy.context.collection.objects.link(camera)
+    camera.location = (0.0, 0.0, 4.0)
+    camera_data.type = "ORTHO"
+    camera_data.ortho_scale = image_height + 0.48
+    scene.camera = camera
+
+    scene.render.filepath = str(output_path)
+    bpy.ops.render.render(write_still=True)
+    return {
+        "id": output_path.stem,
+        "title": "old trace-scratch look vs clean PBR stainless look",
+        "path": str(output_path.relative_to(repo_root)).replace("\\", "/"),
+        "width": scene.render.resolution_x,
+        "height": scene.render.resolution_y,
+        "bytes": output_path.stat().st_size,
+        "sha256": sha256(output_path),
+        "inputs": [old_still["id"], clean_still["id"]],
+    }
+
+
 def write_status(goal_dir: Path, manifest: dict) -> None:
     materials = "\n".join(
         f"- `{spec['id']}`: {spec['cn']} - {spec['intent']}" for spec in ZONE_SPECS
     )
     outputs = "\n".join(f"- `{still['id']}`: {still['path']}" for still in manifest["stills"])
     refs = "\n".join(f"- [{ref['title']}]({ref['url']}): {ref['takeaway']}" for ref in REFERENCE_NOTES)
+    assets = "\n".join(
+        f"- `{asset['id']}` ({asset['license']}): `{asset['localPath']}`; local={asset['availableLocally']}; usage: {asset['usage']}"
+        for asset in manifest["externalReferenceAssets"]
+    )
     counts = "\n".join(
         f"- `{zone_id}`: {count} faces, area {manifest['zoneAssignment']['zoneAreas'].get(zone_id, 0)}"
         for zone_id, count in manifest["zoneAssignment"]["zoneCounts"].items()
@@ -1192,7 +1466,8 @@ Generated: {manifest['generatedAt']}
 
 - This pass isolates the real STEP-derived `阀体` mesh only.
 - It keeps the valve body as one mesh but assigns material IDs per polygon using geometry-derived manufacturing zones.
-- It migrates restrained Goal 25-C explicit machining trace geometry back onto the flange face, main bore and bolt-hole zones.
+- The clean main render disables explicit body-local trace/scratch curve geometry.
+- Legacy 25-C-style trace curves are rendered only in the left side of the comparison image.
 - It does not render the full valve, replace a homepage hero, publish Pages, or create animation frames.
 - Material names are visual lookdev targets, not certified alloy or surface-finish claims.
 
@@ -1208,16 +1483,17 @@ Generated: {manifest['generatedAt']}
 
 {counts}
 
-## Migrated 25-C Trace Geometry
+## Clean PBR Direction
 
-- Source manifest: `{manifest['traceMigration']['sourceManifest']}`
-- Applied trace IDs: {", ".join(f"`{trace_id}`" for trace_id in manifest['traceMigration']['appliedTraceIds'])}
-- Implementation: {manifest['traceMigration']['implementedAs']}
-- Flange trace rings per end: `{manifest['traceMigration']['flangeTraceRingsPerEnd']}`
-- Flange trace curve segments: `{manifest['traceMigration']['flangeTraceCurveSegments']}`
-- Bore circumferential rings: `{manifest['traceMigration']['boreCircumferentialRings']}`
-- Bore mouth rim objects: `{manifest['traceMigration']['boreMouthRimObjects']}`
-- Bolt-hole ring objects: `{manifest['traceMigration']['boltHoleRingObjects']}`
+- Main still: `{manifest['mainStillId']}`
+- Comparison still: `{manifest['comparisonStillId']}`
+- Clean main trace visibility: `{manifest['legacyTraceComparison']['cleanMainExplicitTraceObjectsVisible']}`
+- Legacy comparison trace objects: `{manifest['legacyTraceComparison']['legacyVisibleTraceObjects']}`
+- Material rebuild target: clean machined flange, dark but clean bore, clean bolt holes, blasted cast body, and bevel highlights.
+
+## Open Reference Assets
+
+{assets}
 
 ## External References Used
 
@@ -1230,9 +1506,10 @@ Generated: {manifest['generatedAt']}
 ## Review Questions
 
 - Does the main cast/blasted shell keep a real metal value structure instead of becoming powder white?
-- Do the flange face, bore and bolt-hole migrated trace families read as real manufacturing evidence without becoming decorative striping?
+- Does the clean machined flange read as precision stainless without drawn-on circular scratches?
+- Do the dark bore and bolt holes stay clean rather than grimy?
 - Are the edge highlights useful, or do they need to be restricted to fewer raised/chamfered features?
-- Does the dark groove/root treatment make the body feel heavier and more machined without looking dirty?
+- Does the old-vs-clean comparison make the new aesthetic direction obvious enough?
 """
     write_text_lf(goal_dir / "material-status.md", text)
 
@@ -1294,8 +1571,8 @@ def write_index(goal_dir: Path, manifest: dict) -> None:
 <main>
   <header>
     <p class="eyebrow">Goal 25-D / isolated valve body / material zoning proof</p>
-    <h1>阀体多材质分区渲染</h1>
-    <p>同一个 STEP-derived <code>阀体</code> 网格按制造区域分配可复用不锈钢材质编号，并把 Goal 25-C 更克制的显式几何加工痕回迁到法兰端面、主内孔和螺栓孔口。</p>
+    <h1>Clean PBR 不锈钢阀体材质方向</h1>
+    <p>同一个 STEP-derived <code>阀体</code> 网格按制造区域分配可复用不锈钢材质编号；主渲染禁用显式划痕曲线，改用干净机加工法兰、深色洁净内孔、干净螺栓孔、铸造喷砂主体和倒角高光来建立商业质感。</p>
   </header>
   <section class="stills">
     {''.join(cards)}
@@ -1304,7 +1581,7 @@ def write_index(goal_dir: Path, manifest: dict) -> None:
     <h2>Material IDs</h2>
     <ul>{zone_items}</ul>
   </section>
-  <footer>Manifest: <code>render-manifest.json</code>. Status: <code>material-status.md</code>. Trace source: <code>../goal25c-real-machining-traces/render-manifest.json</code>.</footer>
+  <footer>Manifest: <code>render-manifest.json</code>. Status: <code>material-status.md</code>. Open references: Poly Haven HDRI and ambientCG Metal009.</footer>
 </main>
 </body>
 </html>
@@ -1334,41 +1611,59 @@ def main() -> None:
     goal20.clear_scene()
     render_profile = configure_render(args.profile)
     studio_materials = {name: make_simple_material(name, spec) for name, spec in STUDIO_MATERIALS.items()}
-    zone_materials = [make_zone_material(spec) for spec in ZONE_SPECS]
+    clean_zone_materials = [make_zone_material(spec, prefix="clean_") for spec in ZONE_SPECS]
+    legacy_zone_materials = [
+        make_zone_material(material_spec_with_override(spec, LEGACY_ZONE_MATERIAL_OVERRIDES), prefix="legacy_")
+        for spec in ZONE_SPECS
+    ]
     debug_materials = [make_debug_material(spec) for spec in ZONE_SPECS]
-    trace_materials = {name: make_trace_material(name, spec) for name, spec in TRACE_MATERIAL_SPECS.items()}
+    legacy_trace_materials = {name: make_trace_material(name, spec, prefix="goal25d_legacy") for name, spec in TRACE_MATERIAL_SPECS.items()}
 
     meshes = goal20.import_model(model_path)
     if not meshes:
         raise RuntimeError(f"No mesh objects imported from {model_path}")
 
     body, body_info = isolate_body_mesh(goal20, meshes)
-    zone_assignment = assign_zone_materials(body, zone_materials)
-    trace_migration = build_migrated_trace_geometry(body, zone_assignment, trace_materials)
-    trace_objects = trace_migration.pop("objects")
+    zone_assignment = assign_zone_materials(body, clean_zone_materials)
+    legacy_trace_comparison = build_migrated_trace_geometry(body, zone_assignment, legacy_trace_materials)
+    trace_objects = legacy_trace_comparison.pop("objects")
     build_studio(studio_materials, hdri_path)
     camera = create_camera()
 
     stills = []
-    set_material_slots(body, zone_materials)
+    set_material_slots(body, legacy_zone_materials)
     set_render_visibility(trace_objects, True)
     set_main_camera(camera)
-    stills.append(render_still(repo_root, out_dir / "01-zoned-body-material-proof.png", render_profile, "zoned body material proof"))
+    old_still = render_still(repo_root, out_dir / "01-old-trace-scratch-look.png", render_profile, "old trace-scratch look")
+
+    set_material_slots(body, clean_zone_materials)
+    set_render_visibility(trace_objects, False)
+    set_main_camera(camera)
+    clean_still = render_still(repo_root, out_dir / "02-clean-pbr-stainless-look.png", render_profile, "clean PBR stainless look")
 
     set_material_slots(body, debug_materials)
     set_render_visibility(trace_objects, False)
     set_main_camera(camera)
-    stills.append(render_still(repo_root, out_dir / "02-material-zone-id.png", render_profile, "material zone id map"))
+    debug_still = render_still(repo_root, out_dir / "03-material-zone-id.png", render_profile, "material zone id map")
 
-    set_material_slots(body, zone_materials)
-    set_render_visibility(trace_objects, True)
+    set_material_slots(body, clean_zone_materials)
+    set_render_visibility(trace_objects, False)
     set_flange_close_camera(camera)
-    stills.append(render_still(repo_root, out_dir / "03-flange-bore-zone-close.png", render_profile, "flange and bore zoning close-up"))
+    close_still = render_still(repo_root, out_dir / "04-clean-flange-bore-close.png", render_profile, "clean flange and bore close-up")
+
+    comparison_still = render_comparison_still(
+        repo_root,
+        old_still,
+        clean_still,
+        out_dir / "00-old-vs-clean-comparison.png",
+        render_profile,
+    )
+    stills.extend([comparison_still, old_still, clean_still, debug_still, close_still])
 
     manifest = {
         "schemaVersion": 1,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
-        "goal": "Goal 25-D isolated valve body material zoning proof",
+        "goal": "Goal 25-D isolated valve body clean PBR material proof",
         "profile": args.profile,
         "renderer": "Blender Cycles",
         "blender": bpy.app.version_string,
@@ -1378,13 +1673,16 @@ def main() -> None:
             "stepMesh": str(model_path.relative_to(repo_root)).replace("\\", "/"),
             "stepMeshSha256": sha256(model_path),
             "goal20SemanticMap": str(semantic_map_path.relative_to(repo_root)).replace("\\", "/"),
-            "rule": "Goal 25-D isolates only the STEP-derived valve body mesh and assigns per-zone material IDs.",
+            "rule": "Goal 25-D isolates only the STEP-derived valve body mesh and assigns per-zone material IDs; the clean main render disables explicit trace/scratch curve geometry.",
         },
         "researchReferences": REFERENCE_NOTES,
+        "externalReferenceAssets": collect_reference_assets(repo_root, hdri_path),
         "bodyIdentity": {
             **body_info,
             "goal20PartCountForBody": semantic_map["partCounts"].get("阀体", 0),
         },
+        "mainStillId": clean_still["id"],
+        "comparisonStillId": comparison_still["id"],
         "materialLibrary": [
             {
                 "id": spec["id"],
@@ -1397,13 +1695,26 @@ def main() -> None:
             for spec in ZONE_SPECS
         ],
         "zoneAssignment": zone_assignment,
-        "traceMigration": trace_migration,
+        "legacyTraceComparison": {
+            **legacy_trace_comparison,
+            "source": "Goal 25-C-style explicit geometric machining traces retained only for old-vs-clean comparison",
+            "legacyStillId": old_still["id"],
+            "cleanStillId": clean_still["id"],
+            "comparisonStillId": comparison_still["id"],
+            "legacyExplicitTraceObjectsVisible": True,
+            "cleanMainExplicitTraceObjectsVisible": False,
+            "cleanMainImplementsTraceWithCurves": False,
+            "legacyVisibleTraceObjects": legacy_trace_comparison["visibleTraceObjects"],
+        },
         "renderProfile": {
             "width": render_profile["width"],
             "height": render_profile["height"],
             "samples": render_profile["samples"],
             "engine": "Cycles",
             "isolatedBodyOnly": True,
+            "mainStill": clean_still["id"],
+            "mainStillExplicitTraceObjectsVisible": False,
+            "mainStillExplicitScratchCurves": False,
             "fullValveRendered": False,
             "homepageConnected": False,
             "motionTestRendered": False,
@@ -1427,6 +1738,8 @@ def main() -> None:
         "stills": stills,
         "constraints": [
             "Only the isolated valve body mesh is rendered.",
+            "The clean 25-D main still hides all explicit trace/scratch curve objects.",
+            "Legacy trace geometry is retained only in the comparison still.",
             "No homepage hero replacement is performed.",
             "No GitHub Pages publication is performed.",
             "No 24-frame or 240-frame animation is rendered.",

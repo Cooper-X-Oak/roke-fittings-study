@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "kind": "hero_runtime_camera_authority",
+  "authority_id": "hero-runtime",
+  "control_id": "hero-runtime-camera-authority",
+  "status": "active",
+  "statement": "镜头权威使用确定性的 240 帧短滚动商业产品镜头状态：以拉远长焦感、稳定中心、足够留白和阶段性构图服务完全爆炸首帧、合体、球体核心、剖面和清水流；不得用过近镜头、可见灯具或大幅透视压迫破坏工业摄影质感。",
+  "timeline_state": {
+    "fps": 30,
+    "total_frames": 240,
+    "duration_seconds": 8.0,
+    "scroll_story_length": "short hero scroll around one and a half viewports",
+    "max_abs_roll_degrees": 3,
+    "frame_state_required": true
+  },
+  "composition_state": {
+    "mode": "farther long-lens commercial product perspective",
+    "distance_multiplier_min": 2.15,
+    "fov_multiplier_max": 0.55,
+    "commercial_fov_degrees_range": [24, 34],
+    "minimum_product_margin_ratio": 0.08,
+    "close_crop_allowed": false,
+    "hero_light_or_panel_crop_allowed": false,
+    "visible_light_panels_in_camera": false,
+    "product_center_preserved": true,
+    "pipe_axis_readability_preserved": true,
+    "ball_core_priority_during_mid_story": true,
+    "cutaway_visibility_required_after_assembly": true,
+    "clear_water_flow_visibility_required_at_end": true
+  },
+  "camera_phase_policy": [
+    {
+      "phase": "fully-exploded-opening",
+      "composition": "wide enough to read all major separated valve parts, including body halves, upper and lower assemblies and spring/hardware layers"
+    },
+    {
+      "phase": "precision-assembly",
+      "composition": "stable centered three-quarter view; inward part motion remains legible without camera chasing every small component"
+    },
+    {
+      "phase": "ball-core-presentation",
+      "composition": "the polished ball remains the visual anchor while surrounding parts do not dominate its reflection"
+    },
+    {
+      "phase": "cutaway-reveal",
+      "composition": "camera holds enough distance for the cutaway to read as product truth rather than a repair diagram"
+    },
+    {
+      "phase": "clear-water-flow-hold",
+      "composition": "final hold keeps valve identity, cutaway and clean flow readable within homepage hero framing"
+    }
+  ],
+  "controlled_override": {
+    "catalogue_camera_offset_three": [-0.62, 0.285, 1.72],
+    "catalogue_target_offset_three": [-0.018, 0.04, 0.0],
+    "exploded_mix_multiplier": 0.98,
+    "catalogue_fov_degrees": 32,
+    "composition_safety": {
+      "distance_multiplier": 1.24,
+      "fov_add_degrees": 5.0
+    }
+  },
+  "forbidden": [
+    "camera teleport",
+    "unbounded roll",
+    "product center drift that breaks hero readability",
+    "pipe-axis ambiguity",
+    "visible light panels in camera",
+    "close lens perspective that makes studio gear feel near the product",
+    "cropping away exploded parts that are required for the opening read",
+    "camera motion that competes with assembly motion"
+  ]
+}

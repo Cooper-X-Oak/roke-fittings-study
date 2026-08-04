@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-03T02:24:27.399313+00:00",
+  "sourceRenderManifest": "creative/control-valve-blender-hero-preview/render-manifest.json",
+  "sourceRenderManifestSha256": "77117e5f3caa7c91fd93a852127276bed69cab310be036a75a04a4b964ae3ab9",
+  "independentVariable": "Blender offline render frames encoded for web hero preview",
+  "variant": {
+    "id": "gop6",
+    "gop": 6,
+    "path": "docs/control-valve-blender-hero-preview/assets/blender-hero-preview-gop6.mp4",
+    "bytes": 238471,
+    "sha256": "45fefc53b88fcb6696fde7de17372317367bb914fec70c004084b312d5dd3860",
+    "codec": "h264",
+    "codecType": "video",
+    "width": 960,
+    "height": 600,
+    "frameRate": "6/1",
+    "durationSeconds": 1.333333,
+    "frameCount": 8,
+    "keyframeCount": 2,
+    "audioStreamCount": 0
+  },
+  "matchedEncodePolicy": {
+    "container": "MP4",
+    "codec": "H.264/libx264",
+    "width": 960,
+    "height": 600,
+    "frameRate": 6.0,
+    "frameCount": 8,
+    "preset": "medium",
+    "crf": 16,
+    "profile": "high",
+    "level": "4.1",
+    "pixelFormat": "yuv420p",
+    "gop": 6,
+    "bFrames": 0,
+    "sceneCutDetection": false,
+    "fastStart": true,
+    "audio": false
+  }
+}

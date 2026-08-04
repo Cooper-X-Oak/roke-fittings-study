@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goal 28 Clean PBR Motion Preview</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, "Noto Sans SC", system-ui, sans-serif; background: #111514; color: #eef3ef; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(1280px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 40px; }
+    header { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 14px; }
+    h1 { margin: 0; font-size: clamp(24px, 4vw, 42px); line-height: 1.05; letter-spacing: 0; }
+    .meta { margin: 8px 0 0; color: #aab5b0; font-size: 13px; line-height: 1.5; }
+    .stage { display: grid; gap: 10px; border: 1px solid #343d39; border-radius: 8px; background: #171d1a; padding: 10px; }
+    .framebox { position: relative; overflow: hidden; border-radius: 6px; background: #090b0a; }
+    img, video { display: block; width: 100%; height: auto; }
+    .controls { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; }
+    button { width: 40px; height: 40px; border: 1px solid #52605a; border-radius: 8px; background: #202823; color: #eef3ef; cursor: pointer; }
+    input[type=range] { width: 100%; accent-color: #b8c6bd; }
+    output, code { color: #c9d4ce; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+    .metric { border: 1px solid #343d39; border-radius: 8px; padding: 12px; background: #171d1a; }
+    .metric b { display: block; font-size: 18px; }
+    .metric span { display: block; margin-top: 3px; color: #aab5b0; font-size: 12px; line-height: 1.4; }
+    @media (max-width: 760px) { header { display: grid; } .metrics { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Goal 28 Clean PBR Stainless + Motion Preview</h1>
+      <p class="meta">240 Blender frames from Goal26 motion/camera control with Goal25D clean PBR valve-body zoning. Manifest: <code>render-manifest.json</code>.</p>
+    </div>
+    <code>CYCLES / cycles-smoke</code>
+  </header>
+  <section class="stage">
+    <div class="framebox">
+      <img id="frame" src="frames/frame0000.png" alt="Goal28 frame preview">
+      
+    </div>
+    <div class="controls">
+      <button id="play" type="button" aria-label="Play or pause">Play</button>
+      <input id="scrub" type="range" min="0" max="3" value="0">
+      <output id="label">frame 0000 | contracted-presence</output>
+    </div>
+  </section>
+  <section class="metrics">
+    <div class="metric"><b>4</b><span>rendered frames</span></div>
+    <div class="metric"><b>7</b><span>Goal25D body zones</span></div>
+    <div class="metric"><b>87.8841</b><span>max ball turn degrees</span></div>
+    <div class="metric"><b>0.196266</b><span>max part offset</span></div>
+  </section>
+</main>
+<script>
+const frame = document.querySelector("#frame");
+const scrub = document.querySelector("#scrub");
+const label = document.querySelector("#label");
+const play = document.querySelector("#play");
+const frames = ["frames/frame0000.png", "frames/frame0072.png", "frames/frame0136.png", "frames/frame0216.png"];
+const labels = ["frame 0000 | contracted-presence", "frame 0072 | axis-made-legible", "frame 0136 | seat-system-proof", "frame 0216 | commercial-hero-hold"];
+const total = frames.length;
+let timer = null;
+function setFrame(value) {
+  const index = Math.max(0, Math.min(total - 1, Number(value) || 0));
+  frame.src = frames[index];
+  scrub.value = index;
+  label.value = labels[index];
+}
+scrub.addEventListener("input", () => setFrame(scrub.value));
+play.addEventListener("click", () => {
+  if (timer) { clearInterval(timer); timer = null; play.textContent = "Play"; return; }
+  play.textContent = "Pause";
+  timer = setInterval(() => setFrame((Number(scrub.value) + 1) % total), 33);
+});
+</script>
+</body>
+</html>

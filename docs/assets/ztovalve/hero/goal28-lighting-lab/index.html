@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goal28 Lighting Lab</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, "Noto Sans SC", system-ui, sans-serif; background: #101413; color: #eef3ef; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(1440px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 42px; }
+    header { display: grid; gap: 8px; margin-bottom: 18px; }
+    h1 { margin: 0; font-size: clamp(28px, 5vw, 48px); line-height: 1.04; letter-spacing: 0; }
+    p { margin: 0; color: #aab5b0; line-height: 1.55; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    article { border: 1px solid #33403a; border-radius: 8px; background: #171d1a; padding: 10px; display: grid; gap: 10px; }
+    img { display: block; width: 100%; height: auto; border-radius: 6px; background: #070908; }
+    h2 { margin: 0; font-size: 18px; line-height: 1.25; letter-spacing: 0; }
+    code { color: #c9d4ce; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; }
+    @media (max-width: 920px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Goal28 Lighting Lab</h1>
+    <p>Three four-frame reflection-environment samples for the fixed-ball-valve hero. Main judgment frame: 0136.</p>
+    <p><code>lighting-lab-manifest.json</code></p>
+  </header>
+  <section class="grid">
+    <article>
+      <a href="lighting-v01/index.html"><img src="lighting-v01/frames/frame0136.png" alt="v01 direct five-light on white cloth frame 0136"></a>
+      <h2>v01 direct five-light on white cloth</h2>
+      <p>五灯位置保持不变，但改成白色布景/自然光棚基线，确认产品不再被黑背景吃成黑阀门。</p>
+      <code>direct-five-light-white-cloth-baseline</code>
+    </article><article>
+      <a href="lighting-v02/index.html"><img src="lighting-v02/frames/frame0136.png" alt="v02 diffused reflection cove frame 0136"></a>
+      <h2>v02 diffused reflection cove</h2>
+      <p>同五灯角色改为驱动大面积扩散板、白卡、黑旗和低强度正面补光，减少可读灯具反射。</p>
+      <code>diffused-white-black-reflection-environment</code>
+    </article><article>
+      <a href="lighting-v03/index.html"><img src="lighting-v03/frames/frame0136.png" alt="v03 reflection family trim frame 0136"></a>
+      <h2>v03 reflection family trim</h2>
+      <p>在 v02 环境上拉远并略收视角，把主要可见反射角族从灯具/板边移动到大渐变反射区。</p>
+      <code>v02-plus-camera-family-of-angles-trim</code>
+    </article>
+  </section>
+</main>
+</body>
+</html>

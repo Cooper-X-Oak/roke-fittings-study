@@ -1,0 +1,1049 @@
+{
+  "schemaVersion": 1,
+  "goalId": "goal29-evidence-calibrated-runtime-lookdev",
+  "generatedAt": "2026-08-03T14:38:29.179286+00:00",
+  "goal": "Goal29 evidence-calibrated 3D industrial Blender runtime lookdev",
+  "product": "ztovalve fixed ball valve",
+  "renderer": {
+    "engine": "CYCLES",
+    "profile": "cycles-smoke",
+    "blender": "5.2.0 LTS"
+  },
+  "runtimeAuthority": {
+    "authorityId": "hero-runtime",
+    "authorityStatus": "current",
+    "authorityVersion": "2026-08-03.4",
+    "authorityPath": "governance/control/hero-runtime",
+    "soleCurrentHeroRenderAuthority": true,
+    "manifestAuthorityBindingRequired": true,
+    "nonRuntimeRenderAuthorityAllowed": false,
+    "authorityFileSha256": {
+      "authority.json": "79b88619ff647b41dd2c2b0f38879092a9377fa2437032c254488d30c9113ee7",
+      "material.json": "a3e086776c64695def24e98708ada291628f201217d66c218c32c2615dfd5721",
+      "lighting.json": "a08df9d586357980cb3ce7c1e6c178f78d30d3ed6369356f24701766c19188aa",
+      "camera.json": "af62a56265b810d9bb7a7f4b35793dee9af54cda2e67d06e4fd16e1f17e92f47",
+      "motion.json": "6f3c24205ec413e4d56ecb2920a24a98211ea962b8bf53c4d59404c1301a993d",
+      "storyboard.json": "607f0770c9e4d075eba952882bca2c25ed158819fd1071ae0f098f143aeda0c7",
+      "release-gate.json": "ac78b6ecdae0c7643e799c7a4a7d88726cea0011a4b9425b4ca636569493df66"
+    }
+  },
+  "sourceBoundary": {
+    "stepMesh": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/goal20-step-mesh.glb",
+    "stepMeshSha256": "0326bbf77f186dc9869bd0715d7096f94bad3d502b1b0cab1d93860dcef4888f",
+    "goal20SemanticMap": "docs/assets/ztovalve/hero/goal20-blender-cycles-step-proof/semantic-material-map.json",
+    "goal20SemanticMapSha256": "b7d68d694413907fe56f52ec1f36bad2e645f76da940c5aa0e550d18834e66fb",
+    "legacyMotionEvidence": "docs/assets/ztovalve/hero/goal26-blender-camera-explosion-proof/motion-control.json",
+    "legacyMotionEvidenceSha256": "1588741797937cbd045e1652796513b2b94e4b0dab1fb7b980d2b690f99a7d48",
+    "goal26RenderManifest": "docs/assets/ztovalve/hero/goal26-blender-camera-explosion-proof/render-manifest.json",
+    "goal26RenderManifestSha256": "b5665a082ab0b822be35cf96e522524bcb0dfe663cc37f26b84d6f2a2b16a4cf",
+    "rule": "Geometry and historical motion evidence may be consumed, but material, lighting, camera, motion, storyboard and release decisions are bound to hero-runtime."
+  },
+  "renderProfile": {
+    "width": 1200,
+    "height": 675,
+    "samples": 36,
+    "engine": "CYCLES",
+    "fps": 30,
+    "sourceTotalFrames": 240,
+    "sampleFrames": [
+      0,
+      56,
+      124,
+      176,
+      216
+    ],
+    "sequenceFrameCount": 5,
+    "homepageConnected": false,
+    "heroAvifReplaced": false,
+    "published": false
+  },
+  "previewSurface": {
+    "route": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/index.html",
+    "frameDirectory": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/frames",
+    "poster": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/poster.png"
+  },
+  "partIdentity": {
+    "meshCount": 138,
+    "goal20SemanticMeshCount": 138,
+    "groupCounts": {
+      "fastenersSmallHardware": 105,
+      "bodyPressureShell": 4,
+      "ballTrunnionCore": 7,
+      "seatSealSystem": 7,
+      "stemPackingDrive": 15
+    },
+    "materialCounts": {
+      "fastenerStainless": 111,
+      "machinedStainless": 14,
+      "castBlastedStainless": 3,
+      "graphitePacking": 7,
+      "softSealPtfe": 2,
+      "polishedStainlessBall": 1
+    },
+    "partCounts": {
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N": 6,
+      "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N": 4,
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N": 18,
+      "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N": 12,
+      "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N": 8,
+      "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26": 2,
+      "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10": 8,
+      "弹簧": 32,
+      "堵头": 1,
+      "阀盖": 2,
+      "阀杆轴承": 1,
+      "阀座盘根": 1,
+      "阀体": 1,
+      "阀座": 2,
+      "阀座密封圈": 2,
+      "阀座压圈": 2,
+      "固定轴": 1,
+      "固定轴垫片": 1,
+      "固定轴轴承": 1,
+      "连接轴": 1,
+      "平键": 1,
+      "体盖螺柱": 12,
+      "支架螺柱": 8,
+      "排污阀垫片": 1,
+      "球体": 1,
+      "球体轴承": 1,
+      "填料": 1,
+      "填料箱": 1,
+      "填料箱垫片": 1,
+      "填料压盖": 1,
+      "填料压圈": 1,
+      "支架": 1,
+      "止推垫": 1,
+      "中道垫片": 1
+    }
+  },
+  "materialDirection": {
+    "productMaterialTruth": "silica-sol investment-cast stainless steel visual",
+    "commercialMaterialProfile": "commercial-silica-sol-cast-stainless-v1",
+    "pbrWorkflow": "metallic-roughness-clean-commercial-pbr",
+    "whiteDiffuseShortcut": false,
+    "commercialBodyAssignmentPolicy": "continuous-commercial-body",
+    "bodyZoneCount": 1,
+    "zoneAssignment": {
+      "policy": "continuous-commercial-body",
+      "method": "single-runtime-material-on-product-facing-body-shell",
+      "assignedMaterial": "goal29_clean_castBlastedStainless",
+      "bodyZoneCount": 1,
+      "zoneCounts": {
+        "commercial-continuous-cast-satin-body": 41678
+      },
+      "zoneAreas": {
+        "commercial-continuous-cast-satin-body": 0.51029983
+      },
+      "polygonMaterialHardEdgesAllowed": false,
+      "productFacingPolygonMaterialHardEdgesVisible": false,
+      "polygonZoneTrianglesVisible": false,
+      "source": "hero-runtime-material-authority"
+    },
+    "materialParameterSnapshot": {
+      "familyMaterials": {
+        "castBlastedStainless": {
+          "base_color": [
+            0.46,
+            0.48,
+            0.45,
+            1.0
+          ],
+          "metallic": 1.0,
+          "roughness": 0.4,
+          "anisotropic": 0.18,
+          "coat": 0.05,
+          "bump": 0.001,
+          "bump_distance": 0.0003
+        },
+        "machinedStainless": {
+          "base_color": [
+            0.58,
+            0.6,
+            0.56,
+            1.0
+          ],
+          "metallic": 1.0,
+          "roughness": 0.25,
+          "anisotropic": 0.63,
+          "coat": 0.09,
+          "bump": 0.00035,
+          "bump_distance": 0.00016
+        },
+        "fastenerStainless": {
+          "base_color": [
+            0.47,
+            0.49,
+            0.46,
+            1.0
+          ],
+          "metallic": 1.0,
+          "roughness": 0.29000000000000004,
+          "anisotropic": 0.485,
+          "coat": 0.07,
+          "bump": 0.00025,
+          "bump_distance": 0.00012
+        },
+        "polishedStainlessBall": {
+          "base_color": [
+            0.74,
+            0.76,
+            0.72,
+            1.0
+          ],
+          "metallic": 1.0,
+          "roughness": 0.1,
+          "anisotropic": 0.0,
+          "coat": 0.12,
+          "coat_roughness": 0.1,
+          "bump": 0.0
+        },
+        "graphitePacking": {
+          "base_color": [
+            0.018,
+            0.019,
+            0.019,
+            1.0
+          ],
+          "metallic": 0.11,
+          "roughness": 0.6799999999999999,
+          "anisotropic": 0.0,
+          "coat": 0.0,
+          "bump": 0.0012,
+          "bump_distance": 0.00035
+        },
+        "softSealPtfe": {
+          "base_color": [
+            0.7,
+            0.66,
+            0.54,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.55,
+          "anisotropic": 0.0,
+          "coat": 0.02,
+          "bump": 0.001,
+          "bump_distance": 0.0003
+        }
+      }
+    },
+    "cleanPbr": true,
+    "explicitScratchGeometryVisible": false,
+    "dirtyBlotchNoiseVisible": false,
+    "dirtyBlotchHighlightsVisible": false,
+    "polygonZoneArtifactsVisible": false,
+    "productFacingMaterialHardEdgesVisible": false,
+    "nonRuntimeMaterialSourceUsed": false,
+    "polishedBallRoughness": 0.1
+  },
+  "lighting": {
+    "evidenceCalibrated": true,
+    "backgroundMode": "high-key-white-studio",
+    "lightingSeparationModel": "background-subject-reflection-contamination-separated",
+    "backgroundAsPrimarySubjectLight": false,
+    "whiteWorldPrimaryExposure": false,
+    "visibleLightPanelsInCamera": false,
+    "glossyEquipmentReflectionAllowed": false,
+    "reflectionCardsGlossyReadableAllowed": false,
+    "hardWhiteBlotchReflectionAllowed": false,
+    "reflectionGradientEnvironment": {
+      "role": "continuous-white-silver-reflection-environment",
+      "name": "goal29_continuous_silver_white_reflection_environment",
+      "type": "non-equipment-gradient-dome",
+      "visibleCamera": false,
+      "visibleGlossy": true,
+      "visibleDiffuse": false,
+      "visibleShadow": false,
+      "continuousGradient": true,
+      "equipmentReadable": false,
+      "hardPanelShapeVisible": false,
+      "purpose": "restore broad silver-grey stainless reflection layers without readable studio equipment",
+      "backgroundAsPrimarySubjectLight": false
+    },
+    "whiteStudioCards": [
+      {
+        "role": "visible-white-floor-background",
+        "name": "goal29_white_floor_sweep",
+        "location": [
+          0.0,
+          -0.65,
+          -1.08
+        ],
+        "target": [
+          0.0,
+          -0.35,
+          0.0
+        ],
+        "width": 12.0,
+        "height": 8.0,
+        "material": "goal29_white_cyclorama_matte",
+        "hideCamera": false,
+        "visibleGlossy": false,
+        "backgroundAsPrimarySubjectLight": false
+      },
+      {
+        "role": "visible-white-background-sweep",
+        "name": "goal29_white_back_sweep",
+        "location": [
+          0.0,
+          7.4,
+          1.25
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.12
+        ],
+        "width": 13.4,
+        "height": 7.2,
+        "material": "goal29_white_cyclorama_matte",
+        "hideCamera": false,
+        "visibleGlossy": false,
+        "backgroundAsPrimarySubjectLight": false
+      },
+      {
+        "role": "left-far-white-reflector",
+        "name": "goal29_left_far_white_reflector",
+        "location": [
+          -13.8,
+          -1.4,
+          1.65
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.08
+        ],
+        "width": 10.4,
+        "height": 7.2,
+        "material": "goal29_far_white_reflector_matte",
+        "hideCamera": true,
+        "visibleGlossy": false,
+        "backgroundAsPrimarySubjectLight": false
+      },
+      {
+        "role": "right-far-white-reflector",
+        "name": "goal29_right_far_white_reflector",
+        "location": [
+          13.8,
+          -0.9,
+          1.42
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.08
+        ],
+        "width": 10.2,
+        "height": 7.0,
+        "material": "goal29_far_white_reflector_matte",
+        "hideCamera": true,
+        "visibleGlossy": false,
+        "backgroundAsPrimarySubjectLight": false
+      },
+      {
+        "role": "overhead-far-white-reflector",
+        "name": "goal29_overhead_far_white_reflector",
+        "location": [
+          0.0,
+          -1.1,
+          10.4
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.08
+        ],
+        "width": 13.0,
+        "height": 7.4,
+        "material": "goal29_far_white_reflector_matte",
+        "hideCamera": true,
+        "visibleGlossy": false,
+        "backgroundAsPrimarySubjectLight": false
+      },
+      {
+        "role": "rear-soft-silver-gradient-reflector",
+        "name": "goal29_rear_silver_gradient_reflector",
+        "location": [
+          0.0,
+          6.7,
+          0.82
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.06
+        ],
+        "width": 10.6,
+        "height": 5.0,
+        "material": "goal29_far_silver_reflector_matte",
+        "hideCamera": true,
+        "visibleGlossy": false,
+        "backgroundAsPrimarySubjectLight": false
+      }
+    ],
+    "blackFlags": [],
+    "rig": [
+      {
+        "role": "top-left-oblique-key",
+        "name": "goal29_far_top_left_soft_key",
+        "location": [
+          -15.8,
+          -12.0,
+          9.2
+        ],
+        "target": [
+          -0.05,
+          0.0,
+          0.12
+        ],
+        "power": 760,
+        "size": 18.0,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": false,
+        "specularFactor": 0.035,
+        "distanceClass": "far-large-soft-source"
+      },
+      {
+        "role": "top-right-oblique-rim",
+        "name": "goal29_far_top_right_soft_rim",
+        "location": [
+          15.2,
+          -11.2,
+          8.6
+        ],
+        "target": [
+          0.08,
+          0.0,
+          0.12
+        ],
+        "power": 580,
+        "size": 17.2,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": false,
+        "specularFactor": 0.03,
+        "distanceClass": "far-large-soft-source"
+      },
+      {
+        "role": "bottom-left-lift",
+        "name": "goal29_far_bottom_left_lift",
+        "location": [
+          -12.6,
+          -10.8,
+          0.5
+        ],
+        "target": [
+          -0.04,
+          0.0,
+          -0.04
+        ],
+        "power": 122,
+        "size": 12.0,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": false,
+        "specularFactor": 0.018,
+        "distanceClass": "far-large-soft-source"
+      },
+      {
+        "role": "bottom-right-lift",
+        "name": "goal29_far_bottom_right_lift",
+        "location": [
+          12.2,
+          -10.6,
+          0.5
+        ],
+        "target": [
+          0.04,
+          0.0,
+          -0.04
+        ],
+        "power": 126,
+        "size": 12.0,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": false,
+        "specularFactor": 0.018,
+        "distanceClass": "far-large-soft-source"
+      },
+      {
+        "role": "front-fill",
+        "name": "goal29_far_front_soft_fill",
+        "location": [
+          0.0,
+          -15.4,
+          3.2
+        ],
+        "target": [
+          0.0,
+          0.0,
+          0.06
+        ],
+        "power": 62,
+        "size": 17.0,
+        "shape": "DISK",
+        "visibleCamera": false,
+        "visibleGlossy": false,
+        "specularFactor": 0.012,
+        "distanceClass": "far-large-soft-source"
+      },
+      {
+        "role": "ambient-white-studio",
+        "color": [
+          0.985,
+          0.99,
+          0.97
+        ],
+        "strength": 0.36,
+        "backgroundMode": "high-key-white-studio",
+        "backgroundAsPrimarySubjectLight": false
+      }
+    ],
+    "roles": [
+      "top-left-oblique-key",
+      "top-right-oblique-rim",
+      "bottom-left-lift",
+      "bottom-right-lift",
+      "front-fill",
+      "ambient-white-studio"
+    ],
+    "productGlossyReflectionRetouch": {
+      "policy": "commercial-polished-ball-all-non-ball-product-reflection-isolation",
+      "suppressedGroups": [
+        "ballTrunnionCore",
+        "bodyPressureShell",
+        "fastenersSmallHardware",
+        "seatSealSystem",
+        "stemPackingDrive"
+      ],
+      "suppressedGroupCounts": {
+        "ballTrunnionCore": 6,
+        "bodyPressureShell": 4,
+        "fastenersSmallHardware": 105,
+        "seatSealSystem": 7,
+        "stemPackingDrive": 15
+      },
+      "suppressedCount": 137,
+      "allowedGlossyProductParts": [
+        "球体"
+      ],
+      "visibleInCamera": true,
+      "visibleInDiffuseAndShadow": true,
+      "visibleInGlossy": false,
+      "purpose": "prevent any non-ball valve component from becoming a readable reflection on the polished ball",
+      "samplePartNames": [
+        "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+        "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+        "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+        "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+        "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+        "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+        "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+        "中道垫片",
+        "体盖螺柱",
+        "固定轴",
+        "固定轴垫片",
+        "固定轴轴承",
+        "堵头",
+        "填料",
+        "填料压圈",
+        "填料压盖"
+      ]
+    },
+    "reviewFramePriority": [
+      0,
+      124,
+      176,
+      216,
+      56
+    ]
+  },
+  "cameraDirection": {
+    "mode": "farther long-lens commercial product perspective",
+    "distanceMultiplier": 2.25,
+    "fovMultiplier": 0.53,
+    "visibleLightPanelsInCamera": false,
+    "phasePolicy": [
+      {
+        "phase": "fully-exploded-opening",
+        "composition": "wide enough to read all major separated valve parts, including body halves, upper and lower assemblies and spring/hardware layers"
+      },
+      {
+        "phase": "precision-assembly",
+        "composition": "stable centered three-quarter view; inward part motion remains legible without camera chasing every small component"
+      },
+      {
+        "phase": "ball-core-presentation",
+        "composition": "the polished ball remains the visual anchor while surrounding parts do not dominate its reflection"
+      },
+      {
+        "phase": "cutaway-reveal",
+        "composition": "camera holds enough distance for the cutaway to read as product truth rather than a repair diagram"
+      },
+      {
+        "phase": "clear-water-flow-hold",
+        "composition": "final hold keeps valve identity, cutaway and clean flow readable within homepage hero framing"
+      }
+    ]
+  },
+  "motionFusion": {
+    "sourceGoal": "Goal 26 Blender camera and exploded-part motion proof",
+    "route": {
+      "initial_state": "fully exploded",
+      "initial_assembled_state_allowed": false,
+      "explode_then_reassemble_loop_allowed": false,
+      "primary_motion": "one-way precision assembly",
+      "ball_core_priority": true,
+      "cutaway_after_assembly_required": true,
+      "clear_water_flow_after_cutaway_required": true,
+      "major_components_separated_at_first_frame": true,
+      "small_parts_must_not_dominate_timing": true
+    },
+    "initialExplodedRequirements": {
+      "body_pressure_shell_separated": true,
+      "left_right_valve_caps_separated": true,
+      "upper_stem_drive_and_bracket_separated": true,
+      "lower_trunnion_support_separated": true,
+      "seat_and_seal_system_separated": true,
+      "spring_and_small_hardware_layers_separated": true,
+      "ball_core_stays_central": true
+    },
+    "controlledChannels": {
+      "shellClosure": {
+        "from": "assembly",
+        "multiplier": 1.08,
+        "meaning": "Close the pressure shell from a fully separated opening state along the pipeline axis."
+      },
+      "seatSealClosure": {
+        "from": "assembly",
+        "multiplier": 1.0,
+        "meaning": "Return seat and seal layers around the ball without rotating them with the ball."
+      },
+      "stemDriveClosure": {
+        "from": "assembly",
+        "multiplier": 0.92,
+        "meaning": "Return stem, packing, bracket, and upper drive along the vertical axis."
+      },
+      "lowerSupportClosure": {
+        "from": "assembly",
+        "multiplier": 0.78,
+        "meaning": "Return lower trunnion support and lower bearing parts along the vertical axis."
+      },
+      "fastenerReturn": {
+        "from": "assembly",
+        "multiplier": 0.76,
+        "meaning": "Return studs, nuts, washers, pins and small hardware without drawing attention away from the ball core."
+      },
+      "springReturn": {
+        "from": "assembly",
+        "multiplier": 0.82,
+        "meaning": "Return the visible spring layer as a distinct internal component family when present."
+      },
+      "ballPresentationTurn": {
+        "from": "ballPresentation",
+        "degrees": 100,
+        "meaning": "Rotate only the true ball core slowly around the vertical stem axis while it remains the visual anchor."
+      },
+      "cutawayReveal": {
+        "from": "cutawayReveal",
+        "meaning": "Reveal a controlled product cutaway after assembly without claiming repair or pressure performance."
+      },
+      "clearWaterFlow": {
+        "from": "clearWaterFlow",
+        "meaning": "Animate clean water through the revealed flow path after the cutaway is visible."
+      }
+    },
+    "axisMap": {
+      "three_to_blender": {
+        "x": "x",
+        "y": "z",
+        "z": "-y"
+      },
+      "pipe_axis": "blender.x",
+      "vertical_axis": "blender.z",
+      "depth_axis": "blender.y"
+    },
+    "maxOffset": 0.316785,
+    "maxBallAngleDegrees": 100.0,
+    "maxCutawayReveal": 1.0,
+    "maxClearWaterFlow": 0.9628,
+    "renderSeconds": 309.456
+  },
+  "storyboard": {
+    "shotOrder": [
+      {
+        "shot_id": "fully-exploded-opening",
+        "progress_range": [
+          0.0,
+          0.16
+        ],
+        "cognition": "all major valve systems are already separated and readable"
+      },
+      {
+        "shot_id": "precision-assembly",
+        "progress_range": [
+          0.16,
+          0.54
+        ],
+        "cognition": "the separated components assemble into a precise fixed ball valve"
+      },
+      {
+        "shot_id": "ball-core-presentation",
+        "progress_range": [
+          0.54,
+          0.7
+        ],
+        "cognition": "the polished ball core becomes the calm visual and functional center"
+      },
+      {
+        "shot_id": "cutaway-reveal",
+        "progress_range": [
+          0.7,
+          0.84
+        ],
+        "cognition": "a controlled cutaway reveals the internal flow path without becoming a repair diagram"
+      },
+      {
+        "shot_id": "clear-water-flow-hold",
+        "progress_range": [
+          0.84,
+          1.0
+        ],
+        "cognition": "clean water flow and final commercial hero hold communicate clarity and product confidence"
+      }
+    ],
+    "storyRhythmPolicy": {
+      "single_primary_motion": "assembly",
+      "secondary_motion": "ball core presentation, cutaway reveal and clean water flow",
+      "opening_explosion_motion_allowed": false,
+      "maximum_major_story_events": 5,
+      "short_scroll_density_policy": "one readable product idea at a time; do not force a full disassembly and reassembly cycle into the same short scroll"
+    }
+  },
+  "releaseState": {
+    "currentVisualApproval": false,
+    "approvedFor240FrameRender": false,
+    "approvedForHomepageReplacement": false,
+    "approvedForPagesPublication": false,
+    "nextRequiredMilestone": "evidence-calibrated-runtime-lookdev"
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "progress": 0.0,
+      "shotId": "fully-exploded-opening",
+      "path": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/frames/frame0000.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 775618,
+      "sha256": "a972a99566e458ec7957997ba97fd37ba3689066fdd26f54b13504acb4291ba6",
+      "camera": {
+        "position": [
+          -1.88,
+          -5.28,
+          1.08
+        ],
+        "target": [
+          -0.01,
+          -0.02,
+          0.0
+        ],
+        "fovDegrees": 29.0,
+        "distanceMultiplier": 2.25,
+        "fovMultiplier": 0.53,
+        "look": "short-scroll far long-lens commercial product camera; no visible light panels"
+      },
+      "channels": {
+        "shellClosure": 0.0,
+        "seatSealClosure": 0.0,
+        "stemDriveClosure": 0.0,
+        "lowerSupportClosure": 0.0,
+        "fastenerReturn": 0.0,
+        "springReturn": 0.0,
+        "ballPresentationTurn": 0.0,
+        "cutawayReveal": 0.0,
+        "clearWaterFlow": 0.0,
+        "heroHold": 0.0
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 0.0,
+        "movedCounts": {
+          "fastenersSmallHardware": 105,
+          "bodyPressureShell": 4,
+          "seatSealSystem": 7,
+          "ballTrunnionCore": 3,
+          "stemPackingDrive": 15
+        },
+        "maxOffset": 0.316785
+      },
+      "cutaway": {
+        "type": "none",
+        "visible": false,
+        "amount": 0.0,
+        "affectedParts": []
+      },
+      "clearWaterFlow": {
+        "type": "clear-water-flow-proxy",
+        "visible": false,
+        "amount": 0.0,
+        "objectCount": 4,
+        "material": "translucent clean water"
+      }
+    },
+    {
+      "frame": 56,
+      "progress": 0.23431,
+      "shotId": "precision-assembly",
+      "path": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/frames/frame0056.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 777513,
+      "sha256": "c171b5c8beeee4a51b46902ec21f45eeda761ed89be596ef9392bbf417978e22",
+      "camera": {
+        "position": [
+          -1.748458,
+          -5.012044,
+          1.016665
+        ],
+        "target": [
+          -0.01,
+          -0.02,
+          0.0
+        ],
+        "fovDegrees": 28.2205,
+        "distanceMultiplier": 2.25,
+        "fovMultiplier": 0.53,
+        "look": "short-scroll far long-lens commercial product camera; no visible light panels"
+      },
+      "channels": {
+        "shellClosure": 0.243597,
+        "seatSealClosure": 0.243597,
+        "stemDriveClosure": 0.243597,
+        "lowerSupportClosure": 0.243597,
+        "fastenerReturn": 0.243597,
+        "springReturn": 0.243597,
+        "ballPresentationTurn": 0.0,
+        "cutawayReveal": 0.0,
+        "clearWaterFlow": 0.0,
+        "heroHold": 0.0
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 0.0,
+        "movedCounts": {
+          "fastenersSmallHardware": 105,
+          "bodyPressureShell": 4,
+          "seatSealSystem": 7,
+          "ballTrunnionCore": 3,
+          "stemPackingDrive": 15
+        },
+        "maxOffset": 0.239617
+      },
+      "cutaway": {
+        "type": "none",
+        "visible": false,
+        "amount": 0.0,
+        "affectedParts": []
+      },
+      "clearWaterFlow": {
+        "type": "clear-water-flow-proxy",
+        "visible": false,
+        "amount": 0.0,
+        "objectCount": 4,
+        "material": "translucent clean water"
+      }
+    },
+    {
+      "frame": 124,
+      "progress": 0.518828,
+      "shotId": "precision-assembly",
+      "path": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/frames/frame0124.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 766612,
+      "sha256": "68730bfd87a122095c9e8f6359e13318198844f47fde6da7d9130aaa78179719",
+      "camera": {
+        "position": [
+          -1.351237,
+          -4.20289,
+          0.82541
+        ],
+        "target": [
+          -0.01,
+          -0.02,
+          0.0
+        ],
+        "fovDegrees": 25.8666,
+        "distanceMultiplier": 2.25,
+        "fovMultiplier": 0.53,
+        "look": "short-scroll far long-lens commercial product camera; no visible light panels"
+      },
+      "channels": {
+        "shellClosure": 0.979191,
+        "seatSealClosure": 0.979191,
+        "stemDriveClosure": 0.979191,
+        "lowerSupportClosure": 0.979191,
+        "fastenerReturn": 0.979191,
+        "springReturn": 0.979191,
+        "ballPresentationTurn": 0.538914,
+        "cutawayReveal": 0.0,
+        "clearWaterFlow": 0.0,
+        "heroHold": 0.0
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 53.8914,
+        "movedCounts": {
+          "fastenersSmallHardware": 105,
+          "bodyPressureShell": 4,
+          "seatSealSystem": 7,
+          "ballTrunnionCore": 3,
+          "stemPackingDrive": 15
+        },
+        "maxOffset": 0.006592
+      },
+      "cutaway": {
+        "type": "none",
+        "visible": false,
+        "amount": 0.0,
+        "affectedParts": []
+      },
+      "clearWaterFlow": {
+        "type": "clear-water-flow-proxy",
+        "visible": false,
+        "amount": 0.0,
+        "objectCount": 4,
+        "material": "translucent clean water"
+      }
+    },
+    {
+      "frame": 176,
+      "progress": 0.736402,
+      "shotId": "cutaway-reveal",
+      "path": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/frames/frame0176.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 772507,
+      "sha256": "17fd233bdf5d45d3ee513b345c56ce83218d91fc41a6f861abccab62eb6a0b0c",
+      "camera": {
+        "position": [
+          -1.287575,
+          -4.029279,
+          0.780682
+        ],
+        "target": [
+          -0.013277,
+          -0.018362,
+          -0.018021
+        ],
+        "fovDegrees": 26.5281,
+        "distanceMultiplier": 2.25,
+        "fovMultiplier": 0.53,
+        "look": "short-scroll far long-lens commercial product camera; no visible light panels"
+      },
+      "channels": {
+        "shellClosure": 1.0,
+        "seatSealClosure": 1.0,
+        "stemDriveClosure": 1.0,
+        "lowerSupportClosure": 1.0,
+        "fastenerReturn": 1.0,
+        "springReturn": 1.0,
+        "ballPresentationTurn": 1.0,
+        "cutawayReveal": 0.455075,
+        "clearWaterFlow": 0.0,
+        "heroHold": 0.0
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 100.0,
+        "movedCounts": {},
+        "maxOffset": 0.0
+      },
+      "cutaway": {
+        "type": "transparent-shell-cutaway-proxy",
+        "visible": true,
+        "amount": 0.4551,
+        "affectedParts": [
+          "阀体",
+          "阀盖"
+        ],
+        "releaseNote": "lookdev proxy for cutaway readability; not a final boolean section approval"
+      },
+      "clearWaterFlow": {
+        "type": "clear-water-flow-proxy",
+        "visible": false,
+        "amount": 0.0,
+        "objectCount": 4,
+        "material": "translucent clean water"
+      }
+    },
+    {
+      "frame": 216,
+      "progress": 0.903766,
+      "shotId": "clear-water-flow-hold",
+      "path": "docs/assets/ztovalve/hero/goal29-evidence-calibrated-runtime-lookdev/frames/frame0216.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 775481,
+      "sha256": "a809c7b43cbc7b53d9d20aa60d7946c7a9069954130e8b32aa4c06717dd9aa51",
+      "camera": {
+        "position": [
+          -1.2248,
+          -3.8488,
+          0.7336
+        ],
+        "target": [
+          -0.0172,
+          -0.0164,
+          -0.0396
+        ],
+        "fovDegrees": 27.4,
+        "distanceMultiplier": 2.25,
+        "fovMultiplier": 0.53,
+        "look": "short-scroll far long-lens commercial product camera; no visible light panels"
+      },
+      "channels": {
+        "shellClosure": 1.0,
+        "seatSealClosure": 1.0,
+        "stemDriveClosure": 1.0,
+        "lowerSupportClosure": 1.0,
+        "fastenerReturn": 1.0,
+        "springReturn": 1.0,
+        "ballPresentationTurn": 1.0,
+        "cutawayReveal": 1.0,
+        "clearWaterFlow": 0.962779,
+        "heroHold": 0.21232
+      },
+      "motionEvidence": {
+        "ballAngleDegrees": 100.0,
+        "movedCounts": {},
+        "maxOffset": 0.0
+      },
+      "cutaway": {
+        "type": "transparent-shell-cutaway-proxy",
+        "visible": true,
+        "amount": 1.0,
+        "affectedParts": [
+          "阀体",
+          "阀盖"
+        ],
+        "releaseNote": "lookdev proxy for cutaway readability; not a final boolean section approval"
+      },
+      "clearWaterFlow": {
+        "type": "clear-water-flow-proxy",
+        "visible": true,
+        "amount": 0.9628,
+        "objectCount": 4,
+        "material": "translucent clean water"
+      }
+    }
+  ],
+  "constraints": [
+    "Five-frame Goal29 lookdev sample only.",
+    "No homepage hero replacement is performed.",
+    "No existing AVIF sequence is overwritten.",
+    "No Pages publication is performed.",
+    "hero-runtime is the sole current hero render authority.",
+    "The release gate remains closed until visual approval."
+  ]
+}
