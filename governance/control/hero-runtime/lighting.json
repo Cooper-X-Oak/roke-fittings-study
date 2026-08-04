@@ -136,6 +136,138 @@
       "visible_glossy": true
     }
   },
+  "interactive_preview_calibration": {
+    "status": "confirmed-in-blender-mcp-single-frame-preview",
+    "scope": "fast-preview-only",
+    "preview_baseline_id": "v12-reference-balanced",
+    "preview_baseline_scope": "v12-material-review-under-existing-lighting",
+    "light_values_changed": false,
+    "statement": "该组参数用于 Blender MCP 当前模型尺度下的快速视觉确认：顶部执行器外壳保持可读，主体维持中灰金属层次，孔腔维持深度；它是连续白/银反射方向的预览基线，不替代正式 240 帧生产灯光的尺度映射。",
+    "renderer": {
+      "engine": "CYCLES",
+      "samples": 6,
+      "max_bounces": 4,
+      "diffuse_bounces": 1,
+      "glossy_bounces": 3,
+      "denoising": true
+    },
+    "color_management": {
+      "view_transform": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "exposure": -0.30,
+      "world_strength": 0.012
+    },
+    "subject_light_rig": [
+      {
+        "role": "top-left-oblique-key",
+        "preview_name": "preview_key_soft",
+        "power": 18.0,
+        "size": 1.18,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      },
+      {
+        "role": "top-right-oblique-rim",
+        "preview_name": "preview_rim_soft",
+        "power": 14.0,
+        "size": 1.08,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      },
+      {
+        "role": "front-fill",
+        "preview_name": "preview_front_fill",
+        "power": 4.5,
+        "size": 1.50,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      },
+      {
+        "role": "top-executor-soft",
+        "preview_name": "preview_top_executor_soft",
+        "power": 5.5,
+        "size": 0.90,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      },
+      {
+        "role": "top-shell-wash",
+        "preview_name": "preview_top_shell_wash",
+        "power": 6.0,
+        "size": 1.45,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      },
+      {
+        "role": "left-side-lift",
+        "preview_name": "preview_left_side_lift",
+        "power": 4.5,
+        "size": 0.88,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      },
+      {
+        "role": "right-side-lift",
+        "preview_name": "preview_right_side_lift",
+        "power": 5.5,
+        "size": 0.88,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      },
+      {
+        "role": "top-front-fill",
+        "preview_name": "preview_top_front_fill",
+        "power": 4.0,
+        "size": 1.30,
+        "shape": "DISK",
+        "visible_camera": false,
+        "visible_glossy": false
+      }
+    ],
+    "reflection_environment": {
+      "type": "inward-facing-gradient-dome",
+      "preview_name": "preview_reflection_dome",
+      "material_model": "principled-non-emissive",
+      "metallic": 0.0,
+      "roughness": 0.70,
+      "base_color_ramp": [
+        {
+          "position": 0.03,
+          "color": [0.035, 0.040, 0.038, 1.0]
+        },
+        {
+          "position": 0.38,
+          "color": [0.075, 0.085, 0.080, 1.0]
+        },
+        {
+          "position": 0.68,
+          "color": [0.160, 0.180, 0.170, 1.0]
+        },
+        {
+          "position": 0.92,
+          "color": [0.055, 0.065, 0.060, 1.0]
+        }
+      ],
+      "visible_camera": false,
+      "visible_glossy": true,
+      "visible_diffuse": false,
+      "visible_shadow": false,
+      "emission": false
+    },
+    "review_target": [
+      "top actuator outer shell remains readable without a black face",
+      "dominant body remains mid-grey satin stainless",
+      "flange bores and root cavities retain depth",
+      "reflection environment does not become a camera-readable panel or white emitter"
+    ]
+  },
   "forbidden": [
     "black or dark-grey studio as the dominant background",
     "white background used as the primary subject key light",
