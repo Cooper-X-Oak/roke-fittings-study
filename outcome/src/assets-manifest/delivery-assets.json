@@ -33,6 +33,7 @@
   "assets": {
     "heroFrames": "public/assets/upload/images/zt-hero-fixed-ball-valve",
     "heroFallback": "public/assets/hero/fixed-ball-valve-mobile-fallback.png",
+    "heroProductionManifest": "src/assets-manifest/fixed-ball-valve-roke-green-commercial-240.json",
     "benefitsProduct": "public/assets/template/images/ztovalve-benefits-product.png",
     "productImages": "public/assets/upload/ztovalve",
     "templateFonts": "public/assets/template/fonts",

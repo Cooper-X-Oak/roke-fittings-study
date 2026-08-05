@@ -1,0 +1,684 @@
+{
+  "schema": "ztovalve-fixed-ball-valve-roke-green-validation/v1",
+  "kind": "opaque_green_asset_validation",
+  "bundleId": "roke-green-commercial-240",
+  "validatedAt": "2026-08-05T08:29:09.127801+00:00",
+  "status": "pass",
+  "background": {
+    "hex": "#47714D",
+    "cornerTolerance": 3
+  },
+  "pngSequence": {
+    "directory": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames",
+    "naming": "0000.png..0239.png",
+    "frameCount": 240,
+    "totalBytes": 226879243,
+    "sampleFrames": [
+      {
+        "frameIndex": 0,
+        "path": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames/0000.png",
+        "bytes": 856345,
+        "sha256": "bcfde6f032d8595cbd66c01b8cf5c4a2ce9121d250521e04633eff6aeb3ecf8d",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 0,
+        "bbox": {
+          "left": 102,
+          "top": 347,
+          "right": 1826,
+          "bottom": 723,
+          "width": 1724,
+          "height": 376,
+          "centerX": 964,
+          "centerY": 535
+        }
+      },
+      {
+        "frameIndex": 30,
+        "path": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames/0030.png",
+        "bytes": 856365,
+        "sha256": "46768a55b9258978ca5c29d87e190102dd7110e0125f6bbc460ccb2a25b05db6",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 0,
+        "bbox": {
+          "left": 102,
+          "top": 347,
+          "right": 1826,
+          "bottom": 723,
+          "width": 1724,
+          "height": 376,
+          "centerX": 964,
+          "centerY": 535
+        }
+      },
+      {
+        "frameIndex": 72,
+        "path": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames/0072.png",
+        "bytes": 855316,
+        "sha256": "2ed77cb959a73f470c8bb3c806e25caffb8f0caa5cb529e1e41f9279e6b2bf77",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 0,
+        "bbox": {
+          "left": 274,
+          "top": 348,
+          "right": 1654,
+          "bottom": 724,
+          "width": 1380,
+          "height": 376,
+          "centerX": 964,
+          "centerY": 536
+        }
+      },
+      {
+        "frameIndex": 120,
+        "path": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames/0120.png",
+        "bytes": 931379,
+        "sha256": "9778f61a6502ab242ca389c5af2db3f320dec165812e5f8255a816a5ae99cd3a",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 0,
+        "bbox": {
+          "left": 451,
+          "top": 308,
+          "right": 1598,
+          "bottom": 770,
+          "width": 1147,
+          "height": 462,
+          "centerX": 1024,
+          "centerY": 539
+        }
+      },
+      {
+        "frameIndex": 168,
+        "path": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames/0168.png",
+        "bytes": 1006431,
+        "sha256": "f42bcc33be41180297c6c002a026ad3f9941ab944f042810061e4ad96a75a9fc",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 0,
+        "bbox": {
+          "left": 665,
+          "top": 92,
+          "right": 1361,
+          "bottom": 911,
+          "width": 696,
+          "height": 819,
+          "centerX": 1013,
+          "centerY": 502
+        }
+      },
+      {
+        "frameIndex": 208,
+        "path": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames/0208.png",
+        "bytes": 1045336,
+        "sha256": "1a9724ad993caf30d2caadc24ccf0516121291d377168d2251570dc49bd79811",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 0,
+        "bbox": {
+          "left": 627,
+          "top": 33,
+          "right": 1419,
+          "bottom": 950,
+          "width": 792,
+          "height": 917,
+          "centerX": 1023,
+          "centerY": 492
+        }
+      },
+      {
+        "frameIndex": 239,
+        "path": ".scratch/assets/ztovalve/hero/roke-green-commercial-240/frames/0239.png",
+        "bytes": 1045346,
+        "sha256": "ab19dcec3f798cc8696609829af95128178d751bf98e104cd64ae5a3408e12f4",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ],
+          [
+            71,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 0,
+        "bbox": {
+          "left": 627,
+          "top": 33,
+          "right": 1419,
+          "bottom": 950,
+          "width": 792,
+          "height": 917,
+          "centerX": 1023,
+          "centerY": 492
+        }
+      }
+    ]
+  },
+  "avifSequence": {
+    "directory": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve",
+    "naming": "0001.avif..0240.avif",
+    "frameCount": 240,
+    "totalBytes": 2712197,
+    "sampleFrames": [
+      {
+        "frameIndex": 0,
+        "path": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve/0001.avif",
+        "bytes": 6282,
+        "sha256": "e99a71fee7b72380d3c7d01454d38e86612111d724b94ac7a18cab186940978f",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 2,
+        "bbox": {
+          "left": 102,
+          "top": 347,
+          "right": 1826,
+          "bottom": 723,
+          "width": 1724,
+          "height": 376,
+          "centerX": 964,
+          "centerY": 535
+        }
+      },
+      {
+        "frameIndex": 30,
+        "path": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve/0031.avif",
+        "bytes": 6293,
+        "sha256": "12f000e680ef74a4cdeee4f497e9bb844ac622d988448e1a6425f5830d7a12e8",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 2,
+        "bbox": {
+          "left": 102,
+          "top": 347,
+          "right": 1826,
+          "bottom": 723,
+          "width": 1724,
+          "height": 376,
+          "centerX": 964,
+          "centerY": 535
+        }
+      },
+      {
+        "frameIndex": 72,
+        "path": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve/0073.avif",
+        "bytes": 5969,
+        "sha256": "fe4a1cac4933263e038400c6873dfcd77ecb7e9c71022d9ecca932498b13179f",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 2,
+        "bbox": {
+          "left": 274,
+          "top": 348,
+          "right": 1654,
+          "bottom": 724,
+          "width": 1380,
+          "height": 376,
+          "centerX": 964,
+          "centerY": 536
+        }
+      },
+      {
+        "frameIndex": 120,
+        "path": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve/0121.avif",
+        "bytes": 12753,
+        "sha256": "ceac6bed459a5b9e2d165252c6b58bd0fc23bebbaaa19b967ecc4537cf0e00c4",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 2,
+        "bbox": {
+          "left": 451,
+          "top": 308,
+          "right": 1597,
+          "bottom": 770,
+          "width": 1146,
+          "height": 462,
+          "centerX": 1024,
+          "centerY": 539
+        }
+      },
+      {
+        "frameIndex": 168,
+        "path": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve/0169.avif",
+        "bytes": 13589,
+        "sha256": "f67025389c82dbf4d5ef2427e2df07bb674a219506749892dcaa188a997c3e79",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 2,
+        "bbox": {
+          "left": 666,
+          "top": 92,
+          "right": 1361,
+          "bottom": 911,
+          "width": 695,
+          "height": 819,
+          "centerX": 1014,
+          "centerY": 502
+        }
+      },
+      {
+        "frameIndex": 208,
+        "path": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve/0209.avif",
+        "bytes": 15379,
+        "sha256": "369fe9085248e1cfc13d765e147febe4c708490c4c0faaabe0bd1baec1a2a037",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 2,
+        "bbox": {
+          "left": 627,
+          "top": 33,
+          "right": 1419,
+          "bottom": 951,
+          "width": 792,
+          "height": 918,
+          "centerX": 1023,
+          "centerY": 492
+        }
+      },
+      {
+        "frameIndex": 239,
+        "path": "outcome/public/assets/upload/images/zt-hero-fixed-ball-valve/0240.avif",
+        "bytes": 15382,
+        "sha256": "6a25e9b3505f7010272b5784d0d99e7c2f950f41643c3784b59327721fc39dad",
+        "size": [
+          1920,
+          1080
+        ],
+        "cornerRgb": [
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ],
+          [
+            69,
+            113,
+            77
+          ]
+        ],
+        "cornerMaxDelta": 2,
+        "bbox": {
+          "left": 627,
+          "top": 33,
+          "right": 1419,
+          "bottom": 951,
+          "width": 792,
+          "height": 918,
+          "centerX": 1023,
+          "centerY": 492
+        }
+      }
+    ]
+  },
+  "fallback": {
+    "path": "outcome/public/assets/hero/fixed-ball-valve-mobile-fallback.png",
+    "bytes": 1045346,
+    "sha256": "ab19dcec3f798cc8696609829af95128178d751bf98e104cd64ae5a3408e12f4",
+    "size": [
+      1920,
+      1080
+    ],
+    "cornerRgb": [
+      [
+        71,
+        113,
+        77
+      ],
+      [
+        71,
+        113,
+        77
+      ],
+      [
+        71,
+        113,
+        77
+      ],
+      [
+        71,
+        113,
+        77
+      ]
+    ],
+    "cornerMaxDelta": 0,
+    "bbox": {
+      "left": 627,
+      "top": 33,
+      "right": 1419,
+      "bottom": 950,
+      "width": 792,
+      "height": 917,
+      "centerX": 1023,
+      "centerY": 492
+    }
+  },
+  "stableHold": {
+    "frameIndices": [
+      204,
+      216,
+      228,
+      239
+    ],
+    "bboxWidthDelta": 0,
+    "bboxHeightDelta": 0,
+    "centerDelta": 0
+  },
+  "renderManifest": "outcome/src/assets-manifest/fixed-ball-valve-roke-green-commercial-240.json",
+  "encodeManifest": "outcome/src/assets-manifest/fixed-ball-valve-roke-green-commercial-240-encode.json"
+}

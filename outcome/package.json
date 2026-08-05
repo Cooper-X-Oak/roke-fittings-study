@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "check:assets": "node scripts/check-assets.mjs",
+    "check:hero": "node ../scripts/verify_fixed_ball_valve_roke_green_home_hero.mjs",
     "check:links": "node scripts/check-links.mjs dist /ztovalue/",
     "preview": "node scripts/serve-preview.mjs dist /ztovalue 4179"
   },

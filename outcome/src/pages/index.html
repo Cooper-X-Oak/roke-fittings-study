@@ -45,6 +45,12 @@
     display: none !important;
   }
 
+  .page-home .section-hero.bg-medium-gray-primary,
+  .page-home .section-hero-mobile.bg-medium-gray-primary {
+    background: #47714D !important;
+    color: #f7f8ef;
+  }
+
   .hero-title-wordmark {
     color: #3c4348;
     font-size: 112px;
@@ -52,6 +58,32 @@
     letter-spacing: 0;
     line-height: .85;
     text-transform: uppercase;
+  }
+
+  .hero-title {
+    position: relative;
+  }
+
+  .hero-title-svg-wrapper {
+    bottom: 14%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    z-index: 0;
+  }
+
+  .hero-title-svg {
+    color: rgba(27, 52, 34, .72);
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 150px;
+    font-weight: 900;
+    height: auto;
+    letter-spacing: 0;
+    line-height: 1;
+    opacity: 1;
+    width: 100%;
   }
 
   .zt-hero-product-image {
@@ -72,6 +104,7 @@
     right: 0;
     width: 100%;
     will-change: height;
+    z-index: 1;
   }
 
   .zt-hero-sequence-canvas {
@@ -92,7 +125,28 @@
   }
 
   #image-sequence.zt-hero-sequence-canvas {
-    transform: translate(-50%, -50%) scale(.74);
+    transform: none;
+  }
+
+  .page-home .section-hero .hero-info {
+    color: #f7f8ef;
+    text-shadow: 0 1px 18px rgba(21, 36, 24, .26);
+  }
+
+  .page-home .section-hero .hero-info-description,
+  .page-home .section-hero-mobile .hero-info-description {
+    color: rgba(247, 248, 239, .82);
+  }
+
+  .page-home .section-hero .hero-info-title span,
+  .page-home .section-hero-mobile .hero-info-title span {
+    color: #ffffff;
+  }
+
+  .page-home .section-hero .btn-brand-black,
+  .page-home .section-hero-mobile .btn-brand-black {
+    background: #f7f8ef;
+    color: #18321f;
   }
 
   @media (min-width: 992px) {
@@ -245,6 +299,11 @@
       <div class="hero-elements position-relative w-100 h-100">
         <div class="hero-title">
           <div class="hero-title-wrapper position-relative w-100 h-100">
+            <div class="hero-title-svg-wrapper" aria-hidden="true">
+              <svg class="hero-title-svg" viewBox="0 0 1200 210" focusable="false">
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="currentColor">ZTOVALVE</text>
+              </svg>
+            </div>
           </div>
 
           <div class="position-absolute start-0 end-0 top-0 bottom-0">
@@ -254,7 +313,7 @@
                               src="/ztovalue/assets/hero/fixed-ball-valve-mobile-fallback.png"
                               alt="正拓法兰固定式球阀"
                             />
-                            <canvas id="image-sequence" class="zt-hero-sequence-canvas" width="960" height="540"></canvas>
+                            <canvas id="image-sequence" class="zt-hero-sequence-canvas" width="1920" height="1080"></canvas>
             </div>
           </div>
 

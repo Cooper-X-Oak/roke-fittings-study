@@ -1,0 +1,5526 @@
+{
+  "schema": "ztovalve-fixed-ball-valve-roke-green-node-map/v1",
+  "kind": "step_to_glb_node_map",
+  "bundleId": "roke-green-commercial-240",
+  "generatedAt": "2026-08-05T05:16:04.986755+00:00",
+  "status": "pass",
+  "sources": {
+    "step": {
+      "path": "asset/derived/fixed-ball-valve/source/固定式球阀.STEP",
+      "sha256": "3ddb291607730239f5a067e9d1730acda0931874c5f42c4ac0c358516efa2547",
+      "encodingUsed": "gb18030"
+    },
+    "glb": {
+      "path": "outcome/public/assets/models/fixed-ball-valve.glb",
+      "sha256": "89024869647b3aaf3fe5301694a2753dc87e9dd3d05b41b9c651ef4e9754384b"
+    },
+    "inspection": "asset/derived/fixed-ball-valve/model-inspection.json"
+  },
+  "counts": {
+    "product": 36,
+    "productDefinitionFormation": 36,
+    "productDefinition": 36,
+    "nextAssemblyUsageOccurrence": 138,
+    "meshNodeCount": 138,
+    "mappedRecordCount": 138,
+    "uniqueProductNames": 35
+  },
+  "validation": {
+    "requiredChinesePartsPresent": [
+      "球体",
+      "阀座",
+      "阀盖",
+      "阀体",
+      "阀杆",
+      "支架"
+    ],
+    "fastenerLikeInstanceCount": 76,
+    "nodeOrderPolicy": "Records map STEP assembly occurrence order to GLB mesh-bearing node order from model-inspection.json.",
+    "quarterTurnPolicy": "No 90-degree ball-core function claim is made by this map."
+  },
+  "groups": [
+    {
+      "groupId": "ball-trunnion-core",
+      "nodeIndices": [
+        23,
+        24,
+        25,
+        26,
+        44
+      ],
+      "productNames": [
+        "球体",
+        "固定轴",
+        "固定轴垫片",
+        "固定轴轴承",
+        "球体轴承"
+      ],
+      "triangleCount": 8226
+    },
+    {
+      "groupId": "central-body-anchor",
+      "nodeIndices": [
+        2,
+        139
+      ],
+      "productNames": [
+        "阀体",
+        "堵头"
+      ],
+      "triangleCount": 29154
+    },
+    {
+      "groupId": "end-caps-covers",
+      "nodeIndices": [
+        64
+      ],
+      "productNames": [
+        "阀盖"
+      ],
+      "triangleCount": 10402
+    },
+    {
+      "groupId": "fasteners-small-hardware",
+      "nodeIndices": [
+        3,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        110,
+        111,
+        113,
+        114,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        138
+      ],
+      "productNames": [
+        "弹簧",
+        "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+        "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+        "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+        "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+        "体盖螺柱",
+        "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+        "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+        "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+        "排污阀垫片"
+      ],
+      "triangleCount": 487192
+    },
+    {
+      "groupId": "seat-seal-system",
+      "nodeIndices": [
+        4,
+        5,
+        6,
+        7,
+        65,
+        66,
+        67,
+        68
+      ],
+      "productNames": [
+        "阀座密封圈",
+        "阀座压圈",
+        "阀座盘根",
+        "阀座",
+        "中道垫片"
+      ],
+      "triangleCount": 11216
+    },
+    {
+      "groupId": "stem-packing-stack",
+      "nodeIndices": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        45,
+        54,
+        55
+      ],
+      "productNames": [
+        "阀杆",
+        "止推垫",
+        "填料箱",
+        "填料箱垫片",
+        "阀杆轴承",
+        "填料",
+        "填料压圈",
+        "填料压盖"
+      ],
+      "triangleCount": 8448
+    },
+    {
+      "groupId": "top-bracket-connector",
+      "nodeIndices": [
+        109,
+        136,
+        137
+      ],
+      "productNames": [
+        "支架",
+        "连接轴",
+        "平键"
+      ],
+      "triangleCount": 3346
+    },
+    {
+      "groupId": "top-bracket-fasteners",
+      "nodeIndices": [
+        112,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121
+      ],
+      "productNames": [
+        "支架螺柱"
+      ],
+      "triangleCount": 1120
+    }
+  ],
+  "records": [
+    {
+      "assemblyOrdinal": 0,
+      "usageEntity": "#39869",
+      "usageName": "NAUO1",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#34547",
+      "productName": "阀体",
+      "nodeIndex": 2,
+      "meshIndex": 0,
+      "glbNodeName": "·§ͥ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§ͥ",
+      "triangleCount": 28606,
+      "bounds": {
+        "min": [
+          -0.220808,
+          -0.119342,
+          0.1505
+        ],
+        "max": [
+          0.026692,
+          0.166158,
+          0.4205
+        ],
+        "center": [
+          -0.097058,
+          0.023408,
+          0.2855
+        ],
+        "extent": [
+          0.2475,
+          0.2855,
+          0.27
+        ],
+        "diagonal": 0.464399
+      },
+      "animationGroup": "central-body-anchor",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 1,
+      "usageEntity": "#39870",
+      "usageName": "NAUO2",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 3,
+      "meshIndex": 1,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          -0.004533,
+          0.21299
+        ],
+        "max": [
+          -0.029808,
+          0.002467,
+          0.21999
+        ],
+        "center": [
+          -0.036808,
+          -0.001033,
+          0.21649
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 2,
+      "usageEntity": "#39871",
+      "usageName": "NAUO3",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#9004",
+      "productName": "阀座密封圈",
+      "nodeIndex": 4,
+      "meshIndex": 2,
+      "glbNodeName": "·§عĜ·㈦",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§عĜ·㈦",
+      "triangleCount": 376,
+      "bounds": {
+        "min": [
+          -0.057308,
+          -0.062191,
+          0.207651
+        ],
+        "max": [
+          -0.048308,
+          0.093507,
+          0.363349
+        ],
+        "center": [
+          -0.052808,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.009,
+          0.155697,
+          0.155697
+        ],
+        "diagonal": 0.220373
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 3,
+      "usageEntity": "#39872",
+      "usageName": "NAUO4",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#9788",
+      "productName": "阀座压圈",
+      "nodeIndex": 5,
+      "meshIndex": 3,
+      "glbNodeName": "·§عѹȦ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§عѹȦ",
+      "triangleCount": 3988,
+      "bounds": {
+        "min": [
+          -0.053808,
+          -0.062277,
+          0.207565
+        ],
+        "max": [
+          -0.020808,
+          0.093593,
+          0.363435
+        ],
+        "center": [
+          -0.037308,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.033,
+          0.155869,
+          0.155869
+        ],
+        "diagonal": 0.222889
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 4,
+      "usageEntity": "#39873",
+      "usageName": "NAUO5",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#6162",
+      "productName": "阀座盘根",
+      "nodeIndex": 6,
+      "meshIndex": 4,
+      "glbNodeName": "·§×ùÅÌ¸ù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§×ùÅÌ¸ù",
+      "triangleCount": 360,
+      "bounds": {
+        "min": [
+          -0.026808,
+          -0.052582,
+          0.2171
+        ],
+        "max": [
+          -0.023808,
+          0.083899,
+          0.3539
+        ],
+        "center": [
+          -0.025308,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.003,
+          0.136481,
+          0.1368
+        ],
+        "diagonal": 0.193262
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 5,
+      "usageEntity": "#39874",
+      "usageName": "NAUO6",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#12399",
+      "productName": "阀座",
+      "nodeIndex": 7,
+      "meshIndex": 5,
+      "glbNodeName": "·§ع",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§ع",
+      "triangleCount": 836,
+      "bounds": {
+        "min": [
+          -0.072808,
+          -0.06229,
+          0.207552
+        ],
+        "max": [
+          -0.049808,
+          0.093606,
+          0.363448
+        ],
+        "center": [
+          -0.061308,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.023,
+          0.155897,
+          0.155897
+        ],
+        "diagonal": 0.221668
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 6,
+      "usageEntity": "#39875",
+      "usageName": "NAUO7",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 8,
+      "meshIndex": 6,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.023146,
+          0.211856
+        ],
+        "max": [
+          -0.029808,
+          0.030146,
+          0.218855
+        ],
+        "center": [
+          -0.036808,
+          0.026646,
+          0.215355
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 7,
+      "usageEntity": "#39876",
+      "usageName": "NAUO8",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 9,
+      "meshIndex": 7,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.049153,
+          0.2214
+        ],
+        "max": [
+          -0.029808,
+          0.056153,
+          0.2284
+        ],
+        "center": [
+          -0.036808,
+          0.052653,
+          0.2249
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 8,
+      "usageEntity": "#39877",
+      "usageName": "NAUO9",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 10,
+      "meshIndex": 8,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.069528,
+          0.24017
+        ],
+        "max": [
+          -0.029808,
+          0.076528,
+          0.24717
+        ],
+        "center": [
+          -0.036808,
+          0.073028,
+          0.24367
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 9,
+      "usageEntity": "#39878",
+      "usageName": "NAUO10",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 11,
+      "meshIndex": 9,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.081168,
+          0.265309
+        ],
+        "max": [
+          -0.029808,
+          0.088168,
+          0.272309
+        ],
+        "center": [
+          -0.036808,
+          0.084668,
+          0.268809
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 10,
+      "usageEntity": "#39879",
+      "usageName": "NAUO11",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 12,
+      "meshIndex": 10,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.082303,
+          0.292988
+        ],
+        "max": [
+          -0.029808,
+          0.089303,
+          0.299988
+        ],
+        "center": [
+          -0.036808,
+          0.085803,
+          0.296488
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 11,
+      "usageEntity": "#39880",
+      "usageName": "NAUO12",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 13,
+      "meshIndex": 11,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.072758,
+          0.318995
+        ],
+        "max": [
+          -0.029808,
+          0.079758,
+          0.325995
+        ],
+        "center": [
+          -0.036808,
+          0.076258,
+          0.322495
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 12,
+      "usageEntity": "#39881",
+      "usageName": "NAUO13",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 14,
+      "meshIndex": 12,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.053988,
+          0.33937
+        ],
+        "max": [
+          -0.029808,
+          0.060988,
+          0.34637
+        ],
+        "center": [
+          -0.036808,
+          0.057488,
+          0.34287
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 13,
+      "usageEntity": "#39882",
+      "usageName": "NAUO14",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 15,
+      "meshIndex": 13,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.028849,
+          0.35101
+        ],
+        "max": [
+          -0.029808,
+          0.035849,
+          0.35801
+        ],
+        "center": [
+          -0.036808,
+          0.032349,
+          0.35451
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 14,
+      "usageEntity": "#39883",
+      "usageName": "NAUO15",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 16,
+      "meshIndex": 14,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          0.00117,
+          0.352145
+        ],
+        "max": [
+          -0.029808,
+          0.00817,
+          0.359144
+        ],
+        "center": [
+          -0.036808,
+          0.00467,
+          0.355645
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 15,
+      "usageEntity": "#39884",
+      "usageName": "NAUO16",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 17,
+      "meshIndex": 15,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          -0.024837,
+          0.3426
+        ],
+        "max": [
+          -0.029808,
+          -0.017837,
+          0.3496
+        ],
+        "center": [
+          -0.036808,
+          -0.021337,
+          0.3461
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 16,
+      "usageEntity": "#39885",
+      "usageName": "NAUO17",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 18,
+      "meshIndex": 16,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          -0.045212,
+          0.32383
+        ],
+        "max": [
+          -0.029808,
+          -0.038212,
+          0.33083
+        ],
+        "center": [
+          -0.036808,
+          -0.041712,
+          0.32733
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 17,
+      "usageEntity": "#39886",
+      "usageName": "NAUO18",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 19,
+      "meshIndex": 17,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          -0.056852,
+          0.298691
+        ],
+        "max": [
+          -0.029808,
+          -0.049852,
+          0.305691
+        ],
+        "center": [
+          -0.036808,
+          -0.053352,
+          0.302191
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 18,
+      "usageEntity": "#39887",
+      "usageName": "NAUO19",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 20,
+      "meshIndex": 18,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          -0.057986,
+          0.271012
+        ],
+        "max": [
+          -0.029808,
+          -0.050987,
+          0.278012
+        ],
+        "center": [
+          -0.036808,
+          -0.054486,
+          0.274512
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 19,
+      "usageEntity": "#39888",
+      "usageName": "NAUO20",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 21,
+      "meshIndex": 19,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          -0.048442,
+          0.245005
+        ],
+        "max": [
+          -0.029808,
+          -0.041442,
+          0.252005
+        ],
+        "center": [
+          -0.036808,
+          -0.044942,
+          0.248505
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 20,
+      "usageEntity": "#39889",
+      "usageName": "NAUO21",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 22,
+      "meshIndex": 20,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.043808,
+          -0.029672,
+          0.22463
+        ],
+        "max": [
+          -0.029808,
+          -0.022672,
+          0.23163
+        ],
+        "center": [
+          -0.036808,
+          -0.026172,
+          0.22813
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 21,
+      "usageEntity": "#39890",
+      "usageName": "NAUO22",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#6405",
+      "productName": "球体",
+      "nodeIndex": 23,
+      "meshIndex": 21,
+      "glbNodeName": "Ȳͥ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ȳͥ",
+      "triangleCount": 5686,
+      "bounds": {
+        "min": [
+          -0.213808,
+          -0.078342,
+          0.188
+        ],
+        "max": [
+          -0.068808,
+          0.107158,
+          0.383
+        ],
+        "center": [
+          -0.141308,
+          0.014408,
+          0.2855
+        ],
+        "extent": [
+          0.145,
+          0.1855,
+          0.195
+        ],
+        "diagonal": 0.305713
+      },
+      "animationGroup": "ball-trunnion-core",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 22,
+      "usageEntity": "#39891",
+      "usageName": "NAUO23",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#22144",
+      "productName": "固定轴",
+      "nodeIndex": 24,
+      "meshIndex": 22,
+      "glbNodeName": "¹̶¨ס",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/¹̶¨ס",
+      "triangleCount": 1676,
+      "bounds": {
+        "min": [
+          -0.185308,
+          -0.135342,
+          0.2415
+        ],
+        "max": [
+          -0.097308,
+          -0.053342,
+          0.3295
+        ],
+        "center": [
+          -0.141308,
+          -0.094342,
+          0.2855
+        ],
+        "extent": [
+          0.088,
+          0.082,
+          0.088
+        ],
+        "diagonal": 0.149037
+      },
+      "animationGroup": "ball-trunnion-core",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 23,
+      "usageEntity": "#39892",
+      "usageName": "NAUO24",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#23450",
+      "productName": "固定轴垫片",
+      "nodeIndex": 25,
+      "meshIndex": 23,
+      "glbNodeName": "¹̶¨סµ熬",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/¹̶¨סµ熬",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.167308,
+          -0.115342,
+          0.2595
+        ],
+        "max": [
+          -0.115308,
+          -0.112842,
+          0.3115
+        ],
+        "center": [
+          -0.141308,
+          -0.114092,
+          0.2855
+        ],
+        "extent": [
+          0.052,
+          0.0025,
+          0.052
+        ],
+        "diagonal": 0.073582
+      },
+      "animationGroup": "ball-trunnion-core",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 24,
+      "usageEntity": "#39893",
+      "usageName": "NAUO25",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#7722",
+      "productName": "固定轴轴承",
+      "nodeIndex": 26,
+      "meshIndex": 24,
+      "glbNodeName": "¹̶¨סס³",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/¹̶¨סס³",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.160808,
+          -0.079342,
+          0.266
+        ],
+        "max": [
+          -0.121808,
+          -0.054342,
+          0.305
+        ],
+        "center": [
+          -0.141308,
+          -0.066842,
+          0.2855
+        ],
+        "extent": [
+          0.039,
+          0.025,
+          0.039
+        ],
+        "diagonal": 0.060556
+      },
+      "animationGroup": "ball-trunnion-core",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 25,
+      "usageEntity": "#39894",
+      "usageName": "NAUO26",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#36622",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "nodeIndex": 27,
+      "meshIndex": 25,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.128804,
+          -0.148342,
+          0.250193
+        ],
+        "max": [
+          -0.118812,
+          -0.103342,
+          0.260185
+        ],
+        "center": [
+          -0.123808,
+          -0.125842,
+          0.255189
+        ],
+        "extent": [
+          0.009991,
+          0.045,
+          0.009991
+        ],
+        "diagonal": 0.047166
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 26,
+      "usageEntity": "#39895",
+      "usageName": "NAUO27",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 28,
+      "meshIndex": 26,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.132793,
+          -0.144642,
+          0.246336
+        ],
+        "max": [
+          -0.114822,
+          -0.135342,
+          0.264043
+        ],
+        "center": [
+          -0.123808,
+          -0.139992,
+          0.255189
+        ],
+        "extent": [
+          0.017971,
+          0.0093,
+          0.017707
+        ],
+        "diagonal": 0.026888
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 27,
+      "usageEntity": "#39896",
+      "usageName": "NAUO28",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 29,
+      "meshIndex": 27,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.115293,
+          -0.144642,
+          0.276646
+        ],
+        "max": [
+          -0.097322,
+          -0.135342,
+          0.294354
+        ],
+        "center": [
+          -0.106308,
+          -0.139992,
+          0.2855
+        ],
+        "extent": [
+          0.017971,
+          0.0093,
+          0.017707
+        ],
+        "diagonal": 0.026888
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 28,
+      "usageEntity": "#39897",
+      "usageName": "NAUO29",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 30,
+      "meshIndex": 28,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.132793,
+          -0.144642,
+          0.306957
+        ],
+        "max": [
+          -0.114822,
+          -0.135342,
+          0.324664
+        ],
+        "center": [
+          -0.123808,
+          -0.139992,
+          0.315811
+        ],
+        "extent": [
+          0.017971,
+          0.0093,
+          0.017707
+        ],
+        "diagonal": 0.026888
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 29,
+      "usageEntity": "#39898",
+      "usageName": "NAUO30",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 31,
+      "meshIndex": 29,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.167793,
+          -0.144642,
+          0.306957
+        ],
+        "max": [
+          -0.149822,
+          -0.135342,
+          0.324664
+        ],
+        "center": [
+          -0.158808,
+          -0.139992,
+          0.315811
+        ],
+        "extent": [
+          0.017971,
+          0.0093,
+          0.017707
+        ],
+        "diagonal": 0.026888
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 30,
+      "usageEntity": "#39899",
+      "usageName": "NAUO31",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 32,
+      "meshIndex": 30,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.185293,
+          -0.144642,
+          0.276646
+        ],
+        "max": [
+          -0.167322,
+          -0.135342,
+          0.294354
+        ],
+        "center": [
+          -0.176308,
+          -0.139992,
+          0.2855
+        ],
+        "extent": [
+          0.017971,
+          0.0093,
+          0.017707
+        ],
+        "diagonal": 0.026888
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 31,
+      "usageEntity": "#39900",
+      "usageName": "NAUO32",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 33,
+      "meshIndex": 31,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.167793,
+          -0.144642,
+          0.246336
+        ],
+        "max": [
+          -0.149822,
+          -0.135342,
+          0.264043
+        ],
+        "center": [
+          -0.158808,
+          -0.139992,
+          0.255189
+        ],
+        "extent": [
+          0.017971,
+          0.0093,
+          0.017707
+        ],
+        "diagonal": 0.026888
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 32,
+      "usageEntity": "#39901",
+      "usageName": "NAUO33",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#36622",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "nodeIndex": 34,
+      "meshIndex": 32,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.111304,
+          -0.148342,
+          0.280504
+        ],
+        "max": [
+          -0.101312,
+          -0.103342,
+          0.290496
+        ],
+        "center": [
+          -0.106308,
+          -0.125842,
+          0.2855
+        ],
+        "extent": [
+          0.009991,
+          0.045,
+          0.009991
+        ],
+        "diagonal": 0.047166
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 33,
+      "usageEntity": "#39902",
+      "usageName": "NAUO34",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#36622",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "nodeIndex": 35,
+      "meshIndex": 33,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.128804,
+          -0.148342,
+          0.310815
+        ],
+        "max": [
+          -0.118812,
+          -0.103342,
+          0.320807
+        ],
+        "center": [
+          -0.123808,
+          -0.125842,
+          0.315811
+        ],
+        "extent": [
+          0.009991,
+          0.045,
+          0.009991
+        ],
+        "diagonal": 0.047166
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 34,
+      "usageEntity": "#39903",
+      "usageName": "NAUO35",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#36622",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "nodeIndex": 36,
+      "meshIndex": 34,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.163804,
+          -0.148342,
+          0.310815
+        ],
+        "max": [
+          -0.153812,
+          -0.103342,
+          0.320807
+        ],
+        "center": [
+          -0.158808,
+          -0.125842,
+          0.315811
+        ],
+        "extent": [
+          0.009991,
+          0.045,
+          0.009991
+        ],
+        "diagonal": 0.047166
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 35,
+      "usageEntity": "#39904",
+      "usageName": "NAUO36",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#36622",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "nodeIndex": 37,
+      "meshIndex": 35,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.181304,
+          -0.148342,
+          0.280504
+        ],
+        "max": [
+          -0.171312,
+          -0.103342,
+          0.290496
+        ],
+        "center": [
+          -0.176308,
+          -0.125842,
+          0.2855
+        ],
+        "extent": [
+          0.009991,
+          0.045,
+          0.009991
+        ],
+        "diagonal": 0.047166
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 36,
+      "usageEntity": "#39905",
+      "usageName": "NAUO37",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#36622",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "nodeIndex": 38,
+      "meshIndex": 36,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X45-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.163804,
+          -0.148342,
+          0.250193
+        ],
+        "max": [
+          -0.153812,
+          -0.103342,
+          0.260185
+        ],
+        "center": [
+          -0.158808,
+          -0.125842,
+          0.255189
+        ],
+        "extent": [
+          0.009991,
+          0.045,
+          0.009991
+        ],
+        "diagonal": 0.047166
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 37,
+      "usageEntity": "#39906",
+      "usageName": "NAUO38",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#20849",
+      "productName": "阀杆",
+      "nodeIndex": 39,
+      "meshIndex": 37,
+      "glbNodeName": "·§¸",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§¸",
+      "triangleCount": 608,
+      "bounds": {
+        "min": [
+          -0.163308,
+          0.080158,
+          0.2635
+        ],
+        "max": [
+          -0.119308,
+          0.291158,
+          0.3075
+        ],
+        "center": [
+          -0.141308,
+          0.185658,
+          0.2855
+        ],
+        "extent": [
+          0.044,
+          0.211,
+          0.044
+        ],
+        "diagonal": 0.219984
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 38,
+      "usageEntity": "#39907",
+      "usageName": "NAUO39",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#18051",
+      "productName": "止推垫",
+      "nodeIndex": 40,
+      "meshIndex": 38,
+      "glbNodeName": "ֹΆµ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/ֹΆµ",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.163308,
+          0.098158,
+          0.2635
+        ],
+        "max": [
+          -0.119308,
+          0.100158,
+          0.3075
+        ],
+        "center": [
+          -0.141308,
+          0.099158,
+          0.2855
+        ],
+        "extent": [
+          0.044,
+          0.002,
+          0.044
+        ],
+        "diagonal": 0.062258
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 39,
+      "usageEntity": "#39908",
+      "usageName": "NAUO40",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#19304",
+      "productName": "填料箱",
+      "nodeIndex": 41,
+      "meshIndex": 39,
+      "glbNodeName": "ͮФ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/ͮФ",
+      "triangleCount": 4872,
+      "bounds": {
+        "min": [
+          -0.195308,
+          0.093158,
+          0.2315
+        ],
+        "max": [
+          -0.087308,
+          0.176158,
+          0.3395
+        ],
+        "center": [
+          -0.141308,
+          0.134658,
+          0.2855
+        ],
+        "extent": [
+          0.108,
+          0.083,
+          0.108
+        ],
+        "diagonal": 0.17383
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 40,
+      "usageEntity": "#39909",
+      "usageName": "NAUO41",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#29698",
+      "productName": "填料箱垫片",
+      "nodeIndex": 42,
+      "meshIndex": 40,
+      "glbNodeName": "ͮФµ熬",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/ͮФµ熬",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.177298,
+          0.142658,
+          0.24951
+        ],
+        "max": [
+          -0.105318,
+          0.145158,
+          0.32149
+        ],
+        "center": [
+          -0.141308,
+          0.143908,
+          0.2855
+        ],
+        "extent": [
+          0.07198,
+          0.0025,
+          0.07198
+        ],
+        "diagonal": 0.101826
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 41,
+      "usageEntity": "#39910",
+      "usageName": "NAUO42",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#1536",
+      "productName": "阀杆轴承",
+      "nodeIndex": 43,
+      "meshIndex": 41,
+      "glbNodeName": "·§¸̖ᴐ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§¸̖ᴐ",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.160807,
+          0.101158,
+          0.266001
+        ],
+        "max": [
+          -0.121809,
+          0.121158,
+          0.304999
+        ],
+        "center": [
+          -0.141308,
+          0.111158,
+          0.2855
+        ],
+        "extent": [
+          0.038997,
+          0.02,
+          0.038997
+        ],
+        "diagonal": 0.058665
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 42,
+      "usageEntity": "#39911",
+      "usageName": "NAUO43",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#31707",
+      "productName": "球体轴承",
+      "nodeIndex": 44,
+      "meshIndex": 42,
+      "glbNodeName": "Ȳͥס³",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ȳͥס³",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.171308,
+          0.092158,
+          0.2555
+        ],
+        "max": [
+          -0.111308,
+          0.107158,
+          0.3155
+        ],
+        "center": [
+          -0.141308,
+          0.099658,
+          0.2855
+        ],
+        "extent": [
+          0.06,
+          0.015,
+          0.06
+        ],
+        "diagonal": 0.086168
+      },
+      "animationGroup": "ball-trunnion-core",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 43,
+      "usageEntity": "#39912",
+      "usageName": "NAUO44",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#4361",
+      "productName": "填料",
+      "nodeIndex": 45,
+      "meshIndex": 43,
+      "glbNodeName": "ͮ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/ͮ",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.163793,
+          0.146158,
+          0.263015
+        ],
+        "max": [
+          -0.118823,
+          0.172158,
+          0.307985
+        ],
+        "center": [
+          -0.141308,
+          0.159158,
+          0.2855
+        ],
+        "extent": [
+          0.04497,
+          0.026,
+          0.04497
+        ],
+        "diagonal": 0.068707
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 44,
+      "usageEntity": "#39913",
+      "usageName": "NAUO45",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 46,
+      "meshIndex": 44,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.189016,
+          0.134158,
+          0.261063
+        ],
+        "max": [
+          -0.173054,
+          0.174158,
+          0.277026
+        ],
+        "center": [
+          -0.181035,
+          0.154158,
+          0.269045
+        ],
+        "extent": [
+          0.015962,
+          0.04,
+          0.015962
+        ],
+        "diagonal": 0.04593
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 45,
+      "usageEntity": "#39914",
+      "usageName": "NAUO46",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 47,
+      "meshIndex": 45,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.189033,
+          0.134158,
+          0.293957
+        ],
+        "max": [
+          -0.173036,
+          0.174158,
+          0.309954
+        ],
+        "center": [
+          -0.181035,
+          0.154158,
+          0.301955
+        ],
+        "extent": [
+          0.015997,
+          0.04,
+          0.015997
+        ],
+        "diagonal": 0.045955
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 46,
+      "usageEntity": "#39915",
+      "usageName": "NAUO47",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 48,
+      "meshIndex": 46,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.165744,
+          0.134158,
+          0.317246
+        ],
+        "max": [
+          -0.149782,
+          0.174158,
+          0.333208
+        ],
+        "center": [
+          -0.157763,
+          0.154158,
+          0.325227
+        ],
+        "extent": [
+          0.015962,
+          0.04,
+          0.015962
+        ],
+        "diagonal": 0.04593
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 47,
+      "usageEntity": "#39916",
+      "usageName": "NAUO48",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 49,
+      "meshIndex": 47,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.132851,
+          0.134158,
+          0.317228
+        ],
+        "max": [
+          -0.116854,
+          0.174158,
+          0.333225
+        ],
+        "center": [
+          -0.124852,
+          0.154158,
+          0.325227
+        ],
+        "extent": [
+          0.015997,
+          0.04,
+          0.015997
+        ],
+        "diagonal": 0.045955
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 48,
+      "usageEntity": "#39917",
+      "usageName": "NAUO49",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 50,
+      "meshIndex": 48,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.109562,
+          0.134158,
+          0.293974
+        ],
+        "max": [
+          -0.0936,
+          0.174158,
+          0.309937
+        ],
+        "center": [
+          -0.101581,
+          0.154158,
+          0.301955
+        ],
+        "extent": [
+          0.015962,
+          0.04,
+          0.015962
+        ],
+        "diagonal": 0.04593
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 49,
+      "usageEntity": "#39918",
+      "usageName": "NAUO50",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 51,
+      "meshIndex": 49,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.10958,
+          0.134158,
+          0.261046
+        ],
+        "max": [
+          -0.093582,
+          0.174158,
+          0.277043
+        ],
+        "center": [
+          -0.101581,
+          0.154158,
+          0.269045
+        ],
+        "extent": [
+          0.015997,
+          0.04,
+          0.015997
+        ],
+        "diagonal": 0.045955
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 50,
+      "usageEntity": "#39919",
+      "usageName": "NAUO51",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 52,
+      "meshIndex": 50,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.132834,
+          0.134158,
+          0.237792
+        ],
+        "max": [
+          -0.116871,
+          0.174158,
+          0.253754
+        ],
+        "center": [
+          -0.124852,
+          0.154158,
+          0.245773
+        ],
+        "extent": [
+          0.015962,
+          0.04,
+          0.015962
+        ],
+        "diagonal": 0.04593
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 51,
+      "usageEntity": "#39920",
+      "usageName": "NAUO52",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37399",
+      "productName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "nodeIndex": 53,
+      "meshIndex": 51,
+      "glbNodeName": "hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hexagon socket head cap screws gb_GB_FASTENER_SCREWS_HSHCS M10X30-N",
+      "triangleCount": 1168,
+      "bounds": {
+        "min": [
+          -0.165762,
+          0.134158,
+          0.237775
+        ],
+        "max": [
+          -0.149765,
+          0.174158,
+          0.253772
+        ],
+        "center": [
+          -0.157763,
+          0.154158,
+          0.245773
+        ],
+        "extent": [
+          0.015997,
+          0.04,
+          0.015997
+        ],
+        "diagonal": 0.045955
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 52,
+      "usageEntity": "#39921",
+      "usageName": "NAUO53",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#15984",
+      "productName": "填料压圈",
+      "nodeIndex": 54,
+      "meshIndex": 52,
+      "glbNodeName": "ͮѹȦ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/ͮѹȦ",
+      "triangleCount": 720,
+      "bounds": {
+        "min": [
+          -0.164308,
+          0.172158,
+          0.2625
+        ],
+        "max": [
+          -0.118308,
+          0.187158,
+          0.3085
+        ],
+        "center": [
+          -0.141308,
+          0.179658,
+          0.2855
+        ],
+        "extent": [
+          0.046,
+          0.015,
+          0.046
+        ],
+        "diagonal": 0.066761
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 53,
+      "usageEntity": "#39922",
+      "usageName": "NAUO54",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#17291",
+      "productName": "填料压盖",
+      "nodeIndex": 55,
+      "meshIndex": 53,
+      "glbNodeName": "ͮѹ¸",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/ͮѹ¸",
+      "triangleCount": 1096,
+      "bounds": {
+        "min": [
+          -0.182808,
+          0.186058,
+          0.244
+        ],
+        "max": [
+          -0.099808,
+          0.202058,
+          0.327
+        ],
+        "center": [
+          -0.141308,
+          0.194058,
+          0.2855
+        ],
+        "extent": [
+          0.083,
+          0.016,
+          0.083
+        ],
+        "diagonal": 0.118465
+      },
+      "animationGroup": "stem-packing-stack",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 54,
+      "usageEntity": "#39923",
+      "usageName": "NAUO55",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#35321",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "nodeIndex": 56,
+      "meshIndex": 54,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.123675,
+          0.161158,
+          0.257878
+        ],
+        "max": [
+          -0.113686,
+          0.216158,
+          0.267867
+        ],
+        "center": [
+          -0.11868,
+          0.188658,
+          0.262873
+        ],
+        "extent": [
+          0.009989,
+          0.055,
+          0.009989
+        ],
+        "diagonal": 0.056785
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 55,
+      "usageEntity": "#39924",
+      "usageName": "NAUO56",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 57,
+      "meshIndex": 55,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.127655,
+          0.202058,
+          0.254006
+        ],
+        "max": [
+          -0.109706,
+          0.211358,
+          0.271739
+        ],
+        "center": [
+          -0.11868,
+          0.206708,
+          0.262873
+        ],
+        "extent": [
+          0.01795,
+          0.0093,
+          0.017732
+        ],
+        "diagonal": 0.026891
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 56,
+      "usageEntity": "#39925",
+      "usageName": "NAUO57",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 58,
+      "meshIndex": 56,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.172801,
+          0.202058,
+          0.253898
+        ],
+        "max": [
+          -0.155069,
+          0.211358,
+          0.271847
+        ],
+        "center": [
+          -0.163935,
+          0.206708,
+          0.262873
+        ],
+        "extent": [
+          0.017732,
+          0.0093,
+          0.01795
+        ],
+        "diagonal": 0.026891
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 57,
+      "usageEntity": "#39926",
+      "usageName": "NAUO58",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 59,
+      "meshIndex": 57,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.17291,
+          0.202058,
+          0.299261
+        ],
+        "max": [
+          -0.15496,
+          0.211358,
+          0.316994
+        ],
+        "center": [
+          -0.163935,
+          0.206708,
+          0.308127
+        ],
+        "extent": [
+          0.01795,
+          0.0093,
+          0.017732
+        ],
+        "diagonal": 0.026891
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 58,
+      "usageEntity": "#39927",
+      "usageName": "NAUO59",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 60,
+      "meshIndex": 58,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.127547,
+          0.202058,
+          0.299152
+        ],
+        "max": [
+          -0.109814,
+          0.211358,
+          0.317102
+        ],
+        "center": [
+          -0.11868,
+          0.206708,
+          0.308127
+        ],
+        "extent": [
+          0.017732,
+          0.0093,
+          0.01795
+        ],
+        "diagonal": 0.026891
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 59,
+      "usageEntity": "#39928",
+      "usageName": "NAUO60",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#35321",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "nodeIndex": 61,
+      "meshIndex": 59,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.16893,
+          0.161158,
+          0.257878
+        ],
+        "max": [
+          -0.158941,
+          0.216158,
+          0.267867
+        ],
+        "center": [
+          -0.163935,
+          0.188658,
+          0.262873
+        ],
+        "extent": [
+          0.009989,
+          0.055,
+          0.009989
+        ],
+        "diagonal": 0.056785
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 60,
+      "usageEntity": "#39929",
+      "usageName": "NAUO61",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#35321",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "nodeIndex": 62,
+      "meshIndex": 60,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.16893,
+          0.161158,
+          0.303133
+        ],
+        "max": [
+          -0.158941,
+          0.216158,
+          0.313122
+        ],
+        "center": [
+          -0.163935,
+          0.188658,
+          0.308127
+        ],
+        "extent": [
+          0.009989,
+          0.055,
+          0.009989
+        ],
+        "diagonal": 0.056785
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 61,
+      "usageEntity": "#39930",
+      "usageName": "NAUO62",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#35321",
+      "productName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "nodeIndex": 63,
+      "meshIndex": 61,
+      "glbNodeName": "double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/double end stud (clamping type)grade b gb-2_GB_FASTENER_BOLT_DESB M10X55-N",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.123675,
+          0.161158,
+          0.303133
+        ],
+        "max": [
+          -0.113686,
+          0.216158,
+          0.313122
+        ],
+        "center": [
+          -0.11868,
+          0.188658,
+          0.308127
+        ],
+        "extent": [
+          0.009989,
+          0.055,
+          0.009989
+        ],
+        "diagonal": 0.056785
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 62,
+      "usageEntity": "#39931",
+      "usageName": "NAUO63",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#29140",
+      "productName": "阀盖",
+      "nodeIndex": 64,
+      "meshIndex": 62,
+      "glbNodeName": "·§¸",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§¸",
+      "triangleCount": 10402,
+      "bounds": {
+        "min": [
+          -0.329308,
+          -0.11927,
+          0.150572
+        ],
+        "max": [
+          -0.207808,
+          0.150586,
+          0.420428
+        ],
+        "center": [
+          -0.268558,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.1215,
+          0.269855,
+          0.269855
+        ],
+        "diagonal": 0.400507
+      },
+      "animationGroup": "end-caps-covers",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 63,
+      "usageEntity": "#39932",
+      "usageName": "NAUO64",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#14699",
+      "productName": "中道垫片",
+      "nodeIndex": 65,
+      "meshIndex": 63,
+      "glbNodeName": "אµ5熬",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/אµ5熬",
+      "triangleCount": 456,
+      "bounds": {
+        "min": [
+          -0.218808,
+          -0.094282,
+          0.175525
+        ],
+        "max": [
+          -0.215808,
+          0.125598,
+          0.395475
+        ],
+        "center": [
+          -0.217308,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.003,
+          0.21988,
+          0.219951
+        ],
+        "diagonal": 0.311022
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 64,
+      "usageEntity": "#39933",
+      "usageName": "NAUO65",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#12399",
+      "productName": "阀座",
+      "nodeIndex": 66,
+      "meshIndex": 64,
+      "glbNodeName": "·§ع",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§ع",
+      "triangleCount": 836,
+      "bounds": {
+        "min": [
+          -0.232808,
+          -0.06222,
+          0.207622
+        ],
+        "max": [
+          -0.209808,
+          0.093536,
+          0.363378
+        ],
+        "center": [
+          -0.221308,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.023,
+          0.155757,
+          0.155757
+        ],
+        "diagonal": 0.221471
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 65,
+      "usageEntity": "#39934",
+      "usageName": "NAUO66",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#9788",
+      "productName": "阀座压圈",
+      "nodeIndex": 67,
+      "meshIndex": 65,
+      "glbNodeName": "·§عѹȦ",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§عѹȦ",
+      "triangleCount": 3988,
+      "bounds": {
+        "min": [
+          -0.261808,
+          -0.062189,
+          0.207653
+        ],
+        "max": [
+          -0.228808,
+          0.093505,
+          0.363347
+        ],
+        "center": [
+          -0.245308,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.033,
+          0.155695,
+          0.155695
+        ],
+        "diagonal": 0.222645
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 66,
+      "usageEntity": "#39935",
+      "usageName": "NAUO67",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#9004",
+      "productName": "阀座密封圈",
+      "nodeIndex": 68,
+      "meshIndex": 66,
+      "glbNodeName": "·§عĜ·㈦",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/·§عĜ·㈦",
+      "triangleCount": 376,
+      "bounds": {
+        "min": [
+          -0.234308,
+          -0.062248,
+          0.207594
+        ],
+        "max": [
+          -0.225308,
+          0.093564,
+          0.363406
+        ],
+        "center": [
+          -0.229808,
+          0.015658,
+          0.2855
+        ],
+        "extent": [
+          0.009,
+          0.155812,
+          0.155812
+        ],
+        "diagonal": 0.220535
+      },
+      "animationGroup": "seat-seal-system",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 67,
+      "usageEntity": "#39936",
+      "usageName": "NAUO68",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 69,
+      "meshIndex": 67,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.011955,
+          0.353
+        ],
+        "max": [
+          -0.238808,
+          0.018954,
+          0.36
+        ],
+        "center": [
+          -0.245808,
+          0.015454,
+          0.3565
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 68,
+      "usageEntity": "#39937",
+      "usageName": "NAUO69",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 70,
+      "meshIndex": 68,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.03914,
+          0.347673
+        ],
+        "max": [
+          -0.238808,
+          0.04614,
+          0.354673
+        ],
+        "center": [
+          -0.245808,
+          0.04264,
+          0.351173
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 69,
+      "usageEntity": "#39938",
+      "usageName": "NAUO70",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 71,
+      "meshIndex": 69,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.062219,
+          0.332348
+        ],
+        "max": [
+          -0.238808,
+          0.069218,
+          0.339348
+        ],
+        "center": [
+          -0.245808,
+          0.065718,
+          0.335848
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 70,
+      "usageEntity": "#39939",
+      "usageName": "NAUO71",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 72,
+      "meshIndex": 70,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.077675,
+          0.309359
+        ],
+        "max": [
+          -0.238808,
+          0.084675,
+          0.316359
+        ],
+        "center": [
+          -0.245808,
+          0.081175,
+          0.312859
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 71,
+      "usageEntity": "#39940",
+      "usageName": "NAUO72",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 73,
+      "meshIndex": 71,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.083158,
+          0.282204
+        ],
+        "max": [
+          -0.238808,
+          0.090158,
+          0.289204
+        ],
+        "center": [
+          -0.245808,
+          0.086658,
+          0.285704
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 72,
+      "usageEntity": "#39941",
+      "usageName": "NAUO73",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 74,
+      "meshIndex": 72,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.077831,
+          0.255018
+        ],
+        "max": [
+          -0.238808,
+          0.084831,
+          0.262018
+        ],
+        "center": [
+          -0.245808,
+          0.081331,
+          0.258518
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 73,
+      "usageEntity": "#39942",
+      "usageName": "NAUO74",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 75,
+      "meshIndex": 73,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.062506,
+          0.23194
+        ],
+        "max": [
+          -0.238808,
+          0.069506,
+          0.23894
+        ],
+        "center": [
+          -0.245808,
+          0.066006,
+          0.23544
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 74,
+      "usageEntity": "#39943",
+      "usageName": "NAUO75",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 76,
+      "meshIndex": 74,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.039517,
+          0.216483
+        ],
+        "max": [
+          -0.238808,
+          0.046517,
+          0.223483
+        ],
+        "center": [
+          -0.245808,
+          0.043017,
+          0.219983
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 75,
+      "usageEntity": "#39944",
+      "usageName": "NAUO76",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 77,
+      "meshIndex": 75,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          0.012362,
+          0.211
+        ],
+        "max": [
+          -0.238808,
+          0.019362,
+          0.218
+        ],
+        "center": [
+          -0.245808,
+          0.015862,
+          0.2145
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 76,
+      "usageEntity": "#39945",
+      "usageName": "NAUO77",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 78,
+      "meshIndex": 76,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          -0.014824,
+          0.216327
+        ],
+        "max": [
+          -0.238808,
+          -0.007824,
+          0.223327
+        ],
+        "center": [
+          -0.245808,
+          -0.011324,
+          0.219827
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 77,
+      "usageEntity": "#39946",
+      "usageName": "NAUO78",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 79,
+      "meshIndex": 77,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          -0.037902,
+          0.231652
+        ],
+        "max": [
+          -0.238808,
+          -0.030902,
+          0.238652
+        ],
+        "center": [
+          -0.245808,
+          -0.034402,
+          0.235152
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 78,
+      "usageEntity": "#39947",
+      "usageName": "NAUO79",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 80,
+      "meshIndex": 78,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          -0.053359,
+          0.254642
+        ],
+        "max": [
+          -0.238808,
+          -0.046359,
+          0.261642
+        ],
+        "center": [
+          -0.245808,
+          -0.049859,
+          0.258142
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 79,
+      "usageEntity": "#39948",
+      "usageName": "NAUO80",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 81,
+      "meshIndex": 79,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          -0.058842,
+          0.281796
+        ],
+        "max": [
+          -0.238808,
+          -0.051842,
+          0.288796
+        ],
+        "center": [
+          -0.245808,
+          -0.055342,
+          0.285296
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 80,
+      "usageEntity": "#39949",
+      "usageName": "NAUO81",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 82,
+      "meshIndex": 80,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          -0.053515,
+          0.308982
+        ],
+        "max": [
+          -0.238808,
+          -0.046515,
+          0.315982
+        ],
+        "center": [
+          -0.245808,
+          -0.050015,
+          0.312482
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 81,
+      "usageEntity": "#39950",
+      "usageName": "NAUO82",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 83,
+      "meshIndex": 81,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          -0.03819,
+          0.33206
+        ],
+        "max": [
+          -0.238808,
+          -0.03119,
+          0.33906
+        ],
+        "center": [
+          -0.245808,
+          -0.03469,
+          0.33556
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 82,
+      "usageEntity": "#39951",
+      "usageName": "NAUO83",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#8483",
+      "productName": "弹簧",
+      "nodeIndex": 84,
+      "meshIndex": 82,
+      "glbNodeName": "µ¯»",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/µ¯»",
+      "triangleCount": 14224,
+      "bounds": {
+        "min": [
+          -0.252808,
+          -0.0152,
+          0.347517
+        ],
+        "max": [
+          -0.238808,
+          -0.0082,
+          0.354517
+        ],
+        "center": [
+          -0.245808,
+          -0.0117,
+          0.351017
+        ],
+        "extent": [
+          0.014,
+          0.007,
+          0.007
+        ],
+        "diagonal": 0.017146
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 83,
+      "usageEntity": "#39952",
+      "usageName": "NAUO84",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 85,
+      "meshIndex": 83,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          0.039717,
+          0.394412
+        ],
+        "max": [
+          -0.203808,
+          0.053716,
+          0.40841
+        ],
+        "center": [
+          -0.231308,
+          0.046716,
+          0.401411
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 84,
+      "usageEntity": "#39953",
+      "usageName": "NAUO85",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 86,
+      "meshIndex": 84,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          0.036087,
+          0.38929
+        ],
+        "max": [
+          -0.240808,
+          0.057346,
+          0.413533
+        ],
+        "center": [
+          -0.247858,
+          0.046716,
+          0.401411
+        ],
+        "extent": [
+          0.0141,
+          0.021259,
+          0.024243
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 85,
+      "usageEntity": "#39954",
+      "usageName": "NAUO86",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 87,
+      "meshIndex": 85,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          0.088389,
+          0.359723
+        ],
+        "max": [
+          -0.240808,
+          0.112632,
+          0.380982
+        ],
+        "center": [
+          -0.247858,
+          0.100511,
+          0.370353
+        ],
+        "extent": [
+          0.0141,
+          0.024243,
+          0.021259
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 86,
+      "usageEntity": "#39955",
+      "usageName": "NAUO87",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 88,
+      "meshIndex": 86,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          0.12094,
+          0.304437
+        ],
+        "max": [
+          -0.240808,
+          0.142199,
+          0.32868
+        ],
+        "center": [
+          -0.247858,
+          0.131569,
+          0.316558
+        ],
+        "extent": [
+          0.0141,
+          0.021259,
+          0.024243
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 87,
+      "usageEntity": "#39956",
+      "usageName": "NAUO88",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 89,
+      "meshIndex": 87,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          0.119448,
+          0.243812
+        ],
+        "max": [
+          -0.240808,
+          0.143691,
+          0.265071
+        ],
+        "center": [
+          -0.247858,
+          0.131569,
+          0.254442
+        ],
+        "extent": [
+          0.0141,
+          0.024243,
+          0.021259
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 88,
+      "usageEntity": "#39957",
+      "usageName": "NAUO89",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 90,
+      "meshIndex": 88,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          0.089881,
+          0.188526
+        ],
+        "max": [
+          -0.240808,
+          0.11114,
+          0.212769
+        ],
+        "center": [
+          -0.247858,
+          0.100511,
+          0.200647
+        ],
+        "extent": [
+          0.0141,
+          0.021259,
+          0.024243
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 89,
+      "usageEntity": "#39958",
+      "usageName": "NAUO90",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 91,
+      "meshIndex": 89,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          0.034595,
+          0.158959
+        ],
+        "max": [
+          -0.240808,
+          0.058838,
+          0.180218
+        ],
+        "center": [
+          -0.247858,
+          0.046716,
+          0.169589
+        ],
+        "extent": [
+          0.0141,
+          0.024243,
+          0.021259
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 90,
+      "usageEntity": "#39959",
+      "usageName": "NAUO91",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 92,
+      "meshIndex": 90,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          -0.02603,
+          0.157467
+        ],
+        "max": [
+          -0.240808,
+          -0.004771,
+          0.18171
+        ],
+        "center": [
+          -0.247858,
+          -0.0154,
+          0.169589
+        ],
+        "extent": [
+          0.0141,
+          0.021259,
+          0.024243
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 91,
+      "usageEntity": "#39960",
+      "usageName": "NAUO92",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 93,
+      "meshIndex": 91,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          -0.081316,
+          0.190018
+        ],
+        "max": [
+          -0.240808,
+          -0.057073,
+          0.211277
+        ],
+        "center": [
+          -0.247858,
+          -0.069195,
+          0.200647
+        ],
+        "extent": [
+          0.0141,
+          0.024243,
+          0.021259
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 92,
+      "usageEntity": "#39961",
+      "usageName": "NAUO93",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 94,
+      "meshIndex": 92,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          -0.110882,
+          0.24232
+        ],
+        "max": [
+          -0.240808,
+          -0.089624,
+          0.266563
+        ],
+        "center": [
+          -0.247858,
+          -0.100253,
+          0.254442
+        ],
+        "extent": [
+          0.0141,
+          0.021259,
+          0.024243
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 93,
+      "usageEntity": "#39962",
+      "usageName": "NAUO94",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 95,
+      "meshIndex": 93,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          -0.112375,
+          0.305929
+        ],
+        "max": [
+          -0.240808,
+          -0.088132,
+          0.327188
+        ],
+        "center": [
+          -0.247858,
+          -0.100253,
+          0.316558
+        ],
+        "extent": [
+          0.0141,
+          0.024243,
+          0.021259
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 94,
+      "usageEntity": "#39963",
+      "usageName": "NAUO95",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 96,
+      "meshIndex": 94,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          -0.079824,
+          0.358231
+        ],
+        "max": [
+          -0.240808,
+          -0.058565,
+          0.382474
+        ],
+        "center": [
+          -0.247858,
+          -0.069195,
+          0.370353
+        ],
+        "extent": [
+          0.0141,
+          0.021259,
+          0.024243
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 95,
+      "usageEntity": "#39964",
+      "usageName": "NAUO96",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#26321",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "nodeIndex": 97,
+      "meshIndex": 95,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M14 Normal Style-N",
+      "triangleCount": 552,
+      "bounds": {
+        "min": [
+          -0.254908,
+          -0.027522,
+          0.390782
+        ],
+        "max": [
+          -0.240808,
+          -0.003279,
+          0.412041
+        ],
+        "center": [
+          -0.247858,
+          -0.0154,
+          0.401411
+        ],
+        "extent": [
+          0.0141,
+          0.024243,
+          0.021259
+        ],
+        "diagonal": 0.035192
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 96,
+      "usageEntity": "#39965",
+      "usageName": "NAUO97",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 98,
+      "meshIndex": 96,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          0.093512,
+          0.363354
+        ],
+        "max": [
+          -0.203808,
+          0.10751,
+          0.377352
+        ],
+        "center": [
+          -0.231308,
+          0.100511,
+          0.370353
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 97,
+      "usageEntity": "#39966",
+      "usageName": "NAUO98",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 99,
+      "meshIndex": 97,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          0.12457,
+          0.309559
+        ],
+        "max": [
+          -0.203808,
+          0.138568,
+          0.323557
+        ],
+        "center": [
+          -0.231308,
+          0.131569,
+          0.316558
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 98,
+      "usageEntity": "#39967",
+      "usageName": "NAUO99",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 100,
+      "meshIndex": 98,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          0.12457,
+          0.247443
+        ],
+        "max": [
+          -0.203808,
+          0.138568,
+          0.261441
+        ],
+        "center": [
+          -0.231308,
+          0.131569,
+          0.254442
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 99,
+      "usageEntity": "#39968",
+      "usageName": "NAUO100",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 101,
+      "meshIndex": 99,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          0.093512,
+          0.193648
+        ],
+        "max": [
+          -0.203808,
+          0.10751,
+          0.207646
+        ],
+        "center": [
+          -0.231308,
+          0.100511,
+          0.200647
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 100,
+      "usageEntity": "#39969",
+      "usageName": "NAUO101",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 102,
+      "meshIndex": 100,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          0.039717,
+          0.16259
+        ],
+        "max": [
+          -0.203808,
+          0.053716,
+          0.176588
+        ],
+        "center": [
+          -0.231308,
+          0.046716,
+          0.169589
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "center"
+    },
+    {
+      "assemblyOrdinal": 101,
+      "usageEntity": "#39970",
+      "usageName": "NAUO102",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 103,
+      "meshIndex": 101,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          -0.022399,
+          0.16259
+        ],
+        "max": [
+          -0.203808,
+          -0.008401,
+          0.176588
+        ],
+        "center": [
+          -0.231308,
+          -0.0154,
+          0.169589
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 102,
+      "usageEntity": "#39971",
+      "usageName": "NAUO103",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 104,
+      "meshIndex": 102,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          -0.076194,
+          0.193648
+        ],
+        "max": [
+          -0.203808,
+          -0.062196,
+          0.207646
+        ],
+        "center": [
+          -0.231308,
+          -0.069195,
+          0.200647
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 103,
+      "usageEntity": "#39972",
+      "usageName": "NAUO104",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 105,
+      "meshIndex": 103,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          -0.107252,
+          0.247443
+        ],
+        "max": [
+          -0.203808,
+          -0.093254,
+          0.261441
+        ],
+        "center": [
+          -0.231308,
+          -0.100253,
+          0.254442
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 104,
+      "usageEntity": "#39973",
+      "usageName": "NAUO105",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 106,
+      "meshIndex": 104,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          -0.107252,
+          0.309559
+        ],
+        "max": [
+          -0.203808,
+          -0.093254,
+          0.323557
+        ],
+        "center": [
+          -0.231308,
+          -0.100253,
+          0.316558
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 105,
+      "usageEntity": "#39974",
+      "usageName": "NAUO106",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 107,
+      "meshIndex": 105,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          -0.076194,
+          0.363354
+        ],
+        "max": [
+          -0.203808,
+          -0.062196,
+          0.377352
+        ],
+        "center": [
+          -0.231308,
+          -0.069195,
+          0.370353
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 106,
+      "usageEntity": "#39975",
+      "usageName": "NAUO107",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27574",
+      "productName": "体盖螺柱",
+      "nodeIndex": 108,
+      "meshIndex": 106,
+      "glbNodeName": "Ìå¸ÇÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ìå¸ÇÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.258808,
+          -0.022399,
+          0.394412
+        ],
+        "max": [
+          -0.203808,
+          -0.008401,
+          0.40841
+        ],
+        "center": [
+          -0.231308,
+          -0.0154,
+          0.401411
+        ],
+        "extent": [
+          0.055,
+          0.013998,
+          0.013998
+        ],
+        "diagonal": 0.058454
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 107,
+      "usageEntity": "#39976",
+      "usageName": "NAUO108",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#20092",
+      "productName": "支架",
+      "nodeIndex": 109,
+      "meshIndex": 107,
+      "glbNodeName": "֧¼",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/֧¼",
+      "triangleCount": 2576,
+      "bounds": {
+        "min": [
+          -0.231308,
+          0.166158,
+          0.2155
+        ],
+        "max": [
+          -0.051308,
+          0.311158,
+          0.3555
+        ],
+        "center": [
+          -0.141308,
+          0.238658,
+          0.2855
+        ],
+        "extent": [
+          0.18,
+          0.145,
+          0.14
+        ],
+        "diagonal": 0.270231
+      },
+      "animationGroup": "top-bracket-connector",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 108,
+      "usageEntity": "#39977",
+      "usageName": "NAUO109",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#6932",
+      "productName": "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+      "nodeIndex": 110,
+      "meshIndex": 108,
+      "glbNodeName": "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+      "triangleCount": 348,
+      "bounds": {
+        "min": [
+          -0.192548,
+          0.151158,
+          0.32477
+        ],
+        "max": [
+          -0.180578,
+          0.177158,
+          0.33674
+        ],
+        "center": [
+          -0.186563,
+          0.164158,
+          0.330755
+        ],
+        "extent": [
+          0.01197,
+          0.026,
+          0.01197
+        ],
+        "diagonal": 0.031025
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 109,
+      "usageEntity": "#39978",
+      "usageName": "NAUO110",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#6932",
+      "productName": "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+      "nodeIndex": 111,
+      "meshIndex": 109,
+      "glbNodeName": "parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/parallel pins hardening steel gb_GB_CONNECTING_PIECE_PIN_DP 12X26",
+      "triangleCount": 348,
+      "bounds": {
+        "min": [
+          -0.102038,
+          0.151158,
+          0.23426
+        ],
+        "max": [
+          -0.090068,
+          0.177158,
+          0.24623
+        ],
+        "center": [
+          -0.096053,
+          0.164158,
+          0.240245
+        ],
+        "extent": [
+          0.01197,
+          0.026,
+          0.01197
+        ],
+        "diagonal": 0.031025
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 110,
+      "usageEntity": "#39979",
+      "usageName": "NAUO111",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 112,
+      "meshIndex": 110,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.087179,
+          0.153158,
+          0.304992
+        ],
+        "max": [
+          -0.07718,
+          0.188158,
+          0.314991
+        ],
+        "center": [
+          -0.08218,
+          0.170658,
+          0.309992
+        ],
+        "extent": [
+          0.009999,
+          0.035,
+          0.009999
+        ],
+        "diagonal": 0.037749
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 111,
+      "usageEntity": "#39980",
+      "usageName": "NAUO112",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 113,
+      "meshIndex": 111,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.090464,
+          0.176758,
+          0.300774
+        ],
+        "max": [
+          -0.073895,
+          0.186058,
+          0.31921
+        ],
+        "center": [
+          -0.08218,
+          0.181408,
+          0.309992
+        ],
+        "extent": [
+          0.01657,
+          0.0093,
+          0.018436
+        ],
+        "diagonal": 0.026475
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 112,
+      "usageEntity": "#39981",
+      "usageName": "NAUO113",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 114,
+      "meshIndex": 112,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.090218,
+          0.174158,
+          0.301954
+        ],
+        "max": [
+          -0.074141,
+          0.176758,
+          0.318035
+        ],
+        "center": [
+          -0.08218,
+          0.175458,
+          0.309994
+        ],
+        "extent": [
+          0.016076,
+          0.0026,
+          0.016081
+        ],
+        "diagonal": 0.022887
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 113,
+      "usageEntity": "#39982",
+      "usageName": "NAUO114",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 115,
+      "meshIndex": 113,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.087166,
+          0.153158,
+          0.256022
+        ],
+        "max": [
+          -0.077193,
+          0.188158,
+          0.265995
+        ],
+        "center": [
+          -0.08218,
+          0.170658,
+          0.261008
+        ],
+        "extent": [
+          0.009973,
+          0.035,
+          0.009973
+        ],
+        "diagonal": 0.037735
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 114,
+      "usageEntity": "#39983",
+      "usageName": "NAUO115",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 116,
+      "meshIndex": 114,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.121816,
+          0.153158,
+          0.221372
+        ],
+        "max": [
+          -0.111817,
+          0.188158,
+          0.231371
+        ],
+        "center": [
+          -0.116816,
+          0.170658,
+          0.226372
+        ],
+        "extent": [
+          0.009999,
+          0.035,
+          0.009999
+        ],
+        "diagonal": 0.037749
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 115,
+      "usageEntity": "#39984",
+      "usageName": "NAUO116",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 117,
+      "meshIndex": 115,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.170786,
+          0.153158,
+          0.221385
+        ],
+        "max": [
+          -0.160813,
+          0.188158,
+          0.231358
+        ],
+        "center": [
+          -0.1658,
+          0.170658,
+          0.226372
+        ],
+        "extent": [
+          0.009973,
+          0.035,
+          0.009973
+        ],
+        "diagonal": 0.037735
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 116,
+      "usageEntity": "#39985",
+      "usageName": "NAUO117",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 118,
+      "meshIndex": 116,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.205436,
+          0.153158,
+          0.256009
+        ],
+        "max": [
+          -0.195437,
+          0.188158,
+          0.266008
+        ],
+        "center": [
+          -0.200436,
+          0.170658,
+          0.261008
+        ],
+        "extent": [
+          0.009999,
+          0.035,
+          0.009999
+        ],
+        "diagonal": 0.037749
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 117,
+      "usageEntity": "#39986",
+      "usageName": "NAUO118",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 119,
+      "meshIndex": 117,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.205423,
+          0.153158,
+          0.305005
+        ],
+        "max": [
+          -0.19545,
+          0.188158,
+          0.314978
+        ],
+        "center": [
+          -0.200436,
+          0.170658,
+          0.309992
+        ],
+        "extent": [
+          0.009973,
+          0.035,
+          0.009973
+        ],
+        "diagonal": 0.037735
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 118,
+      "usageEntity": "#39987",
+      "usageName": "NAUO119",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 120,
+      "meshIndex": 118,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.170799,
+          0.153158,
+          0.339629
+        ],
+        "max": [
+          -0.1608,
+          0.188158,
+          0.349628
+        ],
+        "center": [
+          -0.1658,
+          0.170658,
+          0.344628
+        ],
+        "extent": [
+          0.009999,
+          0.035,
+          0.009999
+        ],
+        "diagonal": 0.037749
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 119,
+      "usageEntity": "#39988",
+      "usageName": "NAUO120",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#27064",
+      "productName": "支架螺柱",
+      "nodeIndex": 121,
+      "meshIndex": 119,
+      "glbNodeName": "Ö§¼ÜÂÝÖù",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Ö§¼ÜÂÝÖù",
+      "triangleCount": 140,
+      "bounds": {
+        "min": [
+          -0.121803,
+          0.153158,
+          0.339642
+        ],
+        "max": [
+          -0.11183,
+          0.188158,
+          0.349615
+        ],
+        "center": [
+          -0.116816,
+          0.170658,
+          0.344628
+        ],
+        "extent": [
+          0.009973,
+          0.035,
+          0.009973
+        ],
+        "diagonal": 0.037735
+      },
+      "animationGroup": "top-bracket-fasteners",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 120,
+      "usageEntity": "#39989",
+      "usageName": "NAUO121",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 122,
+      "meshIndex": 120,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.09124,
+          0.176758,
+          0.252261
+        ],
+        "max": [
+          -0.073119,
+          0.186058,
+          0.269756
+        ],
+        "center": [
+          -0.08218,
+          0.181408,
+          0.261008
+        ],
+        "extent": [
+          0.01812,
+          0.0093,
+          0.017495
+        ],
+        "diagonal": 0.02685
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 121,
+      "usageEntity": "#39990",
+      "usageName": "NAUO122",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 123,
+      "meshIndex": 121,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.126034,
+          0.176758,
+          0.218087
+        ],
+        "max": [
+          -0.107598,
+          0.186058,
+          0.234657
+        ],
+        "center": [
+          -0.116816,
+          0.181408,
+          0.226372
+        ],
+        "extent": [
+          0.018436,
+          0.0093,
+          0.01657
+        ],
+        "diagonal": 0.026475
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 122,
+      "usageEntity": "#39991",
+      "usageName": "NAUO123",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 124,
+      "meshIndex": 122,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.174547,
+          0.176758,
+          0.217312
+        ],
+        "max": [
+          -0.157052,
+          0.186058,
+          0.235432
+        ],
+        "center": [
+          -0.1658,
+          0.181408,
+          0.226372
+        ],
+        "extent": [
+          0.017495,
+          0.0093,
+          0.01812
+        ],
+        "diagonal": 0.02685
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 123,
+      "usageEntity": "#39992",
+      "usageName": "NAUO124",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 125,
+      "meshIndex": 123,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.208721,
+          0.176758,
+          0.25179
+        ],
+        "max": [
+          -0.192151,
+          0.186058,
+          0.270226
+        ],
+        "center": [
+          -0.200436,
+          0.181408,
+          0.261008
+        ],
+        "extent": [
+          0.01657,
+          0.0093,
+          0.018436
+        ],
+        "diagonal": 0.026475
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 124,
+      "usageEntity": "#39993",
+      "usageName": "NAUO125",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 126,
+      "meshIndex": 124,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.209496,
+          0.176758,
+          0.301244
+        ],
+        "max": [
+          -0.191376,
+          0.186058,
+          0.318739
+        ],
+        "center": [
+          -0.200436,
+          0.181408,
+          0.309992
+        ],
+        "extent": [
+          0.01812,
+          0.0093,
+          0.017495
+        ],
+        "diagonal": 0.02685
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 125,
+      "usageEntity": "#39994",
+      "usageName": "NAUO126",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 127,
+      "meshIndex": 125,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.175017,
+          0.176758,
+          0.336343
+        ],
+        "max": [
+          -0.156582,
+          0.186058,
+          0.352913
+        ],
+        "center": [
+          -0.1658,
+          0.181408,
+          0.344628
+        ],
+        "extent": [
+          0.018436,
+          0.0093,
+          0.01657
+        ],
+        "diagonal": 0.026475
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 126,
+      "usageEntity": "#39995",
+      "usageName": "NAUO127",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#2307",
+      "productName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "nodeIndex": 128,
+      "meshIndex": 126,
+      "glbNodeName": "hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/hex nuts, style 2-grades ab gb_GB_HEXAGON_TYPE13 M10 Normal Style-N",
+      "triangleCount": 540,
+      "bounds": {
+        "min": [
+          -0.125564,
+          0.176758,
+          0.335568
+        ],
+        "max": [
+          -0.108069,
+          0.186058,
+          0.353688
+        ],
+        "center": [
+          -0.116816,
+          0.181408,
+          0.344628
+        ],
+        "extent": [
+          0.017495,
+          0.0093,
+          0.01812
+        ],
+        "diagonal": 0.02685
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 127,
+      "usageEntity": "#39996",
+      "usageName": "NAUO128",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 129,
+      "meshIndex": 127,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.090225,
+          0.174158,
+          0.252963
+        ],
+        "max": [
+          -0.074134,
+          0.176758,
+          0.269056
+        ],
+        "center": [
+          -0.08218,
+          0.175458,
+          0.261009
+        ],
+        "extent": [
+          0.016091,
+          0.0026,
+          0.016093
+        ],
+        "diagonal": 0.022906
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 128,
+      "usageEntity": "#39997",
+      "usageName": "NAUO129",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 130,
+      "meshIndex": 128,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.124854,
+          0.174158,
+          0.218334
+        ],
+        "max": [
+          -0.108773,
+          0.176758,
+          0.23441
+        ],
+        "center": [
+          -0.116814,
+          0.175458,
+          0.226372
+        ],
+        "extent": [
+          0.016081,
+          0.0026,
+          0.016076
+        ],
+        "diagonal": 0.022887
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 129,
+      "usageEntity": "#39998",
+      "usageName": "NAUO130",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 131,
+      "meshIndex": 129,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.173845,
+          0.174158,
+          0.218326
+        ],
+        "max": [
+          -0.157752,
+          0.176758,
+          0.234417
+        ],
+        "center": [
+          -0.165799,
+          0.175458,
+          0.226372
+        ],
+        "extent": [
+          0.016093,
+          0.0026,
+          0.016091
+        ],
+        "diagonal": 0.022906
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 130,
+      "usageEntity": "#39999",
+      "usageName": "NAUO131",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 132,
+      "meshIndex": 130,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.208474,
+          0.174158,
+          0.252965
+        ],
+        "max": [
+          -0.192398,
+          0.176758,
+          0.269046
+        ],
+        "center": [
+          -0.200436,
+          0.175458,
+          0.261006
+        ],
+        "extent": [
+          0.016076,
+          0.0026,
+          0.016081
+        ],
+        "diagonal": 0.022887
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 131,
+      "usageEntity": "#40000",
+      "usageName": "NAUO132",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 133,
+      "meshIndex": 131,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.208482,
+          0.174158,
+          0.301944
+        ],
+        "max": [
+          -0.192391,
+          0.176758,
+          0.318037
+        ],
+        "center": [
+          -0.200436,
+          0.175458,
+          0.309991
+        ],
+        "extent": [
+          0.016091,
+          0.0026,
+          0.016093
+        ],
+        "diagonal": 0.022906
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 132,
+      "usageEntity": "#40001",
+      "usageName": "NAUO133",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 134,
+      "meshIndex": 132,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.173843,
+          0.174158,
+          0.33659
+        ],
+        "max": [
+          -0.157761,
+          0.176758,
+          0.352666
+        ],
+        "center": [
+          -0.165802,
+          0.175458,
+          0.344628
+        ],
+        "extent": [
+          0.016081,
+          0.0026,
+          0.016076
+        ],
+        "diagonal": 0.022887
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 133,
+      "usageEntity": "#40002",
+      "usageName": "NAUO134",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#3593",
+      "productName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "nodeIndex": 135,
+      "meshIndex": 133,
+      "glbNodeName": "spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/spring lock washers--normal type gb_GB_FASTENER_WASHER_SW 10",
+      "triangleCount": 284,
+      "bounds": {
+        "min": [
+          -0.124864,
+          0.174158,
+          0.336583
+        ],
+        "max": [
+          -0.108771,
+          0.176758,
+          0.352674
+        ],
+        "center": [
+          -0.116817,
+          0.175458,
+          0.344628
+        ],
+        "extent": [
+          0.016093,
+          0.0026,
+          0.016091
+        ],
+        "diagonal": 0.022906
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 134,
+      "usageEntity": "#40003",
+      "usageName": "NAUO135",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#37918",
+      "productName": "连接轴",
+      "nodeIndex": 136,
+      "meshIndex": 134,
+      "glbNodeName": "Á¬½ÓÖá",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Á¬½ÓÖá",
+      "triangleCount": 742,
+      "bounds": {
+        "min": [
+          -0.172688,
+          0.221158,
+          0.25412
+        ],
+        "max": [
+          -0.109808,
+          0.359158,
+          0.31688
+        ],
+        "center": [
+          -0.141248,
+          0.290158,
+          0.2855
+        ],
+        "extent": [
+          0.06288,
+          0.138,
+          0.06276
+        ],
+        "diagonal": 0.164124
+      },
+      "animationGroup": "top-bracket-connector",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 135,
+      "usageEntity": "#40004",
+      "usageName": "NAUO136",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#983",
+      "productName": "平键",
+      "nodeIndex": 137,
+      "meshIndex": 135,
+      "glbNodeName": "Æ½¼ü",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/Æ½¼ü",
+      "triangleCount": 28,
+      "bounds": {
+        "min": [
+          -0.130008,
+          0.221158,
+          0.2805
+        ],
+        "max": [
+          -0.122008,
+          0.291158,
+          0.2905
+        ],
+        "center": [
+          -0.126008,
+          0.256158,
+          0.2855
+        ],
+        "extent": [
+          0.008,
+          0.07,
+          0.01
+        ],
+        "diagonal": 0.071162
+      },
+      "animationGroup": "top-bracket-connector",
+      "side": "rear"
+    },
+    {
+      "assemblyOrdinal": 136,
+      "usageEntity": "#40005",
+      "usageName": "NAUO137",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#36864",
+      "productName": "排污阀垫片",
+      "nodeIndex": 138,
+      "meshIndex": 136,
+      "glbNodeName": "ƅϛ·§µ熬",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/ƅϛ·§µ熬",
+      "triangleCount": 288,
+      "bounds": {
+        "min": [
+          -0.153308,
+          -0.076619,
+          0.359393
+        ],
+        "max": [
+          -0.129308,
+          -0.058235,
+          0.377777
+        ],
+        "center": [
+          -0.141308,
+          -0.067427,
+          0.368585
+        ],
+        "extent": [
+          0.024,
+          0.018384,
+          0.018384
+        ],
+        "diagonal": 0.035383
+      },
+      "animationGroup": "fasteners-small-hardware",
+      "side": "front"
+    },
+    {
+      "assemblyOrdinal": 137,
+      "usageEntity": "#40006",
+      "usageName": "NAUO138",
+      "parentProductDefinition": "#12641",
+      "childProductDefinition": "#34782",
+      "productName": "堵头",
+      "nodeIndex": 139,
+      "meshIndex": 137,
+      "glbNodeName": "¶Í·",
+      "glbNodePath": "Fixed Ball Valve/¹̶¨ʽȲ·§/¶Í·",
+      "triangleCount": 548,
+      "bounds": {
+        "min": [
+          -0.154002,
+          -0.08369,
+          0.353029
+        ],
+        "max": [
+          -0.128614,
+          -0.051871,
+          0.384848
+        ],
+        "center": [
+          -0.141308,
+          -0.067781,
+          0.368939
+        ],
+        "extent": [
+          0.025388,
+          0.03182,
+          0.03182
+        ],
+        "diagonal": 0.051668
+      },
+      "animationGroup": "central-body-anchor",
+      "side": "front"
+    }
+  ]
+}

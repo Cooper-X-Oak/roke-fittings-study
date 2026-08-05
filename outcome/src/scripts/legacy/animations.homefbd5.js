@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     fps: 30,
     durationSeconds: 8,
     basePath: '/ztovalue/assets/upload/images/zt-hero-fixed-ball-valve/',
+    opaqueBackground: '#47714D',
   });
   let frameCount = goal31HeroSequence.frameCount;
   // let urls = new Array(frameCount).fill().map((o, i) => `/ztovalue/assets/upload/images/frames1/${(i+1).toString().padStart(4, '0')}.webp`);
@@ -169,7 +170,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     imageSequence({
       urls, // Array of image URLs
       canvas: "#image-sequence", // <canvas> object to draw images to
-      clear: true, // only necessary if your images contain transparency
+      clear: false, // opaque green hero frames do not need alpha clearing
       onUpdate: () => heroFramesElement && heroFramesElement.classList.add('is-sequence-ready'),
       fps: goal31HeroSequence.fps,
       scrollTrigger: {
