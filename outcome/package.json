@@ -1,0 +1,13 @@
+{
+  "name": "ztovalue",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "check:assets": "node scripts/check-assets.mjs",
+    "check:links": "node scripts/check-links.mjs dist /ztovalue/",
+    "preview": "node scripts/serve-preview.mjs dist /ztovalue 4179"
+  },
+  "devDependencies": {}
+}

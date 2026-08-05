@@ -5,7 +5,6 @@
 - Before any repository file, Git, or GitHub mutation, use `$apply-repo-workflow`.
 - workflow.default: `live-workspace-development`
 - workflow.allowed: `live-workspace-development`, `github-standard-development`, `read-only-review`
-- workflow.policy_docs: `docs/engineering/live-workspace-development.md`, `docs/engineering/github-standard-development.md`
 - workflow.remote_sync: `current-branch`
 - workflow.remote: `origin`
 - workflow.branch_switch: `in-place`
@@ -16,8 +15,9 @@
 - Issue, PR, protected-branch integration, merge, release, and deployment are
   outside the default workflow. When the user explicitly requests Issue/PR
   review or protected-branch integration, select the allowed
-  `github-standard-development` workflow and follow its dedicated policy.
+  `github-standard-development` workflow and follow `$apply-repo-workflow`
+  references.
   A scoped GitHub Pages publication from the current verified development
   branch is permitted only when the current control-plane entry and acceptance
-  checks explicitly authorize it and the Pages publication policy is followed.
+  checks explicitly authorize it.
 - If workflow resolution or preflight fails, remain read-only and report the blocker.

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr" class="page-about section-about">
+<head>
+  <meta charset="UTF-8" />
+  <title>正拓阀门｜关于我们</title>
+  <meta name="robots" content="all" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="正拓阀门有限公司关于页面，整理公司简介、企业实力、荣誉证书、主营产品、应用行业和联系方式。" />
+  <link rel="icon" type="image/png" sizes="120x120" href="../favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="canonical" href="index.html" />
+  <link href="/ztovalue/assets/styles/template.css" type="text/css" data-template-style="true" rel="stylesheet" />
+  <style>
+    .zt-logo {
+      color: #3c4348;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .zt-logo-main {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .zt-logo-sub {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0;
+      margin-top: 4px;
+    }
+
+    .zt-kicker {
+      color: #bf1e2e;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .zt-about-hero {
+      background: #f3f3f3;
+      overflow: hidden;
+      padding: 140px 0 82px;
+    }
+
+    .zt-about-title {
+      color: #3c4348;
+      font-size: clamp(54px, 9vw, 146px);
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: .9;
+      margin: 0;
+      max-width: 1120px;
+      text-transform: uppercase;
+    }
+
+    .zt-copy {
+      color: rgba(60, 67, 72, .76);
+      font-size: 18px;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .zt-hero-image,
+    .zt-proof-image {
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .zt-hero-image img,
+    .zt-proof-image img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .zt-hero-image {
+      aspect-ratio: 1.25 / 1;
+    }
+
+    .zt-section-title {
+      color: #3c4348;
+      font-size: clamp(36px, 6vw, 88px);
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: .96;
+      margin: 0;
+    }
+
+    .zt-section-title span {
+      font-style: italic;
+    }
+
+    .zt-metric-grid,
+    .zt-proof-grid,
+    .zt-honor-grid,
+    .zt-contact-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .zt-metric-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .zt-metric {
+      border-top: 1px solid rgba(60, 67, 72, .18);
+      padding-top: 22px;
+    }
+
+    .zt-metric b {
+      color: #3c4348;
+      display: block;
+      font-size: clamp(30px, 4vw, 64px);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .zt-metric span {
+      color: rgba(60, 67, 72, .7);
+      display: block;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+
+    .zt-proof-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .zt-proof-card {
+      background: #f3f3f3;
+      border-radius: 8px;
+      color: #3c4348;
+      min-height: 250px;
+      padding: 26px;
+    }
+
+    .zt-proof-card b {
+      display: block;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.12;
+    }
+
+    .zt-proof-card span {
+      color: rgba(60, 67, 72, .72);
+      display: block;
+      font-size: 15px;
+      line-height: 1.55;
+      margin-top: 18px;
+    }
+
+    .zt-gallery-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, .85fr);
+    }
+
+    .zt-strength-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .zt-strength-grid .zt-proof-image {
+      aspect-ratio: 1.42 / 1;
+    }
+
+    .zt-honor-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .zt-honor-grid .zt-proof-image {
+      aspect-ratio: 1.8 / 1;
+    }
+
+    .zt-dark-band {
+      background: #101010;
+      color: #ffffff;
+    }
+
+    .zt-dark-band .zt-section-title,
+    .zt-dark-band .zt-copy {
+      color: #ffffff;
+    }
+
+    .zt-dark-band .zt-copy {
+      color: rgba(255, 255, 255, .76);
+    }
+
+    .zt-contact-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .zt-contact-item {
+      border-top: 1px solid rgba(255, 255, 255, .26);
+      padding-top: 16px;
+    }
+
+    .zt-contact-item b {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .zt-contact-item span,
+    .zt-contact-item a {
+      color: rgba(255, 255, 255, .82);
+      display: block;
+      font-size: 16px;
+      line-height: 1.55;
+      margin-top: 12px;
+      text-decoration: none;
+    }
+
+    .zt-cta-panel {
+      background: #bf1e2e;
+      border-radius: 8px;
+      color: #ffffff;
+    }
+
+    .zt-cta-panel a {
+      color: inherit;
+    }
+
+    .zt-cta-title {
+      color: #ffffff;
+      font-size: clamp(34px, 5vw, 74px);
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: .96;
+      margin: 0;
+    }
+
+    .zt-footer-logo {
+      color: #3c4348;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    .zt-footer-logo span {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 1199.98px) {
+      .zt-metric-grid,
+      .zt-proof-grid,
+      .zt-contact-grid,
+      .zt-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .zt-about-hero {
+        padding: 112px 0 56px;
+      }
+
+      .zt-copy {
+        font-size: 16px;
+      }
+
+      .zt-metric-grid,
+      .zt-proof-grid,
+      .zt-contact-grid,
+      .zt-gallery-grid,
+      .zt-strength-grid,
+      .zt-honor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header class="header">
+    <div class="header-inner">
+      <div class="container-fluid">
+        <div class="row align-items-center gx-2 gx-md-4">
+          <div class="col-4 col-sm-3 col-md-2">
+            <div class="header-logo">
+              <a href="../index.html" class="d-block zt-logo" aria-label="正拓阀门首页">
+                <span class="zt-logo-main">ZTOVALVE</span>
+                <span class="zt-logo-sub">正拓阀门</span>
+              </a>
+            </div>
+          </div>
+          <div class="col d-none d-lg-block">
+            <div class="header-menu">
+              <ul class="header-menu-list d-flex justify-content-center">
+                <li class="header-menu-item"><a href="../why/index.html" class="header-menu-link">质量与服务</a></li>
+                <li class="header-menu-item"><a href="../catalog/index.html" class="header-menu-link">产品展示</a></li>
+                <li class="header-menu-item"><a href="../service/index.html" class="header-menu-link">服务承诺</a></li>
+                <li class="header-menu-item"><a href="index.html" class="header-menu-link active">关于我们</a></li>
+                <li class="header-menu-item"><a href="#strength" class="header-menu-link">企业实力</a></li>
+                <li class="header-menu-item"><a href="../contact/index.html" class="header-menu-link">联系我们</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto ms-auto ms-lg-0">
+            <div class="header-actions row">
+              <div class="col d-none d-lg-block">
+                <div class="text-end">
+                  <div>
+                    <a href="tel:+8657786913387" class="btn btn-brand btn-brand-red-2 w-100 fw-medium">
+                      <span>0577-86913387</span>
+                    </a>
+                  </div>
+                  <div class="mt-1">
+                    <span class="header-actions-email">zhengtuo@ztovalve.com</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col d-block d-lg-none">
+                <a href="#Offcanvas" class="btn p-0" role="button" data-bs-toggle="offcanvas" aria-label="打开菜单">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main" class="main flex-grow-1 d-flex flex-column main-inner">
+    <section class="zt-about-hero">
+      <div class="container-fluid">
+        <div class="row row-gap-5 align-items-end">
+          <div class="col-12 col-lg-7">
+            <div class="zt-kicker mb-4">Company Profile</div>
+            <h1 class="zt-about-title">About<br />ZTOVALVE</h1>
+            <p class="zt-copy mt-4">
+              正拓阀门有限公司位于浙江温州龙湾度山路 178 号，是龙湾阀门协会副会长单位。
+              公司围绕球阀、截止阀、止回阀、闸阀等管道阀门和配件，提供常规产品与非标设计生产支持。
+            </p>
+          </div>
+          <div class="col-12 col-lg-5">
+            <div class="zt-hero-image">
+              <img src="/ztovalue/assets/upload/ztovalve/factory-strength-1.jpg" alt="正拓阀门车间加工与装配实景" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-offset">
+      <div class="container-fluid">
+        <div class="zt-metric-grid">
+          <div class="zt-metric">
+            <b>龙湾</b>
+            <span>坐落于温州市区东部，靠近温州永强机场与龙湾万吨码头。</span>
+          </div>
+          <div class="zt-metric">
+            <b>4+</b>
+            <span>主营球阀、截止阀、止回阀、闸阀及管道配件等产品线。</span>
+          </div>
+          <div class="zt-metric">
+            <b>AISI</b>
+            <span>覆盖 304、316 等常用不锈钢材质线索，便于采购按工况进一步确认。</span>
+          </div>
+          <div class="zt-metric">
+            <b>ISO</b>
+            <span>围绕质量管理、工艺控制和检验测试建立稳定交付基础。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-offset">
+      <div class="container-fluid">
+        <div class="row align-items-end row-gap-4 mb-5">
+          <div class="col-12 col-lg-7">
+            <h2 class="zt-section-title">制造能力 <span>与产品</span></h2>
+          </div>
+          <div class="col-12 col-lg-5">
+            <p class="zt-copy">
+              用采购者能判断的线索呈现正拓：位置交通、制造工艺、产品范围、应用行业和非标支持。
+            </p>
+          </div>
+        </div>
+        <div class="zt-proof-grid">
+          <div class="zt-proof-card">
+            <b>位置与交通</b>
+            <span>公司位于龙湾度山路 178 号，邻近机场与码头，便于到厂沟通、物流协同和区域供应链对接。</span>
+          </div>
+          <div class="zt-proof-card">
+            <b>铸造与加工能力</b>
+            <span>公司使用全硅溶胶工艺精密铸造阀体铸件，并通过设备、工艺和管理稳定产品质量。</span>
+          </div>
+          <div class="zt-proof-card">
+            <b>产品与应用</b>
+            <span>产品覆盖球阀、截止阀、止回阀、闸阀等，应用于化工、石油、轻工、食品、医药、环保等领域。</span>
+          </div>
+          <div class="zt-proof-card">
+            <b>非标设计生产</b>
+            <span>可按客户要求进行非标阀门设计及生产，询价时建议同步提供介质、压力、温度和连接标准。</span>
+          </div>
+          <div class="zt-proof-card">
+            <b>市场范围</b>
+            <span>产品面向国内市场，并服务东南亚、欧美等海外采购需求。</span>
+          </div>
+          <div class="zt-proof-card">
+            <b>经营理念</b>
+            <span>坚持以质量、信誉和技术创新作为经营基础，持续面向工业客户交付阀门产品。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-offset" id="strength">
+      <div class="container-fluid">
+        <div class="row align-items-end row-gap-4 mb-5">
+          <div class="col-12 col-lg-7">
+            <h2 class="zt-section-title">企业实力 <span>与荣誉</span></h2>
+          </div>
+          <div class="col-12 col-lg-5">
+            <p class="zt-copy">
+              车间、加工、装配与证书资料集中展示，让采购者能快速判断正拓的生产基础和资质线索。
+            </p>
+          </div>
+        </div>
+        <div class="zt-gallery-grid">
+          <div class="zt-strength-grid">
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/factory-strength-1.jpg" alt="正拓阀门加工与装配能力图一" /></div>
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/factory-strength-3.jpg" alt="正拓阀门加工与装配能力图二" /></div>
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/factory-strength-4.jpg" alt="正拓阀门加工与装配能力图三" /></div>
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/factory-strength-5.jpg" alt="正拓阀门加工与装配能力图四" /></div>
+          </div>
+          <div class="zt-honor-grid">
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/honor-certificate-1.jpg" alt="正拓阀门营业执照与质量体系证书" /></div>
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/honor-certificate-2.jpg" alt="正拓阀门企业荣誉证书二" /></div>
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/honor-certificate-3.jpg" alt="正拓阀门企业荣誉证书三" /></div>
+            <div class="zt-proof-image"><img src="/ztovalue/assets/upload/ztovalve/honor-certificate-4.jpg" alt="正拓阀门企业荣誉证书四" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-offset zt-dark-band py-5">
+      <div class="container-fluid py-4">
+        <div class="row align-items-end row-gap-4 mb-5">
+          <div class="col-12 col-lg-7">
+            <h2 class="zt-section-title">联系 <span>正拓</span></h2>
+          </div>
+          <div class="col-12 col-lg-5">
+            <p class="zt-copy">
+              需要确认型号、标准、材质或非标需求时，可直接通过电话或邮件与正拓联系。
+            </p>
+          </div>
+        </div>
+        <div class="zt-contact-grid">
+          <div class="zt-contact-item">
+            <b>Address</b>
+            <span>浙江省温州市龙湾区永中街道度山路178号</span>
+          </div>
+          <div class="zt-contact-item">
+            <b>Phone</b>
+            <a href="tel:+8657786913387">0577-86913387</a>
+            <a href="tel:+8657786885400">0577-86885400</a>
+          </div>
+          <div class="zt-contact-item">
+            <b>Fax</b>
+            <span>0577-86913377</span>
+          </div>
+          <div class="zt-contact-item">
+            <b>Email</b>
+            <a href="mailto:zhengtuo@ztovalve.com">zhengtuo@ztovalve.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-offset">
+      <div class="container-fluid">
+        <div class="zt-cta-panel p-4 p-lg-5">
+          <div class="row row-gap-4 align-items-end">
+            <div class="col-12 col-lg-8">
+              <h2 class="zt-cta-title">把产品型号、标准和工况发给正拓</h2>
+              <p class="zt-copy text-white mt-4">
+                关于页已经承接公司可信背书；需要报价或确认规格时，可直接进入联系页或发送邮件。
+              </p>
+            </div>
+            <div class="col-12 col-lg-4 text-lg-end">
+              <a href="../contact/index.html" class="btn btn-brand btn-brand-white fw-medium">
+                <span>进入联系页</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-offset section-prefooter pb-5">
+      <div class="container-fluid mb-5">
+        <div class="pb-3 text-center">
+          <div class="zt-footer-logo">ZTOVALVE<span>正拓阀门有限公司</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mt-auto py-5">
+    <div class="container-fluid pt-2">
+      <div class="pt-1">
+        <div class="footer-top">
+          <div class="row row-gap-5">
+            <div class="col-12 col-md-4 col-lg-5">
+              <div class="footer-menu">
+                <ul class="footer-menu-nav d-flex flex-column row-gap-3">
+                  <li class="footer-menu-nav-item"><a href="../why/index.html" class="footer-menu-nav-link">质量与服务</a></li>
+                  <li class="footer-menu-nav-item"><a href="../catalog/index.html" class="footer-menu-nav-link">产品展示</a></li>
+                  <li class="footer-menu-nav-item"><a href="../service/index.html" class="footer-menu-nav-link">服务承诺</a></li>
+                  <li class="footer-menu-nav-item"><a href="index.html" class="footer-menu-nav-link">关于我们</a></li>
+                  <li class="footer-menu-nav-item"><a href="../contact/index.html" class="footer-menu-nav-link">联系我们</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-7">
+              <div class="footer-items row row-gap-4">
+                <div class="col-8">
+                  <div class="footer-blocks">
+                    <div class="footer-block-caption">品牌背书</div>
+                    <div class="footer-block-list mt-3">
+                      <ul class="d-flex flex-column row-gap-1">
+                        <li><a href="index.html">公司简介</a></li>
+                        <li><a href="#strength">企业实力</a></li>
+                        <li><a href="#strength">企业荣誉</a></li>
+                        <li><a href="../catalog/index.html">产品展示</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="footer-blocks">
+                    <div class="footer-block-caption">联系方式</div>
+                    <div class="footer-block-list mt-3">
+                      <div>正拓阀门有限公司</div>
+                      <div class="mt-3">浙江省温州市龙湾区<br />永中街道度山路178号</div>
+                      <div class="mt-3"><a href="tel:+8657786913387">0577-86913387</a></div>
+                      <div><a href="mailto:zhengtuo@ztovalve.com">zhengtuo@ztovalve.com</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom mt-5">
+          <div class="row align-items-center row-gap-3">
+            <div class="col-12 col-md-4 col-lg-5">
+              <div class="copyrights">版权所有 © 2026 正拓阀门有限公司</div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-7">
+              <div class="row">
+                <div class="col-12 col-lg-4 offset-lg-8">
+                  <div class="footer-block-list">
+                    <ul class="d-flex flex-column">
+                      <li><a href="../privacy/index.html">隐私政策</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="Offcanvas">
+    <div class="offcanvas-header py-4 px-4">
+      <div class="offcanvas-title page-title page-title-sm">菜单</div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="关闭"></button>
+    </div>
+    <div class="offcanvas-body px-4">
+      <div class="h-100 d-flex flex-column">
+        <div class="mobile-menu">
+          <ul class="mobile-menu-nav d-flex flex-column row-gap-3">
+            <li class="mobile-menu-nav-item"><a href="../index.html" class="mobile-menu-nav-link">首页</a></li>
+            <li class="mobile-menu-nav-item"><a href="../why/index.html" class="mobile-menu-nav-link">质量与服务</a></li>
+            <li class="mobile-menu-nav-item"><a href="../catalog/index.html" class="mobile-menu-nav-link">产品展示</a></li>
+            <li class="mobile-menu-nav-item"><a href="../service/index.html" class="mobile-menu-nav-link">服务承诺</a></li>
+            <li class="mobile-menu-nav-item"><a href="index.html" class="mobile-menu-nav-link active">关于我们</a></li>
+            <li class="mobile-menu-nav-item"><a href="../contact/index.html" class="mobile-menu-nav-link">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="offcanvas-contacts mt-auto">
+          <div>
+            <a href="tel:+8657786913387" class="btn btn-brand btn-brand-red-2 w-100 fw-medium">
+              <span>0577-86913387</span>
+            </a>
+          </div>
+          <div class="mt-2">
+            <a href="mailto:zhengtuo@ztovalve.com" class="btn btn-brand btn-brand-white-2 w-100 fw-medium">
+              <span>zhengtuo@ztovalve.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/ztovalue/assets/scripts/bootstrap.bundle.min4d23.js"></script>
+</body>
+</html>

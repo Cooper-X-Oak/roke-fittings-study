@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "basePath": "/ztovalue",
+  "project": "ZTOVALVE structured website delivery",
+  "brand": {
+    "name": "正拓阀门有限公司",
+    "domain": "ztovalve.com",
+    "contactEmail": "zhengtuo@ztovalve.com",
+    "contactPhone": "0577-86913387",
+    "address": "浙江省温州市龙湾区度山路 178 号"
+  },
+  "pages": {
+    "source": "src/pages",
+    "requiredRoutes": [
+      "/",
+      "/catalog/",
+      "/about/",
+      "/contact/",
+      "/download/",
+      "/service/",
+      "/why/",
+      "/vacancies/"
+    ]
+  },
+  "styles": {
+    "source": "src/styles/legacy/template.css",
+    "output": "dist/assets/styles/template.css"
+  },
+  "scripts": {
+    "source": "src/scripts/legacy",
+    "output": "dist/assets/scripts"
+  },
+  "assets": {
+    "heroFrames": "public/assets/upload/images/zt-hero-fixed-ball-valve",
+    "heroFallback": "public/assets/hero/fixed-ball-valve-mobile-fallback.png",
+    "benefitsProduct": "public/assets/template/images/ztovalve-benefits-product.png",
+    "productImages": "public/assets/upload/ztovalve",
+    "templateFonts": "public/assets/template/fonts",
+    "models": [
+      "public/assets/upload/iblock/7b2/1lomd3e7eftm83ocnj3iyqy2978cz7to.glb",
+      "public/assets/upload/iblock/4da/0q73zvtq6ngmvx87pgsco61m30gd9q2r.glb"
+    ]
+  },
+  "excluded": [
+    ".scratch",
+    "docs/engineering",
+    "verification screenshots",
+    "v3 experiment bundles",
+    "node_modules",
+    "dist",
+    "foreign-branded files and PDFs"
+  ]
+}

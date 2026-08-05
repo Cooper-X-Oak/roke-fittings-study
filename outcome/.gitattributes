@@ -1,0 +1,15 @@
+* text=auto eol=lf
+*.avif binary
+*.eot binary
+*.pdf binary
+*.glb binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.png binary
+*.ttf binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+src/scripts/legacy/**/*.js -diff
